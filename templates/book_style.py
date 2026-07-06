@@ -156,6 +156,14 @@ def build_doc(blocks, out_path):
             p.paragraph_format.space_before = Pt(20); p.paragraph_format.space_after = Pt(6)
             p.paragraph_format.keep_with_next = True
             r = p.add_run(blk[1]); _set_font(r, Pt(16), True, color=GOLD_EDGE)
+            # Chapter-header rule: a thin goldenrod line under every part title,
+            # the touch that reads as a 5e-style sourcebook heading.
+            _ppr = p._p.get_or_add_pPr()
+            _pbdr = OxmlElement('w:pBdr')
+            _bot = OxmlElement('w:bottom')
+            _bot.set(qn('w:val'), 'single'); _bot.set(qn('w:sz'), '6')
+            _bot.set(qn('w:space'), '4'); _bot.set(qn('w:color'), GOLD_EDGE)
+            _pbdr.append(_bot); _ppr.append(_pbdr)
 
         elif kind == "h2":
             p = doc.add_paragraph()
