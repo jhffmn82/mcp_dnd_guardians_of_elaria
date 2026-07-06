@@ -95,16 +95,16 @@ def _footer_stars(section):
     re_._element.append(fld2)
     r2 = p.add_run(" ✦"); _set_font(r2, Pt(9), color=CAPTION_GRAY)
 
-def _image_png_bytes(path, max_w_px=1600):
-    """Return PNG bytes for any raster (webp converted, large images downscaled)."""
+def _image_png_bytes(path, max_w_px=1200):
+    """Return compressed JPEG bytes for any raster (webp converted, large images
+    downscaled). JPEG keeps the illustrated docx/PDF a sane size; the art is
+    opaque painterly work, so no alpha is lost."""
     from PIL import Image
-    im = Image.open(path)
-    if im.mode not in ("RGB", "RGBA"):
-        im = im.convert("RGB")
+    im = Image.open(path).convert("RGB")
     if im.width > max_w_px:
         im = im.resize((max_w_px, int(im.height * max_w_px / im.width)), Image.LANCZOS)
     buf = io.BytesIO()
-    im.save(buf, format="PNG", optimize=True)
+    im.save(buf, format="JPEG", quality=82, optimize=True)
     return buf.getvalue(), im.width, im.height
 
 def _sb_line(doc, label, text, size=Pt(9)):

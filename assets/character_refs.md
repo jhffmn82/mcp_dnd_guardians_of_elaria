@@ -24,13 +24,13 @@ The canonical look of every significant, recurring character. Whenever art featu
 | Davy Jones | REF_davy_jones.png | S5 (defeated) | Tentacle-bearded ghost captain |
 | The Krampusshade | REF_krampusshade.png | S4 (banished) | Ten-foot goat-horned winter fiend |
 | Faelan | REF_faelan.png | S4 | Ancient half-elf lorekeeper |
+| Ash Catchum | REF_ash_catchum.png | mentioned S1-S7, reveal S12 | Ursa's lost father, wildfire druid |
 
 ## Reference gaps (recurring characters still needing a canonical portrait)
 
 Generate a clean portrait for these when convenient, then add to the table and `art_refs/`:
 - **Pikachu** (the Spark Fox) - returns S14; only appears inside the S8 `pikachu_returns` scene so far. Crop or generate a clean ref.
 - **Skitch** - the young Bloodfang courier (S8, recurs via the Bloodfang thread); only inside `stabby_and_skitch`.
-- **Ash Catchum** - Ursa's lost father; major reveal S13. No portrait at all. A builder sheet exists (`ash catchum.pdf`); a painted portrait would anchor S13.
 - **Poots Glimmergear** - Lilly's mother; recurs if Lilly walks the Glimmerspire road.
 - **Captain Brynn Wavewarden** - S5 ship captain; taught the knot lessons echoed in S6.
 - **Maera** - keeper of the Gasping Gull (S6).

@@ -28,6 +28,7 @@ I = [
              "itself and survives holding them, which no other vessel can. It is the missing anchor "
              "of Vane's Rift Portal, and it never leaves the party's keeping. Gained **Planar "
              "Attunement** at the Whispering Glade (advantage on Arcana concerning planar magic)."),
+    ("img", "assets/items/essence_sphere.png", "The Essence Sphere, a gatherer of loose motes.", 3.0),
     ("h2", "The Three Enchanted Potatoes"),
     ("img", "assets/items/three_potatoes.png", "The three enchanted potatoes: Healing, Transformation, Insight.", 3.4),
     ("body", "Ash Catchum's legacy to his son: three unassuming potatoes that are anything but. The "
@@ -43,6 +44,7 @@ I = [
     ("h1", "Relics of Elaria (the Wraithpine Chest)", {"pagebreak": True}),
     ("body", "One half-buried chest, bound in vines of silver and root, opened by Ghostbloom's song "
              "beneath the Old Theater. Inside, three gifts, each bearing the seven-point star."),
+    ("img", "assets/items/wraithpine_chest.png", "The Wraithpine chest, bound in silver vines.", 3.4),
     ("h2", "Staff of Waking Constellations (Ursa)"),
     ("stat", "Staff of Waking Constellations", [
         "+1 quarterstaff, druidic focus. 5 charges, regain 1d4 + 1 at dawn: guiding bolt (1), faerie fire (1), moonbeam (2).",
@@ -50,12 +52,14 @@ I = [
         "**Starlight.** Bonus action: 10 ft. dim light; advantage on night navigation.",
         "The counter-weapon: after every great victory, one new star brightens on its haft. The enemy puts stars out; the Staff lights them.",
     ]),
+    ("img", "assets/items/staff_of_waking_constellations.png", "The Staff of Waking Constellations.", 2.6),
     ("h2", "Sash of the Swift Current, Rewoven (Stabby)"),
     ("stat", "Sash of the Swift Current (Rewoven)", [
         "Scarlet stage-silk rewoven with theater rigging thread. +1 AC (stacks with Unarmored Defense).",
         "**Fleetstep.** +10 ft. walking speed. **Air Dance.** 1/day bonus action: fly speed equal to walking, 1 minute.",
         "**Feather Fall.** 1/day, no components. Its star sigil is cupped by a pair of wings.",
     ]),
+    ("img", "assets/items/sash_of_the_swift_current.png", "The Sash of the Swift Current, rewoven.", 3.0),
     ("h2", "Glimmerspire Pocket Dynamo, Mk II (Lilly)"),
     ("stat", "Glimmerspire Pocket Dynamo (Mk II)", [
         "A thumb-sized brass core stamped PROP ROOM in stage-engraver script (a mystery unexplained).",

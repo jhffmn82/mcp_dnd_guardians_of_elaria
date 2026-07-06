@@ -163,6 +163,7 @@ B = [
              "Aelwyn's creatures at Ravenstone. Visits are owed.*"),
     ("statblock", {
         "name": "Lickgloom",
+        "img": "assets/monsters/lickgloom.png",
         "type": "Small fey, neutral good",
         "ac": "13 (natural armor)", "hp": "27 (5d6 + 10)", "speed": "30 ft.",
         "abilities": ab(10, 15, 14, 8, 12, 13),
@@ -248,6 +249,7 @@ B = [
     }),
     ("statblock", {
         "name": "Mist Stalker",
+        "img": "assets/monsters/mist_stalker.png",
         "type": "Medium fey, unaligned",
         "ac": "13", "hp": "39", "speed": "40 ft.",
         "abilities": ab(14, 16, 12, 6, 12, 10),
@@ -270,6 +272,7 @@ B = [
 
     ("statblock", {
         "name": "Mudskip",
+        "img": "assets/monsters/mudskip.png",
         "type": "Small elemental (Plane of Water), neutral",
         "ac": "13 (natural armor)", "hp": "22 (4d6 + 8)", "speed": "20 ft., swim 30 ft.",
         "abilities": ab(12, 14, 14, 6, 12, 8),
@@ -560,6 +563,7 @@ B = [
     }),
     ("statblock", {
         "name": "Enchanted Snowman",
+        "img": "assets/monsters/enchanted_snowman.png",
         "type": "Small construct, unaligned",
         "ac": "13", "hp": "30 (4d8 + 12)", "speed": "20 ft.",
         "abilities": ab(12, 10, 16, 3, 10, 6),
@@ -607,6 +611,7 @@ B = [
     }),
     ("statblock", {
         "name": "Ice Spider",
+        "img": "assets/monsters/ice_spider.png",
         "type": "Medium beast, unaligned",
         "ac": "14 (natural armor)", "hp": "26 (4d10 + 4)", "speed": "30 ft., climb 30 ft.",
         "abilities": ab(12, 14, 12, 2, 11, 4),
@@ -694,6 +699,7 @@ B = [
 
     ("statblock", {
         "name": "Drowned Pirate",
+        "img": "assets/monsters/drowned_pirate.png",
         "type": "Medium undead, chaotic evil",
         "ac": "14 (studded leather or chain shirt)", "hp": "58 (9d8 + 18)", "speed": "30 ft., swim 30 ft.",
         "abilities": ab(18, 14, 14, 6, 10, 7),
@@ -723,6 +729,7 @@ B = [
     }),
     ("statblock", {
         "name": "Spectral Helmsman",
+        "img": "assets/monsters/spectral_helmsman.png",
         "type": "Medium undead, chaotic evil",
         "ac": "12", "hp": "45 (6d8 + 18)", "speed": "0 ft., fly 50 ft. (hover)",
         "abilities": ab(6, 14, 16, 10, 12, 11),
@@ -751,6 +758,7 @@ B = [
     }),
     ("statblock", {
         "name": "Smuggler's Golem",
+        "img": "assets/monsters/smugglers_golem.png",
         "type": "Large construct, unaligned",
         "ac": "14 (natural armor)", "hp": "85 (10d10 + 30)", "speed": "30 ft.",
         "abilities": ab(19, 9, 16, 3, 10, 5),
@@ -778,6 +786,7 @@ B = [
     }),
     ("statblock", {
         "name": "Arcane Corsair",
+        "img": "assets/monsters/arcane_corsair.png",
         "type": "Medium humanoid, chaotic neutral",
         "ac": "14 (studded leather)", "hp": "52 (7d8 + 21)", "speed": "30 ft.",
         "abilities": ab(16, 16, 16, 12, 11, 14),
@@ -803,6 +812,7 @@ B = [
     }),
     ("statblock", {
         "name": "Ghost-Light Engineer",
+        "img": "assets/monsters/ghost_light_engineer.png",
         "type": "Tiny undead, neutral evil",
         "ac": "15 (natural armor)", "hp": "27 (6d4 + 12)", "speed": "0 ft., fly 50 ft. (hover)",
         "abilities": ab(1, 18, 14, 12, 14, 16),
@@ -866,6 +876,7 @@ B = [
              "singing as one. The moment the song stopped, every stolen name came flooding home.*"),
     ("statblock", {
         "name": "False Hydra (Adult): Body",
+        "img": "assets/monsters/false_hydra_body.png",
         "type": "Huge aberration, unaligned",
         "ac": "15", "hp": "130 (12d12 + 48)", "speed": "10 ft., climb 10 ft.",
         "abilities": ab(18, 10, 18, 7, 14, 8),
@@ -896,6 +907,7 @@ B = [
     }),
     ("statblock", {
         "name": "False Hydra Head (x4)",
+        "img": "assets/monsters/false_hydra_head.png",
         "type": "Large aberration (an extension of the body), unaligned",
         "ac": "14", "hp": "45 (6d10 + 12)", "speed": "30 ft. (platforms, tunnels), climb 20 ft.",
         "abilities": ab(16, 12, 14, 6, 14, 7),
@@ -919,6 +931,7 @@ B = [
              "graveyard rite.*"),
     ("statblock", {
         "name": "Animated Scarecrow",
+        "img": "assets/monsters/scarecrow.png",
         "type": "Medium construct, neutral",
         "ac": "11", "hp": "36 (8d8)", "speed": "30 ft.",
         "abilities": ab(16, 12, 11, 10, 10, 10),
@@ -940,6 +953,7 @@ B = [
     }),
     ("statblock", {
         "name": "Strawling",
+        "img": "assets/monsters/strawling.png",
         "type": "Medium plant, neutral",
         "ac": "12", "hp": "11 (2d8 + 2)", "speed": "30 ft.",
         "abilities": ab(12, 12, 12, 4, 10, 3),
