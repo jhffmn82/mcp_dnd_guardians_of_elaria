@@ -25,15 +25,15 @@ The canonical look of every significant, recurring character. Whenever art featu
 | The Krampusshade | REF_krampusshade.png | S4 (banished) | Ten-foot goat-horned winter fiend |
 | Faelan | REF_faelan.png | S4 | Ancient half-elf lorekeeper |
 | Ash Catchum | REF_ash_catchum.png | mentioned S1-S7, reveal S12 | Ursa's lost father, wildfire druid |
+| Skitch | REF_skitch.png | S7, recurs S8+ | Young Bloodfang courier |
+| Pikachu (Spark Fox) | REF_pikachu.png | in the Sphere; returns S13 | Golden light fox-spirit (cropped from S7 art) |
+| Poots Glimmergear | REF_poots_glimmergear.png | recurs if Lilly's Door B | Lilly's mother, Glimmerspire tinkerer |
+| Captain Brynn Wavewarden | REF_brynn_wavewarden.png | S5 | Sea-captain of the Stormwind |
+| Maera | REF_maera.png | S6 | Keeper of the Gasping Gull |
 
 ## Reference gaps (recurring characters still needing a canonical portrait)
 
 Generate a clean portrait for these when convenient, then add to the table and `art_refs/`:
-- **Pikachu** (the Spark Fox) - returns S13; only appears inside the S7 `pikachu_returns` scene so far. Crop or generate a clean ref.
-- **Skitch** - the young Bloodfang courier (S7, recurs via the Bloodfang thread); only inside `stabby_and_skitch`.
-- **Poots Glimmergear** - Lilly's mother; recurs if Lilly walks the Glimmerspire road.
-- **Captain Brynn Wavewarden** - S5 ship captain; taught the knot lessons echoed in S6.
-- **Maera** - keeper of the Gasping Gull (S6).
 - **Henna Brasspot, Burl, Mara Sprocket, Tock, Pinion** - Gearhaven hub regulars (S7+); portraits exist inside S7 scenes, crop if they recur.
 
 ## How to use
