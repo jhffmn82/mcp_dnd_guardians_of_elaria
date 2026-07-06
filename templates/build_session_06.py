@@ -170,8 +170,8 @@ BLOCKS = [
     ("gold", "As the heroes study the stone, the churned earth stirs. The recently quiet do not "
              "wish to be laid twice, and a pair of the restless dead claw up out of the soil, "
              "moaning, drawn to the same wrongness that scraped the name away."),
-    ("img", f"{A}/scenes/lilly_vs_zombies.png",
-     "Lilly stands watch over the rite as the restless dead stir.", 3.8),
+    ("img", f"{A}/scenes/s6_graveyard_rite.png",
+     "Lilly lights the blue lantern and begins the rite of the forgotten name.", 4.2),
     ("gold", "The heroes put them gently back to rest, and then they do the older, kinder work. "
              "Charcoal rubbed across the blank line raises the ghosts of letters, like footprints "
              "in frost. The name is written back where it belongs. The post bell's clapper is "
