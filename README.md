@@ -19,9 +19,7 @@ Read it in order. Each PDF is a chapter of the book.
 | 07 | [Session 5 — The Curse of Davy Jones](07_Session_5_The_Curse_of_Davy_Jones.pdf) | A storm, a ghost ship, and a companion who begins to change |
 | 08 | [Session 6 — Lanterns in the Fog](08_Session_6_Lanterns_in_the_Fog.pdf) | The village of Wraithpine, the singing monster, and the three relics of Elaria |
 | 09 | [Session 7 — Gearhaven, the Clockwork City](09_Session_7_Gearhaven_the_Clockwork_City.pdf) | The Sphere's true purpose, the darkening stars, and a year's parting |
-| 10 | [Compendium I — Bestiary](10_Compendium_I_Bestiary.pdf) | Every creature faced, befriended, or freed |
-| 11 | [Compendium II — Treasures and Relics](11_Compendium_II_Treasures_and_Relics.pdf) | Every gift and relic, with the goddess's own star upon them |
-| 12 | [Compendium III — Custom Content](12_Compendium_III_Custom_Content.pdf) | House rules, homebrew subclasses, hero-paths, and marks |
+| 10 | [The Compendium](10_The_Compendium.pdf) | Every creature, treasure, relic, house rule, and hero-path of the chronicle |
 
 ## About this repository
 
@@ -34,4 +32,4 @@ The numbered PDFs above are the finished book. Everything else is the workshop b
 - `memory/` — the campaign canon, session log, and house rules
 - `CLAUDE.md` — the working rules for maintaining the archive
 
-Ruleset: Dungeons & Dragons 2024 (revised fifth edition), with house rules in Compendium III. Made with love, for the kids who lived it.
+Ruleset: Dungeons & Dragons 2024 (revised fifth edition), with house rules in The Compendium (Part III). Made with love, for the kids who lived it.
