@@ -37,6 +37,7 @@ B = [
         "**Guardian's Light.** Reaction, 3/short rest: heal an ally 1d8 + 3; ends charm or fear; sheds light.",
         "**Vine Lash / Ghostly Wail.** See the v3 statblock (characters/ghostbloom_statblock_v3.pdf).",
     ]),
+    ("img", "assets/characters/floraburst.png", "Floraburst, as she was.", 3.4),
     ("h2", "Pikachu, the Spark Fox"),
     ("body", "**The spark in the Sphere.** An old friend of the Glimmergear family, bodiless since "
              "before the chronicle began, sleeping inside the Essence Sphere. His golden projection "
@@ -84,6 +85,7 @@ B = [
              "ten-foot goat-horned fiend with chains of frost and a burlap sack that swallowed "
              "children's laughter. His power hid behind three barriers of darkness; eight holiday "
              "bells rung in harmony unmade him, and every child came home safe."),
+    ("img", "assets/monsters/krampusshade.png", "The Krampusshade.", 4.0),
     ("stat", "Krampusshade", [
         "Large fiend, chaotic evil. **CR 5**. AC 15, HP 102.",
         "**Claw and Chains of Despair** multiattack; **Gift of Despair** (fear); **Icy Retaliation** (reaction);",
@@ -210,6 +212,7 @@ I = [
         "**Guiding Light.** Sheds light; allies gain +1 to attacks and saves while Ursa is in Starry Form.",
         "**Starry Glow.** Reaction, 1/long rest: 2d8 radiant, DC 15 Con or blinded. **Celestial Resilience.** Reroll natural 1s, 2/long rest.",
     ]),
+    ("img", "assets/items/amulet_of_guiding_light.png", "The Amulet of Guiding Light.", 3.0),
     ("h2", "Candyfang Katana (Stabby)"),
     ("stat", "Candyfang Katana", [
         "Rare, attunement by a Monk. A katana of impossible candy-cane steel. 1d8/1d10 slashing, +1 attack and damage.",

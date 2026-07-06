@@ -296,6 +296,8 @@ BLOCKS = [
              "cracks with frost where he walks."),
     ("gold", "**Krampusshade:** “Your defiance ends here. I will feast on your fear, and the "
              "children shall be mine forever!”"),
+    ("img", f"{A}/monsters/krampusshade.png",
+     "The Krampusshade comes for Havenmoor.", 4.4),
 
     ("h2", "The Bells' Harmony"),
     ("gold", "He slams his claws together and freezing power rolls across the square; his "

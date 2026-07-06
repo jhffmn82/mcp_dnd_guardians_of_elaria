@@ -112,6 +112,8 @@ BLOCKS = [
     ("dm", "**Floraburst** joins the party (statistics in the appendix). She senses planar "
            "anomalies, produces healing Floraberries, and is, by unanimous ruling, a very good "
            "dinosaur."),
+    ("img", f"{A}/characters/floraburst.png",
+     "Floraburst, the party's chosen companion.", 4.0),
 
     ("h2", "A Farewell to Lickgloom"),
     ("gold", "One companion arrives, and one stays behind. All morning **Lickgloom** has been "
