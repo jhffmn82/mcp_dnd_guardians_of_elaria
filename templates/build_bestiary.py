@@ -491,8 +491,50 @@ B = [
              "the imp's next turn, taking 5 (1d10) cold at the start of each of its turns while restrained."),
         ],
     }),
-    ("body", "*The gift-box mimics were true **Mimics** (CR 2, AC 12, HP 58): a shapechanging monstrosity that "
-             "adheres to whatever touches it, biting for 1d8 + 3 piercing plus 1d8 acid.*"),
+    ("body", "*Sneak-thieves of the winter court: shadowy imps with glowing red eyes and jagged claws, "
+             "leaping from cover to steal whatever shone brightest in a hero's pack.*"),
+    ("statblock", {
+        "name": "Krampusshade Minion",
+        "type": "Small fiend, chaotic evil",
+        "img": "assets/monsters/krampusshade_imps.png", "img_w": 2.6,
+        "ac": "15 (natural armor)", "hp": "33 (6d6 + 12)", "speed": "40 ft., fly 30 ft.",
+        "skills": "Stealth +6, Sleight of Hand +6",
+        "resistances": "cold, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
+        "senses": "darkvision 120 ft., passive Perception 12",
+        "languages": "Common, Infernal",
+        "cr": "2 (450 XP)",
+        "actions": [
+            ("Shadow Claw", "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 9 (2d4 + 4) "
+             "slashing, and the target must succeed on a DC 13 Wisdom save or be frightened until the end "
+             "of its next turn."),
+            ("Steal Object", "The minion tries to snatch a small item; the target must succeed on a DC 14 "
+             "Dexterity save or lose the item."),
+        ],
+    }),
+
+    ("body", "*The gift-box mimics were the season's cruelest joke: presents that bit back, and stuck fast "
+             "to any hand that reached for them.*"),
+    ("statblock", {
+        "name": "Mimic (Gift Box)",
+        "type": "Medium monstrosity (shapechanger), neutral",
+        "ac": "12 (natural armor)", "hp": "58 (9d8 + 18)", "speed": "15 ft.",
+        "skills": "Stealth +5",
+        "immunities": "acid",
+        "condition_immunities": "prone",
+        "senses": "darkvision 60 ft., passive Perception 11",
+        "languages": "none",
+        "cr": "2 (450 XP)",
+        "traits": [
+            ("Shapechanger", "The mimic can use its action to polymorph into an object (a wrapped gift box, "
+             "most often) or back into its true, toothy form."),
+        ],
+        "actions": [
+            ("Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 7 (1d8 + 3) piercing "
+             "plus 4 (1d8) acid."),
+            ("Adhesive", "The mimic adheres to anything that touches it; a creature grappled by the mimic "
+             "must succeed on a DC 13 Strength check to escape."),
+        ],
+    }),
 
     ("statblock", {
         "name": "Frozen Wolf",
@@ -655,10 +697,23 @@ B = [
              "speed reduced by 10 ft. until its next turn."),
         ],
     }),
-    ("body", "*Ordinary **Snowbound Bandits** fought alongside their leader (AC 12, HP 20). Kinder meetings "
-             "walked the same roads: a resting reindeer whose glowing nose blessed kind travelers, a friendly "
-             "caribou that healed the weary, and Aurora Spirits, gentle messengers of Elaria who traded a "
-             "prophecy for a moment's respect.*"),
+    ("statblock", {
+        "name": "Snowbound Bandit",
+        "type": "Medium humanoid, neutral",
+        "ac": "12", "hp": "20", "speed": "30 ft.",
+        "traits": [
+            ("Desperate, Not Cruel", "Like their leader, the bandits fight out of hunger and cold; kindness "
+             "can end the fight before it begins."),
+        ],
+        "actions": [
+            ("Scimitar", "*Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 5 (1d6 + 2) slashing."),
+            ("Shortbow", "*Ranged Weapon Attack:* +4 to hit. *Hit:* 5 (1d6 + 2) piercing."),
+        ],
+    }),
+    ("body", "*Kinder meetings walked the same roads: a resting reindeer whose glowing nose blessed kind "
+             "travelers, a friendly caribou that healed the weary, and Aurora Spirits, gentle messengers of "
+             "Elaria who traded a prophecy for a moment's respect. None of these gentle ones has statistics; "
+             "they were never for fighting.*"),
 
     # ==================================================================
     ("h1", "Session 5: The Flying Dutchman", {"pagebreak": True}),

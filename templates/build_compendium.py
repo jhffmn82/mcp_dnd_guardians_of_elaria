@@ -101,7 +101,8 @@ I = [
              "in cookie form."),
     ("body", "**Curios of the road.** The Shadow-Touched Rune Fragment (advantage vs fear, 1 hour); "
              "the Dark Fragment of Stormwatch Cliffs (crystallized chaos, evidence of sabotage); "
-             "Terranox's stone fragments; beeswax earplugs that beat a monster's song; a bell-handled "
+             "Terranox's stone fragments and the elemental mud samples of the Grove of Elemental "
+             "Waters; beeswax earplugs that beat a monster's song; a bell-handled "
              "blue lantern from Pumpkin Row; Alwen's flasks of lucky seawater."),
     ("img", "assets/items/carol_rune_tablet.png", "A frost-bound carol tablet, the Winter Bells' song set in stone.", 2.2),
 ]
@@ -126,6 +127,17 @@ C = [
              "Self and Nondetection 1/long rest each)."),
     ("body", "7. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule)."),
     ("body", "8. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7)."),
+
+    ("h1", "The Three Doors"),
+    ("gold", "At the close of the Gearhaven chapter the Guardians parted for a year: a year of "
+             "workshops and roads and night skies, each hero following their own heart home. "
+             "Before each of them stand three doors, three ways that year apart might be spent, "
+             "and behind every door waits a different gift."),
+    ("body", "The chapters that follow set down what waits behind all nine: Stabby's three breathing "
+             "styles, Ursa's three paths of the stars, and Lilly's three artifacts. Each Guardian "
+             "will choose exactly one door, and none of the three has chosen yet. When they do, the "
+             "doors not taken will remain in these pages, roads not walked, ready for other heroes "
+             "in other tellings."),
 
     ("h1", "Warrior of Breathing (Stabby's Path)", {"pagebreak": True}),
     ("img", "assets/characters/stabby_breathing_style_water.png", "Water Breathing: the flowing style.", 4.0),

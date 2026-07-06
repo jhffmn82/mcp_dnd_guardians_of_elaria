@@ -23,6 +23,20 @@ BLOCKS = [
              "Motes drive machines mad and wake strange creatures, the wondrous beasts the Guardians "
              "have met and befriended along their road. Gather the loose Motes, mend the cracks, and "
              "the world steadies again. That, in the simplest telling, is the work."),
+    ("body", "But a crack cannot be sealed from our side of it. Each fraying world keeps a guardian "
+             "of its own, and the leaking corruption twists that guardian first; free the guardian, "
+             "and that world's cracks close on their own. The heroes proved it in Gearhaven, when "
+             "they freed the Grand Custodian and the city's wounds knit shut behind it."),
+
+    ("h2", "The Star Map"),
+    ("body", "As the Orrery of Planes shows it, plane by plane, anchor by anchor:"),
+    ("body", "**Fire, the plane Ignis:** anchored to **Aldebaran**, still burning bright."),
+    ("body", "**Water, the plane Unda:** anchored to **Fomalhaut**, still burning bright."),
+    ("body", "**Air, the plane Aer:** anchored to **Vega**, going dark."),
+    ("body", "**Earth, the plane Terra:** anchored to **Antares**, dimming."),
+    ("body", "**Shadow, the plane Umbra:** anchored to **Algol**, dark."),
+    ("body", "**Betelgeuse:** the first star put out, the one Ash Catchum chased into the east."),
+    ("body", "**Achernar:** a reserve anchor, held back against the worst."),
     ("img", f"{A}/world/elaria_region_map.png",
      "The lands of Elaria, from Eldridge Vale in the west to the clockwork city of Gearhaven.", 6.2),
 
