@@ -287,8 +287,8 @@ BLOCKS = [
              "featureless, calm as sleep. The song pours off the creature in slow waves; even "
              "through beeswax the heroes feel it, pressing, patient, asking them nicely to "
              "forget they ever came."),
-    ("img", f"{A}/monsters/false_hydra.png",
-     "The False Hydra entire, in the drowned orchestra pit below the Old Theater.", 2.6),
+    ("img", f"{A}/scenes/s6_hydra_lair.png",
+     "The False Hydra entire, in the drowned orchestra pit below the Old Theater.", 4.6),
     ("gold", "On a ledge among the props lies a leather toolbelt with a torn name tag: **HARLAN "
              "WICKE**. Beside it, worn smooth by decades of a workman's pocket, a small carved "
              "whistle: Harlan's own, kept since his boyhood, carried all his life. Ursa picks "
@@ -340,8 +340,8 @@ BLOCKS = [
              "vines part like curtains and the lid swings open: without sound, without "
              "resistance, as if it had been waiting all along for exactly this moment and "
              "exactly these heroes."),
-    ("img", f"{A}/scenes/lilly_opening_chest.png",
-     "Elaria's gift: the chest bound in silver vines opens without a sound.", 3.8),
+    ("img", f"{A}/scenes/s6_chest_opening.png",
+     "Elaria's gift: the chest bound in silver vines opens without a sound.", 4.6),
 
     ("h2", "Three Relics"),
     ("gold", "Inside rest three objects, each radiating a faint, familiar magic. A slim **staff "
