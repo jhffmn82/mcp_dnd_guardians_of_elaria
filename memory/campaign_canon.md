@@ -18,21 +18,23 @@ Built during Phase 3 from a full read of all session and lore documents. Precede
 | Circle of the Eternal Stars (the in-world druid order) | "The Circle of Stars" is the handoff's shorthand door label; the 2024 subclass is also named Circle of Stars | Use the full name for the order in prose |
 | The Wraithpine chest (SINGULAR: one chest, three relics) | "Wraithpine chests" | CLAUDE.md previously said chests; Session 6 text has exactly one |
 
-Bloodfang vs Grimfang is NOT resolved here; see CONTRADICTIONS.md C2.
+All CONTRADICTIONS items were adjudicated 2026-07-06; further details there. Quick reference: Stabby's clan is the Bloodfang (Grimfang = the S2 rival clan); the Stormwind sank, the Vigil was the escape cutter; the orphanage boy in S4 is renamed Milo (the abducted Finn is a different child); the S5 farewell crowd is Havenmoor folk plus traveled friends, with "Elder Mira" corrected to Sister Merida; Ms. Wicke's children were safe with kin and came home; the Great Governor makes Gearhaven's heartbeat and the Custodian was its keeper; Bellshadow is Wraithpine's belltower quarter, the bellkeeper is unnamed; "Brynn's tutorial" = Captain Brynn Wavewarden's knot lessons; Merwin's missing herb-gatherers came home dazed after the Mist Stalkers died and Merwin paid the 50 gp; the Aelwyn meeting is one scene (S2 arrival, S3 = next-morning examination).
 
 ## The party
 
 All three began at level 3 (Session 1, DM confirmed) and are level 5 as of Session 8. After the one-year timeskip they return at level 7 for Session 9.
 
 ### Lilly Glimmergear, deep gnome Artificer (Artillerist), accent frost-blue (#1F6FB8)
+All three began at level 3 (Sessions 1-3), reached level 4 after Session 3 (Sessions 4-5), and level 5 after Session 5 (Sessions 6, 8). DM-adjudicated 2026-07-06.
+
 - From Deepforge Hollow (Underdark). Mother: Poots Glimmergear, tinkerer and Glimmerspire master. Trained at Glimmerspire Academy of Artifice under Master Crafter Droven Sparkwick; built her own arcane turret as a student.
 - Carries the Essence Sphere (see Major Items). Left the Underdark to find Ursa, whom Poots believed could help restore Pikachu.
 - Items: Frostbite Shard Dagger (Session 4 gift, Rare, Artificer attunement), Glimmerspire Pocket Dynamo Mk II (Session 6 relic).
 - Timeskip doors (chosen at/before Session 9): A stay and build with Vane (reward: The Sentinel construct), B home to Glimmerspire and Poots (reward: Boomstick pistol), C mote researcher (reward: Awakened Essence Sphere). Door pick NOT yet made.
 
 ### Stabby Sharpblade, goblin Monk (Kensei), accent candy-red (#A32B2B)
-- Born in Bloodthorn Hollow ("the Hollow"); clan canonically Bloodfang pending C2. Trained briefly under Master Kaelon Windstep of the Whispering Breeze Monastery, who named him "Sharpblade". Kaelon's teaching: "When the whole world is screaming, little storm, get still."
-- Items: Candyfang Katana (Session 4 gift, Rare, Monk attunement), Sash of the Swift Current (Rewoven) (Session 6 relic), and a mysterious idol (origin unrecorded, [DM CHECK C13]; goes ice cold near rifts, corruption recoils from it; seed for Door C).
+- Born into the BLOODFANG CLAN in Bloodthorn Hollow ("the Hollow"); DM-adjudicated. The GRIMFANG are the rival goblin clan that ambushed the party in Session 2 (grimfang_clan.png depicts them); the backstories doc's "Grimfang" as Stabby's birth clan is an error to correct. Trained briefly under Master Kaelon Windstep of the Whispering Breeze Monastery, who named him "Sharpblade". Kaelon's teaching: "When the whole world is screaming, little storm, get still."
+- Items: Candyfang Katana (Session 4 gift, Rare, Monk attunement), Sash of the Swift Current (Rewoven) (Session 6 relic), and the mysterious idol: found tucked in his bag after leaving Wraithpine, no one saw who put it there (DM ruling C13). Goes ice cold near rifts; corruption recoils from it; seed for Door C. MUST be mentioned in Session 9.
 - At level 7 he sets down Kensei and takes Warrior of Breathing (homebrew). Doors: A Whispering Breeze Monastery (Water Breathing), B reform the Bloodfang Clan (Beast Breathing; clan becomes finale ally), C the Idol's Dreams (Shadow Breathing). All doors include the Nichirin Katana; Candyfang becomes an heirloom. Door pick NOT yet made.
 
 ### Ursa Catchum, human Druid (Circle of Stars), accent starlight-purple (#5B2A86)
@@ -42,10 +44,11 @@ All three began at level 3 (Session 1, DM confirmed) and are level 5 as of Sessi
 - Doors: A the Circle of Stars (Starlit Channeler + Warden constellation), B the Father's Trail (Reader of Omens + Ash's Sigil-Stone, carries the Session 13 clue), C the Living World (Beast Handler + Wildheart Token). Door pick NOT yet made.
 
 ### Companions
-- **Ghostbloom**: the party's fey companion, evolved from Floraburst. Teal glow (#1F7A78), translucent chiming petals, telepathic. Guardian's Light heal 1d8+3, 3/short rest. Vulnerable fire AND cold (friendly-fire warning). HP 52 (v3 statblock). Serves as "Elaria's voice", reacting to planar moments. Stays with Vane at the Guild during the timeskip year. Evolution chain and pronoun: [DM CHECK C3, C15].
+- **Ghostbloom** (pronoun: SHE, adjudicated): the party's fey companion, evolved from Floraburst in ONE evolution. The Ghost essence Lilly extracted aboard the Dutchman (Session 5) began the change; Wraithpine's ghost-light completed it (Session 6). Teal glow (#1F7A78), translucent chiming petals, telepathic. Guardian's Light heal 1d8+3, 3/short rest. Vulnerable fire AND cold (friendly-fire warning). HP 52 (v3 statblock). Serves as "Elaria's voice", reacting to planar moments. Stays with Vane at the Guild during the timeskip year.
 - **Pikachu (Spark Fox)**: essence trapped in the Essence Sphere since before Session 1. Projected as golden energy in Session 8; communicates through Ursa's Mark; "a key". Full return planned Session 14.
-- **Lickgloom**: Feywild-touched creature befriended in Sessions 1-2, then absent from every later document. [DM CHECK C4]
-- **Floraburst**: original companion, chosen from Aelwyn's three offered creatures (Floraburst, Aqualump, Emberpaws) in Session 3. Underwent essence infusion in Session 5 ("petals etched with frost and fire") and became Ghostbloom via Wraithpine ghost-light. Whether Blossomflare (statblock exists) was an intermediate stage: [DM CHECK C3].
+- **Lickgloom**: Feywild-touched creature befriended in Sessions 1-2; stayed at Ravenstone Laboratory with Professor Aelwyn (DM ruling C4; write into the Session 3 revision).
+- **Floraburst**: original companion, chosen from Aelwyn's three offered creatures (Floraburst, Aqualump, Emberpaws) in Session 3. Became Ghostbloom (see above). Blossomflare was an unused example design, never canon (statblock retired to _triage).
+- **PLANNED (DM directive 2026-07-06)**: after Session 9 is played, offer the party a NEW Pokemon-style companion, ideally another choose-1-of-3 (echoing Aelwyn's offer), to support the rift arcs. Fold into Session 9/10 prep.
 
 ## Session and level timeline
 
@@ -54,9 +57,9 @@ All three began at level 3 (Session 1, DM confirmed) and are level 5 as of Sessi
 | 1 | The Gathering of Friends | 3 | Party meets at the Gilded Acorn (Eldridge Village); Forest of Whispers; Duckleaf, Cognifin, Mist Stalkers; first motes. |
 | 2 | Oakshade and the Road to Ravenstone | 3 | Oakshade rumors; Mudskips, rival goblin ambush, Terranox; Elaria's vision at the Whispering Glade (boons granted); arrival at Ravenstone Laboratory. |
 | 3 | The Quest for Knowledge | 3 | Aelwyn examines the Sphere (Gearhaven upgrade needed); companion chosen (Floraburst); Shadowflame, Displacer Beasts, Shroomytes; Stormwatch Cliffs puzzle and the Dark Figure's vision; arrival in Havenmoor. |
-| 4 | Awakening to Shadows and Songs | 3 to 4 [DM CHECK C1 exact moment] | Krampusshade steals Havenmoor's children; eight Winter Bells; three barriers; Krampusshade banished; three gift items from Faelan. |
-| 5 | The Curse of Davy Jones | 4 | Voyage on the Stormwind; storm and capsize; the Flying Dutchman; essence-harvest operation with Artificers' Guild-stamped crates; Davy Jones defeated; Floraburst's essence infusion and collapse-and-change. |
-| 6 | Lanterns in the Fog (Wraithpine) | 5 (encounters built for a level-5 trio) [DM CHECK C1: 4 to 5 presumably after S5] | False Hydra's song of unremembering; Harlan Wicke; tavern head destroyed; lair fight under the Old Theater; the chest with three relics; Ghostbloom emerges. |
+| 4 | Awakening to Shadows and Songs | 4 (leveled after S3, DM ruling) | Krampusshade steals Havenmoor's children; eight Winter Bells; three barriers; Krampusshade banished; three gift items from Faelan. |
+| 5 | The Curse of Davy Jones | 4 (leveled to 5 after this session, DM ruling) | Voyage on the Stormwind; storm and capsize; the Flying Dutchman; essence-harvest operation with Artificers' Guild-stamped crates; Davy Jones destroyed; dice game won; Ghost essence extracted and infused into Floraburst, beginning her change. |
+| 6 | Lanterns in the Fog (Wraithpine) | 5 | False Hydra's song of unremembering; Harlan Wicke; tavern head destroyed; lair fight under the Old Theater; the chest with three relics; Ghostbloom fully emerges; the idol appears in Stabby's bag after departure (discovered later, C13). |
 | 7 | (never played; no session 7 exists, DM ruling 2026-07-05) | | |
 | 8 | Gearhaven, the Clockwork City | 5 | Hub established; Vane, Quill, Vane's Folly; cosmology reveal (anchor-stars); Underworks rift fight, Skitch's plea; Verdant Plaza; the Grand Custodian freed ("gentle death"); Pikachu's projection; three Doors each; ONE YEAR LATER. |
 | 9 (planned) | Reunion + Earth Rift | 7 | Cold-open reunion at the finished portal; first rift run; Terranox-type boss; Antares relights. |
@@ -116,12 +119,11 @@ Eldridge Village and the Gilded Acorn Tavern (Eldridge Vale); Forest of Whispers
 4. Who put Elaria to sleep: unrevealed mystery.
 5. Stabby's idol: unexplained by design (Door C).
 6. The Bloodfang Clan: cracks near Bloodthorn, clan blames artificers; finale allies if Door B.
-7. Something darker than Davy haunted the Dutchman (S5, Ursa); essences were being shipped SOUTH under Artificers' Guild-stamped crates. Never yet reconciled with the friendly Guild of S8.
-8. The rival goblin clan (S2 ambush) may resurface; possibly the Grimfang (C2).
-9. Merwin's missing villagers (S1, 50 gp): dangling [DM CHECK C5].
-10. Lickgloom's whereabouts [DM CHECK C4].
-11. Catchable-creatures mechanic: promised, never specced; spec at Session 9.
-12. Pocket Dynamo is "Mk II" and stamped PROP ROOM: unexplained Glimmerspire-to-theater link.
+7. Something darker than Davy haunted the Dutchman (S5, Ursa); essences were being shipped SOUTH under Artificers' Guild-stamped crates. Never yet reconciled with the friendly Guild of S8. Davy Jones himself is destroyed (C10) and does not return.
+8. The Grimfang, the rival goblin clan from the S2 ambush, may resurface (adjudicated C2).
+9. Catchable-creatures mechanic: promised, never specced; spec at Session 9.
+10. Pocket Dynamo is "Mk II" and stamped PROP ROOM: unexplained Glimmerspire-to-theater link.
+11. SESSION 9 MUST-DOS: mention Stabby's idol (found in his bag after Wraithpine, C13); plan the new companion choose-1-of-3 for after S9 (C4 directive).
 
 ## Campaign history (real world)
 
