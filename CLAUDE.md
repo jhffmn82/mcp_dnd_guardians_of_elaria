@@ -17,11 +17,11 @@ The `memory/` folder is live and must be maintained:
 - **Stabby Sharpblade** — goblin Monk (Kensei), accent color candy-red, relic: Sash of the Swift Current
 - **Ursa Catchum** — human Druid (Circle of Stars), accent color starlight-purple, relic: Staff of Waking Constellations
 
-All three relics came from a single Wraithpine chest as Elaria's gift (one chest, three relics; Session 6 text is explicit). A year-apart timeskip to level 7 is planned after Session 8, with individual path reward documents (Ursa's includes a custom "Warden" constellation for Starlit Channeler).
+All three relics came from a single Wraithpine chest as Elaria's gift (one chest, three relics; Session 6 text is explicit). A year-apart timeskip to level 7 is planned after Session 7 (Gearhaven), with individual path reward documents (Ursa's includes a custom "Warden" constellation for Starlit Channeler).
 
-**Session numbering (DM-adjudicated 2026-07-05):** the Wraithpine / False Hydra arc was Session 6 only; there was never a Session 7 at the table. Gearhaven keeps its "Session 8" branding. The played sequence is 1, 2, 3, 4, 5, 6, 8. Do not renumber Session 8 and do not flag the 6-to-8 gap as a contradiction.
+**Session numbering (DM-adjudicated 2026-07-06, supersedes the 07-05 call):** Gearhaven is now **Session 7**. The chronicle reads as a continuous 1, 2, 3, 4, 5, 6, 7 with no gap. (The Wraithpine arc remains Session 6.) Future planned sessions shift down by one: the reunion + Earth rift is Session 8, and the finale is Session 14. Do not reintroduce a "Session 8 = Gearhaven" label or the old 6-to-8 gap.
 
-**Level timeline (DM-confirmed points; refine during Phase 3):** the party started at level 3 in Session 1. They are level 5 as of Session 8, and the planned timeskip takes them to 7. The "pre 4 / post 4" sheets in Old blocks are pre- and post-SESSION-4 snapshots (DM confirmed), bracketing the Session 4 item rewards and any level-up that came with it. Pin the exact 3-to-4 and 4-to-5 level-up moments from session text during canon extraction, and flag with [DM CHECK] if the docs do not settle them.
+**Level timeline (DM-confirmed points; refine during Phase 3):** the party started at level 3 in Session 1. They are level 5 as of Session 7 (Gearhaven), and the planned timeskip takes them to 7. The "pre 4 / post 4" sheets in Old blocks are pre- and post-SESSION-4 snapshots (DM confirmed), bracketing the Session 4 item rewards and any level-up that came with it. Pin the exact 3-to-4 and 4-to-5 level-up moments from session text during canon extraction, and flag with [DM CHECK] if the docs do not settle them.
 
 ## House rules and standing rulings (seed for memory/house_rules.md)
 
@@ -39,7 +39,7 @@ All three relics came from a single Wraithpine chest as Elaria's gift (one chest
 - **Never invent campaign events.** When revising sessions 1-7: fix consistency, names, lore, and formatting only. Never change what happened at the table. When in doubt, flag it in the document with [DM CHECK: ...] instead of changing it.
 - **Recency wins.** The project evolved over time and fixes were never back-populated, so the newest documents (Session_8_Gearhaven_v2, Campaign_Handoff_v2) are the most accurate. When older and newer docs conflict, the newer one is canon.
 - **Fix clear inconsistencies without asking** (spelling drift, name drift, stale titles, rules drift): apply the recency rule and correct silently. Reserve CONTRADICTIONS.md and [DM CHECK] flags for genuinely ambiguous questions about what actually happened at the table.
-- Session 8 (`sessions/session_08_gearhaven.docx`, formerly Session_8_Gearhaven_v2) is the gold-standard format. All session revisions target that structure.
+- Session 7 (`sessions/session_07_gearhaven.docx`, the Gearhaven doc, formerly branded Session 8) is the gold-standard format. All session revisions target that structure.
 - Content is for kids: adventurous tone, real stakes, never gruesome.
 - No em dashes in any generated document; use commas, colons, semicolons, or parentheses.
 - Destructive operations: never delete files. Move unclear or superseded files to `_triage/`. Use `git mv` for renames so history is preserved.

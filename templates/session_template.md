@@ -1,4 +1,4 @@
-# Session Template (extracted from Session 8, the gold standard)
+# Session Template (extracted from Session 7, the gold standard)
 
 Every revised session document follows this structure and the house style implemented in `templates/book_style.py`. Build scripts live in `templates/build_session_NN.py`; run them with python to regenerate the docx.
 

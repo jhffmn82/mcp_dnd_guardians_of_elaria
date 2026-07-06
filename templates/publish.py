@@ -19,7 +19,7 @@ BOOK = [
     ("sessions/session_04_shadows_and_songs.docx",     "06_Session_4_Awakening_to_Shadows_and_Songs.pdf"),
     ("sessions/session_05_curse_of_davy_jones.docx",   "07_Session_5_The_Curse_of_Davy_Jones.pdf"),
     ("sessions/session_06_wraithpine.docx",            "08_Session_6_Lanterns_in_the_Fog.pdf"),
-    ("sessions/session_08_gearhaven.docx",             "09_Session_8_Gearhaven_the_Clockwork_City.pdf"),
+    ("sessions/session_07_gearhaven.docx",             "09_Session_7_Gearhaven_the_Clockwork_City.pdf"),
     ("compendium/bestiary.docx",                       "10_Compendium_I_Bestiary.pdf"),
     ("compendium/treasures_and_relics.docx",           "11_Compendium_II_Treasures_and_Relics.pdf"),
     ("compendium/custom_compendium.docx",              "12_Compendium_III_Custom_Content.pdf"),

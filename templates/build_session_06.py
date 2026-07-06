@@ -5,7 +5,7 @@
 # and completes her evolution this session; Bellshadow is the belltower quarter, the
 # bellkeeper unnamed; the Remembrance Knot recalls Captain Brynn Wavewarden's knot
 # lessons; Ms. Wicke's children were with kin and come home; the whistle in the lair
-# was Harlan's own childhood keepsake; Candyfang Katana; the idol belongs to Session 8.
+# was Harlan's own childhood keepsake; Candyfang Katana; the idol belongs to Session 7.
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from book_style import build_doc
@@ -394,7 +394,7 @@ BLOCKS = [
                "sailing along above their packs. Wraithpine rang its bell behind them, three "
                "clean notes, remembering. The Guardians of Elaria walked east, guided, it "
                "seemed, by something greater than fate."),
-    ("gold", "*Next: Session 8, in which the heroes reach Gearhaven, the clockwork city, where "
+    ("gold", "*Next: Session 7, in which the heroes reach Gearhaven, the clockwork city, where "
              "the Essence Sphere's makers have answers, a locksmith has a ten-year secret, and "
              "the stars themselves turn out to be part of the story.*"),
 

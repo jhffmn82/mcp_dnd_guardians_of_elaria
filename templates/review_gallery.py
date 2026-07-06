@@ -34,7 +34,7 @@ def card(path):
 def build():
     imgs = sorted(glob.glob(os.path.join(RD, "*.png")) + glob.glob(os.path.join(RD, "*.jpg")))
     pend = [p for p in imgs if os.path.basename(p).startswith("PENDING_")]
-    done = [p for p in imgs if not os.path.basename(p).startswith("PENDING_")]
+    done = []  # approved images are banked to assets/; the board shows only what still needs a decision
     cards = "\n".join(card(p) for p in pend + done)
     n_pend = len(pend)
     head = f'''{n_pend} image{'s' if n_pend != 1 else ''} awaiting your approval''' if n_pend else "All caught up. Nothing pending."

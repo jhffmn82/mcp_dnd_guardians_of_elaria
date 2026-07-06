@@ -1,6 +1,6 @@
 # Campaign Canon: The Guardians of Elaria
 
-Built during Phase 3 from a full read of all session and lore documents. Precedence: newest wins (Campaign_Handoff_v2, then Session 8 v2, then Campaign_Outline_v2, then earlier sessions and lore). Items marked [DM CHECK] await answers collected in CONTRADICTIONS.md.
+Built during Phase 3 from a full read of all session and lore documents. Precedence: newest wins (Campaign_Handoff_v2, then the Gearhaven doc, then Campaign_Outline_v2, then earlier sessions and lore). Items marked [DM CHECK] await answers collected in CONTRADICTIONS.md.
 
 ## Canonical names (drift resolved by recency; older spellings are errors to fix on revision)
 
@@ -22,33 +22,33 @@ All CONTRADICTIONS items were adjudicated 2026-07-06; further details there. Qui
 
 ## The party
 
-All three began at level 3 (Session 1, DM confirmed) and are level 5 as of Session 8. After the one-year timeskip they return at level 7 for Session 9.
+All three began at level 3 (Session 1, DM confirmed) and are level 5 as of Session 7 (Gearhaven). After the one-year timeskip they return at level 7 for Session 8.
 
 ### Lilly Glimmergear, deep gnome Artificer (Artillerist), accent frost-blue (#1F6FB8)
-All three began at level 3 (Sessions 1-3), reached level 4 after Session 3 (Sessions 4-5), and level 5 after Session 5 (Sessions 6, 8). DM-adjudicated 2026-07-06.
+All three began at level 3 (Sessions 1-3), reached level 4 after Session 3 (Sessions 4-5), and level 5 after Session 5 (Sessions 6, 7). DM-adjudicated 2026-07-06.
 
 - From Deepforge Hollow (Underdark). Mother: Poots Glimmergear, tinkerer and Glimmerspire master. Trained at Glimmerspire Academy of Artifice under Master Crafter Droven Sparkwick; built her own arcane turret as a student.
 - Carries the Essence Sphere (see Major Items). Left the Underdark to find Ursa, whom Poots believed could help restore Pikachu.
 - Items: Frostbite Shard Dagger (Session 4 gift, Rare, Artificer attunement), Glimmerspire Pocket Dynamo Mk II (Session 6 relic).
-- Timeskip doors (chosen at/before Session 9): A stay and build with Vane (reward: The Sentinel construct), B home to Glimmerspire and Poots (reward: Boomstick pistol), C mote researcher (reward: Awakened Essence Sphere). Door pick NOT yet made.
+- Timeskip doors (chosen at/before Session 8): A stay and build with Vane (reward: The Sentinel construct), B home to Glimmerspire and Poots (reward: Boomstick pistol), C mote researcher (reward: Awakened Essence Sphere). Door pick NOT yet made.
 
 ### Stabby Sharpblade, goblin Monk (Kensei), accent candy-red (#A32B2B)
 - Born into the BLOODFANG CLAN in Bloodthorn Hollow ("the Hollow"); DM-adjudicated. The GRIMFANG are the rival goblin clan that ambushed the party in Session 2 (grimfang_clan.png depicts them); the backstories doc's "Grimfang" as Stabby's birth clan is an error to correct. Trained briefly under Master Kaelon Windstep of the Whispering Breeze Monastery, who named him "Sharpblade". Kaelon's teaching: "When the whole world is screaming, little storm, get still."
-- Items: Candyfang Katana (Session 4 gift, Rare, Monk attunement), Sash of the Swift Current (Rewoven) (Session 6 relic), and the mysterious idol: found tucked in his bag after leaving Wraithpine, no one saw who put it there (DM ruling C13). Goes ice cold near rifts; corruption recoils from it; seed for Door C. MUST be mentioned in Session 9.
+- Items: Candyfang Katana (Session 4 gift, Rare, Monk attunement), Sash of the Swift Current (Rewoven) (Session 6 relic), and the mysterious idol: found tucked in his bag after leaving Wraithpine, no one saw who put it there (DM ruling C13). Goes ice cold near rifts; corruption recoils from it; seed for Door C. MUST be mentioned in Session 8.
 - At level 7 he sets down Kensei and takes Warrior of Breathing (homebrew). Doors: A Whispering Breeze Monastery (Water Breathing), B reform the Bloodfang Clan (Beast Breathing; clan becomes finale ally), C the Idol's Dreams (Shadow Breathing). All doors include the Nichirin Katana; Candyfang becomes an heirloom. Door pick NOT yet made.
 
 ### Ursa Catchum, human Druid (Circle of Stars), accent starlight-purple (#5B2A86)
 - Grew up in forests near Eldridge Village. Father: Ash Catchum, renowned wildfire druid of the Circle of the Eternal Stars, a "sky-reader" who disappeared chasing the dark stars; left Ursa three enchanted potatoes. Raised by the Circle; mentor Elder Selarin. Red/auburn hair, purple eyes.
 - Dragonmark: Mark of Handling, manifested at age six (stirs near frightened animals, never for machines; the channel through which Pikachu and the Custodian communicate).
 - Items: Amulet of Guiding Light (Session 4 gift, Stars Druid attunement), Staff of Waking Constellations (Session 6 relic, THE counter-weapon: relights anchor-stars after major victories).
-- Doors: A the Circle of Stars (Starlit Channeler + Warden constellation), B the Father's Trail (Reader of Omens + Ash's Sigil-Stone, carries the Session 13 clue), C the Living World (Beast Handler + Wildheart Token). Door pick NOT yet made.
+- Doors: A the Circle of Stars (Starlit Channeler + Warden constellation), B the Father's Trail (Reader of Omens + Ash's Sigil-Stone, carries the Session 12 clue), C the Living World (Beast Handler + Wildheart Token). Door pick NOT yet made.
 
 ### Companions
 - **Ghostbloom** (pronoun: SHE, adjudicated): the party's fey companion, evolved from Floraburst in ONE evolution. The Ghost essence Lilly extracted aboard the Dutchman (Session 5) began the change; Wraithpine's ghost-light completed it (Session 6). Teal glow (#1F7A78), translucent chiming petals, telepathic. Guardian's Light heal 1d8+3, 3/short rest. Vulnerable fire AND cold (friendly-fire warning). HP 52 (v3 statblock). Serves as "Elaria's voice", reacting to planar moments. Stays with Vane at the Guild during the timeskip year.
-- **Pikachu (Spark Fox)**: essence trapped in the Essence Sphere since before Session 1. Projected as golden energy in Session 8; communicates through Ursa's Mark; "a key". Full return planned Session 14.
+- **Pikachu (Spark Fox)**: essence trapped in the Essence Sphere since before Session 1. Projected as golden energy in Session 7 (Gearhaven); communicates through Ursa's Mark; "a key". Full return planned Session 13.
 - **Lickgloom**: Feywild-touched creature befriended in Sessions 1-2; stayed at Ravenstone Laboratory with Professor Aelwyn (DM ruling C4; write into the Session 3 revision).
 - **Floraburst**: original companion, chosen from Aelwyn's three offered creatures (Floraburst, Aqualump, Emberpaws) in Session 3. Became Ghostbloom (see above). Blossomflare was an unused example design, never canon (statblock retired to _triage).
-- **PLANNED (DM directive 2026-07-06)**: after Session 9 is played, offer the party a NEW Pokemon-style companion, ideally another choose-1-of-3 (echoing Aelwyn's offer), to support the rift arcs. Fold into Session 9/10 prep.
+- **PLANNED (DM directive 2026-07-06)**: after Session 8 is played, offer the party a NEW Pokemon-style companion, ideally another choose-1-of-3 (echoing Aelwyn's offer), to support the rift arcs. Fold into Session 8/9 prep.
 
 ## Session and level timeline
 
@@ -61,21 +61,21 @@ All three began at level 3 (Sessions 1-3), reached level 4 after Session 3 (Sess
 | 5 | The Curse of Davy Jones | 4 (leveled to 5 after this session, DM ruling) | Voyage on the Stormwind; storm and capsize; the Flying Dutchman; essence-harvest operation with Artificers' Guild-stamped crates; Davy Jones destroyed; dice game won; Ghost essence extracted and infused into Floraburst, beginning her change. |
 | 6 | Lanterns in the Fog (Wraithpine) | 5 | False Hydra's song of unremembering; Harlan Wicke; tavern head destroyed; lair fight under the Old Theater; the chest with three relics; Ghostbloom fully emerges; the idol appears in Stabby's bag after departure (discovered later, C13). |
 | 7 | (never played; no session 7 exists, DM ruling 2026-07-05) | | |
-| 8 | Gearhaven, the Clockwork City | 5 | Hub established; Vane, Quill, Vane's Folly; cosmology reveal (anchor-stars); Underworks rift fight, Skitch's plea; Verdant Plaza; the Grand Custodian freed ("gentle death"); Pikachu's projection; three Doors each; ONE YEAR LATER. |
-| 9 (planned) | Reunion + Earth Rift | 7 | Cold-open reunion at the finished portal; first rift run; Terranox-type boss; Antares relights. |
+| 7 | Gearhaven, the Clockwork City | 5 | Hub established; Vane, Quill, Vane's Folly; cosmology reveal (anchor-stars); Underworks rift fight, Skitch's plea; Verdant Plaza; the Grand Custodian freed ("gentle death"); Pikachu's projection; three Doors each; ONE YEAR LATER. |
+| 8 (planned) | Reunion + Earth Rift | 7 | Cold-open reunion at the finished portal; first rift run; Terranox-type boss; Antares relights. |
 
-Planned arc through Session 15 (handoff): S10 Water (7), S11 Fire (7 to 8), S12 Air (8), S13 Shadow + major Ash clue (8 to 9), S14 Sphere complete / Pikachu returns / Nyxthid strikes (9), S15 finale: defeat Nyxthid, re-seal the covenant, stop Maldrith (9 to 10).
+Planned arc through Session 14 (handoff): S9 Water (7), S10 Fire (7 to 8), S11 Air (8), S12 Shadow + major Ash clue (8 to 9), S13 Sphere complete / Pikachu returns / Nyxthid strikes (9), S14 finale: defeat Nyxthid, re-seal the covenant, stop Maldrith (9 to 10).
 
-## Cosmology (locked by Session 8 + handoff; supersedes older lore)
+## Cosmology (locked by Session 7 + handoff; supersedes older lore)
 
 - Five planes (Fire, Water, Air, Earth, Shadow) spin "like the gears of a great clock", held in alignment by ANCHOR-STARS. A star put out = a plane slips = a crack opens, leaking elemental Motes that madden machines and mutate creatures.
 - Star map: Fire/Ignis = Aldebaran (bright); Water/Unda = Fomalhaut (bright); Air/Aer = Vega (going dark); Earth/Terra = Antares (dimming); Shadow/Umbra = Algol (dark); Betelgeuse = the FIRST star put out, the one Ash chased; Achernar = reserve.
 - NYXTHID, the Harbinger of Decay (he): fallen celestial, herald of Maldrith, is actively PUTTING OUT the stars. Shadow magic, illusions, fear; partially in the Shadowfell. First glimpsed (unnamed) as the Dark Figure at Stormwatch Cliffs (Session 3).
-- MALDRITH, the Weaver of Fractures (she): the true villain; primordial entropy imprisoned eons ago by the gods, Elaria foremost, after the War of Fractures. The "vast hunger pressing on the walls of every world" (Session 8). Names withheld from the kids until the Shadow Rift.
+- MALDRITH, the Weaver of Fractures (she): the true villain; primordial entropy imprisoned eons ago by the gods, Elaria foremost, after the War of Fractures. The "vast hunger pressing on the walls of every world" (Session 7). Names withheld from the kids until the Shadow Rift.
 - ELARIA, the sleeping Warden of Balance, "tended the lights of heaven." She sleeps, which is why stars can be put out; WHO put her to sleep is a deliberate unrevealed mystery (supersedes old lore's self-caused slumber). She guides via visions (Whispering Glade, Session 2) and star-marked gifts (seven-point star sigil, wrapped in a leafed vine, or cupped by wings on the Sash).
 - The Enchanted Potatoes: three, carried by Ursa, left by Ash. Old lore names them Potato of Healing, Potato of Transformation, Potato of Insight; "remnants of a shattered covenant" (Elaria's own essence, bound as safeguards).
-- Rifts cannot be closed from our side; each fraying world has a corrupted GUARDIAN; free the guardian and that world's cracks close (proven on the Grand Custodian, Session 8).
-- The Rift Portal ("Vane's Folly"): ten years of Vane's work, missing an anchor vessel; the Essence Sphere is that anchor (it is a GATHERER, forged at Glimmerspire BEFORE the crisis; how they knew is the "They KNEW" mystery). Ready about one year after Session 8.
+- Rifts cannot be closed from our side; each fraying world has a corrupted GUARDIAN; free the guardian and that world's cracks close (proven on the Grand Custodian, Session 7).
+- The Rift Portal ("Vane's Folly"): ten years of Vane's work, missing an anchor vessel; the Essence Sphere is that anchor (it is a GATHERER, forged at Glimmerspire BEFORE the crisis; how they knew is the "They KNEW" mystery). Ready about one year after Session 7.
 
 ## Major items and relics
 
@@ -101,7 +101,7 @@ Planned arc through Session 15 (handoff): S10 Water (7), S11 Fire (7 to 8), S12 
 - Professor Aelwyn Ravenstone, high elf planar researcher, Ravenstone Laboratory; his assistant Tamsin (half-elf).
 - Poots Glimmergear (Lilly's mother), Master Crafter Droven Sparkwick, Glimmerspire.
 - Elder Selarin, Circle of the Eternal Stars.
-- Ash Catchum: missing; Guild log entry: "The pattern leads east. Following the dark. To the old shrine." Fate to be decided before Session 13.
+- Ash Catchum: missing; Guild log entry: "The pattern leads east. Following the dark. To the old shrine." Fate to be decided before Session 12.
 
 **Local (by place):** Eldridge: Osric (Gilded Acorn innkeeper), Rhea (barmaid), Bren (brawler), Jarek (rumor). Oakshade: Alwen (Old Oak Tavern), Elder Merwin (elder/blacksmith), Nina (herbalist). Havenmoor: Greta Frostbough (Sugarplum Hearth), Elda Merrywhistle (bard), Captain Torren Windward, Eldric Bramblefoot, Ingrid Stonegale, Lora Thistledown, Sister Merida and Finn (Hollow Hearth Orphanage), Faelan (lorekeeper), Master Doran Bramblebeard (shipwright/lighthouse). Ship (S5): Captain Brynn Wavewarden, Old Marla, First Mate Breesh, Rigging Master Hugo, Quartermaster Sline. Wraithpine: Maera (Gasping Gull; dog Brindle, deceased), Ms. Wicke, Harlan Wicke (deceased), the bellkeeper.
 
@@ -113,27 +113,27 @@ Eldridge Village and the Gilded Acorn Tavern (Eldridge Vale); Forest of Whispers
 
 ## Open threads (foreshadowing ledger)
 
-1. Pikachu's return (seeded S8; payoff S14). Pikachu is "a key. To something."
-2. Ash Catchum: logbook trail east to the old shrine; major clue S13; fate DECIDED BEFORE S13 (alive-but-changed/captured, or died completing the covenant).
+1. Pikachu's return (seeded S7; payoff S13). Pikachu is "a key. To something."
+2. Ash Catchum: logbook trail east to the old shrine; major clue S12; fate DECIDED BEFORE S12 (alive-but-changed/captured, or died completing the covenant).
 3. "They KNEW": how Glimmerspire/Poots built the Sphere before the crisis; ties to Elaria's foresight; reveal late.
 4. Who put Elaria to sleep: unrevealed mystery.
 5. Stabby's idol: unexplained by design (Door C).
 6. The Bloodfang Clan: cracks near Bloodthorn, clan blames artificers; finale allies if Door B.
 7. Something darker than Davy haunted the Dutchman (S5, Ursa); essences were being shipped SOUTH under Artificers' Guild-stamped crates. Never yet reconciled with the friendly Guild of S8. Davy Jones himself is destroyed (C10) and does not return.
 8. The Grimfang, the rival goblin clan from the S2 ambush, may resurface (adjudicated C2).
-9. Catchable-creatures mechanic: promised, never specced; spec at Session 9.
+9. Catchable-creatures mechanic: promised, never specced; spec at Session 8.
 10. Pocket Dynamo is "Mk II" and stamped PROP ROOM: unexplained Glimmerspire-to-theater link.
-11. SESSION 9 MUST-DOS: mention Stabby's idol (found in his bag after Wraithpine, C13); plan the new companion choose-1-of-3 for after S9 (C4 directive).
+11. SESSION 8 MUST-DOS: mention Stabby's idol (found in his bag after Wraithpine, C13); plan the new companion choose-1-of-3 for after S8 (C4 directive).
 
 ## Campaign history (real world)
 
 - The campaign grew out of a ONE-SHOT played with different characters while this campaign was fresh. The one-shot character files (Aurora builder, October 2024) were recovered from the DM's 5e Character Builder folder and now live in characters/one_shot/: Ash Catchum (human Druid 5), Poots (gnome Artificer 5), Jerry (half-elf Forge Cleric 5), Rat Scratch (Monk 3), Stor Lackman (variant human Barbarian 3), Theren Brightwood (half-elf Forge Cleric 3). Ash and Poots were later woven into the campaign as Ursa's father and Lilly's mother. The one-shot's session document itself has NOT been located; if found, it belongs in the keepsake as a prologue.
-- Real-world chronology from file dates: campaign began around October/November 2024 (first sheets and DALL-E art Oct 20-21, 2024); Session 4 (the Christmas one-shot) was played around Christmas 2024 (post-session-4 sheets dated Dec 16-17, 2024); level-5 sheets appear June-October 2025; Session 8 and the v3 rebuild June 2026; polish pass July 2026.
+- Real-world chronology from file dates: campaign began around October/November 2024 (first sheets and DALL-E art Oct 20-21, 2024); Session 4 (the Christmas one-shot) was played around Christmas 2024 (post-session-4 sheets dated Dec 16-17, 2024); level-5 sheets appear June-October 2025; Session 7 (Gearhaven) and the v3 rebuild June 2026; polish pass July 2026.
 - Aurora builder source files (.dnd5e) for the kids' characters at several stages are preserved in characters/source_dnd5e/ (they can regenerate sheet PDFs).
 
 ## Superseded lore (recorded so it is not re-canonized)
 
-- Campaign_Outline_v1: 7 rifts including Feywild and Astral; Gearhaven at S5; Nyxthid as final boss at S14; level cap 7; the "Clockwork Sovereignty" Mechagnome-freedom faction. ALL retconned. Mechagnomes are friendly hub citizens; five rifts; finale is S15 vs Nyxthid with Maldrith stopped, not fought.
+- Campaign_Outline_v1: 7 rifts including Feywild and Astral; Gearhaven at S5; Nyxthid as final boss at S14; level cap 7; the "Clockwork Sovereignty" Mechagnome-freedom faction. ALL retconned. Mechagnomes are friendly hub citizens; five rifts; finale is S14 vs Nyxthid with Maldrith stopped, not fought.
 - elaria_and_nyxthid.docx: Elaria's slumber as self-caused exhaustion, and rifts as passive symptoms of Maldrith's weakening prison. Superseded: sleep cause is a mystery; Nyxthid actively snuffs the stars.
 - Campaign_Outline_v2's "LOCKED" timeskip rewards (Bloodfang Tenacity, Shadow Step, Storm Sentinel, Resonance Cannon, The Guardian form, 2/long-rest Sigil-Stone, fixed 4th-level summons): superseded by Campaign_Handoff_v2 Part 2 designs.
 - pokemon_encounters.docx: an old PLANNING list, not a play record (its S6-S9 entries do not match played sessions). Only S1-S3 entries align with play. Do not cite as canon.

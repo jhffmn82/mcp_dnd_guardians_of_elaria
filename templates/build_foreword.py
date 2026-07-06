@@ -76,12 +76,10 @@ BLOCKS = [
     ("gold", "**Six. Lanterns in the Fog.** The village of Wraithpine forgets its own dead to a "
              "singing monster; the Guardians remember, set it right, and receive the three relics of "
              "Elaria from a single vine-bound chest."),
-    ("gold", "**Eight. Gearhaven, the Clockwork City.** In the great city of inventors the Sphere "
+    ("gold", "**Seven. Gearhaven, the Clockwork City.** In the great city of inventors the Sphere "
              "reveals its purpose, the stars are found to be going dark one by one, and a gentle "
              "giant is freed. Then the heroes part for a year, and this chronicle pauses, to be "
              "continued."),
-    ("dm", "There was no seventh session at the table; the Wraithpine arc was the sixth, and "
-           "Gearhaven kept its number. The chapters read straight through regardless."),
 ]
 
 if __name__ == "__main__":

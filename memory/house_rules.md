@@ -11,5 +11,5 @@ House rules override RAW. 2024 (revised 5e) rules only; where 2014 and 2024 text
 
 ## Document rulings
 
-7. Wraithpine / False Hydra arc was Session 6 only; there was never a Session 7 at the table. Gearhaven keeps its "Session 8" branding. Played sequence: 1, 2, 3, 4, 5, 6, 8. (DM, 2026-07-05)
-8. Recency wins: when older and newer documents conflict, the newer one is canon (Session 8 v2 and Campaign_Handoff_v2 are the most accurate). Clear inconsistencies are fixed without asking; only genuine questions about what happened at the table go to CONTRADICTIONS.md. (DM, 2026-07-05)
+7. Session numbering (DM, 2026-07-06, supersedes 07-05): Gearhaven is Session 7; the chronicle runs 1-7 continuously (Wraithpine remains Session 6). Future sessions shift down: reunion + Earth rift is Session 8, finale is Session 14.
+8. Recency wins: when older and newer documents conflict, the newer one is canon (the Gearhaven doc and Campaign_Handoff_v2 are the most accurate). Clear inconsistencies are fixed without asking; only genuine questions about what happened at the table go to CONTRADICTIONS.md. (DM, 2026-07-05)
