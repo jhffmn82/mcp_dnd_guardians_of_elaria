@@ -19,6 +19,39 @@
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from book_style import build_doc
+import book_style as _bs
+
+# ------------------------------------------------------------------
+# Bestiary-tuned portrait sizing. The house renderer caps every floated
+# portrait at 2.6 inches tall, which flattens the visual hierarchy: the
+# Session 7 model gives its bosses visibly LARGER art than its minions.
+# An optional "img_hmax" key on a statblock raises that cap for showpiece
+# creatures. We wrap the stock renderer and, for the one call, report a
+# flattened aspect ratio so its 2.6-inch clamp resolves to img_hmax inches.
+_stock_render = _bs._render_statblock
+_stock_image = _bs._image_png_bytes
+
+def _render_statblock_sized(doc, sb):
+    hmax = sb.pop("img_hmax", None)
+    if not hmax:
+        return _stock_render(doc, sb)
+
+    def _scaled(path, max_w_px=1200):
+        data, pw, ph = _stock_image(path, max_w_px)
+        return data, pw, int(ph * 2.6 / hmax)
+
+    _bs._image_png_bytes = _scaled
+    try:
+        return _stock_render(doc, sb)
+    finally:
+        _bs._image_png_bytes = _stock_image
+
+_bs._render_statblock = _render_statblock_sized
+
+# Portrait sizing scheme (a designed feel, in the Session 7 spirit):
+#   bosses & stars   img_w 3.0-3.4 (with img_hmax where the art is square/tall)
+#   standard foes    img_w 2.3-2.6
+#   minor & small    img_w 1.8-2.1
 
 NOTE = "A running reference for The Guardians of Elaria. Updated as the chronicle grows."
 
@@ -36,8 +69,8 @@ B = [
              "Essence Sphere tugs toward it). Read on, brave heroes, and know your monsters."),
 
     # ==================================================================
-    ("h1", "Companions & Friends", {"pagebreak": True}),
-    ("body", "Not every creature in this book is an enemy. Some walk the road beside the Guardians."),
+    ("h1", "Companions & Friends"),
+    ("gold", "Not every creature in this book is an enemy. Some walk the road beside the Guardians."),
 
     ("body", "*Ghostbloom is the party's dearest companion, chosen in Session 3 as Floraburst, "
              "changed aboard the sinking Dutchman and again in Wraithpine's ghost-light. Her petals "
@@ -46,7 +79,7 @@ B = [
     ("statblock", {
         "name": "Ghostbloom, Spectral Blossom",
         "type": "Tiny fey (Ghost/Grass), chaotic good",
-        "img": "assets/characters/ghostbloom.png", "img_w": 2.4,
+        "img": "assets/characters/ghostbloom.png", "img_w": 3.0, "img_hmax": 3.4,
         "ac": "15 (natural armor)", "hp": "52 (8d4 + 32)", "speed": "30 ft., fly 30 ft. (hover)",
         "abilities": ab(8, 18, 18, 12, 14, 16),
         "saves": "Dex +7, Con +7, Wis +5",
@@ -84,7 +117,7 @@ B = [
     ("statblock", {
         "name": "Floraburst",
         "type": "Small fey, neutral good",
-        "img": "assets/characters/floraburst.png", "img_w": 2.4,
+        "img": "assets/characters/floraburst.png", "img_w": 2.5,
         "ac": "14 (natural armor)", "hp": "45 (6d6 + 18)", "speed": "30 ft.",
         "abilities": ab(14, 12, 16, 10, 14, 10),
         "skills": "Nature +4, Survival +4",
@@ -111,7 +144,7 @@ B = [
     ("statblock", {
         "name": "Aqualump",
         "type": "Small elemental, neutral good",
-        "img": "assets/characters/aqualump.png", "img_w": 2.4,
+        "img": "assets/characters/aqualump.png", "img_w": 2.3,
         "ac": "16 (natural armor, Shell Defense)", "hp": "54 (7d6 + 21)", "speed": "25 ft., swim 30 ft.",
         "abilities": ab(15, 14, 17, 10, 13, 11),
         "skills": "Athletics +4, Perception +3",
@@ -135,7 +168,7 @@ B = [
     ("statblock", {
         "name": "Emberpaws",
         "type": "Small elemental, chaotic good",
-        "img": "assets/characters/emberpaws.png", "img_w": 2.4,
+        "img": "assets/characters/emberpaws.png", "img_w": 2.3,
         "ac": "15 (natural armor)", "hp": "42 (6d6 + 15)", "speed": "30 ft.",
         "abilities": ab(13, 16, 15, 10, 12, 12),
         "skills": "Acrobatics +5, Perception +3",
@@ -163,7 +196,7 @@ B = [
              "Aelwyn's creatures at Ravenstone. Visits are owed.*"),
     ("statblock", {
         "name": "Lickgloom",
-        "img": "assets/monsters/lickgloom.png",
+        "img": "assets/monsters/lickgloom.png", "img_w": 2.0,
         "type": "Small fey, neutral good",
         "ac": "13 (natural armor)", "hp": "27 (5d6 + 10)", "speed": "30 ft.",
         "abilities": ab(10, 15, 14, 8, 12, 13),
@@ -189,10 +222,12 @@ B = [
              "He has no statistics yet; he is more a key than a creature, and his full return is still to come.*"),
 
     # ==================================================================
-    ("h1", "Session 1: The Forest of Whispers", {"pagebreak": True}),
-    ("body", "*The first creatures the Guardians ever faced, all touched by the thinning boundary "
-             "between the planes. Each left behind a fading mote, the party's very first clue.*"),
+    ("h1", "Session 1: The Forest of Whispers"),
+    ("gold", "The first creatures the Guardians ever faced, all touched by the thinning boundary "
+             "between the planes. Each left behind a fading mote, the party's very first clue."),
 
+    ("body", "*A duck grown huge and wind-wrapped, roosting in an old rune-carved stone circle; "
+             "its furious quacks arrive straight in the mind.*"),
     ("statblock", {
         "name": "Duckleaf",
         "type": "Small beast (Elemental Air), neutral",
@@ -217,10 +252,12 @@ B = [
              "a DC 14 Wisdom save or is frightened for 1 minute (repeat save at end of each turn)."),
         ],
     }),
+    ("body", "*A fish that swims through open air above its grove pool, trailing glowing water "
+             "and speaking in pictures pressed gently into the mind.*"),
     ("statblock", {
         "name": "Cognifin",
         "type": "Small beast (Elemental Water), neutral",
-        "img": "assets/monsters/cognifin_grove.png", "img_w": 2.5,
+        "img": "assets/monsters/cognifin_grove.png", "img_w": 2.4,
         "ac": "14 (natural armor)", "hp": "45 (6d8 + 18)", "speed": "0 ft., fly 30 ft. (hover)",
         "abilities": ab(10, 14, 16, 10, 14, 12),
         "saves": "Dex +4, Wis +4",
@@ -247,9 +284,11 @@ B = [
              "2d4 bludgeoning and are pushed back 5 ft."),
         ],
     }),
+    ("body", "*A shape of fog and hunger that hunts at the edge of lantern-light, more shadow "
+             "than wolf.*"),
     ("statblock", {
         "name": "Mist Stalker",
-        "img": "assets/monsters/mist_stalker.png",
+        "img": "assets/monsters/mist_stalker.png", "img_w": 2.0,
         "type": "Medium fey, unaligned",
         "ac": "13", "hp": "39", "speed": "40 ft.",
         "abilities": ab(14, 16, 12, 6, 12, 10),
@@ -266,13 +305,15 @@ B = [
     }),
 
     # ==================================================================
-    ("h1", "Session 2: The Road to Ravenstone", {"pagebreak": True}),
-    ("body", "*On the road to Oakshade and Ravenstone the party met slick water-elementals, an old "
-             "goblin grudge come calling, and a serpent of living stone.*"),
+    ("h1", "Session 2: The Road to Ravenstone"),
+    ("gold", "On the road to Oakshade and Ravenstone the party met slick water-elementals, an old "
+             "goblin grudge come calling, and a serpent of living stone."),
 
+    ("body", "*Slick little elementals of the wayside ponds, harmless-looking right up until the "
+             "mud starts flying.*"),
     ("statblock", {
         "name": "Mudskip",
-        "img": "assets/monsters/mudskip.png",
+        "img": "assets/monsters/mudskip.png", "img_w": 1.9,
         "type": "Small elemental (Plane of Water), neutral",
         "ac": "13 (natural armor)", "hp": "22 (4d6 + 8)", "speed": "20 ft., swim 30 ft.",
         "abilities": ab(12, 14, 14, 6, 12, 8),
@@ -304,7 +345,7 @@ B = [
     ("statblock", {
         "name": "Goblin Boss (the Grimfang leader)",
         "type": "Small humanoid (goblinoid), neutral evil",
-        "img": "assets/monsters/grimfang_clan.png", "img_w": 3.6,
+        "img": "assets/monsters/grimfang_clan.png", "img_w": 2.6,
         "ac": "17 (chain shirt, shield)", "hp": "21 (6d6)", "speed": "30 ft.",
         "abilities": ab(10, 14, 10, 10, 8, 10),
         "skills": "Stealth +6",
@@ -328,10 +369,12 @@ B = [
     ("body", "*The band also fielded standard **Goblins** (AC 15, HP 7), a **Worg** (AC 13, HP 26), an "
              "**Orc** (AC 13, HP 15), and a **Hobgoblin** sniper (AC 18, HP 11).*"),
 
+    ("body", "*The serpent of living stone itself: patient as a mountain, and about as easy to "
+             "push over.*"),
     ("statblock", {
         "name": "Terranox",
         "type": "Large elemental (Plane of Earth), unaligned",
-        "img": "assets/monsters/terranox.png", "img_w": 3.0,
+        "img": "assets/monsters/terranox.png", "img_w": 3.0, "img_hmax": 3.0,
         "ac": "16 (natural armor)", "hp": "95 (10d10 + 40)", "speed": "30 ft., burrow 30 ft.",
         "abilities": ab(20, 10, 18, 5, 11, 6),
         "resistances": "bludgeoning, piercing, and slashing from nonmagical, non-adamantine weapons",
@@ -358,10 +401,12 @@ B = [
     }),
 
     # ==================================================================
-    ("h1", "Session 3: The Road South", {"pagebreak": True}),
-    ("body", "*South toward the sea, the party crossed shadowed thickets and glowing fungal groves, "
-             "and learned that the planar wounds are teaching old monsters new tricks.*"),
+    ("h1", "Session 3: The Road South"),
+    ("gold", "South toward the sea, the party crossed shadowed thickets and glowing fungal groves, "
+             "and learned that the planar wounds are teaching old monsters new tricks."),
 
+    ("body", "*A hollow shape of darkness crowned in cold blue flame, hiding among perfect copies "
+             "of itself.*"),
     ("statblock", {
         "name": "Shadowflame",
         "type": "Medium undead, chaotic evil",
@@ -398,10 +443,12 @@ B = [
              "strike at 10 ft. Their fall revealed rune-tears in the forest floor. (Statistics as the "
              "standard Displacer Beast, CR 3, AC 13, HP 85.)*"),
 
+    ("body", "*A guardian of the glowing fungal groves, all soft lantern-light and stubborn "
+             "spores.*"),
     ("statblock", {
         "name": "Shroomyte",
         "type": "Small plant, neutral",
-        "img": "assets/monsters/shroomyte_grove.png", "img_w": 2.8,
+        "img": "assets/monsters/shroomyte_grove.png", "img_w": 2.4,
         "ac": "13 (natural armor)", "hp": "27 (5d8 + 5)", "speed": "20 ft.",
         "abilities": ab(12, 12, 14, 6, 12, 7),
         "saves": "Con +4, Wis +3",
@@ -430,14 +477,16 @@ B = [
     }),
 
     # ==================================================================
-    ("h1", "Session 4: The Longest Night of Havenmoor", {"pagebreak": True}),
-    ("body", "*A whole winter court had risen with the Krampusshade. These are the dangers that stalked "
-             "the frozen roads of Havenmoor, and the fiend that ruled them.*"),
+    ("h1", "Session 4: The Longest Night of Havenmoor"),
+    ("gold", "A whole winter court had risen with the Krampusshade. These are the dangers that stalked "
+             "the frozen roads of Havenmoor, and the fiend that ruled them."),
 
+    ("body", "*The fiend of the longest night itself: horned, chain-draped, and smiling, striding "
+             "the snows with a sack of cursed gifts over one shoulder.*"),
     ("statblock", {
         "name": "The Krampusshade",
         "type": "Large fiend, chaotic evil",
-        "img": "assets/monsters/krampusshade.png", "img_w": 2.8,
+        "img": "assets/monsters/krampusshade.png", "img_w": 3.2, "img_hmax": 3.2,
         "ac": "15 (natural armor)", "hp": "102 (12d10 + 36)", "speed": "40 ft.",
         "abilities": ab(18, 14, 16, 12, 14, 17),
         "saves": "Wis +5, Cha +6",
@@ -466,10 +515,11 @@ B = [
         ],
     }),
 
+    ("body", "*A red-eyed sliver of shadow that giggles in the dark between the lantern posts.*"),
     ("statblock", {
         "name": "Krampus's Imp",
         "type": "Small fiend (shadow), chaotic evil",
-        "img": "assets/monsters/krampus_imp.png", "img_w": 2.4,
+        "img": "assets/monsters/krampus_imp.png", "img_w": 2.1,
         "ac": "14 (natural armor)", "hp": "22 (5d6 + 5)", "speed": "30 ft., fly 40 ft.",
         "abilities": ab(10, 16, 12, 13, 11, 14),
         "skills": "Stealth +6, Deception +4",
@@ -496,7 +546,7 @@ B = [
     ("statblock", {
         "name": "Krampusshade Minion",
         "type": "Small fiend, chaotic evil",
-        "img": "assets/monsters/krampusshade_imps.png", "img_w": 2.6,
+        "img": "assets/monsters/krampusshade_imps.png", "img_w": 2.4,
         "ac": "15 (natural armor)", "hp": "33 (6d6 + 12)", "speed": "40 ft., fly 30 ft.",
         "skills": "Stealth +6, Sleight of Hand +6",
         "resistances": "cold, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
@@ -536,10 +586,11 @@ B = [
         ],
     }),
 
+    ("body", "*Winter-touched wolves with frost-blue eyes, running the drifts in hungry packs.*"),
     ("statblock", {
         "name": "Frozen Wolf",
         "type": "Medium beast, neutral evil",
-        "img": "assets/monsters/frozen_wolf.png", "img_w": 2.6,
+        "img": "assets/monsters/frozen_wolf.png", "img_w": 2.4,
         "ac": "15 (natural armor)", "hp": "45 (6d10 + 12)", "speed": "40 ft.",
         "abilities": ab(16, 15, 14, 3, 12, 6),
         "immunities": "cold",
@@ -556,10 +607,11 @@ B = [
              "taking 18 (4d8) cold on a fail (half on a success); those who fail are slowed until end of next turn."),
         ],
     }),
+    ("body", "*A wicked little wisp of a fey, all giggles and ice needles.*"),
     ("statblock", {
         "name": "Frostbite Pixie",
         "type": "Tiny fey, chaotic neutral",
-        "img": "assets/monsters/frostbite_pixie.png", "img_w": 2.4,
+        "img": "assets/monsters/frostbite_pixie.png", "img_w": 1.9,
         "ac": "15", "hp": "14 (4d4 + 4)", "speed": "20 ft., fly 60 ft.",
         "abilities": ab(3, 20, 12, 14, 11, 16),
         "skills": "Stealth +7",
@@ -572,10 +624,12 @@ B = [
             ("Invisibility", "The pixie turns invisible until it attacks or casts a spell."),
         ],
     }),
+    ("body", "*A mournful spirit of the deep cold that drifts through walls and wails away "
+             "courage.*"),
     ("statblock", {
         "name": "Icy Specter",
         "type": "Medium undead, neutral evil",
-        "img": "assets/monsters/icy_specter.png", "img_w": 2.6,
+        "img": "assets/monsters/icy_specter.png", "img_w": 2.1,
         "ac": "12", "hp": "45 (10d8)", "speed": "0 ft., fly 50 ft. (hover)",
         "abilities": ab(1, 14, 11, 10, 10, 16),
         "resistances": "cold, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
@@ -587,10 +641,12 @@ B = [
              "frightened for 1 minute (repeat save at end of each turn)."),
         ],
     }),
+    ("body", "*Walking snowdrifts with hearts of blue ice, slow, cold, and very hard to argue "
+             "with.*"),
     ("statblock", {
         "name": "Frost Golem",
         "type": "Medium elemental, neutral",
-        "img": "assets/monsters/frost_golems.png", "img_w": 3.0,
+        "img": "assets/monsters/frost_golems.png", "img_w": 2.4,
         "ac": "14 (natural armor)", "hp": "42 (5d10 + 15)", "speed": "20 ft.",
         "abilities": ab(16, 10, 16, 6, 10, 5),
         "resistances": "cold; bludgeoning, piercing, and slashing from nonmagical attacks",
@@ -603,9 +659,11 @@ B = [
             ("Icy Slam", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 7 (2d6 + 3) bludgeoning plus 3 (1d4) cold."),
         ],
     }),
+    ("body", "*A top-hatted snowman gone slightly wrong, lobbing frostballs at anyone who walks "
+             "past.*"),
     ("statblock", {
         "name": "Enchanted Snowman",
-        "img": "assets/monsters/enchanted_snowman.png",
+        "img": "assets/monsters/enchanted_snowman.png", "img_w": 1.8,
         "type": "Small construct, unaligned",
         "ac": "13", "hp": "30 (4d8 + 12)", "speed": "20 ft.",
         "abilities": ab(12, 10, 16, 3, 10, 6),
@@ -615,10 +673,11 @@ B = [
              "speed halved until end of its next turn."),
         ],
     }),
+    ("body", "*The great black cat of midwinter tales, silent on the snow and quick to pounce.*"),
     ("statblock", {
         "name": "Yule Cat",
         "type": "Large fey beast, neutral",
-        "img": "assets/monsters/yule_cat.png", "img_w": 3.0,
+        "img": "assets/monsters/yule_cat.png", "img_w": 2.6,
         "ac": "15 (natural armor)", "hp": "52 (7d10 + 14)", "speed": "40 ft., climb 30 ft.",
         "abilities": ab(18, 16, 14, 6, 14, 10),
         "skills": "Perception +4, Stealth +6",
@@ -633,10 +692,12 @@ B = [
              "9 (2d8) cold and is paralyzed until end of its next turn."),
         ],
     }),
+    ("body", "*She waits by the roadside with warm pastries and a warmer smile; neither is what "
+             "it seems.*"),
     ("statblock", {
         "name": "Frost Hag (disguised)",
         "type": "Medium fey, neutral evil",
-        "img": "assets/monsters/frost_hag_disguised.png", "img_w": 2.6,
+        "img": "assets/monsters/frost_hag_disguised.png", "img_w": 2.3,
         "ac": "15", "hp": "52", "speed": "30 ft.",
         "abilities": ab(14, 14, 14, 13, 12, 14),
         "cr": "4 (1,100 XP)",
@@ -651,9 +712,10 @@ B = [
             ("Misty Step (Bonus Action)", "The hag teleports 30 ft."),
         ],
     }),
+    ("body", "*Crystal-bodied spiders whose webs glitter like spun frost.*"),
     ("statblock", {
         "name": "Ice Spider",
-        "img": "assets/monsters/ice_spider.png",
+        "img": "assets/monsters/ice_spider.png", "img_w": 1.9,
         "type": "Medium beast, unaligned",
         "ac": "14 (natural armor)", "hp": "26 (4d10 + 4)", "speed": "30 ft., climb 30 ft.",
         "abilities": ab(12, 14, 12, 2, 11, 4),
@@ -665,10 +727,12 @@ B = [
              "restrained by webbing (DC 13 Strength to escape)."),
         ],
     }),
+    ("body", "*Cold lights that bob invitingly over the snow, luring travelers off the safe "
+             "path.*"),
     ("statblock", {
         "name": "Frozen Will-o'-Wisp",
         "type": "Tiny undead, chaotic evil",
-        "img": "assets/monsters/frozen_will_o_wisps.png", "img_w": 2.4,
+        "img": "assets/monsters/frozen_will_o_wisps.png", "img_w": 1.9,
         "ac": "15", "hp": "22 (5d8)", "speed": "0 ft., fly 50 ft. (hover)",
         "abilities": ab(1, 18, 10, 10, 12, 11),
         "resistances": "cold, lightning; bludgeoning, piercing, and slashing from nonmagical attacks",
@@ -680,10 +744,12 @@ B = [
             ("Invisibility", "The wisp turns invisible until it attacks."),
         ],
     }),
+    ("body", "*Not villains so much as frozen, starving folk; a warm meal has ended more of "
+             "these fights than any sword.*"),
     ("statblock", {
         "name": "Snowbound Bandit Leader",
         "type": "Medium humanoid, neutral",
-        "img": "assets/monsters/snowbound_bandits.png", "img_w": 3.2,
+        "img": "assets/monsters/snowbound_bandits.png", "img_w": 2.5,
         "ac": "14", "hp": "32", "speed": "30 ft.",
         "abilities": ab(14, 13, 12, 10, 11, 11),
         "traits": [
@@ -716,13 +782,15 @@ B = [
              "they were never for fighting.*"),
 
     # ==================================================================
-    ("h1", "Session 5: The Flying Dutchman", {"pagebreak": True}),
-    ("body", "*Aboard the ghost-ship of Davy Jones the party fought a drowned crew of smugglers and "
-             "spirits, all of them (like the Captain) undone by cold and by the sea taking back its own.*"),
+    ("h1", "Session 5: The Flying Dutchman"),
+    ("gold", "Aboard the ghost-ship of Davy Jones the party fought a drowned crew of smugglers and "
+             "spirits, all of them (like the Captain) undone by cold and by the sea taking back its own."),
 
+    ("body", "*The Captain himself: barnacle-armored, tentacle-bearded, master of the Dutchman "
+             "and keeper of the souls that serve aboard her.*"),
     ("statblock", {
         "name": "Davy Jones, Captain of the Flying Dutchman",
-        "img": "assets/npcs/davy_jones.png",
+        "img": "assets/npcs/davy_jones.png", "img_w": 3.1, "img_hmax": 3.1,
         "type": "Medium undead (formerly humanoid), chaotic evil",
         "ac": "17 (barnacle armor)", "hp": "85 (10d10 + 30)", "speed": "30 ft., swim 30 ft.",
         "abilities": ab(18, 12, 16, 14, 12, 16),
@@ -752,9 +820,11 @@ B = [
         ],
     }),
 
+    ("body", "*The rank and file of the drowned crew, still following orders long past their "
+             "last breath.*"),
     ("statblock", {
         "name": "Drowned Pirate",
-        "img": "assets/monsters/drowned_pirate.png",
+        "img": "assets/monsters/drowned_pirate.png", "img_w": 2.4,
         "type": "Medium undead, chaotic evil",
         "ac": "14 (studded leather or chain shirt)", "hp": "58 (9d8 + 18)", "speed": "30 ft., swim 30 ft.",
         "abilities": ab(18, 14, 14, 6, 10, 7),
@@ -782,9 +852,10 @@ B = [
              "save or takes 5 (2d4) cold and gains one level of exhaustion."),
         ],
     }),
+    ("body", "*A ghost still at its post at the wheel, pale scimitars of force in both hands.*"),
     ("statblock", {
         "name": "Spectral Helmsman",
-        "img": "assets/monsters/spectral_helmsman.png",
+        "img": "assets/monsters/spectral_helmsman.png", "img_w": 2.3,
         "type": "Medium undead, chaotic evil",
         "ac": "12", "hp": "45 (6d8 + 18)", "speed": "0 ft., fly 50 ft. (hover)",
         "abilities": ab(6, 14, 16, 10, 12, 11),
@@ -811,9 +882,11 @@ B = [
             ("Phantom Helm Block", "When attacked, it imposes disadvantage on one weapon attack roll."),
         ],
     }),
+    ("body", "*A hulking crate-stacker of the smugglers' hold, built to guard cargo and happy to "
+             "crush anything else.*"),
     ("statblock", {
         "name": "Smuggler's Golem",
-        "img": "assets/monsters/smugglers_golem.png",
+        "img": "assets/monsters/smugglers_golem.png", "img_w": 2.5,
         "type": "Large construct, unaligned",
         "ac": "14 (natural armor)", "hp": "85 (10d10 + 30)", "speed": "30 ft.",
         "abilities": ab(19, 9, 16, 3, 10, 5),
@@ -839,9 +912,10 @@ B = [
             ("Reinforced Hide", "+2 AC against one melee attack."),
         ],
     }),
+    ("body", "*Duelists of the drowned crew with sorcery stitched into their sabers.*"),
     ("statblock", {
         "name": "Arcane Corsair",
-        "img": "assets/monsters/arcane_corsair.png",
+        "img": "assets/monsters/arcane_corsair.png", "img_w": 2.3,
         "type": "Medium humanoid, chaotic neutral",
         "ac": "14 (studded leather)", "hp": "52 (7d8 + 21)", "speed": "30 ft.",
         "abilities": ab(16, 16, 16, 12, 11, 14),
@@ -865,9 +939,11 @@ B = [
             ("Evasive Step", "It Disengages, moving without provoking opportunity attacks."),
         ],
     }),
+    ("body", "*A flickering lantern-spirit of the Dutchman's rigging, nearly impossible to see "
+             "and harder to catch.*"),
     ("statblock", {
         "name": "Ghost-Light Engineer",
-        "img": "assets/monsters/ghost_light_engineer.png",
+        "img": "assets/monsters/ghost_light_engineer.png", "img_w": 2.0,
         "type": "Tiny undead, neutral evil",
         "ac": "15 (natural armor)", "hp": "27 (6d4 + 12)", "speed": "0 ft., fly 50 ft. (hover)",
         "abilities": ab(1, 18, 14, 12, 14, 16),
@@ -894,15 +970,17 @@ B = [
     }),
 
     # ==================================================================
-    ("h1", "Session 6: The False Hydra of Wraithpine", {"pagebreak": True}),
-    ("body", "*The worst monster the Guardians ever faced, because no one knew it was there. Beneath the "
+    ("h1", "Session 6: The False Hydra of Wraithpine"),
+    ("gold", "The worst monster the Guardians ever faced, because no one knew it was there. Beneath the "
              "Old Theater of Wraithpine, its endless song made the whole village forget the people it took. "
-             "Beeswax in the ears let the truth through.*"),
+             "Beeswax in the ears let the truth through."),
 
+    ("body", "*The first glimpse of the horror: a single pale head and neck rising through the "
+             "tavern trapdoor, singing all the while.*"),
     ("statblock", {
         "name": "False Hydra: Tavern Head",
         "type": "Large aberration (one head and neck), unaligned",
-        "img": "assets/monsters/false_hydra.png", "img_w": 3.0,
+        "img": "assets/monsters/false_hydra.png", "img_w": 2.2, "img_hmax": 3.0,
         "ac": "14", "hp": "70 (9d10 + 18)", "speed": "10 ft., climb 10 ft.",
         "abilities": ab(16, 12, 14, 6, 14, 7),
         "resistances": "psychic",
@@ -926,12 +1004,11 @@ B = [
         ],
     }),
 
-    ("pagebreak",),
     ("body", "*Deeper still, in the drowned orchestra pit, waited the true body and its four heads, all "
              "singing as one. The moment the song stopped, every stolen name came flooding home.*"),
     ("statblock", {
         "name": "False Hydra (Adult): Body",
-        "img": "assets/monsters/false_hydra_body.png",
+        "img": "assets/monsters/false_hydra_body.png", "img_w": 3.0, "img_hmax": 3.0,
         "type": "Huge aberration, unaligned",
         "ac": "15", "hp": "130 (12d12 + 48)", "speed": "10 ft., climb 10 ft.",
         "abilities": ab(18, 10, 18, 7, 14, 8),
@@ -960,9 +1037,10 @@ B = [
             ("Coordinate Strike", "One head makes a Snap."),
         ],
     }),
+    ("body", "*Each head is pale, blind-eyed, and always singing, even as it bites.*"),
     ("statblock", {
         "name": "False Hydra Head (x4)",
-        "img": "assets/monsters/false_hydra_head.png",
+        "img": "assets/monsters/false_hydra_head.png", "img_w": 2.2,
         "type": "Large aberration (an extension of the body), unaligned",
         "ac": "14", "hp": "45 (6d10 + 12)", "speed": "30 ft. (platforms, tunnels), climb 20 ft.",
         "abilities": ab(16, 12, 14, 6, 14, 7),
@@ -986,7 +1064,7 @@ B = [
              "graveyard rite.*"),
     ("statblock", {
         "name": "Animated Scarecrow",
-        "img": "assets/monsters/scarecrow.png",
+        "img": "assets/monsters/scarecrow.png", "img_w": 2.4,
         "type": "Medium construct, neutral",
         "ac": "11", "hp": "36 (8d8)", "speed": "30 ft.",
         "abilities": ab(16, 12, 11, 10, 10, 10),
@@ -1006,9 +1084,11 @@ B = [
             ("Claw", "*Melee Weapon Attack:* two claws, +5 to hit, reach 5 ft. *Hit:* 6 (2d4 + 1) slashing."),
         ],
     }),
+    ("body", "*Bundles of straw that rustle to life underfoot on Pumpkin Row, more startling "
+             "than deadly.*"),
     ("statblock", {
         "name": "Strawling",
-        "img": "assets/monsters/strawling.png",
+        "img": "assets/monsters/strawling.png", "img_w": 1.9,
         "type": "Medium plant, neutral",
         "ac": "12", "hp": "11 (2d8 + 2)", "speed": "30 ft.",
         "abilities": ab(12, 12, 12, 4, 10, 3),
@@ -1024,11 +1104,13 @@ B = [
              "Fortitude) and, only if the rite went loud, **Skeletons** (AC 13, HP 13, CR 1/4).*"),
 
     # ==================================================================
-    ("h1", "Session 7: Gearhaven, the Clockwork City", {"pagebreak": True}),
-    ("body", "*In the clockwork city, the enemy was no monster at all but corruption bleeding up through "
+    ("h1", "Session 7: Gearhaven, the Clockwork City"),
+    ("gold", "In the clockwork city, the enemy was no monster at all but corruption bleeding up through "
              "the cracks, reaching INTO the machines the people loved. Note the rotation: the lightning "
-             "eaters and the fire eaters trade off. Freed, not killed: these were innocents.*"),
+             "eaters and the fire eaters trade off. Freed, not killed: these were innocents."),
 
+    ("body", "*Cogtooth Market's little brass helpers gone haywire, sparks snapping from every "
+             "joint.*"),
     ("statblock", {
         "name": "Rogue Servitor",
         "type": "Small construct, unaligned",
@@ -1052,10 +1134,12 @@ B = [
              "the target's speed is halved until end of its next turn."),
         ],
     }),
+    ("body", "*A dockside lifter the size of a shed, swinging its forklift arms like siege "
+             "weapons.*"),
     ("statblock", {
         "name": "Cargo Hauler",
         "type": "Large construct, unaligned",
-        "img": "assets/session_08/beat_2/cargo_hauler.png", "img_w": 2.8,
+        "img": "assets/session_08/beat_2/cargo_hauler.png", "img_w": 2.6,
         "ac": "16", "hp": "76 (8d10 + 32)", "speed": "30 ft.",
         "abilities": ab(19, 8, 18, 3, 8, 5),
         "resistances": "bludgeoning, piercing, and slashing from nonmagical attacks",
@@ -1075,10 +1159,11 @@ B = [
              "grappled (escape DC 14), taking 10 (3d6) at the start of each of its turns until it escapes."),
         ],
     }),
+    ("body", "*Spark-yellow skitterers of the Underworks, flickering in and out of the Real.*"),
     ("statblock", {
         "name": "Voltcrawler",
         "type": "Small aberration (planar intruder), unaligned",
-        "img": "assets/session_08/beat_4/volt_crawler.png", "img_w": 2.5,
+        "img": "assets/session_08/beat_4/volt_crawler.png", "img_w": 2.1,
         "ac": "15", "hp": "22 (5d6 + 5)", "speed": "30 ft., climb 30 ft.",
         "abilities": ab(7, 17, 13, 5, 10, 6),
         "resistances": "lightning",
@@ -1096,10 +1181,11 @@ B = [
              "more Voltcrawlers within 15 ft. can chain into one 3d8 line."),
         ],
     }),
+    ("body", "*The nest-queen of the swarm, spinning webs of living lightning.*"),
     ("statblock", {
         "name": "Voltcrawler Broodmother",
         "type": "Medium aberration (planar intruder), unaligned",
-        "img": "assets/session_08/beat_4/broodmother.png", "img_w": 2.8,
+        "img": "assets/session_08/beat_4/broodmother.png", "img_w": 2.6,
         "ac": "16", "hp": "95 (10d8 + 50)", "speed": "40 ft., climb 40 ft.",
         "abilities": ab(14, 18, 20, 6, 12, 8),
         "saves": "Dex +7, Con +8",
@@ -1118,10 +1204,12 @@ B = [
              "success). On a fail the target also can't take reactions until end of its next turn."),
         ],
     }),
+    ("body", "*Worker-machines with corrupted vine knotted through their gears: slow, sad, and "
+             "unstoppable.*"),
     ("statblock", {
         "name": "Iron Drudge",
         "type": "Large construct (planar-corrupted), unaligned",
-        "img": "assets/session_08/beat_5/iron_drudge.png", "img_w": 2.8,
+        "img": "assets/session_08/beat_5/iron_drudge.png", "img_w": 2.5,
         "ac": "17", "hp": "68 (8d10 + 24)", "speed": "25 ft.",
         "abilities": ab(19, 8, 17, 3, 8, 1),
         "vulnerabilities": "fire (corrupted wood and vine in its joints; telegraph the smoke!)",
@@ -1142,10 +1230,12 @@ B = [
              "taking 2d6 + 4 bludgeoning (half on a success) and shoved 10 ft. on a fail."),
         ],
     }),
+    ("body", "*Fist-sized knots of corrupted vine that keep coming as long as the engine feeds "
+             "them.*"),
     ("statblock", {
         "name": "Corrupted Sproutling",
         "type": "Small plant (planar-corrupted), unaligned",
-        "img": "assets/session_08/beat_5/corrupted_sproutling.png", "img_w": 2.4,
+        "img": "assets/session_08/beat_5/corrupted_sproutling.png", "img_w": 1.8,
         "ac": "12", "hp": "7 (2d6)", "speed": "10 ft., climb 10 ft.",
         "abilities": ab(8, 14, 10, 2, 6, 4),
         "vulnerabilities": "fire",
@@ -1161,14 +1251,13 @@ B = [
         ],
     }),
 
-    ("pagebreak",),
     ("body", "*And then the boss: not a monster, but the city's beloved gentle giant, possessed and "
              "grieving inside its own iron. The Guardians broke its legs to bring the core into reach, and "
              "the last blow drained the corruption away rather than killing it. A gentle death, never an execution.*"),
     ("statblock", {
         "name": "The Grand Custodian (possessed)",
         "type": "Gargantuan construct (planar-possessed), unaligned",
-        "img": "assets/session_08/beat_5/grand_custodian.png", "img_w": 2.8,
+        "img": "assets/session_08/beat_5/grand_custodian.png", "img_w": 3.4,
         "ac": "17 (Body); Legs (x2) AC 15", "hp": "220 (Body); Legs 90 each", "speed": "30 ft.",
         "abilities": ab(24, 6, 22, 3, 10, 5),
         "resistances": "bludgeoning, piercing, and slashing from nonmagical attacks",
