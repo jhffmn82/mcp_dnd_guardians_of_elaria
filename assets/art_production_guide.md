@@ -8,7 +8,7 @@ The master list of campaign art: what exists, what is missing, and a ready-to-pa
 2. ATTACH REFERENCE IMAGES when a hero appears. DM-approved canonical references live in `assets/art_refs/`:
    - Lilly: REF_lilly_1.png (lilly2, the shop scene)
    - Stabby: REF_stabby_1.png (crossed arms with katana) + REF_stabby_2.png (chibi with glasses)
-   - Ursa: REF_ursa_1.png (with the enchanted potato) + REF_ursa_2.png (flat-style portrait with dragonmark)
+   - Ursa: REF_ursa_1.png (leaf-tattoo portrait) + REF_ursa_2.jpg (turnaround model sheet). For Session 6+ scenes (staff, fur cloak era) ALSO attach REF_ursa_3_later.png.
    - Ghostbloom: REF_ghostbloom.png; Floraburst: REF_floraburst.png
 3. Save each result into the listed path with the listed filename, then tell Claude: the build scripts get updated and the prompt gets recorded in `image_manifest.md` (prompts are always preserved).
 4. Gear continuity matters: Ursa's staff and Stabby's sash exist only from Session 6 on; the Candyfang Katana only from late Session 4 on; Floraburst (green) before Session 6, Ghostbloom (pale teal) after.
