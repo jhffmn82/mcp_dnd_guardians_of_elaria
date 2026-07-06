@@ -12,6 +12,7 @@ BLOCKS = [
      "Being the true account of three young heroes, the worlds they mended, and the sleeping goddess who lit their way."),
 
     ("h1", "Foreword"),
+    ("img", "assets/world/elaria_goddess.png", "Elaria, the sleeping goddess.", 3.0),
     ("gold", "This book is a keepsake. Every adventure inside it truly happened, told across a "
              "kitchen table over many evenings, rolled up out of dice and imagination and more "
              "snacks than any goblin could carry. The heroes are real, because the people who play "
@@ -42,20 +43,24 @@ BLOCKS = [
              "Glimmerspire, she carries the Essence Sphere her mother Poots pressed into her hands, "
              "and the sleeping spark of a friend named Pikachu. She builds, she tinkers, and she "
              "does not leave anyone behind, caged or otherwise."),
+    ("img", "assets/characters/lilly_with_essence_sphere_dalle.webp", "Lilly Glimmergear and the Essence Sphere.", 2.8),
     ("h2", "Stabby Sharpblade"),
     ("body", "A goblin boy of the Bloodfang Clan, green and grinning and far too fast, trained a "
              "little and tamed not at all by the monk Kaelon Windstep. A {color:stabby}Monk{/} who "
              "fights like a rumor and laughs like a landslide, he came for the adventure and stayed "
              "for the friends."),
+    ("img", "assets/characters/stabby_portrait_dalle.webp", "Stabby Sharpblade, mid-leap.", 2.8),
     ("h2", "Ursa Catchum"),
     ("body", "A human boy who reads the night sky like a map, son of the lost wildfire druid Ash "
              "Catchum. A {color:ursa}Druid{/} of the Circle of the Eternal Stars, he carries three "
              "enchanted potatoes and a great many questions, and a dragonmark that stirs whenever "
              "something frightened and voiceless needs him."),
+    ("img", "assets/characters/ursa_with_potato_dalle.webp", "Ursa Catchum with an enchanted potato.", 2.8),
     ("h2", "Ghostbloom"),
     ("body", "Their companion: once the little plant-sprite Floraburst, now a spirit of pale teal "
              "ghost-light who chimes like frost and glows toward trouble. Some say she is the "
              "sleeping goddess's own small voice, sent to walk beside her chosen."),
+    ("img", "assets/characters/ghostbloom.png", "Ghostbloom, once Floraburst.", 2.8),
 
     ("h1", "The Tale So Far"),
     ("body", "The Guardians began their road at 3rd level and, by the close of this chronicle, "

@@ -5,6 +5,7 @@ import render_check
 from PIL import Image, ImageDraw
 docx, outdir = sys.argv[1], sys.argv[2]
 os.makedirs(outdir, exist_ok=True)
+for old in glob.glob(outdir + '/page-*.png'): os.remove(old)
 pdf = os.path.join(outdir, os.path.splitext(os.path.basename(docx))[0] + ".pdf")
 render_check.docx_to_pdf(docx, pdf)
 render_check.pdf_to_pngs(pdf, outdir, 60)

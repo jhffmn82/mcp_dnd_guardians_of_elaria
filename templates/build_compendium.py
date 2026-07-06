@@ -1,6 +1,7 @@
 # build_compendium.py
 # The Guardians of Elaria: running reference volumes.
-# Builds three docx files in compendium/: bestiary, magic items, custom content.
+# Builds two docx files in compendium/: magic items and custom content.
+# (The bestiary is built elsewhere.)
 # Rebuild after each session revision; add entries as play continues.
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
@@ -12,146 +13,7 @@ def title(kicker, sub):
     return ("titlepage", "THE GUARDIANS OF ELARIA", kicker, sub, NOTE)
 
 # ----------------------------------------------------------------------
-# VOLUME I: BESTIARY
-# ----------------------------------------------------------------------
-B = [
-    title("THE BESTIARY", "Creatures of the Chronicle"),
-    ("gold", "Every strange creature the Guardians have faced, befriended, or freed. Motes mark "
-             "the planar wanderers: when one falls, a gleam of its home plane rises and fades. "
-             "Compact statistics live with each session's appendix; this volume gathers the whole "
-             "menagerie with its lore."),
-
-    ("h1", "Companions", {"pagebreak": True}),
-    ("h2", "Ghostbloom (formerly Floraburst)"),
-    ("img", "assets/characters/ghostbloom.png", "Ghostbloom, Elaria's little voice.", 3.6),
-    ("body", "**Tiny fey, chaotic good.** The party's companion since Session 3, chosen from "
-             "Professor Aelwyn's three wards as **Floraburst**, a leafy sprout-backed creature that "
-             "loved sunlight and berries. Aboard the sinking Dutchman (Session 5) Lilly infused her "
-             "with a Ghost essence drawn from the harvest jars; the change began there and completed "
-             "in Wraithpine's ghost-light (Session 6). Now her petals are glass-pale and chime like "
-             "frost, she floats, speaks in soft telepathy, and glows brighter near planar wounds: "
-             "Elaria's voice, some say."),
-    ("stat", "Ghostbloom", [
-        "Tiny fey (Ghost/Grass), chaotic good. AC 15, HP 52 (8d4 + 32), fly 30 ft. (hover).",
-        "Vulnerable fire AND cold (mind the friendly fire). Resistant necrotic, poison, nonmagical weapons.",
-        "**Guardian's Light.** Reaction, 3/short rest: heal an ally 1d8 + 3; ends charm or fear; sheds light.",
-        "**Vine Lash / Ghostly Wail.** See the v3 statblock (characters/ghostbloom_statblock_v3.pdf).",
-    ]),
-    ("img", "assets/characters/floraburst.png", "Floraburst, as she was.", 3.4),
-    ("h2", "Pikachu, the Spark Fox"),
-    ("body", "**The spark in the Sphere.** An old friend of the Glimmergear family, bodiless since "
-             "before the chronicle began, sleeping inside the Essence Sphere. His golden projection "
-             "first appeared in Gearhaven (Session 8): two long ears, a lightning-bolt tail, and a "
-             "warning carried through Ursa's Mark. He is more than a lost friend; he is a key. His "
-             "full return is coming."),
-    ("h2", "Lickgloom"),
-    ("body", "**Small fey of the pond (CR 1).** Befriended on the party's first night (Session 1): "
-             "round bodied, endlessly curious, with a tongue longer than it is tall and a telepathic "
-             "voice of feelings (*Food? Friend?*). Traveled with the party to Ravenstone Laboratory, "
-             "where it chose to stay among Professor Aelwyn's creatures. Visits are owed."),
-
-    ("h1", "Session 1: The Forest of Whispers", {"pagebreak": True}),
-    ("body", "**Duckleaf (CR 4).** Elemental Air. A sturdy duck with a leek for a sword, wind-quick "
-             "and proud, guardian of the rune-stone circle. Its gusts died with the circle's stones. "
-             "Left a green air mote."),
-    ("body", "**Cognifin (CR 3).** Elemental Water. The psychic guardian of the Grove of Elemental "
-             "Waters; tested the party with waves and whirlpools, and yielded with grace. Left a "
-             "blue water mote."),
-    ("body", "**Mist Stalkers (CR 2).** Feywild predators of fog and fear, hunting the Oakshade "
-             "road. Their howls scatter the timid; the party stood back to back and did not scatter."),
-
-    ("h1", "Session 2: The Road to Ravenstone"),
-    ("body", "**Mudskips (CR 1/2).** Slick little water elementals ambushing from a muddy clearing; "
-             "dissolved into water motes."),
-    ("body", "**The Grimfang war band.** A rival goblin clan with an old grudge against the "
-             "Bloodfang: two goblins, a worg, an orc, a hobgoblin, and a scar-faced boss who taunted "
-             "Stabby and regretted it. Driven off, not destroyed; grudges keep."),
-    ("img", "assets/monsters/grimfang_clan.png", "The Grimfang, the rival clan.", 4.6),
-    ("body", "**Terranox (CR 4).** A serpent of living stone from the Plane of Earth, blocking the "
-             "mountain path with no interest in parley. Collapsed into inert rock; left an Earth Mote "
-             "and fragments the party still carries."),
-
-    ("h1", "Session 3: The Road South"),
-    ("body", "**Shadowflame (CR 4).** A shadow wreathed in cold fire, fighting behind three illusory "
-             "duplicates in Brambleshadow Thicket. Left a dark mote that felt wrong to hold."),
-    ("body", "**Displacer Beasts (pair).** Six-legged, tentacled, and impossibly, TALKING ("
-             "\"Fresh prey... too easy.\"): planar distortion gives old monsters new tricks. Their "
-             "fall revealed rune-tears in the forest floor."),
-    ("body", "**Shroomytes (CR 2, four).** Fungal wardens of a glowing grove in the Ironroot Hills "
-             "(\"The grove... must be protected!\"). Left a fungal mote."),
-
-    ("h1", "Session 4: The Longest Night of Havenmoor", {"pagebreak": True}),
-    ("body", "**The Krampusshade (CR 5).** Once a guardian of winter, twisted by bitterness into a "
-             "ten-foot goat-horned fiend with chains of frost and a burlap sack that swallowed "
-             "children's laughter. His power hid behind three barriers of darkness; eight holiday "
-             "bells rung in harmony unmade him, and every child came home safe."),
-    ("img", "assets/monsters/krampusshade.png", "The Krampusshade.", 4.0),
-    ("stat", "Krampusshade", [
-        "Large fiend, chaotic evil. **CR 5**. AC 15, HP 102.",
-        "**Claw and Chains of Despair** multiattack; **Gift of Despair** (fear); **Icy Retaliation** (reaction);",
-        "**Shadow Step** (legendary). Weakened by the eight Winter Bells rung together.",
-    ]),
-    ("body", "**His winter court.** Shadow imps (CR 2), Frozen Wolves, Frostbite Pixies, an Icy "
-             "Specter at the Whispering Hollow, Enchanted Snowmen, Frost Golems, a Yule Cat, a Frost "
-             "Hag, Ice Spiders, Frozen Will-o'-Wisps: the frozen roads bred dangers all that week. "
-             "Friendlier meetings too: a resting reindeer whose glowing nose blessed kind travelers, "
-             "and Aurora Spirits, messengers of Elaria."),
-
-    ("h1", "Session 5: The Flying Dutchman"),
-    ("body", "**Davy Jones (CR 6).** Captain of the Flying Dutchman: barnacle armor, a hook hand, "
-             "tentacled beard, and a hold full of stolen magic. He harvested essences and caged "
-             "magical creatures for shipment south in crates stamped with a guild sigil. He gambled "
-             "for souls (Seven-Eyes, target 77) and lost; he fought, and lost; and when the Dutchman "
-             "split and sank, he went down with it, for good."),
-    ("stat", "Davy Jones, Captain of the Flying Dutchman", [
-        "Medium undead, chaotic evil. **CR 6**. AC 17 (barnacle armor), HP 85.",
-        "**Soul Siphon**, hook and tentacles, Legendary Resistance, lair actions aboard the Dutchman.",
-    ]),
-    ("body", "**His drowned crew.** Drowned Pirates (CR 1, burst when destroyed), a Spectral "
-             "Helmsman (CR 1), a Smuggler's Golem (CR 2), Arcane Corsairs (guild artificers gone "
-             "pirate), and a Ghost-Light Engineer: all vulnerable to cold, all gone down with the ship."),
-
-    ("h1", "Session 6: The False Hydra of Wraithpine", {"pagebreak": True}),
-    ("img", "assets/monsters/false_hydra.png", "The False Hydra beneath the Old Theater.", 4.6),
-    ("body", "**The False Hydra.** The worst monster the Guardians have faced, because no one knew "
-             "it was there: a pale many-necked thing beneath the Old Theater whose endless song made "
-             "the whole village forget the people it took. Beeswax in the ears let the truth through. "
-             "The tavern head died in the Gasping Gull; the body and its four heads died in the "
-             "drowned orchestra pit; and the moment the song stopped, every stolen name came flooding "
-             "home."),
-    ("stat", "False Hydra (adult)", [
-        "Huge aberration, unaligned. Body AC 15, HP 130; Heads AC 14, HP 45 each (tavern head HP 70).",
-        "**Song of Unremembering.** DC 15 Wisdom within 60 ft.; beeswax earplugs grant advantage.",
-        "**Vital Link.** The body resists weapons while any head lives. Legendary actions per living head.",
-    ]),
-    ("body", "**Festival frights.** Animated Scarecrows and six Strawlings on Pumpkin Row; rats and "
-             "rat swarms in Maera's cellar; restless Zombies at the graveyard rite. All echoes of the "
-             "hydra's hungry song."),
-
-    ("h1", "Session 8: Gearhaven, the Clockwork City"),
-    ("body", "**Rogue Servitors (CR 2) and the Cargo Hauler (CR 3).** Pinion's delivery constructs "
-             "with red-lit eyes, seized by something that reached INTO them. Shut-off levers ended it "
-             "kindly. The Hauler hated lightning."),
-    ("body", "**Voltcrawlers (swarm of 6) and the Broodmother.** Skittering planar intruders pouring "
-             "from the Underworks rift, phase-blinking between strikes (force and radiant pinned them "
-             "down). Slain crawlers collapsed into motes; the Sphere drank them."),
-    ("body", "**Iron Drudges (three) and Corrupted Sproutlings.** The Verdant Plaza's own caretaker "
-             "machines and garden, turned by corruption bleeding up through the cracks. Vulnerable "
-             "to fire; freed, not killed: corruption leaks out of a felled Drudge like smoke."),
-    ("img", "assets/session_08/beat_5/iron_drudge.png", "An Iron Drudge in the Verdant Plaza.", 4.2),
-    ("body", "**The Grand Custodian.** Gearhaven's beloved gentle giant, keeper of the Great "
-             "Governor, possessed by the corruption and grieving inside it. Legs toppled, core "
-             "reached, and with the last blow the corruption drained away; the freed Custodian "
-             "warned of something old and hungry reaching through, and Ursa's Mark granted it rest. "
-             "Its freedom closed every rift in the city."),
-    ("stat", "The Grand Custodian (possessed)", [
-        "Gargantuan construct. Body AC 17, HP 220; Legs (x2) AC 15, HP 90 each. Two phases: Standing, Crashed.",
-        "**Chain Lightning Burst** (deflected by Stabby's awakening). A gentle death, never an execution.",
-    ]),
-]
-
-# ----------------------------------------------------------------------
-# VOLUME II: MAGIC ITEMS & RELICS
+# VOLUME: MAGIC ITEMS & RELICS
 # ----------------------------------------------------------------------
 I = [
     title("TREASURES & RELICS", "The Magic of the Chronicle"),
@@ -167,11 +29,13 @@ I = [
              "of Vane's Rift Portal, and it never leaves the party's keeping. Gained **Planar "
              "Attunement** at the Whispering Glade (advantage on Arcana concerning planar magic)."),
     ("h2", "The Three Enchanted Potatoes"),
+    ("img", "assets/items/three_potatoes.png", "The three enchanted potatoes: Healing, Transformation, Insight.", 3.4),
     ("body", "Ash Catchum's legacy to his son: three unassuming potatoes that are anything but. The "
              "goddess named them **remnants of a shattered covenant**, safeguards bound from her own "
              "essence in the old lore (Healing, Transformation, Insight). They pulse when the world "
              "thins. Their hour has not yet come."),
     ("h2", "Stabby's Idol"),
+    ("img", "assets/items/stabbys_doll.png", "Stabby's Idol, cold to the touch near a rift.", 3.4),
     ("body", "A small carved figure Stabby found tucked in his bag after Wraithpine, though nobody "
              "saw who put it there. It goes ice cold near rifts, and corruption recoils from it. It "
              "has dreams in it. That is all anyone knows, yet."),
@@ -199,6 +63,7 @@ I = [
         "**Power Sync.** Cannon deals +2 damage. **Reformat.** 1/long rest, action: change the cannon's model.",
         "Near Ghostbloom, the core glows soft ghost-green, like a stage cue waiting for its moment.",
     ]),
+    ("img", "assets/characters/lilly_with_dynamo.png", "Lilly with the Pocket Dynamo and its brass frame.", 3.4),
 
     ("h1", "Gifts of Faelan (Havenmoor, Session 4)", {"pagebreak": True}),
     ("h2", "Frostbite Shard Dagger (Lilly)"),
@@ -206,6 +71,7 @@ I = [
         "Rare, attunement by an Artificer. Crystalline ice that never melts. 1d4 piercing + 1d4 cold, +1 to attack.",
         "**Spell focus and Arcane Firearm.** +1d8 frost to one spell damage roll cast through it; +2 frost on spell damage.",
     ]),
+    ("img", "assets/items/frostbite_shard_dagger.png", "The Frostbite Shard Dagger, ice that never melts.", 3.0),
     ("h2", "Amulet of Guiding Light (Ursa)"),
     ("stat", "Amulet of Guiding Light", [
         "Rare, attunement by a Circle of Stars druid.",
@@ -219,6 +85,7 @@ I = [
         "**Sugar Rush.** Bonus action lick, 1/long rest: 2d8 + Con temporary HP. **Frostbite Infusion.** +2 frost on hit.",
         "Destined to become a Bloodfang heirloom when the Nichirin blade comes.",
     ]),
+    ("img", "assets/items/candyfang_katana.png", "The Candyfang Katana, candy-cane steel.", 3.4),
 
     ("h1", "Boons, Baubles & Blessings"),
     ("body", "**Elaria's boons (the Whispering Glade, Session 2):** Ursa, Planar Awareness (sense "
@@ -232,6 +99,7 @@ I = [
              "the Dark Fragment of Stormwatch Cliffs (crystallized chaos, evidence of sabotage); "
              "Terranox's stone fragments; beeswax earplugs that beat a monster's song; a bell-handled "
              "blue lantern from Pumpkin Row; Alwen's flasks of lucky seawater."),
+    ("img", "assets/items/carol_rune_tablet.png", "A frost-bound carol tablet, the Winter Bells' song set in stone.", 2.2),
 ]
 
 # ----------------------------------------------------------------------
@@ -268,10 +136,12 @@ C = [
     ("body", "**Beast Breathing** (the reform-the-Bloodfang road): blood-red breath, +2 force "
              "damage, Beast Sense, advantage on Dexterity saves and +10 speed while ignited, First "
              "Form: Devour (3d8 + Dex force; a felling blow refunds the Focus)."),
+    ("img", "assets/characters/stabby_breathing_style_red.png", "Beast Breathing: the blood-red style.", 3.6),
     ("body", "**Shadow Breathing** (the Idol's Dreams road): violet-black breath, +2 necrotic "
              "damage, permanent darkvision 60 ft. and Stealth advantage, half cover against ranged "
              "attacks while ignited, First Form: Umbral Slash (teleport, a cube of darkness, "
              "3d8 + Dex necrotic with advantage)."),
+    ("img", "assets/characters/stabby_breathing_style_shadow.png", "Shadow Breathing: the violet-black style.", 3.6),
 
     ("h1", "Paths of the Stars (Ursa's Path)"),
     ("body", "Chosen at level 7 (full document: characters/path_rewards/ursa_path_rewards_v2.pdf)."),
@@ -297,6 +167,7 @@ C = [
              "2d8 + INT) or Electric Pulse (15 ft., jolts Reactions away); Guardian Protocol "
              "(reaction temp HP); self-mending; reboots with a spell slot if destroyed. Replaces the "
              "Eldritch Cannon while attuned."),
+    ("img", "assets/items/upgraded_eldritch_cannon.png", "The Sentinel, the Pocket Dynamo rebuilt as a guardian.", 3.4),
     ("body", "**The Boomstick** (the Glimmerspire road): +2 repeating pistol, 1d10 thunder, never "
              "reloads; a Wand of the War Mage and Arcane Firearm (+1d8 thunder) in one; Concussion "
              "knockback; channels True Strike."),
@@ -314,12 +185,13 @@ C = [
     ("body", "**The seven-point star.** Elaria's sigil, wrapped in a leafed vine (or cupped in "
              "wings, on the Sash), found on every gift along the Guardians' path. When you see it, "
              "she saw you coming."),
+    ("img", "assets/characters/ursa_with_amulet.png", "The seven-point star of Elaria, held close.", 3.4),
+    ("img", "assets/world/elaria_goddess.png", "Elaria, the sleeping goddess who lit the way.", 3.8),
 ]
 
 if __name__ == "__main__":
     repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     os.chdir(repo)
-    for blocks, out in ((B, "compendium/bestiary.docx"),
-                        (I, "compendium/treasures_and_relics.docx"),
+    for blocks, out in ((I, "compendium/treasures_and_relics.docx"),
                         (C, "compendium/custom_compendium.docx")):
         print("built", build_doc(blocks, out))
