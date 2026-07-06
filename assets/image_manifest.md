@@ -194,3 +194,19 @@ Every image's original filename is preserved here. For DALL-E and ChatGPT images
 | `characters/source_dnd5e/ursa_post4_2025-10.dnd5e` | `Ursa post 4.dnd5e` | 2025-10-15 |
 | `characters/historical/stabby_5.pdf` | `stabby sharpblade5.pdf` | 2025-10-15 |
 | `characters/historical/ursa_5_june2025.pdf` | `ursa lvl 5.pdf` | 2025-06-11 |
+
+## Mined from original session docx files (2026-07-06)
+
+Embedded images recovered from the original raw session documents (word/media). Source doc noted; these had no standalone files before.
+
+| New path | Source document |
+|---|---|
+| `assets/characters/floraburst.png`, `emberpaws.png`, `aqualump.png` | session_03 original (the three companions) |
+| `assets/characters/ursa_with_amulet.png` | session_04 encounter tables |
+| `assets/characters/lilly_with_dynamo.png` | session_06 original |
+| `assets/monsters/krampusshade.png`, `krampusshade_imps.png`, `krampus_imp.png`, `frostbite_pixie.png`, `frozen_wolf.png`, `icy_specter.png`, `frost_golems.png`, `yule_cat.png`, `frost_hag_disguised.png`, `snowbound_bandits.png`, `frozen_will_o_wisps.png` | session_04 encounter tables |
+| `assets/scenes/s4_krampusshade_over_havenmoor.png`, `s4_whispering_hollow.png`, `s4_frozen_hollow.png` | session_04 encounter tables |
+| `assets/items/candyfang_katana.png`, `amulet_of_guiding_light.png`, `frostbite_shard_dagger.png` | session_04 item rewards |
+| `assets/items/carol_rune_tablet.png` | session_04 encounter tables |
+
+`assets/art_refs/` holds drag-and-drop reference copies per character for DALL-E generation sessions (REF_lilly_1/2, REF_stabby_1/2, REF_ursa_1/2, REF_ghostbloom, REF_floraburst).

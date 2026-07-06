@@ -124,6 +124,7 @@ The master list of campaign art: what exists, what is missing, and a ready-to-pa
 | `items/three_potatoes.png` | none | Scene: three humble potatoes on a velvet cloth, each faintly aglow with a different inner light (warm gold, shifting green, cool silver), painted like precious relics. |
 | `items/wraithpine_chest.png` | none | Scene: a half-buried chest bound in vines of silver and living root, seams leaking golden light, in a dark theater underground. |
 | `world/seven_point_star.png` | none | Scene: an ornate emblem illustration: a seven-point star wrapped in a leafed vine, engraved in brass and glowing, on parchment (decorative, no words). |
+| `items/stabbys_doll.png` | none | Scene: a small old carved wooden doll wearing a tiny stitched cat-mask, lying on a goblin's open travel bag by a campfire at night, faint cold aura, mysterious not menacing. |
 
 ---
 
