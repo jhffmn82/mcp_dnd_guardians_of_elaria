@@ -182,3 +182,13 @@ Session 6 (Wraithpine)
 Session 7 (Gearhaven): already richly covered by the beat art; no gaps.
 
 Workflow: generate landscape (1536x1024 if supported, else 1024) with the style block, attach the existing same-location scene as a reference for palette/architecture continuity, save to the path above, approve, then a wiring pass drops each into its beat.
+
+### Scenic expansion (DM directive 2026-07-06): every session needs MORE establishing/scenic shots
+Session 7 (Gearhaven) is fine as-is. Additions beyond the list above:
+- `scenes/s2_oakshade_morning.png` - SESSION 2 OPENING SCENE: Oakshade village square at golden morning, the great oak with ribbons, the well, villagers starting the day (this opens the chapter).
+- `scenes/s1_forest_of_whispers.png` - replacement establishing shot: the three heroes tiny from behind entering the vast listening forest, mist and drifting motes (replaces the bad stabby_twilight_forest_dalle).
+- `scenes/s3_ironroot_hills.png` - rugged iron-red hills with bioluminescent mushroom valleys, the road threading through.
+- `scenes/s4_sugarplum_hearth.png` - the cozy tavern interior aglow, stockings and garlands, snow at the windows.
+- `scenes/s5_dutchman_deck.png` - the ghost ship's deck in green lantern light, barnacled masts, mist.
+- `scenes/s6_belltower_square.png` - Bellshadow: the old belltower quarter at dusk, fog, the great bell.
+Also regenerate per the same directive: `npcs/stabby_intro.png` and `npcs/ursa_intro.png` are staged as s1_stabby_intro / s1_ursa_intro prompts (clean intro portraits, no relics).
