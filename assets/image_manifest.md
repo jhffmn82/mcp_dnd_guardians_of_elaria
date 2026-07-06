@@ -174,3 +174,23 @@ Every image's original filename is preserved here. For DALL-E and ChatGPT images
 | `sessions/session_06_wraithpine.pdf` | `Session 6.pdf` |
 | `sessions/session_08_gearhaven.docx` | `Session_8_Gearhaven_v2.docx` |
 | `sessions/session_08_gearhaven.pdf` | `Session_8_Gearhaven_v2.pdf` |
+
+## External imports (2026-07-06, from OneDrive 5e Character Builder)
+
+| Repo path | Original path (left in place) | File date |
+|---|---|---|
+| `characters/one_shot/ash_catchum.dnd5e` / `.pdf` | `...\5e Character Builder\ash catchum.dnd5e` / `.pdf` | 2024-10 |
+| `characters/one_shot/poots.dnd5e` / `.pdf` | `...\5e Character Builder\Poots.dnd5e` / `poots.pdf` | 2024-10 |
+| `characters/one_shot/jerry.dnd5e` / `.pdf` | `...\5e Character Builder\Jerry.dnd5e` / `jerry.pdf` | 2024-10 |
+| `characters/one_shot/rat_scratch.dnd5e` | `...\5e Character Builder\Rat Scratch.dnd5e` | 2024-10 |
+| `characters/one_shot/stor_lackman.dnd5e` | `...\5e Character Builder\Stor Lackman.dnd5e` | 2024-10 |
+| `characters/one_shot/theren_brightwood.dnd5e` | `...\5e Character Builder\Theren Brightwood.dnd5e` | 2024-10 |
+| `characters/source_dnd5e/lilly_2024-12.dnd5e` | `Lilly.dnd5e` | 2024-12-26 |
+| `characters/source_dnd5e/lilly_lvl5_2025-10.dnd5e` | `Lilly lvl5.dnd5e` | 2025-10-15 |
+| `characters/source_dnd5e/lilly_lvl5_2026-06.dnd5e` | `Lilly (level 5).dnd5e` | 2026-06-14 |
+| `characters/source_dnd5e/stabby_2024-12.dnd5e` | `Stabby.dnd5e` | 2024-12-08 |
+| `characters/source_dnd5e/stabby_after4_2025-10.dnd5e` | `Stabby after 4.dnd5e` | 2025-10-15 |
+| `characters/source_dnd5e/ursa_2024-12.dnd5e` | `Ursa.dnd5e` | 2024-12-08 |
+| `characters/source_dnd5e/ursa_post4_2025-10.dnd5e` | `Ursa post 4.dnd5e` | 2025-10-15 |
+| `characters/historical/stabby_5.pdf` | `stabby sharpblade5.pdf` | 2025-10-15 |
+| `characters/historical/ursa_5_june2025.pdf` | `ursa lvl 5.pdf` | 2025-06-11 |

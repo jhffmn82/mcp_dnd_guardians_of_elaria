@@ -123,6 +123,12 @@ Eldridge Village and the Gilded Acorn Tavern (Eldridge Vale); Forest of Whispers
 11. Catchable-creatures mechanic: promised, never specced; spec at Session 9.
 12. Pocket Dynamo is "Mk II" and stamped PROP ROOM: unexplained Glimmerspire-to-theater link.
 
+## Campaign history (real world)
+
+- The campaign grew out of a ONE-SHOT played with different characters while this campaign was fresh. The one-shot character files (Aurora builder, October 2024) were recovered from the DM's 5e Character Builder folder and now live in characters/one_shot/: Ash Catchum (human Druid 5), Poots (gnome Artificer 5), Jerry (half-elf Forge Cleric 5), Rat Scratch (Monk 3), Stor Lackman (variant human Barbarian 3), Theren Brightwood (half-elf Forge Cleric 3). Ash and Poots were later woven into the campaign as Ursa's father and Lilly's mother. The one-shot's session document itself has NOT been located; if found, it belongs in the keepsake as a prologue.
+- Real-world chronology from file dates: campaign began around October/November 2024 (first sheets and DALL-E art Oct 20-21, 2024); Session 4 (the Christmas one-shot) was played around Christmas 2024 (post-session-4 sheets dated Dec 16-17, 2024); level-5 sheets appear June-October 2025; Session 8 and the v3 rebuild June 2026; polish pass July 2026.
+- Aurora builder source files (.dnd5e) for the kids' characters at several stages are preserved in characters/source_dnd5e/ (they can regenerate sheet PDFs).
+
 ## Superseded lore (recorded so it is not re-canonized)
 
 - Campaign_Outline_v1: 7 rifts including Feywild and Astral; Gearhaven at S5; Nyxthid as final boss at S14; level cap 7; the "Clockwork Sovereignty" Mechagnome-freedom faction. ALL retconned. Mechagnomes are friendly hub citizens; five rifts; finale is S15 vs Nyxthid with Maldrith stopped, not fought.

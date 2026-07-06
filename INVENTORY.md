@@ -177,3 +177,17 @@ Monsters/factions: `False Hydra.png`, `Gasping Gull.png`, `Grimfang Clan.png`, `
 - `memory/` ← create per F5.
 
 *End of Phase 1 inventory. No files were altered. Awaiting DM go-ahead for Phase 2 (reorganization plan).*
+
+---
+
+## Addendum (2026-07-06): external sources inventoried
+
+**`C:\Users\jhffm\OneDrive\Documents\5e Character Builder`** (Aurora builder data; 844 files, mostly third-party rules XML, left in place). Campaign material COPIED into the repo:
+- The original one-shot party (Oct 2024) → `characters/one_shot/`: Ash Catchum (human Druid 5), Poots (gnome Artificer 5), Jerry (half-elf Forge Cleric 5), Rat Scratch (Monk 3), Stor Lackman (variant human Barbarian 3), Theren Brightwood (half-elf Forge Cleric 3); .dnd5e sources plus PDFs where they existed (ash, poots, jerry).
+- Aurora source saves for the kids → `characters/source_dnd5e/` (Lilly Dec 2024 / Oct 2025 / Jun 2026; Stabby Dec 2024 / Oct 2025; Ursa Dec 2024 / Oct 2025).
+- Two sheet generations the repo lacked → `characters/historical/stabby_5.pdf` (Oct 2025) and `characters/historical/ursa_5_june2025.pdf`.
+- Exact-duplicate PDFs (lilly/stabby/ursa post 4, ursa.pdf) and near-duplicate regenerations (lilly glimmergear.pdf, stabby sharpblade.pdf) were NOT copied; originals remain in OneDrive.
+
+**Google Drive folder `1r2KDrVTT8CGmKUcsJ6xzCmPY9quZi4lX`**: verified July 2025 snapshot of this repo's early layout (Sessions 1-5, lore docs, subset of Pictures, Character Sheets with the same Untitled documents). Nothing unique; nothing copied.
+
+**F7 (open): the original one-shot session document.** The campaign began as a one-shot with the characters above; its session doc has not been found in the repo, OneDrive builder folder, or the Drive folder. Candidate homes checked so far: none. Worth checking other Drive folders, email attachments, or old chat exports; it would make a keepsake prologue.
