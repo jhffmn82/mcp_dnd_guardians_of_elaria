@@ -27,7 +27,7 @@ The master list of campaign art: what exists, what is missing, and a ready-to-pa
 
 **[FLORABURST]** Floraburst, a small cheerful fey creature like a tiny leafy dinosaur with a large flower bud on its back, bright spring green, friendly round eyes. (Sessions 3-5 only.)
 
-**[GHOSTBLOOM]** Ghostbloom, a tiny ghostly plant-fey, pale translucent teal, floating, with a glowing glass-pale flower on her back and petals like frost crystals, soft teal glow. (Session 6 on.)
+**[GHOSTBLOOM]** Ghostbloom is a GHOSTLY BULBASAUR: a small four-legged creature with a flower-bloom and leaves on its back (the classic Bulbasaur silhouette), but rendered entirely as luminous, TRANSLUCENT teal ghost-light, see-through and spectral, with wispy tendrils of teal flame curling off her and big soft glowing eyes. Solid Bulbasaur shape, ghost-light material. Match REF_ghostbloom exactly. (Session 6 on.)
 
 ---
 

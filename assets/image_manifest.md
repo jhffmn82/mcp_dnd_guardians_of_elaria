@@ -216,3 +216,4 @@ Embedded images recovered from the original raw session documents (word/media). 
 | New path | Prompt file | Refs attached |
 |---|---|---|
 | `assets/scenes/s6_pumpkin_row.png` | `assets/gen_prompts/s6_pumpkin_row.txt` | REF_stabby_1, REF_stabby_2, REF_stabby_3_later |
+| `assets/scenes/s6_cellar_rats.png` | `assets/gen_prompts/s6_cellar_rats.txt` | REF_ursa_1, REF_ursa_2, REF_ghostbloom (corrected: ghostly-bulbasaur teal) |

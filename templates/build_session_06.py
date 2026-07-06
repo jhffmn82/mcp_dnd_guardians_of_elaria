@@ -127,8 +127,8 @@ BLOCKS = [
              "heavier drops straight for the heroes' shoulders."),
     ("dm", "**The cellar fight.** 2 Swarms of Rats (one starting in the rafters) and 4 Giant "
            "Rats, in a tight aisle of barrels and shelves. Book statistics; see the appendix note."),
-    ("img", f"{A}/scenes/ursa_vs_rats.png",
-     "Ursa holds the cellar stair against the gray tide.", 3.9),
+    ("img", f"{A}/scenes/s6_cellar_rats.png",
+     "Ursa and Ghostbloom hold the cellar against the gray tide.", 4.2),
     ("gold", "When the last tail goes still, the cellar gives up its stranger secrets. Under the "
              "shelves lies a chewed dog collar. A thin drag-mark crosses the dust to the far "
              "wall, and there, when Ursa holds the lantern close, the flame leans toward a "
