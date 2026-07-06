@@ -60,8 +60,8 @@ BLOCKS = [
              "**Artificer's Guild** in **Gearhaven City** commands power core technology far beyond "
              "my little tower. Upgraded with a proper core, this Sphere could hold many essences at "
              "once, more than enough for your Pikachu to step back into the world.”"),
-    ("img", f"{A}/characters/lilly_holding_the_sphere.png",
-     "Lilly and the Essence Sphere at Aelwyn's workbench.", 3.9),
+    ("img", f"{A}/scenes/s3_sphere_examination.png",
+     "The morning study of the Essence Sphere at Aelwyn's workbench.", 4.2),
 
     ("h2", "The Guardian of Balance"),
     ("gold", "Aelwyn's gaze drifts to the little collection the party has gathered on their travels: "
@@ -97,6 +97,8 @@ BLOCKS = [
              "shimmering watery aura waddles past, peering up curiously: an **Aqualump**. And a "
              "small fox-like creature with flames dancing harmlessly along its paws and tail darts "
              "between the table legs, chasing an automaton twice its size: an **Emberpaws**."),
+    ("img", f"{A}/scenes/s3_choose_companion.png",
+     "Aelwyn presents the three little wonders: Floraburst, Aqualump, and Emberpaws.", 4.2),
     ("gold", "**Aelwyn:** “These little ones are manifestations of the unstable boundaries, each "
              "one carrying a fragment of elemental essence. They are not curiosities. They are "
              "clues. And they can sense planar anomalies long before you or I could.” He kneels "
@@ -132,6 +134,8 @@ BLOCKS = [
              "promise. Every time we pass this way.” One long tongue wraps the whole party in a "
              "single ridiculous hug, and that is that. Guardians look after their friends, even "
              "when looking after them means letting them stay somewhere happy."),
+    ("img", f"{A}/scenes/s3_lickgloom_farewell.png",
+     "Lickgloom finds a home among Ravenstone's wonders.", 4.2),
 
     ("h2", "The Road to Gearhaven"),
     ("gold", "Aelwyn unrolls a traveling map across the table, the parchment crackling, and traces "
@@ -178,6 +182,8 @@ BLOCKS = [
              "into a grin, wisps of shadow trailing from its limbs like ghostly fire."),
     ("gold", "**Shadowflame**, in a whispery, disembodied voice: “Your fears are tasty... let me "
              "see them... let me taste them!”"),
+    ("img", f"{A}/monsters/shadowflame.png",
+     "The Shadowflame splits into a hall of grinning illusions.", 4.2),
     ("dm", "**The fight.** Shadowflame, CR 4 (appendix). It splits into three identical illusions; "
            "Intelligence (Arcana) or Wisdom (Perception) DC 18 to pick the real one. Terror Wave in "
            "a 15 foot cone (Wisdom DC 14 or frightened); Shadowmeld to teleport through the mist."),
@@ -223,6 +229,8 @@ BLOCKS = [
              "**Second beast**, tentacles lashing: “They will never see it coming.”"),
     ("gold", "Displacer beasts do not talk. Everyone knows displacer beasts do not talk. The fog "
              "suddenly feels less like weather and more like a doorway someone left open."),
+    ("img", f"{A}/scenes/s3_displacer_beasts.png",
+     "The talking Displacer Beasts flow out of the Mistwood fog.", 4.2),
     ("dm", "**The fight.** Two displacer beasts (appendix). Displacement: attacks against each "
            "beast have disadvantage until it takes damage. Ursa's Faerie Fire stripped the trick "
            "away, and Stabby deflected a tentacle mid-swing to turn the tide."),
@@ -254,6 +262,8 @@ BLOCKS = [
              "menacing at once."),
     ("gold", "**Shroomyte**, in a vibrating, musical tone: “Intruders... the grove... must be "
              "protected!”"),
+    ("img", f"{A}/monsters/shroomyte_grove.png",
+     "The Shroomytes rise from the glowing grove of the Ironroot Hills.", 4.2),
     ("dm", "**The fight.** Four Shroomytes, CR 2 each (appendix). Spore Blasts from range, "
            "Mycelium Tendrils to entangle, difficult terrain everywhere. Lilly's fire found their "
            "weakness; Stabby simply refused to be caught."),
@@ -303,6 +313,8 @@ BLOCKS = [
              "hammers the rod, and this time the monolith drinks it, humming louder and louder "
              "until a beam of pure light lances up into the clouds and blooms into a shimmering "
              "curtain of energy above the platform."),
+    ("img", f"{A}/scenes/s3_stormwatch_vision.png",
+     "The Dark Figure looms over the monoliths of the Stormwatch Cliffs.", 4.2),
 
     ("h2", "The Dark Figure"),
     ("gold", "Within the curtain of light, a vision takes shape: a towering figure cloaked in "
@@ -344,6 +356,8 @@ BLOCKS = [
              "lights flickering among the boughs, a golden star burning at its top. Children pelt "
              "each other with snowballs beneath it. A painted signpost reads: *Welcome to "
              "Havenmoor! May your hearts be warm and your spirits bright!*"),
+    ("img", f"{A}/scenes/s3_havenmoor_arrival.png",
+     "The Guardians descend to festive Havenmoor at dusk.", 4.2),
     ("gold", "A small figure comes bustling up, barely three feet tall, in a green tunic, "
              "red-striped leggings, and a pointed red hat tipped with a jingle bell. His cheeks are "
              "rosy and his grin is enormous."),
