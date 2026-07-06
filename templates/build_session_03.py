@@ -28,6 +28,10 @@ BLOCKS = [
              "beds for the night."),
 
     # ------------------------------------------------------------------
+    ("img", f"{A}/npcs/ravenstone_laboratory_dalle.webp",
+     "Ravenstone Laboratory in the morning light.", 2.9),
+
+    # ------------------------------------------------------------------
     ("h1", "Part One: A Morning of Marvels", {"pagebreak": True}),
     ("bridge", "The heroes woke on their first morning at Ravenstone Laboratory, in a tower where "
                "magic and science share every shelf."),
@@ -38,8 +42,6 @@ BLOCKS = [
              "and devices of intricate gears and shimmering runes. Small automatons scurry between "
              "the tables carrying tools, and somewhere below, one of the laboratory's remarkable "
              "creatures is snoring."),
-    ("img", f"{A}/npcs/ravenstone_laboratory_dalle.webp",
-     "Ravenstone Laboratory in the morning light.", 5.4),
 
     ("h2", "The Essence Sphere Under the Glass"),
     ("gold", "**Professor Aelwyn Ravenstone** is already at his workbench, a delicate tool like a "
@@ -171,6 +173,8 @@ BLOCKS = [
              "sunlight struggle through the canopy. The air grows damp and cold, smelling of moss "
              "and something faintly metallic, like a storm that has not broken yet. Then, all at "
              "once, the birds stop singing."),
+    ("img", f"{A}/scenes/s3_brambleshadow_thicket.png",
+     "The path into Brambleshadow Thicket, where the birds stop singing.", 3.4),
     ("dm", "Wisdom (Perception) DC 14 to notice the unnatural silence; Intelligence (Arcana) DC 15 "
            "to sense necrotic planar energy soaked into the shadows."),
     ("gold", "**Ursa**, whispering, his breath misting: “This does not feel right. Something is "
@@ -208,6 +212,8 @@ BLOCKS = [
              "behind the breastbone. But nothing wicked wanders through today. Floraburst dozes on "
              "Ursa's pack with her bud turned to the sun, and the Guardians let the meadow's strange "
              "lullaby carry them south."),
+    ("img", f"{A}/scenes/s3_whisperwind_meadow.png",
+     "One golden afternoon of kindness: Whisperwind Meadow.", 3.0),
 
     ("h2", "The Talking Beasts of the Mistwood Path"),
     ("gold", "Where the meadow meets the old forest, the trail dives into the **Mistwood Path**, "
@@ -249,6 +255,8 @@ BLOCKS = [
              "through the earth like veins of metal. The higher the party climbs, the stranger the "
              "hills grow: bulbous mushrooms sprout between the rocks, their caps glowing with eerie "
              "blue-green light, until the whole hillside shines like a dream having a dream."),
+    ("img", f"{A}/scenes/s3_ironroot_hills.png",
+     "The approach into the Ironroot Hills, every rise crowned with glowing caps.", 2.6),
     ("dm", "Wisdom (Perception) DC 14: the ground pulses faintly; the roots shift. Intelligence "
            "(Arcana) DC 15: the mushrooms are suffused with Feywild energy, reacting to the "
            "party's presence."),
@@ -263,7 +271,7 @@ BLOCKS = [
     ("gold", "**Shroomyte**, in a vibrating, musical tone: “Intruders... the grove... must be "
              "protected!”"),
     ("img", f"{A}/monsters/shroomyte_grove.png",
-     "The Shroomytes rise from the glowing grove of the Ironroot Hills.", 4.2),
+     "The Shroomytes rise from the glowing grove of the Ironroot Hills.", 3.8),
     ("dm", "**The fight.** Four Shroomytes, CR 2 each (appendix). Spore Blasts from range, "
            "Mycelium Tendrils to entangle, difficult terrain everywhere. Lilly's fire found their "
            "weakness; Stabby simply refused to be caught."),

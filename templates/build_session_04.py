@@ -31,6 +31,10 @@ BLOCKS = [
     ("dm", "The heroes begin this session at **level 4**, grown by the long road south."),
 
     # ------------------------------------------------------------------
+    ("img", f"{A}/scenes/s4_havenmoor_town.png",
+     "Havenmoor in its festival best, the Great Pine shining above the harbor.", 3.0),
+
+    # ------------------------------------------------------------------
     ("h1", "Part One: The Morning the Music Changed", {"pagebreak": True}),
     ("gold", "The morning chill seeps through the windows of your rooms at the **Sugarplum Hearth**. "
              "Dawn is only a pale gray promise, and for a moment all seems calm. Then a sound "
@@ -75,6 +79,8 @@ BLOCKS = [
                "found that every bell came wrapped in a story."),
 
     ("h2", "The Sugarplum Hearth: C and D"),
+    ("img", f"{A}/scenes/s4_sugarplum_hearth.png",
+     "All warmth and cinnamon: the common room of the Sugarplum Hearth.", 3.4),
     ("gold", "The search begins at home. The tavern is all warmth and cinnamon, garlands of holly "
              "on the rafters, a decorated tree glittering in the corner, and above the crackling "
              "hearth, gleaming quietly in plain sight, hangs an old brass bell: the **C Bell**. "
@@ -474,6 +480,7 @@ BLOCKS = [
              "it, dark tendrils snake along the underside of the planks, pulsing. Shadowy shapes "
              "flicker under the ice, faces twisted in silent song. Frost blooms across the "
              "boards as the party steps up."),
+    ("imgfloat", f"{A}/scenes/s4_crystalbrook_stream.png", 2.6),
     ("gold", "Eight bells ring out **Deck the Halls**, lively and warm, the notes echoing down "
              "the frozen water like skaters. The tendrils hiss, thrash once, and dissipate like "
              "smoke in sunlight. And then the treetops giggle. Four tiny figures dart into view "
@@ -553,12 +560,12 @@ BLOCKS = [
              "turret keeps time like a drummer. Floraburst shakes her petals and adds one small, "
              "clear chime of her own. And on the final note, sung by eight bells in perfect "
              "harmony, the fiend's roar breaks in the middle."),
-    ("img", f"{A}/scenes/s4_carol_finale.png",
-     "The Carol of the Bells rings out, and the Krampusshade comes apart into shadow above them.", 3.3),
     ("gold", "The Krampusshade's body **shatters into wisps of shadow**, spiraling up and up "
              "and dissolving into the night sky, banished from the world he had grown too "
              "bitter to guard. The frost gripping the village begins to melt. The fog lifts. "
              "And the burlap sack drops to the snow and bursts open."),
+    ("img", f"{A}/scenes/s4_carol_finale.png",
+     "The Carol of the Bells rings out, and the Krampusshade comes apart into shadow above them.", 3.3),
     ("gold", "Children tumble out, dazed, blinking, rubbing their eyes, **every single one of "
              "them safe**, and in the middle of them a small boy with one missing mitten. "
              "**Finn** hits his mother's arms at a dead run, and the sound she makes is the "
@@ -589,9 +596,9 @@ BLOCKS = [
              "steel, red and white and wickedly sharp, trailing a faint scent of sugar. Stabby "
              "licks it immediately. It is delicious."),
     ("img", f"{A}/characters/lilly_session4.png",
-     "Lilly Glimmergear and the Frostbite Shard Dagger, on the brightest morning of the festival.", 2.7),
+     "Lilly Glimmergear and the Frostbite Shard Dagger, on the brightest morning of the festival.", 2.4),
     ("img", f"{A}/characters/stabby_cane.png",
-     "Stabby Sharpblade and the Candyfang Katana. Yes, he licked it.", 2.7),
+     "Stabby Sharpblade and the Candyfang Katana. Yes, he licked it.", 2.4),
     ("dm", "Full statistics for all three gifts live in the treasures compendium."),
     ("gold", "Down at the harbor, the shipwright **Master Doran Bramblebeard**, lighthouse soot "
              "still on his sleeves, nods toward a trim vessel rocking at the dock. “The "
