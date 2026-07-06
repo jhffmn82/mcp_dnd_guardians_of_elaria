@@ -30,7 +30,7 @@ BUILDERS = [
     "build_foreword.py", "build_lore.py",
     "build_session_01.py", "build_session_02.py", "build_session_03.py",
     "build_session_04.py", "build_session_05.py", "build_session_06.py",
-    "build_compendium.py",
+    "build_compendium.py", "build_bestiary.py",
 ]
 
 def rebuild_sources():
