@@ -17,6 +17,10 @@ The master list of campaign art: what exists, what is missing, and a ready-to-pa
 
 > painterly storybook fantasy illustration, lush warm golden palette with teal and brass accents, soft volumetric light, detailed fantasy-anime glow, digital painting, no text or lettering anywhere in the image
 
+## CHARACTER REGISTRY
+
+Significant recurring characters (NPCs, villains, the goddess) have canonical references too, tracked in `assets/character_refs.md` with files in `assets/art_refs/` (REF_aelwyn, REF_vane, REF_quill, REF_elaria, REF_nyxthid, REF_davy_jones, REF_krampusshade, REF_faelan, and more as they are made). Attach a character's ref whenever generating art that features them. When you approve the first good portrait of a character who has no ref yet, promote it to their canonical ref and add a registry row.
+
 ## CHARACTER BLOCKS
 
 **[LILLY]** Lilly, a 7-year-old deep gnome girl, tiny, with dark slate-gray skin, long flowing silver hair, large bright red eyes, brass goggles pushed up on her head, a little leather tool-harness over travel clothes with frost-blue accents, carrying a small glowing brass-and-crystal sphere.
