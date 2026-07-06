@@ -58,12 +58,11 @@ BLOCKS = [
              "enchanted potatoes and a great many questions, and a dragonmark that stirs whenever "
              "something frightened and voiceless needs him."),
     ("dm", "**At the table:** Level 5 Druid. Spell slots: **1st ● ● ● ●   2nd ● ● ●   3rd ● ●**, plus about eight free Guiding Bolts a day from the Star Map and the Staff's charges."),
-    ("img", "assets/characters/ursa_v3_portrait.png", "Ursa Catchum with an enchanted potato.", 2.8),
     ("h2", "Ghostbloom"),
     ("body", "Their companion: once the little plant-sprite Floraburst, now a spirit of pale teal "
              "ghost-light who chimes like frost and glows toward trouble. Some say she is the "
              "sleeping goddess's own small voice, sent to walk beside her chosen."),
-    ("img", "assets/characters/ghostbloom.png", "Ghostbloom, once Floraburst.", 2.8),
+    ("imgrow", [("assets/characters/ursa_v3_portrait.png", "Ursa Catchum, pictured with the Staff of Waking Constellations"), ("assets/characters/ghostbloom.png", "Ghostbloom, pictured in her ghost-light bloom")], 2.9),
 
     ("h1", "The Tale So Far"),
     ("body", "The Guardians began their road at 3rd level and, by the close of this chronicle, "

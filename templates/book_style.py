@@ -139,7 +139,7 @@ def _float_right(paragraph, data, w_in):
     anchor = parse_xml(
         '<wp:anchor xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" '
         'xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" '
-        'behindDoc="0" distT="0" distB="0" distL="114300" distR="0" simplePos="0" locked="0" '
+        'behindDoc="0" distT="91440" distB="91440" distL="201600" distR="0" simplePos="0" locked="0" '
         'layoutInCell="1" allowOverlap="1" relativeHeight="2">'
         '<wp:simplePos x="0" y="0"/>'
         '<wp:positionH relativeFrom="column"><wp:align>right</wp:align></wp:positionH>'
@@ -357,6 +357,40 @@ def build_doc(blocks, out_path):
                 cp = doc.add_paragraph(); cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
                 cp.paragraph_format.space_after = Pt(7)
                 r = cp.add_run(caption); _set_font(r, Pt(9), italic=True, color=CAPTION_GRAY)
+
+        elif kind == "imgrow":
+            # (imgrow, [(path, label), (path, label)], width_each) side-by-side
+            _, pairs, w = blk
+            tbl = doc.add_table(rows=2, cols=len(pairs))
+            tbl.autofit = False
+            tbl.alignment = 1
+            for ci, (path, label) in enumerate(pairs):
+                data, pw, ph = _image_png_bytes(path)
+                ww = w
+                if ww * (ph / pw) > 3.6:
+                    ww = 3.6 / (ph / pw)
+                c0 = tbl.cell(0, ci); c1 = tbl.cell(1, ci)
+                c0.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+                c0.paragraphs[0].add_run().add_picture(io.BytesIO(data), width=Inches(ww))
+                c1.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+                r = c1.paragraphs[0].add_run(label)
+                _set_font(r, Pt(9), italic=True, color=CAPTION_GRAY)
+            doc.add_paragraph().paragraph_format.space_after = Pt(4)
+
+        elif kind == "melody":
+            # (melody, text) a sung verse or carol, set like sheet-music epigraph
+            for i, line in enumerate(blk[1].split("|")):
+                p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                p.paragraph_format.space_before = Pt(10 if i == 0 else 0)
+                p.paragraph_format.space_after = Pt(2)
+                txt = line.strip()
+                if i == 0:
+                    txt = "♪  " + txt
+                if i == len(blk[1].split("|")) - 1:
+                    txt = txt + "  ♪"
+                r = p.add_run(txt.replace("\u266a", "♪"))
+                _set_font(r, Pt(12), bold=False, italic=True, color=GOLD_EDGE)
+            sp = doc.add_paragraph(); sp.paragraph_format.space_after = Pt(6)
 
         elif kind == "imgfloat":
             # (imgfloat, path, width_inches[, "left"|"right"]) - image floated
