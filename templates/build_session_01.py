@@ -26,7 +26,7 @@ BLOCKS = [
     ("dm", "The heroes begin this chronicle at **level 3**. Full creature statistics for every "
            "session live in the compendium; a compact appendix closes each session."),
     ("img", f"{A}/world/elaria_region_map.png",
-     "Eldridge Vale and the lands of Elaria, as mapped by the cartographers of Gearhaven.", 6.4),
+     "Eldridge Vale and the lands of Elaria, as mapped by the cartographers of Gearhaven.", 3.6),
 
     # ------------------------------------------------------------------
     ("h1", "Part One: The Gilded Acorn", {"pagebreak": True}),
@@ -53,7 +53,7 @@ BLOCKS = [
              "old friend trapped without a body. *Find Ursa Catchum*, her mother said. *The son of my "
              "old adventuring companion. If anyone can help you wake our friend, it is that family.*"),
     ("img", f"{A}/characters/lilly_with_essence_sphere_dalle.webp",
-     "Lilly Glimmergear and the Essence Sphere.", 3.9),
+     "Lilly Glimmergear and the Essence Sphere.", 2.7),
     ("gold", "**Osric:** “Ursa, you say? Odd lad, that one. Can usually be found star gazing out "
              "in the fields, or else wandering the woods. If you are looking for him, best sit tight "
              "and wait. He comes around often enough.”"),
@@ -73,7 +73,7 @@ BLOCKS = [
              "name, Ursa is already walking toward the village. Some part of him, the part his father "
              "left him, knows: something is beginning."),
     ("img", f"{A}/characters/ursa_with_potato_dalle.webp",
-     "Ursa Catchum, son of Ash, with one of his father's enchanted potatoes.", 3.9),
+     "Ursa Catchum, son of Ash, with one of his father's enchanted potatoes.", 2.7),
     ("gold", "In the tavern, Ursa spots the silver haired gnome girl at once, and the strange "
              "contraption glowing faintly in her lap. He crosses the room, cautious and curious in "
              "equal measure."),
@@ -94,7 +94,7 @@ BLOCKS = [
              "and gave him his name. Then the road called, and Stabby followed it here, bored and "
              "hungry for excitement."),
     ("img", f"{A}/characters/stabby_portrait_dalle.webp",
-     "Stabby Sharpblade of the Bloodfang Clan.", 3.9),
+     "Stabby Sharpblade of the Bloodfang Clan.", 2.7),
     ("gold", "He notices the glowing sphere immediately. He notices the two interesting strangers "
              "around it immediately after. He invites himself to their table before either can say a word."),
     ("gold", "**Stabby:** “Oi! You two look like you are planning an adventure!” He plops "

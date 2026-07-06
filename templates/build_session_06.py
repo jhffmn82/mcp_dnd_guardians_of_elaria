@@ -57,7 +57,7 @@ BLOCKS = [
              "named: **Ghostbloom**. All that day, and all the strange night to come, her glow "
              "leans gently toward trouble, the way a compass leans north."),
     ("img", f"{A}/characters/ghostbloom.png",
-     "Ghostbloom, who was Floraburst, wakes beneath the coastal pines.", 2.9),
+     "Ghostbloom, who was Floraburst, wakes beneath the coastal pines.", 2.5),
 
     ("h2", "Lantern Night"),
     ("gold", "The footpath crests a rise, and the village of **Wraithpine** pools below in a "
@@ -74,7 +74,7 @@ BLOCKS = [
            "miss, one small fresh memory slips away, just enough to feel wrong; on a success, an "
            "ear-pop and a strange clarity."),
     ("img", f"{A}/monsters/gasping_gull.png",
-     "Lantern Night in Wraithpine: pumpkins, paper moons, and the Gasping Gull with its shutters thrown wide.", 5.2),
+     "Lantern Night in Wraithpine: pumpkins, paper moons, and the Gasping Gull with its shutters thrown wide.", 4.2),
 
     ("h2", "The Gasping Gull"),
     ("gold", "The **Gasping Gull** throws wide its shutters and its hearth breathes softly. "
@@ -128,7 +128,7 @@ BLOCKS = [
     ("dm", "**The cellar fight.** 2 Swarms of Rats (one starting in the rafters) and 4 Giant "
            "Rats, in a tight aisle of barrels and shelves. Book statistics; see the appendix note."),
     ("img", f"{A}/scenes/ursa_vs_rats.png",
-     "Ursa holds the cellar stair against the gray tide.", 4.5),
+     "Ursa holds the cellar stair against the gray tide.", 3.9),
     ("gold", "When the last tail goes still, the cellar gives up its stranger secrets. Under the "
              "shelves lies a chewed dog collar. A thin drag-mark crosses the dust to the far "
              "wall, and there, when Ursa holds the lantern close, the flame leans toward a "
@@ -150,7 +150,7 @@ BLOCKS = [
     ("dm", "**Straw stirs.** 2 Scarecrows and 6 Strawlings among the flickering "
            "jack-o'-lanterns. Statistics in the appendix."),
     ("img", f"{A}/scenes/s6_pumpkin_row.png",
-     "Stabby Sharpblade and the Candyfang Katana on Pumpkin Row.", 4.8),
+     "Stabby Sharpblade and the Candyfang Katana on Pumpkin Row.", 4.0),
     ("gold", "It is a wild, whirling scrap among the pumpkins, candy-striped steel flashing, "
              "sparks and starlight scattering straw in every direction. When the last strawling "
              "collapses into a harmless heap, Stabby cuts open the heart-gourd charm stitched "
@@ -171,7 +171,7 @@ BLOCKS = [
              "wish to be laid twice, and a pair of the restless dead claw up out of the soil, "
              "moaning, drawn to the same wrongness that scraped the name away."),
     ("img", f"{A}/scenes/lilly_vs_zombies.png",
-     "Lilly stands watch over the rite as the restless dead stir.", 4.4),
+     "Lilly stands watch over the rite as the restless dead stir.", 3.8),
     ("gold", "The heroes put them gently back to rest, and then they do the older, kinder work. "
              "Charcoal rubbed across the blank line raises the ghosts of letters, like footprints "
              "in frost. The name is written back where it belongs. The post bell's clapper is "
@@ -252,7 +252,7 @@ BLOCKS = [
              "Toward the heroes. Its eyes aim at the place where their thoughts are, not the "
              "place where their bodies stand."),
     ("img", f"{A}/scenes/ghostbloom_vs_hydra_head.png",
-     "With wax in their ears, the heroes finally see what has always been there.", 3.9),
+     "With wax in their ears, the heroes finally see what has always been there.", 2.5),
     ("dm", "**The tavern fight.** One **False Hydra Tavern Head** (appendix), in a room full of "
            "tables, stew pots, and one oblivious innkeeper to keep out of harm's way."),
     ("gold", "The fight is close and crashing: tables flipped for cover, the neck writhing "
@@ -288,7 +288,7 @@ BLOCKS = [
              "through beeswax the heroes feel it, pressing, patient, asking them nicely to "
              "forget they ever came."),
     ("img", f"{A}/monsters/false_hydra.png",
-     "The False Hydra entire, in the drowned orchestra pit below the Old Theater.", 3.6),
+     "The False Hydra entire, in the drowned orchestra pit below the Old Theater.", 2.6),
     ("gold", "On a ledge among the props lies a leather toolbelt with a torn name tag: **HARLAN "
              "WICKE**. Beside it, worn smooth by decades of a workman's pocket, a small carved "
              "whistle: Harlan's own, kept since his boyhood, carried all his life. Ursa picks "
@@ -341,7 +341,7 @@ BLOCKS = [
              "resistance, as if it had been waiting all along for exactly this moment and "
              "exactly these heroes."),
     ("img", f"{A}/scenes/lilly_opening_chest.png",
-     "Elaria's gift: the chest bound in silver vines opens without a sound.", 4.4),
+     "Elaria's gift: the chest bound in silver vines opens without a sound.", 3.8),
 
     ("h2", "Three Relics"),
     ("gold", "Inside rest three objects, each radiating a faint, familiar magic. A slim **staff "

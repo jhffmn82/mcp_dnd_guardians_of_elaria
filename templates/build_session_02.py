@@ -258,12 +258,11 @@ BLOCKS = [
            "spellcasters. Loose rocks fall throughout: DC 12 Dexterity save or 1d10 bludgeoning."),
     ("gold", "It is the hardest fight of their young lives. Terranox's tail sweeps like a falling "
              "tree; its stone coils catch Ursa mid spell and squeeze until Stabby's flurry of "
-             "blows cracks the grip loose. The earthquake stomp knocks everyone sprawling among "
-             "the tumbling rocks. Fire splashes off the creature like rain off a roof, so Lilly "
-             "rewires her cannon on her knees in the dark, shouting numbers to herself, and Ursa "
-             "calls down starlight instead of flame. Chip by chip, crack by crack, the heroes "
-             "carve the mountain down, until at last the great serpent shudders, sighs a long "
-             "gravel sigh, and collapses into a heap of inert stone and settling dust."),
+             "blows cracks the grip loose. Fire splashes off the creature like rain off a roof, so "
+             "Lilly rewires her cannon on her knees in the dark while Ursa calls down starlight "
+             "instead of flame. Chip by chip, crack by crack, the heroes carve the mountain down, "
+             "until at last the great serpent shudders, sighs a long gravel sigh, and collapses "
+             "into a heap of inert stone and settling dust."),
     ("gold", "In the rubble where its heart was, the party finds an **Earth Mote**: a small "
              "crystalline fragment pulsing with elemental energy, heavy with the raw strength of "
              "the Plane of Earth. This one does not drift away. Lilly wraps it carefully with the "
@@ -275,7 +274,7 @@ BLOCKS = [
     ("bridge", "Dusty, weary, and carrying pieces of three planes in their packs, the party "
                "crested the last wooded hill as twilight fell."),
     ("img", f"{A}/npcs/ravenstone_laboratory_dalle.webp",
-     "Inside Ravenstone Laboratory, where the instruments never quite sleep.", 5.2),
+     "Inside Ravenstone Laboratory, where the instruments never quite sleep.", 3.6),
     ("gold", "Below them, nestled in a tranquil valley of ancient oaks and shimmering ponds, "
              "stands **Ravenstone Laboratory**: a graceful structure of stone and glass, its "
              "turrets spiraling upward like reaching fingers, capped with metal domes that catch "
@@ -312,7 +311,7 @@ BLOCKS = [
              "gown and a field jacket. He looks up, and his whole face lights with delight."),
     ("gold", "**Aelwyn:** “Ah, visitors! How wonderful. I do not get many these days.”"),
     ("img", f"{A}/npcs/professor_aelwyn_dalle.webp",
-     "Professor Aelwyn Ravenstone, planar researcher of Ravenstone Laboratory.", 3.9),
+     "Professor Aelwyn Ravenstone, planar researcher of Ravenstone Laboratory.", 3.4),
     ("gold", "Introductions are made all around: Lilly Glimmergear, Ursa Catchum, Stabby "
              "Sharpblade. “Please, call me Aelwyn,” the professor says, spreading his hands to "
              "the creatures perched on cushions and chandeliers around the study. “Any friend of "

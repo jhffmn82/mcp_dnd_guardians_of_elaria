@@ -385,8 +385,7 @@ BLOCKS = [
 
     # ------------------------------------------------------------------
     ("h1", "Appendix: Creatures of Session Three", {"pagebreak": True}),
-    ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives in "
-             "the compendium."),
+    ("body", "Compact statistics for the table; the full bestiary lives in the compendium."),
     ("stat", "Shadowflame", [
         "Medium undead, chaotic evil. **CR 4**. AC 14 (natural armor), HP 58 (9d8 + 18), Speed 0 ft., fly 40 ft. (hover).",
         "STR 8, DEX 18, CON 14, INT 12, WIS 15, CHA 18. Skills Stealth +8, Intimidation +6.",
@@ -407,20 +406,16 @@ BLOCKS = [
         "Small plant, neutral. **CR 2**. AC 13 (natural armor), HP 27 (5d8 + 5), Speed 20 ft.",
         "STR 12, DEX 12, CON 14, INT 6, WIS 12, CHA 7. Saves Con +4, Wis +3; Stealth +3, Perception +3.",
         "Resistance poison; immune to the poisoned condition. Darkvision 60 ft. Understands Sylvan.",
-        "**Bioluminescent Glow.** Dim light in a 10 ft. radius; can suppress it as a bonus action.",
-        "**Multiattack.** One Spore Blast and one Mycelium Tendrils.",
+        "**Bioluminescent Glow.** Dim light in a 10 ft. radius; can suppress it as a bonus action. **Multiattack.** One Spore Blast and one Mycelium Tendrils.",
         "**Spore Blast.** +4, range 30 ft., 2d6 + 2 poison; DC 13 Constitution save or poisoned one turn.",
         "**Mycelium Tendrils.** +4, reach 10 ft., 2d4 + 2 bludgeoning; DC 13 Strength save or restrained one turn.",
         "**Fungal Retribution (Reaction).** A melee attacker within 5 ft. takes 2d4 poison (DC 13 Constitution negates).",
     ]),
-    ("pagebreak",),
     ("h2", "The Professor's Companions"),
-    ("body", "Three small wonders were offered at Ravenstone Laboratory; the party chose Floraburst."),
     ("stat", "Floraburst (the party's companion)", [
         "Small fey, neutral good. AC 14 (natural armor), HP 45 (6d6 + 18), Speed 30 ft.",
         "STR 14, DEX 12, CON 16, INT 10, WIS 14, CHA 10. Skills Nature +4, Survival +4. Resistance poison. Darkvision 60 ft. Understands Sylvan and Common.",
-        "**Plant Camouflage.** Advantage on Stealth checks in heavy foliage.",
-        "**Photosynthesis.** Recovers 10 extra HP when resting in sunlight.",
+        "**Plant Camouflage.** Advantage on Stealth checks in heavy foliage. **Photosynthesis.** Recovers 10 extra HP when resting in sunlight.",
         "**Razor Leaf.** +4, range 30 ft., 2d8 + 2 slashing.",
         "**Vine Lash.** +4, reach 15 ft., 1d10 + 2 bludgeoning; DC 13 Strength save or restrained one turn.",
         "**Floraberry (3/Day).** Produces 1d4 + 1 magical berries; eating one restores 3 HP.",

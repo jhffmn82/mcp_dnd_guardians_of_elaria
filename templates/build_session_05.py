@@ -161,7 +161,7 @@ BLOCKS = [
              "the room. And stacked to the ceiling stand rows of battered crates, every one "
              "stamped with the same sigil: the mark of the **Gearhaven Artificers' Guild**."),
     ("img", f"{A}/characters/lilly_holding_the_sphere.png",
-     "In the lantern glow of the Dutchman's hold, Lilly keeps the Essence Sphere close.", 3.9),
+     "In the lantern glow of the Dutchman's hold, Lilly keeps the Essence Sphere close.", 3.4),
     ("gold", "From the shadows between the racks he comes: tall, tentacle bearded, hook handed, "
              "barnacles glowing along his arms like embers, each one holding some little trapped "
              "spark of life. **Davy Jones** taps one hooked fingertip, very gently, against the "
@@ -349,7 +349,7 @@ BLOCKS = [
              "finally opens her eyes.*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Appendix: Creatures of Session Five", {"pagebreak": True}),
+    ("h1", "Creatures of Session Five"),
     ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives "
              "in the compendium."),
     ("stat", "Davy Jones, Captain of the Flying Dutchman", [

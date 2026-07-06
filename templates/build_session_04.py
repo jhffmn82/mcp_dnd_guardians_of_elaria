@@ -297,7 +297,7 @@ BLOCKS = [
     ("gold", "**Krampusshade:** “Your defiance ends here. I will feast on your fear, and the "
              "children shall be mine forever!”"),
     ("img", f"{A}/monsters/krampusshade.png",
-     "The Krampusshade comes for Havenmoor.", 4.4),
+     "The Krampusshade comes for Havenmoor.", 3.5),
 
     ("h2", "The Bells' Harmony"),
     ("gold", "He slams his claws together and freezing power rolls across the square; his "
@@ -341,14 +341,14 @@ BLOCKS = [
     ("gold", "For **Lilly**, the **Frostbite Shard Dagger**: a blade of crystalline ice that "
              "never melts, glowing with faint blue arcane light, hungry to channel her spells."),
     ("img", f"{A}/characters/lilly_session4.png",
-     "Lilly Glimmergear and the Frostbite Shard Dagger, on the brightest morning of the festival.", 4.4),
+     "Lilly Glimmergear and the Frostbite Shard Dagger, on the brightest morning of the festival.", 3.4),
     ("gold", "For **Ursa**, the **Amulet of Guiding Light**: a polished silver starburst with a "
              "blue gem at its heart that pulses softly, like a distant star keeping watch."),
     ("gold", "And for **Stabby**, the **Candyfang Katana**: a katana of impossible candy-cane "
              "steel, red and white and wickedly sharp, trailing a faint scent of sugar. Stabby "
              "licks it immediately. It is delicious."),
     ("img", f"{A}/characters/stabby_cane.png",
-     "Stabby Sharpblade and the Candyfang Katana. Yes, he licked it.", 4.4),
+     "Stabby Sharpblade and the Candyfang Katana. Yes, he licked it.", 3.4),
     ("dm", "Full statistics for all three gifts live in the treasures compendium."),
     ("gold", "Down at the harbor, the shipwright **Master Doran Bramblebeard**, lighthouse soot "
              "still on his sleeves, nods toward a trim vessel rocking at the dock. “The "
