@@ -140,7 +140,7 @@ def _float_right(paragraph, data, w_in):
         '<wp:anchor xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" '
         'xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" '
         'behindDoc="0" distT="91440" distB="91440" distL="201600" distR="0" simplePos="0" locked="0" '
-        'layoutInCell="1" allowOverlap="1" relativeHeight="2">'
+        'layoutInCell="1" allowOverlap="0" relativeHeight="2">'
         '<wp:simplePos x="0" y="0"/>'
         '<wp:positionH relativeFrom="column"><wp:align>right</wp:align></wp:positionH>'
         '<wp:positionV relativeFrom="paragraph"><wp:posOffset>0</wp:posOffset></wp:positionV>'

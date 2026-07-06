@@ -113,7 +113,6 @@ BLOCKS = [
              "rests her leafy head against Lilly's knee, her bud swaying like a tiny banner. Some "
              "choices make themselves."),
     # The chosen companion floats right beside her adoption.
-    ("imgfloat", f"{A}/characters/floraburst.png", 2.25),
     ("gold", "**Lilly**, softly: “Hello, Floraburst. Want to come save the world with us?”"),
     ("dm", "**Floraburst** joins the party (statistics in the appendix). She senses planar "
            "anomalies, produces healing Floraberries, and is, by unanimous ruling, a very good "
