@@ -144,6 +144,8 @@ BLOCKS = [
              "a little silver bell in the other fist, humming the eerie rhyme under his breath. "
              "His name is **Milo**, and he will not let go. “He comes when it's dark,” Milo "
              "whispers. “With bells that jingle. I don't want to go with him.”"),
+    ("img", f"{A}/scenes/s4_orphanage_milo.png",
+     "At the Hollow Hearth Orphanage, brave little Milo gives up the last bell.", 3.2),
     ("gold", "So the heroes sit down on the floor with him. Stabby makes his very best silly "
              "faces. Floraburst produces a bright berry from her leaves. Ursa tells him, quietly, "
              "that bells are like stars: little lights the dark cannot put out, and that this one "
@@ -155,8 +157,6 @@ BLOCKS = [
              "*Shadows gather, and children weep.*\n"
              "*Ring the light, banish the shade,*\n"
              "*Or into the night, we'll be afraid.”*"),
-    ("img", f"{A}/scenes/s4_orphanage_milo.png",
-     "At the Hollow Hearth Orphanage, brave little Milo gives up the last bell.", 3.2),
     ("dm", "Calming Milo took gentleness, not dice: Charisma (Persuasion) DC 14 with advantage "
            "for kindness. Intelligence (Investigation) DC 15 found the G Bell in the attic toy "
            "chest."),
@@ -195,7 +195,7 @@ BLOCKS = [
              "white silence between the pines. What follows is the DM's deck of chances, exactly "
              "as it hung over every journey out of town that winter."),
     ("img", f"{A}/scenes/s4_frozen_hollow.png",
-     "The frozen wilds around Havenmoor, where every step off the road was a roll of the dice.", 3.6),
+     "The frozen wilds around Havenmoor, where every step off the road was a roll of the dice.", 2.6),
     ("dm", "**Travel Encounters.** Whenever the party sets out through the frozen wilds around "
            "Havenmoor, roll a d20 on the table below. Notes on the most colorful entries follow; "
            "full statistics for every creature live in the bestiary compendium."),
@@ -340,6 +340,19 @@ BLOCKS = [
            "damage if touched, and the ground beneath the grove is slick ice, Dexterity "
            "(Acrobatics) DC 14 to keep footing."),
 
+    ("h2", "Frozen Will-o'-Wisps"),
+    ("imgfloat", f"{A}/monsters/frozen_will_o_wisps.png", 2.25),
+    ("body", "Above a frozen pond, ghostly blue lights flicker and bob, beckoning travelers "
+             "out onto the ice with whispers of false promises. The scene looks tranquil, "
+             "almost inviting, but the mist around the lights is far, far too cold."),
+    ("dm", "**Frozen Will-o'-Wisps (CR 2 each).** Wisdom (Perception) DC 14 notices strange "
+           "ripples beneath the ice; Intelligence (Arcana) DC 15 names the lights for what "
+           "they are. The careless suffer a surprise round, slippery ice (Dexterity DC 13 "
+           "each round or fall prone), and 1d4 cold damage per round of exposure. Icy Shock "
+           "deals lightning and cold together, and the wisps blink invisible between "
+           "attacks. They guard a Gift Box, and a whispered warning of the Krampusshade's "
+           "icy influence."),
+
     ("h2", "Tricks of the Road"),
     ("dm", "**Blizzard Trap.** The wind rises and the world goes white. Wisdom (Survival) "
            "DC 14 finds the way through to a small sheltered grove where the party can rest "
@@ -356,19 +369,6 @@ BLOCKS = [
            "mimic, all teeth and adhesive. Its bigger cousin (CR 2, AC 12, HP 58, bite plus "
            "1d8 acid, DC 13 Strength to escape its grip) waits in the bestiary compendium "
            "for DMs feeling festive."),
-
-    ("h2", "Frozen Will-o'-Wisps"),
-    ("imgfloat", f"{A}/monsters/frozen_will_o_wisps.png", 2.25),
-    ("body", "Above a frozen pond, ghostly blue lights flicker and bob, beckoning travelers "
-             "out onto the ice with whispers of false promises. The scene looks tranquil, "
-             "almost inviting, but the mist around the lights is far, far too cold."),
-    ("dm", "**Frozen Will-o'-Wisps (CR 2 each).** Wisdom (Perception) DC 14 notices strange "
-           "ripples beneath the ice; Intelligence (Arcana) DC 15 names the lights for what "
-           "they are. The careless suffer a surprise round, slippery ice (Dexterity DC 13 "
-           "each round or fall prone), and 1d4 cold damage per round of exposure. Icy Shock "
-           "deals lightning and cold together, and the wisps blink invisible between "
-           "attacks. They guard a Gift Box, and a whispered warning of the Krampusshade's "
-           "icy influence."),
 
     ("h2", "Kindly Wonders"),
     ("body", "Not everything on the winter roads wished travelers ill. Some of it was "
@@ -571,7 +571,7 @@ BLOCKS = [
              "**Finn** hits his mother's arms at a dead run, and the sound she makes is the "
              "opposite of the one that woke the heroes that morning."),
     ("img", f"{A}/scenes/s4_children_freed.png",
-     "The sack bursts open, and Finn runs home to his mother's arms.", 3.9),
+     "The sack bursts open, and Finn runs home to his mother's arms.", 2.8),
     ("dm", "The final battle: the **Krampusshade** (CR 5) with **shadow imps** rising from the "
            "fog, while the party rang the eight bells into the Carol of the Bells. Each "
            "completed phrase of the carol seared him; the eighth harmony unmade him."),

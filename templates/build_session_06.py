@@ -57,7 +57,7 @@ BLOCKS = [
              "named: **Ghostbloom**. All that day, and all the strange night to come, her glow "
              "leans gently toward trouble, the way a compass leans north."),
     ("img", f"{A}/characters/ghostbloom.png",
-     "Ghostbloom, who was Floraburst, wakes beneath the coastal pines.", 2.5),
+     "Ghostbloom, who was Floraburst, wakes beneath the coastal pines.", 3.0),
 
     ("h2", "Lantern Night"),
     ("gold", "The footpath crests a rise, and the village of **Wraithpine** pools below in a "
@@ -66,8 +66,6 @@ BLOCKS = [
              "kettles, and a fiddle finds its first notes. The air is cider, beeswax, damp "
              "leaves. It is **Lantern Night**, the village's own festival, and everything about "
              "it is warm and bright and welcoming."),
-    ("img", f"{A}/scenes/s6_wraithpine_ridge.png",
-     "From the ridge crest: Wraithpine on Lantern Night, lanterns braided through the fog.", 4.2),
     ("gold", "Almost everything. As boots cross under the first lantern arch, a pressure pricks "
              "at the ears, like a mountain pass without a mountain. A thin note is drifting "
              "through the chimney flues and cellar grates. Wind, perhaps. Or the tail of a song "
@@ -75,6 +73,8 @@ BLOCKS = [
     ("dm", "Group **Wisdom save, DC 13**, the first time the thin note finds their ears. On a "
            "miss, one small fresh memory slips away, just enough to feel wrong; on a success, an "
            "ear-pop and a strange clarity."),
+    ("img", f"{A}/scenes/s6_wraithpine_ridge.png",
+     "From the ridge crest: Wraithpine on Lantern Night, lanterns braided through the fog.", 4.2),
 
     ("h2", "The Gasping Gull"),
     ("imgfloat", f"{A}/npcs/maera.png", 2.2),

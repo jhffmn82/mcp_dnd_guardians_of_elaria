@@ -87,7 +87,7 @@ BLOCKS = [
              "Artificer's Guild can upgrade your Sphere, yes. But its archives may also hold the "
              "secret of how to stitch a world back together.”"),
     ("img", f"{A}/npcs/professor_aelwyn_dalle.webp",
-     "Professor Aelwyn Ravenstone, planar researcher.", 3.9),
+     "Professor Aelwyn Ravenstone, planar researcher.", 3.2),
 
     # ------------------------------------------------------------------
     ("h1", "Part Two: Three Small Wonders", {"pagebreak": True}),
@@ -100,7 +100,7 @@ BLOCKS = [
              "small fox-like creature with flames dancing harmlessly along its paws and tail darts "
              "between the table legs, chasing an automaton twice its size: an **Emberpaws**."),
     ("img", f"{A}/scenes/s3_choose_companion.png",
-     "Aelwyn presents the three little wonders: Floraburst, Aqualump, and Emberpaws.", 4.2),
+     "Aelwyn presents the three little wonders: Floraburst, Aqualump, and Emberpaws.", 3.2),
     ("gold", "**Aelwyn:** “These little ones are manifestations of the unstable boundaries, each "
              "one carrying a fragment of elemental essence. They are not curiosities. They are "
              "clues. And they can sense planar anomalies long before you or I could.” He kneels "
@@ -220,6 +220,8 @@ BLOCKS = [
              "and the fog comes back with a grudge. Twisted trees knit out the sun, the mist curls "
              "around ankles, and every footstep lands muffled, as if the forest is holding a pillow "
              "over the sound."),
+    ("img", f"{A}/scenes/s3_displacer_beasts.png",
+     "The talking Displacer Beasts flow out of the Mistwood fog.", 4.2),
     ("dm", "Wisdom (Perception) DC 15: shapes flickering in the fog, pacing the party. Wisdom "
            "(Survival) DC 14: padded tracks that stop abruptly, mid-stride. Intelligence (Arcana) "
            "DC 16: planar distortion is warping the creatures here, granting them abilities they "
@@ -235,8 +237,6 @@ BLOCKS = [
              "**Second beast**, tentacles lashing: “They will never see it coming.”"),
     ("gold", "Displacer beasts do not talk. Everyone knows displacer beasts do not talk. The fog "
              "suddenly feels less like weather and more like a doorway someone left open."),
-    ("img", f"{A}/scenes/s3_displacer_beasts.png",
-     "The talking Displacer Beasts flow out of the Mistwood fog.", 4.2),
     ("dm", "**The fight.** Two displacer beasts (appendix). Displacement: attacks against each "
            "beast have disadvantage until it takes damage. Ursa's Faerie Fire stripped the trick "
            "away, and Stabby deflected a tentacle mid-swing to turn the tide."),
@@ -322,7 +322,7 @@ BLOCKS = [
              "until a beam of pure light lances up into the clouds and blooms into a shimmering "
              "curtain of energy above the platform."),
     ("img", f"{A}/scenes/s3_stormwatch_vision.png",
-     "The Dark Figure looms over the monoliths of the Stormwatch Cliffs.", 4.2),
+     "The Dark Figure looms over the monoliths of the Stormwatch Cliffs.", 3.0),
 
     ("h2", "The Dark Figure"),
     ("gold", "Within the curtain of light, a vision takes shape: a towering figure cloaked in "

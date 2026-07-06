@@ -254,7 +254,7 @@ BLOCKS = [
              "hum with stolen magic."),
     ("hero", "Ursa", "This is not Davy's doing alone. Something darker haunts this ship."),
     ("img", f"{A}/scenes/s5_hold_of_essences.png",
-     "Racks of caged magic: an owl-kin, a flame salamander, a frightened water sprite.", 4.1),
+     "Racks of caged magic: an owl-kin, a flame salamander, a frightened water sprite.", 3.0),
     ("gold", "Lilly draws her **Frostbite Shard Dagger**, frost curling off its edge into the "
              "green dark, and her eyes narrow. **Lilly:** “Then we cut it out at the source.”"),
     ("gold", "The guardians of the hold come all at once: a hulking **Smuggler's Golem** patched "

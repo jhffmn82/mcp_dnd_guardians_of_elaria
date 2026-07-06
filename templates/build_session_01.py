@@ -43,7 +43,7 @@ BLOCKS = [
              "handed and quicker witted, hearing every rumor in the room twice before anyone "
              "finishes telling it."),
     ("img", f"{A}/scenes/s1_gilded_acorn_meeting.png",
-     "The Gilded Acorn on the night three strangers became a party.", 4.0),
+     "The Gilded Acorn on the night three strangers became a party.", 3.2),
 
     ("h2", "Lilly's Arrival"),
     # Portrait floats right; intro paragraphs wrap around it.
@@ -88,12 +88,12 @@ BLOCKS = [
              "Something waiting."),
 
     ("h2", "Stabby's Grand Entrance"),
-    # Portrait floats right; intro paragraphs wrap around it.
-    ("imgfloat", f"{A}/npcs/s1_stabby_intro.png", 2.3),
     ("gold", "**BANG.** The tavern door slams open hard enough to rattle the trophies on the walls. "
              "In struts a goblin boy with green skin, light green hair, sharp little teeth, and red "
              "eyes lit with pure mischief. **Stabby Sharpblade**, eight years old and afraid of "
              "absolutely nothing, surveys the room like a king inspecting his castle."),
+    # Portrait floats right; the clan background paragraphs wrap around it.
+    ("imgfloat", f"{A}/npcs/s1_stabby_intro.png", 2.3),
     ("gold", "Stabby was born to the **Bloodfang Clan** in far off **Bloodthorn Hollow**, where "
              "goblin children learn to be quick or learn to be sorry. A wandering monk, **Master "
              "Kaelon Windstep** of the Whispering Breeze, taught him balance, patience (a little), "
@@ -109,6 +109,8 @@ BLOCKS = [
              "adventure involved, count me in!”"),
 
     ("h2", "Rumors and a Brawl"),
+    # Brawl scene floats right beside the rumor and brawl paragraphs.
+    ("imgfloat", f"{A}/scenes/s1_bar_brawl.png", 2.8),
     ("gold", "Osric brings mugs and news to the new table of three. All around them the tavern "
              "murmurs: *old Jarek saw something glowing in the woods again... strange winds out "
              "there... the trees do not sound right... folk say the forest is waking up.*"),
@@ -123,8 +125,6 @@ BLOCKS = [
              "A little friendly brawl, eh?”"),
     ("dm", "**The brawl.** Bren and two friends, fists, chairs, and one regrettable mug. Strictly "
            "non lethal. The three strangers fight together for the first time, and win."),
-    # Brawl scene floats right beside the fight paragraphs.
-    ("imgfloat", f"{A}/scenes/s1_bar_brawl.png", 2.8),
     ("gold", "It is short, loud, and glorious. Stabby fights like a rumor: everywhere and nowhere. "
              "Lilly's gadgets spark and startle. Ursa never even stands up all the way. When Bren "
              "finally sits down hard, rubbing his jaw, the whole tavern is laughing, and so, almost, "
@@ -179,6 +179,8 @@ BLOCKS = [
      "Beneath the eaves of the Forest of Whispers, where the starlight comes through in coins and slivers.", 3.7),
 
     ("h2", "The Stone Circle and the Duck with the Leek"),
+    # Duckleaf art floats right beside the stone circle and duel paragraphs.
+    ("imgfloat", f"{A}/monsters/duckleaf_stone_circle.png", 2.6),
     ("gold", "The trees open into a wide clearing where five towering stones stand in a rough ring, "
              "mossy and carved with runes too old to read. The air above them ripples like heat over "
              "a summer road. And perched atop the tallest stone, silhouetted against the sky, stands "
@@ -191,8 +193,6 @@ BLOCKS = [
     ("dm", "Intelligence (Arcana) DC 14: the stones are amplifying elemental air energy; the "
            "creature is drawing power from the **Elemental Plane of Air**. Disrupting a stone "
            "weakens its wind step."),
-    # Duckleaf art floats right beside the duel paragraphs.
-    ("imgfloat", f"{A}/monsters/duckleaf_stone_circle.png", 2.6),
     ("gold", "There is no talking their way past a guardian with a grudge and a leek. **Duckleaf** "
              "leaps from its stone and the wind leaps with it. It fights like a storm given feathers: "
              "riding gusts across the clearing, slashing with blades of sharpened air, loosing a "

@@ -165,7 +165,7 @@ BLOCKS = [
              "wandering far from home! You are bold, bringing friends. Shame they will make such a "
              "tasty meal!”"),
     ("img", f"{A}/scenes/s2_grimfang_ambush.png",
-     "Stabby squares off alone as the Grimfang war band boils out of the brush.", 4.2),
+     "Stabby squares off alone as the Grimfang war band boils out of the brush.", 3.2),
     ("dm", "The **Grimfang war band**: 2 goblin archers on the flanks, a worg and an orc in the "
            "melee, a hobgoblin sniping from the rear, and a goblin boss barking orders. The boss "
            "taunts Stabby about the Bloodfang all through the fight. Beaten, the survivors flee."),
@@ -212,6 +212,8 @@ BLOCKS = [
              "radiant being woven of intertwining vines, starlight, and flowing water, vast and "
              "gentle at once, her eyes holding the depth of the night sky. This is **Elaria**, "
              "and though none of them has ever heard her name, all of them somehow know it."),
+    ("img", f"{A}/scenes/s2_elaria_vision.png",
+     "Elaria, guardian of the planes, gathers out of starlight and vine above the three heroes.", 5.2),
     ("gold", "**Elaria:** “Seekers of truth. You have touched the threads that bind the "
              "realms. I am Elaria, guardian of the planes and of the balance that sustains them. "
              "A great disturbance ripples through existence, and the boundaries between worlds "
@@ -231,8 +233,6 @@ BLOCKS = [
              "**Elaria:** “The disturbances are but a symptom of a greater malady. An ancient "
              "entity seeks to exploit this weakness, consuming the essence of worlds. Unite your "
              "strengths. Restore the safeguards. Mend the fractures, before all is lost.”"),
-    ("img", f"{A}/scenes/s2_elaria_vision.png",
-     "Elaria, guardian of the planes, gathers out of starlight and vine above the three heroes.", 5.2),
     ("gold", "The expanse dissolves like breath off a mirror, and the party is standing in the "
              "Whispering Glade again, hands and hearts still tingling. Night has fallen while no "
              "time passed at all, and the stars overhead burn with extraordinary brilliance, as if "
@@ -318,7 +318,7 @@ BLOCKS = [
              "chirps a melodious greeting, and zips away up a spiral staircase, clearly expecting "
              "to be followed."),
     ("img", f"{A}/npcs/ravenstone_laboratory_dalle.webp",
-     "Inside Ravenstone Laboratory, where the instruments never quite sleep.", 4.2),
+     "Inside Ravenstone Laboratory, where the instruments never quite sleep.", 3.2),
 
     ("h2", "Professor Aelwyn Ravenstone"),
     # Portrait floats right; the study introduction wraps around it.
