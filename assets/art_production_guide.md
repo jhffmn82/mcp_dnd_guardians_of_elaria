@@ -5,11 +5,11 @@ The master list of campaign art: what exists, what is missing, and a ready-to-pa
 ## How to use this guide
 
 1. Every prompt below = STYLE BLOCK + the character block(s) named + the scene line. Paste all parts together.
-2. ATTACH REFERENCE IMAGES when a hero appears. DM-approved canonical references live in `assets/art_refs/`:
-   - Lilly: REF_lilly_1.png (lilly2, the shop scene)
-   - Stabby: REF_stabby_1.png (crossed arms with katana) + REF_stabby_2.png (chibi with glasses)
-   - Ursa: REF_ursa_1.png (leaf-tattoo portrait) + REF_ursa_2.jpg (turnaround model sheet). For Session 6+ scenes (staff, fur cloak era) ALSO attach REF_ursa_3_later.png.
-   - Ghostbloom: REF_ghostbloom.png; Floraburst: REF_floraburst.png
+2. ATTACH REFERENCE IMAGES when a hero appears. DM-approved canonical references live in `assets/art_refs/`, split by era because the heroes' gear changes:
+   - EARLY (Sessions 1-3, no relics): Lilly REF_lilly_1 (shop scene), REF_lilly_2 (flower portrait), REF_lilly_3 (sphere close-up, timeless); Stabby REF_stabby_1 (crossed arms), REF_stabby_2 (white hood grin); Ursa REF_ursa_1 (leaf-tattoo portrait), REF_ursa_2 (turnaround sheet).
+   - LATER (Session 4+ items, Session 6+ relics): Lilly ADD REF_lilly_4_later (winter coat + Frostbite Shard Dagger, S4+); Stabby ADD REF_stabby_3_later (crimson sash + Candyfang, S6+); Ursa ADD REF_ursa_3_later (staff + fur cloak, S6+).
+   - Companions: REF_ghostbloom.png (S6+); REF_floraburst.png (S3-S5).
+   - When generating an early-session scene, do NOT attach the later refs (they carry gear that does not exist yet), and vice versa.
 3. Save each result into the listed path with the listed filename, then tell Claude: the build scripts get updated and the prompt gets recorded in `image_manifest.md` (prompts are always preserved).
 4. Gear continuity matters: Ursa's staff and Stabby's sash exist only from Session 6 on; the Candyfang Katana only from late Session 4 on; Floraburst (green) before Session 6, Ghostbloom (pale teal) after.
 
