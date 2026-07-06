@@ -40,6 +40,8 @@ BLOCKS = [
              "his laugh booming over the noise. Between tables darts **Rhea the barmaid**, quick "
              "handed and quicker witted, hearing every rumor in the room twice before anyone "
              "finishes telling it."),
+    ("img", f"{A}/scenes/s1_gilded_acorn_meeting.png",
+     "The Gilded Acorn on the night three strangers became a party.", 4.0),
 
     ("h2", "Lilly's Arrival"),
     ("gold", "The tavern door opens on a traveler unlike any Eldridge has seen: a deep gnome girl, "
@@ -123,6 +125,8 @@ BLOCKS = [
              "Lilly's gadgets spark and startle. Ursa never even stands up all the way. When Bren "
              "finally sits down hard, rubbing his jaw, the whole tavern is laughing, and so, almost, "
              "is he."),
+    ("img", f"{A}/scenes/s1_bar_brawl.png",
+     "Bren picks the wrong table, and the three fight side by side for the first time.", 4.0),
     ("gold", "**Bren:** “Agh... fine. Maybe you are tougher than you look.”"),
     ("gold", "**Osric** claps his hands over the noise. “Alright, that is enough! Bren, leave "
              "these folks alone before I toss you out!” He sets a fresh round before the three "
@@ -158,6 +162,8 @@ BLOCKS = [
     ("gold", "Friend. The little fey creature falls in beside the party, flicking its tongue at "
              "fireflies, and just like that the three heroes become four travelers. All around the "
              "pond, where Lickgloom passed, the wildflowers are blooming out of season."),
+    ("img", f"{A}/scenes/s1_lickgloom_pond.png",
+     "The whispering pond at moonrise, where Lickgloom wandered through an open door.", 4.0),
 
     # ------------------------------------------------------------------
     ("h1", "Part Three: The Forest of Whispers", {"pagebreak": True}),
@@ -190,6 +196,8 @@ BLOCKS = [
              "wind, Ursa's magic finds it wherever it lands, and Lilly, watching the stones ripple, "
              "shouts the secret: *the circle is feeding it!* When the party disrupts one of the "
              "ancient stones, the gusts falter, and the duel turns."),
+    ("img", f"{A}/monsters/duckleaf_stone_circle.png",
+     "Duckleaf on the tallest stone, leek raised, the wind wheeling at its command.", 4.0),
     ("gold", "Beaten at last, Duckleaf sinks to the grass with one final, dignified quack. And then "
              "something strange: as the creature fades, a small **mote of energy** rises from it, "
              "faintly green, crackling with wind and light. It hovers a moment, warm to the touch, "
@@ -207,6 +215,8 @@ BLOCKS = [
              "behind them, calm and stern."),
     ("gold", "**Cognifin:** “You stand upon sacred ground. Prove your strength, or the waters "
              "will judge you.”"),
+    ("img", f"{A}/monsters/cognifin_grove.png",
+     "Cognifin rises above its own reflection in the glowing grove, waters waiting to judge.", 4.0),
     ("gold", "This one is no invader; it is a **guardian**, bound to test all who enter, and it "
              "fights like a slow, patient tide. Waves crash from a still pond. Whirlpools open where "
              "heroes stand. Psychic pressure squeezes like deep water. But the party fights as one "
@@ -233,6 +243,8 @@ BLOCKS = [
              "does not scatter. Back to back around Lickgloom, blade and bolt and starlight answer "
              "the howling, until the mist runs thin and empties, and two motes of **fey energy** "
              "glimmer where the stalkers fell, swirling briefly before the fog swallows them."),
+    ("img", f"{A}/scenes/s1_mist_stalkers.png",
+     "On the fog choked road, the Mist Stalkers hunt by howl and shadow.", 3.5),
     ("gold", "The pattern is a pattern now. Every strange creature leaves a mote behind, a little "
              "piece of another plane, loose in the world. Somewhere, doors are opening. The party "
              "walks the last miles wondering what is on the other side."),
@@ -243,6 +255,8 @@ BLOCKS = [
              "the windows. At the heart of the village square stands one ancient oak hung with faded "
              "ribbons and charms, an old well beside it, and the smell of woodsmoke and fresh bread "
              "on the air."),
+    ("img", f"{A}/scenes/s1_oakshade_twilight.png",
+     "Oakshade at twilight, its cottages tucked in the pockets of ancient oaks.", 3.0),
     ("gold", "It should feel peaceful. It almost does. But the villagers walk quickly, and their "
              "eyes keep sliding to the forest's edge, as if the trees might follow them home."),
     ("gold", "**Elder Merwin**, the village's gray streaked blacksmith and elder, meets the party "
