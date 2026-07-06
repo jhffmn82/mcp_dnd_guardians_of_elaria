@@ -27,6 +27,10 @@ BLOCKS = [
              "gratitude. The heroes slept in warm beds above the Old Oak Tavern. And then, morning."),
 
     # ------------------------------------------------------------------
+    ("img", f"{A}/scenes/s2_oakshade_morning.png",
+     "Dawn breaks over Oakshade Village, and the mist lets go at last.", 3.2),
+
+    # ------------------------------------------------------------------
     ("h1", "Part One: Morning in Oakshade", {"pagebreak": True}),
     ("gold", "Dawn breaks soft and silver over Oakshade Village. A last ribbon of mist clings to "
              "the square, curling around the great ribbon hung oak and the old well beside it. The "
@@ -52,6 +56,8 @@ BLOCKS = [
              "three young figures with leaves in their hair and empty herb baskets on their arms, "
              "blinking at the morning light like children waking from a long nap. The lost herb "
              "gatherers have come home: footsore, muddled, and completely unharmed."),
+    ("img", f"{A}/scenes/s2_villagers_return.png",
+     "The lost herb gatherers walk home at last, and Oakshade cheers its newest heroes.", 3.9),
     ("gold", "Their story spills out in pieces while mothers cry and neighbors cheer. The forest "
              "fog had turned them around, and around, and around; every path bent back on itself, "
              "and something in the whiteness kept howling, so they hid. Then last night, all at "
@@ -65,8 +71,6 @@ BLOCKS = [
              "gold pieces into their hands, proud as if he were knighting them."),
     ("dm", "Quest closed: the missing herb gatherers came home dazed but unharmed; the misdirecting "
            "fog lifted when the **Mist Stalkers** died. Merwin pays the promised **50 gp**."),
-    ("img", f"{A}/scenes/s2_villagers_return.png",
-     "The lost herb gatherers walk home at last, and Oakshade cheers its newest heroes.", 4.2),
 
     ("h2", "Whispers in the Square"),
     ("gold", "With the morning suddenly festive, tongues loosen, and the party spends an hour "
@@ -187,6 +191,8 @@ BLOCKS = [
              "air that holds no wind at all, so that the whole glade seems to murmur. At its "
              "center stands an old stone monument, cloaked in moss, carved with runes that glow "
              "faint as embers."),
+    ("img", f"{A}/scenes/s2_whispering_glade.png",
+     "The Whispering Glade at sunset, its mossy monument waiting in the windless hush.", 4.2),
     ("gold", "A calm settles over the party the moment they step inside. Time feels slower here; "
              "the forest's sounds arrive muffled, as if from another room. Then, one by one, "
              "strange things begin to hum. The **Essence Sphere** in Lilly's arms wakes with a "
@@ -254,16 +260,18 @@ BLOCKS = [
              "way single file when the ground begins to shake. Pebbles dance. Cracks race along "
              "the trail. And with a deep, resonant rumble, the path ahead heaves upward and "
              "becomes a creature."),
+    # Mountain-path approach floats right beside the Terranox reveal.
+    ("imgfloat", f"{A}/scenes/s2_mountain_path.png", 2.2),
     ("gold", "**Terranox** rises: a great serpent of living stone and packed earth, rocky scales "
              "glinting in the fading light, eyes glowing from within like windows onto slow "
              "magma. It regards the party the way a mountain regards weather, and then it strikes. "
              "There is no talking to it, no bargaining, no clever password. Some guardians test. "
              "This one only defends."),
-    ("img", f"{A}/monsters/terranox.png",
-     "Terranox, the stone serpent, rears from the mountain path in a rain of floating rock.", 4.2),
     ("dm", "**Terranox**, CR 4 elemental of the **Plane of Earth**. No parley. Immune to fire, so "
            "flame tricks fail again; it stomps the ground to knock heroes flat and coils around "
            "spellcasters. Loose rocks fall throughout: DC 12 Dexterity save or 1d10 bludgeoning."),
+    ("img", f"{A}/monsters/terranox.png",
+     "Terranox, the stone serpent, rears from the mountain path in a rain of floating rock.", 4.0),
     ("gold", "It is the hardest fight of their young lives. Terranox's tail sweeps like a falling "
              "tree; its stone coils catch Ursa mid spell and squeeze until Stabby's flurry of "
              "blows cracks the grip loose. Fire splashes off the creature like rain off a roof, so "
@@ -313,6 +321,8 @@ BLOCKS = [
      "Inside Ravenstone Laboratory, where the instruments never quite sleep.", 4.2),
 
     ("h2", "Professor Aelwyn Ravenstone"),
+    # Portrait floats right; the study introduction wraps around it.
+    ("imgfloat", f"{A}/npcs/professor_aelwyn_dalle.webp", 2.3),
     ("gold", "The staircase winds around an atrium of hanging plants and softly glowing crystals, "
              "opening into a vast study where bookshelves rise to a domed ceiling painted as the "
              "night sky. At a great wooden desk buried in open tomes, scrolls, and peculiar brass "
@@ -320,8 +330,6 @@ BLOCKS = [
              "hair, sharp emerald eyes, and robes that split the difference between a scholar's "
              "gown and a field jacket. He looks up, and his whole face lights with delight."),
     ("gold", "**Aelwyn:** “Ah, visitors! How wonderful. I do not get many these days.”"),
-    ("img", f"{A}/npcs/professor_aelwyn_dalle.webp",
-     "Professor Aelwyn Ravenstone, planar researcher of Ravenstone Laboratory.", 3.4),
     ("gold", "Introductions are made all around: Lilly Glimmergear, Ursa Catchum, Stabby "
              "Sharpblade. “Please, call me Aelwyn,” the professor says, spreading his hands to "
              "the creatures perched on cushions and chandeliers around the study. “Any friend of "

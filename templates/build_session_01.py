@@ -25,6 +25,8 @@ BLOCKS = [
              "themselves have been waiting for this evening."),
     ("dm", "The heroes begin this chronicle at **level 3**. Full creature statistics for every "
            "session live in the compendium; a compact appendix closes each session."),
+    ("img", f"{A}/scenes/s1_eldridge_village.png",
+     "Eldridge Village at dusk, where our story begins.", 2.9),
     ("img", f"{A}/world/elaria_region_map.png",
      "Eldridge Vale and the lands of Elaria, as mapped by the cartographers of Gearhaven.", 3.0),
 
@@ -63,8 +65,6 @@ BLOCKS = [
              "excited and nervous all at once, wondering what kind of person this Ursa will be."),
 
     ("h2", "Ursa's Curiosity"),
-    # Portrait floats right (file will be REPLACED by a scenes-era regen, pending billing).
-    ("imgfloat", f"{A}/characters/ursa_with_potato_dalle.webp", 2.3),
     ("gold", "Outside the village, a red haired boy lies back in the cool grass, tracing "
              "constellations as they wake in the darkening sky. **Ursa Catchum** knows the stars the "
              "way other children know their own street. His father, the renowned wildfire druid "
@@ -76,6 +76,8 @@ BLOCKS = [
              "natural flow of things, and when word reaches him that a stranger is asking for him by "
              "name, Ursa is already walking toward the village. Some part of him, the part his father "
              "left him, knows: something is beginning."),
+    # Portrait floats right; the tavern meeting paragraphs wrap around it.
+    ("imgfloat", f"{A}/npcs/s1_ursa_intro.png", 2.3),
     ("gold", "In the tavern, Ursa spots the silver haired gnome girl at once, and the strange "
              "contraption glowing faintly in her lap. He crosses the room, cautious and curious in "
              "equal measure."),
@@ -86,8 +88,8 @@ BLOCKS = [
              "Something waiting."),
 
     ("h2", "Stabby's Grand Entrance"),
-    # Portrait floats right (file will be REPLACED by a scenes-era regen, pending billing).
-    ("imgfloat", f"{A}/characters/stabby_portrait_dalle.webp", 2.3),
+    # Portrait floats right; intro paragraphs wrap around it.
+    ("imgfloat", f"{A}/npcs/s1_stabby_intro.png", 2.3),
     ("gold", "**BANG.** The tavern door slams open hard enough to rattle the trophies on the walls. "
              "In struts a goblin boy with green skin, light green hair, sharp little teeth, and red "
              "eyes lit with pure mischief. **Stabby Sharpblade**, eight years old and afraid of "
@@ -146,13 +148,13 @@ BLOCKS = [
              "water holds the starlight strangely, glowing faintly from below, and here the air "
              "shivers, as though the world's fabric is worn thin as old cloth."),
     ("dm", "Wisdom (Perception) DC 12 to spot a glimmering light moving in the reeds."),
-    # Pond scene floats right beside the Lickgloom introduction.
-    ("imgfloat", f"{A}/scenes/s1_lickgloom_pond.png", 2.8),
     ("gold", "Something small is moving at the water's edge. It is round bodied, about the size of a "
              "halfling, with faintly shimmering skin, enormous curious eyes, and a tongue longer than "
              "it is tall, which flicks out to taste the pond, then a wildflower, then the air in the "
              "party's direction. Around it the reeds sway toward it like friends leaning in, and the "
              "colors of the night seem brighter, dreamlike, wherever it goes."),
+    # Pond scene floats right beside the Lickgloom introduction.
+    ("imgfloat", f"{A}/scenes/s1_lickgloom_pond.png", 2.8),
     ("gold", "This is **Lickgloom**, a creature of the **Feywild**, a realm of wild wonder that "
              "presses close against our own. It did not break into the world. It simply wandered "
              "through a door that should not have been open."),
@@ -173,8 +175,8 @@ BLOCKS = [
              "starlight comes through in coins and slivers, and the wind moving in the leaves makes a "
              "long, low murmur, like a crowd whispering just out of sight. The mist thickens around "
              "your boots. The air feels charged, the way it does before a storm breaks."),
-    # stabby_twilight_forest_dalle.webp removed (off-style art).
-    # TODO: s1_forest_of_whispers.png when generated (establishing shot).
+    ("img", f"{A}/scenes/s1_forest_of_whispers.png",
+     "Beneath the eaves of the Forest of Whispers, where the starlight comes through in coins and slivers.", 3.7),
 
     ("h2", "The Stone Circle and the Duck with the Leek"),
     ("gold", "The trees open into a wide clearing where five towering stones stand in a rough ring, "
@@ -255,10 +257,10 @@ BLOCKS = [
              "the windows. At the heart of the village square stands one ancient oak hung with faded "
              "ribbons and charms, an old well beside it, and the smell of woodsmoke and fresh bread "
              "on the air."),
-    ("img", f"{A}/scenes/s1_oakshade_twilight.png",
-     "Oakshade at twilight, its cottages tucked in the pockets of ancient oaks.", 2.7),
     ("gold", "It should feel peaceful. It almost does. But the villagers walk quickly, and their "
              "eyes keep sliding to the forest's edge, as if the trees might follow them home."),
+    ("img", f"{A}/scenes/s1_oakshade_twilight.png",
+     "Oakshade at twilight, its cottages tucked in the pockets of ancient oaks.", 2.4),
     ("gold", "**Elder Merwin**, the village's gray streaked blacksmith and elder, meets the party "
              "by his forge, sizing them up with a smith's eye for good material. “New faces in "
              "Oakshade, eh? Have not seen travelers since the forest started acting strange. The "
