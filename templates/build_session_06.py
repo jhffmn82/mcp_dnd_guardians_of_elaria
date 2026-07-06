@@ -251,8 +251,8 @@ BLOCKS = [
              "Sometimes it's nice to hear yourself think.” The head turns. Not toward Maera. "
              "Toward the heroes. Its eyes aim at the place where their thoughts are, not the "
              "place where their bodies stand."),
-    ("img", f"{A}/scenes/ghostbloom_vs_hydra_head.png",
-     "With wax in their ears, the heroes finally see what has always been there.", 2.5),
+    ("img", f"{A}/scenes/s6_tavern_reveal.png",
+     "With wax in their ears, the heroes finally see what has always been there.", 4.4),
     ("dm", "**The tavern fight.** One **False Hydra Tavern Head** (appendix), in a room full of "
            "tables, stew pots, and one oblivious innkeeper to keep out of harm's way."),
     ("gold", "The fight is close and crashing: tables flipped for cover, the neck writhing "
