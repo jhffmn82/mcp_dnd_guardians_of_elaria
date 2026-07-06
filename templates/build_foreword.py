@@ -43,7 +43,7 @@ BLOCKS = [
              "Glimmerspire, she carries the Essence Sphere her mother Poots pressed into her hands, "
              "and the sleeping spark of a friend named Pikachu. She builds, she tinkers, and she "
              "does not leave anyone behind, caged or otherwise."),
-    ("dm", "**At the table:** Level 5 Artificer. Spell slots: four 1st, two 2nd. Her Eldritch Cannon deploys free via the Pocket Dynamo and runs all day."),
+    ("dm", "**At the table:** Level 5 Artificer. Spell slots: **1st ● ● ● ●   2nd ● ●**. Her Eldritch Cannon deploys free via the Pocket Dynamo and runs all day."),
     ("img", "assets/characters/lilly_v3_portrait.png", "Lilly Glimmergear and the Essence Sphere.", 2.8),
     ("h2", "Stabby Sharpblade"),
     ("body", "A goblin boy of the Bloodfang Clan, green and grinning and far too fast, trained a "
@@ -51,13 +51,13 @@ BLOCKS = [
              "fights like a rumor and laughs like a landslide, he came for the adventure and stayed "
              "for the friends."),
     ("img", "assets/characters/stabby_v3_portrait.png", "Stabby Sharpblade, mid-leap.", 2.8),
-    ("dm", "**At the table:** Level 5 Monk. No spell slots; he runs on **5 Focus Points** per short rest (Flurry of Blows, Stunning Strike, Patient Defense, Step of the Wind)."),
+    ("dm", "**At the table:** Level 5 Monk. No spell slots; he runs on **Focus ● ● ● ● ●** per short rest (Flurry of Blows, Stunning Strike, Patient Defense, Step of the Wind)."),
     ("h2", "Ursa Catchum"),
     ("body", "A human boy who reads the night sky like a map, son of the lost wildfire druid Ash "
              "Catchum. A {color:ursa}Druid{/} of the Circle of the Eternal Stars, he carries three "
              "enchanted potatoes and a great many questions, and a dragonmark that stirs whenever "
              "something frightened and voiceless needs him."),
-    ("dm", "**At the table:** Level 5 Druid. Spell slots: four 1st, three 2nd, two 3rd, plus about eight free Guiding Bolts a day from the Star Map and the Staff's charges."),
+    ("dm", "**At the table:** Level 5 Druid. Spell slots: **1st ● ● ● ●   2nd ● ● ●   3rd ● ●**, plus about eight free Guiding Bolts a day from the Star Map and the Staff's charges."),
     ("img", "assets/characters/ursa_v3_portrait.png", "Ursa Catchum with an enchanted potato.", 2.8),
     ("h2", "Ghostbloom"),
     ("body", "Their companion: once the little plant-sprite Floraburst, now a spirit of pale teal "

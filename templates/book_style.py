@@ -219,13 +219,25 @@ def _render_statblock(doc, sb):
     doc.add_paragraph().paragraph_format.space_after = Pt(0)
 
 
+def _page_parchment(doc, hexcolor="F9F2E2"):
+    """Book-wide parchment page color (exports to PDF via Word)."""
+    bg = OxmlElement('w:background')
+    bg.set(qn('w:color'), hexcolor)
+    doc.element.insert(0, bg)
+    settings = doc.settings.element
+    if settings.find(qn('w:displayBackgroundShape')) is None:
+        el = OxmlElement('w:displayBackgroundShape')
+        settings.append(el)
+
+
 def build_doc(blocks, out_path):
     doc = Document()
+    _page_parchment(doc)
     # US Letter, S8 margins
     sec = doc.sections[0]
     sec.page_width = Twips(12240); sec.page_height = Twips(15840)
     sec.left_margin = Twips(1440); sec.right_margin = Twips(1440)
-    sec.top_margin = Twips(1080); sec.bottom_margin = Twips(1080)
+    sec.top_margin = Twips(1080); sec.bottom_margin = Twips(1300)
     _footer_stars(sec)
 
     st_normal = doc.styles['Normal']
