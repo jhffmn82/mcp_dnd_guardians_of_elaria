@@ -1,5 +1,7 @@
 # INVENTORY.md — The Guardians of Elaria
 
+> **Note (Phase 2 complete, 2026-07-05):** paths below describe the PRE-reorganization layout and are now historical. For current locations, see `assets/image_manifest.md` (full old-path → new-path mapping) or git history (`git log --follow`).
+
 Phase 1 (read-only) inventory. Generated 2026-07-05. Nothing was moved, renamed, or edited to produce this file; it is a catalog only. Every path is relative to the repo root.
 
 Total files cataloged: 155 (excluding `.git/`).

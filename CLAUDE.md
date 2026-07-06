@@ -4,12 +4,12 @@ Family D&D campaign (2024 rules) run by Justin (the DM) for his kids. This repo 
 
 ## Current state of this repo
 
-This folder is mid-reorganization. It contains original files in their raw layout (session docs at root, `Pictures/`, `Character Sheets/`, `old stuff/`, `session 8/`, etc.). Do not assume a clean structure; consult INVENTORY.md if it exists, or generate it (see Phase 1).
+Phases 1 and 2 are complete. The repo uses the target layout: `sessions/`, `lore/`, `characters/` (with `path_rewards/` and `historical/`), `assets/` (with `image_manifest.md` preserving all original filenames and DALL-E prompts), `handoffs/`, `memory/`, `templates/`, `_triage/` (superseded drafts, duplicates, zips, third-party reference images). INVENTORY.md describes the pre-reorganization state; `assets/image_manifest.md` maps every old path to its new one.
 
-If the `memory/` folder or any of its files do not exist yet, create them:
+The `memory/` folder is live and must be maintained:
 - `memory/campaign_canon.md` — world state, timeline, NPCs, locations, relics, factions, plot threads
 - `memory/session_log.md` — one short entry per session (5-10 lines), newest last
-- `memory/house_rules.md` — seed it with the rulings in the House Rules section below, then maintain it there
+- `memory/house_rules.md` — house rules plus standing DM document rulings
 
 ## The party (all level 5 as of Session 8)
 
@@ -39,7 +39,7 @@ All three relics came from Wraithpine chests as Elaria's gift. A year-apart time
 - **Never invent campaign events.** When revising sessions 1-7: fix consistency, names, lore, and formatting only. Never change what happened at the table. When in doubt, flag it in the document with [DM CHECK: ...] instead of changing it.
 - **Recency wins.** The project evolved over time and fixes were never back-populated, so the newest documents (Session_8_Gearhaven_v2, Campaign_Handoff_v2) are the most accurate. When older and newer docs conflict, the newer one is canon.
 - **Fix clear inconsistencies without asking** (spelling drift, name drift, stale titles, rules drift): apply the recency rule and correct silently. Reserve CONTRADICTIONS.md and [DM CHECK] flags for genuinely ambiguous questions about what actually happened at the table.
-- Session 8 (Session_8_Gearhaven_v2) is the gold-standard format. All session revisions target that structure.
+- Session 8 (`sessions/session_08_gearhaven.docx`, formerly Session_8_Gearhaven_v2) is the gold-standard format. All session revisions target that structure.
 - Content is for kids: adventurous tone, real stakes, never gruesome.
 - No em dashes in any generated document; use commas, colons, semicolons, or parentheses.
 - Destructive operations: never delete files. Move unclear or superseded files to `_triage/`. Use `git mv` for renames so history is preserved.
