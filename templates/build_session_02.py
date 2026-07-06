@@ -65,6 +65,8 @@ BLOCKS = [
              "gold pieces into their hands, proud as if he were knighting them."),
     ("dm", "Quest closed: the missing herb gatherers came home dazed but unharmed; the misdirecting "
            "fog lifted when the **Mist Stalkers** died. Merwin pays the promised **50 gp**."),
+    ("img", f"{A}/scenes/s2_villagers_return.png",
+     "The lost herb gatherers walk home at last, and Oakshade cheers its newest heroes.", 4.2),
 
     ("h2", "Whispers in the Square"),
     ("gold", "With the morning suddenly festive, tongues loosen, and the party spends an hour "
@@ -127,6 +129,8 @@ BLOCKS = [
     ("dm", "Three **Mudskips** (CR 1/2 each). The mud is difficult terrain for everyone but them; "
            "they dart in, splash, and dive back into the pools. Resistant to fire, vulnerable to "
            "lightning: the fire tricks Lilly and Ursa lean on need rethinking today."),
+    ("img", f"{A}/scenes/s2_mudskip_ambush.png",
+     "Lilly rewires for lightning as the giggling Mudskips burst from the pools.", 4.2),
     ("gold", "The fight is half battle, half mud wrestling. The Mudskips spit gobs of muck, slap "
              "with their tails, and skate across the wet ground while the heroes' boots sink and "
              "stick. Stabby goes down face first exactly once and comes up spitting mud and "
@@ -156,8 +160,8 @@ BLOCKS = [
     ("gold", "**Grimfang boss:** “Well, well. If it is not one of the **Bloodfang Clan**, "
              "wandering far from home! You are bold, bringing friends. Shame they will make such a "
              "tasty meal!”"),
-    ("img", f"{A}/monsters/grimfang_clan.png",
-     "The fang and claw sigil of the Grimfang, rivals of Stabby's Bloodfang Clan.", 3.2),
+    ("img", f"{A}/scenes/s2_grimfang_ambush.png",
+     "Stabby squares off alone as the Grimfang war band boils out of the brush.", 4.2),
     ("dm", "The **Grimfang war band**: 2 goblin archers on the flanks, a worg and an orc in the "
            "melee, a hobgoblin sniping from the rear, and a goblin boss barking orders. The boss "
            "taunts Stabby about the Bloodfang all through the fight. Beaten, the survivors flee."),
@@ -221,6 +225,8 @@ BLOCKS = [
              "**Elaria:** “The disturbances are but a symptom of a greater malady. An ancient "
              "entity seeks to exploit this weakness, consuming the essence of worlds. Unite your "
              "strengths. Restore the safeguards. Mend the fractures, before all is lost.”"),
+    ("img", f"{A}/scenes/s2_elaria_vision.png",
+     "Elaria, guardian of the planes, gathers out of starlight and vine above the three heroes.", 5.2),
     ("gold", "The expanse dissolves like breath off a mirror, and the party is standing in the "
              "Whispering Glade again, hands and hearts still tingling. Night has fallen while no "
              "time passed at all, and the stars overhead burn with extraordinary brilliance, as if "
@@ -253,6 +259,8 @@ BLOCKS = [
              "magma. It regards the party the way a mountain regards weather, and then it strikes. "
              "There is no talking to it, no bargaining, no clever password. Some guardians test. "
              "This one only defends."),
+    ("img", f"{A}/monsters/terranox.png",
+     "Terranox, the stone serpent, rears from the mountain path in a rain of floating rock.", 4.2),
     ("dm", "**Terranox**, CR 4 elemental of the **Plane of Earth**. No parley. Immune to fire, so "
            "flame tricks fail again; it stomps the ground to knock heroes flat and coils around "
            "spellcasters. Loose rocks fall throughout: DC 12 Dexterity save or 1d10 bludgeoning."),
@@ -273,8 +281,8 @@ BLOCKS = [
     ("h1", "Part Five: Ravenstone Laboratory", {"pagebreak": True}),
     ("bridge", "Dusty, weary, and carrying pieces of three planes in their packs, the party "
                "crested the last wooded hill as twilight fell."),
-    ("img", f"{A}/npcs/ravenstone_laboratory_dalle.webp",
-     "Inside Ravenstone Laboratory, where the instruments never quite sleep.", 3.6),
+    ("img", f"{A}/scenes/s2_ravenstone_arrival.png",
+     "Lilly points the way as Ravenstone Laboratory glitters awake in the dusk below.", 4.2),
     ("gold", "Below them, nestled in a tranquil valley of ancient oaks and shimmering ponds, "
              "stands **Ravenstone Laboratory**: a graceful structure of stone and glass, its "
              "turrets spiraling upward like reaching fingers, capped with metal domes that catch "
@@ -301,6 +309,8 @@ BLOCKS = [
              "whelp with shimmering scales flutters up to the party, studies them with keen eyes, "
              "chirps a melodious greeting, and zips away up a spiral staircase, clearly expecting "
              "to be followed."),
+    ("img", f"{A}/npcs/ravenstone_laboratory_dalle.webp",
+     "Inside Ravenstone Laboratory, where the instruments never quite sleep.", 4.2),
 
     ("h2", "Professor Aelwyn Ravenstone"),
     ("gold", "The staircase winds around an atrium of hanging plants and softly glowing crystals, "
