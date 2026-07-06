@@ -358,7 +358,7 @@ BLOCKS = [
              "finally opens her eyes.*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Creatures of Session Five"),
+    ("h1", "Appendix: Creatures of Session Five", {"pagebreak": True}),
     ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives "
              "in the compendium."),
     ("stat", "Davy Jones, Captain of the Flying Dutchman", [

@@ -1,17 +1,17 @@
 # Art Production Guide
 
-The master list of campaign art: what exists, what is missing, and a ready-to-paste DALL-E prompt for every gap. Goal: bring Sessions 1-6 up to Session 8's illustration density (roughly 5-8 images per part) in ONE consistent style.
+The master list of campaign art: what exists, what is missing, and a ready-to-paste DALL-E prompt for every gap. Goal: bring Sessions 1-6 up to Session 7's (Gearhaven) illustration density (roughly 5-8 images per part) in ONE consistent style.
 
 ## How to use this guide
 
 1. Every prompt below = STYLE BLOCK + the character block(s) named + the scene line. Paste all parts together.
 2. ATTACH REFERENCE IMAGES when a hero appears. DM-approved canonical references live in `assets/art_refs/`, split by era because the heroes' gear changes:
    - EARLY (Sessions 1-3, no relics): Lilly REF_lilly_1 (shop scene), REF_lilly_2 (flower portrait), REF_lilly_3 (sphere close-up, timeless); Stabby REF_stabby_1 (crossed arms), REF_stabby_2 (white hood grin); Ursa REF_ursa_1 (leaf-tattoo portrait), REF_ursa_2 (turnaround sheet).
-   - LATER (Session 4+ items, Session 6+ relics): Lilly ADD REF_lilly_4_later (winter coat + Frostbite Shard Dagger, S4+) and REF_lilly_5_later (holding the Pocket Dynamo with Elaria's star sigil, S6+); Stabby ADD REF_stabby_3_later (crimson sash + Candyfang); Ursa ADD REF_ursa_3_later (staff + fur cloak). IMPORTANT: the relics (sash, staff, Dynamo) are received at the VERY END of Session 6; within-Session-6 scenes show NO relic gear (Candyfang katana yes, from S4). Relic refs apply to the S6 chest epilogue and Session 8 onward only.
+   - LATER (Session 4+ items, Session 6+ relics): Lilly ADD REF_lilly_4_later (winter coat + Frostbite Shard Dagger, S4+) and REF_lilly_5_later (holding the Pocket Dynamo with Elaria's star sigil, S6+); Stabby ADD REF_stabby_3_later (crimson sash + Candyfang); Ursa ADD REF_ursa_3_later (staff + fur cloak). IMPORTANT: the relics (sash, staff, Dynamo) are received at the VERY END of Session 6; within-Session-6 scenes show NO relic gear (Candyfang katana yes, from S4). Relic refs apply to the S6 chest epilogue and Session 7 onward only.
    - Companions: REF_ghostbloom.png (S6+); REF_floraburst.png (S3-S5).
    - When generating an early-session scene, do NOT attach the later refs (they carry gear that does not exist yet), and vice versa.
 3. Save each result into the listed path with the listed filename, then tell Claude: the build scripts get updated and the prompt gets recorded in `image_manifest.md` (prompts are always preserved).
-4. Gear continuity matters: the three relics (Ursa's staff, Stabby's sash, Lilly's Dynamo) appear only from the END of Session 6 (chest epilogue) and Session 8 on; the Candyfang Katana from late Session 4 on; Floraburst (green) before Session 6, Ghostbloom (pale teal) from Session 6 on.
+4. Gear continuity matters: the three relics (Ursa's staff, Stabby's sash, Lilly's Dynamo) appear only from the END of Session 6 (chest epilogue) and Session 7 on; the Candyfang Katana from late Session 4 on; Floraburst (green) before Session 6, Ghostbloom (pale teal) from Session 6 on.
 
 ## STYLE BLOCK (paste into every prompt)
 
@@ -45,7 +45,7 @@ Significant recurring characters (NPCs, villains, the goddess) have canonical re
 | Character art: lilly/stabby/ursa 2,4,5-series, with-staff, with-sash, holding-sphere, ghostbloom.png | S4-S6 |
 | Scene art: ursa_vs_rats, stabby_vs_strawlings, lilly_vs_zombies, ghostbloom_vs_hydra_head, lilly_opening_chest | S6 |
 | Stabby breathing styles (red/water/shadow), boomstick, awakened sphere, eldritch cannon | Compendium/paths |
-| Session 8: 41 beat images | S8 |
+| Session 7 (Gearhaven): 41 beat images (in `assets/session_08/`; folder name kept) | S7 |
 
 ---
 
@@ -114,7 +114,7 @@ For bestiary creatures that lack a dedicated portrait but DO appear in an approv
 | `scenes/s5_vigil_dawn.png` | LILLY STABBY URSA FLORABURST | Scene: a small rowing cutter at golden dawn, the exhausted children rowing toward distant clockwork spires on the horizon while a ghostly galleon splits and sinks far behind them. |
 
 ### Session 6: Lanterns in the Fog
-(DM verdict 2026-07-06: the existing S6 scene art is off-style (older pre-anchor generation batch) and is to be REPLACED wholesale with S8-style regenerations. Attach EARLY hero refs plus Ghostbloom (no relic gear exists during these scenes; Candyfang katana is fine); the chest-opening scene may use the later refs since the relics emerge there. The build swaps files one-for-one on approval; old files retire to _triage/old_art/.)
+(DM verdict 2026-07-06: the existing S6 scene art is off-style (older pre-anchor generation batch) and is to be REPLACED wholesale with S7-style (Gearhaven) regenerations. Attach EARLY hero refs plus Ghostbloom (no relic gear exists during these scenes; Candyfang katana is fine); the chest-opening scene may use the later refs since the relics emerge there. The build swaps files one-for-one on approval; old files retire to _triage/old_art/.)
 
 REPLACEMENT SET (regenerate in house style):
 | Save as | Characters | Scene line |

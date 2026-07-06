@@ -25,7 +25,7 @@ BOOK = [
     ("compendium/custom_compendium.docx",              "12_Compendium_III_Custom_Content.pdf"),
 ]
 
-# Source builders to run first (session 8 has no builder; it is edited in place).
+# Source builders to run first (session 7 has no builder; it is edited in place).
 BUILDERS = [
     "build_foreword.py", "build_lore.py",
     "build_session_01.py", "build_session_02.py", "build_session_03.py",

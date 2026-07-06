@@ -16,11 +16,11 @@ The canonical look of every significant, recurring character. Whenever art featu
 
 | Character | Ref file | Appears in | Notes |
 |---|---|---|---|
-| Professor Aelwyn Ravenstone | REF_aelwyn.webp | S2, S3 (logbook S8) | Tall silver-haired high elf, emerald eyes |
-| Guildmaster Vane | REF_vane.png | S8, recurs S9+ | Wild-haired old human inventor, brass goggles |
-| Quill | REF_quill.png | S8, recurs S9+ | Elegant silver Mechagnome archivist, blue eyes |
+| Professor Aelwyn Ravenstone | REF_aelwyn.webp | S2, S3 (logbook S7) | Tall silver-haired high elf, emerald eyes |
+| Guildmaster Vane | REF_vane.png | S7, recurs S8+ | Wild-haired old human inventor, brass goggles |
+| Quill | REF_quill.png | S7, recurs S8+ | Elegant silver Mechagnome archivist, blue eyes |
 | Elaria (the goddess) | REF_elaria.png | S2 vision, S6, throughout | Sleeping Warden; starlight-and-vine goddess, seven-point star at brow |
-| Nyxthid / the Dark Figure | REF_nyxthid.png | S3 vision, S13+ | Hooded shadow herald; unnamed to the party until late |
+| Nyxthid / the Dark Figure | REF_nyxthid.png | S3 vision, S12+ | Hooded shadow herald; unnamed to the party until late |
 | Davy Jones | REF_davy_jones.png | S5 (defeated) | Tentacle-bearded ghost captain |
 | The Krampusshade | REF_krampusshade.png | S4 (banished) | Ten-foot goat-horned winter fiend |
 | Faelan | REF_faelan.png | S4 | Ancient half-elf lorekeeper |
@@ -29,12 +29,12 @@ The canonical look of every significant, recurring character. Whenever art featu
 ## Reference gaps (recurring characters still needing a canonical portrait)
 
 Generate a clean portrait for these when convenient, then add to the table and `art_refs/`:
-- **Pikachu** (the Spark Fox) - returns S14; only appears inside the S8 `pikachu_returns` scene so far. Crop or generate a clean ref.
-- **Skitch** - the young Bloodfang courier (S8, recurs via the Bloodfang thread); only inside `stabby_and_skitch`.
+- **Pikachu** (the Spark Fox) - returns S13; only appears inside the S7 `pikachu_returns` scene so far. Crop or generate a clean ref.
+- **Skitch** - the young Bloodfang courier (S7, recurs via the Bloodfang thread); only inside `stabby_and_skitch`.
 - **Poots Glimmergear** - Lilly's mother; recurs if Lilly walks the Glimmerspire road.
 - **Captain Brynn Wavewarden** - S5 ship captain; taught the knot lessons echoed in S6.
 - **Maera** - keeper of the Gasping Gull (S6).
-- **Henna Brasspot, Burl, Mara Sprocket, Tock, Pinion** - Gearhaven hub regulars (S8+); portraits exist inside S8 scenes, crop if they recur.
+- **Henna Brasspot, Burl, Mara Sprocket, Tock, Pinion** - Gearhaven hub regulars (S7+); portraits exist inside S7 scenes, crop if they recur.
 
 ## How to use
 

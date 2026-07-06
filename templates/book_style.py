@@ -346,6 +346,29 @@ def build_doc(blocks, out_path):
                 cp.paragraph_format.space_after = Pt(7)
                 r = cp.add_run(caption); _set_font(r, Pt(9), italic=True, color=CAPTION_GRAY)
 
+        elif kind == "imgfloat":
+            # (imgfloat, path, width_inches[, "left"|"right"]) - image floated
+            # into the following text with square wrap; no caption. The text
+            # that comes AFTER this block flows around the image.
+            _, path, w = blk[0], blk[1], blk[2]
+            side = blk[3] if len(blk) > 3 else "right"
+            data, pw, ph = _image_png_bytes(path)
+            if w * (ph / pw) > 3.4:
+                w = 3.4 / (ph / pw)
+            p = doc.add_paragraph()
+            p.paragraph_format.space_after = Pt(0); p.paragraph_format.space_before = Pt(0)
+            _float_right(p, data, w)
+            if side == "left":
+                # flip the anchor alignment to left
+                anch = p._p.findall('.//' + qn('wp:anchor'))
+                if anch:
+                    al = anch[0].find(qn('wp:positionH') + '/' + qn('wp:align'))
+                    if al is None:
+                        ph_el = anch[0].find(qn('wp:positionH'))
+                        al = ph_el.find(qn('wp:align'))
+                    if al is not None:
+                        al.text = 'left'
+
         elif kind == "pagebreak":
             p = doc.add_paragraph()
             p.add_run().add_break(WD_BREAK.PAGE)
