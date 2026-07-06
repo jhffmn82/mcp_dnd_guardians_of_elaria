@@ -106,7 +106,19 @@ The master list of campaign art: what exists, what is missing, and a ready-to-pa
 | `scenes/s5_vigil_dawn.png` | LILLY STABBY URSA FLORABURST | Scene: a small rowing cutter at golden dawn, the exhausted children rowing toward distant clockwork spires on the horizon while a ghostly galleon splits and sinks far behind them. |
 
 ### Session 6: Lanterns in the Fog
-(Good coverage exists; these fill the holes.)
+(DM verdict 2026-07-06: the existing S6 scene art is off-style (older pre-anchor generation batch) and is to be REPLACED wholesale with S8-style regenerations. Attach the LATER refs: Stabby sash era, Ursa staff era, Lilly Dynamo era, Ghostbloom. The build swaps files one-for-one on approval; old files retire to _triage/old_art/.)
+
+REPLACEMENT SET (regenerate in house style):
+| Save as | Characters | Scene line |
+|---|---|---|
+| `scenes/s6_cellar_rats.png` | URSA GHOSTBLOOM | Scene: a stone tavern cellar by lantern light, the druid boy standing firm as a chittering tide of rats boils out of a cracked wall seam, the ghostly plant-fey glowing above his shoulder. |
+| `scenes/s6_pumpkin_row.png` | STABBY | Scene: a moonlit lane of hay bales where jack-o'-lanterns all stare one direction, the goblin boy mid-leap between two lurching scarecrows trailing straw, candy-striped katana flashing. |
+| `scenes/s6_graveyard_rite.png` | LILLY | Scene: a cypress-ringed graveyard in fog, the tiny gnome girl holding up a blue-glass lantern before a headstone whose name has been chiseled away, gentle golden light pushing back rising shadows. |
+| `scenes/s6_tavern_reveal.png` | GHOSTBLOOM | Scene: a warm inn common room where, above an open trapdoor, a single pale long-necked creature head looms unseen by the cheerful patrons below, the little ghost-fey blazing teal in warning, spooky-storybook not gruesome. |
+| `scenes/s6_chest_opening.png` | LILLY STABBY URSA GHOSTBLOOM | Scene: in a golden shaft of light underground, the three children kneel around a half-buried chest bound in silver vines as the ghost-fey sings it open, three faint treasures glowing within. |
+| `monsters/false_hydra_lair.png` | none | Scene: a vast drowned orchestra pit beneath a ruined theater, a pale bulbous many-necked creature rising from dark water among floating playbills and ribbons, four serpent necks through holes in the stage above, eerie-beautiful storybook horror. |
+
+(These older originals also fill the holes below if regeneration is deferred.)
 | Save as | Characters | Scene line |
 |---|---|---|
 | `scenes/s6_ghostbloom_naming.png` | LILLY STABBY URSA GHOSTBLOOM | Scene: on a morning coastal path among wind-bent pines, the three children gathered in wonder around their transformed companion, now pale translucent teal and floating, frost-crystal petals chiming. |
