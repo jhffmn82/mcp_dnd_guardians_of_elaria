@@ -26,7 +26,7 @@ BLOCKS = [
     ("dm", "The heroes begin this chronicle at **level 3**. Full creature statistics for every "
            "session live in the compendium; a compact appendix closes each session."),
     ("img", f"{A}/world/elaria_region_map.png",
-     "Eldridge Vale and the lands of Elaria, as mapped by the cartographers of Gearhaven.", 3.6),
+     "Eldridge Vale and the lands of Elaria, as mapped by the cartographers of Gearhaven.", 3.0),
 
     # ------------------------------------------------------------------
     ("h1", "Part One: The Gilded Acorn", {"pagebreak": True}),
@@ -44,6 +44,8 @@ BLOCKS = [
      "The Gilded Acorn on the night three strangers became a party.", 4.0),
 
     ("h2", "Lilly's Arrival"),
+    # Portrait floats right; intro paragraphs wrap around it.
+    ("imgfloat", f"{A}/characters/lilly_with_essence_sphere_dalle.webp", 2.3),
     ("gold", "The tavern door opens on a traveler unlike any Eldridge has seen: a deep gnome girl, "
              "small even for her folk, with skin like polished slate, long silver hair, and striking "
              "red eyes. **Lilly Glimmergear** has walked a long way from **Deepforge Hollow**, and the "
@@ -54,8 +56,6 @@ BLOCKS = [
              "hands before she left. Inside it sleeps the spark of a creature called **Pikachu**, an "
              "old friend trapped without a body. *Find Ursa Catchum*, her mother said. *The son of my "
              "old adventuring companion. If anyone can help you wake our friend, it is that family.*"),
-    ("img", f"{A}/characters/lilly_with_essence_sphere_dalle.webp",
-     "Lilly Glimmergear and the Essence Sphere.", 2.7),
     ("gold", "**Osric:** “Ursa, you say? Odd lad, that one. Can usually be found star gazing out "
              "in the fields, or else wandering the woods. If you are looking for him, best sit tight "
              "and wait. He comes around often enough.”"),
@@ -63,6 +63,8 @@ BLOCKS = [
              "excited and nervous all at once, wondering what kind of person this Ursa will be."),
 
     ("h2", "Ursa's Curiosity"),
+    # Portrait floats right (file will be REPLACED by a scenes-era regen, pending billing).
+    ("imgfloat", f"{A}/characters/ursa_with_potato_dalle.webp", 2.3),
     ("gold", "Outside the village, a red haired boy lies back in the cool grass, tracing "
              "constellations as they wake in the darkening sky. **Ursa Catchum** knows the stars the "
              "way other children know their own street. His father, the renowned wildfire druid "
@@ -74,8 +76,6 @@ BLOCKS = [
              "natural flow of things, and when word reaches him that a stranger is asking for him by "
              "name, Ursa is already walking toward the village. Some part of him, the part his father "
              "left him, knows: something is beginning."),
-    ("img", f"{A}/characters/ursa_with_potato_dalle.webp",
-     "Ursa Catchum, son of Ash, with one of his father's enchanted potatoes.", 2.7),
     ("gold", "In the tavern, Ursa spots the silver haired gnome girl at once, and the strange "
              "contraption glowing faintly in her lap. He crosses the room, cautious and curious in "
              "equal measure."),
@@ -86,6 +86,8 @@ BLOCKS = [
              "Something waiting."),
 
     ("h2", "Stabby's Grand Entrance"),
+    # Portrait floats right (file will be REPLACED by a scenes-era regen, pending billing).
+    ("imgfloat", f"{A}/characters/stabby_portrait_dalle.webp", 2.3),
     ("gold", "**BANG.** The tavern door slams open hard enough to rattle the trophies on the walls. "
              "In struts a goblin boy with green skin, light green hair, sharp little teeth, and red "
              "eyes lit with pure mischief. **Stabby Sharpblade**, eight years old and afraid of "
@@ -95,8 +97,6 @@ BLOCKS = [
              "Kaelon Windstep** of the Whispering Breeze, taught him balance, patience (a little), "
              "and gave him his name. Then the road called, and Stabby followed it here, bored and "
              "hungry for excitement."),
-    ("img", f"{A}/characters/stabby_portrait_dalle.webp",
-     "Stabby Sharpblade of the Bloodfang Clan.", 2.7),
     ("gold", "He notices the glowing sphere immediately. He notices the two interesting strangers "
              "around it immediately after. He invites himself to their table before either can say a word."),
     ("gold", "**Stabby:** “Oi! You two look like you are planning an adventure!” He plops "
@@ -121,12 +121,12 @@ BLOCKS = [
              "A little friendly brawl, eh?”"),
     ("dm", "**The brawl.** Bren and two friends, fists, chairs, and one regrettable mug. Strictly "
            "non lethal. The three strangers fight together for the first time, and win."),
+    # Brawl scene floats right beside the fight paragraphs.
+    ("imgfloat", f"{A}/scenes/s1_bar_brawl.png", 2.8),
     ("gold", "It is short, loud, and glorious. Stabby fights like a rumor: everywhere and nowhere. "
              "Lilly's gadgets spark and startle. Ursa never even stands up all the way. When Bren "
              "finally sits down hard, rubbing his jaw, the whole tavern is laughing, and so, almost, "
              "is he."),
-    ("img", f"{A}/scenes/s1_bar_brawl.png",
-     "Bren picks the wrong table, and the three fight side by side for the first time.", 4.0),
     ("gold", "**Bren:** “Agh... fine. Maybe you are tougher than you look.”"),
     ("gold", "**Osric** claps his hands over the noise. “Alright, that is enough! Bren, leave "
              "these folks alone before I toss you out!” He sets a fresh round before the three "
@@ -146,6 +146,8 @@ BLOCKS = [
              "water holds the starlight strangely, glowing faintly from below, and here the air "
              "shivers, as though the world's fabric is worn thin as old cloth."),
     ("dm", "Wisdom (Perception) DC 12 to spot a glimmering light moving in the reeds."),
+    # Pond scene floats right beside the Lickgloom introduction.
+    ("imgfloat", f"{A}/scenes/s1_lickgloom_pond.png", 2.8),
     ("gold", "Something small is moving at the water's edge. It is round bodied, about the size of a "
              "halfling, with faintly shimmering skin, enormous curious eyes, and a tongue longer than "
              "it is tall, which flicks out to taste the pond, then a wildflower, then the air in the "
@@ -162,8 +164,6 @@ BLOCKS = [
     ("gold", "Friend. The little fey creature falls in beside the party, flicking its tongue at "
              "fireflies, and just like that the three heroes become four travelers. All around the "
              "pond, where Lickgloom passed, the wildflowers are blooming out of season."),
-    ("img", f"{A}/scenes/s1_lickgloom_pond.png",
-     "The whispering pond at moonrise, where Lickgloom wandered through an open door.", 4.0),
 
     # ------------------------------------------------------------------
     ("h1", "Part Three: The Forest of Whispers", {"pagebreak": True}),
@@ -173,8 +173,8 @@ BLOCKS = [
              "starlight comes through in coins and slivers, and the wind moving in the leaves makes a "
              "long, low murmur, like a crowd whispering just out of sight. The mist thickens around "
              "your boots. The air feels charged, the way it does before a storm breaks."),
-    ("img", f"{A}/scenes/stabby_twilight_forest_dalle.webp",
-     "Into the Forest of Whispers.", 5.4),
+    # stabby_twilight_forest_dalle.webp removed (off-style art).
+    # TODO: s1_forest_of_whispers.png when generated (establishing shot).
 
     ("h2", "The Stone Circle and the Duck with the Leek"),
     ("gold", "The trees open into a wide clearing where five towering stones stand in a rough ring, "
@@ -189,6 +189,8 @@ BLOCKS = [
     ("dm", "Intelligence (Arcana) DC 14: the stones are amplifying elemental air energy; the "
            "creature is drawing power from the **Elemental Plane of Air**. Disrupting a stone "
            "weakens its wind step."),
+    # Duckleaf art floats right beside the duel paragraphs.
+    ("imgfloat", f"{A}/monsters/duckleaf_stone_circle.png", 2.6),
     ("gold", "There is no talking their way past a guardian with a grudge and a leek. **Duckleaf** "
              "leaps from its stone and the wind leaps with it. It fights like a storm given feathers: "
              "riding gusts across the clearing, slashing with blades of sharpened air, loosing a "
@@ -196,8 +198,6 @@ BLOCKS = [
              "wind, Ursa's magic finds it wherever it lands, and Lilly, watching the stones ripple, "
              "shouts the secret: *the circle is feeding it!* When the party disrupts one of the "
              "ancient stones, the gusts falter, and the duel turns."),
-    ("img", f"{A}/monsters/duckleaf_stone_circle.png",
-     "Duckleaf on the tallest stone, leek raised, the wind wheeling at its command.", 4.0),
     ("gold", "Beaten at last, Duckleaf sinks to the grass with one final, dignified quack. And then "
              "something strange: as the creature fades, a small **mote of energy** rises from it, "
              "faintly green, crackling with wind and light. It hovers a moment, warm to the touch, "
@@ -206,6 +206,8 @@ BLOCKS = [
              "world.”"),
 
     ("h2", "The Grove of Elemental Waters"),
+    # Cognifin art floats right beside the grove paragraphs.
+    ("imgfloat", f"{A}/monsters/cognifin_grove.png", 2.6),
     ("gold", "Deeper still, the ground turns soft and the sound of water leads the party to a hidden "
              "grove, where a wide pond glows a gentle blue from beneath, and droplets of water hang "
              "in the air, suspended as if time forgot them. Nothing here feels quite of this world."),
@@ -215,8 +217,6 @@ BLOCKS = [
              "behind them, calm and stern."),
     ("gold", "**Cognifin:** “You stand upon sacred ground. Prove your strength, or the waters "
              "will judge you.”"),
-    ("img", f"{A}/monsters/cognifin_grove.png",
-     "Cognifin rises above its own reflection in the glowing grove, waters waiting to judge.", 4.0),
     ("gold", "This one is no invader; it is a **guardian**, bound to test all who enter, and it "
              "fights like a slow, patient tide. Waves crash from a still pond. Whirlpools open where "
              "heroes stand. Psychic pressure squeezes like deep water. But the party fights as one "
@@ -237,14 +237,14 @@ BLOCKS = [
              "over in its sleep. Shapes move in the murk."),
     ("dm", "Dexterity (Acrobatics) DC 12 across the root falls; Wisdom (Perception) DC 13 to hold "
            "the path in fog. Then: two **Mist Stalkers**, ambushing from the white."),
+    # Mist Stalker scene floats right beside the ambush paragraphs.
+    ("imgfloat", f"{A}/scenes/s1_mist_stalkers.png", 2.6),
     ("gold", "They come with no sound at all: two sleek predators of fog and hunger, eyes like cold "
              "lamps, wearing the mist like a cloak. Their howls roll through the whiteness from "
              "every direction at once, hunting fear the way wolves hunt the slow. But this party "
              "does not scatter. Back to back around Lickgloom, blade and bolt and starlight answer "
              "the howling, until the mist runs thin and empties, and two motes of **fey energy** "
              "glimmer where the stalkers fell, swirling briefly before the fog swallows them."),
-    ("img", f"{A}/scenes/s1_mist_stalkers.png",
-     "On the fog choked road, the Mist Stalkers hunt by howl and shadow.", 3.5),
     ("gold", "The pattern is a pattern now. Every strange creature leaves a mote behind, a little "
              "piece of another plane, loose in the world. Somewhere, doors are opening. The party "
              "walks the last miles wondering what is on the other side."),
@@ -256,7 +256,7 @@ BLOCKS = [
              "ribbons and charms, an old well beside it, and the smell of woodsmoke and fresh bread "
              "on the air."),
     ("img", f"{A}/scenes/s1_oakshade_twilight.png",
-     "Oakshade at twilight, its cottages tucked in the pockets of ancient oaks.", 3.0),
+     "Oakshade at twilight, its cottages tucked in the pockets of ancient oaks.", 2.7),
     ("gold", "It should feel peaceful. It almost does. But the villagers walk quickly, and their "
              "eyes keep sliding to the forest's edge, as if the trees might follow them home."),
     ("gold", "**Elder Merwin**, the village's gray streaked blacksmith and elder, meets the party "

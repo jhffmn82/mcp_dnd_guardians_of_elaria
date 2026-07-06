@@ -30,9 +30,11 @@ BLOCKS = [
            "compendium; a compact appendix closes the session."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part One: Fair Winds from Havenmoor", {"pagebreak": True}),
     ("img", f"{A}/scenes/s5_harbor_sendoff.png",
-     "A grateful Havenmoor cheers the Guardians up the Stormwind's gangplank.", 4.1),
+     "A grateful Havenmoor cheers the Guardians up the Stormwind's gangplank.", 2.9),
+
+    # ------------------------------------------------------------------
+    ("h1", "Part One: Fair Winds from Havenmoor", {"pagebreak": True}),
     ("gold", "Rosy dawn light spills over Havenmoor's busy harbor. Fishing boats lie tethered "
              "beside merchant galleys, sails unfurling in the sea breeze, and salt spray drifts "
              "across the docks with the cries of gulls. On every lamppost flutters a brightly "
