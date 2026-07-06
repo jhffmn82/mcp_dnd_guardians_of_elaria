@@ -151,3 +151,34 @@ REPLACEMENT SET (regenerate in house style):
 ## Workflow after generation
 
 Drop finished images in the listed folders, then tell Claude which ones landed. Claude will: (1) record every generation prompt verbatim in `image_manifest.md`, (2) wire the images into the session build scripts, (3) rebuild the docx files, (4) update this guide's EXISTS table.
+
+## ESTABLISHING / LANDSCAPE SHOTS (next batch, pending billing)
+
+Sessions are well-illustrated, but these named LOCATIONS lack a wide establishing shot to ground players in the place. Landscape orientation, no characters needed (or tiny for scale). Where a scene already exists at that location, attach it as a style reference for continuity.
+
+Session 1 (Eldridge Vale)
+- `scenes/s1_eldridge_village.png` - the starting village: cottages in rolling green hills at dusk, the Gilded Acorn's sign, smoke from chimneys.
+- `scenes/s1_forest_clearing_stone_circle.png` - wide of the five-stone rune circle clearing in the misty Forest of Whispers (ref duckleaf_stone_circle).
+
+Session 2
+- `scenes/s2_whispering_glade.png` - the mossy runestone glade by day, serene and sacred (ref s2_elaria_vision background).
+- `scenes/s2_mountain_path.png` - the cliff-lined mountain pass where Terranox blocked the way.
+
+Session 3
+- `scenes/s3_whisperwind_meadow.png` - the calm windswept meadow interlude (currently text-only).
+- `scenes/s3_brambleshadow_thicket.png` - the thorny twilight fey-thicket (ref shadowflame background).
+
+Session 4 (Havenmoor, winter)
+- `scenes/s4_havenmoor_town.png` - wide snowy Havenmoor: harbor, the Great Pine, festive lights.
+- `scenes/s4_frostpine_glade.png`, `s4_crystalbrook_stream.png`, `s4_whispering_hollow.png` - the three barriers of darkness (only the glade is shown now). NOTE: mined art `s4_whispering_hollow.png` and `s4_frozen_hollow.png` already exist in assets/scenes; check if usable before regenerating.
+
+Session 5
+- `scenes/s5_open_sea.png` - the Stormwind under sail on open water by day, before the storm (a calm-before shot).
+
+Session 6 (Wraithpine)
+- `scenes/s6_wraithpine_ridge.png` - the first view of fog-bound Wraithpine from the ridge (the arrival beat).
+- `scenes/s6_old_theater.png` - the abandoned Old Theater exterior, where the song lives.
+
+Session 7 (Gearhaven): already richly covered by the beat art; no gaps.
+
+Workflow: generate landscape (1536x1024 if supported, else 1024) with the style block, attach the existing same-location scene as a reference for palette/architecture continuity, save to the path above, approve, then a wiring pass drops each into its beat.
