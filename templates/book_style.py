@@ -107,6 +107,103 @@ def _image_png_bytes(path, max_w_px=1600):
     im.save(buf, format="PNG", optimize=True)
     return buf.getvalue(), im.width, im.height
 
+def _sb_line(doc, label, text, size=Pt(9)):
+    p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
+    p.paragraph_format.space_after = Pt(0); p.paragraph_format.space_before = Pt(0)
+    r = p.add_run(label + " "); _set_font(r, size, True, color=STAT_EDGE)
+    _rich(p, text, base_size=size)
+
+def _sb_rule(doc):
+    p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
+    p.paragraph_format.space_after = Pt(1); p.paragraph_format.space_before = Pt(1)
+    ppr = p._p.get_or_add_pPr(); pbdr = ppr.find(qn('w:pBdr'))
+    bot = OxmlElement('w:bottom')
+    bot.set(qn('w:val'), 'single'); bot.set(qn('w:sz'), '4'); bot.set(qn('w:space'), '1'); bot.set(qn('w:color'), STAT_EDGE)
+    pbdr.append(bot)
+
+def _mod(score):
+    m = (int(score) - 10) // 2
+    return f"+{m}" if m >= 0 else str(m)
+
+def _render_statblock(doc, sb):
+    """Classic 5e statblock in the crimson house box. sb is a dict:
+    name, type, ac, hp, speed, abilities {STR..CHA}, optional cr, saves,
+    skills, resistances, immunities, senses, languages, traits [(n,t)],
+    actions [(n,t)], legendary [(n,t)], img path, caption."""
+    if sb.get("img"):
+        try:
+            data, pw, ph = _image_png_bytes(sb["img"])
+            w = sb.get("img_w", 2.6)
+            aspect = ph / pw
+            if w * aspect > 3.2:
+                w = 3.2 / aspect
+            p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.space_before = Pt(6); p.paragraph_format.space_after = Pt(2)
+            p.paragraph_format.keep_with_next = True
+            p.add_run().add_picture(io.BytesIO(data), width=Inches(w))
+        except Exception:
+            pass
+    # name header
+    p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
+    p.paragraph_format.keep_with_next = True; p.paragraph_format.space_after = Pt(0)
+    r = p.add_run(sb["name"]); _set_font(r, Pt(12.5), True, color=STAT_EDGE)
+    # type line
+    p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
+    p.paragraph_format.space_before = Pt(0); p.paragraph_format.space_after = Pt(1)
+    r = p.add_run(sb["type"]); _set_font(r, Pt(8.5), italic=True, color=INK)
+    _sb_rule(doc)
+    if sb.get("ac"): _sb_line(doc, "Armor Class", sb["ac"])
+    if sb.get("hp"): _sb_line(doc, "Hit Points", sb["hp"])
+    if sb.get("speed"): _sb_line(doc, "Speed", sb["speed"])
+    _sb_rule(doc)
+    # ability score row as a 6-col table
+    ab = sb.get("abilities")
+    if ab:
+        order = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+        tbl = doc.add_table(rows=2, cols=6)
+        tbl.autofit = False
+        colw = Twips(1000)
+        for ci, name in enumerate(order):
+            c0 = tbl.cell(0, ci); c1 = tbl.cell(1, ci)
+            for c in (c0, c1):
+                c.width = colw
+                _cell_shade(c, STAT_FILL)
+            c0.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+            r = c0.paragraphs[0].add_run(name); _set_font(r, Pt(8.5), True, color=STAT_EDGE)
+            sc = ab.get(name, 10)
+            c1.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+            r = c1.paragraphs[0].add_run(f"{sc} ({_mod(sc)})"); _set_font(r, Pt(8.5), color=INK)
+        _sb_rule(doc)
+    for key, label in [("saves", "Saving Throws"), ("skills", "Skills"),
+                       ("resistances", "Damage Resistances"), ("vulnerabilities", "Damage Vulnerabilities"),
+                       ("immunities", "Damage Immunities"), ("condition_immunities", "Condition Immunities"),
+                       ("senses", "Senses"), ("languages", "Languages"), ("cr", "Challenge")]:
+        if sb.get(key):
+            _sb_line(doc, label, sb[key])
+    for section, items in [("Traits", sb.get("traits")), ("Actions", sb.get("actions")),
+                           ("Reactions", sb.get("reactions")), ("Legendary Actions", sb.get("legendary"))]:
+        if not items:
+            continue
+        if section != "Traits":
+            _sb_rule(doc)
+            p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
+            p.paragraph_format.space_after = Pt(1); p.paragraph_format.keep_with_next = True
+            r = p.add_run(section); _set_font(r, Pt(10), True, color=STAT_EDGE)
+        for nm, txt in items:
+            p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
+            p.paragraph_format.space_after = Pt(1)
+            if nm:
+                r = p.add_run(nm + ". "); _set_font(r, Pt(9), True, italic=True, color=INK)
+            _rich(p, txt, base_size=Pt(9))
+
+
+def _cell_shade(cell, fill):
+    tcpr = cell._tc.get_or_add_tcPr()
+    shd = OxmlElement('w:shd')
+    shd.set(qn('w:val'), 'clear'); shd.set(qn('w:color'), 'auto'); shd.set(qn('w:fill'), fill)
+    tcpr.append(shd)
+
+
 def build_doc(blocks, out_path):
     doc = Document()
     # US Letter, S8 margins
@@ -187,6 +284,9 @@ def build_doc(blocks, out_path):
             for line in blk[2]:
                 p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
                 _rich(p, line, base_size=Pt(9))
+
+        elif kind == "statblock":
+            _render_statblock(doc, blk[1])
 
         elif kind == "body":
             p = doc.add_paragraph()
