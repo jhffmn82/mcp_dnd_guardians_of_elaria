@@ -17,7 +17,7 @@ The `memory/` folder is live and must be maintained:
 - **Stabby Sharpblade** — goblin Monk (Kensei), accent color candy-red, relic: Sash of the Swift Current
 - **Ursa Catchum** — human Druid (Circle of Stars), accent color starlight-purple, relic: Staff of Waking Constellations
 
-All three relics came from Wraithpine chests as Elaria's gift. A year-apart timeskip to level 7 is planned after Session 8, with individual path reward documents (Ursa's includes a custom "Warden" constellation for Starlit Channeler).
+All three relics came from a single Wraithpine chest as Elaria's gift (one chest, three relics; Session 6 text is explicit). A year-apart timeskip to level 7 is planned after Session 8, with individual path reward documents (Ursa's includes a custom "Warden" constellation for Starlit Channeler).
 
 **Session numbering (DM-adjudicated 2026-07-05):** the Wraithpine / False Hydra arc was Session 6 only; there was never a Session 7 at the table. Gearhaven keeps its "Session 8" branding. The played sequence is 1, 2, 3, 4, 5, 6, 8. Do not renumber Session 8 and do not flag the 6-to-8 gap as a contradiction.
 

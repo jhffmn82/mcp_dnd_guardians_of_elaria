@@ -1,49 +1,132 @@
-# Campaign Canon — The Guardians of Elaria
+# Campaign Canon: The Guardians of Elaria
 
-Stub created in Phase 2. Phase 3 (canon extraction) will build this out from all session and lore documents. Facts below are DM-confirmed or drawn from the newest sources (Session 8 v2, Campaign_Handoff_v2), which win over older documents.
+Built during Phase 3 from a full read of all session and lore documents. Precedence: newest wins (Campaign_Handoff_v2, then Session 8 v2, then Campaign_Outline_v2, then earlier sessions and lore). Items marked [DM CHECK] await answers collected in CONTRADICTIONS.md.
+
+## Canonical names (drift resolved by recency; older spellings are errors to fix on revision)
+
+| Canonical | Superseded variants | Where the variants appear |
+|---|---|---|
+| The Guardians of Elaria | "Echoes of Elaria" | Session 1 title |
+| Elaria | "Alaria" | Session 6 epilogue and relic write-ups (5+ occurrences) |
+| Ursa Catchum | "Taurus Catchum" | Early DALL-E portrait prompt |
+| Havenmoor | "Brightshore Harbor" | Session 3 route briefing (one orphaned mention) |
+| Professor Aelwyn Ravenstone, tall silver-haired high elf | "elderly man with a silver beard" | Session 2 (Session 3 description wins) |
+| Nina the herbalist, elderly | "mid-thirties" | Session 1 (Session 2 wins) |
+| Master Doran Bramblebeard, one person: Havenmoor shipwright and lighthouse keeper | "Old Doran Bramblebeard" (lighthouse), "Master Bramblebeard" (shipwright) | Sessions 3-4; Session 5 merges them |
+| Candyfang Katana | "candy-cane katana", "candy-cane steel" | Session 6 narration (same weapon, gifted Session 4) |
+| Whispering Breeze Monastery | "Whispering Breeze Clan" | Backstories doc (handoff wins) |
+| Circle of the Eternal Stars (the in-world druid order) | "The Circle of Stars" is the handoff's shorthand door label; the 2024 subclass is also named Circle of Stars | Use the full name for the order in prose |
+| The Wraithpine chest (SINGULAR: one chest, three relics) | "Wraithpine chests" | CLAUDE.md previously said chests; Session 6 text has exactly one |
+
+Bloodfang vs Grimfang is NOT resolved here; see CONTRADICTIONS.md C2.
 
 ## The party
 
-| Character | Player character | Class | Relic (from Wraithpine chests, Elaria's gift) | Accent color |
-|---|---|---|---|---|
-| Lilly Glimmergear | deep gnome Artificer (Artillerist) | Artificer 5 | Pocket Dynamo | frost-blue |
-| Stabby Sharpblade | goblin Monk (Kensei) | Monk 5 | Sash of the Swift Current | candy-red |
-| Ursa Catchum | human Druid (Circle of Stars) | Druid 5 | Staff of Waking Constellations | starlight-purple |
+All three began at level 3 (Session 1, DM confirmed) and are level 5 as of Session 8. After the one-year timeskip they return at level 7 for Session 9.
 
-Companion creature: Ghostbloom (evolved from Floraburst via Blossomflare line; absorbed a ghost-essence after the Davy Jones arc).
+### Lilly Glimmergear, deep gnome Artificer (Artillerist), accent frost-blue (#1F6FB8)
+- From Deepforge Hollow (Underdark). Mother: Poots Glimmergear, tinkerer and Glimmerspire master. Trained at Glimmerspire Academy of Artifice under Master Crafter Droven Sparkwick; built her own arcane turret as a student.
+- Carries the Essence Sphere (see Major Items). Left the Underdark to find Ursa, whom Poots believed could help restore Pikachu.
+- Items: Frostbite Shard Dagger (Session 4 gift, Rare, Artificer attunement), Glimmerspire Pocket Dynamo Mk II (Session 6 relic).
+- Timeskip doors (chosen at/before Session 9): A stay and build with Vane (reward: The Sentinel construct), B home to Glimmerspire and Poots (reward: Boomstick pistol), C mote researcher (reward: Awakened Essence Sphere). Door pick NOT yet made.
 
-## Session and level timeline (DM-confirmed anchors)
+### Stabby Sharpblade, goblin Monk (Kensei), accent candy-red (#A32B2B)
+- Born in Bloodthorn Hollow ("the Hollow"); clan canonically Bloodfang pending C2. Trained briefly under Master Kaelon Windstep of the Whispering Breeze Monastery, who named him "Sharpblade". Kaelon's teaching: "When the whole world is screaming, little storm, get still."
+- Items: Candyfang Katana (Session 4 gift, Rare, Monk attunement), Sash of the Swift Current (Rewoven) (Session 6 relic), and a mysterious idol (origin unrecorded, [DM CHECK C13]; goes ice cold near rifts, corruption recoils from it; seed for Door C).
+- At level 7 he sets down Kensei and takes Warrior of Breathing (homebrew). Doors: A Whispering Breeze Monastery (Water Breathing), B reform the Bloodfang Clan (Beast Breathing; clan becomes finale ally), C the Idol's Dreams (Shadow Breathing). All doors include the Nichirin Katana; Candyfang becomes an heirloom. Door pick NOT yet made.
 
-- Party started at level 3 in Session 1.
-- "Pre 4 / post 4" historical sheets are pre- and post-SESSION-4 snapshots.
-- Party is level 5 as of Session 8.
-- Played sequence: 1, 2, 3, 4, 5, 6, 8. No Session 7 was ever played (DM ruling 2026-07-05). Do not flag the gap.
-- A year-apart timeskip to level 7 is planned after Session 8, with individual path reward documents.
+### Ursa Catchum, human Druid (Circle of Stars), accent starlight-purple (#5B2A86)
+- Grew up in forests near Eldridge Village. Father: Ash Catchum, renowned wildfire druid of the Circle of the Eternal Stars, a "sky-reader" who disappeared chasing the dark stars; left Ursa three enchanted potatoes. Raised by the Circle; mentor Elder Selarin. Red/auburn hair, purple eyes.
+- Dragonmark: Mark of Handling, manifested at age six (stirs near frightened animals, never for machines; the channel through which Pikachu and the Custodian communicate).
+- Items: Amulet of Guiding Light (Session 4 gift, Stars Druid attunement), Staff of Waking Constellations (Session 6 relic, THE counter-weapon: relights anchor-stars after major victories).
+- Doors: A the Circle of Stars (Starlit Channeler + Warden constellation), B the Father's Trail (Reader of Omens + Ash's Sigil-Stone, carries the Session 13 clue), C the Living World (Beast Handler + Wildheart Token). Door pick NOT yet made.
 
-| # | Title / arc | Level | Major events (to be refined in Phase 3) |
+### Companions
+- **Ghostbloom**: the party's fey companion, evolved from Floraburst. Teal glow (#1F7A78), translucent chiming petals, telepathic. Guardian's Light heal 1d8+3, 3/short rest. Vulnerable fire AND cold (friendly-fire warning). HP 52 (v3 statblock). Serves as "Elaria's voice", reacting to planar moments. Stays with Vane at the Guild during the timeskip year. Evolution chain and pronoun: [DM CHECK C3, C15].
+- **Pikachu (Spark Fox)**: essence trapped in the Essence Sphere since before Session 1. Projected as golden energy in Session 8; communicates through Ursa's Mark; "a key". Full return planned Session 14.
+- **Lickgloom**: Feywild-touched creature befriended in Sessions 1-2, then absent from every later document. [DM CHECK C4]
+- **Floraburst**: original companion, chosen from Aelwyn's three offered creatures (Floraburst, Aqualump, Emberpaws) in Session 3. Underwent essence infusion in Session 5 ("petals etched with frost and fire") and became Ghostbloom via Wraithpine ghost-light. Whether Blossomflare (statblock exists) was an intermediate stage: [DM CHECK C3].
+
+## Session and level timeline
+
+| # | Title | Level | Summary anchor |
 |---|---|---|---|
-| 1 | The Gathering of Friends (Eldridge Village) | 3 | Party forms at the Gilded Acorn Tavern; Forest of Whispers. |
-| 2 | Oakshade Village | 3 | Sent toward Professor Aelwyn / Ravenstone Laboratory. |
-| 3 | The Quest for Knowledge | 3 | Meet Prof. Aelwyn Ravenstone; Essence Sphere examined; journey to Havenmoor. |
-| 4 | Awakening to Shadows and Songs (Havenmoor) | 3→4? | Krampusshade steals children; Christmas-themed arc; item rewards. [Pin level-up in Phase 3] |
-| 5 | The Curse of Davy Jones | 4 | Sea voyage toward Gearhaven; cursed ship; Floraburst evolves to Ghostbloom after. |
-| 6 | Lanterns in the Fog (Wraithpine) | 4→5? | False Hydra; relic chests grant the three relics. [Pin level-up in Phase 3] |
-| 8 | Gearhaven, the Clockwork City | 5 | Artificer's Guild, Vane, the Grand Custodian, rift beneath the city. |
+| 1 | The Gathering of Friends | 3 | Party meets at the Gilded Acorn (Eldridge Village); Forest of Whispers; Duckleaf, Cognifin, Mist Stalkers; first motes. |
+| 2 | Oakshade and the Road to Ravenstone | 3 | Oakshade rumors; Mudskips, rival goblin ambush, Terranox; Elaria's vision at the Whispering Glade (boons granted); arrival at Ravenstone Laboratory. |
+| 3 | The Quest for Knowledge | 3 | Aelwyn examines the Sphere (Gearhaven upgrade needed); companion chosen (Floraburst); Shadowflame, Displacer Beasts, Shroomytes; Stormwatch Cliffs puzzle and the Dark Figure's vision; arrival in Havenmoor. |
+| 4 | Awakening to Shadows and Songs | 3 to 4 [DM CHECK C1 exact moment] | Krampusshade steals Havenmoor's children; eight Winter Bells; three barriers; Krampusshade banished; three gift items from Faelan. |
+| 5 | The Curse of Davy Jones | 4 | Voyage on the Stormwind; storm and capsize; the Flying Dutchman; essence-harvest operation with Artificers' Guild-stamped crates; Davy Jones defeated; Floraburst's essence infusion and collapse-and-change. |
+| 6 | Lanterns in the Fog (Wraithpine) | 5 (encounters built for a level-5 trio) [DM CHECK C1: 4 to 5 presumably after S5] | False Hydra's song of unremembering; Harlan Wicke; tavern head destroyed; lair fight under the Old Theater; the chest with three relics; Ghostbloom emerges. |
+| 7 | (never played; no session 7 exists, DM ruling 2026-07-05) | | |
+| 8 | Gearhaven, the Clockwork City | 5 | Hub established; Vane, Quill, Vane's Folly; cosmology reveal (anchor-stars); Underworks rift fight, Skitch's plea; Verdant Plaza; the Grand Custodian freed ("gentle death"); Pikachu's projection; three Doors each; ONE YEAR LATER. |
+| 9 (planned) | Reunion + Earth Rift | 7 | Cold-open reunion at the finished portal; first rift run; Terranox-type boss; Antares relights. |
 
-## Key NPCs (seed list; expand in Phase 3)
+Planned arc through Session 15 (handoff): S10 Water (7), S11 Fire (7 to 8), S12 Air (8), S13 Shadow + major Ash clue (8 to 9), S14 Sphere complete / Pikachu returns / Nyxthid strikes (9), S15 finale: defeat Nyxthid, re-seal the covenant, stop Maldrith (9 to 10).
 
-- Professor Aelwyn Ravenstone: high elf wizard, planar studies, Ravenstone Laboratory.
-- Captain Brynn Wavewarden: naval captain, Session 5 voyage.
-- Vane: Artificer's Guild figure in Gearhaven (Session 8).
-- Nyxthid, the Harbinger of Decay: fallen celestial, main antagonist (see lore/elaria_and_nyxthid.docx).
-- Elaria: sleeping goddess, Warden of Balance; guides the party through visions.
+## Cosmology (locked by Session 8 + handoff; supersedes older lore)
 
-## Cosmology (from Campaign_Outline_v2, newest roadmap)
+- Five planes (Fire, Water, Air, Earth, Shadow) spin "like the gears of a great clock", held in alignment by ANCHOR-STARS. A star put out = a plane slips = a crack opens, leaking elemental Motes that madden machines and mutate creatures.
+- Star map: Fire/Ignis = Aldebaran (bright); Water/Unda = Fomalhaut (bright); Air/Aer = Vega (going dark); Earth/Terra = Antares (dimming); Shadow/Umbra = Algol (dark); Betelgeuse = the FIRST star put out, the one Ash chased; Achernar = reserve.
+- NYXTHID, the Harbinger of Decay (he): fallen celestial, herald of Maldrith, is actively PUTTING OUT the stars. Shadow magic, illusions, fear; partially in the Shadowfell. First glimpsed (unnamed) as the Dark Figure at Stormwatch Cliffs (Session 3).
+- MALDRITH, the Weaver of Fractures (she): the true villain; primordial entropy imprisoned eons ago by the gods, Elaria foremost, after the War of Fractures. The "vast hunger pressing on the walls of every world" (Session 8). Names withheld from the kids until the Shadow Rift.
+- ELARIA, the sleeping Warden of Balance, "tended the lights of heaven." She sleeps, which is why stars can be put out; WHO put her to sleep is a deliberate unrevealed mystery (supersedes old lore's self-caused slumber). She guides via visions (Whispering Glade, Session 2) and star-marked gifts (seven-point star sigil, wrapped in a leafed vine, or cupped by wings on the Sash).
+- The Enchanted Potatoes: three, carried by Ursa, left by Ash. Old lore names them Potato of Healing, Potato of Transformation, Potato of Insight; "remnants of a shattered covenant" (Elaria's own essence, bound as safeguards).
+- Rifts cannot be closed from our side; each fraying world has a corrupted GUARDIAN; free the guardian and that world's cracks close (proven on the Grand Custodian, Session 8).
+- The Rift Portal ("Vane's Folly"): ten years of Vane's work, missing an anchor vessel; the Essence Sphere is that anchor (it is a GATHERER, forged at Glimmerspire BEFORE the crisis; how they knew is the "They KNEW" mystery). Ready about one year after Session 8.
 
-Planar boundaries are failing. Anchor-stars hold the planes in alignment; when a star goes dark its plane slips, a crack opens, and elemental Motes leak into the world. Hub-and-rifts structure going forward: Gearhaven is home base; rift one-shots into 5 elemental planes (Earth, Water, Fire, Air, Shadow).
+## Major items and relics
 
-## Known name drift (fix to canon spelling when revising; recency rule)
+- **Essence Sphere**: Glimmerspire-forged gatherer holding Pikachu's spark; pulls in loose motes; the portal's anchor. Gains: Planar Attunement (Session 2 boon). Never leaves the party's custody per DM design note.
+- **The three Wraithpine relics** (one chest, Session 6, Elaria's gift; each bears the seven-point star):
+  - Staff of Waking Constellations (Ursa): +1 quarterstaff/focus, 5 charges (guiding bolt, faerie fire, moonbeam), Starseed +1d4 radiant rider (druid spells only, house rule), Starlight; relights anchor-stars.
+  - Sash of the Swift Current (Rewoven) (Stabby): +1 AC, +10 ft speed, Air Dance (1/day fly, 1 minute), Feather Fall 1/day.
+  - Glimmerspire Pocket Dynamo Mk II (Lilly): free-action cannon deploy/recall, 24-hour cannon duration, +2 cannon damage, Reformat 1/long rest.
+- **Session 4 gifts** (from Faelan): Frostbite Shard Dagger (Lilly), Amulet of Guiding Light (Ursa), Candyfang Katana (Stabby).
+- **Enchanted potatoes** (Ursa, from Ash): covenant safeguards; react when motes gather (planned Session 14).
+- **Stabby's idol**: mystery item, Door C seed; origin unrecorded [DM CHECK C13].
+- Minor: beeswax earplugs (S6), bell-handled lantern (S6), Shadow-Touched Rune Fragment (S4), Dark Fragment (S3), Elemental Mud Samples and Stone Fragments (S2).
 
-- Campaign title: "Echoes of Elaria" (Session 1) → canonical "The Guardians of Elaria".
-- "Taurus Catchum" (early art prompt) → canonical "Ursa Catchum".
-- "Alaria" (one spot in Session 6 doc) → canonical "Elaria".
+## NPC roster (canon)
+
+**Recurring/alive and active:**
+- Guildmaster Vane ("the locksmith"), Artificer's Guild, Gearhaven; builder of the Rift Portal. Keeps Ghostbloom and the Sphere-anchored portal during the timeskip.
+- Quill, elegant silver Mechagnome archivist, the Guild.
+- Henna Brasspot, keeper of the Gilded Gear tavern, the party's Gearhaven home base.
+- Pinion, fidgety Mechagnome tram-conductor; Mechagnome eyes flicker near planar trouble.
+- Skitch, young Bloodfang goblin courier; rescued in the Underworks; delivered the "come home" plea (Stabby Door B seed).
+- Burl (one-armed dwarf, Dragon's Bite BBQ), Mara Sprocket (Sprocket & Sons), Tock (Mechagnome lamplighter with a real pigeon, calls Ursa "star-child"), the gatekeeper ("Steady gears to you"), all Gearhaven.
+- Professor Aelwyn Ravenstone, high elf planar researcher, Ravenstone Laboratory; his assistant Tamsin (half-elf).
+- Poots Glimmergear (Lilly's mother), Master Crafter Droven Sparkwick, Glimmerspire.
+- Elder Selarin, Circle of the Eternal Stars.
+- Ash Catchum: missing; Guild log entry: "The pattern leads east. Following the dark. To the old shrine." Fate to be decided before Session 13.
+
+**Local (by place):** Eldridge: Osric (Gilded Acorn innkeeper), Rhea (barmaid), Bren (brawler), Jarek (rumor). Oakshade: Alwen (Old Oak Tavern), Elder Merwin (elder/blacksmith), Nina (herbalist). Havenmoor: Greta Frostbough (Sugarplum Hearth), Elda Merrywhistle (bard), Captain Torren Windward, Eldric Bramblefoot, Ingrid Stonegale, Lora Thistledown, Sister Merida and Finn (Hollow Hearth Orphanage), Faelan (lorekeeper), Master Doran Bramblebeard (shipwright/lighthouse). Ship (S5): Captain Brynn Wavewarden, Old Marla, First Mate Breesh, Rigging Master Hugo, Quartermaster Sline. Wraithpine: Maera (Gasping Gull; dog Brindle, deceased), Ms. Wicke, Harlan Wicke (deceased), the bellkeeper.
+
+**Villains:** Nyxthid, Maldrith (see Cosmology); Krampusshade (banished, Session 4); Davy Jones (defeated, Session 5; permanence ambiguous [DM CHECK C10]); the False Hydra (destroyed, Session 6); the corruption that possessed the Grand Custodian (the Custodian itself was freed and laid to rest).
+
+## Locations gazetteer (canon)
+
+Eldridge Village and the Gilded Acorn Tavern (Eldridge Vale); Forest of Whispers; the Grove of Elemental Waters; Oakshade Village and the Old Oak Tavern (Oakshade Glade); the Whispering Glade; Ravenstone Laboratory (Ravenstone Cliffs); Brambleshadow Thicket, Whisperwind Meadow, Mistwood Path, Ironroot Hills, Stormwatch Cliffs (the road south); Havenmoor (Sugarplum Hearth, Frostwind Market Square, Hollow Hearth Orphanage, Wyrmgale Lighthouse, Frostpine Glade, Crystalbrook Stream, Whispering Hollow, Shrine of Elaria (mentioned, unvisited)); the Flying Dutchman (sunk); Wraithpine (Gasping Gull, Pumpkin Row, Lantern Lane, the belltower, the Old Theater and the lair below); Gearhaven (eastern gate, Street of Small Wonders, the Gilded Gear, Cogtooth Market and Hill, the Artificer's Guild, the Great Governor, the Orrery of Planes, the Underworks and Rift Hall, the Verdant Plaza); Deepforge Hollow and Glimmerspire (Underdark); Bloodthorn Hollow ("the Hollow"); the old shrine, far east beyond the maps (Ash's destination; likely the Ancient Shrine in the Forgotten Glade from the locations doc); Crystal Cavern (Crystal Hollow; listed in lore, not yet visited in play).
+
+## Open threads (foreshadowing ledger)
+
+1. Pikachu's return (seeded S8; payoff S14). Pikachu is "a key. To something."
+2. Ash Catchum: logbook trail east to the old shrine; major clue S13; fate DECIDED BEFORE S13 (alive-but-changed/captured, or died completing the covenant).
+3. "They KNEW": how Glimmerspire/Poots built the Sphere before the crisis; ties to Elaria's foresight; reveal late.
+4. Who put Elaria to sleep: unrevealed mystery.
+5. Stabby's idol: unexplained by design (Door C).
+6. The Bloodfang Clan: cracks near Bloodthorn, clan blames artificers; finale allies if Door B.
+7. Something darker than Davy haunted the Dutchman (S5, Ursa); essences were being shipped SOUTH under Artificers' Guild-stamped crates. Never yet reconciled with the friendly Guild of S8.
+8. The rival goblin clan (S2 ambush) may resurface; possibly the Grimfang (C2).
+9. Merwin's missing villagers (S1, 50 gp): dangling [DM CHECK C5].
+10. Lickgloom's whereabouts [DM CHECK C4].
+11. Catchable-creatures mechanic: promised, never specced; spec at Session 9.
+12. Pocket Dynamo is "Mk II" and stamped PROP ROOM: unexplained Glimmerspire-to-theater link.
+
+## Superseded lore (recorded so it is not re-canonized)
+
+- Campaign_Outline_v1: 7 rifts including Feywild and Astral; Gearhaven at S5; Nyxthid as final boss at S14; level cap 7; the "Clockwork Sovereignty" Mechagnome-freedom faction. ALL retconned. Mechagnomes are friendly hub citizens; five rifts; finale is S15 vs Nyxthid with Maldrith stopped, not fought.
+- elaria_and_nyxthid.docx: Elaria's slumber as self-caused exhaustion, and rifts as passive symptoms of Maldrith's weakening prison. Superseded: sleep cause is a mystery; Nyxthid actively snuffs the stars.
+- Campaign_Outline_v2's "LOCKED" timeskip rewards (Bloodfang Tenacity, Shadow Step, Storm Sentinel, Resonance Cannon, The Guardian form, 2/long-rest Sigil-Stone, fixed 4th-level summons): superseded by Campaign_Handoff_v2 Part 2 designs.
+- pokemon_encounters.docx: an old PLANNING list, not a play record (its S6-S9 entries do not match played sessions). Only S1-S3 entries align with play. Do not cite as canon.
+- Old statblocks (floraburst "Spectral Blossom" and Blossomflare docs): design generations; current companion statblock is Ghostbloom v3 (HP 52).
