@@ -31,6 +31,8 @@ BLOCKS = [
 
     # ------------------------------------------------------------------
     ("h1", "Part One: Fair Winds from Havenmoor", {"pagebreak": True}),
+    ("img", f"{A}/scenes/s5_harbor_sendoff.png",
+     "A grateful Havenmoor cheers the Guardians up the Stormwind's gangplank.", 4.1),
     ("gold", "Rosy dawn light spills over Havenmoor's busy harbor. Fishing boats lie tethered "
              "beside merchant galleys, sails unfurling in the sea breeze, and salt spray drifts "
              "across the docks with the cries of gulls. On every lamppost flutters a brightly "
@@ -58,9 +60,6 @@ BLOCKS = [
              "misstep and we founder. I need eyes aloft, hands on the helm, strength below decks, "
              "and quick fingers on the sails. Keep your stations, follow orders to the letter, and "
              "you will make Gearhaven in one piece.”"),
-    ("img", f"{A}/characters/lilly4.png",
-     "Lilly Glimmergear, able seagnome of the Stormwind.", 3.9),
-
     ("h2", "Learning the Ship"),
     ("gold", "The Stormwind casts off, and the crew takes the heroes in hand. High in the crow's "
              "nest perches **Old Marla**, squinting at the horizon: “Keep a weather eye, or we'll "
@@ -95,6 +94,8 @@ BLOCKS = [
              "stinging needles. Captain Brynn lashes herself to the wheel beside Breesh and roars "
              "over the gale: **“We ride every blow together! Fight this storm as one, or we all "
              "go down!”** Every hero takes a station. The storm comes on in three great blows."),
+    ("img", f"{A}/scenes/s5_storm.png",
+     "The Stormwind fights for her life in the heart of the tempest.", 4.1),
 
     ("h2", "The First Blow: The Wall of Water"),
     ("gold", "A monstrous swell rises off the port bow, its crest glowing with strange pale foam. "
@@ -135,6 +136,8 @@ BLOCKS = [
              "A barnacle crusted keel, vast and old and glowing sea sick green, climbs toward "
              "the wreck like a whale rising for air. The **Flying Dutchman** is coming up "
              "directly beneath them."),
+    ("img", f"{A}/scenes/s5_dutchman_rises.png",
+     "Ghost sails unfurl in the deep as the Flying Dutchman climbs toward the wreck.", 4.1),
 
     # ------------------------------------------------------------------
     ("h1", "Part Three: Aboard the Flying Dutchman", {"pagebreak": True}),
@@ -160,12 +163,12 @@ BLOCKS = [
              "frightened, an **owl-kin** with great hollow eyes that follow the heroes across "
              "the room. And stacked to the ceiling stand rows of battered crates, every one "
              "stamped with the same sigil: the mark of the **Gearhaven Artificers' Guild**."),
-    ("img", f"{A}/characters/lilly_holding_the_sphere.png",
-     "In the lantern glow of the Dutchman's hold, Lilly keeps the Essence Sphere close.", 3.4),
     ("gold", "From the shadows between the racks he comes: tall, tentacle bearded, hook handed, "
              "barnacles glowing along his arms like embers, each one holding some little trapped "
              "spark of life. **Davy Jones** taps one hooked fingertip, very gently, against the "
              "Essence Sphere at Lilly's belt, and smiles like a shipwreck."),
+    ("img", f"{A}/npcs/davy_jones.png",
+     "Davy Jones, captain of the Flying Dutchman, come to collect.", 4.1),
     ("gold", "**Davy Jones:** “Ah. The bright spark of little Floraburst. Feywild sunlight, "
              "bottled and carried right to my door. The perfect spark to ignite my anchor and "
              "rend the veil open. Surrender her essence... or I shall harvest it by force.”"),
@@ -187,6 +190,8 @@ BLOCKS = [
     ("gold", "**Davy Jones:** “Three rounds of Seven-Eyes, target seventy and seven. Win, and "
              "your chains fall and your little friend keeps her light. Lose, and I snuff out "
              "every spark of your souls... and her fey light with them.”"),
+    ("img", f"{A}/scenes/s5_dice_game.png",
+     "Seven dice of ivory and bone, and three small souls on the table.", 4.1),
     ("dm", "**Seven-Eyes, target 77.** Each player rolls all seven dice twice, summing toward 77 "
            "without going over; between tosses they may gift one die's value to a teammate. Davy "
            "rolls three times and may discard a die after each roll. Beat his total or bust him; "
@@ -225,8 +230,6 @@ BLOCKS = [
              "Drowned pirates haul themselves over the rails, cutlasses dripping, barnacles "
              "clacking. At the wheel, a **Spectral Helmsman** turns its lantern eyed head all "
              "the way around and wails: **“No flesh leaves this ship alive!”**"),
-    ("img", f"{A}/characters/stabby5.png",
-     "Stabby Sharpblade, blade drawn on the Dutchman's deck.", 3.6),
     ("gold", "The deck fight is wild and slippery and loud. The pirates fight like the tide, "
              "slow and heavy and everywhere; Stabby fights like the spray, bright and quick and "
              "impossible to hold. Ursa's starlight punches clean holes in the sea fog, and when "
@@ -243,6 +246,8 @@ BLOCKS = [
              "and now, waking one by one, the things that guard them. The timbers themselves "
              "hum with stolen magic."),
     ("hero", "Ursa", "This is not Davy's doing alone. Something darker haunts this ship."),
+    ("img", f"{A}/scenes/s5_hold_of_essences.png",
+     "Racks of caged magic: an owl-kin, a flame salamander, a frightened water sprite.", 4.1),
     ("gold", "Lilly draws her **Frostbite Shard Dagger**, frost curling off its edge into the "
              "green dark, and her eyes narrow. **Lilly:** “Then we cut it out at the source.”"),
     ("gold", "The guardians of the hold come all at once: a hulking **Smuggler's Golem** patched "
@@ -307,6 +312,8 @@ BLOCKS = [
              "out the whole battle tucked in Lilly's pack, and who now reaches up toward it "
              "with every leaf and petal she has. Lilly cups her hands around the little ghost "
              "light, steady as her mother taught her, and guides it home."),
+    ("img", f"{A}/scenes/s5_ghost_essence.png",
+     "Lilly guides the pale ghost essence home into Floraburst.", 4.1),
     ("gold", "Floraburst drinks in the essence, shudders once from root to petal, and collapses. "
              "For one terrible heartbeat she is still. Then a slow pulse begins inside her, deep "
              "and rhythmic as a sleeping heart, and before the heroes' eyes each petal comes "
@@ -334,6 +341,8 @@ BLOCKS = [
              "gleaming silhouette of clockwork spires. In Lilly's arms their little friend "
              "sleeps on, pulsing gently, petals etched with frost and fire, becoming whatever "
              "she is going to be."),
+    ("img", f"{A}/scenes/s5_vigil_dawn.png",
+     "The Vigil rows east at dawn, Gearhaven's spires gleaming on the horizon.", 4.1),
     ("divider",),
     ("bridge", "The curse of Davy Jones was ended, the stolen magic freed, and every soul of "
                "the Stormwind saved. But the crates in that hold had worn the sigil of the "
