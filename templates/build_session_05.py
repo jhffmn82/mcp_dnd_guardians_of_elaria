@@ -54,6 +54,7 @@ BLOCKS = [
              "ask me why, just keep it close.”"),
 
     ("h2", "Captain Brynn Wavewarden"),
+    ("imgfloat", f"{A}/npcs/brynn_wavewarden.png", 2.2),
     ("gold", "At the top of the Stormwind's gangplank waits a tall, steely eyed woman in a "
              "weathered naval coat, brass buttons gleaming, salt streaked hair tied back in a knot "
              "so tight it could moor a ship. **Captain Brynn Wavewarden** looks the three small "
@@ -78,6 +79,8 @@ BLOCKS = [
              "the vessel. In the evenings, Captain Brynn herself teaches them knots by lantern "
              "light: bowline, clove hitch, and a curious looping knot she says her grandmother "
              "called a keepsake knot. The heroes' small hands learn every one."),
+    ("img", f"{A}/scenes/s5_open_sea.png",
+     "Fair winds: the Stormwind runs east under full sail, the whole sea bright ahead.", 4.1),
     ("dm", "**Ship stations.** Lookout: Wisdom (Perception) DC 12. Helm: Dexterity (Acrobatics) "
            "DC 13. Rigging: Strength (Athletics) DC 14. Bilge: Constitution DC 13. From the "
            "crow's nest, Survival (Navigation) DC 17 plotted the safer channel into the storm."),
@@ -149,6 +152,8 @@ BLOCKS = [
              "glowing links coiling around arms and ankles like living serpents, and haul every "
              "soul aboard the wreck, heroes and sailors alike, up into the green light of the "
              "ghost ship's deck."),
+    ("img", f"{A}/scenes/s5_dutchman_deck.png",
+     "Hauled aboard: three small heroes stand dripping on the Flying Dutchman's deck.", 4.1),
     ("gold", "The crew of the Dutchman shuffles out to meet them, and they are the funniest "
              "frightening things the heroes have ever seen: drowned sailors gone all barnacled "
              "and green, crabs riding in their beards, seaweed for hair, one with a starfish "

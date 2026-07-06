@@ -66,6 +66,8 @@ BLOCKS = [
              "kettles, and a fiddle finds its first notes. The air is cider, beeswax, damp "
              "leaves. It is **Lantern Night**, the village's own festival, and everything about "
              "it is warm and bright and welcoming."),
+    ("img", f"{A}/scenes/s6_wraithpine_ridge.png",
+     "From the ridge crest: Wraithpine on Lantern Night, lanterns braided through the fog.", 4.2),
     ("gold", "Almost everything. As boots cross under the first lantern arch, a pressure pricks "
              "at the ears, like a mountain pass without a mountain. A thin note is drifting "
              "through the chimney flues and cellar grates. Wind, perhaps. Or the tail of a song "
@@ -73,10 +75,9 @@ BLOCKS = [
     ("dm", "Group **Wisdom save, DC 13**, the first time the thin note finds their ears. On a "
            "miss, one small fresh memory slips away, just enough to feel wrong; on a success, an "
            "ear-pop and a strange clarity."),
-    ("img", f"{A}/monsters/gasping_gull.png",
-     "Lantern Night in Wraithpine: pumpkins, paper moons, and the Gasping Gull with its shutters thrown wide.", 4.2),
 
     ("h2", "The Gasping Gull"),
+    ("imgfloat", f"{A}/npcs/maera.png", 2.2),
     ("gold", "The **Gasping Gull** throws wide its shutters and its hearth breathes softly. "
              "Behind the bar, the keeper, **Maera**, wipes an already spotless counter and calls "
              "out, “Finally, rush hour! Squeeze in where you can!” The room holds exactly three "
@@ -108,6 +109,8 @@ BLOCKS = [
     ("gold", "Above him the bell gives a single accidental chime. Across the square, in the "
              "Gasping Gull, a fourth bowl of stew cools untouched, and Maera smiles at a chair "
              "the village cannot quite hold in mind."),
+    ("img", f"{A}/scenes/s6_belltower_square.png",
+     "Beneath the belltower of Bellshadow, the bellkeeper holds up his slate: WRITE. DON'T LISTEN.", 4.2),
 
     # ------------------------------------------------------------------
     ("h1", "Part Two: Three Threads in the Fog", {"pagebreak": True}),
@@ -273,6 +276,8 @@ BLOCKS = [
     ("bridge", "A trail led from the tavern's broken floor into the dark beneath Wraithpine, "
                "and the thin note grew into a pressure, a hand laid gently on the inside of the "
                "skull. The heroes plugged their ears, lit their lanterns, and followed it down."),
+    ("img", f"{A}/scenes/s6_old_theater.png",
+     "The Old Theater, dark and shuttered above Wraithpine, and the song living under it.", 4.2),
 
     ("h2", "The Descent"),
     ("gold", "The tunnel curls beneath the village like a rib: wet timber props, black nails, "
@@ -287,8 +292,6 @@ BLOCKS = [
              "featureless, calm as sleep. The song pours off the creature in slow waves; even "
              "through beeswax the heroes feel it, pressing, patient, asking them nicely to "
              "forget they ever came."),
-    ("img", f"{A}/scenes/s6_hydra_lair.png",
-     "The False Hydra entire, in the drowned orchestra pit below the Old Theater.", 4.6),
     ("gold", "On a ledge among the props lies a leather toolbelt with a torn name tag: **HARLAN "
              "WICKE**. Beside it, worn smooth by decades of a workman's pocket, a small carved "
              "whistle: Harlan's own, kept since his boyhood, carried all his life. Ursa picks "
@@ -300,6 +303,8 @@ BLOCKS = [
            "dropped the first head before the song even turned. **Vital Link:** the body "
            "resists weapon damage while heads remain; each destroyed head strips one layer of "
            "that protection, and the body acts more often the more heads still sing."),
+    ("img", f"{A}/scenes/s6_hydra_lair.png",
+     "The False Hydra entire, in the drowned orchestra pit below the Old Theater.", 4.6),
     ("gold", "It is the hardest fight since the Dutchman. Necks lash up through the floor ports "
              "and slither between them, hunting; the mound shifts under pale limbs to open and "
              "close the ground; sandbags and pulleys crash down from the fly loft. But the "

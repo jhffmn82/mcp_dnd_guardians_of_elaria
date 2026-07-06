@@ -87,7 +87,7 @@ BLOCKS = [
              "knows it, followed by the roads not yet taken."),
 
     ("h2", "Eldridge Village and the Forest of Whispers"),
-    ("imgfloat", f"{A}/monsters/duckleaf_stone_circle.png", 2.5),
+    ("imgfloat", f"{A}/scenes/s1_eldridge_village.png", 2.5),
     ("body", "A quaint village in the rolling hills of **Eldridge Vale**, known for its bustling "
              "little marketplace, its seasonal festivals honoring Elaria, and the **Gilded Acorn "
              "Tavern**, the warm-hearted inn (Osric behind the bar, Rhea working the tables) where "
@@ -207,19 +207,22 @@ BLOCKS = [
              "**Grand Custodian** and laid it gently to rest, proving that a fraying world is saved "
              "by mercy, not by force. The city's wounds closed behind them."),
 
+    ("pagebreak",),
     ("h2", "Roads Not Yet Taken"),
-    ("imgfloat", f"{A}/world/dark_figure.png", 2.5),
+    ("imgfloat", f"{A}/scenes/bloodthorn_hollow.png", 2.4),
     ("body", "The map does not end at Gearhaven, and neither will the chronicle. These places are "
              "spoken of, dreamed of, or marked in old logbooks, and every one of them is waiting."),
     ("body", "**Bloodthorn Hollow**, called simply the Hollow: the thorn-ringed home of the "
              "Bloodfang Clan, where Stabby was born. Word has come by way of the courier Skitch "
              "that cracks are opening near the Hollow and the clan blames the artificers. Someone "
              "will have to go home and set that right."),
+    ("imgfloat", f"{A}/scenes/glimmerspire.png", 2.4, "left"),
     ("body", "**Glimmerspire and Deepforge Hollow**, far below in the Underdark: the deep-gnome "
              "city of forges and the academy where Lilly built her first turret, home of her mother "
              "Poots and Master Crafter Droven Sparkwick. Glimmerspire forged the Essence Sphere "
              "before the crisis ever began. How they knew it would be needed is a question with a "
              "long answer."),
+    ("imgfloat", f"{A}/scenes/old_shrine.png", 2.4),
     ("body", "**The Old Shrine in the east**: Ash Catchum's last logbook entry reads, \"The pattern "
              "leads east. Following the dark. To the old shrine.\" The Circle's elders believe he "
              "meant the **Ancient Shrine of the Forgotten Glade**, a hidden temple of Elaria deep "
@@ -229,6 +232,7 @@ BLOCKS = [
              "of luminescent crystals glowing in every color, said to house creatures tied to the "
              "elemental forces. Professor Aelwyn's notes mention it often. No Guardian has yet set "
              "foot inside."),
+    ("imgfloat", f"{A}/world/dark_figure.png", 2.4, "left"),
     ("body", "**The five rift-worlds** beyond the portal: Terra the earth-plane first, under "
              "dimming Antares, then Unda, Ignis, Aer, and last of all Umbra, the plane of Shadow, "
              "under a star already dark. Each failing world keeps a corrupted guardian of its own, "
