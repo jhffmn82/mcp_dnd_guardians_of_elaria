@@ -128,7 +128,7 @@ def build_doc(blocks, out_path):
             # (titlepage, kicker, title, subtitle, note)
             _, kicker, title, subtitle, note = blk
             p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            p.paragraph_format.space_before = Pt(60)
+            p.paragraph_format.space_before = Pt(24)
             r = p.add_run("✦  ✦  ✦"); _set_font(r, Pt(16), color=GOLD_EDGE)
             p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
             p.paragraph_format.space_before = Pt(18)
@@ -145,15 +145,21 @@ def build_doc(blocks, out_path):
 
         elif kind == "h1":
             p = doc.add_paragraph()
-            if len(blk) > 2 and blk[2].get("pagebreak"):
+            # Content flows continuously; only hard-break before the Appendix
+            # (or when a block explicitly asks with hardbreak). Parts are set
+            # off by generous space and a keep-with-next rule, not a page break.
+            hard = blk[1].strip().lower().startswith("appendix")
+            if len(blk) > 2 and blk[2].get("hardbreak"):
+                hard = True
+            if hard:
                 p.paragraph_format.page_break_before = True
-            p.paragraph_format.space_before = Pt(18); p.paragraph_format.space_after = Pt(6)
+            p.paragraph_format.space_before = Pt(20); p.paragraph_format.space_after = Pt(6)
             p.paragraph_format.keep_with_next = True
             r = p.add_run(blk[1]); _set_font(r, Pt(16), True, color=GOLD_EDGE)
 
         elif kind == "h2":
             p = doc.add_paragraph()
-            p.paragraph_format.space_before = Pt(14); p.paragraph_format.space_after = Pt(4)
+            p.paragraph_format.space_before = Pt(11); p.paragraph_format.space_after = Pt(3)
             p.paragraph_format.keep_with_next = True
             r = p.add_run(blk[1]); _set_font(r, Pt(13), True, color=H2_COLOR)
 
@@ -176,7 +182,7 @@ def build_doc(blocks, out_path):
 
         elif kind == "body":
             p = doc.add_paragraph()
-            p.paragraph_format.space_after = Pt(6)
+            p.paragraph_format.space_after = Pt(4)
             _rich(p, blk[1])
 
         elif kind == "bridge":
@@ -200,14 +206,21 @@ def build_doc(blocks, out_path):
             # (img, path, caption, width_inches)
             _, path, caption, w = blk
             data, pw, ph = _image_png_bytes(path)
+            # Cap rendered HEIGHT so tall/portrait art cannot eat a whole page
+            # and strand whitespace. Landscape art keeps its requested width.
+            aspect = ph / pw
+            max_h = 4.2
+            if w * aspect > max_h:
+                w = max_h / aspect
             p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
             p.paragraph_format.keep_with_next = bool(caption)
-            p.paragraph_format.space_before = Pt(8)
+            p.paragraph_format.space_before = Pt(6)
+            p.paragraph_format.space_after = Pt(2)
             run = p.add_run()
             run.add_picture(io.BytesIO(data), width=Inches(w))
             if caption:
                 cp = doc.add_paragraph(); cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                cp.paragraph_format.space_after = Pt(9)
+                cp.paragraph_format.space_after = Pt(7)
                 r = cp.add_run(caption); _set_font(r, Pt(9), italic=True, color=CAPTION_GRAY)
 
         elif kind == "pagebreak":
