@@ -89,7 +89,9 @@ I = [
         "**Sugar Rush.** Bonus action lick, 1/long rest: 2d8 + Con temporary HP. **Frostbite Infusion.** +2 frost on hit.",
         "Destined to become a Bloodfang heirloom when the Nichirin blade comes.",
     ]),
-    ("img", "assets/items/candyfang_katana.png", "The Candyfang Katana, candy-cane steel.", 3.4),
+    # Refit note (0.9in bottom margin): 2.6in lets the katana and its caption
+    # finish page 6 beside its statblock instead of stranding a third of the page.
+    ("img", "assets/items/candyfang_katana.png", "The Candyfang Katana, candy-cane steel.", 2.6),
 
     ("h1", "Boons, Baubles & Blessings"),
     ("body", "**Elaria's boons (the Whispering Glade, Session 2):** Ursa, Planar Awareness (sense "
@@ -616,8 +618,10 @@ C = [
     ("body", "**The seven-point star.** Elaria's sigil, wrapped in a leafed vine (or cupped in "
              "wings, on the Sash), found on every gift along the Guardians' path. When you see it, "
              "she saw you coming."),
-    ("img", "assets/characters/ursa_with_amulet.png", "The seven-point star of Elaria, held close.", 3.4),
-    ("img", "assets/world/elaria_goddess.png", "Elaria, the sleeping goddess who lit the way.", 2.8),
+    # Refit note (0.9in bottom margin): both closing vignettes sized to share
+    # the last page instead of stranding the goddess alone on a new page.
+    ("img", "assets/characters/ursa_with_amulet.png", "The seven-point star of Elaria, held close.", 2.0),
+    ("img", "assets/world/elaria_goddess.png", "Elaria, the sleeping goddess who lit the way.", 2.0),
 ]
 
 if __name__ == "__main__":

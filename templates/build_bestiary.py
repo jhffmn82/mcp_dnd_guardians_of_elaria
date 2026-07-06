@@ -33,18 +33,26 @@ _stock_image = _bs._image_png_bytes
 
 def _render_statblock_sized(doc, sb):
     hmax = sb.pop("img_hmax", None)
+    start = len(doc.paragraphs)
     if not hmax:
-        return _stock_render(doc, sb)
+        _stock_render(doc, sb)
+    else:
+        def _scaled(path, max_w_px=1200):
+            data, pw, ph = _stock_image(path, max_w_px)
+            return data, pw, int(ph * 2.6 / hmax)
 
-    def _scaled(path, max_w_px=1200):
-        data, pw, ph = _stock_image(path, max_w_px)
-        return data, pw, int(ph * 2.6 / hmax)
-
-    _bs._image_png_bytes = _scaled
-    try:
-        return _stock_render(doc, sb)
-    finally:
-        _bs._image_png_bytes = _stock_image
+        _bs._image_png_bytes = _scaled
+        try:
+            _stock_render(doc, sb)
+        finally:
+            _bs._image_png_bytes = _stock_image
+    # Refit for the 0.9in bottom margin: chain keep-with-next through the
+    # header cluster (name, type, AC/HP/speed, ability line, and their rules)
+    # so a statblock never strands its name at a page foot with its floated
+    # portrait clipping the page edge; the whole head moves to the next page
+    # together with the first line of its body.
+    for p in doc.paragraphs[start:start + 9]:
+        p.paragraph_format.keep_with_next = True
 
 _bs._render_statblock = _render_statblock_sized
 
@@ -138,6 +146,10 @@ B = [
         ],
     }),
 
+    # Refit note (0.9in bottom margin): Aqualump's header stranded at the foot
+    # of page 2 and its portrait clipped the page edge; break so the bridge
+    # line and the whole block open page 3 together.
+    ("pagebreak",),
     ("body", "*In Session 3, Professor Aelwyn offered the party three little wards; they chose Floraburst. "
              "The two who stayed behind, Aqualump and Emberpaws, are catalogued here too, for they are "
              "part of the story.*"),
@@ -222,6 +234,9 @@ B = [
              "He has no statistics yet; he is more a key than a creature, and his full return is still to come.*"),
 
     # ==================================================================
+    # Refit note (0.9in bottom margin): without the break, Duckleaf's header
+    # strands at the page foot and its portrait clips the page edge.
+    ("pagebreak",),
     ("h1", "Session 1: The Forest of Whispers"),
     ("gold", "The first creatures the Guardians ever faced, all touched by the thinning boundary "
              "between the planes. Each left behind a fading mote, the party's very first clue."),
@@ -443,6 +458,9 @@ B = [
              "strike at 10 ft. Their fall revealed rune-tears in the forest floor. (Statistics as the "
              "standard Displacer Beast, CR 3, AC 13, HP 85.)*"),
 
+    # Refit note (0.9in bottom margin): Shroomyte's header stranded at the page
+    # foot with a clipped portrait; open the next page with it instead.
+    ("pagebreak",),
     ("body", "*A guardian of the glowing fungal groves, all soft lantern-light and stubborn "
              "spores.*"),
     ("statblock", {
@@ -481,6 +499,9 @@ B = [
     ("gold", "A whole winter court had risen with the Krampusshade. These are the dangers that stalked "
              "the frozen roads of Havenmoor, and the fiend that ruled them."),
 
+    # Refit note (0.9in bottom margin): the Krampusshade is a boss block with
+    # showpiece art (3.2in float); it needs a fresh page to avoid clipping.
+    ("pagebreak",),
     ("body", "*The fiend of the longest night itself: horned, chain-draped, and smiling, striding "
              "the snows with a sack of cursed gifts over one shoulder.*"),
     ("statblock", {
@@ -515,6 +536,9 @@ B = [
         ],
     }),
 
+    # Refit note (0.9in bottom margin): the imp's header stranded below the
+    # Krampusshade with a clipped portrait; give the boss its page to itself.
+    ("pagebreak",),
     ("body", "*A red-eyed sliver of shadow that giggles in the dark between the lantern posts.*"),
     ("statblock", {
         "name": "Krampus's Imp",
@@ -641,6 +665,9 @@ B = [
              "frightened for 1 minute (repeat save at end of each turn)."),
         ],
     }),
+    # Refit note (0.9in bottom margin): the golem's header stranded at the
+    # page foot and its portrait clipped the page edge.
+    ("pagebreak",),
     ("body", "*Walking snowdrifts with hearts of blue ice, slow, cold, and very hard to argue "
              "with.*"),
     ("statblock", {
@@ -673,6 +700,9 @@ B = [
              "speed halved until end of its next turn."),
         ],
     }),
+    # Refit note (0.9in bottom margin): the Yule Cat's showpiece art clipped
+    # the page edge when the block started at the page foot.
+    ("pagebreak",),
     ("body", "*The great black cat of midwinter tales, silent on the snow and quick to pounce.*"),
     ("statblock", {
         "name": "Yule Cat",
@@ -1104,6 +1134,8 @@ B = [
              "Fortitude) and, only if the rite went loud, **Skeletons** (AC 13, HP 13, CR 1/4).*"),
 
     # ==================================================================
+    # DM-adjudicated numbering: Gearhaven keeps its Session 8 branding (the
+    # played sequence is 1, 2, 3, 4, 5, 6, 8; there was never a Session 7).
     ("h1", "Session 7: Gearhaven, the Clockwork City"),
     ("gold", "In the clockwork city, the enemy was no monster at all but corruption bleeding up through "
              "the cracks, reaching INTO the machines the people loved. Note the rotation: the lightning "
@@ -1134,6 +1166,9 @@ B = [
              "the target's speed is halved until end of its next turn."),
         ],
     }),
+    # Refit note (0.9in bottom margin): the hauler's header stranded at the
+    # page foot and its portrait clipped the page edge.
+    ("pagebreak",),
     ("body", "*A dockside lifter the size of a shed, swinging its forklift arms like siege "
              "weapons.*"),
     ("statblock", {

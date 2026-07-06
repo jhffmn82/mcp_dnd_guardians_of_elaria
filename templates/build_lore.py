@@ -100,6 +100,9 @@ BLOCKS = [
              "cracked lantern. The quiet pond where Lickgloom was befriended lies here too. It was "
              "in this forest that the work of the Guardians truly began."),
 
+    # Refit note (0.9in bottom margin): the Oakshade heading orphaned at the
+    # foot of page 3 and its float clipped the page edge; break to page 4.
+    ("pagebreak",),
     ("h2", "Oakshade Village"),
     ("imgfloat", f"{A}/scenes/s1_oakshade_twilight.png", 2.5),
     ("body", "A small village in **Oakshade Glade**, shaded by oaks so old the villagers name them "
@@ -207,22 +210,23 @@ BLOCKS = [
              "**Grand Custodian** and laid it gently to rest, proving that a fraying world is saved "
              "by mercy, not by force. The city's wounds closed behind them."),
 
-    ("pagebreak",),
+    # Refit note (0.9in bottom margin): the old hard break here stranded a
+    # nearly empty page 7; let the section flow up instead.
     ("h2", "Roads Not Yet Taken"),
-    ("imgfloat", f"{A}/scenes/bloodthorn_hollow.png", 2.4),
+    ("imgfloat", f"{A}/scenes/bloodthorn_hollow.png", 2.2),
     ("body", "The map does not end at Gearhaven, and neither will the chronicle. These places are "
              "spoken of, dreamed of, or marked in old logbooks, and every one of them is waiting."),
     ("body", "**Bloodthorn Hollow**, called simply the Hollow: the thorn-ringed home of the "
              "Bloodfang Clan, where Stabby was born. Word has come by way of the courier Skitch "
              "that cracks are opening near the Hollow and the clan blames the artificers. Someone "
              "will have to go home and set that right."),
-    ("imgfloat", f"{A}/scenes/glimmerspire.png", 2.4, "left"),
+    ("imgfloat", f"{A}/scenes/glimmerspire.png", 2.2, "left"),
     ("body", "**Glimmerspire and Deepforge Hollow**, far below in the Underdark: the deep-gnome "
              "city of forges and the academy where Lilly built her first turret, home of her mother "
              "Poots and Master Crafter Droven Sparkwick. Glimmerspire forged the Essence Sphere "
              "before the crisis ever began. How they knew it would be needed is a question with a "
              "long answer."),
-    ("imgfloat", f"{A}/scenes/old_shrine.png", 2.4),
+    ("imgfloat", f"{A}/scenes/old_shrine.png", 2.0),
     ("body", "**The Old Shrine in the east**: Ash Catchum's last logbook entry reads, \"The pattern "
              "leads east. Following the dark. To the old shrine.\" The Circle's elders believe he "
              "meant the **Ancient Shrine of the Forgotten Glade**, a hidden temple of Elaria deep "
@@ -232,13 +236,16 @@ BLOCKS = [
              "of luminescent crystals glowing in every color, said to house creatures tied to the "
              "elemental forces. Professor Aelwyn's notes mention it often. No Guardian has yet set "
              "foot inside."),
-    ("imgfloat", f"{A}/world/dark_figure.png", 2.4, "left"),
+    # Refit note: 2.0in keeps this float clear of the 0.9in bottom margin and
+    # lets the closing gold box join the page instead of stranding on its own.
+    ("imgfloat", f"{A}/world/dark_figure.png", 1.6, "left"),
     ("body", "**The five rift-worlds** beyond the portal: Terra the earth-plane first, under "
              "dimming Antares, then Unda, Ignis, Aer, and last of all Umbra, the plane of Shadow, "
              "under a star already dark. Each failing world keeps a corrupted guardian of its own, "
              "and each guardian is waiting, whether it knows it or not, to be freed."),
 
-    ("divider",),
+    # Refit note: divider removed so the closing box fits page 7 whole instead
+    # of splitting across the page turn; the gold box is its own separator.
     ("gold", "Why the gazetteer matters: the sky is going out, one anchor-star at a time, and in "
              "one year the Rift Portal opens. Every road on these pages leads, in the end, to a "
              "star: one to relight, one to guard, or one to follow east into the dark. Wherever "
