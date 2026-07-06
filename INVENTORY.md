@@ -8,8 +8,7 @@ Total files cataloged: 155 (excluding `.git/`).
 
 ## 1. Headline findings (read these first)
 
-- **Session 6 is located.** There is no file named "Session 6". The Session 6 material lives inside **`Session 7.docx`**, whose internal top heading reads *"Session 6 — Introduction: Lanterns in the Fog"* and covers the Wraithpine village / False Hydra arc where the party earned their relics from the Wraithpine chests. See flag F1 below; the filename and the internal heading disagree, and this is a DM-adjudication item, not something I resolved.
-- **No file contains content headed "Session 7."** The only "Session 7" is the filename on the Session 6 content. So the recorded arc is S1, S2, S3, S4, S5, S6 (mislabeled file), S8. Whether Wraithpine was table-session 6 or 7 needs DM confirmation (F1).
+- **Session 6 is located and RESOLVED (DM adjudicated 2026-07-05).** The Wraithpine / False Hydra arc (internal heading "Session 6 — Introduction: Lanterns in the Fog") was misfiled as `Session 7.docx`/`.pdf`. The DM confirmed it was Session 6 only; there was never a Session 7 at the table, and Gearhaven keeps its "Session 8" branding. Files renamed via `git mv` to `Session 6.docx` / `Session 6.pdf`. Played sequence: 1, 2, 3, 4, 5, 6, 8.
 - **Session 8 gold standard** = `Session_8_Gearhaven_v2.docx` (with matching `.pdf`). Its per-beat illustrated source docs live under `session 8/`. An older complete draft sits in `session 8/old/`.
 - **Heavy duplication** in `Character Sheets/` (multiple `(1)`,`(3)`,`(4)`,`(5)` copies, pre/post-level-4 variants, and zip bundles that re-contain PDFs already present loose). See section 5.
 - **Junk / empty:** `Character Sheets/Old blocks/Untitled document.docx` is 0 bytes of body text. Two UUID-named PDFs in `Pictures/` are unclassified. `Pictures/maxresdefault.jpg` looks like a downloaded thumbnail. See section 6.
@@ -30,9 +29,9 @@ Total files cataloged: 155 (excluding `.git/`).
 | `Session 4 Encounter Tables and Stat Blocks.docx` | session supplement | S4 | d20 travel table + stat blocks. Largest file in repo (46.9 MB). |
 | `Session 4 Item Rewards_.docx` | session supplement | S4 | Magic items (e.g. Frostbite Shard Dagger). |
 | `Session 5.docx` | session doc | S5 | "The Curse of Davy Jones," Havenmoor harbor, Capt. Brynn Wavewarden, sea voyage. |
-| `Sesson 5 Stat Blocks.docx` | session supplement | S5 | Stat blocks (Drowned Pirate, etc.). Note misspelled filename "Sesson". |
-| `Session 7.docx` | session doc | **S6** | **Actually Session 6 content** (Wraithpine, False Hydra, relic chests). Internal heading "Session 6 — Lanterns in the Fog." See flag F1. |
-| `Session 7.pdf` | export | **S6** | PDF render of the above; same content, same naming mismatch. |
+| `Session 5 Stat Blocks.docx` | session supplement | S5 | Stat blocks (Drowned Pirate, etc.). Renamed from misspelled "Sesson 5…". |
+| `Session 6.docx` | session doc | S6 | Wraithpine, False Hydra, relic chests ("Lanterns in the Fog"). Renamed from `Session 7.docx` per DM ruling (see headline findings). |
+| `Session 6.pdf` | export | S6 | PDF render of the above; renamed from `Session 7.pdf`. |
 | `Session_8_Gearhaven_v2.docx` | session doc | S8 | **Gold-standard format.** Gearhaven, the Clockwork City. Compiled illustrated adventure. |
 | `Session_8_Gearhaven_v2.pdf` | export | S8 | PDF render of the gold-standard Session 8. |
 
@@ -155,18 +154,18 @@ Monsters/factions: `False Hydra.png`, `Gasping Gull.png`, `Grimfang Clan.png`, `
 
 ## 7. Referenced-but-missing / flags for DM (F#)
 
-- **F1 — Session 6 vs 7 numbering.** `Session 7.docx` / `.pdf` contain content internally headed "Session 6" (Wraithpine / False Hydra / relic chests). Session 8's "Previously…" recap treats Wraithpine as the immediately prior session. So either Wraithpine was table-session 7 (and the internal "Session 6" heading is a typo) or it was session 6 (and there is no session 7). **Not resolved here** — this belongs in CONTRADICTIONS.md for DM adjudication.
-- **F2 — No standalone Session 6 file, no true Session 7 content file.** Confirm nothing is missing/unrecorded between the sea voyage (S5) and Gearhaven (S8) beyond the Wraithpine arc.
+- **F1 — RESOLVED (2026-07-05).** DM ruled: Wraithpine was Session 6 only; no Session 7 was ever played; Gearhaven keeps its "Session 8" number. Files renamed accordingly. Do not flag the 6-to-8 gap as a contradiction.
+- **F2 — RESOLVED with F1.** Nothing is missing between the sea voyage (S5) and Gearhaven (S8) beyond the Wraithpine arc.
 - **F3 — Campaign title drift.** Session 1 internal title is "Echoes of Elaria"; everything later is "The Guardians of Elaria." (Phase 3 canon item.)
 - **F4 — Character name drift.** DALL-E portrait names Ursa as "Taurus Catchum." Session 7.docx spells the goddess "Alaria" in one place vs "Elaria." (Phase 3 canon items.)
 - **F5 — `memory/` folder does not exist yet.** CLAUDE.md calls for `memory/campaign_canon.md`, `memory/session_log.md`, `memory/house_rules.md`. Deferred to Phase 2/3 (Phase 1 is read-only apart from this inventory); noting so it is not forgotten.
-- **F6 — Filename typos to fix on rename** (Phase 2): `Sesson 5 Stat Blocks.docx`, `staby vs strawlings.png`, `ghostbloom vs hyrda head.png`, `the swarm decends.png`, `Grand custodiant in the distance.png`, `awakened essesne sphere.png`, `lilly opening chest..png` / `stabby with stash..png` (double dot).
+- **F6 — Filename typos to fix on rename** (Phase 2; `Sesson 5` already fixed): `staby vs strawlings.png`, `ghostbloom vs hyrda head.png`, `the swarm decends.png`, `Grand custodiant in the distance.png`, `awakened essesne sphere.png`, `lilly opening chest..png` / `stabby with stash..png` (double dot).
 
 ---
 
 ## 8. Suggested Phase 2 target mapping (preview, not executed)
 
-- `sessions/` ← `Session 1.docx` … `Session 5.docx`, `Session 7.docx`→`session_06_wraithpine.docx` (pending F1), `Session_8_Gearhaven_v2.docx`, session supplements, PDFs.
+- `sessions/` ← `Session 1.docx` … `Session 6.docx` (`session_06_wraithpine.docx`), `Session_8_Gearhaven_v2.docx`, session supplements, PDFs. There is no session 7 (DM ruling).
 - `lore/` ← `Campaign_Outline_v2.docx`, `Elaria.docx`, `List of Locations.docx`, `BackStory…docx`, `Pokemon Encounters.docx`, `Blossomflare.docx`, statblocks.
 - `characters/` ← v3 sheets + `path rewards/` current v2 files.
 - `assets/` ← everything in `Pictures/` and `session 8/**/*.png`; create `assets/image_manifest.md` capturing every DALL-E/ChatGPT long filename as its art prompt.

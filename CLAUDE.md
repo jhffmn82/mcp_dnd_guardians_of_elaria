@@ -19,6 +19,8 @@ If the `memory/` folder or any of its files do not exist yet, create them:
 
 All three relics came from Wraithpine chests as Elaria's gift. A year-apart timeskip to level 7 is planned after Session 8, with individual path reward documents (Ursa's includes a custom "Warden" constellation for Starlit Channeler).
 
+**Session numbering (DM-adjudicated 2026-07-05):** the Wraithpine / False Hydra arc was Session 6 only; there was never a Session 7 at the table. Gearhaven keeps its "Session 8" branding. The played sequence is 1, 2, 3, 4, 5, 6, 8. Do not renumber Session 8 and do not flag the 6-to-8 gap as a contradiction.
+
 ## House rules and standing rulings (seed for memory/house_rules.md)
 
 1. Ursa's Starseed +1d4 applies only to actual druid spells, NOT the Starry Form Archer luminous arrow.
@@ -33,7 +35,8 @@ All three relics came from Wraithpine chests as Elaria's gift. A year-apart time
 - 2024 (revised 5e) rules only. Where 2014 and 2024 text conflict, 2024 wins.
 - House rules override RAW. Never regress the RAW fixes above when revising documents.
 - **Never invent campaign events.** When revising sessions 1-7: fix consistency, names, lore, and formatting only. Never change what happened at the table. When in doubt, flag it in the document with [DM CHECK: ...] instead of changing it.
-- The DM adjudicates all lore contradictions. Collect them in CONTRADICTIONS.md; do not silently pick a winner.
+- **Recency wins.** The project evolved over time and fixes were never back-populated, so the newest documents (Session_8_Gearhaven_v2, Campaign_Handoff_v2) are the most accurate. When older and newer docs conflict, the newer one is canon.
+- **Fix clear inconsistencies without asking** (spelling drift, name drift, stale titles, rules drift): apply the recency rule and correct silently. Reserve CONTRADICTIONS.md and [DM CHECK] flags for genuinely ambiguous questions about what actually happened at the table.
 - Session 8 (Session_8_Gearhaven_v2) is the gold-standard format. All session revisions target that structure.
 - Content is for kids: adventurous tone, real stakes, never gruesome.
 - No em dashes in any generated document; use commas, colons, semicolons, or parentheses.
@@ -53,6 +56,12 @@ Work proceeds in phases, ideally one phase per session. Check git log / INVENTOR
 **Phase 4 — Format lockdown and session revision.** Extract the Session 8 structure into `templates/session_template.md`. Then revise ONE session per work session to match the template and adjudicated canon, showing diffs, committing each separately.
 
 **Phase 5 — The keepsake compilation.** Only after 1-8 are revised and consistent: compile "The Guardians of Elaria: The Complete Chronicle" as a single polished document.
+
+## Keepsake deliverable requirements (running list)
+
+- A campaign timeline outline: the party's level at each point and the major events of each session (build during Phase 3 into memory/campaign_canon.md).
+- Historical character sheets: old sheets are kept as per-level snapshots, normalized to a consistent format. The DM will supply missing old sheets. Do not bury old sheets in _triage as junk; they are chronicle material.
+- Art: track illustration gaps per session; new graphics will be generated as work proceeds. Fleshing out prose is welcome but must never invent table events.
 
 ## After each real-world game session
 
