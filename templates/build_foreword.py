@@ -51,6 +51,7 @@ BLOCKS = [
              "fights like a rumor and laughs like a landslide, he came for the adventure and stayed "
              "for the friends."),
     ("img", "assets/characters/stabby_v3_portrait.png", "Stabby Sharpblade, mid-leap.", 2.8),
+    ("dm", "**At the table:** Level 5 Monk. No spell slots; he runs on **5 Focus Points** per short rest (Flurry of Blows, Stunning Strike, Patient Defense, Step of the Wind)."),
     ("h2", "Ursa Catchum"),
     ("body", "A human boy who reads the night sky like a map, son of the lost wildfire druid Ash "
              "Catchum. A {color:ursa}Druid{/} of the Circle of the Eternal Stars, he carries three "
