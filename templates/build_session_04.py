@@ -45,6 +45,8 @@ BLOCKS = [
              "*It takes the lost ones, then fades to the wind.”*"),
     ("gold", "The melody lingers, unsettling in its simplicity. The children are not playing. They "
              "are caught in something, like sleepwalkers singing in a dream."),
+    ("img", f"{A}/scenes/s4_children_singing.png",
+     "The children stand in the snow, eyes far away, singing a rhyme no one taught them.", 3.9),
     ("gold", "Near them, a woman kneels in the snow, clutching a small, empty mitten. Her cry cuts "
              "the morning like a knife: **“They took him! My boy... he is gone! The shadows took "
              "my little Finn!”** Villagers gather, pale and hushed, their eyes darting to the dark "
@@ -97,6 +99,8 @@ BLOCKS = [
              "garland, the smell of roasted chestnuts and cinnamon pastries, and at the center a "
              "towering pine tree dressed in glass ornaments and golden ribbon. But the laughter "
              "here is forced, and every parent keeps one hand on a small shoulder."),
+    ("img", f"{A}/scenes/s4_bell_hunt_market.png",
+     "The bell hunt at Frostwind Market Square, where the festive cheer wears thin.", 3.9),
     ("gold", "The **E Bell** hangs from one of the pine's lower branches, silver, engraved with "
              "stars and snowflakes, chiming softly in the breeze as if it had been waiting to be "
              "noticed. When Ursa lifts it free, the cold air feels, for one breath, warmer."),
@@ -145,11 +149,15 @@ BLOCKS = [
              "*Shadows gather, and children weep.*\n"
              "*Ring the light, banish the shade,*\n"
              "*Or into the night, we'll be afraid.”*"),
+    ("img", f"{A}/scenes/s4_orphanage_milo.png",
+     "At the Hollow Hearth Orphanage, brave little Milo gives up the last bell.", 3.2),
     ("dm", "Calming Milo took gentleness, not dice: Charisma (Persuasion) DC 14 with advantage "
            "for kindness. Intelligence (Investigation) DC 15 found the G Bell in the attic toy "
            "chest."),
 
     ("h2", "The Wyrmgale Lighthouse: B and High C"),
+    ("img", f"{A}/scenes/s4_lighthouse.png",
+     "The Wyrmgale Lighthouse holds its light against a mist that does not behave like mist.", 3.9),
     ("gold", "Last comes the lighthouse, tall and steadfast on the cliffs, battered by wind and "
              "salt spray, its beacon struggling against a mist that does not behave like mist. "
              "The keeper meets them at the door: **Old Doran Bramblebeard**, Havenmoor's "
@@ -183,6 +191,8 @@ BLOCKS = [
              "deep green cloak stitched with symbols of winter and renewal. “Welcome, brave ones. "
              "You have done well to gather the bells: relics of light and hope. Please, come in. "
              "We have much to discuss.”"),
+    ("img", f"{A}/npcs/faelan.png",
+     "Faelan the lorekeeper, among his tomes and glowing crystals in the ivy cottage.", 3.9),
     ("gold", "Inside, the cottage smells of herbs, pine, and old parchment. Shelves of ancient "
              "tomes and glowing crystals hum with stories. Faelan sets a wooden tray before the "
              "party: three **frosted cookies**, each shimmering faintly with magic. “Take these. "
@@ -225,6 +235,8 @@ BLOCKS = [
              "was always meant to sound: **Jingle Bells**, bright and defiant in the dead air. On "
              "the last note, golden light bursts from the bells and rolls through the black ice, "
              "and the chains shatter with a crack that shakes snow from every branch."),
+    ("img", f"{A}/scenes/s4_barrier_carol.png",
+     "Bells raised, the heroes play the true song, and Elaria's light unmakes the barrier of darkness.", 3.9),
     ("gold", "The mist answers back. It gathers itself into three snarling shapes: **Frozen "
              "Wolves**, frost-armored, eyes burning icy blue, guardians grown from the "
              "Krampusshade's own cold. The fight is knives and starlight on slick ground, wolf "
@@ -297,7 +309,7 @@ BLOCKS = [
     ("gold", "**Krampusshade:** “Your defiance ends here. I will feast on your fear, and the "
              "children shall be mine forever!”"),
     ("img", f"{A}/monsters/krampusshade.png",
-     "The Krampusshade comes for Havenmoor.", 3.5),
+     "The Krampusshade comes for Havenmoor.", 3.9),
 
     ("h2", "The Bells' Harmony"),
     ("gold", "He slams his claws together and freezing power rolls across the square; his "
@@ -314,6 +326,8 @@ BLOCKS = [
              "turret keeps time like a drummer. Floraburst shakes her petals and adds one small, "
              "clear chime of her own. And on the final note, sung by eight bells in perfect "
              "harmony, the fiend's roar breaks in the middle."),
+    ("img", f"{A}/scenes/s4_carol_finale.png",
+     "The Carol of the Bells rings out, and the Krampusshade comes apart into shadow above them.", 3.3),
     ("gold", "The Krampusshade's body **shatters into wisps of shadow**, spiraling up and up "
              "and dissolving into the night sky, banished from the world he had grown too "
              "bitter to guard. The frost gripping the village begins to melt. The fog lifts. "
@@ -322,6 +336,8 @@ BLOCKS = [
              "them safe**, and in the middle of them a small boy with one missing mitten. "
              "**Finn** hits his mother's arms at a dead run, and the sound she makes is the "
              "opposite of the one that woke the heroes that morning."),
+    ("img", f"{A}/scenes/s4_children_freed.png",
+     "The sack bursts open, and Finn runs home to his mother's arms.", 3.9),
     ("dm", "The final battle: the **Krampusshade** (CR 5) with **shadow imps** rising from the "
            "fog, while the party rang the eight bells into the Carol of the Bells. Each "
            "completed phrase of the carol seared him; the eighth harmony unmade him."),
@@ -340,15 +356,15 @@ BLOCKS = [
              "you on the journey ahead.”"),
     ("gold", "For **Lilly**, the **Frostbite Shard Dagger**: a blade of crystalline ice that "
              "never melts, glowing with faint blue arcane light, hungry to channel her spells."),
-    ("img", f"{A}/characters/lilly_session4.png",
-     "Lilly Glimmergear and the Frostbite Shard Dagger, on the brightest morning of the festival.", 3.4),
     ("gold", "For **Ursa**, the **Amulet of Guiding Light**: a polished silver starburst with a "
              "blue gem at its heart that pulses softly, like a distant star keeping watch."),
     ("gold", "And for **Stabby**, the **Candyfang Katana**: a katana of impossible candy-cane "
              "steel, red and white and wickedly sharp, trailing a faint scent of sugar. Stabby "
              "licks it immediately. It is delicious."),
+    ("img", f"{A}/characters/lilly_session4.png",
+     "Lilly Glimmergear and the Frostbite Shard Dagger, on the brightest morning of the festival.", 2.7),
     ("img", f"{A}/characters/stabby_cane.png",
-     "Stabby Sharpblade and the Candyfang Katana. Yes, he licked it.", 3.4),
+     "Stabby Sharpblade and the Candyfang Katana. Yes, he licked it.", 2.7),
     ("dm", "Full statistics for all three gifts live in the treasures compendium."),
     ("gold", "Down at the harbor, the shipwright **Master Doran Bramblebeard**, lighthouse soot "
              "still on his sleeves, nods toward a trim vessel rocking at the dock. “The "
