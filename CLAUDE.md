@@ -21,7 +21,7 @@ All three relics came from Wraithpine chests as Elaria's gift. A year-apart time
 
 **Session numbering (DM-adjudicated 2026-07-05):** the Wraithpine / False Hydra arc was Session 6 only; there was never a Session 7 at the table. Gearhaven keeps its "Session 8" branding. The played sequence is 1, 2, 3, 4, 5, 6, 8. Do not renumber Session 8 and do not flag the 6-to-8 gap as a contradiction.
 
-**Level timeline (DM-confirmed points; refine during Phase 3):** the party started at level 3 in Session 1. They are level 5 as of Session 8, and the planned timeskip takes them to 7. The "pre 4 / post 4" sheets in Old blocks imply the level-4 bump landed around Session 4; pin the exact 3-to-4 and 4-to-5 moments from session text during canon extraction, and flag with [DM CHECK] if the docs do not settle them.
+**Level timeline (DM-confirmed points; refine during Phase 3):** the party started at level 3 in Session 1. They are level 5 as of Session 8, and the planned timeskip takes them to 7. The "pre 4 / post 4" sheets in Old blocks are pre- and post-SESSION-4 snapshots (DM confirmed), bracketing the Session 4 item rewards and any level-up that came with it. Pin the exact 3-to-4 and 4-to-5 level-up moments from session text during canon extraction, and flag with [DM CHECK] if the docs do not settle them.
 
 ## House rules and standing rulings (seed for memory/house_rules.md)
 
