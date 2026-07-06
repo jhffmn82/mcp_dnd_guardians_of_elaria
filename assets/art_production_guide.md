@@ -49,6 +49,10 @@ Significant recurring characters (NPCs, villains, the goddess) have canonical re
 
 ---
 
+## ENEMY PORTRAITS FROM COMBAT SCENES
+
+For bestiary creatures that lack a dedicated portrait but DO appear in an approved combat scene, generate their statblock portrait by ATTACHING that combat scene as a reference and asking for a clean solo portrait of just that creature (plain or simple background). This keeps the bestiary art consistent with how the creature actually looked in play. Example: a Mist Stalker portrait referenced from `scenes/s1_mist_stalkers.png`. Save as `monsters/<name>.png`.
+
 ## THE GAP LIST (prompts to generate)
 
 ### Session 1: The Gathering of Friends

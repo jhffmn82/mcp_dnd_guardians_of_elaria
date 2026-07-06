@@ -125,27 +125,55 @@ def _mod(score):
     m = (int(score) - 10) // 2
     return f"+{m}" if m >= 0 else str(m)
 
+def _float_right(paragraph, data, w_in):
+    """Anchor a picture floated to the right with square text-wrap, so the
+    statblock body wraps around it instead of stranding whitespace."""
+    from docx.oxml import parse_xml
+    run = paragraph.add_run()
+    pic = run.add_picture(io.BytesIO(data), width=Inches(w_in))
+    cx, cy = pic._inline.extent.cx, pic._inline.extent.cy
+    drawing = run._r.find(qn('w:drawing'))
+    inline = drawing.find(qn('wp:inline'))
+    graphic = inline.find(qn('a:graphic'))
+    docpr = inline.find(qn('wp:docPr'))
+    anchor = parse_xml(
+        '<wp:anchor xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" '
+        'xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" '
+        'behindDoc="0" distT="0" distB="0" distL="114300" distR="0" simplePos="0" locked="0" '
+        'layoutInCell="1" allowOverlap="1" relativeHeight="2">'
+        '<wp:simplePos x="0" y="0"/>'
+        '<wp:positionH relativeFrom="column"><wp:align>right</wp:align></wp:positionH>'
+        '<wp:positionV relativeFrom="paragraph"><wp:posOffset>0</wp:posOffset></wp:positionV>'
+        f'<wp:extent cx="{cx}" cy="{cy}"/>'
+        '<wp:effectExtent l="0" t="0" r="0" b="0"/>'
+        '<wp:wrapSquare wrapText="bothSides"/>'
+        f'<wp:docPr id="{docpr.get("id")}" name="{docpr.get("name")}"/>'
+        '<wp:cNvGraphicFramePr/>'
+        '</wp:anchor>')
+    anchor.append(graphic)
+    drawing.remove(inline)
+    drawing.append(anchor)
+
+
 def _render_statblock(doc, sb):
-    """Classic 5e statblock in the crimson house box. sb is a dict:
+    """A 5e-style statblock in the crimson house box, with the creature
+    portrait floated to the right and the text wrapping around it. sb keys:
     name, type, ac, hp, speed, abilities {STR..CHA}, optional cr, saves,
-    skills, resistances, immunities, senses, languages, traits [(n,t)],
-    actions [(n,t)], legendary [(n,t)], img path, caption."""
+    skills, resistances, vulnerabilities, immunities, condition_immunities,
+    senses, languages, traits/actions/reactions/legendary [(name,text)], img, img_w."""
+    # name header, and float the portrait from this first paragraph so the
+    # whole block wraps around it
+    p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
+    p.paragraph_format.keep_with_next = True; p.paragraph_format.space_after = Pt(0)
     if sb.get("img"):
         try:
             data, pw, ph = _image_png_bytes(sb["img"])
-            w = sb.get("img_w", 2.6)
-            aspect = ph / pw
-            if w * aspect > 3.2:
-                w = 3.2 / aspect
-            p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            p.paragraph_format.space_before = Pt(6); p.paragraph_format.space_after = Pt(2)
-            p.paragraph_format.keep_with_next = True
-            p.add_run().add_picture(io.BytesIO(data), width=Inches(w))
+            w = sb.get("img_w", 2.35)
+            if w * (ph / pw) > 2.6:
+                w = 2.6 / (ph / pw)
+            _float_right(p, data, w)
         except Exception:
             pass
-    # name header
-    p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
-    p.paragraph_format.keep_with_next = True; p.paragraph_format.space_after = Pt(0)
     r = p.add_run(sb["name"]); _set_font(r, Pt(12.5), True, color=STAT_EDGE)
     # type line
     p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
@@ -156,23 +184,15 @@ def _render_statblock(doc, sb):
     if sb.get("hp"): _sb_line(doc, "Hit Points", sb["hp"])
     if sb.get("speed"): _sb_line(doc, "Speed", sb["speed"])
     _sb_rule(doc)
-    # ability score row as a 6-col table
+    # ability scores as a single wrapping line (plays nicely beside the float)
     ab = sb.get("abilities")
     if ab:
-        order = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
-        tbl = doc.add_table(rows=2, cols=6)
-        tbl.autofit = False
-        colw = Twips(1000)
-        for ci, name in enumerate(order):
-            c0 = tbl.cell(0, ci); c1 = tbl.cell(1, ci)
-            for c in (c0, c1):
-                c.width = colw
-                _cell_shade(c, STAT_FILL)
-            c0.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
-            r = c0.paragraphs[0].add_run(name); _set_font(r, Pt(8.5), True, color=STAT_EDGE)
+        p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
+        p.paragraph_format.space_after = Pt(1)
+        for i, name in enumerate(["STR", "DEX", "CON", "INT", "WIS", "CHA"]):
             sc = ab.get(name, 10)
-            c1.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
-            r = c1.paragraphs[0].add_run(f"{sc} ({_mod(sc)})"); _set_font(r, Pt(8.5), color=INK)
+            rr = p.add_run(("   " if i else "") + name + " "); _set_font(rr, Pt(9), True, color=STAT_EDGE)
+            rr = p.add_run(f"{sc} ({_mod(sc)})"); _set_font(rr, Pt(9), color=INK)
         _sb_rule(doc)
     for key, label in [("saves", "Saving Throws"), ("skills", "Skills"),
                        ("resistances", "Damage Resistances"), ("vulnerabilities", "Damage Vulnerabilities"),
@@ -195,13 +215,8 @@ def _render_statblock(doc, sb):
             if nm:
                 r = p.add_run(nm + ". "); _set_font(r, Pt(9), True, italic=True, color=INK)
             _rich(p, txt, base_size=Pt(9))
-
-
-def _cell_shade(cell, fill):
-    tcpr = cell._tc.get_or_add_tcPr()
-    shd = OxmlElement('w:shd')
-    shd.set(qn('w:val'), 'clear'); shd.set(qn('w:color'), 'auto'); shd.set(qn('w:fill'), fill)
-    tcpr.append(shd)
+    # a trailing spacer so the next block clears the floated image if it overhangs
+    doc.add_paragraph().paragraph_format.space_after = Pt(0)
 
 
 def build_doc(blocks, out_path):
