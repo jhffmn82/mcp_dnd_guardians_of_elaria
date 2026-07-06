@@ -16,15 +16,29 @@ SIZE = os.environ.get("GENART_SIZE", "1024x1024")
 QUALITY = os.environ.get("GENART_QUALITY", "high")
 
 
-def generate(out_path, prompt, refs):
+def generate(out_path, prompt, refs, attempts=3):
+    import time
+    last = None
+    for i in range(attempts):
+        try:
+            return _generate_once(out_path, prompt, refs)
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
+            last = e
+            print(f"attempt {i+1} failed ({type(e).__name__}), retrying in {5*(i+1)}s...")
+            time.sleep(5 * (i + 1))
+    raise last
+
+
+def _generate_once(out_path, prompt, refs):
     headers = {"Authorization": f"Bearer {KEY}"}
     if refs:
         files = []
         for r in refs:
             mime = "image/webp" if r.lower().endswith(".webp") else "image/png"
             files.append(("image[]", (os.path.basename(r), open(r, "rb"), mime)))
-        data = {"model": MODEL, "prompt": prompt, "size": SIZE,
-                "quality": QUALITY, "input_fidelity": "high"}
+        data = {"model": MODEL, "prompt": prompt, "size": SIZE, "quality": QUALITY}
+        if MODEL.startswith("gpt-image-1"):
+            data["input_fidelity"] = "high"
         resp = requests.post("https://api.openai.com/v1/images/edits",
                              headers=headers, data=data, files=files, timeout=600)
     else:

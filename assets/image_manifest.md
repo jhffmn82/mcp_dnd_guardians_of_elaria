@@ -210,3 +210,9 @@ Embedded images recovered from the original raw session documents (word/media). 
 | `assets/items/carol_rune_tablet.png` | session_04 encounter tables |
 
 `assets/art_refs/` holds drag-and-drop reference copies per character for DALL-E generation sessions (REF_lilly_1/2, REF_stabby_1/2, REF_ursa_1/2, REF_ghostbloom, REF_floraburst).
+
+## Generated art (S8-style, gpt-image, with character refs)
+
+| New path | Prompt file | Refs attached |
+|---|---|---|
+| `assets/scenes/s6_pumpkin_row.png` | `assets/gen_prompts/s6_pumpkin_row.txt` | REF_stabby_1, REF_stabby_2, REF_stabby_3_later |

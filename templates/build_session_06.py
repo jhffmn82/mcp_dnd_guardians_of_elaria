@@ -149,8 +149,8 @@ BLOCKS = [
              "fog swells, steady as a bow drawn across the rim of a glass."),
     ("dm", "**Straw stirs.** 2 Scarecrows and 6 Strawlings among the flickering "
            "jack-o'-lanterns. Statistics in the appendix."),
-    ("img", f"{A}/scenes/stabby_vs_strawlings.png",
-     "Stabby Sharpblade and the Candyfang Katana on Pumpkin Row.", 4.5),
+    ("img", f"{A}/scenes/s6_pumpkin_row.png",
+     "Stabby Sharpblade and the Candyfang Katana on Pumpkin Row.", 4.8),
     ("gold", "It is a wild, whirling scrap among the pumpkins, candy-striped steel flashing, "
              "sparks and starlight scattering straw in every direction. When the last strawling "
              "collapses into a harmless heap, Stabby cuts open the heart-gourd charm stitched "
