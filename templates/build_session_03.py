@@ -29,7 +29,7 @@ BLOCKS = [
 
     # ------------------------------------------------------------------
     ("img", f"{A}/npcs/ravenstone_laboratory_dalle.webp",
-     "Ravenstone Laboratory in the morning light.", 2.9),
+     "Ravenstone Laboratory in the morning light.", 3.8),
 
     # ------------------------------------------------------------------
     ("h1", "Part One: A Morning of Marvels", {"pagebreak": True}),
@@ -48,6 +48,8 @@ BLOCKS = [
              "magnifying glass laced with arcane runes in one hand, and the **Essence Sphere** "
              "glowing gently before him. He has clearly been up since dawn. His silver hair glimmers "
              "in the sunlight, and his emerald eyes are wide with wonder."),
+    # The workbench study floats right beside the morning dialogue.
+    ("imgfloat", f"{A}/scenes/s3_sphere_examination.png", 2.7),
     ("gold", "**Aelwyn:** “By the Spheres! Even after a whole morning's study I can scarcely "
              "believe it. A fully functional Essence Sphere! Poots Glimmergear is a true genius of "
              "her craft. This device is beyond what I thought possible.”"),
@@ -62,12 +64,12 @@ BLOCKS = [
              "**Artificer's Guild** in **Gearhaven City** commands power core technology far beyond "
              "my little tower. Upgraded with a proper core, this Sphere could hold many essences at "
              "once, more than enough for your Pikachu to step back into the world.”"),
-    ("img", f"{A}/scenes/s3_sphere_examination.png",
-     "The morning study of the Essence Sphere at Aelwyn's workbench.", 4.2),
 
     ("h2", "The Guardian of Balance"),
     ("gold", "Aelwyn's gaze drifts to the little collection the party has gathered on their travels: "
              "faint captured orbs of water, air, and earth, each one humming softly in its jar."),
+    # Portrait floats right beside the professor's warning.
+    ("imgfloat", f"{A}/npcs/professor_aelwyn_dalle.webp", 2.3),
     ("gold", "**Aelwyn:** “These motes of yours are not stray magical oddities. They are "
              "fragments of planar essence, torn loose from their home realms. The balance of the "
              "planes is unraveling, and creatures are slipping through the cracks.”"),
@@ -86,8 +88,6 @@ BLOCKS = [
              "You will need knowledge, allies, and tools forged where magic and technology meet. The "
              "Artificer's Guild can upgrade your Sphere, yes. But its archives may also hold the "
              "secret of how to stitch a world back together.”"),
-    ("img", f"{A}/npcs/professor_aelwyn_dalle.webp",
-     "Professor Aelwyn Ravenstone, planar researcher.", 3.2),
 
     # ------------------------------------------------------------------
     ("h1", "Part Two: Three Small Wonders", {"pagebreak": True}),
@@ -99,8 +99,8 @@ BLOCKS = [
              "shimmering watery aura waddles past, peering up curiously: an **Aqualump**. And a "
              "small fox-like creature with flames dancing harmlessly along its paws and tail darts "
              "between the table legs, chasing an automaton twice its size: an **Emberpaws**."),
-    ("img", f"{A}/scenes/s3_choose_companion.png",
-     "Aelwyn presents the three little wonders: Floraburst, Aqualump, and Emberpaws.", 3.2),
+    # The three little wonders float right beside Aelwyn's offer.
+    ("imgfloat", f"{A}/scenes/s3_choose_companion.png", 2.6),
     ("gold", "**Aelwyn:** “These little ones are manifestations of the unstable boundaries, each "
              "one carrying a fragment of elemental essence. They are not curiosities. They are "
              "clues. And they can sense planar anomalies long before you or I could.” He kneels "
@@ -112,12 +112,12 @@ BLOCKS = [
              "the little Floraburst rises from her sunbeam, pads straight across the floor, and "
              "rests her leafy head against Lilly's knee, her bud swaying like a tiny banner. Some "
              "choices make themselves."),
+    # The chosen companion floats right beside her adoption.
+    ("imgfloat", f"{A}/characters/floraburst.png", 2.25),
     ("gold", "**Lilly**, softly: “Hello, Floraburst. Want to come save the world with us?”"),
     ("dm", "**Floraburst** joins the party (statistics in the appendix). She senses planar "
            "anomalies, produces healing Floraberries, and is, by unanimous ruling, a very good "
            "dinosaur."),
-    ("img", f"{A}/characters/floraburst.png",
-     "Floraburst, the party's chosen companion.", 4.0),
 
     ("h2", "A Farewell to Lickgloom"),
     ("gold", "One companion arrives, and one stays behind. All morning **Lickgloom** has been "
@@ -125,6 +125,8 @@ BLOCKS = [
              "creatures no book has ever named. The little fey has not looked this happy since the "
              "night at the pond. Aelwyn watches it herd a family of glimmering hatchlings across the "
              "floor and chuckles."),
+    # The farewell scene floats right beside Aelwyn's offer of a home.
+    ("imgfloat", f"{A}/scenes/s3_lickgloom_farewell.png", 2.6),
     ("gold", "**Aelwyn:** “You know, the road to Gearhaven is long, and a laboratory full of "
              "planar creatures could use a friendly guide who speaks their language. Lickgloom "
              "would have a home here. Friends here. And you would always know where to find it.”"),
@@ -136,8 +138,6 @@ BLOCKS = [
              "promise. Every time we pass this way.” One long tongue wraps the whole party in a "
              "single ridiculous hug, and that is that. Guardians look after their friends, even "
              "when looking after them means letting them stay somewhere happy."),
-    ("img", f"{A}/scenes/s3_lickgloom_farewell.png",
-     "Lickgloom finds a home among Ravenstone's wonders.", 4.2),
 
     ("h2", "The Road to Gearhaven"),
     ("gold", "Aelwyn unrolls a traveling map across the table, the parchment crackling, and traces "
@@ -173,8 +173,7 @@ BLOCKS = [
              "sunlight struggle through the canopy. The air grows damp and cold, smelling of moss "
              "and something faintly metallic, like a storm that has not broken yet. Then, all at "
              "once, the birds stop singing."),
-    ("img", f"{A}/scenes/s3_brambleshadow_thicket.png",
-     "The path into Brambleshadow Thicket, where the birds stop singing.", 3.4),
+    ("imgfloat", f"{A}/scenes/s3_brambleshadow_thicket.png", 2.5),
     ("dm", "Wisdom (Perception) DC 14 to notice the unnatural silence; Intelligence (Arcana) DC 15 "
            "to sense necrotic planar energy soaked into the shadows."),
     ("gold", "**Ursa**, whispering, his breath misting: “This does not feel right. Something is "
@@ -186,8 +185,7 @@ BLOCKS = [
              "into a grin, wisps of shadow trailing from its limbs like ghostly fire."),
     ("gold", "**Shadowflame**, in a whispery, disembodied voice: “Your fears are tasty... let me "
              "see them... let me taste them!”"),
-    ("img", f"{A}/monsters/shadowflame.png",
-     "The Shadowflame splits into a hall of grinning illusions.", 4.2),
+    ("imgfloat", f"{A}/monsters/shadowflame.png", 2.5),
     ("dm", "**The fight.** Shadowflame, CR 4 (appendix). It splits into three identical illusions; "
            "Intelligence (Arcana) or Wisdom (Perception) DC 18 to pick the real one. Terror Wave in "
            "a 15 foot cone (Wisdom DC 14 or frightened); Shadowmeld to teleport through the mist."),
@@ -205,6 +203,7 @@ BLOCKS = [
              "grinning: “More shadows, more fights! We are going to need sharper swords!”"),
 
     ("h2", "Whisperwind Meadow"),
+    ("imgfloat", f"{A}/scenes/s3_whisperwind_meadow.png", 2.4),
     ("gold", "Beyond the thicket the land opens into **Whisperwind Meadow**, and for one golden "
              "afternoon the road is kind. The grass runs in long silver waves, and the wind moving "
              "through it truly does whisper, half-words in no language anyone knows, as if the air "
@@ -212,16 +211,13 @@ BLOCKS = [
              "behind the breastbone. But nothing wicked wanders through today. Floraburst dozes on "
              "Ursa's pack with her bud turned to the sun, and the Guardians let the meadow's strange "
              "lullaby carry them south."),
-    ("img", f"{A}/scenes/s3_whisperwind_meadow.png",
-     "One golden afternoon of kindness: Whisperwind Meadow.", 3.0),
 
     ("h2", "The Talking Beasts of the Mistwood Path"),
     ("gold", "Where the meadow meets the old forest, the trail dives into the **Mistwood Path**, "
              "and the fog comes back with a grudge. Twisted trees knit out the sun, the mist curls "
              "around ankles, and every footstep lands muffled, as if the forest is holding a pillow "
              "over the sound."),
-    ("img", f"{A}/scenes/s3_displacer_beasts.png",
-     "The talking Displacer Beasts flow out of the Mistwood fog.", 4.2),
+    ("imgfloat", f"{A}/scenes/s3_displacer_beasts.png", 2.6),
     ("dm", "Wisdom (Perception) DC 15: shapes flickering in the fog, pacing the party. Wisdom "
            "(Survival) DC 14: padded tracks that stop abruptly, mid-stride. Intelligence (Arcana) "
            "DC 16: planar distortion is warping the creatures here, granting them abilities they "
@@ -255,8 +251,7 @@ BLOCKS = [
              "through the earth like veins of metal. The higher the party climbs, the stranger the "
              "hills grow: bulbous mushrooms sprout between the rocks, their caps glowing with eerie "
              "blue-green light, until the whole hillside shines like a dream having a dream."),
-    ("img", f"{A}/scenes/s3_ironroot_hills.png",
-     "The approach into the Ironroot Hills, every rise crowned with glowing caps.", 2.6),
+    ("imgfloat", f"{A}/scenes/s3_ironroot_hills.png", 2.3),
     ("dm", "Wisdom (Perception) DC 14: the ground pulses faintly; the roots shift. Intelligence "
            "(Arcana) DC 15: the mushrooms are suffused with Feywild energy, reacting to the "
            "party's presence."),
@@ -270,8 +265,7 @@ BLOCKS = [
              "menacing at once."),
     ("gold", "**Shroomyte**, in a vibrating, musical tone: “Intruders... the grove... must be "
              "protected!”"),
-    ("img", f"{A}/monsters/shroomyte_grove.png",
-     "The Shroomytes rise from the glowing grove of the Ironroot Hills.", 3.8),
+    ("imgfloat", f"{A}/monsters/shroomyte_grove.png", 2.5),
     ("dm", "**The fight.** Four Shroomytes, CR 2 each (appendix). Spore Blasts from range, "
            "Mycelium Tendrils to entangle, difficult terrain everywhere. Lilly's fire found their "
            "weakness; Stabby simply refused to be caught."),
@@ -321,8 +315,6 @@ BLOCKS = [
              "hammers the rod, and this time the monolith drinks it, humming louder and louder "
              "until a beam of pure light lances up into the clouds and blooms into a shimmering "
              "curtain of energy above the platform."),
-    ("img", f"{A}/scenes/s3_stormwatch_vision.png",
-     "The Dark Figure looms over the monoliths of the Stormwatch Cliffs.", 3.0),
 
     ("h2", "The Dark Figure"),
     ("gold", "Within the curtain of light, a vision takes shape: a towering figure cloaked in "
@@ -333,6 +325,9 @@ BLOCKS = [
              "boundaries between realms are mine to shatter and shape. The goddess's light fades, "
              "and chaos will reign. The motes you gather are but embers of a dying flame. You "
              "cannot stop the unraveling.”"),
+    # The vision on the cliffs floats right beside the aftermath (anchored a
+    # paragraph deeper so it clears the page foot).
+    ("imgfloat", f"{A}/scenes/s3_stormwatch_vision.png", 2.6),
     ("gold", "The vision collapses into darkness, and the light curtain blows out like a candle. "
              "Where it stood, something small falls to the stone with a crystalline chime: a "
              "**Dark Fragment**, a shard of crystallized energy swirling with elemental chaos, cold "
@@ -356,6 +351,7 @@ BLOCKS = [
              "them: distant laughter, jingling bells, a thread of festive music. The path becomes a "
              "cobblestone road flanked by frost-dusted pines, and the cold air fills with the "
              "mingled scents of sea salt, pine needles, cinnamon, nutmeg, and fresh-baked cookies."),
+    ("imgfloat", f"{A}/scenes/s3_havenmoor_arrival.png", 2.7),
     ("gold", "Ahead at dusk lies **Havenmoor**, a coastal town sprung whole from a holiday "
              "fairytale. Stone and timber houses wear wreaths and garlands and twinkling lights. "
              "Red ribbons wrap the lamp posts, snow dusts the rooftops, and warm hearth-glow spills "
@@ -364,8 +360,6 @@ BLOCKS = [
              "lights flickering among the boughs, a golden star burning at its top. Children pelt "
              "each other with snowballs beneath it. A painted signpost reads: *Welcome to "
              "Havenmoor! May your hearts be warm and your spirits bright!*"),
-    ("img", f"{A}/scenes/s3_havenmoor_arrival.png",
-     "The Guardians descend to festive Havenmoor at dusk.", 4.2),
     ("gold", "A small figure comes bustling up, barely three feet tall, in a green tunic, "
              "red-striped leggings, and a pointed red hat tipped with a jingle bell. His cheeks are "
              "rosy and his grin is enormous."),
@@ -407,7 +401,6 @@ BLOCKS = [
 
     # ------------------------------------------------------------------
     ("h1", "Appendix: Creatures of Session Three", {"pagebreak": True}),
-    ("body", "Compact statistics for the table; the full bestiary lives in the compendium."),
     ("stat", "Shadowflame", [
         "Medium undead, chaotic evil. **CR 4**. AC 14 (natural armor), HP 58 (9d8 + 18), Speed 0 ft., fly 40 ft. (hover).",
         "STR 8, DEX 18, CON 14, INT 12, WIS 15, CHA 18. Skills Stealth +8, Intimidation +6.",
@@ -422,7 +415,6 @@ BLOCKS = [
         "STR 18, DEX 15, CON 16, INT 6, WIS 12, CHA 8. Darkvision 60 ft.",
         "**Displacement.** Projects an illusion of standing beside itself; attack rolls against it have disadvantage until it takes damage.",
         "**Tentacles (Multiattack x2).** +6, reach 10 ft., 1d6 + 4 bludgeoning plus 1d8 force.",
-        "*The two on the Mistwood Path spoke aloud, which displacer beasts never do: a planar strangeness, warped by the tears in reality found beneath them.*",
     ]),
     ("stat", "Shroomyte", [
         "Small plant, neutral. **CR 2**. AC 13 (natural armor), HP 27 (5d8 + 5), Speed 20 ft.",
@@ -433,17 +425,15 @@ BLOCKS = [
         "**Mycelium Tendrils.** +4, reach 10 ft., 2d4 + 2 bludgeoning; DC 13 Strength save or restrained one turn.",
         "**Fungal Retribution (Reaction).** A melee attacker within 5 ft. takes 2d4 poison (DC 13 Constitution negates).",
     ]),
-    ("h2", "The Professor's Companions"),
-    ("stat", "Floraburst (the party's companion)", [
-        "Small fey, neutral good. AC 14 (natural armor), HP 45 (6d6 + 18), Speed 30 ft.",
+    # Companion blocks merged into one so the appendix holds one page.
+    ("stat", "The Professor's Companions", [
+        "**Floraburst (the party's companion).** Small fey, neutral good. AC 14 (natural armor), HP 45 (6d6 + 18), Speed 30 ft.",
         "STR 14, DEX 12, CON 16, INT 10, WIS 14, CHA 10. Skills Nature +4, Survival +4. Resistance poison. Darkvision 60 ft. Understands Sylvan and Common.",
         "**Plant Camouflage.** Advantage on Stealth checks in heavy foliage. **Photosynthesis.** Recovers 10 extra HP when resting in sunlight.",
         "**Razor Leaf.** +4, range 30 ft., 2d8 + 2 slashing.",
         "**Vine Lash.** +4, reach 15 ft., 1d10 + 2 bludgeoning; DC 13 Strength save or restrained one turn.",
         "**Floraberry (3/Day).** Produces 1d4 + 1 magical berries; eating one restores 3 HP.",
-    ]),
-    ("stat", "Aqualump and Emberpaws (the two who stayed with Aelwyn)", [
-        "**Aqualump.** Small water elemental, neutral good. AC 16 (shell), HP 54, Swim 30 ft. Water Bolt (2d8 + 2, knockdown), Surf (Recharge 5-6, 15 ft. cone, 4d6 cold), Shell Defense (+4 AC as a bonus action).",
+        "**Aqualump (stayed with Aelwyn).** Small water elemental, neutral good. AC 16 (shell), HP 54, Swim 30 ft. Water Bolt (2d8 + 2, knockdown), Surf (Recharge 5-6, 15 ft. cone, 4d6 cold), Shell Defense (+4 AC as a bonus action).",
         "**Emberpaws.** Small fire elemental, chaotic good: a fox-like creature with flame-wreathed paws and tail. AC 15, HP 42, Speed 30 ft. Immune to fire. Ember (2d6 + 2 fire), Tail Flame Whip (2d6 + 3 fire, may ignite), Heatwave (3/Day, melee attackers take 1d8 fire).",
     ]),
 ]

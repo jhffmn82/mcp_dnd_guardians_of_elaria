@@ -22,21 +22,24 @@ I = [
 
     ("h1", "The Great Mysteries", {"pagebreak": True}),
     ("h2", "The Essence Sphere"),
+    ("imgfloat", "assets/items/essence_sphere.png", 2.6),
     ("body", "Brass and crystal, warm as a heartbeat, made by the deep-gnome masters of Glimmerspire "
              "BEFORE the cracks ever opened (how they knew is a question nobody has answered). It "
              "holds Pikachu's sleeping spark, and it is a GATHERER: it pulls loose planar motes to "
              "itself and survives holding them, which no other vessel can. It is the missing anchor "
              "of Vane's Rift Portal, and it never leaves the party's keeping. Gained **Planar "
              "Attunement** at the Whispering Glade (advantage on Arcana concerning planar magic)."),
-    ("img", "assets/items/essence_sphere.png", "The Essence Sphere, a gatherer of loose motes.", 3.0),
     ("h2", "The Three Enchanted Potatoes"),
-    ("img", "assets/items/three_potatoes.png", "The three enchanted potatoes: Healing, Transformation, Insight.", 3.4),
+    ("imgfloat", "assets/items/three_potatoes.png", 2.6),
     ("body", "Ash Catchum's legacy to his son: three unassuming potatoes that are anything but. The "
              "goddess named them **remnants of a shattered covenant**, safeguards bound from her own "
              "essence in the old lore (Healing, Transformation, Insight). They pulse when the world "
              "thins. Their hour has not yet come."),
+    # Refit note (0.9in bottom margin): the Idol's float straddled the page-1
+    # foot at any size; break so the entry rides page 2 whole.
+    ("pagebreak",),
     ("h2", "Stabby's Idol"),
-    ("img", "assets/items/stabbys_doll.png", "Stabby's Idol, cold to the touch near a rift.", 3.4),
+    ("imgfloat", "assets/items/stabbys_doll.png", 2.2, "left"),
     ("body", "A small carved figure Stabby found tucked in his bag after Wraithpine, though nobody "
              "saw who put it there. It goes ice cold near rifts, and corruption recoils from it. It "
              "has dreams in it. That is all anyone knows, yet."),
@@ -52,14 +55,12 @@ I = [
         "**Starlight.** Bonus action: 10 ft. dim light; advantage on night navigation.",
         "The counter-weapon: after every great victory, one new star brightens on its haft. The enemy puts stars out; the Staff lights them.",
     ]),
-    ("img", "assets/items/staff_of_waking_constellations.png", "The Staff of Waking Constellations.", 2.6),
     ("h2", "Sash of the Swift Current, Rewoven (Stabby)"),
     ("stat", "Sash of the Swift Current (Rewoven)", [
         "Scarlet stage-silk rewoven with theater rigging thread. +1 AC (stacks with Unarmored Defense).",
         "**Fleetstep.** +10 ft. walking speed. **Air Dance.** 1/day bonus action: fly speed equal to walking, 1 minute.",
         "**Feather Fall.** 1/day, no components. Its star sigil is cupped by a pair of wings.",
     ]),
-    ("img", "assets/items/sash_of_the_swift_current.png", "The Sash of the Swift Current, rewoven.", 3.0),
     ("h2", "Glimmerspire Pocket Dynamo, Mk II (Lilly)"),
     ("stat", "Glimmerspire Pocket Dynamo (Mk II)", [
         "A thumb-sized brass core stamped PROP ROOM in stage-engraver script (a mystery unexplained).",
@@ -67,7 +68,13 @@ I = [
         "**Power Sync.** Cannon deals +2 damage. **Reformat.** 1/long rest, action: change the cannon's model.",
         "Near Ghostbloom, the core glows soft ghost-green, like a stage cue waiting for its moment.",
     ]),
-    ("img", "assets/characters/lilly_with_dynamo.png", "Lilly with the Pocket Dynamo and its brass frame.", 3.4),
+    # The three relics share one gallery row instead of stacking dead space.
+    ("imgrow", [("assets/items/staff_of_waking_constellations.png",
+                 "The Staff of Waking Constellations."),
+                ("assets/items/sash_of_the_swift_current.png",
+                 "The Sash of the Swift Current, rewoven."),
+                ("assets/characters/lilly_with_dynamo.png",
+                 "Lilly with the Pocket Dynamo.")], 2.05),
 
     ("h1", "Gifts of Faelan (Havenmoor, Session 4)", {"pagebreak": True}),
     ("h2", "Frostbite Shard Dagger (Lilly)"),
@@ -75,25 +82,28 @@ I = [
         "Rare, attunement by an Artificer. Crystalline ice that never melts. 1d4 piercing + 1d4 cold, +1 to attack.",
         "**Spell focus and Arcane Firearm.** +1d8 frost to one spell damage roll cast through it; +2 frost on spell damage.",
     ]),
-    ("img", "assets/items/frostbite_shard_dagger.png", "The Frostbite Shard Dagger, ice that never melts.", 3.0),
     ("h2", "Amulet of Guiding Light (Ursa)"),
     ("stat", "Amulet of Guiding Light", [
         "Rare, attunement by a Circle of Stars druid.",
         "**Guiding Light.** Sheds light; allies gain +1 to attacks and saves while Ursa is in Starry Form.",
         "**Starry Glow.** Reaction, 1/long rest: 2d8 radiant, DC 15 Con or blinded. **Celestial Resilience.** Reroll natural 1s, 2/long rest.",
     ]),
-    ("img", "assets/items/amulet_of_guiding_light.png", "The Amulet of Guiding Light.", 3.0),
     ("h2", "Candyfang Katana (Stabby)"),
     ("stat", "Candyfang Katana", [
         "Rare, attunement by a Monk. A katana of impossible candy-cane steel. 1d8/1d10 slashing, +1 attack and damage.",
         "**Sugar Rush.** Bonus action lick, 1/long rest: 2d8 + Con temporary HP. **Frostbite Infusion.** +2 frost on hit.",
         "Destined to become a Bloodfang heirloom when the Nichirin blade comes.",
     ]),
-    # Refit note (0.9in bottom margin): 2.6in lets the katana and its caption
-    # finish page 6 beside its statblock instead of stranding a third of the page.
-    ("img", "assets/items/candyfang_katana.png", "The Candyfang Katana, candy-cane steel.", 2.6),
+    # The three gifts share one gallery row instead of stacking dead space.
+    ("imgrow", [("assets/items/frostbite_shard_dagger.png",
+                 "The Frostbite Shard Dagger."),
+                ("assets/items/amulet_of_guiding_light.png",
+                 "The Amulet of Guiding Light."),
+                ("assets/items/candyfang_katana.png",
+                 "The Candyfang Katana.")], 2.05),
 
     ("h1", "Boons, Baubles & Blessings"),
+    ("imgfloat", "assets/items/carol_rune_tablet.png", 2.0),
     ("body", "**Elaria's boons (the Whispering Glade, Session 2):** Ursa, Planar Awareness (sense "
              "planar disturbances, 24 hours); Lilly, the Sphere's Planar Attunement; Stabby, Glimpse "
              "of Possibility (one reroll, because the goddess smiled at the goblin)."),
@@ -106,7 +116,6 @@ I = [
              "Terranox's stone fragments and the elemental mud samples of the Grove of Elemental "
              "Waters; beeswax earplugs that beat a monster's song; a bell-handled "
              "blue lantern from Pumpkin Row; Alwen's flasks of lucky seawater."),
-    ("img", "assets/items/carol_rune_tablet.png", "A frost-bound carol tablet, the Winter Bells' song set in stone.", 2.2),
 ]
 
 # ----------------------------------------------------------------------
@@ -153,6 +162,7 @@ C = [
     ("h2", "Beast Breathing: the Bloodfang Form"),
     ("gold", "*“You think too much, little storm. The beast does not think. The beast moves, "
              "and the beast is already behind you.”* (the lesson Stabby finally understood)"),
+    ("imgfloat", "assets/characters/stabby_breathing_style_red.png", 2.4),
     ("body", "Some warriors learn to still the storm inside them. The Warrior of Beast Breathing "
              "learns to ride it. Where other monks seek calm, this form reaches into the wild, "
              "animal heart of the fighter: the part that does not hesitate, does not flinch, and "
@@ -164,7 +174,6 @@ C = [
              "but to become it on command, and to remember how to set it down again afterward."),
     ("body", "**Features by monk level:** 3rd, Beast Breathing; 6th, First Form: Devour; 11th, "
              "Advanced Beast Breathing; 17th, Third Form: Apex Predator."),
-    ("img", "assets/characters/stabby_breathing_style_red.png", "Stabby, Bloodfang ignited.", 3.6),
     ("stat", "Level 3: Beast Breathing", [
         "**Monk Weapons.** A katana (and any sword you take up as your signature blade) counts as "
         "a Monk weapon for you. You can use your Martial Arts die with it, make your Bonus Action "
@@ -208,6 +217,7 @@ C = [
     ("h2", "Water Breathing: the Monastery Form"),
     ("gold", "*“Be water. Water does not strike; it flows, and the rock is cut all the same. "
              "Now breathe, and begin again.”* (Master Kaelon Windstep)"),
+    ("imgfloat", "assets/characters/stabby_breathing_style_water.png", 2.4),
     ("body", "The Warrior of Water Breathing is the form of the patient master, the discipline that "
              "other monks spend their whole lives chasing. Its practitioners learn to move like a "
              "river: never rigid, never still, every strike flowing into the next, every blow "
@@ -221,7 +231,6 @@ C = [
              "friend's side."),
     ("body", "**Features by monk level:** 3rd, Water Breathing; 6th, First Form: Flowing Strike; "
              "11th, Advanced Water Breathing and Healing Spring; 17th, Third Form: Tidal Crash."),
-    ("img", "assets/characters/stabby_breathing_style_water.png", "Stabby, the Flowing Guard.", 3.6),
     ("stat", "Level 3: Water Breathing", [
         "**Monk Weapons.** A katana (and any sword you take up as your signature blade) counts as "
         "a Monk weapon for you. You can use your Martial Arts die with it, make your Bonus Action "
@@ -266,6 +275,7 @@ C = [
     ("h2", "Shadow Breathing: the Idol Form"),
     ("gold", "*“Do not fear the dark. Breathe it in. Let it fill you, and then there is "
              "nothing left in the dark to fear you.”* (a whisper from the idol)"),
+    ("imgfloat", "assets/characters/stabby_breathing_style_shadow.png", 2.4),
     ("body", "The Warrior of Shadow Breathing is the strangest and most secretive of the forms, a "
              "discipline touched by something older than any monastery. Its practitioners breathe "
              "in the gloom itself, drawing the dark into their lungs until it answers to them. "
@@ -279,7 +289,6 @@ C = [
              "itself seems to bend around."),
     ("body", "**Features by monk level:** 3rd, Shadow Breathing; 6th, First Form: Umbral Slash; "
              "11th, Advanced Shadow Breathing; 17th, Third Form: Eclipse."),
-    ("img", "assets/characters/stabby_breathing_style_shadow.png", "Stabby, wreathed in the Idol's gloom.", 3.6),
     ("stat", "Level 3: Shadow Breathing", [
         "**Monk Weapons.** A katana (and any sword you take up as your signature blade) counts as "
         "a Monk weapon for you. You can use your Martial Arts die with it, make your Bonus Action "
@@ -480,12 +489,12 @@ C = [
     ("h2", "Boomstick"),
     ("gold", "*“It doesn't jam. It doesn't misfire. It simply states its opinion, "
              "loudly.”*"),
+    ("imgfloat", "assets/items/boomstick.png", 2.4),
     ("body", "On this road, Boomstick takes the dagger's watch. Boomstick becomes Lilly's "
              "spellcasting focus and her designated Arcane Firearm (an artificer designates only "
              "one). With her shield in the other hand, her hands are exactly full: pistol, shield, "
              "and nothing wasted. The Frostbite Shard retires to her belt as a keepsake, or one "
              "day, a gift."),
-    ("img", "assets/items/boomstick.png", "Boomstick, primed and opinionated.", 3.6),
     ("stat", "Boomstick", [
         "*Weapon (Repeating Pistol), Rare (Requires Attunement by an Artificer)*",
         "**Repeating Pistol, +2.** You gain a +2 bonus to attack and damage rolls made with this "
@@ -509,7 +518,7 @@ C = [
 
     ("h2", "The Awakened Essence Sphere"),
     ("gold", "*“It was never a keepsake. It was a key, and it is finally awake.”*"),
-    ("img", "assets/items/awakened_essence_sphere.png", "The Sphere, drinking the loose light of the world.", 3.6),
+    ("imgfloat", "assets/items/awakened_essence_sphere.png", 2.4),
     ("body", "The Sphere has spent the whole journey quietly pulling loose motes from the air. "
              "Now awakened, it holds a swirling jumble of collected aether that powers it from "
              "the start, and as the party clears each elemental rift and installs its pure Mote, "
@@ -618,10 +627,11 @@ C = [
     ("body", "**The seven-point star.** Elaria's sigil, wrapped in a leafed vine (or cupped in "
              "wings, on the Sash), found on every gift along the Guardians' path. When you see it, "
              "she saw you coming."),
-    # Refit note (0.9in bottom margin): both closing vignettes sized to share
-    # the last page instead of stranding the goddess alone on a new page.
-    ("img", "assets/characters/ursa_with_amulet.png", "The seven-point star of Elaria, held close.", 2.0),
-    ("img", "assets/world/elaria_goddess.png", "Elaria, the sleeping goddess who lit the way.", 2.0),
+    # Closing vignettes share one row on the final page.
+    ("imgrow", [("assets/characters/ursa_with_amulet.png",
+                 "The seven-point star of Elaria, held close."),
+                ("assets/world/elaria_goddess.png",
+                 "Elaria, the sleeping goddess who lit the way.")], 3.05),
 ]
 
 if __name__ == "__main__":

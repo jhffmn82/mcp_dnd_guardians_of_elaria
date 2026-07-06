@@ -167,6 +167,10 @@ BLOCKS = [
              "broke the three barriers, and sang the monster back into the dark. The lorekeeper "
              "Faelan sent them onward with three gifts that they carry to this day."),
 
+    # Refit note (0.9in bottom margin): the Open Sea heading landed at the
+    # page foot and its float straddled the bottom margin; break to the next
+    # page so the Dutchman rides beside its own text.
+    ("pagebreak",),
     ("h2", "The Open Sea and the Flying Dutchman"),
     ("imgfloat", f"{A}/scenes/s5_dutchman_rises.png", 2.5),
     ("body", "East of Havenmoor the coast gives way to deep water, and the deep water kept a curse. "
@@ -195,7 +199,7 @@ BLOCKS = [
 
     ("h2", "Gearhaven, the Clockwork City"),
     ("img", f"{A}/session_08/beat_1/team_arrives_at_gearhaven.png",
-     "The eastern gate of Gearhaven, where every arriving traveler is wished steady gears.", 5.6),
+     "The eastern gate of Gearhaven, where every arriving traveler is wished steady gears.", 6.2),
     ("body", "The great city of inventors and the party's home base: brass towers, steam vents, "
              "tram lines, and Mechagnome citizens whose eyes flicker when the planes act up. Its "
              "heart is the **Artificer's Guild**, where Guildmaster Vane (the locksmith) and the "
@@ -213,13 +217,16 @@ BLOCKS = [
     # Refit note (0.9in bottom margin): the old hard break here stranded a
     # nearly empty page 7; let the section flow up instead.
     ("h2", "Roads Not Yet Taken"),
-    ("imgfloat", f"{A}/scenes/bloodthorn_hollow.png", 2.2),
+    ("imgfloat", f"{A}/scenes/bloodthorn_hollow.png", 2.4),
     ("body", "The map does not end at Gearhaven, and neither will the chronicle. These places are "
              "spoken of, dreamed of, or marked in old logbooks, and every one of them is waiting."),
     ("body", "**Bloodthorn Hollow**, called simply the Hollow: the thorn-ringed home of the "
              "Bloodfang Clan, where Stabby was born. Word has come by way of the courier Skitch "
              "that cracks are opening near the Hollow and the clan blames the artificers. Someone "
              "will have to go home and set that right."),
+    # Refit note (0.9in bottom margin): the Glimmerspire float straddled the
+    # page-7 foot; break so the whole entry rides the final page together.
+    ("pagebreak",),
     ("imgfloat", f"{A}/scenes/glimmerspire.png", 2.2, "left"),
     ("body", "**Glimmerspire and Deepforge Hollow**, far below in the Underdark: the deep-gnome "
              "city of forges and the academy where Lilly built her first turret, home of her mother "

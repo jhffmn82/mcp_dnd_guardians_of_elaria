@@ -12,6 +12,10 @@ BLOCKS = [
      "The Road to Ravenstone",
      "An illustrated adventure. Read the gold boxes aloud; the purple boxes are for the DM."),
 
+    # Frontispiece: the chapter opener rides page 1 above the recap.
+    ("img", f"{A}/scenes/s2_oakshade_morning.png",
+     "Dawn breaks over Oakshade Village, and the mist lets go at last.", 3.4),
+
     ("h1", "Previously, on The Guardians of Elaria..."),
     ("gold", "Three young heroes collided at the **Gilded Acorn Tavern** in Eldridge Village: "
              "**Lilly Glimmergear**, a deep gnome artificer carrying the humming **Essence Sphere** "
@@ -25,10 +29,6 @@ BLOCKS = [
              "plane, loose in the world. At **Oakshade Village**, Elder Merwin asked the party to "
              "find the young herb gatherers lost in the forest, for fifty gold and the village's "
              "gratitude. The heroes slept in warm beds above the Old Oak Tavern. And then, morning."),
-
-    # ------------------------------------------------------------------
-    ("img", f"{A}/scenes/s2_oakshade_morning.png",
-     "Dawn breaks over Oakshade Village, and the mist lets go at last.", 3.2),
 
     # ------------------------------------------------------------------
     ("h1", "Part One: Morning in Oakshade", {"pagebreak": True}),
@@ -56,8 +56,7 @@ BLOCKS = [
              "three young figures with leaves in their hair and empty herb baskets on their arms, "
              "blinking at the morning light like children waking from a long nap. The lost herb "
              "gatherers have come home: footsore, muddled, and completely unharmed."),
-    ("img", f"{A}/scenes/s2_villagers_return.png",
-     "The lost herb gatherers walk home at last, and Oakshade cheers its newest heroes.", 3.9),
+    ("imgfloat", f"{A}/scenes/s2_villagers_return.png", 2.7),
     ("gold", "Their story spills out in pieces while mothers cry and neighbors cheer. The forest "
              "fog had turned them around, and around, and around; every path bent back on itself, "
              "and something in the whiteness kept howling, so they hid. Then last night, all at "
@@ -133,8 +132,7 @@ BLOCKS = [
     ("dm", "Three **Mudskips** (CR 1/2 each). The mud is difficult terrain for everyone but them; "
            "they dart in, splash, and dive back into the pools. Resistant to fire, vulnerable to "
            "lightning: the fire tricks Lilly and Ursa lean on need rethinking today."),
-    ("img", f"{A}/scenes/s2_mudskip_ambush.png",
-     "Lilly rewires for lightning as the giggling Mudskips burst from the pools.", 4.2),
+    ("imgfloat", f"{A}/scenes/s2_mudskip_ambush.png", 2.7),
     ("gold", "The fight is half battle, half mud wrestling. The Mudskips spit gobs of muck, slap "
              "with their tails, and skate across the wet ground while the heroes' boots sink and "
              "stick. Stabby goes down face first exactly once and comes up spitting mud and "
@@ -164,8 +162,7 @@ BLOCKS = [
     ("gold", "**Grimfang boss:** “Well, well. If it is not one of the **Bloodfang Clan**, "
              "wandering far from home! You are bold, bringing friends. Shame they will make such a "
              "tasty meal!”"),
-    ("img", f"{A}/scenes/s2_grimfang_ambush.png",
-     "Stabby squares off alone as the Grimfang war band boils out of the brush.", 3.2),
+    ("imgfloat", f"{A}/scenes/s2_grimfang_ambush.png", 2.6),
     ("dm", "The **Grimfang war band**: 2 goblin archers on the flanks, a worg and an orc in the "
            "melee, a hobgoblin sniping from the rear, and a goblin boss barking orders. The boss "
            "taunts Stabby about the Bloodfang all through the fight. Beaten, the survivors flee."),
@@ -191,8 +188,7 @@ BLOCKS = [
              "air that holds no wind at all, so that the whole glade seems to murmur. At its "
              "center stands an old stone monument, cloaked in moss, carved with runes that glow "
              "faint as embers."),
-    ("img", f"{A}/scenes/s2_whispering_glade.png",
-     "The Whispering Glade at sunset, its mossy monument waiting in the windless hush.", 4.2),
+    ("imgfloat", f"{A}/scenes/s2_whispering_glade.png", 2.7),
     ("gold", "A calm settles over the party the moment they step inside. Time feels slower here; "
              "the forest's sounds arrive muffled, as if from another room. Then, one by one, "
              "strange things begin to hum. The **Essence Sphere** in Lilly's arms wakes with a "
@@ -270,8 +266,6 @@ BLOCKS = [
     ("dm", "**Terranox**, CR 4 elemental of the **Plane of Earth**. No parley. Immune to fire, so "
            "flame tricks fail again; it stomps the ground to knock heroes flat and coils around "
            "spellcasters. Loose rocks fall throughout: DC 12 Dexterity save or 1d10 bludgeoning."),
-    ("img", f"{A}/monsters/terranox.png",
-     "Terranox, the stone serpent, rears from the mountain path in a rain of floating rock.", 4.0),
     ("gold", "It is the hardest fight of their young lives. Terranox's tail sweeps like a falling "
              "tree; its stone coils catch Ursa mid spell and squeeze until Stabby's flurry of "
              "blows cracks the grip loose. Fire splashes off the creature like rain off a roof, so "
@@ -279,6 +273,9 @@ BLOCKS = [
              "instead of flame. Chip by chip, crack by crack, the heroes carve the mountain down, "
              "until at last the great serpent shudders, sighs a long gravel sigh, and collapses "
              "into a heap of inert stone and settling dust."),
+    # The serpent floats left beside the aftermath; anchored here so it clears
+    # the mountain-path float above and never straddles the page foot.
+    ("imgfloat", f"{A}/monsters/terranox.png", 2.6, "left"),
     ("gold", "In the rubble where its heart was, the party finds an **Earth Mote**: a small "
              "crystalline fragment pulsing with elemental energy, heavy with the raw strength of "
              "the Plane of Earth. This one does not drift away. Lilly wraps it carefully with the "
@@ -289,8 +286,6 @@ BLOCKS = [
     ("h1", "Part Five: Ravenstone Laboratory", {"pagebreak": True}),
     ("bridge", "Dusty, weary, and carrying pieces of three planes in their packs, the party "
                "crested the last wooded hill as twilight fell."),
-    ("img", f"{A}/scenes/s2_ravenstone_arrival.png",
-     "Lilly points the way as Ravenstone Laboratory glitters awake in the dusk below.", 4.2),
     ("gold", "Below them, nestled in a tranquil valley of ancient oaks and shimmering ponds, "
              "stands **Ravenstone Laboratory**: a graceful structure of stone and glass, its "
              "turrets spiraling upward like reaching fingers, capped with metal domes that catch "
@@ -298,6 +293,11 @@ BLOCKS = [
              "down is lined with luminescent flowers that sway gently in the still air, and among "
              "the trees flit small, impossible creatures: some with wings like leaves, some like "
              "tiny mammals traced in glowing lines."),
+    # Part Five opener kept as a centered showpiece: the first sight of the
+    # laboratory, sized to the engine's 4.2in cap; it also fills the final
+    # narrative page that a floated version left half empty.
+    ("img", f"{A}/scenes/s2_ravenstone_arrival.png",
+     "Lilly points the way as Ravenstone Laboratory glitters awake in the dusk below.", 4.2),
     ("gold", "The creatures are not shy. A little fox with a leaf shaped tail pads right up to "
              "Lilly, sniffs her boot with great scholarly interest, and darts back into the "
              "foliage."),
@@ -307,6 +307,8 @@ BLOCKS = [
              "feels thinner here.”"),
     ("gold", "**Stabby:** “Or maybe the critters just know a friendly face when they see "
              "one.”"),
+    # The laboratory interior floats right beside the long entry paragraph.
+    ("imgfloat", f"{A}/npcs/ravenstone_laboratory_dalle.webp", 2.4),
     ("gold", "The grand wooden doors swing open on their own as the party approaches, breathing "
              "out the scent of old books, fresh parchment, and a crackle of ozone. Inside, wooden "
              "beams arch beneath ceilings painted with stars and mythical beasts; shelves of books "
@@ -317,18 +319,16 @@ BLOCKS = [
              "whelp with shimmering scales flutters up to the party, studies them with keen eyes, "
              "chirps a melodious greeting, and zips away up a spiral staircase, clearly expecting "
              "to be followed."),
-    ("img", f"{A}/npcs/ravenstone_laboratory_dalle.webp",
-     "Inside Ravenstone Laboratory, where the instruments never quite sleep.", 3.2),
 
     ("h2", "Professor Aelwyn Ravenstone"),
-    # Portrait floats right; the study introduction wraps around it.
-    ("imgfloat", f"{A}/npcs/professor_aelwyn_dalle.webp", 2.3),
     ("gold", "The staircase winds around an atrium of hanging plants and softly glowing crystals, "
              "opening into a vast study where bookshelves rise to a domed ceiling painted as the "
              "night sky. At a great wooden desk buried in open tomes, scrolls, and peculiar brass "
              "instruments stands the master of the house: a **tall high elf** with long silver "
              "hair, sharp emerald eyes, and robes that split the difference between a scholar's "
              "gown and a field jacket. He looks up, and his whole face lights with delight."),
+    # Portrait floats right; the study introduction wraps around it.
+    ("imgfloat", f"{A}/npcs/professor_aelwyn_dalle.webp", 2.3),
     ("gold", "**Aelwyn:** “Ah, visitors! How wonderful. I do not get many these days.”"),
     ("gold", "Introductions are made all around: Lilly Glimmergear, Ursa Catchum, Stabby "
              "Sharpblade. “Please, call me Aelwyn,” the professor says, spreading his hands to "

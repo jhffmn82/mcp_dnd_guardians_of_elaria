@@ -51,13 +51,13 @@ BLOCKS = [
              "chime, a tiny frost-cold music. She lifts free of Ursa's arms and simply stays "
              "there, floating at shoulder height, blinking at the fog with eyes full of soft "
              "white light. She is new. She is still, unmistakably, their friend."),
+    # Ghostbloom floats right beside her naming (portrait, height-capped).
+    ("imgfloat", f"{A}/characters/ghostbloom.png", 2.2),
     ("gold", "**Lilly**, very quietly: “She is not Floraburst now, is she. Look at her. She is "
              "like a bloom made of ghost-light.” The little creature chimes, pleased, and turns "
              "a slow circle in the air. And so, on a fog-bound footpath above the sea, she is "
              "named: **Ghostbloom**. All that day, and all the strange night to come, her glow "
              "leans gently toward trouble, the way a compass leans north."),
-    ("img", f"{A}/characters/ghostbloom.png",
-     "Ghostbloom, who was Floraburst, wakes beneath the coastal pines.", 3.0),
 
     ("h2", "Lantern Night"),
     ("gold", "The footpath crests a rise, and the village of **Wraithpine** pools below in a "
@@ -66,6 +66,8 @@ BLOCKS = [
              "kettles, and a fiddle finds its first notes. The air is cider, beeswax, damp "
              "leaves. It is **Lantern Night**, the village's own festival, and everything about "
              "it is warm and bright and welcoming."),
+    # The ridge-crest view floats right beside Lantern Night.
+    ("imgfloat", f"{A}/scenes/s6_wraithpine_ridge.png", 2.7),
     ("gold", "Almost everything. As boots cross under the first lantern arch, a pressure pricks "
              "at the ears, like a mountain pass without a mountain. A thin note is drifting "
              "through the chimney flues and cellar grates. Wind, perhaps. Or the tail of a song "
@@ -73,11 +75,8 @@ BLOCKS = [
     ("dm", "Group **Wisdom save, DC 13**, the first time the thin note finds their ears. On a "
            "miss, one small fresh memory slips away, just enough to feel wrong; on a success, an "
            "ear-pop and a strange clarity."),
-    ("img", f"{A}/scenes/s6_wraithpine_ridge.png",
-     "From the ridge crest: Wraithpine on Lantern Night, lanterns braided through the fog.", 4.2),
 
     ("h2", "The Gasping Gull"),
-    ("imgfloat", f"{A}/npcs/maera.png", 2.2),
     ("gold", "The **Gasping Gull** throws wide its shutters and its hearth breathes softly. "
              "Behind the bar, the keeper, **Maera**, wipes an already spotless counter and calls "
              "out, “Finally, rush hour! Squeeze in where you can!” The room holds exactly three "
@@ -95,6 +94,9 @@ BLOCKS = [
              "lace. “Moths,” the mender mutters, and ties the twine tighter. Black ribbons hang "
              "everywhere, knotted to gates and wrists and lantern posts, and nobody can quite say "
              "why. Villagers forget what they are saying in the middle of saying it."),
+    # Maera floats right beside the square's small wrongnesses (anchored two
+    # paragraphs down so the anchor cannot slip into the page-2 foot).
+    ("imgfloat", f"{A}/npcs/maera.png", 2.2),
     ("gold", "Ghostbloom drifts near a lantern, and the flame dims, then swells, as if testing "
              "harmony with the thin hidden note. In Lilly's pocket, the **Essence Sphere** gives "
              "a heartbeat: two tones seeking each other, failing, seeking again."),
@@ -105,12 +107,12 @@ BLOCKS = [
              "in his ears. His eyes are winter-sharp, the only pair in Wraithpine that seem to be "
              "looking *at* things. He taps his ear. He taps his slate. Then he writes three words "
              "with a patient hand and holds them up:"),
+    # Bellshadow floats right beside the slate's warning.
+    ("imgfloat", f"{A}/scenes/s6_belltower_square.png", 2.5),
     ("gold", "**WRITE. DON'T LISTEN.**"),
     ("gold", "Above him the bell gives a single accidental chime. Across the square, in the "
              "Gasping Gull, a fourth bowl of stew cools untouched, and Maera smiles at a chair "
              "the village cannot quite hold in mind."),
-    ("img", f"{A}/scenes/s6_belltower_square.png",
-     "Beneath the belltower of Bellshadow, the bellkeeper holds up his slate: WRITE. DON'T LISTEN.", 4.2),
 
     # ------------------------------------------------------------------
     ("h1", "Part Two: Three Threads in the Fog", {"pagebreak": True}),
@@ -130,8 +132,7 @@ BLOCKS = [
              "heavier drops straight for the heroes' shoulders."),
     ("dm", "**The cellar fight.** 2 Swarms of Rats (one starting in the rafters) and 4 Giant "
            "Rats, in a tight aisle of barrels and shelves. Book statistics; see the appendix note."),
-    ("img", f"{A}/scenes/s6_cellar_rats.png",
-     "Ursa and Ghostbloom hold the cellar against the gray tide.", 4.2),
+    ("imgfloat", f"{A}/scenes/s6_cellar_rats.png", 2.7),
     ("gold", "When the last tail goes still, the cellar gives up its stranger secrets. Under the "
              "shelves lies a chewed dog collar. A thin drag-mark crosses the dust to the far "
              "wall, and there, when Ursa holds the lantern close, the flame leans toward a "
@@ -152,8 +153,7 @@ BLOCKS = [
              "fog swells, steady as a bow drawn across the rim of a glass."),
     ("dm", "**Straw stirs.** 2 Scarecrows and 6 Strawlings among the flickering "
            "jack-o'-lanterns. Statistics in the appendix."),
-    ("img", f"{A}/scenes/s6_pumpkin_row.png",
-     "Stabby Sharpblade and the Candyfang Katana on Pumpkin Row.", 4.0),
+    ("imgfloat", f"{A}/scenes/s6_pumpkin_row.png", 2.7),
     ("gold", "It is a wild, whirling scrap among the pumpkins, candy-striped steel flashing, "
              "sparks and starlight scattering straw in every direction. When the last strawling "
              "collapses into a harmless heap, Stabby cuts open the heart-gourd charm stitched "
@@ -173,8 +173,10 @@ BLOCKS = [
     ("gold", "As the heroes study the stone, the churned earth stirs. The recently quiet do not "
              "wish to be laid twice, and a pair of the restless dead claw up out of the soil, "
              "moaning, drawn to the same wrongness that scraped the name away."),
+    # Kept centered: the rite of the forgotten name, restored to full width so
+    # the chest showpiece downstream lands flush on its page.
     ("img", f"{A}/scenes/s6_graveyard_rite.png",
-     "Lilly lights the blue lantern and begins the rite of the forgotten name.", 4.2),
+     "Lilly lights the blue lantern and begins the rite of the forgotten name.", 3.8),
     ("gold", "The heroes put them gently back to rest, and then they do the older, kinder work. "
              "Charcoal rubbed across the blank line raises the ghosts of letters, like footprints "
              "in frost. The name is written back where it belongs. The post bell's clapper is "
@@ -254,8 +256,10 @@ BLOCKS = [
              "Sometimes it's nice to hear yourself think.” The head turns. Not toward Maera. "
              "Toward the heroes. Its eyes aim at the place where their thoughts are, not the "
              "place where their bodies stand."),
+    # Kept centered: the reveal is the session's pivot, and at full size it
+    # also fills the final narrative page.
     ("img", f"{A}/scenes/s6_tavern_reveal.png",
-     "With wax in their ears, the heroes finally see what has always been there.", 4.4),
+     "With wax in their ears, the heroes finally see what has always been there.", 4.2),
     ("dm", "**The tavern fight.** One **False Hydra Tavern Head** (appendix), in a room full of "
            "tables, stew pots, and one oblivious innkeeper to keep out of harm's way."),
     ("gold", "The fight is close and crashing: tables flipped for cover, the neck writhing "
@@ -276,8 +280,6 @@ BLOCKS = [
     ("bridge", "A trail led from the tavern's broken floor into the dark beneath Wraithpine, "
                "and the thin note grew into a pressure, a hand laid gently on the inside of the "
                "skull. The heroes plugged their ears, lit their lanterns, and followed it down."),
-    ("img", f"{A}/scenes/s6_old_theater.png",
-     "The Old Theater, dark and shuttered above Wraithpine, and the song living under it.", 4.2),
 
     ("h2", "The Descent"),
     ("gold", "The tunnel curls beneath the village like a rib: wet timber props, black nails, "
@@ -285,6 +287,8 @@ BLOCKS = [
              "quick hand: *Upstage. Hold. Places.* The passage opens at last into the drowned "
              "orchestra pit below the **Old Theater**, crossed by catwalks of beam and rope, "
              "stage machines jutting up like broken ribs."),
+    # The shuttered theater floats right beside the descent.
+    ("imgfloat", f"{A}/scenes/s6_old_theater.png", 2.7),
     ("gold", "And in the center, filling the pit, it waits. The **False Hydra** entire: a pale "
              "bulk resting on a mound of remembrances, boots and playbills, keepsakes and "
              "ribbons, every ribbon black, with four long necks coiled up through round ports "
