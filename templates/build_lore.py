@@ -174,6 +174,7 @@ BLOCKS = [
              "pages back."),
 
     ("h2", "Havenmoor"),
+    ("imgfloat", f"{A}/scenes/s4_havenmoor_town.png", 3.1),
     ("body", "A wintry harbor town on the southern coast, all snow-dusted roofs, ships' bells, and "
              "chimney smoke. Its landmarks are dear to the party: the **Sugarplum Hearth** inn "
              "(Greta Frostbough's cocoa is a house rule unto itself), the **Frostwind Market "
@@ -184,12 +185,11 @@ BLOCKS = [
              "**Krampusshade** stole the town's children, the party rang the eight Winter Bells, "
              "broke the three barriers, and sang the monster back into the dark. The lorekeeper "
              "Faelan sent them onward with three gifts that they carry to this day."),
-    # Havenmoor is a showpiece location: half-page centered plate. It closes
-    # the entry so it rides the top of the next page beside the Open Sea text
-    # (page 6 holds the Road South and the Havenmoor prose at 70 percent).
+    # Havenmoor is a showpiece location. 16:9 panorama so the plate fits on
+    # the same page as the Havenmoor prose instead of stranding half a page.
     ("img", f"{A}/scenes/s3_havenmoor_arrival.png",
      "Havenmoor from the southern road: snow-dusted roofs, ships' bells, and chimney smoke "
-     "over the harbor.", 6.0, {"crop": "3:2", "hmax": 4.6}),
+     "over the harbor.", 6.2, {"crop": "16:9", "hmax": 4.6}),
 
     ("h2", "The Open Sea and the Flying Dutchman"),
     ("imgfloat", f"{A}/scenes/s5_dutchman_rises.png", 3.1),
@@ -215,11 +215,19 @@ BLOCKS = [
              "Wraithpine looks like a festival that never ends, and for a while that was the "
              "kindest thing about it: a **False Hydra** nested beneath the **Old Theater**, singing "
              "the whole town into forgetting its missing neighbors."),
+    # The Old Theater floats beside the closing paragraph so the Wraithpine
+    # page fills instead of stranding its bottom third (DM flag 2026-07-06).
+    ("imgfloat", f"{A}/scenes/s6_old_theater.png", 3.0),
     ("body", "The Guardians stuffed their ears with beeswax, followed the silence to the lair below "
              "the stage, and ended the song for good. In the quiet afterward they found the chest "
              "bearing Elaria's seven-pointed star: one chest, three relics, and a goddess's thanks. "
-             "Wraithpine remembers everything now, and keeps its lanterns lit on purpose."),
+             "Wraithpine remembers everything now, and keeps its lanterns lit on purpose. The Old "
+             "Theater stands empty on its hill, boarded and quiet; the town has not decided what "
+             "to do with it, and the theater, for its part, is not telling."),
 
+    # Fresh page: beside the Old Theater float the heading orphans at the
+    # foot of the Wraithpine page otherwise.
+    ("pagebreak",),
     ("h2", "Gearhaven, the Clockwork City"),
     ("img", f"{A}/session_08/beat_1/team_arrives_at_gearhaven.png",
      "The eastern gate of Gearhaven, where every arriving traveler is wished steady gears.",

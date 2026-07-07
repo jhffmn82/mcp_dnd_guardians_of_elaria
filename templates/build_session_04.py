@@ -14,6 +14,12 @@ BLOCKS = [
      "Awakening to Shadows and Songs",
      "An illustrated adventure. Read the gold boxes aloud; the purple boxes are for the DM."),
 
+    # Dominant page-1 plate (DM request): the festival aerial leads the page
+    # right under the title, Session-1 style; the recap flows after it.
+    ("img", f"{A}/scenes/s4_havenmoor_town.png",
+     "Havenmoor in its festival best, the Great Pine shining above the harbor.", 6.2,
+     {"crop": "16:9", "hmax": 4.5}),
+
     ("h1", "Previously, on The Guardians of Elaria..."),
     ("gold", "At **Ravenstone Laboratory**, Professor Aelwyn studied the Essence Sphere and gave "
              "the party a road: to **Gearhaven**, the clockwork city, where artificers might build "
@@ -29,13 +35,6 @@ BLOCKS = [
              "festival, where they found beds at the Sugarplum Hearth and slept to the sound of "
              "carolers. And then, morning."),
     ("dm", "The heroes begin this session at **level 4**, grown by the long road south."),
-
-    # ------------------------------------------------------------------
-    # Dominant page-1 plate (DM request): the festival aerial, cropped to a
-    # landscape and run at near-full text width.
-    ("img", f"{A}/scenes/s4_havenmoor_town.png",
-     "Havenmoor in its festival best, the Great Pine shining above the harbor.", 6.2,
-     {"crop": "3:2", "hmax": 4.5}),
 
     # ------------------------------------------------------------------
     ("h1", "Part One: The Morning the Music Changed"),
@@ -207,8 +206,8 @@ BLOCKS = [
              "them crossed the heroes' path, but every one of them was out there, waiting in the "
              "white silence between the pines. What follows is the DM's deck of chances, exactly "
              "as it hung over every journey out of town that winter."),
-    # The frozen wilds float right beside the encounter table.
-    ("imgfloat", f"{A}/scenes/s4_frozen_hollow.png", 2.9),
+    # (The s4_frozen_hollow float that sat here read as an unexplained
+    # location; DM cut it 2026-07-06. The monster floats below carry the art.)
     ("dm", "**Travel Encounters.** Whenever the party sets out through the frozen wilds around "
            "Havenmoor, roll a d20 on the table below. Notes on the most colorful entries follow; "
            "full statistics for every creature live in the bestiary compendium."),
