@@ -93,30 +93,31 @@ B = [
         "saves": "Dex +7, Con +7, Wis +5",
         "skills": "Perception +5, Stealth +7",
         "vulnerabilities": "fire, cold (mind the friendly fire)",
-        "resistances": "necrotic, poison; bludgeoning, piercing, and slashing from nonmagical attacks",
-        "condition_immunities": "charmed, frightened, grappled, paralyzed, poisoned, prone, restrained",
+        "resistances": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
+        "condition_immunities": "charmed, frightened",
         "senses": "darkvision 60 ft., passive Perception 15",
         "languages": "Sylvan, telepathy 30 ft. (to her keeper)",
+        # Reconciled 2026-07-06 to characters/ghostbloom_statblock_v3.pdf
+        # (recency rule); the full companion sheet lives in Part IV.
         "traits": [
-            ("Fey Step (1/Combat)", "As a bonus action, teleport up to 20 ft. to an unoccupied space "
+            ("Fey Step (1/Short Rest)", "As a bonus action, teleport up to 20 ft. to an unoccupied space "
              "she can see. Her next attack this turn has advantage."),
             ("Spectral Form", "She can move through creatures and objects as difficult terrain. If she "
              "ends her turn inside an object, she is shunted to the nearest space and takes 5 force damage."),
-            ("Guardian's Light (Reaction, 1/Combat)", "When an ally within 30 ft. takes damage, she sheds "
-             "bright light in a 10-ft. radius (30-ft. dim) and heals that ally for 1d8 + her Charisma modifier."),
+            ("Guardian's Light (3/Short Rest)", "*Reaction, 30 ft.* When an ally she can see takes damage, "
+             "that ally regains 1d8 + 3 hit points and immediately ends the charmed or frightened "
+             "condition on itself."),
         ],
         "actions": [
-            ("Multiattack", "She makes two Vine Lash attacks."),
-            ("Vine Lash", "*Ranged Weapon Attack:* +7 to hit, range 15 ft., one target. *Hit:* 9 (1d8 + 5) "
-             "slashing plus 3 (1d6) necrotic, and the target must succeed on a DC 13 Wisdom save or be "
+            ("Multiattack", "She makes two Spectral Lash attacks."),
+            ("Spectral Lash", "*Melee Weapon Attack:* +7 to hit, reach 15 ft., one target. *Hit:* 9 (1d8 + 5) "
+             "slashing plus 3 (1d6) necrotic, and the target must succeed on a DC 15 Wisdom save or be "
              "frightened until the end of its next turn."),
-            ("Ghostly Wail (1/Combat)", "A haunting cry in a 15-ft. cone. Each creature there makes a DC 15 "
-             "Wisdom save, taking 14 (4d6) necrotic and frightened for 1 round on a fail, or half damage and "
-             "no fear on a success."),
-        ],
-        "legendary": [
-            ("Blossom of Dawn (1/Day)", "She releases a burst of fey energy in a 20-ft. radius. Allies there "
-             "regain 2d8 + 3 hit points, and undead take 2d8 radiant (DC 14 Dexterity save for half)."),
+            ("Ghostly Wail (1/Long Rest)", "A haunting cry in a 15-ft. cone. Each creature there makes a DC 15 "
+             "Wisdom save, taking 14 (4d6) necrotic and frightened until the end of its next turn on a fail, "
+             "or half damage and no fear on a success."),
+            ("Dread Shroud", "*Bonus Action, 30 ft., one creature.* A chill bloom settles over the target: "
+             "DC 15 Wisdom save or disadvantage on all attack rolls until the start of her next turn."),
         ],
     }),
 
