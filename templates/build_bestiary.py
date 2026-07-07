@@ -147,10 +147,9 @@ B = [
         ],
     }),
 
-    # Refit note (0.9in bottom margin): Aqualump's header stranded at the foot
-    # of page 2 and its portrait clipped the page edge; break so the bridge
-    # line and the whole block open page 3 together.
-    ("pagebreak",),
+    # Whitespace pass 2026-07: the old refit pagebreak here left the previous
+    # page two-fifths empty; the statblock head now guards itself with its
+    # keep-chain, so the bridge and block head flow up to fill the page foot.
     ("body", "*In Session 3, Professor Aelwyn offered the party three little wards; they chose Floraburst. "
              "The two who stayed behind, Aqualump and Emberpaws, are catalogued here too, for they are "
              "part of the story.*"),
@@ -208,8 +207,10 @@ B = [
              "and a telepathic voice of pure feeling ('Food? Friend?'). It chose to stay among Professor "
              "Aelwyn's creatures at Ravenstone. Visits are owed.*"),
     ("statblock", {
+        # Whitespace pass 2026-07: 1.8in (was 2.0) so the square portrait
+        # clears the bottom margin when the head starts in a page's last band.
         "name": "Lickgloom",
-        "img": "assets/monsters/lickgloom.png", "img_w": 2.0,
+        "img": "assets/monsters/lickgloom.png", "img_w": 1.65,
         "type": "Small fey, neutral good",
         "ac": "13 (natural armor)", "hp": "27 (5d6 + 10)", "speed": "30 ft.",
         "abilities": ab(10, 15, 14, 8, 12, 13),
@@ -235,9 +236,9 @@ B = [
              "He has no statistics yet; he is more a key than a creature, and his full return is still to come.*"),
 
     # ==================================================================
-    # Refit note (0.9in bottom margin): without the break, Duckleaf's header
-    # strands at the page foot and its portrait clips the page edge.
-    ("pagebreak",),
+    # Whitespace pass 2026-07: the old refit pagebreak here left the Pikachu
+    # page two-thirds empty; the statblock keep-chain now guards Duckleaf's
+    # head, so Session 1 opens mid-page like the other session headings.
     ("h1", "Session 1: The Forest of Whispers"),
     ("gold", "The first creatures the Guardians ever faced, all touched by the thinning boundary "
              "between the planes. Each left behind a fading mote, the party's very first clue."),
@@ -459,9 +460,9 @@ B = [
              "strike at 10 ft. Their fall revealed rune-tears in the forest floor. (Statistics as the "
              "standard Displacer Beast, CR 3, AC 13, HP 85.)*"),
 
-    # Refit note (0.9in bottom margin): Shroomyte's header stranded at the page
-    # foot with a clipped portrait; open the next page with it instead.
-    ("pagebreak",),
+    # Whitespace pass 2026-07: the old refit pagebreak here left the Displacer
+    # Beast page three-quarters empty; the statblock keep-chain now guards
+    # Shroomyte's head, so let the bridge and block flow up.
     ("body", "*A guardian of the glowing fungal groves, all soft lantern-light and stubborn "
              "spores.*"),
     ("statblock", {
@@ -500,9 +501,9 @@ B = [
     ("gold", "A whole winter court had risen with the Krampusshade. These are the dangers that stalked "
              "the frozen roads of Havenmoor, and the fiend that ruled them."),
 
-    # Refit note (0.9in bottom margin): the Krampusshade is a boss block with
-    # showpiece art (3.2in float); it needs a fresh page to avoid clipping.
-    ("pagebreak",),
+    # Whitespace pass 2026-07: the old refit pagebreak here left the Shroomyte
+    # tail page nine-tenths empty; the statblock keep-chain guards the boss's
+    # head and its 3.2in showpiece float, so the Session 4 opener flows up.
     ("body", "*The fiend of the longest night itself: horned, chain-draped, and smiling, striding "
              "the snows with a sack of cursed gifts over one shoulder.*"),
     ("statblock", {
@@ -1167,9 +1168,9 @@ B = [
              "the target's speed is halved until end of its next turn."),
         ],
     }),
-    # Refit note (0.9in bottom margin): the hauler's header stranded at the
-    # page foot and its portrait clipped the page edge.
-    ("pagebreak",),
+    # Whitespace pass 2026-07: the old refit pagebreak here stranded a page
+    # that was seven-eighths empty after the Rogue Servitor's tail; the
+    # statblock keep-chain guards the hauler's head, so let it flow.
     ("body", "*A dockside lifter the size of a shed, swinging its forklift arms like siege "
              "weapons.*"),
     ("statblock", {

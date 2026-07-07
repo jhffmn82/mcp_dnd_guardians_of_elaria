@@ -625,14 +625,21 @@ C = [
              "frightened animals, grants Speak with Animals and Animal Friendship, and has become "
              "the channel through which sleeping and possessed things speak to him (Pikachu, the "
              "Grand Custodian). It has never once stirred for a machine."),
-    ("body", "**The seven-point star.** Elaria's sigil, wrapped in a leafed vine (or cupped in "
-             "wings, on the Sash), found on every gift along the Guardians' path. When you see it, "
-             "she saw you coming."),
-    # Closing vignettes share one row on the final page.
+    # Closing vignettes. Whitespace pass 2026-07: as the part's last block at
+    # 3.05in the square pair overshot the page foot and jumped whole to a
+    # nearly blank page (and at foot-fit sizes its trailing spacer paragraph
+    # spilled and stranded a fully blank page ahead of the Part IV
+    # hardbreak). Anchored mid-section, between the mark and the star it
+    # depicts, the row sits safely and the closing text seals the page foot.
+    # (2.4in: at 2.7in the closing paragraph's last line still spilled and
+    # stranded a near-blank page before the Part IV opener.)
     ("imgrow", [("assets/characters/ursa_with_amulet.png",
                  "The seven-point star of Elaria, held close."),
                 ("assets/world/elaria_goddess.png",
-                 "Elaria, the sleeping goddess who lit the way.")], 3.05),
+                 "Elaria, the sleeping goddess who lit the way.")], 2.4),
+    ("body", "**The seven-point star.** Elaria's sigil, wrapped in a leafed vine (or cupped in "
+             "wings, on the Sash), found on every gift along the Guardians' path. When you see it, "
+             "she saw you coming."),
 ]
 
 if __name__ == "__main__":

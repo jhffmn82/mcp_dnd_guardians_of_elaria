@@ -29,7 +29,11 @@ S = [
     # ==================================================================
     # LILLY GLIMMERGEAR
     # ==================================================================
-    ("h1", "Lilly Glimmergear", {"hardbreak": True}),
+    # Whitespace pass 2026-07: Part IV flows continuously, exactly like the
+    # bestiary's session sections. With per-hero hardbreaks, the part opener
+    # page carried only the h1 and intro (seven-eighths empty) and every
+    # hero's tail page stranded roughly half a page of whitespace.
+    ("h1", "Lilly Glimmergear"),
     ("imgfloat", "assets/characters/lilly_v3_portrait.png", 2.9),
     ("body", "**Deep Gnome Artificer (Artillerist), Level 5.** The inventor of the group. Lilly "
              "builds a magic cannon, zaps things with frost, and carries the Essence Sphere that "
@@ -157,8 +161,9 @@ S = [
     # ==================================================================
     # STABBY SHARPBLADE
     # ==================================================================
-    ("h1", "Stabby Sharpblade", {"hardbreak": True}),
-    ("imgfloat", "assets/characters/stabby_v3_portrait.png", 2.9),
+    ("h1", "Stabby Sharpblade"),
+    # Whitespace pass 2026-07: 2.3in (was 2.9) - see the Ursa portrait note.
+    ("imgfloat", "assets/characters/stabby_v3_portrait.png", 2.3),
     ("body", "**Goblin Monk (Way of the Kensei), Level 5.** The wild one. Stabby is a tiny, "
              "lightning-fast goblin who fights with a candy-cane katana and his own two fists. "
              "Chaos with a smile."),
@@ -242,8 +247,11 @@ S = [
     # ==================================================================
     # URSA CATCHUM
     # ==================================================================
-    ("h1", "Ursa Catchum", {"hardbreak": True}),
-    ("imgfloat", "assets/characters/ursa_v3_portrait.png", 2.9),
+    ("h1", "Ursa Catchum"),
+    # Whitespace pass 2026-07: 2.5in (was 2.9) widens the stat lines wrapping
+    # beside the portrait so the book's last DM box no longer splits onto a
+    # two-line orphan final page.
+    ("imgfloat", "assets/characters/ursa_v3_portrait.png", 2.5),
     ("body", "**Human (Mark of Handling) Druid (Circle of the Stars), Level 5.** The "
              "starwatcher. Ursa reads the night sky like a map, calls down starlight and "
              "beast-spirits, and follows the constellations toward his destiny."),
@@ -413,7 +421,7 @@ S = [
     # ==================================================================
     # GHOSTBLOOM, THE PARTY'S COMPANION
     # ==================================================================
-    ("h1", "The Party's Companion: Ghostbloom", {"hardbreak": True}),
+    ("h1", "The Party's Companion: Ghostbloom"),
     ("body", "Once the party's little plant-friend Floraburst, reborn in Wraithpine's "
              "ghost-light as a pale, glowing, chiming spirit who floats beside the Guardians."),
     ("statblock", {
@@ -430,7 +438,10 @@ S = [
         "condition_immunities": "Charmed, Frightened",
         "senses": "Darkvision 60 ft., Passive Perception 15",
         "languages": "Sylvan, telepathy 30 ft.",
-        "img": "assets/characters/ghostbloom.png",
+        # Whitespace pass 2026-07: 1.6in wide (2.4in tall at this art's 2:3
+        # aspect); at the default clamp the float outran the head text by
+        # ~12pt and pushed the closing DM note onto a two-line orphan page.
+        "img": "assets/characters/ghostbloom.png", "img_w": 1.6,
         "traits": [
             ("Fey Step (1/Short Rest)", "As a bonus action, teleport up to 20 feet to an "
              "unoccupied space you can see. Your next attack roll before the end of your turn "
