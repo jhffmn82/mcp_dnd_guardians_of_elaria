@@ -174,11 +174,13 @@ BLOCKS = [
            "Quiet boots: Stealth against the swarms' passive Perception 10 to take position "
            "before the rush. Ghostbloom forward: her chiming petals grant advantage on the "
            "next Perception or Insight check to clock the seam."),
+    # Float anchored ABOVE the cellar-toys note so it can never sink past the
+    # bottom margin (DM flag 2026-07-06: it was overrunning the page foot).
+    ("imgfloat", f"{A}/scenes/s6_cellar_rats.png", 3.1),
     ("dm", "**Cellar toys.** Shove a shoulder-high cask down the tight aisle (once, Strength "
            "DC 12): 1d4 bludgeoning and prone to whatever fails a DC 12 Dexterity save. Pull "
            "down the rickety shelf (an Action): an adjacent creature makes a DC 13 Dexterity "
            "save or is restrained under broken wood until the end of its next turn."),
-    ("imgfloat", f"{A}/scenes/s6_cellar_rats.png", 3.3),
     ("gold", "When the last tail goes still, the cellar gives up its stranger secrets. Under the "
              "shelves lies a chewed dog collar. On the prep table a dented stew pot sits with "
              "its ladle gnawed to splinters, and a single **black ribbon thread** clings to the "
