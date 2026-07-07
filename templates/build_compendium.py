@@ -123,9 +123,28 @@ I = [
 # ----------------------------------------------------------------------
 C = [
     title("THE CUSTOM COMPENDIUM", "Subclasses, Paths & House Rules"),
-    ("gold", "Homebrew and rulings of this table: the paths the heroes may walk after the year "
-             "apart, and the standing rules of the campaign. 2024 rules throughout; house rules "
-             "override the books."),
+    ("gold", "Homebrew and rulings of this table: the heroes as they stand at the table, the paths "
+             "they may walk after the year apart, and the standing rules of the campaign. 2024 "
+             "rules throughout; house rules override the books."),
+
+    ("h1", "The Guardians at the Table"),
+    ("body", "The chronicle's front matter tells you who the Guardians are; this page tells you "
+             "what they roll. All three stand at level 5 at the close of the Gearhaven chapter."),
+    ("h2", "Lilly Glimmergear"),
+    ("dm", "**Level 5 Artificer (Artillerist).** Her Eldritch Cannon deploys as a free action via "
+           "the Glimmerspire Pocket Dynamo Mk II and runs all day. Signature gear: the Essence "
+           "Sphere, the Frostbite Shard Dagger.", {"size": 11}),
+    ("slots", "lilly", [("Spell Slots, 1st Level", 4), ("Spell Slots, 2nd Level", 2)]),
+    ("h2", "Stabby Sharpblade"),
+    ("dm", "**Level 5 Monk (Kensei).** No spell slots; he runs on Focus Points, all back on a "
+           "short rest (Flurry of Blows, Stunning Strike, Patient Defense, Step of the Wind). "
+           "Signature gear: the Candyfang Katana, the Sash of the Swift Current.", {"size": 11}),
+    ("slots", "stabby", [("Focus Points", 5)]),
+    ("h2", "Ursa Catchum"),
+    ("dm", "**Level 5 Druid (Circle of the Stars).** About eight free Guiding Bolts a day from the "
+           "Star Map and the Staff of Waking Constellations' charges. Signature gear: the Staff, "
+           "three enchanted potatoes.", {"size": 11}),
+    ("slots", "ursa", [("Spell Slots, 1st Level", 4), ("Spell Slots, 2nd Level", 3), ("Spell Slots, 3rd Level", 2)]),
 
     ("h1", "House Rules & Standing Rulings", {"pagebreak": True}),
     ("body", "1. Ursa's Starseed +1d4 applies only to actual druid spells, never the Starry Form "
