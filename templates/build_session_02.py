@@ -50,7 +50,9 @@ BLOCKS = [
              "**Professor Aelwyn** is the name. A peculiar one, that fellow: studies critters and "
              "strange energies, trying to understand what has been going on with the forest. He "
              "keeps a place called **Ravenstone Laboratory** out in the wilds, but not many are "
-             "brave enough to go looking.”"),
+             "brave enough to go looking.” She glances toward the square. “If you are truly "
+             "interested, talk to a few folks here in the village first. Some have seen things, "
+             "strange things, while he has been poking about.”"),
 
     ("h2", "The Lost Come Home"),
     ("gold", "Before the last berry is eaten, a shout rings across the square. Then another, and "
@@ -74,8 +76,8 @@ BLOCKS = [
            "fog lifted when the **Mist Stalkers** died. Merwin pays the promised **50 gp**."),
 
     ("h2", "Whispers in the Square"),
-    ("gold", "With the morning suddenly festive, tongues loosen, and the party spends an hour "
-             "listening. By the central well, **Nina the herbalist**, elderly and warm, with "
+    ("gold", "With the morning suddenly festive, tongues loosen, and the party decides to take "
+             "Alwen's advice and spend an hour listening. By the central well, **Nina the herbalist**, elderly and warm, with "
              "weathered hands that never stop sorting leaves, waves them over to her stall."),
     ("gold", "**Nina:** “It is that forest, see? The air feels different. Heavy. Like it is "
              "breathing. I have seen the professor come by in the dead of night, arms full of odd "
@@ -91,7 +93,8 @@ BLOCKS = [
     ("gold", "And at the village edge, a knot of children playing tag stops mid game. A bright "
              "eyed girl darts over. “You are looking for the professor, are you not? We see "
              "things at night. Creatures. Glowing lights. Some of them talk, even though there is "
-             "nobody there.” Another child pipes up: “One of them looked like a giant fox, all "
+             "nobody there. My mom says it is just stories, but we saw it with our own eyes: a "
+             "floating shadow, whispering in the trees.” Another child pipes up: “One of them looked like a giant fox, all "
              "made of sparks! And another like a... like a big fluffy cloud!” The children trade "
              "uneasy looks and scatter back to their game."),
 
@@ -103,9 +106,10 @@ BLOCKS = [
     ("gold", "**Tamsin:** “Professor Aelwyn studies what is happening out here, things most "
              "people would not dare go near. He believes the planar boundaries, the thin walls "
              "between our world and others, are shifting. Letting things through. He has been "
-             "collecting samples, researching the... anomalies. Lately it has become an obsession.” "
-             "She unrolls the party's map on the well stones and marks a spot in the western "
-             "wilds: **Ravenstone Laboratory**. “Follow the western path and watch for the fork. "
+             "collecting samples, researching the... anomalies. Lately it has become an obsession. "
+             "I could mark the laboratory on your map, if you are set on going. But I warn you: "
+             "the road is not safe.” The party is set on going. She unrolls their map on the "
+             "well stones and marks a spot in the western wilds: **Ravenstone Laboratory**. “Follow the western path and watch for the fork. "
              "When you start feeling like the trees are watching you, you are almost there.” Her "
              "grim smile fades. “The professor says the creatures are harmless. But I have seen "
              "how some of them act. Like they are protecting something. Whatever is happening, it "
@@ -138,6 +142,10 @@ BLOCKS = [
     ("dm", "**Terrain that fights back.** Each Mud Splash (15-foot cone) leaves fresh slick "
            "ground behind, reshaping the battlefield round by round; a hero blinded by the "
            "spray fights the terrain as much as the ambushers."),
+    ("dm", "**Talk, flee, or scale.** A hero who tries talking (or splashing back) can tell the "
+           "Mudskips are confused, displaced far from the Plane of Water: mischief, not malice. "
+           "If the party withdraws to dry ground, the Mudskips do not pursue past their pools. "
+           "Too easy? A fourth Mudskip surfaces from a hidden pool. **XP: 100 each (300 total).**"),
     ("imgfloat", f"{A}/scenes/s2_mudskip_ambush.png", 3.1),
     ("gold", "The fight is half battle, half mud wrestling. The Mudskips spit gobs of muck, slap "
              "with their tails, and skate across the wet ground while the heroes' boots sink and "
@@ -151,8 +159,9 @@ BLOCKS = [
              "They are leaks. Lilly bottles a few samples of the shimmering elemental mud; the "
              "professor, she suspects, will want to see this."),
     ("dm", "Intelligence (Arcana) or Wisdom (Nature) DC 13: the motes are fragments of elemental "
-           "energy from the **Plane of Water**, more proof the boundaries are weakening. Loot: "
-           "**Elemental Mud Samples** for Professor Aelwyn."),
+           "energy from the **Plane of Water**, more proof the boundaries are weakening. On a "
+           "failure the motes thin away before anything can be read; Professor Aelwyn can "
+           "identify the samples later. Loot: **Elemental Mud Samples** for the professor."),
 
     ("h2", "The Grimfang War Band"),
     ("gold", "Beyond the marsh the path narrows, dense brush pressing close on either side: the "
@@ -173,8 +182,12 @@ BLOCKS = [
            "melee, a hobgoblin sniping from the rear, and a goblin boss barking orders. The "
            "boss coordinates: archers focus the party's back line while the worg and orc press "
            "the front, and the hobgoblin's covered position hands Stabby a perfect chance to "
-           "catch an arrow out of the air. The boss taunts Stabby about the Bloodfang all "
-           "through the fight. Beaten, the survivors flee."),
+           "catch an arrow out of the air with **Deflect Attacks**. The boss taunts Stabby "
+           "about the Bloodfang all through the fight. Beaten, the survivors flee."),
+    ("dm", "**If it goes wrong.** The Grimfang want to humble the Bloodfang runaway, not finish "
+           "anyone: fallen heroes wake at the roadside, bruised and lighter by their shiniest "
+           "valuables, with goblin laughter fading in the brush. If you track XP, award "
+           "standard 2024 Monster Manual values for the roster."),
     ("gold", "The ambush is coordinated, vicious, and very unlucky in its choice of victims. "
              "Arrows hiss from both flanks; Stabby plucks one out of the air an inch from Lilly's "
              "hat and twirls it like a prize. The worg lunges and meets Ursa's magic head on. The "
@@ -245,9 +258,9 @@ BLOCKS = [
              "entity seeks to exploit this weakness, consuming the essence of worlds. Unite your "
              "strengths. Restore the safeguards. Mend the fractures, before all is lost.”"),
     ("gold", "The expanse dissolves like breath off a mirror, and the party is standing in the "
-             "Whispering Glade again, hands and hearts still tingling. Night has fallen while no "
-             "time passed at all, and the stars overhead burn with extraordinary brilliance, as if "
-             "someone up there knows they are being watched. On the monument, the runes dim slowly "
+             "Whispering Glade again, hands and hearts still tingling. Evening has fallen while no "
+             "time passed at all, and the first stars overhead burn with extraordinary brilliance, "
+             "as if someone up there knows they are being watched. On the monument, the runes dim slowly "
              "to a patient glow."),
     ("gold", "**Ursa**, quietly: “My father was trying to protect the balance of the planes. "
              "These potatoes are more than heirlooms. We have to finish what he started.”"),
@@ -256,16 +269,24 @@ BLOCKS = [
              "Pikachu.”"),
     ("gold", "**Stabby**, grinning at the stars: “So causing a bit of chaos might actually "
              "help this time. Good. I am very qualified.”"),
-    ("dm", "**Boons of the vision.** Ursa gains **Planar Awareness** for 24 hours (sense planar "
-           "anomalies within 1 mile). The Essence Sphere gains **Planar Attunement** (advantage "
-           "on Arcana checks concerning planar magic and creatures, permanent). Stabby gains "
-           "**Glimpse of Possibility** (advantage on his next saving throw or ability check). "
-           "The glade is safe ground: the party took a short rest here."),
+    ("game", "BOONS OF THE WHISPERING GLADE", [
+        "*Elaria's gift settles over the heroes as the vision fades, each boon granted then "
+        "and there in the glade.*",
+        "",
+        "**Ursa: Planar Awareness.** For the next 24 hours, Ursa senses planar anomalies "
+        "within 1 mile.",
+        "**Lilly: Planar Attunement.** The Essence Sphere permanently grants advantage on "
+        "Intelligence (Arcana) checks concerning planar magic and creatures.",
+        "**Stabby: Glimpse of Possibility.** Advantage on one saving throw or ability check, "
+        "spent whenever he chooses.",
+    ]),
+    ("dm", "The glade is safe ground: the party took a short rest here, talking the vision "
+           "through before pressing on."),
 
     # ------------------------------------------------------------------
     ("h1", "Part Four: The Stone Serpent"),
     ("bridge", "Rested and lit from within by what they had seen, the party climbed on toward "
-               "Ravenstone by starlight, and the mountain itself rose to meet them."),
+               "Ravenstone through the deepening dusk, and the mountain itself rose to meet them."),
     ("gold", "The last stretch to Ravenstone climbs through rugged country, the path narrowing "
              "between steep cliffs with loose stones rolling underfoot. The party is picking their "
              "way single file when the ground begins to shake. Pebbles dance. Cracks race along "
@@ -276,14 +297,10 @@ BLOCKS = [
      "The last stretch to Ravenstone climbs between crystal studded cliffs.", 6.2,
      {"crop": "3:2", "hmax": 4.6}),
     ("gold", "**Terranox** rises: a great serpent of living stone and packed earth, rocky scales "
-             "glinting in the fading light, eyes glowing from within like windows onto slow "
+             "glinting in the last purple light, eyes glowing from within like windows onto slow "
              "magma. It regards the party the way a mountain regards weather, and then it strikes. "
              "There is no talking to it, no bargaining, no clever password. Some guardians test. "
              "This one only defends."),
-    # The session's boss gets a full reveal plate at the moment it rises.
-    ("img", f"{A}/monsters/terranox.png",
-     "Terranox, the stone serpent of the Plane of Earth, rises from the mountain path.", 5.8,
-     {"crop": "4:3", "hmax": 4.6}),
     ("dm", "**Terranox**, CR 4 elemental of the **Plane of Earth** (appendix). No parley. "
            "Immune to fire, so flame tricks fail again. It opens on the nearest intruder, uses "
            "Earthquake Stomp to scatter the party's formation, and saves Stone Coil for "
@@ -292,6 +309,16 @@ BLOCKS = [
            "Each round, roll a d6: on a 5 or 6, rocks shake free of the cliffs, DC 12 Dexterity "
            "save or 1d10 bludgeoning. The longer the battle roars, the more attention it "
            "risks drawing."),
+    # The session's boss gets a full reveal plate; the encounter notes ride
+    # with the reveal paragraph so the plate opens its own page cleanly.
+    ("img", f"{A}/monsters/terranox.png",
+     "Terranox, the stone serpent of the Plane of Earth, rises from the mountain path.", 5.8,
+     {"crop": "4:3", "hmax": 4.6}),
+    ("dm", "**Victory, defeat, scaling.** Victory: Terranox collapses into inert stone with the "
+           "**Earth Mote** in the rubble. **XP: 1,100.** Defeat: it leaves fallen heroes "
+           "unconscious but alive and burrows away; they wake hurt, free to recover and try the "
+           "pass again. Easier: 75 HP, save DCs 13, Stone Coil restrains without damage. "
+           "Harder: 110 HP, rockfalls on 4 to 6."),
     ("gold", "It is the hardest fight of their young lives. Terranox's tail sweeps like a falling "
              "tree; its stone coils catch Ursa mid spell and squeeze until Stabby's flurry of "
              "blows cracks the grip loose. Fire splashes off the creature like rain off a roof, so "
@@ -391,7 +418,9 @@ BLOCKS = [
              "would like to discuss, and none of it improves after midnight.” A small owl like "
              "creature with luminous eyes swoops down at his soft clap and leads the party through "
              "corridors hung with tapestries of distant realms, to adjoining rooms with plush "
-             "beds, moonlit garden windows, and floating crystal lamps that brighten at a touch."),
+             "beds, moonlit garden windows, and floating crystal lamps that brighten at a touch. "
+             "On a small table in each room, a tiny luminescent sprite hovers beside a tray of "
+             "fruit, bread, and cheese, in case anyone should need a midnight snack."),
     ("gold", "Stabby flops onto his bed with a contented sigh. “Now this is more like it. "
              "Beats the hard ground any day.” Lilly touches a crystal lamp and watches it glow, "
              "already reverse engineering it in her head. Ursa stands at the window, looking up at "
@@ -414,15 +443,18 @@ BLOCKS = [
     ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives in "
              "the compendium."),
     ("stat", "Mudskip", [
-        "Small elemental (Plane of Water), neutral. **CR 1/2**. AC 13 (natural armor), HP 22 (4d6 + 8), "
-        "Speed 20 ft., swim 30 ft.",
+        "Small elemental (Plane of Water), neutral. **CR 1/2** (100 XP). AC 13 (natural armor), "
+        "HP 22 (4d6 + 8), Speed 20 ft., swim 30 ft.",
         "STR 12, DEX 14, CON 14, INT 6, WIS 12, CHA 8. Skills Stealth +4, Perception +3.",
         "Resistances fire. Vulnerabilities lightning. Darkvision 60 ft. Understands Aquan.",
-        "**Amphibious / Mud Dweller.** Breathes air and water; ignores muddy difficult terrain.",
-        "**Mud Spit.** +4, range 30 ft., 1d6 + 2 bludgeoning; DC 12 Dexterity save or speed reduced 10 ft.",
+        "**Amphibious / Mud Dweller / Slippery.** Breathes air and water; ignores muddy difficult "
+        "terrain; advantage on checks and saves to escape a grapple.",
+        "**Multiattack.** One Mud Spit and one Tail Slap.",
+        "**Mud Spit.** +4, range 30 ft., 1d6 + 2 bludgeoning; DC 12 Dexterity save or speed "
+        "reduced 10 ft. until the end of its next turn.",
         "**Tail Slap.** +4, reach 5 ft., 1d8 + 2 bludgeoning.",
         "**Mud Splash (Recharge 5-6).** 15 ft. cone, DC 12 Dexterity save; 2d6 + 2 bludgeoning and "
-        "blinded one turn on a failure, half damage on a success.",
+        "blinded until the end of its next turn on a failure, half damage on a success.",
     ]),
     ("stat", "The Grimfang War Band", [
         "Rival goblin clan raiders: **2 goblins** with shortbows, **1 worg**, **1 orc**, "
@@ -433,13 +465,15 @@ BLOCKS = [
         "**Outcome.** Beaten soundly; the survivors fled into the brush. The Grimfang remember.",
     ]),
     ("stat", "Terranox", [
-        "Large elemental (Plane of Earth), unaligned. **CR 4**. AC 16 (natural armor), HP 95 (10d10 + 40), "
-        "Speed 30 ft., burrow 30 ft.",
+        "Large elemental (Plane of Earth), unaligned. **CR 4** (1,100 XP). AC 16 (natural armor), "
+        "HP 95 (10d10 + 40), Speed 30 ft., burrow 30 ft.",
         "STR 20, DEX 10, CON 18, INT 5, WIS 11, CHA 6. Darkvision 60 ft., tremorsense 60 ft.",
         "Immunities fire, poison; exhaustion, paralyzed, petrified, poisoned, prone. Resistances "
         "nonmagical bludgeoning, piercing, slashing (non adamantine).",
-        "**Earth Glide / Immutable Form / Elemental Resilience.** Burrows through unworked stone "
-        "without a trace; immune to form altering effects; advantage on saves against magic.",
+        "**Earth Glide / Immutable Form / Elemental Resilience / Siege Monster.** Burrows through "
+        "unworked stone without a trace; immune to form altering effects; advantage on saves "
+        "against magic; double damage to objects and structures.",
+        "**Multiattack.** One Bite and one Tail Slam.",
         "**Bite.** +7, reach 10 ft., 2d10 + 5 piercing.",
         "**Tail Slam.** +7, reach 15 ft., 2d8 + 5 bludgeoning; DC 15 Strength save or prone.",
         "**Stone Coil (Recharge 5-6).** DC 15 Dexterity save or grappled and restrained (escape "

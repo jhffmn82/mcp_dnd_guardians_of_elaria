@@ -122,7 +122,9 @@ BLOCKS = [
         "dangerous mists along the coast after dark.",
         "**Old lore.** The bells are said to have once belonged to a fey guardian who protected "
         "the village with music and light. Rung in harmony, they call down Elaria's protective "
-        "light to banish the shadows.",
+        "light to banish the shadows. Greta has also heard whispers of planar rifts in the "
+        "forest and strange creatures appearing, and Captain Torren swears the sea mists are "
+        "no natural weather.",
     ]),
 
     ("h2", "Frostwind Market Square: E and F"),
@@ -166,7 +168,8 @@ BLOCKS = [
         "frost blooms overnight on Lora's cookies. **Intelligence (Arcana) DC 16**: a faint dark "
         "aura clings to the edges of the square, the sign of a thinning planar veil. "
         "**Intelligence (History) DC 14**: this square once hosted winter solstice rituals meant "
-        "to guard the village from dark forces.",
+        "to guard the village from dark forces; on a 15 or higher, Ingrid's old tales surface "
+        "too, of shadowy Krampus-like figures that snatch away the wicked on winter nights.",
     ]),
 
     # Page balance: the market plate + rules card fill their page; the
@@ -310,8 +313,8 @@ BLOCKS = [
     ("body", "**14.** Frost Hag Ambush: a frost hag disguised as a kind old woman offers "
              "poisoned treats."),
     ("body", "**15.** Ice Spiders: 2d6 ice spiders drop from the trees and attack."),
-    ("body", "**16.** Resting Reindeer: a magical reindeer grants the party inspiration if "
-             "treated kindly."),
+    ("body", "**16.** Resting Reindeer: a magical reindeer grants the party Heroic Inspiration "
+             "if treated kindly."),
     ("body", "**17.** Frozen Treasure: a chest sealed in a block of ice; Strength DC 15 or fire "
              "magic to open."),
     ("body", "**18.** Aurora Spirits: peaceful, glowing spirits offer a cryptic hint or "
@@ -468,12 +471,12 @@ BLOCKS = [
     ("dm", "**Friendly Caribou.** An enchanted caribou with softly glowing antlers steps "
            "from the treeline into the moonlight. Offering food or kind words earns its "
            "aura of warmth: each party member regains 1d4 hit points, and Wisdom (Animal "
-           "Handling) DC 13 earns one hero Inspiration. Hostility makes it dissolve sadly "
-           "into mist."),
+           "Handling) DC 13 earns one hero Heroic Inspiration. Hostility makes it dissolve "
+           "sadly into mist."),
     ("dm", "**Resting Reindeer.** A majestic reindeer with antlers like polished silver "
            "rests beneath a frosted pine. Wisdom (Animal Handling) DC 14 to approach "
-           "calmly; treated kindly, its nose glows softly and each hero gains Inspiration "
-           "and temporary hit points equal to 1d6 + their level."),
+           "calmly; treated kindly, its nose glows softly and each hero gains Heroic "
+           "Inspiration and temporary hit points equal to 1d6 + their level."),
     ("dm", "**Aurora Spirits.** Beneath dancing ribbons of blue, purple, and green, serene "
            "spirits descend, humming an ethereal tune. Wisdom (Insight) DC 14 or "
            "Intelligence (Religion) DC 15 understands them as messengers of Elaria; they "
@@ -569,7 +572,9 @@ BLOCKS = [
         "on the Winter Bells, can break it.",
         "**Play it at the table.** Share the bells out among the players and ring the tune of "
         "**Jingle Bells** together, bright and defiant, every hero striking their notes in "
-        "sequence. Humming along is encouraged; the glade will not judge.",
+        "sequence. Humming along is encouraged; the glade will not judge. At this seal and the "
+        "two to come, a stumbled tune never punishes: the seal flickers, holds, and waits for "
+        "the party to take a breath and begin again.",
         "**The notes.** E E E | E E E | E G C D E | F F F F | F E E E",
         "**When the last note sounds.** A burst of warm, golden light erupts from the bells and "
         "ripples through the black ice; the chains shatter, and the first barrier of darkness "
@@ -698,6 +703,10 @@ BLOCKS = [
     ("gold", "While blade, bolt, claw, and starlight hold the imps back, bell after bell rings "
              "out through the fog, weaving into the one carol big enough for the moment, eight "
              "notes of Elaria's light striking through the dark like lantern beams."),
+    # Page balance: the finale card grew a battlefield bullet and full bell
+    # mechanics; it opens a fresh page whole, with the carol plate beneath it,
+    # rather than splitting across the plate page.
+    ("pagebreak",),
     ("game", "The Bells' Harmony: Carol of the Bells", [
         "**The last song.** To weaken the Krampusshade and banish him for good, all **eight "
         "Winter Bells** must ring in harmony while the battle rages: one haunting, hopeful "
@@ -706,9 +715,19 @@ BLOCKS = [
         "High C. While the fight goes on, ring the sequence together, over and over, letting it "
         "build. Hum the melody underneath; the bells carry the rest.",
         "**The notes.** E E E E | E G C D | E G D C",
-        "**What the song unlocks.** With each completed phrase, beams of radiant light pierce "
-        "the oppressive fog and sear the fiend; threads of shadow peel from him with every "
-        "toll. The full carol, eight bells in perfect harmony, unmakes him entirely.",
+        "**The battlefield.** The **Krampusshade** (statistics in the Appendix) rises with "
+        "**four of his shadow imps**, and two more boil out of the fog at the start of the "
+        "second round unless a phrase of the carol has already sounded. The frost-cracked "
+        "ground within 10 feet of him is difficult terrain, and the villagers huddle at the "
+        "Great Pine behind the heroes; keeping the imps away from them is worth Heroic "
+        "Inspiration.",
+        "**What the song unlocks.** A hero holding a bell can ring it as a Bonus Action. Each "
+        "round in which all eight bells sound completes one phrase of the carol: beams of "
+        "radiant light pierce the fog and sear the Krampusshade for 2d10 radiant damage, and "
+        "he cannot use Shadow Step until the start of his next turn. Completing the third "
+        "phrase finishes the carol and banishes him outright, whatever hit points he has "
+        "left; dropping him to 0 hit points banishes him just the same. He is never slain, "
+        "only unmade into wisps of shadow, and the sack of children bursts open.",
     ]),
     # Showpiece: the carol finale plate rides directly under the rules card,
     # keeping the song spread together and the page full.
@@ -729,13 +748,12 @@ BLOCKS = [
              "them safe**, and in the middle of them a small boy with one missing mitten. "
              "**Finn** hits his mother's arms at a dead run, and the sound she makes is the "
              "opposite of the one that woke the heroes that morning."),
-    ("dm", "The final battle: the **Krampusshade** (CR 5) with **shadow imps** rising from the "
-           "fog, while the party rang the eight bells into the Carol of the Bells. Each "
-           "completed phrase of the carol seared him; the eighth harmony unmade him."),
+    ("dm", "The final battle: the **Krampusshade** (CR 5) with **four shadow imps** rising from "
+           "the fog, while the party rang the eight bells into the Carol of the Bells. Each "
+           "completed phrase of the carol seared him; the finished carol banished him."),
 
-    # Page balance: the finale page ends well filled; the celebration and the
-    # gifts share the next page.
-    ("pagebreak",),
+    # Flows continuously: the celebration follows the battle recap on the same
+    # page, so no near-empty page strands between them.
     ("h2", "The Village Rejoices"),
     ("gold", "The villagers pour out of hiding, laughing and crying at once. The Great Pine "
              "blazes brighter than it has all festival, and clean, untroubled snow begins to "
@@ -763,8 +781,8 @@ BLOCKS = [
              "still on his sleeves, nods toward a trim vessel rocking at the dock. “The "
              "**Stormwind** is ready when you are. Gearhaven awaits.”"),
     # The two gift portraits open the final story page together with the
-    # closing lines, instead of stranding a near-empty page after them.
-    ("pagebreak",),
+    # closing lines; the gifts page ends full, so no explicit break is needed
+    # (one here would mint a blank page).
     ("imgrow", [(f"{A}/characters/lilly_session4.png",
                  "Lilly and the Frostbite Shard Dagger."),
                 (f"{A}/characters/stabby_cane.png",
@@ -793,7 +811,7 @@ BLOCKS = [
         "**Gift of Despair (Recharge 5-6).** A cursed gift box, 30 ft.; DC 14 Wisdom save or frightened 1 minute.",
         "**Icy Retaliation (Reaction).** When hit in melee: DC 14 Constitution save or 2d6 cold, speed -10 ft.",
         "**Shadow Step (Legendary, 1/round).** Teleports up to 20 ft. within dim light or darkness.",
-        "*Weakened by the eight Winter Bells rung in harmony; the completed Carol of the Bells unmade him.*",
+        "*The eight Winter Bells are his undoing: each completed phrase of the carol deals 2d10 radiant damage, and the finished carol banishes him outright. Reduced to 0 hit points, he is banished all the same, never slain.*",
     ]),
     ("stat", "Krampusshade's Imp", [
         "Small fiend (shadow), chaotic evil. **CR 2**. AC 14 (natural armor), HP 22 (5d6 + 5), Speed 30 ft., fly 40 ft.",
@@ -804,7 +822,7 @@ BLOCKS = [
         "**Shadowy Grasp (Recharge 5-6).** DC 13 Dexterity save or restrained one turn; 1d10 cold while held.",
     ]),
     ("stat", "Frozen Wolf", [
-        "Medium beast, neutral evil. AC 15 (natural armor), HP 45 (6d10 + 12), Speed 40 ft.",
+        "Medium beast, neutral evil. **CR 2**. AC 15 (natural armor), HP 45 (6d10 + 12), Speed 40 ft.",
         "STR 16, DEX 15, CON 14, INT 3, WIS 12, CHA 6. Immune cold. Darkvision 60 ft.",
         "**Pack Tactics.** Advantage when an ally is within 5 ft. **Icy Terrain.** Difficult ground within 10 ft.",
         "**Bite.** +5, 2d6 + 3 piercing plus 1d8 cold; DC 13 Constitution save or speed -10 ft.",
@@ -817,7 +835,7 @@ BLOCKS = [
         "**Invisibility.** Turns invisible until it attacks or casts a spell.",
     ]),
     ("stat", "Icy Specter", [
-        "Medium undead, neutral evil. AC 12, HP 45 (10d8), Speed 0 ft., fly 50 ft. (hover).",
+        "Medium undead, neutral evil. **CR 2**. AC 12, HP 45 (10d8), Speed 0 ft., fly 50 ft. (hover).",
         "STR 1, DEX 14, CON 11, INT 10, WIS 10, CHA 16.",
         "Resistances cold, necrotic, nonmagical weapons. Immunity poison; charmed, exhaustion, grappled, paralyzed, poisoned, prone, restrained.",
         "**Chilling Touch.** +5, reach 5 ft., 3d6 cold.",

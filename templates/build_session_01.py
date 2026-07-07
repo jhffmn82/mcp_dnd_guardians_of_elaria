@@ -52,6 +52,10 @@ BLOCKS = [
              "his laugh booming over the noise. Between tables darts **Rhea the barmaid**, quick "
              "handed and quicker witted, hearing every rumor in the room twice before anyone "
              "finishes telling it."),
+    ("dm", "**Eldridge Village.** Small but lively. Besides the Gilded Acorn, heroes can visit "
+           "**Garrick's Forge** (blacksmith), **Evelyn's Remedies** (herbalist), **The Wandering "
+           "Trinket** (general store), and the **Weary Wanderer Inn**. Osric and Rhea are the "
+           "rumor sources; both point toward the Forest of Whispers."),
 
     ("h2", "Lilly's Arrival"),
     ("gold", "The tavern door opens on a traveler unlike any Eldridge has seen: a deep gnome girl, "
@@ -130,9 +134,11 @@ BLOCKS = [
              "A little friendly brawl, eh?”"),
     ("dm", "**The brawl.** Bren (AC 12, HP 8, unarmed strike +3 for 1d4 + 1) and two friends "
            "(AC 11, HP 6, unarmed +3 for 1d4): fists, chairs, and one regrettable mug, strictly "
-           "non lethal. They rely on brute force, ganging up on one or two heroes at a time, "
-           "and Osric steps in if things get too hot. The three strangers fight together for "
-           "the first time, and win."),
+           "non lethal. Heroes who try to wave Bren off only make him louder; soon he and his "
+           "friends are standing over the table, and the fight comes to them. They rely on brute "
+           "force, ganging up on one or two heroes at a time, and Osric steps in if things get "
+           "too hot. Any hero knocked down wakes a minute later with a bruised ear and a mug of "
+           "cider on the house. The three strangers fight together for the first time, and win."),
     # Brawl scene promoted to a half-page plate: it is a tavern interior
     # action scene, and the DM wants those big.
     ("img", f"{A}/scenes/s1_bar_brawl.png",
@@ -160,7 +166,9 @@ BLOCKS = [
              "treeline, and the path bends past a small pond ringed with reeds and wildflowers. The "
              "water holds the starlight strangely, glowing faintly from below, and here the air "
              "shivers, as though the world's fabric is worn thin as old cloth."),
-    ("dm", "Wisdom (Perception) DC 12 to spot a glimmering light moving in the reeds."),
+    ("dm", "Wisdom (Perception) DC 12 to spot a glimmering light moving in the reeds; on a "
+           "failure the heroes hear only rustling reeds and frogs, and Lickgloom shows itself "
+           "when they reach the water's edge."),
     ("gold", "Something small is moving at the water's edge. It is round bodied, about the size of a "
              "halfling, with faintly shimmering skin, enormous curious eyes, and a tongue longer than "
              "it is tall, which flicks out to taste the pond, then a wildflower, then the air in the "
@@ -175,18 +183,27 @@ BLOCKS = [
              "presses close against our own. It did not break into the world. It simply wandered "
              "through a door that should not have been open."),
     ("dm", "**Meeting Lickgloom.** Wisdom (Insight) DC 10: curious and playful, not a threat. "
-           "Wisdom (Animal Handling) DC 12 to befriend with food and patience; aggression "
-           "sends it fleeing into the pond. Intelligence (Arcana) DC 14: creature and pond "
-           "both hum with Feywild energy. The party offered bread, and succeeded."),
+           "Wisdom (Animal Handling) DC 12 to befriend with food and patience; on a failure, or "
+           "at any aggression, it darts into the pond and hides. Intelligence (Arcana) DC 14: "
+           "creature and pond both hum with Feywild energy; the boundary between planes is worn "
+           "thin here. If it flees, searching the bank finds wildflowers blooming out of season "
+           "and strange ripples (same Arcana check to read them), and quiet patience plus a "
+           "snack coaxes it back out. The party offered bread, and succeeded."),
     ("gold", "Lickgloom pads closer, tilting its head. When Ursa kneels and holds out a bit of bread, "
              "the long tongue snaps out, the bread vanishes, and a feeling arrives in everyone's "
              "minds at once, wordless and warm: *Food? Friend?*"),
     ("gold", "Friend. The little fey creature falls in beside the party, flicking its tongue at "
              "fireflies, and just like that the three heroes become four travelers. All around the "
              "pond, where Lickgloom passed, the wildflowers are blooming out of season."),
+    ("dm", "**Lickgloom, companion.** Traveling with the party, Lickgloom can fetch small "
+           "objects with its 10 foot tongue, and once per scene its tasting tongue grants one "
+           "hero advantage on a Wisdom (Perception) or Intelligence (Investigation) check. "
+           "Statistics in the appendix."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Three: The Forest of Whispers", {"hardbreak": True}),
+    # No hardbreak: Part Two ends high on its page, and the forest's eaves
+    # follow straight on from the pond, keeping the page full.
+    ("h1", "Part Three: The Forest of Whispers"),
     ("bridge", "With Lickgloom trotting alongside, the party stepped beneath the eaves of the "
                "forest everyone in Eldridge Vale had warned them about."),
     ("gold", "The Forest of Whispers earns its name at once. The canopy closes overhead until the "
@@ -198,6 +215,10 @@ BLOCKS = [
      "Beneath the eaves of the Forest of Whispers, where the starlight comes through in coins and slivers.",
      5.8, {"crop": "3:2", "hmax": 4.6}),
 
+    # The stone circle section starts on a fresh page: the forest plate fills
+    # the rest of Part Three's opening page, and the Duckleaf float would
+    # otherwise be pushed over the bottom margin.
+    ("pagebreak",),
     # Duckleaf floats right beside the whole stone circle section; anchored
     # above the h2 and cropped 5:4 so it stays clear of the bottom margin.
     ("imgfloat", f"{A}/monsters/duckleaf_stone_circle.png", 3.3, {"crop": "5:4"}),
@@ -215,11 +236,16 @@ BLOCKS = [
            "stones are amplifying elemental air energy; the creature draws its power from the "
            "**Elemental Plane of Air**. Damaging or disrupting one stone breaks that "
            "connection: Duckleaf loses its Winged Leap for the rest of the battle, and it "
-           "defends the stones fiercely once it realizes what the heroes are doing."),
+           "defends the stones fiercely once it realizes what the heroes are doing. If the "
+           "players are stuck, ladder the hints: first, wind visibly streams from the stones to "
+           "the duck each time it leaps; then, any stray hit on a stone makes Duckleaf shriek "
+           "and rush to defend it."),
     ("dm", "**Duckleaf's tactics.** Wisdom (Perception) DC 12 reads its style: it opens with "
            "Aerial Slash from range, uses Winged Leap to skip away from melee without "
            "provoking, and saves its Quack of Fury (15 feet, Wisdom DC 14 or frightened) for "
-           "when the party bunches up."),
+           "when the party bunches up. It is a guardian, not a hunter: heroes who heed the "
+           "warning and withdraw are allowed to leave, and if the fight turns badly it lets "
+           "them retreat into the trees rather than pursue beyond the stones."),
     ("gold", "There is no talking their way past a guardian with a grudge and a leek. **Duckleaf** "
              "leaps from its stone and the wind leaps with it. It fights like a storm given feathers: "
              "riding gusts across the clearing, slashing with blades of sharpened air, loosing a "
@@ -233,6 +259,10 @@ BLOCKS = [
              "then slips away like a breeze through fingers. The whole clearing goes still."),
     ("gold", "**Lilly**, quietly: “That came from somewhere else. Something is leaking into our "
              "world.”"),
+    ("dm", "**The motes.** Intelligence (Arcana) DC 14: each mote is a residue of another "
+           "plane, left behind when a planar creature falls. Similar motes will rise from every "
+           "such creature the party defeats; the pattern is the session's biggest clue to the "
+           "doors opening between worlds."),
 
     ("h2", "The Grove of Elemental Waters"),
     ("gold", "Deeper still, the ground turns soft and the sound of water leads the party to a hidden "
@@ -249,11 +279,15 @@ BLOCKS = [
     ("dm", "**The guardian's test.** Cognifin, CR 3 (appendix). Intelligence (Arcana) or Wisdom "
            "(Nature) DC 14: it draws its strength from the pond itself, and disturbing the "
            "water's surface (a spell, a splash, a well-thrown rock) breaks its focus, silencing "
-           "its whirlpools and tidal waves for a round."),
+           "its whirlpools and tidal waves for a round. Wisdom (Perception) DC 13: small "
+           "whirlpools form and fade wherever it drifts, a telegraph of the water control to come."),
     ("dm", "**Tactics.** It opens with Water Pulse to knock the closest hero prone, peppers the "
            "back line with Headache Blasts, and looses its Confusion Pulse when the party "
            "groups up; between turns its legendary waters pull heroes into whirlpools or shove "
-           "them back with small tidal waves, while Psychic Shield turns away the worst blows."),
+           "them back with small tidal waves, while Psychic Shield turns away the worst blows. "
+           "The test is stern but never lethal: a hero who drops is washed gently to the bank, "
+           "unconscious but stable, and a party that falls or yields wakes at the grove's edge, "
+           "free to try again once rested."),
     ("gold", "This one is no invader; it is a **guardian**, bound to test all who enter, and it "
              "fights like a slow, patient tide. Waves crash from a still pond. Whirlpools open where "
              "heroes stand. Psychic pressure squeezes like deep water. But the party fights as one "
@@ -265,9 +299,9 @@ BLOCKS = [
              "behind is bigger than the grove: *who is opening the doors between worlds?*"),
 
     # ------------------------------------------------------------------
-    # No hardbreak: the grove's aftermath ends high on its page, and the road
-    # to Oakshade rolls straight on from the forest's far side.
-    ("h1", "Part Four: The Road to Oakshade"),
+    # Fresh page: keeps the Oakshade shop card whole and the closing plate
+    # flush with the session's last page.
+    ("h1", "Part Four: The Road to Oakshade", {"hardbreak": True}),
     ("bridge", "Carrying two mysteries and one new friend, the party pressed on through the "
                "forest's far side, toward the next village on the map."),
     ("gold", "The road to **Oakshade Village** winds through hills as the sun goes down, and with "
@@ -279,7 +313,9 @@ BLOCKS = [
            "party that strays gets ambushed on ground of the Stalkers' choosing."),
     ("dm", "**The ambush.** Two **Mist Stalkers** (appendix). Each wraps itself in Fog Cloak to "
            "strike from heavy obscurement, and their Howl of the Mist rolls in from every "
-           "direction at once, hunting for frightened, scattered prey."),
+           "direction at once, hunting for frightened, scattered prey. They will not leave "
+           "their fog: heroes who regain the road and keep moving escape them, and a strong "
+           "wind or a gust of magic that thins the mist steals their cover and their nerve."),
     # Mist Stalker scene floats right beside the ambush paragraphs.
     ("imgfloat", f"{A}/scenes/s1_mist_stalkers.png", 3.1),
     ("gold", "They come with no sound at all: two sleek predators of fog and hunger, eyes like cold "
@@ -306,6 +342,21 @@ BLOCKS = [
              "wind carries whispers, and folk say they have seen creatures... things that do not "
              "belong here. The old stories talk of other realms, other planes. I never thought they "
              "would spill into our world.”"),
+    ("gold", "Next door, **Nina the herbalist** watches from the doorway of a little shop whose "
+             "windows are crowded with dried herbs and potion bottles, the air around it sweet "
+             "with lavender and sage. “There is magic in the air, stronger than usual,” she "
+             "tells the party softly. “I can feel it in the plants and the water. And I have "
+             "seen creatures near the village that are not in any of my books.”"),
+    ("game", "Provisions in Oakshade Village", [
+        "**Merwin's Forge.** Simple weapons (spear, shortsword, handaxe), arrows and bolts, "
+        "chain shirts and shields at standard prices. Special: Merwin will silver a weapon for "
+        "**100 gp**, good against certain fey and shadowy things.",
+        "**Nina's Herbs and Remedies.** Potion of Healing **50 gp**, antitoxin **25 gp**, herbal "
+        "salves **5 gp**. Special: **Moonroot**, 75 gp, a rare herb Nina can brew into a potion "
+        "that grants advantage on saving throws against being charmed.",
+        "**The Old Oak Tavern.** Hot stew, fresh bread, and cider; a warm room for the night is "
+        "**5 silver** per person. A night here is a long rest.",
+    ]),
     ("gold", "In the warm little **Old Oak Tavern**, the keeper **Alwen** sets down bowls of hot "
              "stew unasked. “Well now, travelers! Made it just in time for dinner. Take a seat, "
              "and I will bring you a bowl.” Around the fire, villagers whisper of a glowing fox "
@@ -327,8 +378,8 @@ BLOCKS = [
     # Closing vignette: the village establishing shot as a half-page plate,
     # placed here so Part Four ends flush on a full page.
     ("img", f"{A}/scenes/s1_oakshade_twilight.png",
-     "Oakshade Village at twilight, nestled beneath the ancient oaks.", 5.8,
-     {"crop": "3:2", "hmax": 4.6}),
+     "Oakshade Village at twilight, nestled beneath the ancient oaks.", 6.0,
+     {"crop": "5:4", "hmax": 4.6}),
     ("divider",),
     ("bridge", "Their first day together was done: a friendship, a brawl, two guardians bested, "
                "three motes of runaway magic, and a mystery with no bottom yet. In the morning, the "
@@ -344,7 +395,7 @@ BLOCKS = [
     ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives in "
              "the compendium."),
     ("stat", "Lickgloom", [
-        "Small fey (Feywild), neutral. **CR 1**. AC 13 (natural armor), HP 27 (5d6 + 10), Speed 30 ft.",
+        "Small fey (Feywild), neutral. **CR 1** (200 XP). AC 13 (natural armor), HP 27 (5d6 + 10), Speed 30 ft.",
         "STR 14, DEX 12, CON 14, INT 6, WIS 10, CHA 8. Saves Dex +3; Skills Perception +2, Stealth +4.",
         "Resistances acid, poison. Darkvision 60 ft. Understands Common; telepathic impressions.",
         "**Tongue Whip.** +4, reach 10 ft., 1d6 + 2 bludgeoning; DC 12 Strength save or grappled.",
@@ -352,29 +403,31 @@ BLOCKS = [
         "**Lick Attack.** +4, 1d8 + 2 bludgeoning; DC 12 Constitution save or stunned one turn.",
     ]),
     ("stat", "Duckleaf", [
-        "Small beast (Elemental Air), neutral. **CR 4**. AC 15, HP 52 (8d8 + 16), Speed 30 ft., fly 30 ft.",
+        "Small beast (Elemental Air), neutral. **CR 4** (1,100 XP). AC 15, HP 52 (8d8 + 16), Speed 30 ft., fly 30 ft.",
         "STR 14, DEX 16, CON 14, INT 10, WIS 12, CHA 10. Saves Dex +5, Wis +3; Acrobatics +5, Perception +3.",
         "Resistances slashing, bludgeoning (wind sheath). Darkvision 60 ft. Telepathy 30 ft. (quacks).",
         "**Leek Strike.** +6, reach 5 ft., 2d8 + 4 slashing.",
         "**Aerial Slash.** +5, range 20/60 ft., 3d6 + 3 slashing.",
-        "**Quack of Fury (Recharge 5-6).** 15 ft., DC 14 Wisdom save or frightened 1 minute.",
+        "**Quack of Fury (Recharge 5-6).** 15 ft., DC 14 Wisdom save or frightened 1 minute (repeat the save at the end of each turn).",
         "**Winged Leap.** Leaps 30 ft. without provoking; lost if a circle stone is disrupted.",
     ]),
     ("stat", "Cognifin", [
-        "Small beast (Elemental Water), neutral guardian. **CR 3**. AC 14, HP 45 (6d8 + 18), fly 30 ft. (hover).",
+        "Small beast (Elemental Water), neutral guardian. **CR 3** (700 XP). AC 14, HP 45 (6d8 + 18), fly 30 ft. (hover).",
         "STR 10, DEX 14, CON 16, INT 10, WIS 14, CHA 12. Saves Dex +4, Wis +4; Perception +4, Arcana +2.",
         "Resistances cold, psychic. Darkvision 60 ft. Telepathy 60 ft. (images and feelings).",
         "**Headache Blast.** +4, range 30 ft., 2d6 + 2 psychic.",
         "**Water Pulse.** +4, range 30 ft., 2d6 + 2 bludgeoning; DC 12 Strength save or prone.",
-        "**Confusion Pulse (Recharge 5-6).** 15 ft. radius, DC 13 Wisdom save or confused 1 minute.",
+        "**Confusion Pulse (Recharge 5-6).** 15 ft. radius, DC 13 Wisdom save or confused (as the confusion spell) 1 minute; repeat the save at the end of each turn.",
         "**Psychic Shield.** Reaction: +2 AC until its next turn.",
         "**Waters of the Grove (Legendary).** Whirlpool (restrain, DC 12 Str) or tidal wave (2d4, push 5 ft.).",
     ]),
     ("stat", "Mist Stalker", [
-        "Medium fey (Feywild), unaligned. **CR 2**. AC 13, HP 39, Speed 40 ft.",
-        "**Claw and Bite.** Pack hunters that strike from heavy fog.",
-        "**Fog Cloak.** Wraps itself in mist, heavily obscured for 1 round.",
-        "**Howl of the Mist.** Frightens prey within 30 ft. (Wisdom save).",
+        "Medium fey (Feywild), unaligned. **CR 2** (450 XP). AC 13, HP 39 (6d8 + 12), Speed 40 ft.",
+        "STR 14, DEX 16, CON 14, INT 6, WIS 12, CHA 8. Skills Perception +3, Stealth +5. Darkvision 60 ft.",
+        "**Multiattack.** One bite and one claw.",
+        "**Bite.** +5, reach 5 ft., 1d8 + 3 piercing. **Claw.** +5, reach 5 ft., 2d4 + 3 slashing.",
+        "**Fog Cloak (Bonus Action).** Wraps itself in mist: heavily obscured until the start of its next turn.",
+        "**Howl of the Mist (Recharge 5-6).** Each enemy within 30 ft.: DC 13 Wisdom save or frightened until the end of the stalker's next turn.",
     ]),
 ]
 

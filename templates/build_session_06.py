@@ -128,11 +128,32 @@ BLOCKS = [
              "Gasping Gull, a fourth bowl of stew cools untouched, and Maera smiles at a chair "
              "the village cannot quite hold in mind."),
 
+    ("h2", "Three Tugs at Once"),
+    ("gold", "The square pulls at the heroes from three directions at once. Behind the bar, "
+             "Maera sighs toward the trapdoor: “If only someone would scare the pests from the "
+             "cellar. Ruined a whole pot this morning.” On the hill path, a couple with black "
+             "ribbons at their wrists climbs toward the graveyard, flowers in hand and eyes "
+             "downcast. And along **Pumpkin Row**, a carver heaves a hay bale toward a waiting "
+             "cart while two scarecrows watch from their posts with button-bright stares."),
+    ("dm", "**Three threads, any order.** Let the party choose which thread to pull first; all "
+           "three point, each in its own way, at the old theater. The song eats clues, so "
+           "reward heroes who write things down."),
+
     # ------------------------------------------------------------------
     ("h1", "Part Two: Three Threads in the Fog", {"hardbreak": True}),
     ("bridge", "Something was wrong in Wraithpine, and it had left threads hanging everywhere. "
                "The heroes pulled three of them: a cellar, a lane of pumpkins, and a hill of "
                "leaning headstones."),
+    ("dm", "**The clue chain (keep it unbroken).** Cellar: a chewed dog collar, a drag mark, a "
+           "black ribbon thread on the stew pot, and a breathing seam with a hum inside the "
+           "hill. Pumpkin Row: every carved face turns toward the theater, and the heart-gourd "
+           "map is stamped PROP ROOM, OLD THEATER. Graveyard: a scraped-away name, a stage-mask "
+           "maker's mark, and a parcel slip addressed to a man nobody remembers. Those lead to "
+           "3 Lantern Lane, then to the bellkeeper (beeswax, and the mouthed words UNDER "
+           "THEATER), then to the reveal at the Gasping Gull. If the table stalls, escalate in "
+           "order: the Essence Sphere pulls toward the theater like a compass needle; the "
+           "chandler murmurs about the black ribbons and the hill; at last the bellkeeper "
+           "crosses the square himself and presses his slate into a hero's hands."),
 
     ("h2", "Maera's Cellar"),
     ("gold", "“If you've stomachs for it,” Maera says, sliding a key from its hook, “give the "
@@ -159,7 +180,9 @@ BLOCKS = [
            "save or is restrained under broken wood until the end of its next turn."),
     ("imgfloat", f"{A}/scenes/s6_cellar_rats.png", 3.3),
     ("gold", "When the last tail goes still, the cellar gives up its stranger secrets. Under the "
-             "shelves lies a chewed dog collar. A thin drag-mark crosses the dust to the far "
+             "shelves lies a chewed dog collar. On the prep table a dented stew pot sits with "
+             "its ladle gnawed to splinters, and a single **black ribbon thread** clings to the "
+             "rim, the same black as the ribbons knotted all over town. A thin drag-mark crosses the dust to the far "
              "wall, and there, when Ursa holds the lantern close, the flame leans toward a "
              "hairline seam in the stone, as though the crack is quietly *inhaling*. Pressing an "
              "ear to the rock, the heroes catch it: a faint humming tone hanging inside the "
@@ -222,12 +245,8 @@ BLOCKS = [
     ("gold", "As the heroes study the stone, the churned earth stirs. The recently quiet do not "
              "wish to be laid twice, and a pair of the restless dead claw up out of the soil, "
              "moaning, drawn to the same wrongness that scraped the name away."),
-    # The rite of the forgotten name, as a generous landscape plate.
-    ("img", f"{A}/scenes/s6_graveyard_rite.png",
-     "Lilly lights the blue lantern and begins the rite of the forgotten name.", 6.0,
-     {"crop": "3:2", "hmax": 4.6}),
-    # The graveyard plate fills page 7 past the point where the rite card can
-    # fit; break so the card opens its page whole.
+    # The graveyard intro ends deep on its page; break so the rite card opens
+    # its page whole (cards must never split).
     ("pagebreak",),
     ("game", "LAY A RIBBON: THE RITE OF THE FORGOTTEN NAME", [
         "*A grave whose name has been chiseled away will not stay quiet: the dead do not wish "
@@ -255,7 +274,20 @@ BLOCKS = [
         "the palm. Every hero who took part gains **Hold Fast**: once this session, advantage "
         "on one Wisdom save against forgetfulness or the song.",
     ]),
-    ("gold", "The heroes put them gently back to rest, and then they do the older, kinder work. "
+    ("gold", "The heroes put them gently back to rest, and one risen hand, ash-pale, is found "
+             "clutching a scrap of something stiff. Stabby pries it free: a **parcel slip**, "
+             "creased and dirt-stained but legible, made out in tidy ink. *To HARLAN WICKE, 3 "
+             "Lantern Lane.* Nobody in Wraithpine remembers any Harlan. Stabby pockets the "
+             "slip."),
+    ("dm", "[DM CHECK: the original document never records whose grave this is or what name "
+           "the heroes restored. The stage-mask maker's mark points to a performer the "
+           "creature took long ago. Any remembered name, laid with care, satisfies the rite.]"),
+    # The rite of the forgotten name, as a generous landscape plate between
+    # the discovery of the slip and the rite itself.
+    ("img", f"{A}/scenes/s6_graveyard_rite.png",
+     "Lilly lights the blue lantern and begins the rite of the forgotten name.", 6.0,
+     {"crop": "3:2", "hmax": 4.6}),
+    ("gold", "Then they do the older, kinder work. "
              "Charcoal rubbed across the blank line raises the ghosts of letters, like footprints "
              "in frost. The name is written back where it belongs. The post bell's clapper is "
              "untied and rung three times, and at the third ring the ground answers with a sigh "
@@ -268,8 +300,9 @@ BLOCKS = [
     # ------------------------------------------------------------------
     ("h1", "Part Three: Names the Stone Won't Keep", {"hardbreak": True}),
     ("bridge", "Three threads, one knot. A cellar that breathed, a field of straw that pointed "
-               "at the theater, a grave that forgot its name. And in Stabby's pocket, a parcel "
-               "slip found along the way, made out to a man nobody in Wraithpine could remember."),
+               "at the theater, a grave that forgot its name. And in Stabby's pocket, the "
+               "parcel slip pried from the churned earth of the hill, made out to a man nobody "
+               "in Wraithpine could remember."),
 
     ("h2", "3 Lantern Lane"),
     ("gold", "The parcel slip crinkles in the hand: *To HARLAN WICKE, 3 Lantern Lane.* The houses "
@@ -516,7 +549,9 @@ BLOCKS = [
              "their kin's house where they had stayed through the festival, running up the lane "
              "and into their mother's arms. **Ms. Wicke** holds them so tightly their hats fall "
              "off, weeping for Harlan and for joy in the same breath, and this time no fog "
-             "comes to take the feeling away. Her children are safe. Their father will be "
+             "comes to take the feeling away. Ursa steps forward and presses something small "
+             "into her hand: Harlan's carved whistle, worn smooth by a lifetime in his pocket, "
+             "carried up out of the dark. Her children are safe. Their father will be "
              "remembered. The family grieves together, which is the only way grief ever gets "
              "lighter."),
     ("gold", "**Stabby**, watching from the end of the lane, hand resting on the Candyfang "
@@ -543,14 +578,22 @@ BLOCKS = [
         "Resistance psychic. Condition immunities charmed, frightened, prone.",
         "**Mind-Humming Aura.** A creature without beeswax starting its turn within 30 ft. makes a "
         "DC 13 Wisdom save or has disadvantage on attack rolls that turn; beeswax grants advantage on the save.",
-        "**Bite.** +6 to hit, reach 10 ft., 13 (2d8 + 4) piercing, and the target is grappled (escape DC 14).",
+        "**Bite.** +6 to hit, reach 10 ft., 13 (2d8 + 4) piercing, and the target is grappled (escape DC 14). "
+        "While it has a creature grappled, the head cannot bite a different target.",
+        "**Lurch and Drag.** The head drags a creature it is grappling 5 ft. toward the trapdoor; the "
+        "creature makes a DC 13 Wisdom save or loses a word or a thought for a heartbeat.",
+        "**Wrench (bonus action).** A creature the head is grappling makes a DC 14 Strength save or is "
+        "knocked prone and takes 5 (1d6 + 2) bludgeoning as the jaw grinds it against the floorboards.",
+        "**Recoil from Flame (reaction).** When the head takes fire damage, it has disadvantage on its "
+        "next attack roll before the end of its next turn.",
         "**Segmented Neck.** Ignores forced movement and prone; after taking 20+ damage in one turn "
         "it recoils 5 ft. and loses its reactions until its next turn.",
     ]),
     ("stat", "False Hydra, Adult (body and heads)", [
         "Huge aberration, unaligned. **Body:** AC 15, HP 130 (12d12 + 48), Speed 10 ft., climb 10 ft. "
-        "**Heads (4):** AC 14, HP 45 (6d10 + 12) each, reach 15 ft. from a floor port; a head may withdraw "
-        "and re-emerge from any port on its turn.",
+        "**Heads (4):** AC 14, HP 45 (6d10 + 12) each, Speed 30 ft. through the under-floor tunnels, "
+        "climb 20 ft., reach 15 ft. from a floor port; on its turn a head may withdraw (no opportunity "
+        "attacks), move up to 30 ft., and re-emerge from any port.",
         "Body STR 18, DEX 10, CON 18, INT 7, WIS 14, CHA 8; saves Con +8, Wis +5. Tremorsense 60 ft., "
         "darkvision 60 ft. Resistance psychic; condition immunities charmed, frightened, prone.",
         "**Song of Unremembering.** While any head lives, a creature without earplugs starting its turn "
@@ -558,12 +601,24 @@ BLOCKS = [
         "reactions until its next turn. Beeswax: advantage on the save, and no reaction lock.",
         "**Vital Link.** While at least one head lives, the body has resistance to all weapon damage; "
         "each head destroyed removes one instance of this protection, and with no heads it has none.",
-        "**Thrash (body).** +7 to hit, reach 10 ft., 13 (2d8 + 4) bludgeoning. **Bite (head).** +7 to hit, "
-        "reach 15 ft., 14 (2d10 + 3) piercing, and the target is grappled (escape DC 14).",
+        "**Thrash (body).** +7 to hit, reach 10 ft., 13 (2d8 + 4) bludgeoning. **Regurgitate Remnants "
+        "(body, recharge 5 or 6).** A 15-ft. cone of bone and cloth: DC 14 Dexterity save or take 13 (3d8) "
+        "necrotic and lose 10 ft. of speed until the end of the target's next turn; a shattered skull and "
+        "a black ribbon clatter free (a clue).",
+        "**Bite (head).** +7 to hit, reach 15 ft., 14 (2d10 + 3) piercing, and the target is grappled "
+        "(escape DC 14); while grappling, that head cannot bite a different target. **Reel (head).** A "
+        "creature grappled by a head makes a DC 14 Strength save or is pulled 10 ft. toward the port and "
+        "knocked prone. **Snap (head reaction).** When a creature moves within 15 ft. of a head, that head "
+        "makes one Bite against it.",
         "**Legendary Actions.** One per living head, max 3/round: Hum Surge (one creature within 60 ft., "
         "DC 15 Wisdom or lose concentration and move only 10 ft. next turn), Bone Shift (reshape the mound; "
         "one 10-ft. square becomes difficult terrain or clears), Coordinate Strike (one head bites).",
+        "**Lair actions** run on initiative count 20, one per round (full text in the Part Four DM notes): "
+        "Stage Drop, Mask of Memory, Gasping Vent.",
     ]),
+    # The two hydra blocks fill the first appendix page; break so the
+    # Scarecrow block does not split across the page turn.
+    ("pagebreak",),
     ("stat", "Scarecrow (Monster Manual)", [
         "Medium construct, neutral. **CR 1**. AC 11, HP 36 (8d8), Speed 30 ft.",
         "Vulnerable fire; resistant to nonmagical bludgeoning, piercing, and slashing; immune to "
@@ -578,8 +633,22 @@ BLOCKS = [
         "Strength save or is grappled (escape DC 12).",
         "**Chaff Burst.** +4 to hit, range 30/60 ft., 6 (2d4) piercing (a spray of straw flechettes).",
     ]),
-    ("body", "The cellar rats (Swarm of Rats, Giant Rat) and the graveyard's restless dead "
-             "(Zombie, Skeleton) use their standard book statistics."),
+    ("stat", "Cellar Rats and Restless Dead (compact)", [
+        "**Giant Rat.** Small beast, CR 1/8. AC 12, HP 7 (2d6), Speed 30 ft., darkvision 60 ft. "
+        "**Pack Tactics** (advantage on attacks if an ally is within 5 ft. of the target). "
+        "**Bite.** +4 to hit, 4 (1d4 + 2) piercing.",
+        "**Swarm of Rats.** Medium swarm of Tiny beasts, CR 1/4. AC 10, HP 24 (7d8 - 7), Speed 30 ft. "
+        "Resistant to bludgeoning, piercing, and slashing; immune to being grappled, prone, or "
+        "restrained; occupies other creatures' spaces. **Bites.** +2 to hit, reach 0 ft., 7 (2d6) "
+        "piercing, or 3 (1d6) if the swarm is at half HP or below.",
+        "**Zombie.** Medium undead, CR 1/4. AC 8, HP 22 (3d8 + 9), Speed 20 ft. **Undead Fortitude.** "
+        "When damage drops it to 0 HP (unless radiant or a critical hit), it makes a Constitution "
+        "save, DC 5 + the damage taken, to drop to 1 HP instead. **Slam.** +3 to hit, 4 (1d6 + 1) "
+        "bludgeoning.",
+        "**Skeleton.** Medium undead, CR 1/4. AC 13 (armor scraps), HP 13 (2d8 + 4), Speed 30 ft. "
+        "Vulnerable to bludgeoning. **Shortsword.** +4 to hit, 5 (1d6 + 2) piercing. **Shortbow.** "
+        "+4 to hit, range 80/320 ft., 5 (1d6 + 2) piercing.",
+    ]),
 ]
 
 if __name__ == "__main__":

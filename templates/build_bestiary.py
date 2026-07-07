@@ -142,8 +142,8 @@ B = [
             ("Vine Lash", "*Melee Weapon Attack:* +4 to hit, reach 15 ft., one target. *Hit:* 8 (1d10 + 2) "
              "bludgeoning, and the target must succeed on a DC 13 Strength save or be restrained until the end "
              "of its next turn."),
-            ("Floraberry (3/Day)", "Floraburst produces 1d4 + 1 magical berries. A creature can use an action "
-             "to eat one and restore 3 hit points."),
+            ("Floraberry (3/Day)", "Floraburst produces 1d4 + 1 magical berries. A creature can use a Bonus "
+             "Action to eat one and restore 3 hit points (house rule 4, as Goodberry)."),
         ],
     }),
 

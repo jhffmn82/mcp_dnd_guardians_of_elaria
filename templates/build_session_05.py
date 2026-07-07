@@ -43,7 +43,8 @@ BLOCKS = [
              "beside merchant galleys, sails unfurling in the sea breeze, and salt spray drifts "
              "across the docks with the cries of gulls. On every lamppost flutters a brightly "
              "painted banner, and every banner says the same thing: **“Thank You, Guardians of "
-             "Elaria!”** Half the town has come down to the quay to see the heroes off."),
+             "Elaria!”** Half the town has come down to the quay to see the heroes off, "
+             "tossing ribbons and little sea-grass charms for luck."),
     ("gold", "**Greta Frostbough** presses warm sugarplum buns into every free hand. **Sister "
              "Merida** stands with a whole row of waving orphans, tears bright in her eyes. And "
              "some faces have traveled a long way for this morning: **Alwen**, keeper of the Old "
@@ -82,7 +83,10 @@ BLOCKS = [
              "falls in love with the helm, the pumps, the pulleys, every clever working piece of "
              "the vessel. In the evenings, Captain Brynn herself teaches them knots by lantern "
              "light: bowline, clove hitch, and a curious looping knot she says her grandmother "
-             "called a keepsake knot. The heroes' small hands learn every one."),
+             "called a keepsake knot. The heroes' small hands learn every one. In the galley the "
+             "crew's bets fly thick as spray: “Ever heard of a sea serpent beneath these waves?” "
+             "“Five crowns says we see a mermaid's tail before midday.” Nobody sees a mermaid. "
+             "Nobody wins five crowns."),
     ("img", f"{A}/scenes/s5_open_sea.png",
      "The Stormwind under full sail, two bright days east of Havenmoor.", 5.8,
      {"crop": "3:2", "hmax": 4.6}),
@@ -112,7 +116,8 @@ BLOCKS = [
         "**Bilge**, Constitution DC 13.",
         "**Plotting the course.** The moment the last dock line falls, the lookout may call the "
         "safe channels from the crow's nest: Wisdom (Survival) DC 17. Success gives the whole "
-        "crew **advantage** on every check during the storm.",
+        "crew **advantage** on every check during the storm; on a failure there is no bonus, "
+        "and the storm comes on at full strength.",
         "",
         "**The storm strikes three times.** At each blow, every hero rolls their station check. "
         "Count the successes and read the sea's answer:",
@@ -281,6 +286,13 @@ BLOCKS = [
         "Between rounds, Davy stalks the table's edge: *“Point by point, your hearts grow "
         "colder. Will you fold, or gamble everything on the final roll?”*",
     ]),
+    ("dm", "**If Davy wins the game.** He does not snuff the heroes out at once; a soul is worth "
+           "more savored. They are chained in pitch-black cells in the hull. Escaping is a group "
+           "skill challenge, DC 13, any mix of Dexterity (Acrobatics), Strength (Athletics), or "
+           "Sleight of Hand or Thieves' Tools: **3 successes before 2 failures** springs the "
+           "cell door. On 2 failures, spectral wardens (use Drowned Pirate statistics) come "
+           "shuffling, and the fight starts inside the brig with improvised weapons. Either "
+           "road leads up to the weather deck and Part Five."),
     ("gold", "The first round is terror. The dice feel cold as drowned stones, and when Ursa's "
              "second toss threatens to burst past seventy seven, the whole table holds its "
              "breath until Lilly quietly slides her lowest die across and saves him. The second "
@@ -314,6 +326,11 @@ BLOCKS = [
              "forgotten, with a name painted on her stern: the **Vigil**."),
     ("hero", "Lilly", "They are rounding up every magical being aboard. If these essences ship "
              "south, the whole coast will suffer. We are not leaving without those cages open."),
+    ("dm", "**Breathing room.** The game's result binds the wardens to a grudging truce: before "
+           "the heroes step onto the weather deck, they may take a **Short Rest** in the "
+           "rune-carved guest chambers (spend Hit Dice to recover HP as normal). The uneasy "
+           "quiet runs deep enough that each hero also recovers one expended spell slot of 2nd "
+           "level or lower. It is the last calm breath of the night."),
     ("gold", "The heroes step out onto the weather deck, and the ghost ship's crew is waiting. "
              "Drowned pirates haul themselves over the rails, cutlasses dripping, barnacles "
              "clacking. At the wheel, a **Spectral Helmsman** turns its lantern eyed head all "
@@ -335,7 +352,8 @@ BLOCKS = [
     ("dm", "**Clever options.** Climbing the rope ladder (Action plus Athletics DC 14) tips a "
            "lantern-oil bucket over a pirate below: 2d6 fire. Severing the mooring line "
            "(Strength DC 15, best once two foes are down) secures the escape route to the "
-           "cutter. The party won the deck and pressed below."),
+           "cutter; on a failure the line holds, and two more drowned pirates haul themselves "
+           "over the rail. The party won the deck and pressed below."),
 
     ("h2", "Into the Heart of the Hold"),
     ("gold", "The iron bound hatch groans open and stale, salty air rushes out. Below, the hold "
@@ -371,8 +389,9 @@ BLOCKS = [
            "save DC 13 for half). Crates grant half cover, and a Strength (Athletics) DC 14 "
            "shove can slam an enemy into them."),
     ("dm", "**The central orb.** Strength or Arcana DC 15 to shatter it: a 3d6 radiant burst "
-           "(Dexterity save DC 13 for half) that **stuns the undead**. And when the golem "
-           "falls, its stolen core shatters with it, and every arcane fissure goes dark."),
+           "(Dexterity save DC 13 for half) that **stuns every undead in the hold until the "
+           "end of its next turn**. And when the golem falls, its stolen core shatters with "
+           "it, and every arcane fissure goes dark."),
     ("gold", "As the last foe dissolves into drifting motes, Stabby sheathes his blade and looks "
              "up at the ceiling, toward the captain's quarters. **Stabby:** “That was the heart "
              "of his operation. Now we face the head.”"),
@@ -531,6 +550,10 @@ BLOCKS = [
         "range 20/60 ft., 9 (1d10 + 4) piercing and pulled 10 ft.",
         "**Phantom Helm Block (Reaction).** Imposes disadvantage on one weapon attack.",
     ]),
+    # The hold guardians start a fresh page so no stat block splits.
+    ("pagebreak",),
+    ("body", "**The guardians of the hold** (Part Five). Every one of them is vulnerable to "
+             "cold, and the heroes' frost was the whole battle plan."),
     ("stat", "Smuggler's Golem", [
         "Large construct, unaligned. **CR 2**. AC 14 (natural armor), HP 85 (10d10 + 30), "
         "Speed 30 ft. **Vulnerable to cold.**",

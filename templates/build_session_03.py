@@ -113,11 +113,16 @@ BLOCKS = [
              "among the three creatures and smiles. “Take one of them with you. Choose wisely; "
              "these little ones are eager to help, and one of them may be the key to understanding "
              "the forces that threaten our world.”"),
-    ("gold", "The party crouches down among the three wonders. Aqualump blows a solemn bubble. "
-             "Emberpaws sets a very small patch of nothing important on fire, then looks proud. And "
-             "the little Floraburst rises from her sunbeam, pads straight across the floor, and "
-             "rests her leafy head against Lilly's knee, her bud swaying like a tiny banner. Some "
-             "choices make themselves."),
+    ("dm", "**A real decision.** Let the players meet all three: Aqualump the sturdy shield, "
+           "Emberpaws the bold striker, Floraburst the healer and scout. All three stat blocks "
+           "are in the appendix; the two not chosen stay safe with Aelwyn."),
+    ("gold", "The party crouches down and takes the choice seriously. Aqualump blows a solemn "
+             "bubble and offers its shell for knocking. Emberpaws sets a very small patch of "
+             "nothing important on fire, then looks proud. The little Floraburst watches from "
+             "her sunbeam, quiet and green, her bud swaying like a tiny banner. The Guardians "
+             "talk it over, weighing what the long road will need, and choose together: the "
+             "leafy one. Lilly holds out her hand, and Floraburst rises, pads straight across "
+             "the floor, and rests her head against Lilly's knee."),
     # The chosen companion floats right beside her adoption.
     ("gold", "**Lilly**, softly: “Hello, Floraburst. Want to come save the world with us?”"),
     ("dm", "**Floraburst** joins the party (statistics in the appendix). She senses planar "
@@ -171,6 +176,11 @@ BLOCKS = [
     ("h1", "Part Three: The Wild Road", {"hardbreak": True}),
     ("bridge", "The road south proved everything the professor promised: beautiful, strange, and "
                "increasingly full of teeth."),
+    ("dm", "**The road at a glance.** The journey runs about three days: Brambleshadow Thicket "
+           "and Whisperwind Meadow the first day, the Mistwood Path and the climb into the "
+           "Ironroot Hills the second, Stormwatch Cliffs and the descent to Havenmoor the third. "
+           "The party camps twice along the way, so long rests, spell slots, and Floraberries "
+           "reset between the hardest fights."),
 
     ("h2", "Shadowflame in Brambleshadow Thicket"),
     ("gold", "**Brambleshadow Thicket** closes around the path like a dark, twisting tunnel. "
@@ -183,7 +193,9 @@ BLOCKS = [
      "The southward road disappears into Brambleshadow Thicket.", 5.6,
      {"crop": "3:2", "hmax": 4.6}),
     ("dm", "Wisdom (Perception) DC 14 to notice the unnatural silence; Intelligence (Arcana) DC 15 "
-           "to sense necrotic planar energy soaked into the shadows."),
+           "to sense necrotic planar energy soaked into the shadows. If anyone succeeds, the party "
+           "is on guard when the ambush comes; if every check fails, the Shadowflame strikes "
+           "unseen and the heroes have disadvantage on their initiative rolls."),
     ("gold", "**Ursa**, whispering, his breath misting: “This does not feel right. Something is "
              "here. The forest itself feels sick.”"),
     ("gold", "The mist thickens until the party can see barely twenty feet. The temperature "
@@ -199,10 +211,15 @@ BLOCKS = [
     ("dm", "**Illusions of Fear.** It opens by splitting into three identical illusions that "
            "move in step with it. Attacking one calls for Intelligence (Arcana) or Wisdom "
            "(Perception) DC 18 to pick the real flame; on a failure the blow passes through and "
-           "the illusion remains, and an identified fake bursts into a swirl of shadow."),
+           "the illusion remains, and an identified fake bursts into a swirl of shadow. The "
+           "fakes cannot harm anyone: only the real flame attacks, which is itself a clue."),
     ("dm", "**Round by round.** It stalks a vulnerable hero with Shadow Claw, saves Terror Wave "
-           "(15-foot cone, Wisdom DC 14 or frightened) for when the party clusters, and "
-           "Shadowmelds through the mist to reposition whenever it is cornered."),
+           "(15-foot cone, Wisdom DC 14 or 3d10 necrotic and frightened) for when the party "
+           "clusters, and Shadowmelds through the mist to reposition whenever it is cornered."),
+    ("dm", "**If the fight turns.** The Shadowflame feeds on fear, not flesh. If a hero drops, "
+           "it lingers to savor the terror instead of pressing the attack, and it never pursues "
+           "past the brambles: a party that runs escapes shaken but whole, and can circle back "
+           "with a better plan for the illusions."),
     ("imgfloat", f"{A}/monsters/shadowflame.png", 2.9),
     ("gold", "The clearing becomes a hall of dark mirrors. Four grinning shadows circle the party, "
              "moving as one, and blades pass through two of them before Lilly starts calling out "
@@ -240,7 +257,9 @@ BLOCKS = [
     ("dm", "Wisdom (Perception) DC 15: shapes flickering in the fog, pacing the party. Wisdom "
            "(Survival) DC 14: padded tracks that stop abruptly, mid-stride. Intelligence (Arcana) "
            "DC 16: planar distortion is warping the creatures here, granting them abilities they "
-           "should not have."),
+           "should not have. Any success means the party is braced when the ambush springs; if "
+           "all three fail, the beasts strike from the fog first and the heroes have disadvantage "
+           "on their initiative rolls."),
     ("gold", "**Ursa**, crouched over the tracks: “They just... stop. These creatures are moving "
              "in ways they should not be.”"),
     ("gold", "A low growl rolls out of the fog, then a sharp whip-crack. Two **Displacer Beasts** "
@@ -258,11 +277,15 @@ BLOCKS = [
     ("dm", "**Tactics.** Hit-and-run: they lash from 10 feet with barbed tentacles, then slide "
            "back into the fog to flank and split the party. Ursa's Faerie Fire stripped the "
            "displacement trick away, and Stabby deflected a tentacle mid-swing to turn the tide."),
+    ("dm", "**If the fight turns.** The beasts are predators, not zealots: once one is reduced "
+           "below half its hit points it slinks into the fog and does not return, and neither "
+           "will leave the mist to chase a party that retreats to open ground."),
     ("gold", "When the beasts finally fall, their bodies shimmer and dissolve into wisps of mist, "
              "leaving only faint outlines on the ground. And beneath where they fell, strange runes "
              "lie etched into the forest floor, pulsing with a dark planar light."),
     ("dm", "Intelligence (Arcana) DC 15: the runes are tears in the fabric of reality, seams where "
-           "creatures from other planes seep into this one."),
+           "creatures from other planes seep into this one. On a failure the symbols stay a "
+           "mystery for now; Aelwyn or the Guild's archives can explain them later."),
     ("gold", "**Lilly**, tracing the air above the runes: “These symbols are like cracks in a "
              "mirror. The boundaries between the planes are breaking down.” **Ursa:** “Then "
              "worse things than talking cats are going to come through.” **Stabby:** “Good "
@@ -275,7 +298,9 @@ BLOCKS = [
              "blue-green light, until the whole hillside shines like a dream having a dream."),
     ("dm", "Wisdom (Perception) DC 14: the ground pulses faintly; the roots shift. Intelligence "
            "(Arcana) DC 15: the mushrooms are suffused with Feywild energy, reacting to the "
-           "party's presence."),
+           "party's presence. A success means the party enters the clearing ready for trouble; "
+           "if both checks fail, the Shroomytes erupt from the soil with surprise on their side "
+           "and the heroes have disadvantage on their initiative rolls."),
     ("gold", "**Lilly**, adjusting her goggles: “These mushrooms are not just glowing. They are "
              "responding to us. Be ready for anything.” **Stabby**, twirling his sword: "
              "“Living mushrooms? Bet they are not ready for a good stabbing.”"),
@@ -299,6 +324,9 @@ BLOCKS = [
            "with Mycelium Tendrils to entangle and slow, then flank through the mushroom cover, "
            "one venting a spore cloud that obscures and poisons whoever stands in it. Lilly's "
            "fire found their weakness; Stabby simply refused to be caught."),
+    ("dm", "**If the fight turns.** The Shroomytes are guardians, not hunters: they defend the "
+           "glowing clearing and never pursue beyond it. A party in trouble can withdraw and "
+           "pick a longer path around the grove, losing an hour of climbing but nothing more."),
     ("gold", "It is a strange, glowing battle among the toadstools, and when the last Shroomyte "
              "folds gently back into the earth, the air fills with drifting, luminous spores, "
              "falling like warm snow. In the center of the clearing hovers a **Fungal Mote**, "
@@ -329,7 +357,10 @@ BLOCKS = [
            "from the fall. The crumbling section: Wisdom (Perception) DC 15 to spot it in time, "
            "or it collapses underfoot, Dexterity save DC 13 or 2d6 bludgeoning. The glowing "
            "runes: Intelligence (Arcana) DC 15 to recognize an ancient magical defense system "
-           "guarding a hidden chamber, knowledge that pays off at the monolith."),
+           "guarding a hidden chamber, knowledge that pays off at the monolith (no harm on a "
+           "failure; the monolith will introduce itself soon enough). Run the ledge as three "
+           "obstacles in order; a hero who has already crossed can throw a rope back for "
+           "advantage on a companion's check."),
 
     ("h2", "The Monolith of Four Elements"),
     ("gold", "Past the worst of the ledge, the path opens onto a circular stone platform carved "
@@ -360,6 +391,14 @@ BLOCKS = [
         "**The stakes.** A wrong alignment when the bolt lands discharges wild energy: 2d6 "
         "lightning to everyone standing near the monolith. The right alignment on the storm's "
         "next breath, and the monolith drinks the bolt whole.",
+        "**Hints, from gentle to loud.** If the table stalls: first, the four phrases are "
+        "carved top to bottom, in order. Second, after any wrong strike, the Air pedestal's "
+        "rune alone stays lit a heartbeat longer than the rest: first in line. Third, "
+        "Floraburst pads to the correct next pedestal and sneezes at it.",
+        "**No dead ends.** The monolith resets with every strike, so trial and error always "
+        "works eventually; it just costs 2d6 lightning per wrong guess. Heroes who read the "
+        "cliff runes on the way up already know the system rewards precision, and may take "
+        "the Arcana timing check with advantage.",
     ]),
     ("gold", "Stone rings grind into place: wind, tide, stone, flame. The storm inhales. Lightning "
              "hammers the rod, and this time the monolith drinks it, humming louder and louder "
@@ -384,8 +423,9 @@ BLOCKS = [
              "**Dark Fragment**, a shard of crystallized energy swirling with elemental chaos, cold "
              "to the touch and heavier than it looks."),
     ("dm", "Intelligence (Arcana) DC 15: the fragment is a remnant of the same power corrupting "
-           "the planar boundaries, tied directly to the weakening of Elaria. The party keeps it, "
-           "carefully wrapped."),
+           "the planar boundaries, tied directly to the weakening of Elaria. On a failure the "
+           "shard keeps its secret for now; the Artificer's Guild can identify it later. Either "
+           "way the party keeps it, carefully wrapped."),
     ("gold", "Until this moment, the breaking of the world might have been an accident: a storm, a "
              "sickness, a slow unlucky fraying. No longer. Someone stood in that light and called "
              "the boundaries *mine*. Someone is doing this on purpose."),
@@ -483,11 +523,10 @@ BLOCKS = [
         "**Floraburst (the party's companion).** Small fey, neutral good. AC 14 (natural armor), HP 45 (6d6 + 18), Speed 30 ft.",
         "STR 14, DEX 12, CON 16, INT 10, WIS 14, CHA 10. Skills Nature +4, Survival +4. Resistance poison. Darkvision 60 ft. Understands Sylvan and Common.",
         "**Plant Camouflage.** Advantage on Stealth checks in heavy foliage. **Photosynthesis.** Recovers 10 extra HP when resting in sunlight.",
-        "**Razor Leaf.** +4, range 30 ft., 2d8 + 2 slashing.",
-        "**Vine Lash.** +4, reach 15 ft., 1d10 + 2 bludgeoning; DC 13 Strength save or restrained one turn.",
-        "**Floraberry (3/Day).** Produces 1d4 + 1 magical berries; eating one restores 3 HP.",
-        "**Aqualump (stayed with Aelwyn).** Small water elemental, neutral good. AC 16 (shell), HP 54, Swim 30 ft. Water Bolt (2d8 + 2, knockdown), Surf (Recharge 5-6, 15 ft. cone, 4d6 cold), Shell Defense (+4 AC as a bonus action).",
-        "**Emberpaws.** Small fire elemental, chaotic good: a fox-like creature with flame-wreathed paws and tail. AC 15, HP 42, Speed 30 ft. Immune to fire. Ember (2d6 + 2 fire), Tail Flame Whip (2d6 + 3 fire, may ignite), Heatwave (3/Day, melee attackers take 1d8 fire).",
+        "**Razor Leaf.** +4, range 30 ft., 2d8 + 2 slashing. **Vine Lash.** +4, reach 15 ft., 1d10 + 2 bludgeoning; DC 13 Strength save or restrained one turn.",
+        "**Floraberry (3/Day).** Produces 1d4 + 1 berries; eating one is a Bonus Action (2024 Goodberry rule) and restores 3 HP.",
+        "**Aqualump (stayed with Aelwyn).** Small water elemental, neutral good. AC 16 (shell), HP 54, Swim 30 ft. Water Bolt (2d8 + 2, knockdown), Surf (Recharge 5-6, 4d6 cold cone), Shell Defense (+4 AC, bonus action).",
+        "**Emberpaws (stayed with Aelwyn).** Small fire elemental, chaotic good; fox-like, flame-wreathed. AC 15, HP 42, immune to fire. Ember (2d6 + 2 fire), Tail Flame Whip (2d6 + 3 fire, may ignite), Heatwave (3/Day, melee attackers take 1d8 fire).",
     ]),
 ]
 
