@@ -131,9 +131,13 @@ BLOCKS = [
              "of tiny needle teeth. Their eyes gleam with mischief and a flicker of light that "
              "does not belong to this world. **Mudskips**: creatures of the Plane of Water, "
              "slipped through the thinning walls, and absolutely delighted to see travelers."),
-    ("dm", "Three **Mudskips** (CR 1/2 each). The mud is difficult terrain for everyone but them; "
-           "they dart in, splash, and dive back into the pools. Resistant to fire, vulnerable to "
-           "lightning: the fire tricks Lilly and Ursa lean on need rethinking today."),
+    ("dm", "**The ambush.** Three **Mudskips** (CR 1/2 each, appendix). The mud is difficult "
+           "terrain for everyone but them: they dart in, splash, and dive back into the pools, "
+           "flanking through the water to isolate whoever moves slowest. Resistant to fire, "
+           "vulnerable to lightning: the fire tricks Lilly and Ursa lean on need rethinking."),
+    ("dm", "**Terrain that fights back.** Each Mud Splash (15-foot cone) leaves fresh slick "
+           "ground behind, reshaping the battlefield round by round; a hero blinded by the "
+           "spray fights the terrain as much as the ambushers."),
     ("imgfloat", f"{A}/scenes/s2_mudskip_ambush.png", 3.1),
     ("gold", "The fight is half battle, half mud wrestling. The Mudskips spit gobs of muck, slap "
              "with their tails, and skate across the wet ground while the heroes' boots sink and "
@@ -165,9 +169,12 @@ BLOCKS = [
              "wandering far from home! You are bold, bringing friends. Shame they will make such a "
              "tasty meal!”"),
     ("imgfloat", f"{A}/scenes/s2_grimfang_ambush.png", 3.0),
-    ("dm", "The **Grimfang war band**: 2 goblin archers on the flanks, a worg and an orc in the "
-           "melee, a hobgoblin sniping from the rear, and a goblin boss barking orders. The boss "
-           "taunts Stabby about the Bloodfang all through the fight. Beaten, the survivors flee."),
+    ("dm", "**The Grimfang war band:** 2 goblin archers on the flanks, a worg and an orc in the "
+           "melee, a hobgoblin sniping from the rear, and a goblin boss barking orders. The "
+           "boss coordinates: archers focus the party's back line while the worg and orc press "
+           "the front, and the hobgoblin's covered position hands Stabby a perfect chance to "
+           "catch an arrow out of the air. The boss taunts Stabby about the Bloodfang all "
+           "through the fight. Beaten, the survivors flee."),
     ("gold", "The ambush is coordinated, vicious, and very unlucky in its choice of victims. "
              "Arrows hiss from both flanks; Stabby plucks one out of the air an inch from Lilly's "
              "hat and twirls it like a prize. The worg lunges and meets Ursa's magic head on. The "
@@ -277,9 +284,14 @@ BLOCKS = [
     ("img", f"{A}/monsters/terranox.png",
      "Terranox, the stone serpent of the Plane of Earth, rises from the mountain path.", 5.8,
      {"crop": "4:3", "hmax": 4.6}),
-    ("dm", "**Terranox**, CR 4 elemental of the **Plane of Earth**. No parley. Immune to fire, so "
-           "flame tricks fail again; it stomps the ground to knock heroes flat and coils around "
-           "spellcasters. Loose rocks fall throughout: DC 12 Dexterity save or 1d10 bludgeoning."),
+    ("dm", "**Terranox**, CR 4 elemental of the **Plane of Earth** (appendix). No parley. "
+           "Immune to fire, so flame tricks fail again. It opens on the nearest intruder, uses "
+           "Earthquake Stomp to scatter the party's formation, and saves Stone Coil for "
+           "spellcasters and ranged attackers, squeezing them out of the fight early."),
+    ("dm", "**The battlefield.** Loose rocks litter the narrow path and make natural cover. "
+           "Each round, roll a d6: on a 5 or 6, rocks shake free of the cliffs, DC 12 Dexterity "
+           "save or 1d10 bludgeoning. The longer the battle roars, the more attention it "
+           "risks drawing."),
     ("gold", "It is the hardest fight of their young lives. Terranox's tail sweeps like a falling "
              "tree; its stone coils catch Ursa mid spell and squeeze until Stabby's flurry of "
              "blows cracks the grip loose. Fire splashes off the creature like rain off a roof, so "

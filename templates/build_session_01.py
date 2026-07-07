@@ -128,8 +128,11 @@ BLOCKS = [
              "burly local several drinks past sensible, cracks his knuckles and grins down at them."),
     ("gold", "**Bren:** “Oi! You lot look like you think you are tough. How about you prove it? "
              "A little friendly brawl, eh?”"),
-    ("dm", "**The brawl.** Bren and two friends, fists, chairs, and one regrettable mug. Strictly "
-           "non lethal. The three strangers fight together for the first time, and win."),
+    ("dm", "**The brawl.** Bren (AC 12, HP 8, unarmed strike +3 for 1d4 + 1) and two friends "
+           "(AC 11, HP 6, unarmed +3 for 1d4): fists, chairs, and one regrettable mug, strictly "
+           "non lethal. They rely on brute force, ganging up on one or two heroes at a time, "
+           "and Osric steps in if things get too hot. The three strangers fight together for "
+           "the first time, and win."),
     # Brawl scene promoted to a half-page plate: it is a tavern interior
     # action scene, and the DM wants those big.
     ("img", f"{A}/scenes/s1_bar_brawl.png",
@@ -166,13 +169,15 @@ BLOCKS = [
     # Pond establishing shot: half-page landscape plate per DM review.
     # 16:9 crop: a wide cinematic plate that lets Part Two close out its page.
     ("img", f"{A}/scenes/s1_lickgloom_pond.png",
-     "The Whispering Pond, where the water holds the starlight strangely.", 5.8,
+     "The Whispering Pond, where the water holds the starlight strangely.", 5.5,
      {"crop": "16:9", "hmax": 4.6}),
     ("gold", "This is **Lickgloom**, a creature of the **Feywild**, a realm of wild wonder that "
              "presses close against our own. It did not break into the world. It simply wandered "
              "through a door that should not have been open."),
-    ("dm", "Wisdom (Animal Handling) DC 12 to befriend. The party offered food and gentle patience, "
-           "and succeeded."),
+    ("dm", "**Meeting Lickgloom.** Wisdom (Insight) DC 10: curious and playful, not a threat. "
+           "Wisdom (Animal Handling) DC 12 to befriend with food and patience; aggression "
+           "sends it fleeing into the pond. Intelligence (Arcana) DC 14: creature and pond "
+           "both hum with Feywild energy. The party offered bread, and succeeded."),
     ("gold", "Lickgloom pads closer, tilting its head. When Ursa kneels and holds out a bit of bread, "
              "the long tongue snaps out, the bread vanishes, and a feeling arrives in everyone's "
              "minds at once, wordless and warm: *Food? Friend?*"),
@@ -206,9 +211,15 @@ BLOCKS = [
              "spirals around the stones. A voice arrives in your minds, sharp as a whistle: a "
              "telepathic *quack*."),
     ("gold", "**Duckleaf:** “Intruders! Leave this place... or face the winds!”"),
-    ("dm", "Intelligence (Arcana) DC 14: the stones are amplifying elemental air energy; the "
-           "creature is drawing power from the **Elemental Plane of Air**. Disrupting a stone "
-           "weakens its wind step."),
+    ("dm", "**The stone circle.** Intelligence (Arcana) or Wisdom (Nature) DC 14: the five "
+           "stones are amplifying elemental air energy; the creature draws its power from the "
+           "**Elemental Plane of Air**. Damaging or disrupting one stone breaks that "
+           "connection: Duckleaf loses its Winged Leap for the rest of the battle, and it "
+           "defends the stones fiercely once it realizes what the heroes are doing."),
+    ("dm", "**Duckleaf's tactics.** Wisdom (Perception) DC 12 reads its style: it opens with "
+           "Aerial Slash from range, uses Winged Leap to skip away from melee without "
+           "provoking, and saves its Quack of Fury (15 feet, Wisdom DC 14 or frightened) for "
+           "when the party bunches up."),
     ("gold", "There is no talking their way past a guardian with a grudge and a leek. **Duckleaf** "
              "leaps from its stone and the wind leaps with it. It fights like a storm given feathers: "
              "riding gusts across the clearing, slashing with blades of sharpened air, loosing a "
@@ -235,6 +246,14 @@ BLOCKS = [
              "behind them, calm and stern."),
     ("gold", "**Cognifin:** “You stand upon sacred ground. Prove your strength, or the waters "
              "will judge you.”"),
+    ("dm", "**The guardian's test.** Cognifin, CR 3 (appendix). Intelligence (Arcana) or Wisdom "
+           "(Nature) DC 14: it draws its strength from the pond itself, and disturbing the "
+           "water's surface (a spell, a splash, a well-thrown rock) breaks its focus, silencing "
+           "its whirlpools and tidal waves for a round."),
+    ("dm", "**Tactics.** It opens with Water Pulse to knock the closest hero prone, peppers the "
+           "back line with Headache Blasts, and looses its Confusion Pulse when the party "
+           "groups up; between turns its legendary waters pull heroes into whirlpools or shove "
+           "them back with small tidal waves, while Psychic Shield turns away the worst blows."),
     ("gold", "This one is no invader; it is a **guardian**, bound to test all who enter, and it "
              "fights like a slow, patient tide. Waves crash from a still pond. Whirlpools open where "
              "heroes stand. Psychic pressure squeezes like deep water. But the party fights as one "
@@ -246,15 +265,21 @@ BLOCKS = [
              "behind is bigger than the grove: *who is opening the doors between worlds?*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Four: The Road to Oakshade", {"hardbreak": True}),
+    # No hardbreak: the grove's aftermath ends high on its page, and the road
+    # to Oakshade rolls straight on from the forest's far side.
+    ("h1", "Part Four: The Road to Oakshade"),
     ("bridge", "Carrying two mysteries and one new friend, the party pressed on through the "
                "forest's far side, toward the next village on the map."),
     ("gold", "The road to **Oakshade Village** winds through hills as the sun goes down, and with "
              "the dusk comes fog, thick and white and strange. Great gnarled roots have burst up "
              "through the packed earth of the road itself, as if something beneath the ground rolled "
              "over in its sleep. Shapes move in the murk."),
-    ("dm", "Dexterity (Acrobatics) DC 12 across the root falls; Wisdom (Perception) DC 13 to hold "
-           "the path in fog. Then: two **Mist Stalkers**, ambushing from the white."),
+    ("dm", "**Road hazards.** Dexterity (Acrobatics) DC 12 across the erupted roots, 1d4 "
+           "bludgeoning on a stumble; Wisdom (Perception) DC 13 to hold the path in fog, and a "
+           "party that strays gets ambushed on ground of the Stalkers' choosing."),
+    ("dm", "**The ambush.** Two **Mist Stalkers** (appendix). Each wraps itself in Fog Cloak to "
+           "strike from heavy obscurement, and their Howl of the Mist rolls in from every "
+           "direction at once, hunting for frightened, scattered prey."),
     # Mist Stalker scene floats right beside the ambush paragraphs.
     ("imgfloat", f"{A}/scenes/s1_mist_stalkers.png", 3.1),
     ("gold", "They come with no sound at all: two sleek predators of fog and hunger, eyes like cold "

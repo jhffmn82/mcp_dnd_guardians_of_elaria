@@ -47,7 +47,7 @@ BLOCKS = [
     # Ghostbloom floats beside the landfall path and her waking below it: an
     # emotional peak, sized generously. Anchored this high on the page so the
     # full-height portrait clears the bottom margin.
-    ("imgfloat", f"{A}/characters/ghostbloom.png", 2.9, {"hmax": 4.0}),
+    ("imgfloat", f"{A}/characters/ghostbloom.png", 3.3, {"hmax": 4.0}),
     ("gold", "The surf leaves salt on lips and sand in boots. Morning fog burns slowly to pearl "
              "as the Guardians of Elaria follow a narrow footpath along wind-gnarled pines, gulls "
              "wheeling far below, the whole world smelling of brine and cold green needles. Ahead, "
@@ -60,7 +60,12 @@ BLOCKS = [
              "translucent now, like flower glass, and when the sea wind moves through them they "
              "chime, a tiny frost-cold music. She lifts free of Ursa's arms and simply stays "
              "there, floating at shoulder height, blinking at the fog with eyes full of soft "
-             "white light. She is new. She is still, unmistakably, their friend."),
+             "white light. The **ghost essence** she drew in aboard the Flying Dutchman has "
+             "finished its long, quiet work: Floraburst has evolved into a creature of the "
+             "**ghost** kind. She is new. She is still, unmistakably, their friend."),
+    ("dm", "**The sealed roll comes due.** The blind essence roll from Session 5 is finally "
+           "revealed: the d12 gave **Ghost**. Floraburst evolved into a ghost type by the ghost "
+           "essence taken from the Dutchman, and nobody at the table knew until she woke."),
     ("gold", "**Lilly**, very quietly: “She is not Floraburst now, is she. Look at her. She is "
              "like a bloom made of ghost-light.” The little creature chimes, pleased, and turns "
              "a slow circle in the air. And so, on a fog-bound footpath above the sea, she is "
@@ -139,8 +144,19 @@ BLOCKS = [
     ("gold", "Then the burlap sacks erupt. A gray tide of rats hits the floor, claws skittering, "
              "a hundred pinprick eyes catching the lantern light, and from the rafters something "
              "heavier drops straight for the heroes' shoulders."),
-    ("dm", "**The cellar fight.** 2 Swarms of Rats (one starting in the rafters) and 4 Giant "
-           "Rats, in a tight aisle of barrels and shelves. Book statistics; see the appendix note."),
+    ("dm", "**The cellar fight.** 2 Swarms of Rats and 4 Giant Rats with Pack Tactics, in a "
+           "tight aisle of barrels and shelves (book statistics; see the appendix note). One "
+           "swarm lurks in the rafters and drops on a hero's shoulders: DC 13 Dexterity or it "
+           "lands on you."),
+    ("dm", "**Going in.** Torch held high: passive Perception 13 notices the flame leaning "
+           "toward a hairline seam in the far wall, as though the crack is quietly inhaling. "
+           "Quiet boots: Stealth against the swarms' passive Perception 10 to take position "
+           "before the rush. Ghostbloom forward: her chiming petals grant advantage on the "
+           "next Perception or Insight check to clock the seam."),
+    ("dm", "**Cellar toys.** Shove a shoulder-high cask down the tight aisle (once, Strength "
+           "DC 12): 1d4 bludgeoning and prone to whatever fails a DC 12 Dexterity save. Pull "
+           "down the rickety shelf (an Action): an adjacent creature makes a DC 13 Dexterity "
+           "save or is restrained under broken wood until the end of its next turn."),
     ("imgfloat", f"{A}/scenes/s6_cellar_rats.png", 3.3),
     ("gold", "When the last tail goes still, the cellar gives up its stranger secrets. Under the "
              "shelves lies a chewed dog collar. A thin drag-mark crosses the dust to the far "
@@ -160,12 +176,33 @@ BLOCKS = [
     ("gold", "Two scarecrows creak down from their posts. Straw whispers across the furrows and "
              "gathers itself into small, hunched walkers with button eyes. The thin note in the "
              "fog swells, steady as a bow drawn across the rim of a glass."),
-    ("dm", "**Straw stirs.** 2 Scarecrows and 6 Strawlings among the flickering "
-           "jack-o'-lanterns. Statistics in the appendix."),
-    # Pumpkin Row as a half-page establishing plate.
+    ("game", "PUMPKIN ROW: TURN THE FACES", [
+        "*The straw only walks while the carved faces watch. Three ways to win; the Guardians "
+        "may mix all three.*",
+        "",
+        "**Say this plainly.** Three big **key pumpkins**, one on the north post, one on the "
+        "cart, one on the south post, keep trying to face the theater. Every scarecrow has a "
+        "coin-sized **gourd charm** stitched under its ribs. The hay cart could bowl strawlings "
+        "over, and the pumpkin stack could be kicked down to make a glorious mess.",
+        "**A. Turn the faces (the puzzle).** As an Action, a hero turns or snuffs one key "
+        "pumpkin, no check needed. While any two key pumpkins face away from the theater at "
+        "the same time, every scarecrow skips its next turn. Manage it in two different rounds "
+        "and the magic fizzles: the straw collapses, and the fight is over.",
+        "**B. Clip the charm.** From within 5 feet, snip a scarecrow's heart-gourd, no roll: "
+        "that scarecrow falls limp on the spot.",
+        "**C. Fight it out.** 2 Scarecrows and 6 Strawlings (appendix), a solid scrap among "
+        "the flickering jack-o'-lanterns.",
+        "",
+        "**The spoils.** A clean or clever end earns the carver's **bell-handled lantern** "
+        "(1 use: advantage on one Investigation check in Wraithpine while it is lit). A split "
+        "heart-gourd holds a map scrap with the old theater and the town well circled, stamped "
+        "**PROP ROOM, OLD THEATER**.",
+    ]),
+    # Pumpkin Row as a wide cinematic plate: the 16:9 crop lets the lane share
+    # its page with the rules card above it.
     ("img", f"{A}/scenes/s6_pumpkin_row.png",
-     "Pumpkin Row: every carved face along the lane turns toward the old theater roof.", 6.0,
-     {"crop": "3:2", "hmax": 4.6}),
+     "Pumpkin Row: every carved face along the lane turns toward the old theater roof.", 5.6,
+     {"crop": "16:9", "hmax": 4.6}),
     ("gold", "It is a wild, whirling scrap among the pumpkins, candy-striped steel flashing, "
              "sparks and starlight scattering straw in every direction. When the last strawling "
              "collapses into a harmless heap, Stabby cuts open the heart-gourd charm stitched "
@@ -189,6 +226,35 @@ BLOCKS = [
     ("img", f"{A}/scenes/s6_graveyard_rite.png",
      "Lilly lights the blue lantern and begins the rite of the forgotten name.", 6.0,
      {"crop": "3:2", "hmax": 4.6}),
+    # The graveyard plate fills page 7 past the point where the rite card can
+    # fit; break so the card opens its page whole.
+    ("pagebreak",),
+    ("game", "LAY A RIBBON: THE RITE OF THE FORGOTTEN NAME", [
+        "*A grave whose name has been chiseled away will not stay quiet: the dead do not wish "
+        "to be laid twice. The rite has four steps, and any hero may perform them.*",
+        "",
+        "**1. Raise the letter ghosts.** Rub charcoal across the scraped line: Intelligence "
+        "(Investigation) DC 12 to make out the ghosts of the letters, faint as footprints in "
+        "frost.",
+        "**2. Restore the name.** Re-inscribe it with chalk, charcoal, or knife tip, set at "
+        "the top of the stone the way a rite demands: Intelligence (Religion) or (History) "
+        "DC 12.",
+        "**3. Ring the bell.** Untie the black thread from the post bell's clapper and ring "
+        "three times, speaking the name aloud (or a vow to remember). Ring one: the fog "
+        "shivers. Ring two: the cypresses hush. Ring three: the ground answers with a sigh "
+        "from deep below.",
+        "**4. Tie the Remembrance Knot.** As an Action: make a loop, wrap twice, pull through "
+        "once more, so a small tail points toward the sea. A hero who learned Captain Brynn's "
+        "knots aboard the Stormwind ties it with advantage. If the knot is wrong, the ribbon "
+        "loosens by itself and coils like a sleeping snake.",
+        "",
+        "**If the name is wrong or unknown**, the dead stir: 2 Zombies claw free (3 Zombies "
+        "and 2 Skeletons if the rite is begun loud and careless). Lay them gently down; the "
+        "rite can always be tried again.",
+        "**The blessing.** When the knot takes hold, the soil settles and the stone warms in "
+        "the palm. Every hero who took part gains **Hold Fast**: once this session, advantage "
+        "on one Wisdom save against forgetfulness or the song.",
+    ]),
     ("gold", "The heroes put them gently back to rest, and then they do the older, kinder work. "
              "Charcoal rubbed across the blank line raises the ghosts of letters, like footprints "
              "in frost. The name is written back where it belongs. The post bell's clapper is "
@@ -198,10 +264,6 @@ BLOCKS = [
              "taught them aboard the Stormwind, laughing at their tangles all the while. The "
              "knot tightens. The soil settles. For a breath the fog pulls back, and the grave "
              "looks ordinary again: just a stone, with a name, remembered."),
-    ("dm", "**The rite and its blessing.** Restore the name, ring the bell, tie the Remembrance "
-           "Knot. 2 Zombies rose partway through (book statistics). Each hero who took part in "
-           "the rite gained **Hold Fast**: once this session, advantage on one Wisdom save "
-           "against forgetfulness or the song."),
 
     # ------------------------------------------------------------------
     ("h1", "Part Three: Names the Stone Won't Keep", {"hardbreak": True}),
@@ -239,17 +301,36 @@ BLOCKS = [
              "like a seam opening, a whistle from two streets away that cannot be placed, a "
              "lullaby with no words and no end, pressing gently, gently, on the inside of every "
              "skull."),
-    ("dm", "Second group **Wisdom save, DC 13**, as the song swells. On a miss, the day's clues "
-           "slip like a dream on waking; on a success, a pop behind the eyes, and the sense of "
-           "something trying to smooth the mind flat."),
     ("gold", "The bellkeeper sees the wobble in their eyes and moves fast, pressing small curls "
              "of beeswax into every palm, wax that smells of summer and smoke. He pulls one of "
              "his own plugs half out, just long enough to speak, and his voice is grave. “Put it "
              "in. All the way. Don't be brave about it. The song is not for bravery.” He reseats "
              "the plug, and then he mouths two words, slow and exaggerated, so there can be no "
              "mistake: **UNDER. THEATER.**"),
-    ("dm", "Beeswax earplugs: **advantage** on saves against the song, and its aura cannot lock "
-           "a plugged hero's reactions. The heroes wore them from here to the end."),
+    # The belltower scene runs to the page foot; break so the session's
+    # signature rules card opens its page whole.
+    ("pagebreak",),
+    ("game", "THE SONG OF UNREMEMBERING", [
+        "*Something under Wraithpine is singing, and to hear the song is to forget. It has "
+        "been eating the village one name at a time, and it will happily eat the heroes' "
+        "clues too. These rules run for the rest of the session.*",
+        "",
+        "**When the song swells**, every hero makes a **Wisdom save, DC 13**. Failure: one "
+        "fresh memory slips away, just enough to feel wrong, and the day's clues soften like "
+        "a dream on waking. Success: a pop behind the eyes, and the sense of something trying "
+        "to smooth the mind flat.",
+        "**In battle it is worse.** A lone head's hum: start your turn within 30 feet, DC 13 "
+        "Wisdom save or your attacks that turn have disadvantage. The full creature's song: "
+        "within 60 feet, **DC 15**, and failure also locks your reactions until your next "
+        "turn.",
+        "**The beeswax remedy.** Soft curls of wax, seated all the way in: a plugged hero has "
+        "**advantage** on every save against the song, and its hum can never lock their "
+        "reactions. Do not be brave about it. The song is not for bravery.",
+        "**The bellkeeper's law: WRITE. DON'T LISTEN.** Ink and chalk do not forget. Anything "
+        "written down (a slate, a ledger, one word on a page) stays true even when minds "
+        "wobble, and with wax in the ears the writing keeps its edge.",
+    ]),
+    ("dm", "From this moment the heroes wore their beeswax to the very end of the session."),
 
     ("h2", "The Reveal at the Gasping Gull"),
     ("gold", "With the beeswax seated, the world sharpens. Lantern light cuts cleaner. The air "
@@ -272,7 +353,16 @@ BLOCKS = [
              "Toward the heroes. Its eyes aim at the place where their thoughts are, not the "
              "place where their bodies stand."),
     ("dm", "**The tavern fight.** One **False Hydra Tavern Head** (appendix), in a room full of "
-           "tables, stew pots, and one oblivious innkeeper to keep out of harm's way."),
+           "tables, stew pots, and one oblivious innkeeper to keep out of harm's way. It bites, "
+           "grapples, and drags victims toward the trapdoor; 20 or more damage in a single turn "
+           "makes it recoil and lose its reactions."),
+    ("dm", "**Tavern toys.** Kick the stew pot: DC 12 Dexterity or 1d6 fire and disadvantage "
+           "on the victim's next attack. Flip the long table: half cover for a round, or shove "
+           "it (Strength DC 13) to pin the neck, restrained until it writhes free. Drop the "
+           "lantern rack: DC 13 Dexterity or 1d4 slashing, and the burning square puts the "
+           "head's next attack at disadvantage. Slam the trapdoor on the neck: Strength DC 14, "
+           "and the head makes a DC 13 Dexterity save or takes 1d6 and loses its reactions "
+           "until its next turn."),
     ("gold", "The fight is close and crashing: tables flipped for cover, the neck writhing "
              "between the rafters, Ghostbloom's chime splitting the hum like frost splitting "
              "stone. Candyfang steel cracks slate teeth, emerald fire skates along the pale "
@@ -287,7 +377,9 @@ BLOCKS = [
              "she grips the bar until it passes. “Forgive me. I... I'll fetch more bowls.”"),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Four: Where the Song Lives", {"hardbreak": True}),
+    # No hardbreak: the tavern reveal ends just under half a page, and the
+    # descent reads best rolling straight out of the broken floor.
+    ("h1", "Part Four: Where the Song Lives"),
     ("bridge", "A trail led from the tavern's broken floor into the dark beneath Wraithpine, "
                "and the thin note grew into a pressure, a hand laid gently on the inside of the "
                "skull. The heroes plugged their ears, lit their lanterns, and followed it down."),
@@ -316,10 +408,26 @@ BLOCKS = [
 
     ("h2", "The Lair Battle"),
     ("dm", "**The lair battle.** The False Hydra Adult: body plus four heads (appendix). A "
-           "quiet approach along the high catwalk earned a surprise round, and a focused strike "
-           "dropped the first head before the song even turned. **Vital Link:** the body "
-           "resists weapon damage while heads remain; each destroyed head strips one layer of "
-           "that protection, and the body acts more often the more heads still sing."),
+           "quiet approach along the high catwalks (Stealth against passive Perception 14) "
+           "earned a surprise round, and a focused strike from the high ground dropped the "
+           "first head before the song even turned."),
+    ("dm", "**The battlefield.** Three elevations: catwalks 10 to 20 feet up, the broken stage "
+           "at 5 feet, the bone mound below. Four neck-ports open in the theater floor; a head "
+           "can withdraw and re-emerge from any port on its turn, reaching 15 feet from its "
+           "hole. Prop flats (AC 12, 12 HP) and sandbag clusters give cover; a pinned neck "
+           "(table, rope, tackle) needs Strength against DC 14 to writhe free."),
+    ("dm", "**Hazards.** Rotted beams: DC 12 Dexterity or fall 10 feet for 1d6. Bone scree "
+           "around the mound is difficult terrain. A pulley cluster can be dropped (Strength "
+           "DC 13): 2d6 bludgeoning in a 10-foot line."),
+    ("dm", "**Lair actions** (initiative 20, one per round): Stage Drop, sandbags crash in a "
+           "10-foot line, DC 13 Dexterity or 2d6 and prone. Mask of Memory, playbills flutter "
+           "like moths through a 15-foot radius; an unplugged hero makes a DC 15 Wisdom save "
+           "or cannot target the body this round. Gasping Vent, a floor grate hisses open: "
+           "10-foot radius of difficult terrain where words are muffled and verbal spells "
+           "need a DC 10 Constitution check."),
+    ("dm", "**Vital Link.** The body resists weapon damage while heads remain; each destroyed "
+           "head strips one layer of that protection, and the body acts more often the more "
+           "heads still sing."),
     ("img", f"{A}/scenes/s6_hydra_lair.png",
      "The False Hydra entire, in the drowned orchestra pit below the Old Theater.", 5.8,
      {"crop": "3:2", "hmax": 4.6}),
@@ -470,8 +578,8 @@ BLOCKS = [
         "Strength save or is grappled (escape DC 12).",
         "**Chaff Burst.** +4 to hit, range 30/60 ft., 6 (2d4) piercing (a spray of straw flechettes).",
     ]),
-    ("body", "The cellar rats (Swarm of Rats, Giant Rat) and the graveyard's restless dead (Zombie) "
-             "use their standard book statistics."),
+    ("body", "The cellar rats (Swarm of Rats, Giant Rat) and the graveyard's restless dead "
+             "(Zombie, Skeleton) use their standard book statistics."),
 ]
 
 if __name__ == "__main__":

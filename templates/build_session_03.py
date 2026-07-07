@@ -193,9 +193,16 @@ BLOCKS = [
              "into a grin, wisps of shadow trailing from its limbs like ghostly fire."),
     ("gold", "**Shadowflame**, in a whispery, disembodied voice: “Your fears are tasty... let me "
              "see them... let me taste them!”"),
-    ("dm", "**The fight.** Shadowflame, CR 4 (appendix). It splits into three identical illusions; "
-           "Intelligence (Arcana) or Wisdom (Perception) DC 18 to pick the real one. Terror Wave in "
-           "a 15 foot cone (Wisdom DC 14 or frightened); Shadowmeld to teleport through the mist."),
+    ("dm", "**The fight.** Shadowflame, CR 4 (appendix), in a 30-foot clearing walled by thorny "
+           "brambles, the mist lightly obscuring everything: disadvantage on ranged attacks and "
+           "on Perception by sight."),
+    ("dm", "**Illusions of Fear.** It opens by splitting into three identical illusions that "
+           "move in step with it. Attacking one calls for Intelligence (Arcana) or Wisdom "
+           "(Perception) DC 18 to pick the real flame; on a failure the blow passes through and "
+           "the illusion remains, and an identified fake bursts into a swirl of shadow."),
+    ("dm", "**Round by round.** It stalks a vulnerable hero with Shadow Claw, saves Terror Wave "
+           "(15-foot cone, Wisdom DC 14 or frightened) for when the party clusters, and "
+           "Shadowmelds through the mist to reposition whenever it is cornered."),
     ("imgfloat", f"{A}/monsters/shadowflame.png", 2.9),
     ("gold", "The clearing becomes a hall of dark mirrors. Four grinning shadows circle the party, "
              "moving as one, and blades pass through two of them before Lilly starts calling out "
@@ -245,9 +252,12 @@ BLOCKS = [
              "**Second beast**, tentacles lashing: “They will never see it coming.”"),
     ("gold", "Displacer beasts do not talk. Everyone knows displacer beasts do not talk. The fog "
              "suddenly feels less like weather and more like a doorway someone left open."),
-    ("dm", "**The fight.** Two displacer beasts (appendix). Displacement: attacks against each "
-           "beast have disadvantage until it takes damage. Ursa's Faerie Fire stripped the trick "
-           "away, and Stabby deflected a tentacle mid-swing to turn the tide."),
+    ("dm", "**The fight.** Two displacer beasts (appendix) in a 40-foot clearing of fog, fallen "
+           "logs, and roots: light obscurement, scattered cover, and difficult terrain. "
+           "Displacement: attacks against each beast have disadvantage until it takes damage."),
+    ("dm", "**Tactics.** Hit-and-run: they lash from 10 feet with barbed tentacles, then slide "
+           "back into the fog to flank and split the party. Ursa's Faerie Fire stripped the "
+           "displacement trick away, and Stabby deflected a tentacle mid-swing to turn the tide."),
     ("gold", "When the beasts finally fall, their bodies shimmer and dissolve into wisps of mist, "
              "leaving only faint outlines on the ground. And beneath where they fell, strange runes "
              "lie etched into the forest floor, pulsing with a dark planar light."),
@@ -282,9 +292,13 @@ BLOCKS = [
     ("gold", "**Shroomyte**, in a vibrating, musical tone: “Intruders... the grove... must be "
              "protected!”"),
     ("imgfloat", f"{A}/monsters/shroomyte_grove.png", 2.9),
-    ("dm", "**The fight.** Four Shroomytes, CR 2 each (appendix). Spore Blasts from range, "
-           "Mycelium Tendrils to entangle, difficult terrain everywhere. Lilly's fire found their "
-           "weakness; Stabby simply refused to be caught."),
+    ("dm", "**The fight.** Four Shroomytes, CR 2 each (appendix), in a 40-foot clearing: dense "
+           "mushroom clusters give half cover, 5-foot patches of damp, root-tangled ground are "
+           "difficult terrain, and the caps' dim glow throws long, shifting shadows."),
+    ("dm", "**Tactics.** They open with Spore Blasts from range to poison and confuse, close in "
+           "with Mycelium Tendrils to entangle and slow, then flank through the mushroom cover, "
+           "one venting a spore cloud that obscures and poisons whoever stands in it. Lilly's "
+           "fire found their weakness; Stabby simply refused to be caught."),
     ("gold", "It is a strange, glowing battle among the toadstools, and when the last Shroomyte "
              "folds gently back into the earth, the air fills with drifting, luminous spores, "
              "falling like warm snow. In the center of the clearing hovers a **Fungal Mote**, "
@@ -294,7 +308,9 @@ BLOCKS = [
              "quiet agreement. The collection grows, and so does the mystery."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Four: Stormwatch Cliffs", {"hardbreak": True}),
+    # No hardbreak: the Shroomyte aftermath ends high on its page, and the
+    # climb to the cliffs rolls straight on from the hills.
+    ("h1", "Part Four: Stormwatch Cliffs"),
     ("bridge", "By the time the hills gave way to open sky, the party could hear the sea, and the "
                "storm that lived above it."),
     ("gold", "**Stormwatch Cliffs** rise at the edge of the world: jagged stone ramparts above "
@@ -308,10 +324,12 @@ BLOCKS = [
              "drops to the hungry ocean below. The wind shoves like a rude giant. Stone crumbles "
              "where stone should hold. The Guardians rope together, watch each other's feet, and "
              "inch along the ledge while the storm booms overhead."),
-    ("dm", "Skill challenge: Dexterity (Acrobatics) DC 14 on the narrow ledge; Wisdom (Perception) "
-           "DC 15 to spot the crumbling section before it fell; Intelligence (Arcana) DC 15 to "
-           "recognize the runes as an ancient magical defense, knowledge that pays off at the "
-           "monolith. Falls dealt bruises (1d6 to 2d6), not tragedies."),
+    ("dm", "**The cliff path skill challenge.** The narrow ledge: Dexterity (Acrobatics) DC 14; "
+           "a slip means Strength (Athletics) DC 12 to catch the edge or take 1d6 bludgeoning "
+           "from the fall. The crumbling section: Wisdom (Perception) DC 15 to spot it in time, "
+           "or it collapses underfoot, Dexterity save DC 13 or 2d6 bludgeoning. The glowing "
+           "runes: Intelligence (Arcana) DC 15 to recognize an ancient magical defense system "
+           "guarding a hidden chamber, knowledge that pays off at the monolith."),
 
     ("h2", "The Monolith of Four Elements"),
     ("gold", "Past the worst of the ledge, the path opens onto a circular stone platform carved "
@@ -323,10 +341,26 @@ BLOCKS = [
     ("gold", "Etched into the monolith's base, half-worn by centuries of storms, four phrases: "
              "*The winds whisper first. The tide rises after. Stone stands firm next. Flame seals "
              "the fate.*"),
-    ("dm", "The puzzle: align the pedestals Air, then Water, then Earth, then Fire, timed to a "
-           "lightning strike. Intelligence (Investigation) or Wisdom (Insight) DC 15 to read the "
-           "sequence from the clues; a wrong alignment discharged 2d6 lightning. The party solved "
-           "it on the storm's next breath."),
+    # The monolith description runs to the page foot; break so the puzzle
+    # card opens its page whole.
+    ("pagebreak",),
+    ("game", "THE LIGHTNING PUZZLE OF STORMWATCH CLIFFS", [
+        "*Four pedestals, four elements, one storm that never rests. The monolith opens only "
+        "for those who read the cliffs' riddle and dare the lightning's timing.*",
+        "",
+        "**The pieces.** Each of the four pedestals carries a rotating stone ring of element "
+        "symbols: **Air, Water, Earth, Fire**. The monolith's lightning rod takes a strike "
+        "every few minutes, and the runes along the cliffs pulse with each one.",
+        "**The riddle.** Four phrases are carved into the monolith's base: *The winds whisper "
+        "first. The tide rises after. Stone stands firm next. Flame seals the fate.*",
+        "**Reading it.** Intelligence (Investigation) or Wisdom (Insight) DC 15 to deduce the "
+        "sequence from the clues: **Air, then Water, then Earth, then Fire**. Intelligence "
+        "(Arcana) DC 16 to realize the alignment must be finished **as the lightning strikes "
+        "the rod**, not before, not after.",
+        "**The stakes.** A wrong alignment when the bolt lands discharges wild energy: 2d6 "
+        "lightning to everyone standing near the monolith. The right alignment on the storm's "
+        "next breath, and the monolith drinks the bolt whole.",
+    ]),
     ("gold", "Stone rings grind into place: wind, tide, stone, flame. The storm inhales. Lightning "
              "hammers the rod, and this time the monolith drinks it, humming louder and louder "
              "until a beam of pure light lances up into the clouds and blooms into a shimmering "

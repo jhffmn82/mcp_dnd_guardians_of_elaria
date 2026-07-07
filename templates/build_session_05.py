@@ -86,9 +86,8 @@ BLOCKS = [
     ("img", f"{A}/scenes/s5_open_sea.png",
      "The Stormwind under full sail, two bright days east of Havenmoor.", 5.8,
      {"crop": "3:2", "hmax": 4.6}),
-    ("dm", "**Ship stations.** Lookout: Wisdom (Perception) DC 12. Helm: Dexterity (Acrobatics) "
-           "DC 13. Rigging: Strength (Athletics) DC 14. Bilge: Constitution DC 13. From the "
-           "crow's nest, Survival (Navigation) DC 17 plotted the safer channel into the storm."),
+    ("dm", "**Learning the ship.** The crew drills each hero at a station over the two bright "
+           "days; those stations become the storm rules in Part Two."),
     ("dm", "**Brynn's knot lessons** are not just color. They matter again, one session from now."),
     ("gold", "On the second night, the captain takes a private word with the party at the stern "
              "rail, her voice low under the creak of the rigging. **Brynn:** “Old sailors say "
@@ -104,6 +103,32 @@ BLOCKS = [
              "stinging needles. Captain Brynn lashes herself to the wheel beside Breesh and roars "
              "over the gale: **“We ride every blow together! Fight this storm as one, or we all "
              "go down!”** Every hero takes a station. The storm comes on in three great blows."),
+    ("game", "THE STORM IN THREE GREAT BLOWS", [
+        "*The Stormwind rides out the storm as a crew: every hero mans a station, and the ship "
+        "endures only what her sailors endure. Play each blow as one group check at stations.*",
+        "",
+        "**Stations.** Each hero holds one: **Crow's Nest Lookout**, Wisdom (Perception) DC 12. "
+        "**Helm**, Dexterity (Acrobatics) DC 13. **Rigging**, Strength (Athletics) DC 14. "
+        "**Bilge**, Constitution DC 13.",
+        "**Plotting the course.** The moment the last dock line falls, the lookout may call the "
+        "safe channels from the crow's nest: Wisdom (Survival) DC 17. Success gives the whole "
+        "crew **advantage** on every check during the storm.",
+        "",
+        "**The storm strikes three times.** At each blow, every hero rolls their station check. "
+        "Count the successes and read the sea's answer:",
+        "**1. The Wall of Water.** 3 to 4 successes: everyone catches their footing, no damage. "
+        "2: each hero takes 1d6 bludgeoning. 1: each takes 2d6. 0: each takes 3d6 and is "
+        "knocked prone.",
+        "**2. The Lightning Strike.** 3 to 4 successes: no harm done. 2: each hero takes 1d4 "
+        "lightning. 1: each takes 2d4. 0: each takes 3d4 and has disadvantage on their next "
+        "check.",
+        "**3. The Maelstrom.** 3 to 4 successes: no damage, but the ship flips. 2: each hero "
+        "takes 1d8 bludgeoning and falls prone. 1: each takes 2d8 and is restrained by debris. "
+        "0: each takes 3d8, falls prone, and drops whatever they are holding.",
+        "",
+        "**No roll saves the ship.** However bravely the crew fights, the maelstrom takes her in "
+        "the end: the Stormwind capsizes, and the story continues underwater.",
+    ]),
     ("img", f"{A}/scenes/s5_storm.png",
      "The sky turns to rolling iron as the storm breaks over the Stormwind.", 6.0,
      {"crop": "3:2", "hmax": 4.6}),
@@ -129,9 +154,25 @@ BLOCKS = [
              "maelstrom. The wind plunges to a howling shriek. The wheel spins free of Breesh's "
              "hands. The world tilts, and keeps tilting, and Captain Brynn's last order is "
              "swallowed whole by the roar as the Stormwind heels over, over, over: and capsizes."),
-    ("dm", "**The storm** ran as three group checks at ship stations (the three blows), bruising "
-           "but survivable; the maelstrom flipped the ship no matter how well the party rolled. "
-           "Dexterity save DC 12 to grab a beam as she went over."),
+    ("game", "CAPSIZE AND CAPTURE", [
+        "*The world turns over. Run this as a ladder of three saves, one scene at a time; every "
+        "failure follows a hero down to the next rung.*",
+        "",
+        "**1. She goes over.** Dexterity saving throw DC 12 to seize a beam or rope as the deck "
+        "heaves. Success: you slide into the upturned hold, soaked to the bone but unhurt. "
+        "Failure: the sea rips you away; hold your breath (one round of air) before you surface, "
+        "coughing, inside the capsized hull.",
+        "**2. The air pocket.** Intelligence (Investigation) or Wisdom (Perception) DC 10 to "
+        "find sturdy handholds and a deeper bubble of air. Failure: the water surges another "
+        "foot; take 1d6 bludgeoning, fall prone, and suffer disadvantage on your first turn of "
+        "the next fight. A hero still holding their breath from step 1 takes an extra 1d6 from "
+        "near-drowning.",
+        "**3. The spectral chains.** When the Dutchman rises beneath the wreck and its chains "
+        "come snaking up through the planks: Strength saving throw DC 12 to wrestle free. "
+        "Success: you burst onto the ghost ship's deck gasping but unharmed. Failure: the iron "
+        "bites deep; take 1d6 slashing, arrive restrained, and make your **first roll of the "
+        "Dice Game of Souls at disadvantage**.",
+    ]),
 
     ("h2", "The Air Pocket"),
     ("gold", "Cold. Dark. The rush and boom of water. Then, gasping, the heroes surface inside a "
@@ -142,15 +183,15 @@ BLOCKS = [
              "answers, and another: the crew, alive, clinging to the ribs of their poor drowned "
              "ship."),
     ("hero", "Stabby", "Everyone always says goblins sink. Ha! Still floating!"),
+    # The rising ghost ship floats beside its own sighting: a full plate here
+    # could not share page 6 with the capsize card, and stranded alone on the
+    # next page it read as filler.
+    ("imgfloat", f"{A}/scenes/s5_dutchman_rises.png", 3.3, {"hmax": 3.9}),
     ("gold", "And then, through the largest crack, the heroes see it. Far below, in the inky "
              "deep, something is rising. Ghost white sails unfurl in water where no wind blows. "
              "A barnacle crusted keel, vast and old and glowing sea sick green, climbs toward "
              "the wreck like a whale rising for air. The **Flying Dutchman** is coming up "
              "directly beneath them."),
-    # The rising ghost ship as a full plate right beside the sighting.
-    ("img", f"{A}/scenes/s5_dutchman_rises.png",
-     "Ghost white sails unfurl in the deep: the Flying Dutchman rises beneath the wreck.", 5.8,
-     {"crop": "3:2", "hmax": 4.6}),
 
     # ------------------------------------------------------------------
     ("h1", "Part Three: Aboard the Flying Dutchman", {"hardbreak": True}),
@@ -209,13 +250,37 @@ BLOCKS = [
     ("gold", "**Davy Jones:** “Three rounds of Seven-Eyes, target seventy and seven. Win, and "
              "your chains fall and your little friend keeps her light. Lose, and I snuff out "
              "every spark of your souls... and her fey light with them.”"),
-    ("img", f"{A}/scenes/s5_dice_game.png",
-     "Three rounds of Seven-Eyes at the scarred oak table.", 5.8,
-     {"crop": "3:2", "hmax": 4.6}),
-    ("dm", "**Seven-Eyes, target 77.** Each player rolls all seven dice twice, summing toward 77 "
-           "without going over; between tosses they may gift one die's value to a teammate. Davy "
-           "rolls three times and may discard a die after each roll. Beat his total or bust him; "
-           "he needed 5 points over three rounds to win. **The party won the game.**"),
+    ("game", "SEVEN-EYES: THE DICE GAME OF SOULS", [
+        "*Old sailors whisper that Davy Jones has played Seven-Eyes for every soul he keeps: "
+        "seven dice, two tosses, and a scarred oak table carved with the names of everyone who "
+        "ever lost. Nobody living remembers the rules, because everyone who learned them stayed "
+        "aboard. Here they are anyway. The target is **seventy-seven**.*",
+        "",
+        "**The stakes.** Three rounds. If Davy Jones scores **5 points**, he claims the heroes' "
+        "souls, and Floraburst's fey light with them. If he ends with 4 points or fewer, the "
+        "chains fall and every soul aboard walks free.",
+        "",
+        "**Your dice.** Each hero keeps a pool of seven: **d4, d6, d8, d10, d10, d12, d20**.",
+        "**Each round, every hero:**",
+        "**1. First toss.** Roll all seven dice and add them up: your Total.",
+        "**2. First gift.** Any hero may pass one die's face value to a teammate, adjusting "
+        "both totals before moving on. Teamwork is legal. Davy hates that.",
+        "**3. Second toss.** Roll all seven dice again and add the new sum: your Running Total.",
+        "**4. Second gift.** Over seventy-seven? You may gift one of your second-toss dice to a "
+        "teammate before you bust.",
+        "**5. Bust check.** Still over 77 after gifts: you bust this round, and Davy gains "
+        "**1 point**.",
+        "",
+        "**Davy's turn.** The captain rolls all seven dice **three separate times**, and after "
+        "each roll he may discard one die (the DM announces which face tumbles off into the "
+        "gloom). His Final Total is the sum of the three adjusted rolls. If even his discards "
+        "cannot keep him at 77 or under, the old cheat busts himself. Otherwise, every hero "
+        "whose Running Total sits below his Final Total gives him **1 point**.",
+        "",
+        "**Table talk.** Let the dice clatter and the lantern flames shiver as each one lands. "
+        "Between rounds, Davy stalks the table's edge: *“Point by point, your hearts grow "
+        "colder. Will you fold, or gamble everything on the final roll?”*",
+    ]),
     ("gold", "The first round is terror. The dice feel cold as drowned stones, and when Ursa's "
              "second toss threatens to burst past seventy seven, the whole table holds its "
              "breath until Lilly quietly slides her lowest die across and saves him. The second "
@@ -223,6 +288,9 @@ BLOCKS = [
              "his life, turns out to be terrifying at dice, counting faces and gifting exactly "
              "the right pips at exactly the right moment. Davy's grin gets thinner. His discards "
              "get angrier."),
+    ("img", f"{A}/scenes/s5_dice_game.png",
+     "Three rounds of Seven-Eyes at the scarred oak table.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "The third round comes down to the last toss of the last die. Davy Jones sits at "
              "seventy six, one smug point from feasting. The heroes' running totals hang just "
              "beneath his. Then the old yellowed d20 tumbles across the scarred names, teeters "
@@ -256,9 +324,18 @@ BLOCKS = [
              "the helmsman swoops down shrieking, Lilly's cannon knocks it clean through its own "
              "wheel. When each drowned pirate finally drops, it bursts in a last cold slap of "
              "seawater, which Stabby declares is “rude, even for dead people.”"),
-    ("dm", "**The deck fight:** 3 Drowned Pirates and the Spectral Helmsman, on a slippery deck "
-           "(Acrobatics DC 12 at turn's end or fall prone). Death Burst on each pirate: DC 12 "
-           "Con or 2d4 cold. The party won the deck and pressed below."),
+    ("dm", "**The deck fight.** 3 Drowned Pirates and the Spectral Helmsman (appendix). The "
+           "pirates fight like the tide, mobbing whoever stands closest and hurling harpoons to "
+           "drag heroes apart; the helmsman swoops from the wheel, wailing (its aura: DC 12 "
+           "Wisdom or frightened) and phasing through cover."),
+    ("dm", "**Terrain.** Slippery deck: at the end of each turn, Dexterity (Acrobatics) DC 12 or "
+           "fall prone. Once, mid-fight, a wave surge crashes the deck: everyone makes a DC 12 "
+           "Dexterity save or falls prone. Each pirate's **Death Burst** on dropping: DC 12 "
+           "Constitution or 2d4 cold."),
+    ("dm", "**Clever options.** Climbing the rope ladder (Action plus Athletics DC 14) tips a "
+           "lantern-oil bucket over a pirate below: 2d6 fire. Severing the mooring line "
+           "(Strength DC 15, best once two foes are down) secures the escape route to the "
+           "cutter. The party won the deck and pressed below."),
 
     ("h2", "Into the Heart of the Hold"),
     ("gold", "The iron bound hatch groans open and stale, salty air rushes out. Below, the hold "
@@ -284,9 +361,18 @@ BLOCKS = [
              "pulses a great **arcane orb**, drinking power from every jar; Ursa raises his "
              "amulet and the party shatters the orb in one blinding burst of radiance that "
              "staggers every undead thing aboard."),
-    ("dm", "**The hold fight:** Smuggler's Golem, 2 Arcane Corsairs, Ghost-Light Engineer, all "
-           "vulnerable to cold. Arcane fissures leaked 1d6 lightning; the central orb broke to "
-           "a Strength or Arcana DC 15 check, dealing 3d6 radiant and stunning the undead."),
+    ("dm", "**The hold fight.** A Smuggler's Golem, 2 Arcane Corsairs, and the Ghost-Light "
+           "Engineer (appendix), every one of them **vulnerable to cold**. The golem crushes "
+           "crates at the heroes (Dexterity save DC 13 or 2d6 slashing); the corsairs dart "
+           "between cover, sneak-attacking where least expected; the engineer blinks invisible "
+           "between Shock Touches, its glowing core still faintly visible within 5 feet."),
+    ("dm", "**Terrain.** Slick planks: end of each turn, Dexterity (Acrobatics) DC 12 or fall "
+           "prone. Arcane fissures leak sparks: stepping on one deals 1d6 lightning (Dexterity "
+           "save DC 13 for half). Crates grant half cover, and a Strength (Athletics) DC 14 "
+           "shove can slam an enemy into them."),
+    ("dm", "**The central orb.** Strength or Arcana DC 15 to shatter it: a 3d6 radiant burst "
+           "(Dexterity save DC 13 for half) that **stuns the undead**. And when the golem "
+           "falls, its stolen core shatters with it, and every arcane fissure goes dark."),
     ("gold", "As the last foe dissolves into drifting motes, Stabby sheathes his blade and looks "
              "up at the ceiling, toward the captain's quarters. **Stabby:** “That was the heart "
              "of his operation. Now we face the head.”"),
@@ -302,6 +388,16 @@ BLOCKS = [
     ("gold", "**Davy Jones:** “Brave... or foolish. You beat my dice. You broke my hold. But "
              "the sea only knows one ending, little Guardians. Your light... my feast. Let us "
              "begin.”"),
+    ("dm", "**The final duel.** Davy Jones alone (appendix), on his own dais, with the room "
+           "itself fighting for him. Multiattack: two Tentacle Slams (reach 10 ft.) and a Hook "
+           "Strike; Soul Siphon on a 5-6 recharge."),
+    ("dm", "**Sea-fog drift.** Cold mist creeps along the floor at the start of each round. A "
+           "creature that starts its turn in the fog makes a DC 13 Wisdom save or has "
+           "disadvantage on attack rolls until its next turn."),
+    ("dm", "**Barnacle-rimmed planks.** A hero who ends their turn within 5 feet of the dais "
+           "makes a Dexterity (Acrobatics) DC 12 check or takes 1d6 slashing."),
+    ("dm", "**Protect the Sphere.** If Davy turns his Soul Siphon on the Essence Sphere, a hero "
+           "may use their **Reaction** to intercept the damage."),
     ("gold", "He is the worst thing the heroes have ever fought. Cold sea fog crawls across the "
              "floor and drinks their courage. Barnacles bristle along the dais like teeth. His "
              "tentacles strike from ten feet away, his hook rings off Stabby's blade, and again "
@@ -336,6 +432,20 @@ BLOCKS = [
     ("img", f"{A}/scenes/s5_ghost_essence.png",
      "Lilly guides the pale ghost essence home to Floraburst.", 5.8,
      {"crop": "3:2", "hmax": 4.6}),
+    ("game", "WHAT WILL SHE BECOME?", [
+        "*Hundreds of essences spiral free, and one of them answers Floraburst's reaching "
+        "petals. Which one is fate's business: the dice decide, and nobody peeks.*",
+        "",
+        "**The essence roll.** Roll **1d12** to learn which essence finds her: 1 Grass, 2 Fire, "
+        "3 Water, 4 Electric, 5 Ice, 6 Rock, 7 Psychic, 8 Ghost, 9 Dark, 10 Fighting, "
+        "11 Flying, 12 Fairy.",
+        "**The extraction.** Lilly guides it home: **1d12 + her Dexterity modifier**. On 12 or "
+        "higher, the essence flows in clean. On 11 or lower, the jar shatters on the way: "
+        "Floraburst takes 1d6 cold damage and falls prone, but still absorbs the essence.",
+        "",
+        "**Sealed until she wakes.** This roll was made blind at the table: not even the "
+        "players knew what their sleeping friend would become until she opened her eyes again.",
+    ]),
     ("gold", "Floraburst drinks in the essence, shudders once from root to petal, and collapses. "
              "For one terrible heartbeat she is still. Then a slow pulse begins inside her, deep "
              "and rhythmic as a sleeping heart, and before the heroes' eyes each petal comes "
@@ -365,21 +475,21 @@ BLOCKS = [
              "she is going to be."),
     ("divider",),
     ("bridge", "The curse of Davy Jones was ended, the stolen magic freed, and every soul of "
-               "the Stormwind saved. But the crates in that hold had worn the sigil of the "
-               "Gearhaven Artificers' Guild, and somebody, somewhere south, was expecting a "
-               "shipment that would never come. The Vigil ran east toward Gearhaven's spires, "
-               "but the coast between held one more port: a fogbound little town of lanterns "
-               "and pumpkins where, strangely, no one seemed to remember anything wrong at all. "
-               "And in Lilly's arms, Floraburst went on quietly changing."),
+               "the Stormwind saved. But the crates below had worn the Gearhaven Guild's "
+               "sigil, and somebody south was expecting a shipment that would never come. And "
+               "the coast ahead held one more port: a fogbound little town of lanterns and "
+               "pumpkins where no one seemed to remember anything wrong at all. In Lilly's "
+               "arms, Floraburst went on quietly changing."),
+    # Closing showpiece: dawn over the water closes the chapter, with the
+    # level note and teaser as the chapter's final lines beneath it.
+    ("img", f"{A}/scenes/s5_vigil_dawn.png",
+     "The Vigil rows east at dawn, Gearhaven's spires gleaming on the horizon.", 6.2,
+     {"crop": "3:2", "hmax": 4.6}),
     ("dm", "Ending this voyage carried the heroes to **level 5**. They return at level 5 next "
            "session."),
     ("gold", "*Next: Session 6, in which the fog rolls in over Wraithpine, the Guardians learn "
              "why you should always tie a keepsake knot, and their sleeping little friend "
              "finally opens her eyes.*"),
-    # Closing showpiece: dawn over the water closes the chapter.
-    ("img", f"{A}/scenes/s5_vigil_dawn.png",
-     "The Vigil rows east at dawn, Gearhaven's spires gleaming on the horizon.", 6.2,
-     {"crop": "3:2", "hmax": 4.6}),
 
     # ------------------------------------------------------------------
     ("h1", "Appendix: Creatures of Session Five", {"pagebreak": True}),
