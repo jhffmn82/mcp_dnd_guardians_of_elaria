@@ -99,10 +99,9 @@ BLOCKS = [
              "left a mark on the Guardians (and they on it). Here is each place as the chronicle "
              "knows it, followed by the roads not yet taken."),
 
-    # Refit note: the gazetteer h1 and intro fill page 3 to about 72 percent;
-    # breaking before the first entry keeps the Eldridge float clear of the
-    # page-3 bottom margin and starts the village walk on a fresh page.
-    ("pagebreak",),
+    # (The old pagebreak here stranded the gazetteer heading alone on a page
+    # once the covenant gallery row shifted pagination; the village walk now
+    # flows directly under the intro.)
     ("h2", "Eldridge Village and the Forest of Whispers"),
     ("imgfloat", f"{A}/scenes/s1_eldridge_village.png", 3.1),
     ("body", "A quaint village in the rolling hills of **Eldridge Vale**, known for its bustling "
@@ -134,8 +133,7 @@ BLOCKS = [
     # Refit note: Eldridge and Oakshade fill page 4 to about 79 percent; the
     # Glade heading otherwise orphans at the page foot with its float on the
     # next page.
-    ("pagebreak",),
-    ("h2", "The Whispering Glade"),
+    ("h2", "The Whispering Glade", {"hardbreak": True}),
     ("imgfloat", f"{A}/scenes/s2_elaria_vision.png", 3.0),
     ("body", "A ring of silver-barked trees off the Ravenstone road where the air goes still and "
              "starlight pools like water. Here, for the first time, **Elaria herself reached out**: "
@@ -164,8 +162,7 @@ BLOCKS = [
 
     # Refit note: anchored lower on page 5 the Stormwatch float clipped the
     # bottom page edge; the Glade and Ravenstone fill page 5 on their own.
-    ("pagebreak",),
-    ("h2", "The Road South: Brambleshadow, Ironroot, and Stormwatch"),
+    ("h2", "The Road South: Brambleshadow, Ironroot, and Stormwatch", {"hardbreak": True}),
     ("imgfloat", f"{A}/scenes/s3_stormwatch_vision.png", 3.4, {"hmax": 3.8}),
     ("body", "The long road from the cliffs down to the coast crosses wilder country: the tangled "
              "**Brambleshadow Thicket**, where a Shadowflame stalked the party through the thorns; "
@@ -232,8 +229,7 @@ BLOCKS = [
 
     # Fresh page: beside the Old Theater float the heading orphans at the
     # foot of the Wraithpine page otherwise.
-    ("pagebreak",),
-    ("h2", "Gearhaven, the Clockwork City"),
+    ("h2", "Gearhaven, the Clockwork City", {"hardbreak": True}),
     ("img", f"{A}/session_08/beat_1/team_arrives_at_gearhaven.png",
      "The eastern gate of Gearhaven, where every arriving traveler is wished steady gears.",
      6.0, {"crop": "3:2", "hmax": 4.6}),
@@ -253,8 +249,7 @@ BLOCKS = [
 
     # Refit note: without the break the Bloodthorn float clipped the bottom
     # page edge; Gearhaven fills its page about three quarters on its own.
-    ("pagebreak",),
-    ("h2", "Roads Not Yet Taken"),
+    ("h2", "Roads Not Yet Taken", {"hardbreak": True}),
     ("imgfloat", f"{A}/scenes/bloodthorn_hollow.png", 3.0),
     ("body", "The map does not end at Gearhaven, and neither will the chronicle. These places are "
              "spoken of, dreamed of, or marked in old logbooks, and every one of them is waiting."),

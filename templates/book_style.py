@@ -306,7 +306,13 @@ def build_doc(blocks, out_path):
             _pbdr.append(_bot); _ppr.append(_pbdr)
 
         elif kind == "h2":
+            # (h2, title[, {"hardbreak": True}]) - hardbreak sets Word's
+            # page-break-before property, which (unlike an explicit break
+            # paragraph) is suppressed when the heading already opens a page,
+            # so repagination can never mint a blank page.
             p = doc.add_paragraph()
+            if len(blk) > 2 and isinstance(blk[2], dict) and blk[2].get("hardbreak"):
+                p.paragraph_format.page_break_before = True
             p.paragraph_format.space_before = Pt(11); p.paragraph_format.space_after = Pt(3)
             p.paragraph_format.keep_with_next = True
             r = p.add_run(blk[1]); _set_font(r, Pt(13), True, color=H2_COLOR)
