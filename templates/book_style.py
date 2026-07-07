@@ -179,6 +179,7 @@ def _render_statblock(doc, sb):
     senses, languages, traits/actions/reactions/legendary [(name,text)], img, img_w."""
     # name header, and float the portrait from this first paragraph so the
     # whole block wraps around it
+    _sb_start = len(doc.paragraphs)
     p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)
     p.paragraph_format.keep_with_next = True; p.paragraph_format.space_after = Pt(0)
     if sb.get("img"):
@@ -231,6 +232,11 @@ def _render_statblock(doc, sb):
             if nm:
                 r = p.add_run(nm + ". "); _set_font(r, Pt(9), True, italic=True, color=INK)
             _rich(p, txt, base_size=Pt(9))
+    # chain the block's head together so a statblock can never START in the
+    # last sliver of a page and sink its floated portrait off the bottom edge
+    for _kp in doc.paragraphs[_sb_start:_sb_start + 8]:
+        _kp.paragraph_format.keep_with_next = True
+        _kp.paragraph_format.keep_together = True
     # a trailing spacer so the next block clears the floated image if it overhangs
     doc.add_paragraph().paragraph_format.space_after = Pt(0)
 
@@ -448,6 +454,15 @@ def build_doc(blocks, out_path):
             tbl = doc.add_table(rows=2, cols=len(pairs))
             tbl.autofit = False
             tbl.alignment = 1
+            # zero the side cell margins: Word's default ~0.08in per side
+            # pushed wide rows a hair past the right text margin.
+            tpr = tbl._tbl.tblPr
+            mar = OxmlElement('w:tblCellMar')
+            for side in ('left', 'right'):
+                el = OxmlElement('w:' + side)
+                el.set(qn('w:w'), '0'); el.set(qn('w:type'), 'dxa')
+                mar.append(el)
+            tpr.append(mar)
             for ci, (path, label) in enumerate(pairs):
                 data, pw, ph = _image_png_bytes(path)
                 ww = w

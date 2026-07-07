@@ -855,7 +855,7 @@ B = [
              "last breath.*"),
     ("statblock", {
         "name": "Drowned Pirate",
-        "img": "assets/monsters/drowned_pirate.png", "img_w": 2.4,
+        "img": "assets/monsters/drowned_pirate.png", "img_w": 2.2,
         "type": "Medium undead, chaotic evil",
         "ac": "14 (studded leather or chain shirt)", "hp": "58 (9d8 + 18)", "speed": "30 ft., swim 30 ft.",
         "abilities": ab(18, 14, 14, 6, 10, 7),

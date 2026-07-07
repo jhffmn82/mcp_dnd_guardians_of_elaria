@@ -47,7 +47,7 @@ BLOCKS = [
      "The Gilded Acorn Tavern, the heart of Eldridge Village.", 5.8, {"crop": "5:4", "hmax": 4.6}),
     # Portrait floats right beside the Osric paragraph and Lilly's arrival;
     # anchored above the h2 so it sits high enough to clear the bottom margin.
-    ("imgfloat", f"{A}/characters/lilly_with_essence_sphere_dalle.webp", 2.9),
+    ("imgfloat", f"{A}/characters/lilly_with_essence_sphere_dalle.webp", 2.7),
     ("gold", "Behind the bar stands **Osric the innkeeper**, broad shouldered and bushy bearded, "
              "his laugh booming over the noise. Between tables darts **Rhea the barmaid**, quick "
              "handed and quicker witted, hearing every rumor in the room twice before anyone "

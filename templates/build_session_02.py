@@ -60,7 +60,7 @@ BLOCKS = [
              "three young figures with leaves in their hair and empty herb baskets on their arms, "
              "blinking at the morning light like children waking from a long nap. The lost herb "
              "gatherers have come home: footsore, muddled, and completely unharmed."),
-    ("imgfloat", f"{A}/scenes/s2_villagers_return.png", 3.1),
+    ("imgfloat", f"{A}/scenes/s2_villagers_return.png", 2.85),
     ("gold", "Their story spills out in pieces while mothers cry and neighbors cheer. The forest "
              "fog had turned them around, and around, and around; every path bent back on itself, "
              "and something in the whiteness kept howling, so they hid. Then last night, all at "
