@@ -35,8 +35,8 @@ BLOCKS = [
              "folded up like a flower at dusk. All through the long row to shore she lay curled in "
              "the bottom of the boat, glowing faintly, changing shape by the hour, dreaming some "
              "long pale dream none of them could follow."),
-    ("dm", "The heroes are **level 5** as of this session. Full creature statistics live in the "
-           "compendium; a compact appendix closes this session."),
+    ("dm", "The heroes are **level 5** as of this session. Full creature statistics for this "
+           "session live in the compendium; a DM run sheet and bestiary close this session."),
 
     # ------------------------------------------------------------------
     ("h1", "Part One: The Village of Lanterns"),
@@ -528,9 +528,30 @@ BLOCKS = [
              "stronger.” Ghostbloom lets out a low, melodic tone, and for a heartbeat the "
              "golden light swirls upward like petals in a breeze, then fades. The chest turns "
              "dull and ordinary, its purpose fulfilled."),
-    ("dm", "**The relics.** The Staff of Waking Constellations (Ursa), the Sash of the Swift "
-           "Current, Rewoven (Stabby), and the Glimmerspire Pocket Dynamo Mk II (Lilly). Full "
-           "handout text for all three lives in the treasures compendium."),
+    ("reward_card", "Rewards: The Relics of Wraithpine",
+     "One chest, three relics: Elaria's gift, opened by Ghostbloom's song beneath the Old "
+     "Theater. Each bears the same sigil, a seven-point star wrapped in a leafed vine.",
+     [
+        ("Staff of Waking Constellations (Ursa)",
+         "+1 quarterstaff and druidic focus. 5 charges, regain 1d4 + 1 at dawn: *guiding bolt* "
+         "(1 charge), *faerie fire* (1), *moonbeam* (2). **Starseed.** Once per turn, +1d4 "
+         "radiant damage when Ursa deals radiant damage with a druid spell (house rule: druid "
+         "spells only). **Starlight.** Bonus action: 10 ft of dim light; advantage on night "
+         "navigation. After every great victory, one new star brightens on its haft: the enemy "
+         "puts stars out; the Staff lights them."),
+        ("Sash of the Swift Current, Rewoven (Stabby)",
+         "Scarlet stage-silk rewoven with theater rigging thread. **+1 AC** (stacks with "
+         "Unarmored Defense). **Fleetstep.** +10 ft walking speed. **Air Dance.** 1/day, bonus "
+         "action: a fly speed equal to walking speed for 1 minute. **Feather Fall.** 1/day, no "
+         "components. Its seven-point star sigil is cupped by a pair of wings."),
+        ("Glimmerspire Pocket Dynamo, Mk II (Lilly)",
+         "A thumb-sized brass core filigreed with folding micro-gears, stamped PROP ROOM in "
+         "stage-engraver script (a mystery unexplained). **Pocket Arsenal.** Deploy or recall "
+         "the Eldritch Cannon as a free action. **Endurance Overhaul.** The cannon lasts 24 "
+         "hours. **Power Sync.** The cannon deals +2 damage. **Reformat.** 1/long rest, as an "
+         "action: change the cannon's model. Near Ghostbloom, the core glows soft ghost-green, "
+         "like a stage cue waiting for its moment."),
+     ]),
 
     ("h2", "Dawn Over Wraithpine"),
     ("gold", "When the heroes climb back into the world, dawn is breaking, and Wraithpine is "
@@ -571,86 +592,395 @@ BLOCKS = [
              "the stars themselves turn out to be part of the story.*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Appendix: Creatures of Session Six", {"hardbreak": True}),
-    ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives "
-             "in the compendium."),
-    ("stat", "False Hydra, the Tavern Head", [
-        "Large aberration (one head and neck), unaligned. AC 14, HP 70 (9d10 + 18), Speed 10 ft., climb 10 ft.",
-        "STR 16, DEX 12, CON 14, INT 6, WIS 14, CHA 7. Blindsight 10 ft., tremorsense 30 ft., darkvision 60 ft.",
-        "Resistance psychic. Condition immunities charmed, frightened, prone.",
-        "**Mind-Humming Aura.** A creature without beeswax starting its turn within 30 ft. makes a "
-        "DC 13 Wisdom save or has disadvantage on attack rolls that turn; beeswax grants advantage on the save.",
-        "**Bite.** +6 to hit, reach 10 ft., 13 (2d8 + 4) piercing, and the target is grappled (escape DC 14). "
-        "While it has a creature grappled, the head cannot bite a different target.",
-        "**Lurch and Drag.** The head drags a creature it is grappling 5 ft. toward the trapdoor; the "
-        "creature makes a DC 13 Wisdom save or loses a word or a thought for a heartbeat.",
-        "**Wrench (bonus action).** A creature the head is grappling makes a DC 14 Strength save or is "
-        "knocked prone and takes 5 (1d6 + 2) bludgeoning as the jaw grinds it against the floorboards.",
-        "**Recoil from Flame (reaction).** When the head takes fire damage, it has disadvantage on its "
-        "next attack roll before the end of its next turn.",
-        "**Segmented Neck.** Ignores forced movement and prone; after taking 20+ damage in one turn "
-        "it recoils 5 ft. and loses its reactions until its next turn.",
+    # APPENDIX I: the DM run sheet (Session 7 format).
+    ("appendix_title", "APPENDIX", "DM Run Sheet: The Day at a Glance",
+     "Every DC, dial, and spotlight, in play order. Keep this page at your elbow."),
+
+    ("h1", "The Shape of the Session"),
+    ("body", "▶ One day and one night in Wraithpine. Landfall: GHOSTBLOOM WAKES (the sealed d12 "
+             "from Session 5 pays off: Ghost) → Lantern Night: the wrongness tour, the first "
+             "song save, the bellkeeper's slate (WRITE. DON'T LISTEN.) → THREE THREADS, any "
+             "order, all pointing at the old theater: the cellar (FIGHT 1 + the breathing "
+             "seam), Pumpkin Row (FIGHT 2, or the puzzle win) and the graveyard rite (FIGHT 3 "
+             "only if it goes wrong; the parcel slip) → 3 Lantern Lane (Ms. Wicke) → the "
+             "belltower: BEESWAX in every ear → the reveal at the Gasping Gull (FIGHT 4) → the "
+             "descent → the lair (BOSS) → the song stops: the chest, three relics, dawn over "
+             "Wraithpine. Natural break point: the belltower."),
+    ("body", "**RUNS ALL SESSION: the Song of Unremembering.** Whenever the song swells, every "
+             "hero makes a Wisdom save, DC 13 (fail: one fresh memory slips). In battle: a "
+             "lone head's hum is 30 ft, DC 13 Wis or attacks at disadvantage; the full "
+             "creature's song is 60 ft, DC 15, and failure also locks reactions. BEESWAX = "
+             "advantage on every save and no reaction lock. Ink and chalk do not forget: "
+             "anything WRITTEN stays true."),
+
+    ("h1", "Fights at a Glance"),
+    ("body", "**FIGHT 1: Maera's Cellar** (Easy; a warm-up hiding a clue). 2x Swarm of Rats "
+             "(AC 10, HP 24; resist B/P/S; Bites +2, 2d6, or 1d6 at half HP) + 4x Giant Rat "
+             "(AC 12, HP 7; Pack Tactics; Bite +4). One swarm drops from the rafters: DC 13 Dex "
+             "or it lands on a hero's shoulders. Toys: shove the cask (Str DC 12: 1d4 and "
+             "prone, Dex DC 12), pull the shelf (an action: Dex DC 13 or restrained). The real "
+             "prize: torch held high, passive Perception 13 clocks the breathing seam in the "
+             "far wall."),
+    ("body", "**FIGHT 2: Pumpkin Row** (Medium; three ways to win, let the kids mix all "
+             "three). 2x Scarecrow (AC 11, HP 36; VULNERABLE FIRE; Terrifying Glare DC 11 Wis, "
+             "frightened) + 6x Strawling (AC 12, HP 11; Straw Lash grapples, escape DC 12). "
+             "THE RULE: the straw only walks while the carved faces watch; turn key pumpkins "
+             "(an action, no check): two facing away skips every scarecrow's turn, twice in "
+             "different rounds ends the fight; a clipped heart-gourd drops a scarecrow, no "
+             "roll. Spoils: the bell-handled lantern (1 use) and the PROP ROOM map scrap."),
+    ("body", "**FIGHT 3: The Graveyard Risen** (Easy; happens only if the rite goes wrong). "
+             "2x Zombie (AC 8, HP 22; Undead Fortitude: Con save, DC 5 + damage taken) if the "
+             "restored name is wrong or unknown; 3x Zombie + 2x Skeleton (AC 13, HP 13; "
+             "VULNERABLE BLUDGEONING) if the rite is begun loud and careless. The rite: "
+             "Investigation DC 12 → Religion or History DC 12 → three rings → the Remembrance "
+             "Knot (advantage for Brynn's students). Payout: HOLD FAST, advantage on one "
+             "Wisdom save against the song, once this session."),
+    ("body", "**FIGHT 4: The Tavern Head** (Hard; the reveal is the point). 1x False Hydra "
+             "Tavern Head (AC 14, HP 70; hum: 30 ft, DC 13 Wis or attacks at disadvantage, "
+             "beeswax = advantage; Bite +6, grapple escape DC 14, then Lurch and Drag toward "
+             "the trapdoor and Wrench, Str DC 14). 20+ damage in a single turn = it recoils and "
+             "loses reactions; fire puts its next attack at disadvantage. Toys: stew pot, long "
+             "table, lantern rack, slam the trapdoor (Str DC 14). Keep Maera out of harm's way; "
+             "the second neck ALWAYS escapes down the tunnel."),
+    ("body", "**BOSS: The False Hydra Entire** (the hardest fight since the Dutchman). Body "
+             "(AC 15, HP 130) RESISTS ALL WEAPON DAMAGE while heads live; Vital Link: each dead "
+             "head strips one layer. 4x Head (AC 14, HP 45; reach 15 ft from a floor port; "
+             "withdraws and re-emerges from any port). Song: 60 ft, DC 15 Wis or disadvantage "
+             "and no reactions (beeswax: advantage, no lock). Lair actions on initiative 20 "
+             "(Stage Drop / Mask of Memory / Gasping Vent); legendary actions one per living "
+             "head, max 3 a round. Catwalk Stealth vs. passive 14 buys a surprise round. Kill "
+             "heads first."),
+
+    ("h1", "The Resource Picture"),
+    ("body", "▶ One long day and night with no long rest inside it, so the spend is hit "
+             "points, Wisdom saves, and nerve rather than slots. BEESWAX is the resource that "
+             "actually matters: seat it at the belltower and the song mostly stops taxing the "
+             "table (do not let anyone be brave about it). HOLD FAST from the graveyard rite "
+             "banks one more save; the bell-handled lantern is one Investigation with advantage "
+             "in Wraithpine. If the party wants a breather, the natural short rest sits after "
+             "the belltower: the tavern head and the lair land back to back. Lilly's cannon "
+             "runs all day; watch Ursa's concentration in the lair (one thing at a time) and "
+             "Stabby's focus across as many as five fights."),
+
+    ("h1", "Spotlights & Seeds: every kid shines, every door gets planted"),
+    ("body", "**Lilly:** she names GHOSTBLOOM on the landfall path (“a bloom made of "
+             "ghost-light”) → the chandler's sugared chip, “for remembering” → the Essence "
+             "Sphere's heartbeat; it pulls toward the theater when the table stalls "
+             "→ emerald fire along the pale neck in the "
+             "lair → at the chest, the session's thesis is hers: “They were made for US. It is "
+             "ELARIA.” (Door: Elaria's guidance) → her new Dynamo core is stamped PROP ROOM "
+             "(Door: a mystery nobody explains)."),
+    ("body", "**Stabby:** he carries the clue chain: he cuts the heart-gourd open (the PROP "
+             "ROOM map scrap) and pries the parcel slip from a risen hand and pockets it → "
+             "Candyfang steel cracks the slate teeth at the Gull → the last head falls to the "
+             "Katana and a lance of starlight together → at dawn, “Let's not stick around for "
+             "this part”: let him keep the goodbye light. The Sash of the Swift Current is "
+             "his."),
+    ("body", "**Ursa:** Ghostbloom wakes in his arms → his lantern finds the breathing seam in "
+             "the cellar → the rite is his kind of work: the knot ties with advantage for "
+             "anyone Captain Brynn taught → he picks up Harlan's whistle in the lair and says "
+             "nothing at all → starlight this deep place has never seen → at dawn he presses "
+             "the whistle into Ms. Wicke's hand: the session's heart, let it land. The Staff "
+             "of Waking Constellations is his (Door: a new star after every victory)."),
+
+    ("h1", "Foreshadow Tracker: say it, then say it again"),
+    ("body", "▶ The tells, in order. The thin note under the festival (the first DC 13 save) "
+             "• Maera's fourth place at a table laid for three; two cooling bowls; a skipped "
+             "ledger line • black ribbons on gates and wrists, and nobody can say why • the "
+             "playbill name scrubbed to lace (“moths”) • the slate: WRITE. DON'T LISTEN. • "
+             "Ghostbloom's glow leaning toward trouble; the Essence Sphere's heartbeat • every "
+             "carved face turning toward the theater; the PROP ROOM stamp • the chiseled "
+             "gravestone with a stage-mask maker's mark • the parcel slip: HARLAN WICKE, 3 "
+             "LANTERN LANE • Ms. Wicke's eyes skittering off her own portrait • UNDER. "
+             "THEATER. • the second neck escaping the Gull • chalk stage-marks in the tunnel: "
+             "*Upstage. Hold. Places.*"),
+
+    # ------------------------------------------------------------------
+    # APPENDIX II: the bestiary (Session 7 format).
+    ("appendix_title", "APPENDIX", "Bestiary: Enemy Stat Blocks",
+     "All five encounters of Session 6, in the order the party meets them."),
+
+    ("fight_header", "ENEMIES, Fight 1: Maera's Cellar",
+     "The Gasping Gull cellar ✦ Difficulty: Easy ✦ 2x Swarm of Rats + 4x Giant Rat"),
+    ("enemy_cards", [
+        {
+            "name": "Swarm of Rats",
+            "sub": "Medium swarm of Tiny beasts, unaligned ✦ CR 1/4 (50 XP) ✦ 2 in the cellar",
+            "stats": [
+                "**AC** 10  **HP** 24 (7d8 - 7)  **Speed** 30 ft",
+                "**STR** 9  **DEX** 11  **CON** 9  **INT** 2  **WIS** 10  **CHA** 3",
+                "**Resist** bludgeoning, piercing, slashing",
+                "**Imm.** charmed, frightened, grappled, paralyzed, petrified, prone, "
+                "restrained, stunned",
+                "**Senses** darkvision 30 ft, passive Perception 10",
+                "**Challenge** 1/4 (50 XP)",
+            ],
+            "traits": [
+                ("Keen Smell", "The swarm has advantage on Wisdom (Perception) checks that "
+                 "rely on smell."),
+                ("Swarm", "The swarm can occupy another creature's space and vice versa; it "
+                 "cannot regain hit points or gain temporary hit points."),
+            ],
+            "actions": [
+                ("Bites", "*Melee Attack:* +2 to hit, reach 0 ft, one creature in the swarm's "
+                 "space. *Hit:* 7 (2d6) piercing damage, or 3 (1d6) if the swarm is at half "
+                 "its hit points or below."),
+            ],
+        },
+        {
+            "name": "Giant Rat",
+            "sub": "Small beast, unaligned ✦ CR 1/8 (25 XP) ✦ 4 in the cellar",
+            "stats": [
+                "**AC** 12  **HP** 7 (2d6)  **Speed** 30 ft",
+                "**STR** 7  **DEX** 15  **CON** 11  **INT** 2  **WIS** 10  **CHA** 4",
+                "**Skills** Perception +2",
+                "**Senses** darkvision 60 ft, passive Perception 12",
+                "**Challenge** 1/8 (25 XP)",
+            ],
+            "traits": [
+                ("Keen Smell", "Advantage on Wisdom (Perception) checks that rely on smell."),
+                ("Pack Tactics", "Advantage on attack rolls if an ally is within 5 ft of the "
+                 "target."),
+            ],
+            "actions": [
+                ("Bite", "*Melee Attack:* +4 to hit, reach 5 ft. *Hit:* 4 (1d4 + 2) piercing "
+                 "damage."),
+            ],
+        },
     ]),
-    ("stat", "False Hydra, Adult (body and heads)", [
-        "Huge aberration, unaligned. **Body:** AC 15, HP 130 (12d12 + 48), Speed 10 ft., climb 10 ft. "
-        "**Heads (4):** AC 14, HP 45 (6d10 + 12) each, Speed 30 ft. through the under-floor tunnels, "
-        "climb 20 ft., reach 15 ft. from a floor port; on its turn a head may withdraw (no opportunity "
-        "attacks), move up to 30 ft., and re-emerge from any port.",
-        "Body STR 18, DEX 10, CON 18, INT 7, WIS 14, CHA 8; saves Con +8, Wis +5. Tremorsense 60 ft., "
-        "darkvision 60 ft. Resistance psychic; condition immunities charmed, frightened, prone.",
-        "**Song of Unremembering.** While any head lives, a creature without earplugs starting its turn "
-        "within 60 ft. makes a DC 15 Wisdom save or has disadvantage on attack rolls and cannot take "
-        "reactions until its next turn. Beeswax: advantage on the save, and no reaction lock.",
-        "**Vital Link.** While at least one head lives, the body has resistance to all weapon damage; "
-        "each head destroyed removes one instance of this protection, and with no heads it has none.",
-        "**Thrash (body).** +7 to hit, reach 10 ft., 13 (2d8 + 4) bludgeoning. **Regurgitate Remnants "
-        "(body, recharge 5 or 6).** A 15-ft. cone of bone and cloth: DC 14 Dexterity save or take 13 (3d8) "
-        "necrotic and lose 10 ft. of speed until the end of the target's next turn; a shattered skull and "
-        "a black ribbon clatter free (a clue).",
-        "**Bite (head).** +7 to hit, reach 15 ft., 14 (2d10 + 3) piercing, and the target is grappled "
-        "(escape DC 14); while grappling, that head cannot bite a different target. **Reel (head).** A "
-        "creature grappled by a head makes a DC 14 Strength save or is pulled 10 ft. toward the port and "
-        "knocked prone. **Snap (head reaction).** When a creature moves within 15 ft. of a head, that head "
-        "makes one Bite against it.",
-        "**Legendary Actions.** One per living head, max 3/round: Hum Surge (one creature within 60 ft., "
-        "DC 15 Wisdom or lose concentration and move only 10 ft. next turn), Bone Shift (reshape the mound; "
-        "one 10-ft. square becomes difficult terrain or clears), Coordinate Strike (one head bites).",
-        "**Lair actions** run on initiative count 20, one per round (full text in the Part Four DM notes): "
-        "Stage Drop, Mask of Memory, Gasping Vent.",
+    ("tactics", "One swarm lurks in the rafters and drops straight for a hero's shoulders: "
+                "DC 13 Dexterity or it lands on you. The rest come as a gray tide down the "
+                "tight barrel aisle, where Pack Tactics does the work. Fight the room: shove a "
+                "cask down the aisle (once, Strength DC 12: 1d4 bludgeoning and prone, "
+                "Dexterity DC 12) or pull down the rickety shelf (an action: Dexterity DC 13 "
+                "or restrained). The real prize is the hairline seam in the far wall, quietly "
+                "inhaling, with a hum inside the hill."),
+
+    ("fight_header", "ENEMIES, Fight 2: Pumpkin Row",
+     "Pumpkin Row ✦ Difficulty: Medium (or no fight at all) ✦ 2x Scarecrow + 6x Strawling"),
+    ("enemy_cards", [
+        {
+            "name": "Scarecrow",
+            "sub": "Medium construct, neutral ✦ CR 1 (200 XP) ✦ 2 in the lane",
+            "img": f"{A}/monsters/scarecrow.png",
+            "stats": [
+                "**AC** 11  **HP** 36 (8d8)  **Speed** 30 ft",
+                "**STR** 16  **DEX** 12  **CON** 11  **INT** 10  **WIS** 10  **CHA** 10",
+                "**Vulnerable** fire  **Resist** nonmagical bludgeoning, piercing, slashing",
+                "**Imm.** charmed, frightened, paralyzed, poisoned",
+                "**Senses** darkvision 60 ft, passive Perception 10",
+                "**Challenge** 1 (200 XP)",
+            ],
+            "traits": [
+                ("Heart-Gourd Charm", "A coin-sized gourd charm is stitched under its ribs. "
+                 "From within 5 ft, a hero can snip it, no roll: the scarecrow falls limp on "
+                 "the spot."),
+            ],
+            "actions": [
+                ("Terrifying Glare", "One creature within 30 ft: DC 11 Wisdom save or "
+                 "frightened for 1 minute (repeat the save at the end of each of its turns)."),
+                ("Claws", "*Melee Attack:* +3 to hit, reach 5 ft. *Hit:* 9 (2d4 + 4) slashing "
+                 "damage."),
+            ],
+        },
+        {
+            "name": "Strawling",
+            "sub": "Medium plant, neutral ✦ CR 1/4 (50 XP) ✦ reskinned Needle Blight ✦ 6 in "
+                   "the lane",
+            "img": f"{A}/monsters/strawling.png",
+            "stats": [
+                "**AC** 12  **HP** 11 (2d8 + 2)  **Speed** 30 ft",
+                "**STR** 12  **DEX** 12  **CON** 12  **INT** 4  **WIS** 10  **CHA** 3",
+                "**Senses** passive Perception 10",
+                "**Challenge** 1/4 (50 XP)",
+            ],
+            "actions": [
+                ("Straw Lash", "*Melee Attack:* +4 to hit, reach 5 ft. *Hit:* 4 (1d6 + 1) "
+                 "bludgeoning damage, and the target must succeed on a DC 12 Strength save or "
+                 "be grappled (escape DC 12)."),
+                ("Chaff Burst", "*Ranged Attack:* +4 to hit, range 30/60 ft. *Hit:* 6 (2d4) "
+                 "piercing damage (a spray of straw flechettes)."),
+            ],
+        },
     ]),
-    # The two hydra blocks fill the first appendix page; break so the
-    # Scarecrow block does not split across the page turn.
-    ("pagebreak",),
-    ("stat", "Scarecrow (Monster Manual)", [
-        "Medium construct, neutral. **CR 1**. AC 11, HP 36 (8d8), Speed 30 ft.",
-        "Vulnerable fire; resistant to nonmagical bludgeoning, piercing, and slashing; immune to "
-        "charmed, frightened, paralyzed, poisoned. Darkvision 60 ft.",
-        "**Terrifying Glare.** One creature within 30 ft.: DC 11 Wisdom save or frightened for 1 minute "
-        "(repeat the save at the end of each turn).",
-        "**Claws.** +3 to hit, reach 5 ft., 9 (2d4 + 4) slashing.",
+    ("tactics", "The straw only walks while the carved faces watch. Three ways to win, and the "
+                "Guardians may mix all three: turn or snuff the three key pumpkins (an action, "
+                "no check; while any two face away from the theater every scarecrow skips its "
+                "next turn, and managing it in two different rounds collapses the straw for "
+                "good), clip the heart-gourds, or fight it out among the flickering "
+                "jack-o'-lanterns. The hay cart bowls strawlings over, the pumpkin stack can "
+                "be kicked into a glorious mess, and fire is the scarecrows' bad night."),
+
+    ("fight_header", "ENEMIES, Fight 3: The Graveyard Risen",
+     "The hilltop graveyard ✦ Only if the rite goes wrong ✦ 2x Zombie (3x Zombie + 2x Skeleton "
+     "if loud and careless)"),
+    ("enemy_cards", [
+        {
+            "name": "Zombie",
+            "sub": "Medium undead, unaligned ✦ CR 1/4 (50 XP)",
+            "stats": [
+                "**AC** 8  **HP** 22 (3d8 + 9)  **Speed** 20 ft",
+                "**STR** 13  **DEX** 6  **CON** 16  **INT** 3  **WIS** 6  **CHA** 5",
+                "**Senses** darkvision 60 ft, passive Perception 8",
+                "**Challenge** 1/4 (50 XP)",
+            ],
+            "traits": [
+                ("Undead Fortitude", "When damage drops it to 0 HP (unless the damage is "
+                 "radiant or from a critical hit), it makes a Constitution save, DC 5 + the "
+                 "damage taken; on a success it drops to 1 HP instead."),
+            ],
+            "actions": [
+                ("Slam", "*Melee Attack:* +3 to hit, reach 5 ft. *Hit:* 4 (1d6 + 1) "
+                 "bludgeoning damage."),
+            ],
+        },
+        {
+            "name": "Skeleton",
+            "sub": "Medium undead, unaligned ✦ CR 1/4 (50 XP) ✦ only if the rite is begun "
+                   "loud and careless",
+            "stats": [
+                "**AC** 13 (armor scraps)  **HP** 13 (2d8 + 4)  **Speed** 30 ft",
+                "**Vulnerable** bludgeoning",
+                "**Challenge** 1/4 (50 XP)",
+            ],
+            "actions": [
+                ("Shortsword", "*Melee Attack:* +4 to hit, reach 5 ft. *Hit:* 5 (1d6 + 2) "
+                 "piercing damage."),
+                ("Shortbow", "*Ranged Attack:* +4 to hit, range 80/320 ft. *Hit:* 5 (1d6 + 2) "
+                 "piercing damage."),
+            ],
+        },
     ]),
-    ("stat", "Strawling (reskinned Needle Blight)", [
-        "Medium plant, neutral. **CR 1/4**. AC 12, HP 11 (2d8 + 2), Speed 30 ft.",
-        "**Straw Lash.** +4 to hit, reach 5 ft., 4 (1d6 + 1) bludgeoning, and the target makes a DC 12 "
-        "Strength save or is grappled (escape DC 12).",
-        "**Chaff Burst.** +4 to hit, range 30/60 ft., 6 (2d4) piercing (a spray of straw flechettes).",
+    ("tactics", "These are the recently quiet, not villains: they rise only if the restored "
+                "name is wrong or unknown, and the bigger roster answers a rite begun loud and "
+                "careless. Lay them gently back down; the rite can always be tried again. When "
+                "the Remembrance Knot finally takes hold, every hero who took part gains Hold "
+                "Fast: once this session, advantage on one Wisdom save against forgetfulness "
+                "or the song."),
+
+    ("fight_header", "ENEMIES, Fight 4: The Reveal at the Gasping Gull",
+     "The Gasping Gull ✦ Difficulty: Hard ✦ 1x False Hydra Tavern Head"),
+    ("enemy_cards", [
+        {
+            "name": "False Hydra, the Tavern Head",
+            "sub": "Large aberration (one head and neck), unaligned ✦ it has been in the "
+                   "taproom all along",
+            "img": f"{A}/monsters/false_hydra_head.png",
+            "img_w": 3.0,
+            "stats": [
+                "**AC** 14  **HP** 70 (9d10 + 18)  **Speed** 10 ft, climb 10 ft",
+                "**STR** 16  **DEX** 12  **CON** 14  **INT** 6  **WIS** 14  **CHA** 7",
+                "**Resist** psychic  **Imm.** charmed, frightened, prone",
+                "**Senses** blindsight 10 ft, tremorsense 30 ft, darkvision 60 ft, passive "
+                "Perception 14",
+            ],
+            "traits": [
+                ("Mind-Humming Aura", "A creature without beeswax that starts its turn within "
+                 "30 ft makes a DC 13 Wisdom save or has disadvantage on attack rolls that "
+                 "turn; beeswax grants advantage on the save."),
+                ("Segmented Neck", "The head ignores forced movement and prone unless it "
+                 "chooses otherwise. After taking 20 or more damage in a single turn, it "
+                 "recoils 5 ft and loses its reactions until the start of its next turn."),
+            ],
+            "actions": [
+                ("Bite", "*Melee Attack:* +6 to hit, reach 10 ft. *Hit:* 13 (2d8 + 4) piercing "
+                 "damage, and the target is grappled (escape DC 14). While it has a creature "
+                 "grappled, the head cannot bite a different target."),
+                ("Lurch and Drag", "The head drags a creature it is grappling 5 ft toward the "
+                 "trapdoor; the creature makes a DC 13 Wisdom save or loses a word or a "
+                 "thought for a heartbeat."),
+                ("Wrench (Bonus Action)", "A creature the head is grappling makes a DC 14 "
+                 "Strength save or is knocked prone and takes 5 (1d6 + 2) bludgeoning damage "
+                 "as the jaw grinds it against the floorboards."),
+            ],
+            "reactions": [
+                ("Recoil from Flame", "When the head takes fire damage, it has disadvantage "
+                 "on its next attack roll before the end of its next turn."),
+            ],
+        },
     ]),
-    ("stat", "Cellar Rats and Restless Dead (compact)", [
-        "**Giant Rat.** Small beast, CR 1/8. AC 12, HP 7 (2d6), Speed 30 ft., darkvision 60 ft. "
-        "**Pack Tactics** (advantage on attacks if an ally is within 5 ft. of the target). "
-        "**Bite.** +4 to hit, 4 (1d4 + 2) piercing.",
-        "**Swarm of Rats.** Medium swarm of Tiny beasts, CR 1/4. AC 10, HP 24 (7d8 - 7), Speed 30 ft. "
-        "Resistant to bludgeoning, piercing, and slashing; immune to being grappled, prone, or "
-        "restrained; occupies other creatures' spaces. **Bites.** +2 to hit, reach 0 ft., 7 (2d6) "
-        "piercing, or 3 (1d6) if the swarm is at half HP or below.",
-        "**Zombie.** Medium undead, CR 1/4. AC 8, HP 22 (3d8 + 9), Speed 20 ft. **Undead Fortitude.** "
-        "When damage drops it to 0 HP (unless radiant or a critical hit), it makes a Constitution "
-        "save, DC 5 + the damage taken, to drop to 1 HP instead. **Slam.** +3 to hit, 4 (1d6 + 1) "
-        "bludgeoning.",
-        "**Skeleton.** Medium undead, CR 1/4. AC 13 (armor scraps), HP 13 (2d8 + 4), Speed 30 ft. "
-        "Vulnerable to bludgeoning. **Shortsword.** +4 to hit, 5 (1d6 + 2) piercing. **Shortbow.** "
-        "+4 to hit, range 80/320 ft., 5 (1d6 + 2) piercing.",
+    ("tactics", "It bites, grapples, and drags victims toward the trapdoor, and its eyes aim "
+                "at the place where thoughts are. Fight the room: kick the stew pot (Dexterity "
+                "DC 12: 1d6 fire and disadvantage on the victim's next attack), flip the long "
+                "table (half cover, or Strength DC 13 to pin the neck, restrained until it "
+                "writhes free), drop the lantern rack (Dexterity DC 13: 1d4 slashing, and the "
+                "burning square puts the head's next attack at disadvantage), or slam the "
+                "trapdoor on the neck (Strength DC 14; the head saves Dexterity DC 13 or takes "
+                "1d6 and loses its reactions). Keep Maera out of harm's way, and when the head "
+                "dies, the second neck always escapes: the hum below deepens."),
+
+    ("fight_header", "ENEMIES, BOSS: The False Hydra",
+     "The orchestra pit below the Old Theater ✦ The hardest fight since the Dutchman ✦ "
+     "1x Body + 4x Head"),
+    ("enemy_cards", [
+        {
+            "name": "False Hydra, Adult",
+            "sub": "Huge aberration, unaligned ✦ the boss of Session 6 ✦ one body, four "
+                   "singing heads",
+            "img": f"{A}/monsters/false_hydra_body.png",
+            "img_w": 2.2,
+            "stats": [
+                "**Body:** AC 15  HP 130 (12d12 + 48)  Speed 10 ft, climb 10 ft",
+                "**Heads (4):** AC 14  HP 45 (6d10 + 12) each  Speed 30 ft through the "
+                "under-floor tunnels, climb 20 ft  reach 15 ft from a floor port",
+                "**Body STR** 18  **DEX** 10  **CON** 18  **INT** 7  **WIS** 14  **CHA** 8  "
+                "**Saves** Con +8, Wis +5 (heads Wis +4)",
+                "**Resist** psychic  **Imm.** charmed, frightened, prone",
+                "**Senses** tremorsense 60 ft, darkvision 60 ft, passive Perception 12",
+            ],
+            "traits": [
+                ("Song of Unremembering", "While any head lives, a creature without earplugs "
+                 "that starts its turn within 60 ft makes a DC 15 Wisdom save or has "
+                 "disadvantage on attack rolls and cannot take reactions until its next turn. "
+                 "Beeswax: advantage on the save, and no reaction lock."),
+                ("Vital Link", "While at least one head lives, the body has resistance to all "
+                 "weapon damage. Each head destroyed removes one instance of this protection; "
+                 "with no heads it has none."),
+                ("Head Movement", "A head may withdraw (no opportunity attacks), move up to "
+                 "30 ft through the tunnels, and re-emerge from any floor port; a pinned neck "
+                 "(table, rope, tackle) needs Strength vs. DC 14 to writhe free."),
+                ("Lair Actions", "On initiative count 20, one per round: **Stage Drop** (a "
+                 "10-ft sandbag line: DC 13 Dexterity or 2d6 and prone), **Mask of Memory** "
+                 "(playbills in a 15-ft radius: an unplugged hero saves Wisdom DC 15 or cannot "
+                 "target the body this round), **Gasping Vent** (a 10-ft radius of difficult "
+                 "terrain where verbal spells need a DC 10 Constitution check)."),
+            ],
+            "actions": [
+                ("Thrash (Body)", "*Melee Attack:* +7 to hit, reach 10 ft. *Hit:* 13 (2d8 + 4) "
+                 "bludgeoning damage."),
+                ("Regurgitate Remnants (Body; Recharge 5-6)", "A 15-ft cone of bone and cloth: "
+                 "DC 14 Dexterity save or take 13 (3d8) necrotic damage and lose 10 ft of "
+                 "speed until the end of the target's next turn. A shattered skull and a black "
+                 "ribbon clatter free (a clue)."),
+                ("Bite (Head)", "*Melee Attack:* +7 to hit, reach 15 ft. *Hit:* 14 (2d10 + 3) "
+                 "piercing damage, and the target is grappled (escape DC 14); while grappling, "
+                 "that head cannot bite a different target."),
+                ("Reel (Head)", "A creature grappled by a head makes a DC 14 Strength save or "
+                 "is pulled 10 ft toward the port and knocked prone."),
+            ],
+            "reactions": [
+                ("Snap (Head)", "When a creature moves within 15 ft of a head, that head makes "
+                 "one Bite against it."),
+            ],
+            "legendary": [
+                ("", "One per living head, maximum 3 per round, at the end of another "
+                 "creature's turn."),
+                ("Hum Surge", "One creature within 60 ft without earplugs: DC 15 Wisdom save "
+                 "or lose concentration and move only 10 ft on its next turn."),
+                ("Bone Shift", "The body shifts 5 ft and reshapes the mound: one 10-ft square "
+                 "within 20 ft becomes difficult terrain or clears."),
+                ("Coordinate Strike", "One head makes one Bite."),
+            ],
+        },
     ]),
+    ("tactics", "A quiet catwalk approach (Stealth vs. passive Perception 14) earns a surprise "
+                "round; a focused strike from the high ground can drop the first head before "
+                "the song even turns. Two heads pressure the front line, one hunts the "
+                "backline, one harasses from a different port; Bone Shift reshapes the ground "
+                "and Regurgitate Remnants punishes clusters. Hazards: rotted beams (Dex DC 12 "
+                "or fall 10 ft, 1d6), bone scree, a droppable pulley cluster (Str DC 13: 2d6 "
+                "in a 10-ft line); prop flats (AC 12, 12 HP) give cover. Kill heads first: "
+                "each one down quiets the song and thins the body's armor."),
 ]
 
 if __name__ == "__main__":

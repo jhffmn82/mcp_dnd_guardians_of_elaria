@@ -439,48 +439,211 @@ BLOCKS = [
              "Cliffs.*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Appendix: Creatures of Session Two", {"pagebreak": True}),
-    ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives in "
-             "the compendium."),
-    ("stat", "Mudskip", [
-        "Small elemental (Plane of Water), neutral. **CR 1/2** (100 XP). AC 13 (natural armor), "
-        "HP 22 (4d6 + 8), Speed 20 ft., swim 30 ft.",
-        "STR 12, DEX 14, CON 14, INT 6, WIS 12, CHA 8. Skills Stealth +4, Perception +3.",
-        "Resistances fire. Vulnerabilities lightning. Darkvision 60 ft. Understands Aquan.",
-        "**Amphibious / Mud Dweller / Slippery.** Breathes air and water; ignores muddy difficult "
-        "terrain; advantage on checks and saves to escape a grapple.",
-        "**Multiattack.** One Mud Spit and one Tail Slap.",
-        "**Mud Spit.** +4, range 30 ft., 1d6 + 2 bludgeoning; DC 12 Dexterity save or speed "
-        "reduced 10 ft. until the end of its next turn.",
-        "**Tail Slap.** +4, reach 5 ft., 1d8 + 2 bludgeoning.",
-        "**Mud Splash (Recharge 5-6).** 15 ft. cone, DC 12 Dexterity save; 2d6 + 2 bludgeoning and "
-        "blinded until the end of its next turn on a failure, half damage on a success.",
-    ]),
-    ("stat", "The Grimfang War Band", [
-        "Rival goblin clan raiders: **2 goblins** with shortbows, **1 worg**, **1 orc**, "
-        "**1 hobgoblin** with a crossbow, and **1 goblin boss** (scarred; taunts the Bloodfang).",
-        "Standard 2024 Monster Manual statistics for each creature.",
-        "**Tactics.** The boss coordinates: archers on the flanks pick at the back line, the worg "
-        "and orc press the melee, the hobgoblin snipes from cover.",
-        "**Outcome.** Beaten soundly; the survivors fled into the brush. The Grimfang remember.",
-    ]),
-    ("stat", "Terranox", [
-        "Large elemental (Plane of Earth), unaligned. **CR 4** (1,100 XP). AC 16 (natural armor), "
-        "HP 95 (10d10 + 40), Speed 30 ft., burrow 30 ft.",
-        "STR 20, DEX 10, CON 18, INT 5, WIS 11, CHA 6. Darkvision 60 ft., tremorsense 60 ft.",
-        "Immunities fire, poison; exhaustion, paralyzed, petrified, poisoned, prone. Resistances "
-        "nonmagical bludgeoning, piercing, slashing (non adamantine).",
-        "**Earth Glide / Immutable Form / Elemental Resilience / Siege Monster.** Burrows through "
-        "unworked stone without a trace; immune to form altering effects; advantage on saves "
-        "against magic; double damage to objects and structures.",
-        "**Multiattack.** One Bite and one Tail Slam.",
-        "**Bite.** +7, reach 10 ft., 2d10 + 5 piercing.",
-        "**Tail Slam.** +7, reach 15 ft., 2d8 + 5 bludgeoning; DC 15 Strength save or prone.",
-        "**Stone Coil (Recharge 5-6).** DC 15 Dexterity save or grappled and restrained (escape "
-        "DC 15), 1d8 + 5 bludgeoning at the start of each of its turns.",
-        "**Earthquake Stomp (Recharge 6).** 20 ft. radius, DC 15 Dexterity save; 4d6 bludgeoning "
-        "and prone on a failure, half damage on a success.",
-    ]),
+    # S7-format ending, part 1: the DM run sheet.
+    ("appendix_title", "APPENDIX", "DM Run Sheet: The Day at a Glance",
+     "Every DC, dial, and spotlight, in play order. Keep this page at your elbow."),
+
+    ("h1", "The Shape of the Session"),
+    ("body", "▶ Five parts, three fights, one vision. P1 Oakshade morning: quest closed (the "
+             "gatherers walked out when the fog died; 50 gp), rumors at the well (Nina, Merwin, "
+             "the children), Tamsin marks the map. P2 the western road: FIGHT 1 Mudskips in the "
+             "wet fields, then FIGHT 2 the Grimfang ambush. P3 the Whispering Glade: the "
+             "monument, the VISION OF ELARIA, three boons + the built-in SHORT REST. P4 the "
+             "mountain pass: BOSS Terranox, the Earth Mote. P5 Ravenstone Laboratory: Aelwyn, "
+             "tea served by a salamander, guest quarters, overnight. Natural break point: the "
+             "glade."),
+
+    ("h1", "Fights at a Glance"),
+    ("body", "**FIGHT 1: The Mudskip Ambush** (Medium; mischief, not malice). 3× Mudskip "
+             "(AC 13, HP 22; resist FIRE, VULNERABLE LIGHTNING; Mud Splash rech 5-6: 15-ft cone, "
+             "DC 12 Dex, 2d6+2 + blinded). The mud is difficult terrain for everyone but them, "
+             "and every Splash lays fresh slick ground; they dive and flank through the pools to "
+             "isolate the slowest hero. The out: withdraw to dry ground and they do not pursue; "
+             "talking (or splashing back) reveals confusion, not malice. Too easy? A 4th "
+             "surfaces. XP 100 each (300 total)."),
+    ("body", "**FIGHT 2: The Grimfang War Band** (Hard; they humble, they do not kill). 2× "
+             "Goblin archer on the flanks + Worg and Orc in the melee + Hobgoblin sniping from "
+             "cover + Goblin Boss barking orders (standard 2024 MM stats for all). The boss "
+             "coordinates: archers on the back line, worg and orc on the front; the hobgoblin's "
+             "covered shot is Stabby's Deflect Attacks moment, and the boss taunts the Bloodfang "
+             "all fight. The out: fallen heroes wake at the roadside robbed, not dead; beaten, "
+             "the survivors flee."),
+    ("body", "**BOSS: Terranox** (Hard; no parley). CR 4 (AC 16, HP 95; IMMUNE FIRE, resist "
+             "nonmagical B/P/S; Stone Coil rech 5-6: DC 15 Dex or restrained, 1d8+5/turn, aimed "
+             "at casters; Earthquake Stomp rech 6: 20-ft radius, DC 15 Dex, 4d6 + prone). "
+             "Rockfalls: d6 each round, on 5-6 DC 12 Dex or 1d10. Dials: easier, 75 HP and save "
+             "DCs 13, Stone Coil restrains without damage; harder, 110 HP and rockfalls on 4-6. "
+             "Defeat is survivable: it leaves them unconscious and burrows away. XP 1,100."),
+
+    ("h1", "The Resource Picture"),
+    ("body", "▶ One long road day with one safe pause. The party leaves Oakshade on a full "
+             "night's sleep and 50 gp richer; Fights 1 and 2 land back to back, then the "
+             "Whispering Glade is the built-in SHORT REST (safe ground, talk the vision through) "
+             "before the boss. The day's rules lesson: fire fails twice (Mudskips resist it, "
+             "Terranox is immune), so steer Lilly and Ursa toward lightning and starlight and "
+             "reward the switch. Elaria's boons arrive right before the boss: Stabby's Glimpse "
+             "of Possibility is a pocket advantage he can cash against Stone Coil, Ursa senses "
+             "planar anomalies for 24 hours, Lilly's Arcana edge is permanent. The night ends in "
+             "real beds at Ravenstone: full rest, and Session 3 starts fresh."),
+
+    ("h1", "Spotlights & Seeds"),
+    ("body", "**Lilly:** P2 her sparks find the water (lightning is the Mudskip answer); she "
+             "bottles the elemental mud, and later the Earth Mote and stone fragments, for the "
+             "professor → P3 the Essence Sphere wakes at the monument; Elaria: the Sphere "
+             "can stabilize wayward motes (permanent Arcana advantage on planar magic), and her "
+             "takeaway is bigger: “we might save more than Pikachu” → P4 she "
+             "rewires her cannon on her knees in the dark when fire fails → P5 the leaf "
+             "tailed fox sniffs HER boot first, Aelwyn's eyes keep finding the Sphere (Door: the "
+             "professor's interest), and she falls asleep reverse engineering the crystal "
+             "lamps."),
+    ("body", "**Stabby:** P2 the Grimfang boss knows his clan: Bloodfang taunts all fight, and "
+             "the caught arrow goes in his sash while he says nothing about home (Door: the clan "
+             "grudge; “This is not over”) → P3 Elaria's “wanderer of "
+             "shadows”: chaos and choice, plus the pocket advantage; his read: “So "
+             "causing a bit of chaos might actually help this time. Good. I am very "
+             "qualified.” → P4 his flurry cracks the Stone Coil off Ursa → P5 "
+             "“the critters just know a friendly face,” and a real bed at last: "
+             "“Beats the hard ground any day.”"),
+    ("body", "**Ursa:** P3 the glade calls HIM: the Dragonmark tingles, his palm wakes the "
+             "monument; Elaria: “Child of Ash,” the potatoes are a shattered covenant "
+             "(Door: his father's work), and his quiet vow after: “We have to finish what "
+             "he started” → P4 Terranox's coil catches him mid spell, and he answers "
+             "with starlight instead of flame to carve the serpent down → P5 he stands at "
+             "the window under stars that seem to look back."),
+
+    ("h1", "Foreshadow Tracker: say it, then say it again"),
+    ("body", "▶ The tells, in order. Every fallen creature leaves a MOTE: the forest tally, "
+             "the Mudskips' blue water motes, then Terranox's Earth Mote, the first one that "
+             "STAYS • Nina: the air feels heavy, “like it is breathing,” and the "
+             "professor “goes further out” hauling odd things by night • the "
+             "children have seen glowing creatures that talk: a floating whispering shadow, a "
+             "giant fox made of sparks • Merwin's warning: Oakshade must not become a "
+             "ground for “planar... experimentation” • Tamsin: “like they "
+             "are protecting something... it will not stop here” • Elaria names the "
+             "big bad: an ancient entity consuming the essence of worlds • Aelwyn's gaze "
+             "drifts to the Essence Sphere, at the hearth and once more at the door • "
+             "“Tomorrow, we begin.”"),
+
+    # ------------------------------------------------------------------
+    # S7-format ending, part 2: the bestiary.
+    ("appendix_title", "APPENDIX", "Bestiary: Enemy Stat Blocks",
+     "All three encounters of Session 2, in the order the party meets them."),
+
+    ("fight_header", "ENEMIES, Fight 1: The Mudskip Ambush",
+     "The Wet Fields ✦ Difficulty: Medium ✦ 3× Mudskip (a 4th if it runs easy)"),
+    ("enemy_cards", [{
+        "name": "Mudskip",
+        "sub": "Small elemental (Plane of Water), neutral ✦ CR 1/2",
+        "img": f"{A}/monsters/mudskip.png",
+        "img_w": 3.0,
+        "stats": [
+            "**AC** 13 (natural armor)  **HP** 22 (4d6 + 8)  **Speed** 20 ft., swim 30 ft.",
+            "**STR** 12  **DEX** 14  **CON** 14  **INT** 6  **WIS** 12  **CHA** 8",
+            "**Skills** Stealth +4, Perception +3",
+            "**Resistances** fire  **Vulnerabilities** lightning",
+            "**Senses** darkvision 60 ft.  **Languages** understands Aquan",
+            "**Challenge** 1/2 (100 XP)",
+        ],
+        "traits": [
+            ("Amphibious", "The mudskip can breathe air and water."),
+            ("Mud Dweller", "Ignores difficult terrain made of mud or shallow water."),
+            ("Slippery", "Advantage on ability checks and saving throws made to escape a "
+             "grapple."),
+        ],
+        "actions": [
+            ("Multiattack", "The mudskip makes one Mud Spit attack and one Tail Slap attack."),
+            ("Mud Spit", "*Ranged Attack:* +4, range 30 ft. *Hit:* 1d6 + 2 bludgeoning, and the "
+             "target must succeed on a DC 12 Dexterity save or its speed is reduced by 10 ft. "
+             "until the end of its next turn."),
+            ("Tail Slap", "*Melee Attack:* +4, reach 5 ft. *Hit:* 1d8 + 2 bludgeoning."),
+            ("Mud Splash (Recharge 5-6)", "15-foot cone; DC 12 Dexterity save. *Failure:* 2d6 + 2 "
+             "bludgeoning and blinded until the end of its next turn. *Success:* half damage."),
+        ],
+    }]),
+    ("tactics", "They dart in, splash, and dive back into the pools, flanking through the water "
+                "to isolate whoever moves slowest; every Mud Splash leaves fresh slick ground, "
+                "reshaping the battlefield round by round. Mischief, not malice: a hero who "
+                "talks (or splashes back) can tell they are confused, displaced far from the "
+                "Plane of Water, and if the party withdraws to dry ground they do not pursue. "
+                "Too easy? A fourth Mudskip surfaces from a hidden pool."),
+
+    ("fight_header", "ENEMIES, Fight 2: The Grimfang War Band",
+     "The Western Road ✦ Difficulty: Hard ✦ 2× Goblin + Worg + Orc + Hobgoblin + "
+     "Goblin Boss"),
+    ("enemy_cards", [{
+        "name": "The Grimfang War Band",
+        "sub": "Rival goblin clan raiders ✦ standard 2024 Monster Manual roster",
+        "img": f"{A}/monsters/grimfang_clan.png",
+        "img_w": 3.2,
+        "stats": [
+            "**The roster.** 2× **Goblin** with shortbows on the flanks, 1× **Worg** "
+            "and 1× **Orc** with a great club in the melee, 1× **Hobgoblin** with a "
+            "crossbow at the rear, and 1× **Goblin Boss** (scarred; taunts the Bloodfang) "
+            "at the center.",
+            "**Statistics.** Standard 2024 Monster Manual values for each creature. If you track "
+            "XP, award the standard amounts for the roster.",
+        ],
+        "traits": [
+            ("The Grudge", "The Grimfang are a rival clan with an old score against Stabby's "
+             "people; the boss taunts the Bloodfang runaway all through the fight, about "
+             "weakness, and about the little monk who left."),
+            ("If It Goes Wrong", "The Grimfang want to humble the Bloodfang runaway, not finish "
+             "anyone: fallen heroes wake at the roadside, bruised and lighter by their shiniest "
+             "valuables, with goblin laughter fading in the brush."),
+        ],
+    }]),
+    ("tactics", "The boss coordinates: archers on the flanks focus the party's back line while "
+                "the worg and orc press the front, and the hobgoblin's covered position hands "
+                "Stabby a perfect chance to catch an arrow out of the air with Deflect Attacks. "
+                "Beaten, the survivors flee into the brush. The Grimfang remember."),
+
+    ("fight_header", "ENEMIES, BOSS: Terranox",
+     "The Mountain Pass ✦ Difficulty: Hard (no parley) ✦ Fight 3 ✦ the stone "
+     "serpent boss"),
+    ("enemy_cards", [{
+        "name": "Terranox",
+        "sub": "Large elemental (Plane of Earth), unaligned ✦ CR 4 ✦ the boss",
+        "img": f"{A}/monsters/terranox.png",
+        "img_w": 3.0,
+        "stats": [
+            "**AC** 16 (natural armor)  **HP** 95 (10d10 + 40)  **Speed** 30 ft., burrow 30 ft.",
+            "**STR** 20  **DEX** 10  **CON** 18  **INT** 5  **WIS** 11  **CHA** 6",
+            "**Immunities** fire, poison; exhaustion, paralyzed, petrified, poisoned, prone",
+            "**Resistances** nonmagical bludgeoning, piercing, slashing (non adamantine)",
+            "**Senses** darkvision 60 ft., tremorsense 60 ft.",
+            "**Challenge** 4 (1,100 XP)",
+        ],
+        "traits": [
+            ("Earth Glide", "Terranox can burrow through nonmagical, unworked earth and stone "
+             "without disturbing the material it moves through."),
+            ("Immutable Form", "Immune to any spell or effect that would alter its form."),
+            ("Elemental Resilience", "Advantage on saving throws against spells and other "
+             "magical effects."),
+            ("Siege Monster", "Deals double damage to objects and structures."),
+        ],
+        "actions": [
+            ("Multiattack", "Terranox makes one Bite attack and one Tail Slam attack."),
+            ("Bite", "*Melee Attack:* +7, reach 10 ft. *Hit:* 2d10 + 5 piercing."),
+            ("Tail Slam", "*Melee Attack:* +7, reach 15 ft. *Hit:* 2d8 + 5 bludgeoning, and the "
+             "target must succeed on a DC 15 Strength save or be knocked prone."),
+            ("Stone Coil (Recharge 5-6)", "One creature must succeed on a DC 15 Dexterity save "
+             "or be grappled and restrained (escape DC 15), taking 1d8 + 5 bludgeoning at the "
+             "start of each of Terranox's turns."),
+            ("Earthquake Stomp (Recharge 6)", "20-foot radius; DC 15 Dexterity save. *Failure:* "
+             "4d6 bludgeoning and knocked prone. *Success:* half damage."),
+        ],
+    }]),
+    ("tactics", "No parley: it opens on the nearest intruder, uses Earthquake Stomp to scatter "
+                "the party's formation, and saves Stone Coil for spellcasters and ranged "
+                "attackers. Fire splashes off it, so the flame tricks fail again. The "
+                "battlefield fights too: loose rocks make natural cover, and each round on a d6 "
+                "roll of 5 or 6 rocks shake free of the cliffs (DC 12 Dexterity save or 1d10 "
+                "bludgeoning); the longer the battle roars, the more attention it risks drawing. "
+                "**Dials:** easier, 75 HP, save DCs 13, Stone Coil restrains without damage; "
+                "harder, 110 HP, rockfalls on 4 to 6. **Defeat is survivable:** it leaves fallen "
+                "heroes unconscious but alive and burrows away; they wake hurt, free to try the "
+                "pass again. **Victory:** it collapses into inert stone with the Earth Mote in "
+                "the rubble."),
 ]
 
 if __name__ == "__main__":

@@ -31,8 +31,8 @@ BLOCKS = [
              "waited to carry the Guardians east across the open sea, toward the clockwork spires "
              "of **Gearhaven**, where Professor Aelwyn said the Essence Sphere might finally be "
              "understood. The sea, as it turns out, had other plans."),
-    ("dm", "The heroes sail into this session at **level 4**. Full creature statistics live in the "
-           "compendium; a compact appendix closes the session."),
+    ("dm", "The heroes sail into this session at **level 4**. A DM run sheet and a full bestiary "
+           "close the session."),
 
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -511,78 +511,314 @@ BLOCKS = [
              "finally opens her eyes.*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Appendix: Creatures of Session Five", {"pagebreak": True}),
-    ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives "
-             "in the compendium."),
-    ("stat", "Davy Jones, Captain of the Flying Dutchman", [
-        "Medium undead (formerly humanoid), chaotic evil. **CR 6** (2,300 XP). AC 17 (Barnacle "
-        "Armor), HP 85 (10d10 + 30), Speed 30 ft., swim 30 ft.",
-        "STR 18, DEX 12, CON 16, INT 14, WIS 12, CHA 16. Saves Con +6, Wis +4, Cha +6; "
-        "Intimidation +6, Athletics +7, Perception +4.",
-        "Resistances nonmagical B/P/S. Immune to charmed, frightened, poisoned, exhaustion. "
-        "Darkvision 60 ft. Amphibious.",
-        "**Barnacle Armor.** Nonmagical melee attacks deal half damage. **Legendary Resistance "
-        "(3/Day).**",
-        "**Multiattack.** Two Tentacle Slams and one Hook Strike.",
-        "**Tentacle Slam.** +7, reach 10 ft., 10 (2d6 + 4) bludgeoning and grapple DC 15.",
-        "**Hook Strike.** +7, reach 5 ft., 8 (1d6 + 4) piercing plus 7 (2d6) necrotic.",
-        "**Soul Siphon (Recharge 5-6).** DC 14 Con or 18 (4d8) psychic; Davy heals half the "
-        "damage dealt.",
-        "**Legendary Actions (2/round).** Tentacle Strike (one slam); Raise Tide (2 actions): "
-        "20-ft. line, DC 14 Dex or 13 (3d8) bludgeoning.",
+    # APPENDIX ONE: the DM run sheet (S7 gold-standard format).
+    ("appendix_title", "APPENDIX", "DM Run Sheet: The Day at a Glance",
+     "Every DC, dial, and spotlight, in play order. Keep this page at your elbow."),
+
+    ("h1", "The Shape of the Session"),
+    ("body", "Six parts, two set pieces, three fights, one rest. P1 Havenmoor send-off → two "
+             "days learning the ship (stations and knots both pay off). P2 THE STORM: three "
+             "great blows at stations → the capsize ladder; no roll saves the ship. P3 chained "
+             "aboard the Dutchman: the hold tour, Davy's offer, the refusal. P4 SEVEN-EYES for "
+             "their souls (the table WON, 77 exactly) → SHORT REST in the guest chambers. P5 "
+             "FIGHT 1 the weather deck → FIGHT 2 the hold. P6 BOSS: Davy Jones, gone for good "
+             "→ the essences fly free, the pale essence chooses Floraburst (roll stays "
+             "SEALED), the Vigil, dawn, LEVEL 5."),
+
+    ("h1", "Fights at a Glance"),
+    ("body", "**SET PIECE: The Storm in Three Great Blows** (group checks at stations; the ship "
+             "ALWAYS goes down). Stations: Crow's Nest Perception DC 12, Helm Acrobatics DC 13, "
+             "Rigging Athletics DC 14, Bilge Con DC 13; the lookout may plot the course first, "
+             "Survival DC 17: success = advantage on every storm check. Three blows, count "
+             "successes each time: Wall of Water (1d6/2d6/3d6 bludgeoning as successes fall), "
+             "Lightning (1d4/2d4/3d4), Maelstrom (1d8/2d8/3d8 plus prone or restrained). Then "
+             "the capsize ladder: Dex 12, Investigation or Perception 10, Str 12; every "
+             "failure follows a hero down a rung, and arriving in chains means disadvantage "
+             "on the first Seven-Eyes roll."),
+    ("body", "**SET PIECE: Seven-Eyes, the Dice Game of Souls** (three rounds, target 77; "
+             "nobody swings a sword, everybody sweats). Each hero pools d4 d6 d8 d10 d10 d12 "
+             "d20; two tosses per round, and a gift after each toss can keep a teammate under "
+             "77 (teamwork is legal; Davy hates it). Bust over 77: Davy scores 1 point. Finish "
+             "below his three-roll total: he scores 1. At 5 points he claims their souls; 4 or "
+             "fewer and every chain aboard falls. IF HE WINS: brig escape, group DC 13 "
+             "(Acrobatics, Athletics, Sleight of Hand, or Thieves' Tools), 3 successes before "
+             "2 failures, or spectral wardens come shuffling (Drowned Pirate stats)."),
+    ("body", "**FIGHT 1: The Weather Deck** (Medium; loud, wet, slippery). 3x Drowned Pirate "
+             "(AC 14, HP 58; they mob whoever stands closest, harpoons drag heroes apart; Death "
+             "Burst at 0 HP: 5 ft, DC 12 Con, 2d4 cold) + Spectral Helmsman (AC 12, HP 45, "
+             "incorporeal; fear aura 5 ft, DC 12 Wis; helm-block reaction). Slippery deck: end "
+             "of each turn, Acrobatics DC 12 or prone; one wave surge mid-fight, DC 12 Dex for "
+             "everyone. The outs: the lantern-oil bucket from the rope ladder (Athletics DC 14, "
+             "2d6 fire on a pirate below) and the mooring line to the cutter (Str DC 15, best "
+             "once two foes are down; a failure holds, and two more pirates climb the rail)."),
+    ("body", "**FIGHT 2: The Hold** (Hard on paper; COLD is the equalizer: every guardian is "
+             "vulnerable, and every one of them flinches from frost, telegraph it). Smuggler's "
+             "Golem (AC 14, HP 85; Crush Crate rech 5-6: 6d6, DC 15 Dex half, prone on a fail; "
+             "Magic Resistance) + 2x Arcane Corsair (AC 14, HP 52; sneak attack +2d6 from "
+             "cover) + Ghost-Light Engineer (AC 15, HP 27; blinks invisible between Shock "
+             "Touches, its Glowing Core still shows within 5 ft: that is Stabby's hunt). Slick "
+             "planks DC 12; arcane fissures spark 1d6 lightning (DC 13 Dex half); crates are "
+             "half cover, and a DC 14 shove slams a foe into them. THE ORB: Str or Arcana DC "
+             "15 shatters it, 3d6 radiant burst (DC 13 Dex half) and every undead in the hold "
+             "is STUNNED until the end of its next turn. Golem down = every fissure goes dark."),
+    ("body", "**BOSS: Davy Jones** (an epic duel; the room fights for him). AC 17, HP 85; "
+             "Barnacle Armor: nonmagical melee deals HALF; Legendary Resistance 3/day; "
+             "Multiattack: two Tentacle Slams (reach 10 ft, grapple DC 15) + Hook Strike; Soul "
+             "Siphon rech 5-6: DC 14 Con, 4d8 psychic, he heals half; 2 legendary actions per "
+             "round (one slam, or Raise Tide: 20-ft line, DC 14 Dex, 3d8). Sea-fog each round: "
+             "start your turn in it, DC 13 Wis or disadvantage on attacks. Dais barnacles: end "
+             "your turn within 5 ft, Acrobatics DC 12 or 1d6 slashing. PROTECT THE SPHERE: if "
+             "the Siphon turns on the Essence Sphere, any hero may spend a Reaction to "
+             "intercept. He goes down for good this time: no mist, no return."),
+
+    ("h1", "The Resource Picture"),
+    ("body", "The storm IS the attrition: three blows of ladder damage plus the capsize can "
+             "chew through half the party's HP before a single enemy appears, and the heroes "
+             "are level 4 all night. The one recovery beat is the guest-chamber SHORT REST "
+             "after the dice game: Hit Dice as normal, plus one expended spell slot of 2nd "
+             "level or lower back for each hero; it is the last calm breath. From there it is "
+             "three fights on one tank: frost is the whole plan in the hold (Lilly's Frostbite "
+             "Shard Dagger and Ursa's ice make the vulnerability sing), the orb burst buys a "
+             "full stunned round, and keep one Reaction unspent per hero in the duel for Soul "
+             "Siphon interceptions."),
+
+    ("h1", "Spotlights & Seeds: every kid shines"),
+    ("body", "**Lilly:** falls in love with the helm, the pumps, every clever piece of the "
+             "Stormwind → the quiet gift die that saves Ursa's round at the dice table → “You "
+             "will not touch her. Not one petal.” → her frost dagger carries the hold fight → "
+             "she cups the pale essence home (Seeds: the change, sealed until she wakes; "
+             "Guild-stamped crates, her own guild's mark, waiting in Gearhaven)."),
+    ("body", "**Stabby:** fastest thing in the rigging, faster than Hugo can shout → the "
+             "dice-game reveal: the kid who cannot sit still in a classroom is terrifying at "
+             "Seven-Eyes, counting faces and gifting exact pips → tracks the engineer's glow "
+             "through the dark, three quick strikes → runs a falling tentacle to land the last "
+             "blow on Davy Jones. “Seven-Eyes! Pay up, fish-beard!”"),
+    ("body", "**Ursa:** born for the crow's nest, reads water like sky (his Survival plots the "
+             "storm course) → “This is not Davy's doing alone. Something darker haunts this "
+             "ship.” → his amulet shatters the arcane orb → the reframe at the end: “We are "
+             "here to let everything you stole go free,” and the owl-kin lands on his shoulder "
+             "before it flies (Seed: the living world answers him)."),
+
+    ("h1", "Foreshadow Tracker: say it, then say it again"),
+    ("body", "The tells, in order. Alwen's flasks of seawater, “for luck, do not ask why” • "
+             "Brynn's keepsake knot x2 (the lantern-light lesson, then the Vigil cut free "
+             "with it): it matters again ONE SESSION FROM NOW • the stern-rail ghost story: "
+             "“ships found empty, crews never found at all” • Guild-stamped crates x3 (hold "
+             "tour, hold fight, closing bridge: somebody south expects a shipment that never "
+             "comes) • every hold guardian FLINCHES from cold: say it, let the kids find the "
+             "plan • the Vigil through the porthole BEFORE she is needed • Floraburst, "
+             "pulsing, petals etched in frost and fire: sealed until she wakes."),
+
+    # ------------------------------------------------------------------
+    # APPENDIX TWO: the bestiary (S7-style enemy cards, in play order).
+    ("appendix_title", "APPENDIX", "Bestiary: Enemy Stat Blocks",
+     "All three encounters of Session 5, in the order the party meets them."),
+
+    ("fight_header", "ENEMIES, Fight 1: No Flesh Leaves This Ship",
+     "The Dutchman's weather deck ✦ Difficulty: Medium ✦ 3x Drowned Pirate + 1x Spectral Helmsman"),
+    ("enemy_cards", [
+        {
+            "name": "Drowned Pirate",
+            "sub": "Medium undead ✦ CR 1 (200 XP) ✦ x3",
+            "img": f"{A}/monsters/drowned_pirate.png",
+            "stats": [
+                "**AC** 14 (studded leather)  **HP** 58 (9d8+18)  **Speed** 30 ft, swim 30 ft",
+                "**STR** 18  **DEX** 14  **CON** 14  **INT** 6  **WIS** 10  **CHA** 7",
+                "**Resist** nonmagical B/P/S",
+                "**Imm.** poison  **Imm. (cond)** charmed, frightened, exhaustion",
+                "**Senses** darkvision 60 ft",
+            ],
+            "traits": [
+                ("Amphibious", "The pirate can breathe air and water."),
+                ("Undead Fortitude", "If reduced to 0 HP (not by radiant damage or a critical "
+                 "hit), a DC 5 + damage Constitution save drops it to 1 HP instead."),
+                ("Death Burst", "When the pirate dies it bursts: each creature within 5 ft "
+                 "makes a DC 12 Con save or takes 5 (2d4) cold."),
+            ],
+            "actions": [
+                ("Multiattack", "Two melee attacks."),
+                ("Cutlass", "+6 to hit, reach 5 ft. *Hit:* 8 (1d8+4) slashing."),
+                ("Harpoon", "+6 to hit, reach 10 ft or range 30/120 ft. *Hit:* 9 (1d10+4) "
+                 "piercing, and the target is grappled (escape DC 14)."),
+            ],
+        },
+        {
+            "name": "Spectral Helmsman",
+            "sub": "Medium undead ✦ CR 1 (200 XP)",
+            "img": f"{A}/monsters/spectral_helmsman.png",
+            "stats": [
+                "**AC** 12  **HP** 45 (6d8+18)  **Speed** 0 ft, fly 50 ft (hover)",
+                "**STR** 6  **DEX** 14  **CON** 16  **INT** 10  **WIS** 12  **CHA** 11",
+                "**Resist** acid, fire, lightning, thunder; nonmagical B/P/S",
+                "**Imm.** cold, necrotic, poison  **Imm. (cond)** most conditions (incl. "
+                "grappled, prone, restrained)",
+                "**Senses** darkvision 60 ft",
+            ],
+            "traits": [
+                ("Incorporeal Movement", "Moves through creatures and objects as difficult "
+                 "terrain."),
+                ("Sea-Wraith Aura", "At the start of each of its turns, creatures within 5 ft "
+                 "make a DC 12 Wis save or are frightened until their next turn."),
+            ],
+            "actions": [
+                ("Multiattack", "Two Spectral Scimitar attacks."),
+                ("Spectral Scimitar", "+4 to hit, reach 5 ft. *Hit:* 7 (1d6+4) force."),
+                ("Harpoon Throw", "+4 to hit, range 20/60 ft. *Hit:* 9 (1d10+4) piercing, and "
+                 "the target is pulled up to 10 ft."),
+            ],
+            "reactions": [
+                ("Phantom Helm Block", "When attacked, it imposes disadvantage on one weapon "
+                 "attack roll."),
+            ],
+        },
     ]),
-    ("stat", "Drowned Pirate", [
-        "Medium undead, chaotic evil. **CR 1**. AC 14, HP 58 (9d8 + 18), Speed 30 ft., swim 30 ft.",
-        "Resistant to nonmagical B/P/S; immune to poison; immune to charmed, frightened, "
-        "exhaustion. Amphibious; Undead Fortitude.",
-        "**Multiattack.** Two melee attacks. **Cutlass.** +6, 8 (1d8 + 4) slashing. "
-        "**Harpoon.** +6, reach 10 ft. or range 30/120 ft., 9 (1d10 + 4) piercing and grappled "
-        "(escape DC 14).",
-        "**Death Burst.** When the pirate dies it bursts: each creature within 5 ft., DC 12 Con "
-        "or 5 (2d4) cold damage.",
+    ("tactics", "The pirates fight like the tide: slow, heavy, everywhere, mobbing whoever "
+                "stands closest and hurling harpoons to drag heroes apart. The helmsman swoops "
+                "from the wheel, wailing, and phases through cover. The deck is slippery all "
+                "fight (end of turn, Acrobatics DC 12 or prone), one wave surge hits everyone "
+                "mid-fight, and every pirate bursts cold seawater when it drops."),
+
+    ("fight_header", "ENEMIES, Fight 2: The Heart of the Hold",
+     "The hold of harvested magic ✦ Difficulty: Hard ✦ 1x Smuggler's Golem + 2x Arcane Corsair "
+     "+ 1x Ghost-Light Engineer ✦ all vulnerable to cold"),
+    ("enemy_cards", [
+        {
+            "name": "Smuggler's Golem",
+            "sub": "Large construct ✦ CR 2 (450 XP) ✦ the centerpiece",
+            "img": f"{A}/monsters/smugglers_golem.png", "img_w": 3.0,
+            "stats": [
+                "**AC** 14 (natural armor)  **HP** 85 (10d10+30)  **Speed** 30 ft",
+                "**STR** 19  **DEX** 9  **CON** 16  **INT** 3  **WIS** 10  **CHA** 5",
+                "**VULNERABLE cold** (frost bites chunks from its hide: telegraph it!)",
+                "**Resist** fire, lightning, acid  **Imm.** poison, psychic; nonmagical B/P/S",
+                "**Imm. (cond)** charmed, exhaustion, frightened, paralyzed, petrified, "
+                "poisoned, prone",
+                "**Senses** darkvision 60 ft, tremorsense 30 ft",
+            ],
+            "traits": [
+                ("Immutable Form", "Immune to effects that would alter its form."),
+                ("Magic Resistance", "Advantage on saves against spells."),
+            ],
+            "actions": [
+                ("Multiattack", "Two Slam attacks."),
+                ("Slam", "+7 to hit, reach 10 ft. *Hit:* 2d8+5 bludgeoning."),
+                ("Crush Crate (Recharge 5-6)", "It smashes a crate at the heroes: 6d6 damage, "
+                 "DC 15 Dex save for half; a creature that fails is knocked prone."),
+            ],
+            "reactions": [
+                ("Reinforced Hide", "+2 AC against one melee attack."),
+            ],
+        },
     ]),
-    ("stat", "Spectral Helmsman", [
-        "Medium undead, chaotic evil. **CR 1**. AC 12, HP 45 (6d8 + 18), fly 50 ft. (hover).",
-        "Incorporeal Movement. Immune to cold, necrotic, poison and to most conditions.",
-        "**Sea-Wraith Aura.** Start of its turn, creatures within 5 ft.: DC 12 Wis or frightened "
-        "until their next turn.",
-        "**Multiattack.** Two Spectral Scimitars: +4, 7 (1d6 + 4) force. **Harpoon Throw.** +4, "
-        "range 20/60 ft., 9 (1d10 + 4) piercing and pulled 10 ft.",
-        "**Phantom Helm Block (Reaction).** Imposes disadvantage on one weapon attack.",
+    ("enemy_cards", [
+        {
+            "name": "Arcane Corsair",
+            "sub": "Medium humanoid ✦ CR 1 (200 XP) ✦ x2 ✦ guild artificers turned pirate",
+            "img": f"{A}/monsters/arcane_corsair.png",
+            "stats": [
+                "**AC** 14 (studded leather)  **HP** 52 (7d8+21)  **Speed** 30 ft",
+                "**STR** 16  **DEX** 16  **CON** 16  **INT** 12  **WIS** 11  **CHA** 14",
+                "**VULNERABLE cold**  **Saves** Dex +5, Cha +4",
+                "**Resist** fire, lightning  **Imm. (cond)** frightened",
+            ],
+            "traits": [
+                ("Sneak Attack (1/turn)", "+2d6 damage with advantage or when an ally is "
+                 "adjacent to the target."),
+            ],
+            "actions": [
+                ("Multiattack", "Two Arcane Saber attacks."),
+                ("Arcane Saber", "+5 to hit, reach 5 ft. *Hit:* 1d8+3 slashing plus 1d6 force."),
+            ],
+            "reactions": [
+                ("Parry", "+2 AC against one melee attack."),
+                ("Riposte (Recharge 5-6)", "A reaction attack after an enemy misses it in "
+                 "melee."),
+            ],
+        },
+        {
+            "name": "Ghost-Light Engineer",
+            "sub": "Tiny undead ✦ CR 2 (450 XP) ✦ bound to the ship's engines",
+            "img": f"{A}/monsters/ghost_light_engineer.png",
+            "stats": [
+                "**AC** 15 (natural armor)  **HP** 27 (6d4+12)  **Speed** 0 ft, fly 50 ft "
+                "(hover)",
+                "**STR** 1  **DEX** 18  **CON** 14  **INT** 12  **WIS** 14  **CHA** 16",
+                "**VULNERABLE cold**",
+                "**Resist** acid, fire, lightning, thunder; nonmagical B/P/S",
+                "**Imm.** necrotic, poison, psychic",
+                "**Senses** darkvision 60 ft",
+            ],
+            "traits": [
+                ("Invisibility (Recharge 4-6)", "Turns invisible until it attacks or casts."),
+                ("Glowing Core", "A faint glow stays visible within 5 ft, even while "
+                 "invisible."),
+            ],
+            "actions": [
+                ("Shock Touch", "+6 to hit, reach 5 ft. *Hit:* 2d6+2 lightning."),
+                ("Arcane Pulse (Recharge 5-6)", "A 10-ft cone; DC 13 Dex save, 4d6 force "
+                 "(half on a success)."),
+            ],
+            "reactions": [
+                ("Engineered Reflexes", "Halves the damage from one attack or spell."),
+            ],
+        },
     ]),
-    # The hold guardians start a fresh page so no stat block splits.
-    ("pagebreak",),
-    ("body", "**The guardians of the hold** (Part Five). Every one of them is vulnerable to "
-             "cold, and the heroes' frost was the whole battle plan."),
-    ("stat", "Smuggler's Golem", [
-        "Large construct, unaligned. **CR 2**. AC 14 (natural armor), HP 85 (10d10 + 30), "
-        "Speed 30 ft. **Vulnerable to cold.**",
-        "Immutable Form; Magic Resistance; immune to poison, psychic, nonmagical B/P/S.",
-        "**Multiattack.** Two Slams: +7, reach 10 ft., 2d8 + 5 bludgeoning.",
-        "**Crush Crate (Recharge 5-6).** 6d6 damage, DC 15 Dex half; creatures hit are knocked "
-        "prone.",
-        "**Reinforced Hide (Reaction).** +2 AC against one melee attack.",
+    ("tactics", "They come all at once, and all of them flinch from the cold: telegraph it and "
+                "let the kids find the plan. The golem crushes crates at the heroes; the "
+                "corsairs dart between cover, sneak-attacking where least expected; the "
+                "engineer blinks invisible between Shock Touches, its glowing core still "
+                "faintly visible within 5 feet. Shattering the central orb (Str or Arcana DC "
+                "15) stuns every undead in the hold until the end of its next turn, and when "
+                "the golem falls, every arcane fissure goes dark."),
+
+    ("fight_header", "BOSS: Davy Jones, Captain of the Flying Dutchman",
+     "The captain's chambers ✦ Difficulty: Boss duel ✦ Davy Jones alone, with the room "
+     "fighting for him"),
+    ("enemy_cards", [
+        {
+            "name": "Davy Jones, Captain of the Flying Dutchman",
+            "sub": "Medium undead (formerly humanoid) ✦ CR 6 (2,300 XP) ✦ solo boss",
+            "img": f"{A}/npcs/davy_jones.png", "img_w": 3.2,
+            "stats": [
+                "**AC** 17 (Barnacle Armor)  **HP** 85 (10d10+30)  **Speed** 30 ft, swim 30 ft",
+                "**STR** 18  **DEX** 12  **CON** 16  **INT** 14  **WIS** 12  **CHA** 16",
+                "**Saves** Con +6, Wis +4, Cha +6  **Skills** Intimidation +6, Athletics +7, "
+                "Perception +4",
+                "**Resist** nonmagical B/P/S  **Imm. (cond)** charmed, frightened, poisoned, "
+                "exhaustion",
+                "**Senses** darkvision 60 ft ✦ Amphibious",
+            ],
+            "traits": [
+                ("Barnacle Armor", "Nonmagical melee attacks against him deal half damage."),
+                ("Legendary Resistance (3/Day)", "If Davy fails a save, he can choose to "
+                 "succeed instead."),
+            ],
+            "actions": [
+                ("Multiattack", "Two Tentacle Slams and one Hook Strike."),
+                ("Tentacle Slam", "+7 to hit, reach 10 ft. *Hit:* 10 (2d6+4) bludgeoning, and "
+                 "the target is grappled (escape DC 15)."),
+                ("Hook Strike", "+7 to hit, reach 5 ft. *Hit:* 8 (1d6+4) piercing plus 7 (2d6) "
+                 "necrotic."),
+                ("Soul Siphon (Recharge 5-6)", "One creature makes a DC 14 Con save or takes "
+                 "18 (4d8) psychic; Davy heals half the damage dealt. A hero may use their "
+                 "Reaction to intercept damage aimed at the Essence Sphere."),
+            ],
+            "legendary": [
+                ("", "Davy takes 2 legendary actions each round, one at a time, at the end of "
+                 "another creature's turn."),
+                ("Tentacle Strike", "Davy makes one Tentacle Slam."),
+                ("Raise Tide (Costs 2 Actions)", "A 20-ft line; DC 14 Dex save or 13 (3d8) "
+                 "bludgeoning."),
+            ],
+        },
     ]),
-    ("stat", "Arcane Corsair", [
-        "Medium humanoid, chaotic neutral. **CR 1**. AC 14 (studded leather), HP 52 (7d8 + 21), "
-        "Speed 30 ft. **Vulnerable to cold.** Guild artificers turned pirate.",
-        "Saves Dex +5, Cha +4; resistant fire, lightning; immune to frightened.",
-        "**Sneak Attack (1/turn).** +2d6 with advantage or an adjacent ally. **Parry.** +2 AC "
-        "against one melee attack.",
-        "**Multiattack.** Two Arcane Sabers: +5, 1d8 + 3 slashing plus 1d6 force.",
-        "**Riposte (Recharge 5-6).** Reaction attack after a missed melee attack.",
-    ]),
-    ("stat", "Ghost-Light Engineer", [
-        "Tiny undead, neutral evil. **CR 2**. AC 15 (natural armor), HP 27 (6d4 + 12), fly 50 "
-        "ft. (hover). **Vulnerable to cold.**",
-        "Immune to necrotic, poison, psychic; resistant to nonmagical B/P/S, acid, fire, "
-        "lightning, thunder.",
-        "**Invisibility (Recharge 4-6).** Invisible until it attacks or casts; its Glowing Core "
-        "still shines faintly within 5 ft.",
-        "**Shock Touch.** +6, 2d6 + 2 lightning. **Arcane Pulse (Recharge 5-6).** 10-ft. cone, "
-        "4d6 force, DC 13 Dex half.",
-        "**Engineered Reflexes (Reaction).** Halves the damage from one attack or spell.",
-    ]),
+    ("tactics", "Alone on his dais, and the room fights for him: sea-fog creeps in at the "
+                "start of each round (start your turn in it, DC 13 Wis or disadvantage on "
+                "attack rolls), and the barnacle-rimmed planks bite within 5 feet of the dais "
+                "(end of turn, Acrobatics DC 12 or 1d6 slashing). He opens with tentacles at "
+                "reach and saves Soul Siphon for whoever guards the Sphere; each time, let a "
+                "hero throw themselves in the way. At half strength he only laughs louder. He "
+                "is destroyed for good this time: no mist, no return."),
 ]
 
 if __name__ == "__main__":

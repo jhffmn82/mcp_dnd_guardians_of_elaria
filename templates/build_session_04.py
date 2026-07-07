@@ -782,7 +782,22 @@ BLOCKS = [
     ("gold", "And for **Stabby**, the **Candyfang Katana**: a katana of impossible candy-cane "
              "steel, red and white and wickedly sharp, trailing a faint scent of sugar. Stabby "
              "licks it immediately. It is delicious."),
-    ("dm", "Full statistics for all three gifts live in the treasures compendium."),
+    ("reward_card", "Rewards: The Gifts of Faelan",
+     "Havenmoor at dawn ✦ one gift for each hero ✦ full lore in the treasures compendium", [
+        ("Frostbite Shard Dagger (Lilly)",
+         "Rare, attunement by an Artificer. A blade of crystalline ice that never melts: "
+         "1d4 piercing plus 1d4 cold, +1 to attack. *Spell focus and Arcane Firearm:* +1d8 "
+         "frost to one spell damage roll cast through it, and +2 frost on spell damage."),
+        ("Amulet of Guiding Light (Ursa)",
+         "Rare, attunement by a Circle of Stars druid. *Guiding Light:* sheds light, and "
+         "allies gain +1 to attacks and saves while Ursa is in Starry Form. *Starry Glow:* "
+         "Reaction, 1/long rest: 2d8 radiant, DC 15 Con or blinded. *Celestial Resilience:* "
+         "reroll natural 1s, 2/long rest."),
+        ("Candyfang Katana (Stabby)",
+         "Rare, attunement by a Monk. Impossible candy-cane steel: 1d8/1d10 slashing, +1 to "
+         "attack and damage. *Sugar Rush:* Bonus Action lick, 1/long rest: 2d8 + Con "
+         "temporary hit points. *Frostbite Infusion:* +2 frost on hit."),
+    ]),
     ("gold", "Down at the harbor, the shipwright **Master Doran Bramblebeard**, lighthouse soot "
              "still on his sleeves, nods toward a trim vessel rocking at the dock. “The "
              "**Stormwind** is ready when you are. Gearhaven awaits.”"),
@@ -804,49 +819,264 @@ BLOCKS = [
              "souls.*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Appendix: Creatures of Session Four", {"hardbreak": True}),
-    ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives "
-             "in the compendium."),
-    ("stat", "Krampusshade", [
-        "Large fiend, chaotic evil. **CR 5**. AC 15 (natural armor), HP 102 (12d10 + 36), Speed 40 ft.",
-        "STR 18, DEX 14, CON 16, INT 12, WIS 14, CHA 17. Saves Wis +5, Cha +6.",
-        "Resistances cold, necrotic, nonmagical weapons. Immunities poison; charmed, frightened, poisoned. Darkvision 120 ft.",
-        "**Multiattack.** One Claw and one Chains of Despair.",
-        "**Claw.** +7, reach 10 ft., 2d6 + 4 slashing plus 1d10 cold.",
-        "**Chains of Despair.** +7, reach 15 ft., 2d6 + 4 bludgeoning; DC 14 Strength save or restrained one turn.",
-        "**Gift of Despair (Recharge 5-6).** A cursed gift box, 30 ft.; DC 14 Wisdom save or frightened 1 minute.",
-        "**Icy Retaliation (Reaction).** When hit in melee: DC 14 Constitution save or 2d6 cold, speed -10 ft.",
-        "**Shadow Step (Legendary, 1/round).** Teleports up to 20 ft. within dim light or darkness.",
-        "*The eight Winter Bells are his undoing: each completed phrase of the carol deals 2d10 radiant damage, and the finished carol banishes him outright. Reduced to 0 hit points, he is banished all the same, never slain.*",
-    ]),
-    ("stat", "Krampusshade's Imp", [
-        "Small fiend (shadow), chaotic evil. **CR 2**. AC 14 (natural armor), HP 22 (5d6 + 5), Speed 30 ft., fly 40 ft.",
-        "STR 10, DEX 16, CON 12, INT 13, WIS 11, CHA 14. Skills Stealth +6, Deception +4.",
-        "Resistances cold, fire, necrotic, nonmagical weapons. Immunity poison. Magic Resistance. Darkvision 120 ft.",
-        "**Shadow Stealth.** Hides as a bonus action in dim light or darkness. **Invisibility (3/short rest).**",
-        "**Shadow Claws.** +5, reach 5 ft., 2d4 + 3 slashing plus 1d6 cold.",
-        "**Shadowy Grasp (Recharge 5-6).** DC 13 Dexterity save or restrained one turn; 1d10 cold while held.",
-    ]),
-    ("stat", "Frozen Wolf", [
-        "Medium beast, neutral evil. **CR 2**. AC 15 (natural armor), HP 45 (6d10 + 12), Speed 40 ft.",
-        "STR 16, DEX 15, CON 14, INT 3, WIS 12, CHA 6. Immune cold. Darkvision 60 ft.",
-        "**Pack Tactics.** Advantage when an ally is within 5 ft. **Icy Terrain.** Difficult ground within 10 ft.",
-        "**Bite.** +5, 2d6 + 3 piercing plus 1d8 cold; DC 13 Constitution save or speed -10 ft.",
-        "**Frost Breath (Recharge 5-6).** 15 ft. cone, DC 13 Dexterity save; 4d8 cold, half on success, slowed on a failure.",
-    ]),
-    ("stat", "Frostbite Pixie", [
-        "Tiny fey, chaotic neutral. **CR 1/4**. AC 15, HP 14 (4d4 + 4), Speed 20 ft., fly 60 ft.",
-        "STR 3, DEX 20, CON 12, INT 14, WIS 11, CHA 16. Stealth +7. Immune cold.",
-        "**Ray of Frost.** +5, range 60 ft., 2d8 cold; target's speed reduced 10 ft. one turn.",
-        "**Invisibility.** Turns invisible until it attacks or casts a spell.",
-    ]),
-    ("stat", "Icy Specter", [
-        "Medium undead, neutral evil. **CR 2**. AC 12, HP 45 (10d8), Speed 0 ft., fly 50 ft. (hover).",
-        "STR 1, DEX 14, CON 11, INT 10, WIS 10, CHA 16.",
-        "Resistances cold, necrotic, nonmagical weapons. Immunity poison; charmed, exhaustion, grappled, paralyzed, poisoned, prone, restrained.",
-        "**Chilling Touch.** +5, reach 5 ft., 3d6 cold.",
-        "**Wail of Despair (Recharge 5-6).** 30 ft., DC 14 Wisdom save or frightened 1 minute (repeat save each turn).",
-    ]),
+    # APPENDIX 1: the DM run sheet (S7 gold-standard format).
+    ("appendix_title", "APPENDIX", "DM Run Sheet: The Day at a Glance",
+     "Every DC, dial, and spotlight, in play order. Keep this page at your elbow."),
+
+    ("h1", "The Shape of the Session"),
+    ("body", "Six beats, four fights, one long day into the longest night. B1 the morning: the "
+             "crying mother, the children's rhyme, Greta's warning and the singed map (roleplay). "
+             "B2 the bell hunt: four sites, eight bells, all skill beats, no fights (DCs below). "
+             "B3 Faelan's cottage: the Krampusshade lore, the three barriers, the frosted "
+             "cookies. B4 the three barriers, each one song then one fight: Frostpine Glade "
+             "(FIGHT 1), Crystalbrook Stream (FIGHT 2), Whispering Hollow (FIGHT 3); roll the "
+             "d20 travel table on every trek out or back. B5 the longest night: the BOSS in the "
+             "market square, eight bells against the dark. B6 dawn: children freed, the Gifts "
+             "of Faelan, the Stormwind at the dock."),
+
+    ("h1", "The Bell Hunt at a Glance"),
+    ("body", "**SUGARPLUM HEARTH (C + D).** C is free from Greta. D: Perception DC 15 in the "
+             "wreath above the bar. Digging: Insight 14 (Greta and the hearth bell), "
+             "Investigation 14 (the old plaque), Arcana 16 (abjuration on the C Bell), History "
+             "15 (Elda's full Lay), Survival 13 (Torren's coast advice)."),
+    ("body", "**FROSTWIND MARKET (E + F).** E is free on the festival pine; it only wanted to "
+             "be noticed. F: Persuasion DC 15 or Sleight of Hand 14 at Eldric's stall; on a "
+             "fail, reassure him before he says another word. Digging: Insight 13 (his fear is "
+             "real), Investigation 15 (vanishing footprints, frosted gingerbread), Arcana 16 "
+             "(thinning veil), History 14 (solstice rituals; 15+ adds Ingrid's Krampus tales)."),
+    ("body", "**HOLLOW HEARTH ORPHANAGE (G + A).** G: Investigation DC 15 finds the attic toy "
+             "chest. A is in Milo's fist: Persuasion 14 or Insight 13, ADVANTAGE for genuine "
+             "kindness; on a fail he cries, and Sister Merida asks the party to try again "
+             "gently. Calmed, he sings the verse the grown-ups have not heard. Arcana 16: "
+             "Shadowfell energy in the too-long shadows."),
+    ("body", "**WYRMGALE LIGHTHOUSE (B + High C).** B: Athletics DC 15 up the tower; a fail is "
+             "a slip, 1d6 bludgeoning, bell still in reach. High C: Arcana DC 14 hears the hum "
+             "inside the old ship's bell in the storeroom. Digging: Insight 15 (Doran's "
+             "riddles), History 15 (the mist-walking Krampusshade), Arcana 16 (the gloom on the "
+             "beacon answers to the Shadowfell). All eight found: one full octave, one "
+             "unfinished song, then Faelan."),
+
+    ("h1", "Fights at a Glance"),
+    ("body", "**FIGHT 1: Frostpine Glade (Moderate; the seal breaks, the mist bites back).** "
+             "3× Frozen Wolf (AC 15, HP 45; Pack Tactics; icy ground within 10 ft of each "
+             "wolf; Bite +5, 2d6+3 plus 1d8 cold, DC 13 Con or speed -10; Frost Breath rech "
+             "5-6: 15-ft cone, DC 13 Dex, 4d8 cold, slowed on a fail). The one rule: don't "
+             "clump for the breath, don't scatter into Pack Tactics. The out: the last wolf "
+             "comes apart into glittering mist, no chase."),
+    ("body", "**FIGHT 2: Crystalbrook Stream (Easy and silly; play it for laughs).** 4× "
+             "Frostbite Pixie (AC 15, HP 14; Ray of Frost +5, 60 ft, 2d8 cold plus speed -10; "
+             "Invisibility between attacks; slick ice underfoot, DC 13 Dex to move fast). The "
+             "one rule: they blink invisible mid-cackle, so reward readied actions and clever "
+             "flushing. The out: the party should win this one laughing; it is the silliest, "
+             "slipperiest fight of the winter."),
+    ("body", "**FIGHT 3: Whispering Hollow (Moderate; a mood fight, not a slugfest).** 1× Icy "
+             "Specter (AC 12, HP 45, fly 50 hover; resists cold, necrotic, nonmagical B/P/S; "
+             "Chilling Touch +5, 3d6 cold; Wail of Despair rech 5-6: 30 ft, DC 14 Wis or "
+             "frightened 1 minute, repeat save each turn). The one rule: the Wail scatters the "
+             "brave; let Ursa's starlight land the ending. Drops the Shadow-Touched Rune "
+             "Fragment (advantage vs fear, 1 hour) plus a Gift Box roll."),
+    ("body", "**BOSS: The Longest Night (epic spectacle, never a meat grinder).** Krampusshade "
+             "(AC 15, HP 102; Claw +7 reach 10 ft, 2d6+4 plus 1d10 cold; Chains +7 reach 15 "
+             "ft, DC 14 Str or restrained; Gift of Despair rech 5-6: DC 14 Wis or frightened; "
+             "Icy Retaliation reaction; Shadow Step 1/round in dim light) + 4× shadow imp "
+             "(AC 14, HP 22), 2 more at the start of round 2 unless a carol phrase has already "
+             "sounded. THE DIAL is the carol: ringing a bell is a Bonus Action; a round in "
+             "which all eight sound completes one phrase, 2d10 radiant and no Shadow Step; the "
+             "THIRD phrase banishes him outright, and 0 HP banishes him just the same. "
+             "Difficult terrain within 10 ft of him; imps kept off the villagers at the Great "
+             "Pine = Heroic Inspiration."),
+
+    ("h1", "The Resource Picture"),
+    ("body", "One long day, no long rest: the bell hunt is free, but the three barrier fights "
+             "and the boss all come out of the same pool, and every trek out of town risks a "
+             "d20 travel roll on top. The safety net is Faelan's three Frosted Cookies (2d8 "
+             "HP, a short rest's benefit, and one spell slot each): let the party spend them "
+             "between barriers, and remind them before the longest night if they forget. Gift "
+             "Boxes drop from the Krampusshade's defeated creatures (d20 table mid-session). "
+             "In the boss fight a rung bell is a Bonus Action, so turns stay full: attack, "
+             "ring, move."),
+
+    ("h1", "Spotlights & Seeds: every kid shines"),
+    ("body", "**Lilly:** the G Bell in the attic toy chest → the High C Bell's magic hum in "
+             "the storeroom, her Arcana find → her turret keeps time like a drummer through "
+             "the carol → the Frostbite Shard Dagger (Door: Gearhaven's artificers ahead)."),
+    ("body", "**Stabby:** silly faces that crack Milo open → the B Bell scramble up the "
+             "lighthouse ladder before anyone can say be careful → ringing a bell one-handed "
+             "while parrying chains → the Candyfang Katana, licked immediately, delicious."),
+    ("body", "**Ursa:** the E Bell warms the air at his touch → \"bells are like stars: little "
+             "lights the dark cannot put out,\" the line that wins Milo over → his starlight "
+             "burns through the Icy Specter → the Amulet of Guiding Light, a distant star "
+             "keeping watch."),
+
+    ("h1", "Foreshadow Tracker: say it, then say it again"),
+    ("body", "The tells, in order. The rhyme ×3: sung at dawn, hummed by Milo, and his unheard "
+             "verse names the fix (ring the light, banish the shade) • frost where frost cannot "
+             "be: Lora's gingerbread, footprints that vanish mid-stride • the thinning veil ×3 "
+             "(Arcana): the square's edges, the orphanage shadows, the gloom on the beacon • "
+             "the sea keeps its secrets: Torren's swallowed ships, Doran's \"the lost come "
+             "back, twisted and hollow,\" Session 5's ghost ship knocking • \"something on the "
+             "stocks\": the Stormwind, and the road to Gearhaven over water."),
+
+    # ------------------------------------------------------------------
+    # APPENDIX 2: the bestiary (S7 gold-standard format). Numbers transcribed
+    # faithfully from the audited compact boxes; only the format is new.
+    ("appendix_title", "APPENDIX", "Bestiary: Enemy Stat Blocks",
+     "All four encounters of Session 4, in the order the party meets them."),
+
+    ("fight_header", "ENEMIES, Fight 1: The First Barrier",
+     "Frostpine Glade ✦ Difficulty: Moderate ✦ 3× Frozen Wolf"),
+    ("enemy_cards", [{
+        "name": "Frozen Wolf",
+        "sub": "Medium beast, neutral evil ✦ CR 2 ✦ pack of 3",
+        "img": f"{A}/monsters/frozen_wolf.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 15 (natural armor)  **HP** 45 (6d10+12)  **Speed** 40 ft",
+            "**STR** 16  **DEX** 15  **CON** 14  **INT** 3  **WIS** 12  **CHA** 6",
+            "**Immune** cold",
+            "**Senses** darkvision 60 ft",
+            "**Challenge** 2 (450 XP)",
+        ],
+        "traits": [
+            ("Pack Tactics", "The wolf has advantage on attack rolls against a creature if "
+             "at least one of its allies is within 5 ft of the target."),
+            ("Icy Terrain", "The ground within 10 ft of the wolf is difficult terrain, slick "
+             "with spreading frost."),
+        ],
+        "actions": [
+            ("Bite", "+5 to hit, reach 5 ft. Hit: 10 (2d6+3) piercing plus 4 (1d8) cold; "
+             "DC 13 Con save or the target's speed is reduced by 10 ft."),
+            ("Frost Breath (Recharge 5-6)", "15-ft cone, DC 13 Dex save; 18 (4d8) cold, half "
+             "on a success, and slowed on a failure."),
+        ],
+    }]),
+    ("tactics", "The wolves rise the moment the chains shatter and hunt as one: Pack Tactics "
+                "rewards every flank, the icy ground herds heroes where the pack wants them, "
+                "and Frost Breath punishes a clumped party. They are guardians grown from the "
+                "Krampusshade's own cold; the last one falls apart into glittering mist, and "
+                "the glade breathes again."),
+
+    ("fight_header", "ENEMIES, Fight 2: The Second Barrier",
+     "Crystalbrook Stream ✦ Difficulty: Easy and silly ✦ 4× Frostbite Pixie"),
+    ("enemy_cards", [{
+        "name": "Frostbite Pixie",
+        "sub": "Tiny fey, chaotic neutral ✦ CR 1/4 ✦ giggling flight of 4",
+        "img": f"{A}/monsters/frostbite_pixie.png", "img_w": 3.4,
+        "stats": [
+            "**AC** 15  **HP** 14 (4d4+4)  **Speed** 20 ft, fly 60 ft",
+            "**STR** 3  **DEX** 20  **CON** 12  **INT** 14  **WIS** 11  **CHA** 16",
+            "**Skills** Stealth +7",
+            "**Immune** cold",
+            "**Challenge** 1/4 (50 XP)",
+        ],
+        "actions": [
+            ("Ray of Frost", "+5 to hit, range 60 ft. Hit: 9 (2d8) cold; the target's speed "
+             "is reduced by 10 ft for one turn."),
+            ("Invisibility", "The pixie turns invisible until it attacks or casts a spell."),
+        ],
+    }]),
+    ("tactics", "Pure mischief. The pixies fling Ray of Frost from the treetops, turn "
+                "invisible mid-cackle, and count on the slick ice underfoot (DC 13 Dex to "
+                "move fast) to do half their work. Reward readied actions and clever "
+                "flushing; the party should win this one laughing."),
+
+    ("fight_header", "ENEMIES, Fight 3: The Third Barrier",
+     "Whispering Hollow ✦ Difficulty: Moderate ✦ 1× Icy Specter"),
+    ("enemy_cards", [{
+        "name": "Icy Specter",
+        "sub": "Medium undead, neutral evil ✦ CR 2 ✦ steps from the broken seal, alone",
+        "img": f"{A}/monsters/icy_specter.png", "img_w": 3.3,
+        "stats": [
+            "**AC** 12  **HP** 45 (10d8)  **Speed** 0 ft, fly 50 ft (hover)",
+            "**STR** 1  **DEX** 14  **CON** 11  **INT** 10  **WIS** 10  **CHA** 16",
+            "**Resist** cold, necrotic; nonmagical B/P/S",
+            "**Imm.** poison ✦ (cond) charmed, exhaustion, grappled, paralyzed, poisoned, "
+            "prone, restrained",
+            "**Challenge** 2 (450 XP)",
+        ],
+        "actions": [
+            ("Chilling Touch", "+5 to hit, reach 5 ft. Hit: 10 (3d6) cold."),
+            ("Wail of Despair (Recharge 5-6)", "Each creature within 30 ft makes a DC 14 Wis "
+             "save or is frightened for 1 minute (repeat the save at the end of each turn)."),
+        ],
+    }]),
+    ("tactics", "A mood fight, not a slugfest. The specter opens with Wail of Despair to "
+                "scatter the party, then drifts through the frightened gaps with Chilling "
+                "Touch, whispering all the while. Let Ursa's starlight land the ending. It "
+                "guards the Shadow-Touched Rune Fragment and a Gift Box roll."),
+
+    ("fight_header", "BOSS: The Longest Night",
+     "Havenmoor market square ✦ Difficulty: Boss ✦ Krampusshade + 4× shadow imp (2 more, round 2)"),
+    ("enemy_cards", [{
+        "name": "Krampusshade",
+        "sub": "Large fiend, chaotic evil ✦ CR 5 ✦ never slain, only banished",
+        "img": f"{A}/monsters/krampusshade.png", "img_w": 3.2,
+        "stats": [
+            "**AC** 15 (natural armor)  **HP** 102 (12d10+36)  **Speed** 40 ft",
+            "**STR** 18  **DEX** 14  **CON** 16  **INT** 12  **WIS** 14  **CHA** 17",
+            "**Saves** Wis +5, Cha +6",
+            "**Resist** cold, necrotic; nonmagical B/P/S",
+            "**Imm.** poison ✦ (cond) charmed, frightened, poisoned",
+            "**Senses** darkvision 120 ft",
+            "**Challenge** 5 (1,800 XP)",
+        ],
+        "traits": [
+            ("The Bells Are His Undoing", "Each completed phrase of the carol (a round in "
+             "which all eight Winter Bells sound) sears him for 2d10 radiant damage and locks "
+             "Shadow Step until the start of his next turn. The finished carol banishes him "
+             "outright, whatever hit points he has left; reduced to 0 HP, he is banished all "
+             "the same, never slain, only unmade into wisps of shadow."),
+        ],
+        "actions": [
+            ("Multiattack", "One Claw and one Chains of Despair."),
+            ("Claw", "+7 to hit, reach 10 ft. Hit: 11 (2d6+4) slashing plus 5 (1d10) cold."),
+            ("Chains of Despair", "+7 to hit, reach 15 ft. Hit: 11 (2d6+4) bludgeoning; "
+             "DC 14 Str save or restrained for one turn."),
+            ("Gift of Despair (Recharge 5-6)", "A cursed gift box appears within 30 ft; each "
+             "nearby creature makes a DC 14 Wis save or is frightened for 1 minute."),
+        ],
+        "reactions": [
+            ("Icy Retaliation", "When hit by a melee attack, the attacker makes a DC 14 Con "
+             "save or takes 7 (2d6) cold and its speed drops by 10 ft."),
+        ],
+        "legendary": [
+            ("Shadow Step (1/round)", "Teleports up to 20 ft to a space within dim light or "
+             "darkness."),
+        ],
+    }]),
+    ("enemy_cards", [{
+        "name": "Krampusshade's Imp",
+        "sub": "Small fiend (shadow), chaotic evil ✦ CR 2 ✦ 4 rise with him, 2 more in round 2",
+        "img": f"{A}/monsters/krampus_imp.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 14 (natural armor)  **HP** 22 (5d6+5)  **Speed** 30 ft, fly 40 ft",
+            "**STR** 10  **DEX** 16  **CON** 12  **INT** 13  **WIS** 11  **CHA** 14",
+            "**Skills** Stealth +6, Deception +4",
+            "**Resist** cold, fire, necrotic; nonmagical B/P/S",
+            "**Imm.** poison",
+            "**Senses** darkvision 120 ft",
+            "**Challenge** 2 (450 XP)",
+        ],
+        "traits": [
+            ("Magic Resistance", "The imp has advantage on saving throws against spells and "
+             "other magical effects."),
+            ("Shadow Stealth", "Hides as a bonus action while in dim light or darkness."),
+            ("Invisibility (3/short rest)", "Turns invisible until it attacks."),
+        ],
+        "actions": [
+            ("Shadow Claws", "+5 to hit, reach 5 ft. Hit: 8 (2d4+3) slashing plus 3 (1d6) "
+             "cold."),
+            ("Shadowy Grasp (Recharge 5-6)", "One creature within 5 ft makes a DC 13 Dex "
+             "save or is restrained for one turn, taking 5 (1d10) cold while held."),
+        ],
+    }]),
+    ("tactics", "He opens big: freezing power across the square, chains lashing like "
+                "serpents, imps boiling out of the fog. The frost-cracked ground within 10 ft "
+                "of him is difficult terrain, and the villagers huddle at the Great Pine "
+                "behind the heroes; keeping the imps away from them is worth Heroic "
+                "Inspiration. The bells are the fight: each completed phrase sears him and "
+                "locks his Shadow Step, the third banishes him outright, and dropping him to "
+                "0 HP banishes him just the same. Spectacle, never a meat grinder: the sack "
+                "of children bursts open the moment he comes apart."),
 ]
 
 if __name__ == "__main__":

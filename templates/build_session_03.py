@@ -493,41 +493,275 @@ BLOCKS = [
              "it back into the dark.*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Appendix: Creatures of Session Three", {"pagebreak": True}),
-    ("stat", "Shadowflame", [
-        "Medium undead, chaotic evil. **CR 4**. AC 14 (natural armor), HP 58 (9d8 + 18), Speed 0 ft., fly 40 ft. (hover).",
-        "STR 8, DEX 18, CON 14, INT 12, WIS 15, CHA 18. Skills Stealth +8, Intimidation +6.",
-        "Resistances acid, fire, lightning, necrotic, nonmagical piercing and bludgeoning. Immunities poison, psychic; charmed, frightened, grappled, paralyzed, poisoned, prone, restrained. Darkvision 60 ft.",
-        "**Illusions of Fear.** Creates three identical illusions of itself (AC 14); DC 18 Arcana or Perception to spot a fake, or the attack misses.",
-        "**Shadow Claw.** +6, reach 5 ft., 2d8 + 4 necrotic; DC 14 Wisdom save or frightened one turn.",
-        "**Terror Wave (Recharge 5-6).** 15 ft. cone, DC 14 Wisdom save; 3d10 necrotic and frightened 1 minute (repeat save each turn).",
-        "**Shadowmeld (Reaction).** When hit, teleports up to 20 ft. and becomes lightly obscured.",
+    # APPENDIX I: the DM run sheet (S7 gold-standard format).
+    ("appendix_title", "APPENDIX", "DM Run Sheet: The Session at a Glance",
+     "Every DC, dial, and spotlight, in play order. Keep this page at your elbow."),
+
+    ("h1", "The Shape of the Session"),
+    ("body", "**Five parts, three fights, two camps.** P1 Ravenstone morning: the Sphere verdict "
+             "(Pikachu needs a Gearhaven power core) and the Guardian of Balance reveal. P2 the "
+             "companion choice (Floraburst joins), the Lickgloom farewell, the route briefing. "
+             "P3 the wild road, three days: FIGHT 1 Brambleshadow Thicket (Shadowflame, then the "
+             "Dark Mote), the Whisperwind breather, camp; FIGHT 2 the Mistwood Path (talking "
+             "Displacer Beasts, then the planar runes), FIGHT 3 the Shroomyte Grove (Fungal "
+             "Mote), camp. P4 Stormwatch Cliffs: the ledge skill challenge, the lightning "
+             "puzzle, the dark figure and the Dark Fragment. P5 Havenmoor at dusk: the "
+             "Sugarplum Hearth, sea rumors, warm beds, LEVEL 4."),
+
+    ("h1", "Fights at a Glance"),
+    ("body", "**FIGHT 1: The Shadowflame** (Hard; it feeds on fear, not flesh, so a drop is "
+             "survivable). 1x Shadowflame (AC 14, HP 58, fly 40 hover; opens by splitting into "
+             "THREE illusions, DC 18 Arcana or Perception to pick the real flame, only the real "
+             "one attacks; Terror Wave rech 5-6: 15-ft cone, DC 14 Wis, 3d10 necrotic + "
+             "frightened; Shadowmeld reaction: teleports 20 ft when hit). Mist lightly obscures "
+             "the 30-ft clearing: disadvantage on ranged attacks and sight Perception. Scout it: "
+             "Perception DC 14 (the birds stop) or Arcana DC 15 (necrotic shadows); every check "
+             "failed = it strikes unseen, disadvantage on initiative. The out: it never pursues "
+             "past the brambles; a party that runs can circle back with a plan."),
+    ("body", "**FIGHT 2: The Mistwood Beasts** (Hard; they TALK, and that wrongness is the real "
+             "clue). 2x Displacer Beast (AC 13, HP 85; Displacement: attacks against it have "
+             "disadvantage until it takes damage, Faerie Fire strips the trick; 2x Tentacle +6, "
+             "reach 10 ft, 1d6+4 plus 1d8 force). Fog, fallen logs, difficult terrain; "
+             "hit-and-run flanking. Scout it: Perception DC 15 (shapes pacing the party), "
+             "Survival DC 14 (tracks that stop mid-stride), or Arcana DC 16 (planar warp); all "
+             "three fail = ambush from the fog + disadvantage on initiative. After: Arcana DC 15 "
+             "reads the runes beneath the bodies as tears in reality. The out: below half HP a "
+             "beast slinks into the fog for good, and neither will chase the party onto open "
+             "ground."),
+    ("body", "**FIGHT 3: The Shroomyte Grove** (Medium; guardians, not hunters). 4x Shroomyte "
+             "(AC 13, HP 27; Spore Blast +4, range 30 ft, 2d6+2 poison, DC 13 Con or poisoned; "
+             "Mycelium Tendrils restrain, DC 13 Str; Fungal Retribution reaction: melee "
+             "attackers take 2d4 poison, DC 13 Con negates). Mushroom clusters give half "
+             "cover; damp root patches are difficult terrain. Fire is the discovery. Scout it: "
+             "Perception DC 14 (the ground pulses) or Arcana DC 15 (Feywild energy); both fail "
+             "= they erupt with surprise + disadvantage on initiative. The out: they never "
+             "leave the glowing clearing; circling the grove costs one hour."),
+
+    ("h1", "The Resource Picture"),
+    ("body", "A three-day road with two camps: long rests land after the Thicket and after the "
+             "Hills, so every fight starts near full. The real spend is day two, the Mistwood "
+             "and the Grove back to back on one camp's resources. Floraburst brings the "
+             "party's first pocket healing: 1d4+1 Floraberries 3/day, a Bonus Action to eat "
+             "(2024 Goodberry rule), 3 HP each. The cliffs are the other tax, run as three "
+             "obstacles in order: the ledge (Acrobatics DC 14; a slip is Athletics DC 12 or "
+             "1d6), the crumbling section (Perception DC 15, or Dex save DC 13 for 2d6), and "
+             "the runes (Arcana DC 15, pays off at the monolith). The puzzle: Investigation "
+             "or Insight DC 15 reads the riddle's order (Air, Water, Earth, Fire), Arcana DC "
+             "16 nails the lightning timing, and every wrong strike costs 2d6 lightning; a "
+             "rope thrown back across the ledge gives a companion advantage. The party "
+             "sleeps in Havenmoor at **level 4**."),
+
+    ("h1", "Spotlights & Seeds"),
+    ("body", "**Lilly:** the Sphere verdict lands on her, and turns grief into a destination: "
+             "the Artificer's Guild can bring Pikachu back (Door: Gearhaven) → calls the real "
+             "Shadowflame by the light it does not cast → reads the mirror-crack runes on the "
+             "Mistwood floor → her fire finds the Shroomytes' weakness → “we keep "
+             "collecting the pieces.”"),
+    ("body", "**Stabby:** loudly unafraid (frightened exactly one round, later denied) → "
+             "deflects a tentacle mid-swing to turn the Mistwood fight → refuses to be caught "
+             "by a single tendril in the grove → “they are going to get a taste of my "
+             "blade!” (Seed: the dark figure just made Stabby's list.)"),
+    ("body", "**Ursa:** feels the sick forest before every ambush, his senses lead the road → "
+             "Faerie Fire strips the beasts' Displacement → reads every mote (“pieces of "
+             "something much bigger”) → Aelwyn's charge: your connection to the stars, "
+             "and your father's legacy, will guide you (Door: the father's trail)."),
+
+    ("h1", "Foreshadow Tracker: say it, then say it again"),
+    ("body", "The tells, in order. Aelwyn's wall map: points of unstable energy pulsing like "
+             "fraying knots, say it before the road proves it • the Dark Mote “does not "
+             "feel like the others” → the Dark Fragment at the cliffs → someone stood in "
+             "that light and called the boundaries MINE • displacer beasts DO NOT TALK: the "
+             "fog is a doorway someone left open • the cliff runes reward Arcana on the way "
+             "up (advantage at the monolith) • the veil hums thin over Whisperwind Meadow: "
+             "even the gentle stretch is a doorway • Aelwyn: the Guild's archives may hold "
+             "the secret of stitching a world back together (the Gearhaven arc) • Elda "
+             "Merrywhistle: restless seas, vanishing ships, lights on the waves (the voyage "
+             "ahead) • the Great Pine glowing against a gathering storm: Havenmoor will need "
+             "its Guardians soon."),
+
+    # ------------------------------------------------------------------
+    # APPENDIX II: the bestiary (S7-style enemy cards, in play order).
+    ("appendix_title", "APPENDIX", "Bestiary: Enemy Stat Blocks",
+     "All three encounters of Session 3, in the order the party meets them, "
+     "plus the professor's three companions."),
+
+    ("fight_header", "ENEMIES, Fight 1: The Shadowflame",
+     "Brambleshadow Thicket • Difficulty: Hard • 1× Shadowflame"),
+    ("enemy_cards", [
+        {"name": "Shadowflame",
+         "sub": "Medium undead, chaotic evil • CR 4 • fights alone",
+         "img": f"{A}/monsters/shadowflame.png", "img_w": 3.2,
+         "stats": [
+             "**AC** 14 (natural armor)  **HP** 58 (9d8+18)  **Speed** 0 ft, fly 40 ft (hover)",
+             "**STR** 8  **DEX** 18  **CON** 14  **INT** 12  **WIS** 15  **CHA** 18",
+             "**Skills** Stealth +8, Intimidation +6",
+             "**Resist** acid, fire, lightning, necrotic; nonmagical piercing & bludgeoning",
+             "**Imm.** poison, psychic; (cond) charmed, frightened, grappled, paralyzed, "
+             "poisoned, prone, restrained",
+             "**Senses** darkvision 60 ft",
+         ],
+         "traits": [
+             ("Illusions of Fear", "Creates three identical illusions of itself (AC 14) that "
+              "move in step with it. DC 18 Arcana or Perception to spot a fake, or the attack "
+              "misses and the illusion remains. The fakes cannot harm anyone; only the real "
+              "flame attacks, which is itself a clue."),
+         ],
+         "actions": [
+             ("Shadow Claw", "+6 to hit, reach 5 ft. Hit: 2d8+4 necrotic, and the target makes "
+              "a DC 14 Wisdom save or is frightened one turn."),
+             ("Terror Wave (Recharge 5-6)", "15-ft cone, DC 14 Wisdom save; 3d10 necrotic and "
+              "frightened 1 minute (repeat the save at the end of each turn)."),
+         ],
+         "reactions": [
+             ("Shadowmeld", "When hit, teleports up to 20 ft and becomes lightly obscured."),
+         ]},
     ]),
-    ("stat", "Displacer Beast", [
-        "Large monstrosity, unaligned. **CR 3**. AC 13 (natural armor), HP 85 (10d10 + 30), Speed 40 ft.",
-        "STR 18, DEX 15, CON 16, INT 6, WIS 12, CHA 8. Darkvision 60 ft.",
-        "**Displacement.** Projects an illusion of standing beside itself; attack rolls against it have disadvantage until it takes damage.",
-        "**Tentacles (Multiattack x2).** +6, reach 10 ft., 1d6 + 4 bludgeoning plus 1d8 force.",
+    ("tactics", "It stalks a vulnerable hero with Shadow Claw, saves Terror Wave for when the "
+                "party clusters, and Shadowmelds through the mist whenever it is cornered. It "
+                "feeds on fear, not flesh: if a hero drops, it lingers to savor the terror "
+                "instead of pressing the attack, and it never pursues past the brambles."),
+
+    ("fight_header", "ENEMIES, Fight 2: The Talking Beasts",
+     "The Mistwood Path • Difficulty: Hard • 2× Displacer Beast"),
+    ("enemy_cards", [
+        {"name": "Displacer Beast",
+         "sub": "Large monstrosity, unaligned • CR 3 • ×2",
+         "img": f"{A}/monsters/displacer_beast.png", "img_w": 3.2,
+         "stats": [
+             "**AC** 13 (natural armor)  **HP** 85 (10d10+30)  **Speed** 40 ft",
+             "**STR** 18  **DEX** 15  **CON** 16  **INT** 6  **WIS** 12  **CHA** 8",
+             "**Senses** darkvision 60 ft",
+         ],
+         "traits": [
+             ("Displacement", "Projects an illusion of standing beside itself; attack rolls "
+              "against it have disadvantage until it takes damage. Faerie Fire strips the "
+              "trick away entirely."),
+             ("Planar Warp", "These beasts speak, which displacer beasts never do: the planar "
+              "distortion here is granting creatures abilities they should not have."),
+         ],
+         "actions": [
+             ("Multiattack", "Two Tentacle attacks."),
+             ("Tentacle", "+6 to hit, reach 10 ft. Hit: 1d6+4 bludgeoning plus 1d8 force."),
+         ]},
     ]),
-    ("stat", "Shroomyte", [
-        "Small plant, neutral. **CR 2**. AC 13 (natural armor), HP 27 (5d8 + 5), Speed 20 ft.",
-        "STR 12, DEX 12, CON 14, INT 6, WIS 12, CHA 7. Saves Con +4, Wis +3; Stealth +3, Perception +3.",
-        "Resistance poison; immune to the poisoned condition. Darkvision 60 ft. Understands Sylvan.",
-        "**Bioluminescent Glow.** Dim light in a 10 ft. radius; can suppress it as a bonus action. **Multiattack.** One Spore Blast and one Mycelium Tendrils.",
-        "**Spore Blast.** +4, range 30 ft., 2d6 + 2 poison; DC 13 Constitution save or poisoned one turn.",
-        "**Mycelium Tendrils.** +4, reach 10 ft., 2d4 + 2 bludgeoning; DC 13 Strength save or restrained one turn.",
-        "**Fungal Retribution (Reaction).** A melee attacker within 5 ft. takes 2d4 poison (DC 13 Constitution negates).",
+    ("tactics", "Hit-and-run: they lash from 10 feet with barbed tentacles, then slide back "
+                "into the fog to flank and split the party. Predators, not zealots: once one "
+                "is reduced below half its hit points it slinks into the fog and does not "
+                "return, and neither will leave the mist to chase a party on open ground."),
+
+    ("fight_header", "ENEMIES, Fight 3: The Shroomyte Grove",
+     "The Ironroot Hills • Difficulty: Medium • 4× Shroomyte"),
+    ("enemy_cards", [
+        {"name": "Shroomyte",
+         "sub": "Small plant, neutral • CR 2 • ×4",
+         "img": f"{A}/monsters/shroomyte_grove.png", "img_w": 3.2,
+         "stats": [
+             "**AC** 13 (natural armor)  **HP** 27 (5d8+5)  **Speed** 20 ft",
+             "**STR** 12  **DEX** 12  **CON** 14  **INT** 6  **WIS** 12  **CHA** 7",
+             "**Saves** Con +4, Wis +3  **Skills** Stealth +3, Perception +3",
+             "**Resist** poison  **Imm.** (cond) poisoned",
+             "**Senses** darkvision 60 ft  **Languages** understands Sylvan",
+         ],
+         "traits": [
+             ("Bioluminescent Glow", "Sheds dim light in a 10-ft radius; can suppress it as a "
+              "bonus action."),
+         ],
+         "actions": [
+             ("Multiattack", "One Spore Blast and one Mycelium Tendrils."),
+             ("Spore Blast", "+4 to hit, range 30 ft. Hit: 2d6+2 poison, and the target makes "
+              "a DC 13 Constitution save or is poisoned one turn."),
+             ("Mycelium Tendrils", "+4 to hit, reach 10 ft. Hit: 2d4+2 bludgeoning, and the "
+              "target makes a DC 13 Strength save or is restrained one turn."),
+         ],
+         "reactions": [
+             ("Fungal Retribution", "A melee attacker within 5 ft takes 2d4 poison (DC 13 "
+              "Constitution negates)."),
+         ]},
     ]),
-    # Companion blocks merged into one so the appendix holds one page.
-    ("stat", "The Professor's Companions", [
-        "**Floraburst (the party's companion).** Small fey, neutral good. AC 14 (natural armor), HP 45 (6d6 + 18), Speed 30 ft.",
-        "STR 14, DEX 12, CON 16, INT 10, WIS 14, CHA 10. Skills Nature +4, Survival +4. Resistance poison. Darkvision 60 ft. Understands Sylvan and Common.",
-        "**Plant Camouflage.** Advantage on Stealth checks in heavy foliage. **Photosynthesis.** Recovers 10 extra HP when resting in sunlight.",
-        "**Razor Leaf.** +4, range 30 ft., 2d8 + 2 slashing. **Vine Lash.** +4, reach 15 ft., 1d10 + 2 bludgeoning; DC 13 Strength save or restrained one turn.",
-        "**Floraberry (3/Day).** Produces 1d4 + 1 berries; eating one is a Bonus Action (2024 Goodberry rule) and restores 3 HP.",
-        "**Aqualump (stayed with Aelwyn).** Small water elemental, neutral good. AC 16 (shell), HP 54, Swim 30 ft. Water Bolt (2d8 + 2, knockdown), Surf (Recharge 5-6, 4d6 cold cone), Shell Defense (+4 AC, bonus action).",
-        "**Emberpaws (stayed with Aelwyn).** Small fire elemental, chaotic good; fox-like, flame-wreathed. AC 15, HP 42, immune to fire. Ember (2d6 + 2 fire), Tail Flame Whip (2d6 + 3 fire, may ignite), Heatwave (3/Day, melee attackers take 1d8 fire).",
+    ("tactics", "They open with Spore Blasts from range to poison and confuse, close in with "
+                "Mycelium Tendrils to entangle, then flank through the mushroom cover, one "
+                "venting a spore cloud that obscures and poisons whoever stands in it. Fire "
+                "finds their weakness. Guardians, not hunters: they defend the glowing "
+                "clearing and never pursue beyond it."),
+
+    ("fight_header", "ALLIES: The Companion Choice",
+     "Ravenstone Laboratory • Aelwyn's three little wonders • the party chose Floraburst"),
+    ("enemy_cards", [
+        {"name": "Floraburst", "banner": "1F7A78",
+         "sub": "Small fey, neutral good • the party's companion",
+         "img": f"{A}/characters/floraburst.png", "img_w": 3.4,
+         "stats": [
+             "**AC** 14 (natural armor)  **HP** 45 (6d6+18)  **Speed** 30 ft",
+             "**STR** 14  **DEX** 12  **CON** 16  **INT** 10  **WIS** 14  **CHA** 10",
+             "**Skills** Nature +4, Survival +4  **Resist** poison",
+             "**Senses** darkvision 60 ft  **Languages** understands Sylvan and Common "
+             "but cannot speak",
+         ],
+         "traits": [
+             ("Anomaly Sense", "Senses planar anomalies long before anyone else could; the "
+              "healer and scout of the professor's three."),
+             ("Plant Camouflage", "Advantage on Stealth checks to hide in heavy foliage."),
+             ("Photosynthesis", "Recovers an additional 10 HP when resting in sunlight."),
+         ],
+         "actions": [
+             ("Razor Leaf", "+4 to hit, range 30 ft. Hit: 2d8+2 slashing."),
+             ("Vine Lash", "+4 to hit, reach 15 ft. Hit: 1d10+2 bludgeoning, and the target "
+              "makes a DC 13 Strength save or is restrained one turn."),
+             ("Floraberry (3/Day)", "Produces 1d4+1 magical berries; eating one is a Bonus "
+              "Action (2024 Goodberry rule) and restores 3 HP."),
+         ]},
     ]),
+    ("enemy_cards", [
+        {"name": "Aqualump", "banner": "1F7A78",
+         "sub": "Small water elemental, neutral good • stayed with Aelwyn",
+         "img": f"{A}/characters/aqualump.png",
+         "stats": [
+             "**AC** 16 (natural armor, shell)  **HP** 54 (7d6+21)",
+             "**Speed** 25 ft, swim 30 ft",
+             "**Skills** Athletics +4, Perception +3  **Resist** cold",
+             "**Senses** darkvision 60 ft  **Languages** understands Aquan and Common",
+         ],
+         "traits": [
+             ("Shell Defense", "Bonus action: withdraws into its shell, +4 AC until the start "
+              "of its next turn, speed 0 while inside."),
+             ("Water Veil", "Cannot be set on fire; advantage on saves against being ignited "
+              "or burned."),
+         ],
+         "actions": [
+             ("Water Bolt", "+4 to hit, range 30 ft. Hit: 2d8+2 bludgeoning, and the target "
+              "makes a DC 14 Strength save or is knocked prone."),
+             ("Surf (Recharge 5-6)", "15-ft cone of water, DC 14 Dexterity save; 4d6 cold "
+              "(half on a success) and knocked prone on a failure."),
+             ("Frost Shell", "+4 to hit, range 20 ft. Hit: 1d10+2 cold, and the target's "
+              "speed drops 10 ft until the end of its next turn."),
+         ]},
+        {"name": "Emberpaws", "banner": "1F7A78",
+         "sub": "Small fire elemental, chaotic good • stayed with Aelwyn",
+         "img": f"{A}/characters/emberpaws.png",
+         "stats": [
+             "**AC** 15 (natural armor)  **HP** 42 (6d6+15)",
+             "**Speed** 30 ft",
+             "**Skills** Acrobatics +5, Perception +3  **Imm.** fire",
+             "**Senses** darkvision 60 ft  **Languages** understands Ignan and Common",
+         ],
+         "traits": [
+             ("Fiery Spirit", "At 0 HP it can burst into flame: each creature within 10 ft "
+              "makes a DC 13 Dexterity save, taking 2d6 fire on a failure, half on a success."),
+             ("Heatwave (3/Day)", "Bonus action: radiates intense heat for 1 minute; any "
+              "creature that hits it with a melee attack takes 1d8 fire."),
+         ],
+         "actions": [
+             ("Ember", "+5 to hit, range 30 ft. Hit: 2d6+2 fire."),
+             ("Bite", "+5 to hit, reach 5 ft. Hit: 1d8+3 piercing."),
+             ("Tail Flame Whip", "+5 to hit, reach 10 ft. Hit: 2d6+3 fire, and the target "
+              "makes a DC 13 Dexterity save or is ignited (1d4 fire at the start of each of "
+              "its turns until someone uses an action to douse it)."),
+         ]},
+    ]),
+    ("tactics", "A real decision, so let the players meet all three: Aqualump the sturdy "
+                "shield, Emberpaws the bold striker, Floraburst the healer and scout. The "
+                "party talked it over, weighed what the long road would need, and chose "
+                "together; the two not chosen stay safe with Aelwyn."),
 ]
 
 if __name__ == "__main__":

@@ -29,7 +29,7 @@ BLOCKS = [
     ("gold", "Three young heroes are about to meet. None of them knows it yet, but the stars "
              "themselves have been waiting for this evening."),
     ("dm", "The heroes begin this chronicle at **level 3**. Full creature statistics for every "
-           "session live in the compendium; a compact appendix closes each session."),
+           "session live in the compendium; a DM run sheet and bestiary close each session."),
     ("img", f"{A}/world/elaria_region_map.png",
      "Eldridge Vale and the lands of Elaria, as mapped by the cartographers of Gearhaven.", 6.5, {"hmax": 4.6}),
 
@@ -391,44 +391,298 @@ BLOCKS = [
              "full of impossible creatures.*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Appendix: Creatures of Session One", {"pagebreak": True}),
-    ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives in "
-             "the compendium."),
-    ("stat", "Lickgloom", [
-        "Small fey (Feywild), neutral. **CR 1** (200 XP). AC 13 (natural armor), HP 27 (5d6 + 10), Speed 30 ft.",
-        "STR 14, DEX 12, CON 14, INT 6, WIS 10, CHA 8. Saves Dex +3; Skills Perception +2, Stealth +4.",
-        "Resistances acid, poison. Darkvision 60 ft. Understands Common; telepathic impressions.",
-        "**Tongue Whip.** +4, reach 10 ft., 1d6 + 2 bludgeoning; DC 12 Strength save or grappled.",
-        "**Sticky Lick (Recharge 5-6).** DC 13 Dexterity save or a small item is snatched.",
-        "**Lick Attack.** +4, 1d8 + 2 bludgeoning; DC 12 Constitution save or stunned one turn.",
+    # APPENDIX I: the DM run sheet (Session 7 format).
+    ("appendix_title", "APPENDIX", "DM Run Sheet: The Day at a Glance",
+     "Every DC, dial, and spotlight, in play order. Keep this page at your elbow."),
+
+    ("h1", "The Shape of the Session"),
+    ("body", "▶ Four parts, four fights, one friend. P1 the Gilded Acorn (roleplay: three "
+             "meetings, Osric and Rhea's rumors) → FIGHT 1, the brawl. P2 the Whispering Pond: "
+             "Lickgloom (Perception DC 12 to spot it; Insight DC 10: playful, not a threat; Animal "
+             "Handling DC 12 plus a snack = a companion). P3 the Forest of Whispers: FIGHT 2, "
+             "Duckleaf at the stone circle → the first mote (Arcana DC 14) → FIGHT 3, "
+             "Cognifin's test at the grove → the second mote. P4 the foggy road (roots: "
+             "Acrobatics DC 12, 1d4 on a stumble; path: Perception DC 13 or ambushed on the "
+             "Stalkers' ground): FIGHT 4, the Mist Stalkers → two fey motes → Oakshade "
+             "(roleplay: Merwin, Nina, the shops) → the hook (missing villagers, 50 gp) → "
+             "LONG REST at the Old Oak Tavern. Natural break point: the pond."),
+
+    ("h1", "Fights at a Glance"),
+    ("body", "**FIGHT 1: The Bar Brawl** (Easy; strictly non lethal). Bren (AC 12, HP 8, fists +3, "
+             "1d4 + 1) + 2x Regulars (AC 11, HP 6, fists +3, 1d4): brute force, ganging up on one "
+             "or two heroes with fists, chairs, and one regrettable mug. Osric steps in if it gets "
+             "too hot; a downed hero wakes in a minute with cider on the house."),
+    ("body", "**FIGHT 2: The Stone Circle** (Hard; the stones are the puzzle). Duckleaf (AC 15, "
+             "HP 52, fly 30 ft; RESISTS slashing & bludgeoning): opens Aerial Slash +5 (3d6 + 3) at "
+             "range, Winged Leap skips 30 ft out of melee without provoking, saves Quack of Fury "
+             "(rech 5-6; 15 ft, DC 14 Wis, frightened) for a bunched party. THE RULE: disrupt one "
+             "circle stone (Arcana or Nature DC 14 to see why) and Winged Leap is gone for the "
+             "fight; ladder the hints if they stall. THE OUT: it is a guardian, not a hunter; "
+             "heroes who withdraw are allowed to leave."),
+    ("body", "**FIGHT 3: The Grove** (Medium; stern, never lethal). Cognifin (AC 14, HP 45, hover; "
+             "RESISTS cold & psychic; Psychic Shield reaction +2 AC): Water Pulse +4 (2d6 + 2, "
+             "DC 12 Str or prone) on the closest hero, Headache Blast +4 (2d6 + 2 psychic) on the "
+             "back line, Confusion Pulse (rech 5-6; 15 ft, DC 13 Wis) when they bunch; legendary "
+             "waters between turns (whirlpool: DC 12 Str, restrained / tidal wave: 2d4, push 5 ft). "
+             "THE RULE: disturbing the pond's surface (spell, splash, thrown rock) silences the "
+             "legendary waters for a round. THE OUT: a dropped hero washes gently to the bank, "
+             "stable; a beaten party wakes at the grove's edge, free to try again once rested."),
+    ("body", "**FIGHT 4: The Foggy Road** (Medium; fear is the weapon). 2x Mist Stalker (AC 13, "
+             "HP 39, Speed 40 ft; Stealth +5): Fog Cloak (bonus action) for heavy obscurement, then "
+             "bite +5 (1d8 + 3) and claw +5 (2d4 + 3); Howl of the Mist (rech 5-6; 30 ft, DC 13 "
+             "Wis, frightened) rolls in from every direction at once. THE RULE: they will not leave "
+             "their fog; a strong wind or a gust of magic thins the mist and steals their cover and "
+             "their nerve. THE OUT: heroes who regain the road and keep moving escape them."),
+
+    ("h1", "The Resource Picture"),
+    ("body", "▶ Level 3, fresh, and no rest until Oakshade: the brawl costs nothing but pride, "
+             "so the real spend is the forest. Duckleaf and Cognifin land back to back; watch "
+             "Stabby's focus and Ursa's slots between them, and remember Cognifin's test cannot "
+             "kill (a fallen hero washes ashore, stable). The Mist Stalkers hunt a tired party at "
+             "dusk, and the frightened condition is the real drain in every fight, so celebrate "
+             "the saves. The night at the Old Oak Tavern (5 silver a head) is a full long rest, "
+             "and Oakshade sells the restock: Potion of Healing 50 gp, antitoxin 25 gp, Moonroot "
+             "75 gp, a silvered weapon for 100 gp, with Merwin's 50 gp bounty there to pay for it."),
+
+    ("h1", "Spotlights & Seeds: every kid shines, every door gets planted"),
+    ("body", "**Lilly:** her arrival opens the whole chronicle: the Essence Sphere and the name "
+             "Ursa Catchum (Door: wake Pikachu) → the brawl: gadgets that spark and startle "
+             "→ the Duckleaf duel: she reads the rippling stones and shouts the secret "
+             "(“the circle is feeding it!”) → after the mote, the session's thesis "
+             "is hers: “Something is leaking into our world.”"),
+    ("body", "**Stabby:** the BANG of the tavern door is his overture → the brawl is his "
+             "stage: he fights like a rumor, everywhere and nowhere → faster than Duckleaf's "
+             "wind, laughing on Cognifin's slick stones → seeds: the Bloodfang Clan and Master "
+             "Kaelon in his introduction (Door: the clan catches up with him in Session 2)."),
+    ("body", "**Ursa:** a stranger asking for him BY NAME pulls him in from the fields → one "
+             "piece of bread wins the party its first friend → his starlight finds Duckleaf "
+             "wherever it lands → seeds: Ash Catchum's disappearance and the three enchanted "
+             "potatoes (Door: his father's trail), and the stars that have been waiting for this "
+             "evening."),
+
+    ("h1", "Foreshadow Tracker: say it, then say it again"),
+    ("body", "▶ The tells, in order. Tavern hum x3 (Jarek's glow, strange winds, “the "
+             "forest is waking up”) • Osric: “like they wandered in from... "
+             "somewhere else” • Rhea: glowing eyes by the pond • wildflowers bloom "
+             "out of season wherever Lickgloom walks • the MOTES, one per fallen planar "
+             "creature: green wind (Duckleaf) → blue water (Cognifin) → twin fey glimmers "
+             "(the Stalkers); Arcana DC 14 names the pattern • Merwin: “the planes are "
+             "bleeding together” • the missing villagers: Session 2 walks in the door."),
+
+    # ------------------------------------------------------------------
+    # APPENDIX II: the bestiary (Session 7 format).
+    ("appendix_title", "APPENDIX", "Bestiary: Enemy Stat Blocks",
+     "All four encounters of Session 1, in the order the party meets them, plus one friend made "
+     "along the way."),
+
+    ("fight_header", "ENEMIES, Fight 1: The Bar Brawl",
+     "The Gilded Acorn ✦ Difficulty: Easy ✦ 1x Bren + 2x Regulars"),
+    ("enemy_cards", [
+        {
+            "name": "Bren, the Rowdy Local",
+            "sub": "Medium humanoid ✦ bandit stats, softened for a friendly brawl",
+            "stats": [
+                "**AC** 12  **HP** 8  **Speed** 30 ft",
+            ],
+            "traits": [
+                ("Non Lethal Brawler", "All of Bren's damage is non lethal. A hero reduced to "
+                 "0 HP wakes a minute later with a bruised ear and a mug of cider on the house."),
+            ],
+            "actions": [
+                ("Unarmed Strike", "*Melee Attack:* +3 to hit, reach 5 ft. *Hit:* 1d4 + 1 "
+                 "bludgeoning damage (a fist, a chair, or one regrettable mug)."),
+            ],
+        },
     ]),
-    ("stat", "Duckleaf", [
-        "Small beast (Elemental Air), neutral. **CR 4** (1,100 XP). AC 15, HP 52 (8d8 + 16), Speed 30 ft., fly 30 ft.",
-        "STR 14, DEX 16, CON 14, INT 10, WIS 12, CHA 10. Saves Dex +5, Wis +3; Acrobatics +5, Perception +3.",
-        "Resistances slashing, bludgeoning (wind sheath). Darkvision 60 ft. Telepathy 30 ft. (quacks).",
-        "**Leek Strike.** +6, reach 5 ft., 2d8 + 4 slashing.",
-        "**Aerial Slash.** +5, range 20/60 ft., 3d6 + 3 slashing.",
-        "**Quack of Fury (Recharge 5-6).** 15 ft., DC 14 Wisdom save or frightened 1 minute (repeat the save at the end of each turn).",
-        "**Winged Leap.** Leaps 30 ft. without provoking; lost if a circle stone is disrupted.",
+    ("enemy_cards", [
+        {
+            "name": "Tavern Regular",
+            "sub": "Medium humanoid ✦ bandit stats, softened ✦ 2 in the brawl",
+            "stats": [
+                "**AC** 11  **HP** 6  **Speed** 30 ft",
+            ],
+            "traits": [
+                ("Non Lethal Brawler", "All damage in the brawl is non lethal; a downed hero "
+                 "wakes a minute later, embarrassed but unhurt."),
+            ],
+            "actions": [
+                ("Unarmed Strike", "*Melee Attack:* +3 to hit, reach 5 ft. *Hit:* 1d4 "
+                 "bludgeoning damage."),
+            ],
+        },
     ]),
-    ("stat", "Cognifin", [
-        "Small beast (Elemental Water), neutral guardian. **CR 3** (700 XP). AC 14, HP 45 (6d8 + 18), fly 30 ft. (hover).",
-        "STR 10, DEX 14, CON 16, INT 10, WIS 14, CHA 12. Saves Dex +4, Wis +4; Perception +4, Arcana +2.",
-        "Resistances cold, psychic. Darkvision 60 ft. Telepathy 60 ft. (images and feelings).",
-        "**Headache Blast.** +4, range 30 ft., 2d6 + 2 psychic.",
-        "**Water Pulse.** +4, range 30 ft., 2d6 + 2 bludgeoning; DC 12 Strength save or prone.",
-        "**Confusion Pulse (Recharge 5-6).** 15 ft. radius, DC 13 Wisdom save or confused (as the confusion spell) 1 minute; repeat the save at the end of each turn.",
-        "**Psychic Shield.** Reaction: +2 AC until its next turn.",
-        "**Waters of the Grove (Legendary).** Whirlpool (restrain, DC 12 Str) or tidal wave (2d4, push 5 ft.).",
+    ("tactics", "Bren and his friends are not skilled fighters; they rely on brute force, ganging "
+                "up on one or two heroes at a time. Strictly non lethal: fists, chairs, and one "
+                "regrettable mug. Waving Bren off only makes him louder, so let the fight come to "
+                "the table, and have Osric step in if things get too hot. The point of the scene "
+                "is three strangers fighting together for the first time, and winning."),
+
+    ("fight_header", "ALLIES: Lickgloom",
+     "The Whispering Pond ✦ Befriended with bread and patience ✦ Fey companion"),
+    ("enemy_cards", [
+        {
+            "name": "Lickgloom",
+            "sub": "Small fey (Feywild), neutral ✦ CR 1 (200 XP)",
+            "img": f"{A}/monsters/lickgloom.png",
+            "img_w": 3.0,
+            "banner": "1F7A78",
+            "stats": [
+                "**AC** 13 (natural armor)  **HP** 27 (5d6 + 10)  **Speed** 30 ft",
+                "**STR** 14  **DEX** 12  **CON** 14  **INT** 6  **WIS** 10  **CHA** 8",
+                "**Saves** Dex +3  **Skills** Perception +2, Stealth +4",
+                "**Resist** acid, poison",
+                "**Senses** darkvision 60 ft, passive Perception 12",
+                "**Languages** understands Common but cannot speak; telepathic impressions",
+                "**Challenge** 1 (200 XP)",
+            ],
+            "traits": [
+                ("Helpful Tongue", "Traveling with the party, Lickgloom can fetch small objects "
+                 "with its 10 foot tongue, and once per scene its tasting tongue grants one hero "
+                 "advantage on a Wisdom (Perception) or Intelligence (Investigation) check."),
+            ],
+            "actions": [
+                ("Tongue Whip", "*Melee Attack:* +4 to hit, reach 10 ft. *Hit:* 1d6 + 2 "
+                 "bludgeoning damage, and the target must succeed on a DC 12 Strength saving "
+                 "throw or be grappled (escape DC 12)."),
+                ("Sticky Lick (Recharge 5-6)", "One creature within 10 ft must succeed on a "
+                 "DC 13 Dexterity saving throw or lose one small item (a weapon, potion, or "
+                 "trinket), which Lickgloom pulls to itself."),
+                ("Lick Attack", "*Melee Attack:* +4 to hit, reach 5 ft. *Hit:* 1d8 + 2 "
+                 "bludgeoning damage, and the target must succeed on a DC 12 Constitution "
+                 "saving throw or be stunned until the end of its next turn."),
+            ],
+        },
     ]),
-    ("stat", "Mist Stalker", [
-        "Medium fey (Feywild), unaligned. **CR 2** (450 XP). AC 13, HP 39 (6d8 + 12), Speed 40 ft.",
-        "STR 14, DEX 16, CON 14, INT 6, WIS 12, CHA 8. Skills Perception +3, Stealth +5. Darkvision 60 ft.",
-        "**Multiattack.** One bite and one claw.",
-        "**Bite.** +5, reach 5 ft., 1d8 + 3 piercing. **Claw.** +5, reach 5 ft., 2d4 + 3 slashing.",
-        "**Fog Cloak (Bonus Action).** Wraps itself in mist: heavily obscured until the start of its next turn.",
-        "**Howl of the Mist (Recharge 5-6).** Each enemy within 30 ft.: DC 13 Wisdom save or frightened until the end of the stalker's next turn.",
+    ("tactics", "Not an enemy: curious, playful, and hungry for new tastes. It meets aggression by "
+                "darting into the pond, and it meets bread by joining the party. In a fight it "
+                "stays behind its friends and helps how it can; at the grove it hauled a hero out "
+                "of a whirlpool with one heroic tongue."),
+
+    ("fight_header", "ENEMIES, Fight 2: The Stone Circle",
+     "The Forest of Whispers ✦ Difficulty: Hard ✦ 1x Duckleaf, guardian of the circle"),
+    ("enemy_cards", [
+        {
+            "name": "Duckleaf",
+            "sub": "Small beast (Elemental Air), neutral ✦ CR 4 (1,100 XP)",
+            "img": f"{A}/monsters/duckleaf_stone_circle.png",
+            "img_w": 3.2,
+            "stats": [
+                "**AC** 15 (natural armor)  **HP** 52 (8d8 + 16)  **Speed** 30 ft, fly 30 ft",
+                "**STR** 14  **DEX** 16  **CON** 14  **INT** 10  **WIS** 12  **CHA** 10",
+                "**Saves** Dex +5, Wis +3  **Skills** Acrobatics +5, Perception +3",
+                "**Resist** slashing, bludgeoning (wind sheath)",
+                "**Senses** darkvision 60 ft, passive Perception 13",
+                "**Languages** telepathy 30 ft (quacks)",
+                "**Challenge** 4 (1,100 XP)",
+            ],
+            "traits": [
+                ("Winged Leap", "Duckleaf can leap 30 ft in any direction without provoking "
+                 "opportunity attacks, riding the wind to evade and reposition. If a stone of "
+                 "the circle is damaged or disrupted, it loses this trait for the rest of the "
+                 "battle."),
+            ],
+            "actions": [
+                ("Leek Strike", "*Melee Attack:* +6 to hit, reach 5 ft. *Hit:* 2d8 + 4 slashing "
+                 "damage, the wind guiding the blow with deadly accuracy."),
+                ("Aerial Slash", "*Ranged Attack:* +5 to hit, range 20/60 ft. *Hit:* 3d6 + 3 "
+                 "slashing damage from a blade of sharpened air."),
+                ("Quack of Fury (Recharge 5-6)", "A telepathic quack reverberates through the "
+                 "clearing. Each creature within 15 ft must succeed on a DC 14 Wisdom saving "
+                 "throw or be frightened for 1 minute; a frightened creature repeats the save "
+                 "at the end of each of its turns."),
+            ],
+        },
     ]),
+    ("tactics", "It opens with Aerial Slash from range, uses Winged Leap to skip away from melee "
+                "without provoking, and saves Quack of Fury for a bunched-up party. The circle is "
+                "the fight: wind visibly streams from the stones to the duck each time it leaps, "
+                "and disrupting one stone grounds it; it defends the stones fiercely once it "
+                "realizes what the heroes are doing. A guardian, not a hunter: heroes who heed the "
+                "warning may withdraw, and it never pursues beyond the stones."),
+
+    ("fight_header", "ENEMIES, Fight 3: The Grove of Elemental Waters",
+     "The Forest of Whispers ✦ Difficulty: Medium ✦ 1x Cognifin, the guardian's test"),
+    ("enemy_cards", [
+        {
+            "name": "Cognifin",
+            "sub": "Small beast (Elemental Water), neutral guardian ✦ CR 3 (700 XP)",
+            "img": f"{A}/monsters/cognifin_grove.png",
+            "img_w": 3.2,
+            "stats": [
+                "**AC** 14 (natural armor)  **HP** 45 (6d8 + 18)  **Speed** 0 ft, fly 30 ft (hover)",
+                "**STR** 10  **DEX** 14  **CON** 16  **INT** 10  **WIS** 14  **CHA** 12",
+                "**Saves** Dex +4, Wis +4  **Skills** Perception +4, Arcana +2",
+                "**Resist** cold, psychic",
+                "**Senses** darkvision 60 ft, passive Perception 14",
+                "**Languages** telepathy 60 ft (images and feelings)",
+                "**Challenge** 3 (700 XP)",
+            ],
+            "actions": [
+                ("Headache Blast", "*Ranged Attack:* +4 to hit, range 30 ft. *Hit:* 2d6 + 2 "
+                 "psychic damage, a crush of pressure inside the mind."),
+                ("Water Pulse", "*Ranged Attack:* +4 to hit, range 30 ft. *Hit:* 2d6 + 2 "
+                 "bludgeoning damage, and the target must succeed on a DC 12 Strength saving "
+                 "throw or be knocked prone by the crashing wave."),
+                ("Confusion Pulse (Recharge 5-6)", "A wave of psychic energy in a 15 ft radius. "
+                 "Each creature in the area must succeed on a DC 13 Wisdom saving throw or be "
+                 "confused (as the confusion spell) for 1 minute; repeat the save at the end of "
+                 "each turn."),
+            ],
+            "reactions": [
+                ("Psychic Shield", "When hit by an attack, Cognifin raises a shimmering barrier, "
+                 "gaining +2 AC until the start of its next turn."),
+            ],
+            "legendary": [
+                ("Waters of the Grove", "At the end of any hero's turn, Cognifin commands the "
+                 "pond: **Whirlpool** (5 ft radius; DC 12 Strength save or be pulled 10 ft to "
+                 "the center and restrained until the end of its next turn) or **Tidal Wave** "
+                 "(10 ft line; DC 12 Dexterity save or take 2d4 bludgeoning damage and be "
+                 "pushed back 5 ft)."),
+            ],
+        },
+    ]),
+    ("tactics", "It opens with Water Pulse to knock the closest hero prone, peppers the back line "
+                "with Headache Blasts, and looses Confusion Pulse when the party groups up, while "
+                "its legendary waters pull heroes into whirlpools or shove them back between "
+                "turns. Disturbing the pond's surface (a spell, a splash, a well-thrown rock) "
+                "breaks its focus and silences the waters for a round. The test is stern but never "
+                "lethal: a hero who drops is washed gently to the bank, stable, and a party that "
+                "falls or yields wakes at the grove's edge, free to try again once rested."),
+
+    ("fight_header", "ENEMIES, Fight 4: The Foggy Road",
+     "The Road to Oakshade ✦ Difficulty: Medium ✦ 2x Mist Stalker"),
+    ("enemy_cards", [
+        {
+            "name": "Mist Stalker",
+            "sub": "Medium fey (Feywild), unaligned ✦ CR 2 (450 XP) ✦ 2 in the ambush",
+            "img": f"{A}/monsters/mist_stalker.png",
+            "img_w": 3.2,
+            "stats": [
+                "**AC** 13  **HP** 39 (6d8 + 12)  **Speed** 40 ft",
+                "**STR** 14  **DEX** 16  **CON** 14  **INT** 6  **WIS** 12  **CHA** 8",
+                "**Skills** Perception +3, Stealth +5",
+                "**Senses** darkvision 60 ft, passive Perception 13",
+                "**Challenge** 2 (450 XP)",
+            ],
+            "traits": [
+                ("Fog Cloak (Bonus Action)", "The stalker wraps itself in mist, becoming heavily "
+                 "obscured until the start of its next turn."),
+            ],
+            "actions": [
+                ("Multiattack", "The mist stalker makes one bite attack and one claw attack."),
+                ("Bite", "*Melee Attack:* +5 to hit, reach 5 ft. *Hit:* 1d8 + 3 piercing damage."),
+                ("Claw", "*Melee Attack:* +5 to hit, reach 5 ft. *Hit:* 2d4 + 3 slashing damage."),
+                ("Howl of the Mist (Recharge 5-6)", "A howl rolls through the fog from every "
+                 "direction at once. Each enemy within 30 ft must succeed on a DC 13 Wisdom "
+                 "saving throw or be frightened until the end of the stalker's next turn."),
+            ],
+        },
+    ]),
+    ("tactics", "Each stalker wraps itself in Fog Cloak and strikes from heavy obscurement, and "
+                "their howls hunt for frightened, scattered prey. They will not leave their fog: "
+                "heroes who regain the road and keep moving escape them, and a strong wind or a "
+                "gust of magic that thins the mist steals their cover and their nerve. Two motes "
+                "of fey energy glimmer where they fall."),
 ]
 
 if __name__ == "__main__":

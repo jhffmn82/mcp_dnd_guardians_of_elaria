@@ -516,6 +516,166 @@ def build_doc(blocks, out_path):
                     if al is not None:
                         al.text = 'left'
 
+        elif kind == "appendix_title":
+            # (appendix_title, kicker, title, subtitle) - the S7 appendix
+            # opener: centered gold kicker, big crimson title, sienna
+            # subtitle, on a fresh page.
+            _, kick, atitle, asub = blk
+            p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.page_break_before = True
+            p.paragraph_format.space_before = Pt(10); p.paragraph_format.space_after = Pt(2)
+            p.paragraph_format.keep_with_next = True
+            r = p.add_run(kick); _set_font(r, Pt(10.5), True, color=GOLD_EDGE)
+            p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.space_after = Pt(2); p.paragraph_format.keep_with_next = True
+            r = p.add_run(atitle); _set_font(r, Pt(16), True, color=STAT_EDGE)
+            p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.space_after = Pt(10)
+            r = p.add_run(asub); _set_font(r, Pt(10.5), color=H2_COLOR)
+
+        elif kind == "fight_header":
+            # (fight_header, title, subline) - "ENEMIES, Fight 1: ..." over a
+            # gray location/difficulty/roster line, both centered (S7 style).
+            _, ftitle, fsub = blk
+            p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.space_before = Pt(16); p.paragraph_format.space_after = Pt(1)
+            p.paragraph_format.keep_with_next = True
+            r = p.add_run(ftitle); _set_font(r, Pt(13), True, color=STAT_EDGE)
+            p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.space_after = Pt(6); p.paragraph_format.keep_with_next = True
+            r = p.add_run(fsub); _set_font(r, Pt(9), color=CAPTION_GRAY)
+
+        elif kind == "enemy_cards":
+            # (enemy_cards, [card, ...]) - 1 or 2 S7-style bestiary cards side
+            # by side. card: {name, sub, img (optional), stats: [lines],
+            # traits: [(n,t)], actions: [(n,t)], reactions: [(n,t)]}. Lines
+            # support **bold** / *italic* markup.
+            _, cards = blk
+            ncols = max(1, min(2, len(cards)))
+            tbl = doc.add_table(rows=1, cols=ncols)
+            tbl.autofit = False
+            tbl.alignment = 1
+            tpr = tbl._tbl.tblPr
+            mar = OxmlElement('w:tblCellMar')
+            for side, wd in (('left', '110'), ('right', '110'), ('top', '60'), ('bottom', '80')):
+                el = OxmlElement('w:' + side)
+                el.set(qn('w:w'), wd); el.set(qn('w:type'), 'dxa')
+                mar.append(el)
+            tpr.append(mar)
+            borders = OxmlElement('w:tblBorders')
+            for side in ('top', 'left', 'bottom', 'right', 'insideH', 'insideV'):
+                el = OxmlElement('w:' + side)
+                el.set(qn('w:val'), 'single'); el.set(qn('w:sz'), '8')
+                el.set(qn('w:space'), '0'); el.set(qn('w:color'), STAT_EDGE)
+                borders.append(el)
+            tpr.append(borders)
+            # a card row never splits across a page turn
+            trpr = tbl.rows[0]._tr.get_or_add_trPr()
+            trpr.append(OxmlElement('w:cantSplit'))
+            col_in = 6.3 / ncols
+            for ci, card in enumerate(cards[:ncols]):
+                cell = tbl.cell(0, ci)
+                cell.width = Inches(col_in)
+                # banner
+                bp = cell.paragraphs[0]
+                _cshd = OxmlElement('w:shd')
+                _cshd.set(qn('w:val'), 'clear'); _cshd.set(qn('w:color'), 'auto')
+                _cshd.set(qn('w:fill'), card.get("banner", STAT_EDGE))
+                bp._p.get_or_add_pPr().append(_cshd)
+                bp.paragraph_format.space_before = Pt(0); bp.paragraph_format.space_after = Pt(1)
+                r = bp.add_run(card["name"].upper()); _set_font(r, Pt(11), True, color="FFFFFF")
+                # type line
+                p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(2)
+                r = p.add_run(card.get("sub", "")); _set_font(r, Pt(8), italic=True, color=STAT_EDGE)
+                # portrait
+                if card.get("img"):
+                    try:
+                        data, pw, ph = _image_png_bytes(card["img"], crop=card.get("crop"))
+                        iw = min(card.get("img_w", col_in - 0.28), col_in - 0.28)
+                        p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(3)
+                        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                        p.add_run().add_picture(io.BytesIO(data), width=Inches(iw))
+                    except Exception:
+                        pass
+                for line in card.get("stats", []):
+                    p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(1)
+                    _rich(p, line, base_size=Pt(7.5))
+                for sect, key in (("Traits", "traits"), ("Actions", "actions"),
+                                  ("Reactions", "reactions"), ("Legendary Actions", "legendary")):
+                    items = card.get(key)
+                    if not items:
+                        continue
+                    p = cell.add_paragraph(); p.paragraph_format.space_before = Pt(3)
+                    p.paragraph_format.space_after = Pt(1); p.paragraph_format.keep_with_next = True
+                    r = p.add_run(sect); _set_font(r, Pt(8), True, color=STAT_EDGE)
+                    for nm, txt in items:
+                        p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(1)
+                        if nm:
+                            r = p.add_run(nm + ". "); _set_font(r, Pt(7.5), True, italic=True, color=INK)
+                        _rich(p, txt, base_size=Pt(7.5))
+            sp = doc.add_paragraph(); sp.paragraph_format.space_after = Pt(2)
+
+        elif kind == "tactics":
+            # (tactics, text) - the S7 "Tactics:" line under a fight's cards.
+            p = doc.add_paragraph()
+            p.paragraph_format.space_before = Pt(2); p.paragraph_format.space_after = Pt(8)
+            r = p.add_run("Tactics: "); _set_font(r, Pt(9), True, color=STAT_EDGE)
+            _rich(p, blk[1], base_size=Pt(9), base_italic=True)
+
+        elif kind == "reward_card":
+            # (reward_card, title, sub, [(item, desc), ...][, img]) - the gold
+            # sibling of an enemy card: a full-width in-session item rewards
+            # block (banner in goldenrod, item names bold).
+            _, rtitle, rsub, ritems = blk[0], blk[1], blk[2], blk[3]
+            rimg = blk[4] if len(blk) > 4 else None
+            tbl = doc.add_table(rows=1, cols=1)
+            tbl.autofit = False
+            tbl.alignment = 1
+            tpr = tbl._tbl.tblPr
+            mar = OxmlElement('w:tblCellMar')
+            for side, wd in (('left', '110'), ('right', '110'), ('top', '60'), ('bottom', '80')):
+                el = OxmlElement('w:' + side)
+                el.set(qn('w:w'), wd); el.set(qn('w:type'), 'dxa')
+                mar.append(el)
+            tpr.append(mar)
+            borders = OxmlElement('w:tblBorders')
+            for side in ('top', 'left', 'bottom', 'right'):
+                el = OxmlElement('w:' + side)
+                el.set(qn('w:val'), 'single'); el.set(qn('w:sz'), '8')
+                el.set(qn('w:space'), '0'); el.set(qn('w:color'), GOLD_EDGE)
+                borders.append(el)
+            tpr.append(borders)
+            trpr = tbl.rows[0]._tr.get_or_add_trPr()
+            trpr.append(OxmlElement('w:cantSplit'))
+            cell = tbl.cell(0, 0)
+            cell.width = Inches(6.3)
+            bp = cell.paragraphs[0]
+            _cshd = OxmlElement('w:shd')
+            _cshd.set(qn('w:val'), 'clear'); _cshd.set(qn('w:color'), 'auto')
+            _cshd.set(qn('w:fill'), GOLD_EDGE)
+            bp._p.get_or_add_pPr().append(_cshd)
+            bp.paragraph_format.space_before = Pt(0); bp.paragraph_format.space_after = Pt(1)
+            r = bp.add_run(rtitle.upper()); _set_font(r, Pt(11), True, color="FFFFFF")
+            p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(3)
+            r = p.add_run(rsub); _set_font(r, Pt(8), italic=True, color=H2_COLOR)
+            if rimg:
+                try:
+                    data, pw, ph = _image_png_bytes(rimg)
+                    iw = 4.6
+                    if iw * (ph / pw) > 3.2:
+                        iw = 3.2 / (ph / pw)
+                    p = cell.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    p.paragraph_format.space_after = Pt(3)
+                    p.add_run().add_picture(io.BytesIO(data), width=Inches(iw))
+                except Exception:
+                    pass
+            for nm, txt in ritems:
+                p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(2)
+                if nm:
+                    r = p.add_run(nm + ". "); _set_font(r, Pt(9.5), True, color=STAT_EDGE)
+                _rich(p, txt, base_size=Pt(9.5))
+            doc.add_paragraph().paragraph_format.space_after = Pt(4)
+
         elif kind == "pagebreak":
             p = doc.add_paragraph()
             p.add_run().add_break(WD_BREAK.PAGE)
