@@ -305,7 +305,7 @@ B = [
              "than wolf.*"),
     ("statblock", {
         "name": "Mist Stalker",
-        "img": "assets/monsters/mist_stalker.png", "img_w": 2.0,
+        "img": "assets/monsters/mist_stalker.png", "img_w": 1.9,
         "type": "Medium fey, unaligned",
         "ac": "13", "hp": "39", "speed": "40 ft.",
         "abilities": ab(14, 16, 12, 6, 12, 10),
