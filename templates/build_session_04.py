@@ -173,9 +173,9 @@ BLOCKS = [
     ]),
 
     # Page balance: the market plate + rules card fill their page; the
-    # orphanage earns a fresh page so its heading is not stranded.
-    ("pagebreak",),
-    ("h2", "The Hollow Hearth Orphanage: G and A"),
+    # orphanage opens a fresh page (self-suppressing hardbreak, so
+    # repagination can never strand a blank page).
+    ("h2", "The Hollow Hearth Orphanage: G and A", {"hardbreak": True}),
     # The orphanage art leads the section and floats beside Merida and Milo.
     ("imgfloat", f"{A}/scenes/s4_orphanage_milo.png", 3.0),
     ("gold", "The orphanage stands at the town's edge, weathered but tidy, a creaking sign with a "
@@ -211,8 +211,7 @@ BLOCKS = [
                "Ring the light, banish the shade, | "
                "Or into the night, we'll be afraid."),
     # Page balance: the verse ends the orphanage page well filled; the rules
-    # card opens the next page whole rather than splitting.
-    ("pagebreak",),
+    # card keeps together and jumps whole to the next page on its own.
     ("game", "The Orphanage Bells: G and A", [
         "**The G Bell.** **Intelligence (Investigation) DC 15** uncovers the forgotten toy chest "
         "in the dusty attic; the bell lies inside, etched with tiny snowflakes, nested among "
@@ -351,11 +350,10 @@ BLOCKS = [
     ("body", "**20.** Holiday Miracle Charm: a small charm granting advantage on one saving "
              "throw within 24 hours."),
 
-    # Page balance: the tables end their page; each spread of the bestiary
-    # carries two illustrated sections so no float strands or collides.
-    ("pagebreak",),
+    # Page balance: the bestiary flows continuously after the tables; floats
+    # sized at 2.7 so the wrapped sections pack without stranding.
     ("h2", "The Yule Cat"),
-    ("imgfloat", f"{A}/monsters/yule_cat.png", 2.9),
+    ("imgfloat", f"{A}/monsters/yule_cat.png", 2.7),
     ("body", "A massive black feline with frost-covered fur and glowing yellow eyes, the Yule "
              "Cat is a creature of fey legend that judges those who lack generosity or "
              "kindness. It prowls the deep snow on silent paws, and a low growl through the "
@@ -370,7 +368,7 @@ BLOCKS = [
            "Gift Box Table follows."),
 
     ("h2", "The Frost Hag"),
-    ("imgfloat", f"{A}/monsters/frost_hag_disguised.png", 2.9),
+    ("imgfloat", f"{A}/monsters/frost_hag_disguised.png", 3.2),
     ("body", "In a lonely clearing, a kindly old woman tends a bubbling cauldron and waves "
              "travelers over to warm themselves and share pastries dusted with powdered "
              "sugar. Her voice is honey and her fire is warm, but her eyes glint far too "
@@ -383,9 +381,8 @@ BLOCKS = [
            "4d6 cold, slowed on a failure), and Misty Step as a bonus action to keep out of "
            "reach."),
 
-    ("pagebreak",),
     ("h2", "Snowbound Bandits"),
-    ("imgfloat", f"{A}/monsters/snowbound_bandits.png", 2.9),
+    ("imgfloat", f"{A}/monsters/snowbound_bandits.png", 3.2),
     ("body", "On a narrow, snow-choked path, four desperate figures rise out of the drifts "
              "with weapons trembling in frostbitten hands, and a grizzled leader with a "
              "frost-crusted beard demands the party's packs. They are cold and hungry rather "
@@ -400,8 +397,10 @@ BLOCKS = [
            "can slow its target. Victory yields 1d4 healing potions, 10 gold, rations for "
            "two days, and a Gift Box."),
 
-    ("h2", "Frost Golems"),
-    ("imgfloat", f"{A}/monsters/frost_golems.png", 2.9),
+    # Hardbreak: started at a page bottom, the golems float sinks into the
+    # margin; opening the page lets golems + snowmen + spiders fill it whole.
+    ("h2", "Frost Golems", {"hardbreak": True}),
+    ("imgfloat", f"{A}/monsters/frost_golems.png", 2.7),
     ("body", "On a serene snowfield, the powder suddenly trembles and pulls itself together, "
              "packing into two jagged shapes of snow and ice shard. Their eyes glow with an "
              "eerie blue light as they lumber forward, frost radiating from their bodies, "
@@ -412,11 +411,8 @@ BLOCKS = [
            "to move quickly without falling prone. The golems trudge relentlessly and try "
            "to corner heroes on the worst of the ice."),
 
-    # Page balance: two bestiary sections fill a page cleanly; a third strands
-    # its float against the bottom margin.
-    ("pagebreak",),
     ("h2", "Enchanted Snowmen"),
-    ("imgfloat", f"{A}/monsters/enchanted_snowman.png", 2.9),
+    ("imgfloat", f"{A}/monsters/enchanted_snowman.png", 2.5),
     ("body", "Three cheerful roadside snowmen with coal-black eyes and wicked twig grins "
              "shudder to life as travelers pass, stick arms lifting to pelt them with "
              "snowballs laced with ice magic. It would almost be funny, if the snowballs "
@@ -427,12 +423,13 @@ BLOCKS = [
            "HP 30, and they never stop grinning."),
 
     ("h2", "Ice Spiders"),
+    # Anchored at the top of the section, floated LEFT so it cannot collide
+    # with the snowman float on the right edge above it.
+    ("imgfloat", f"{A}/monsters/ice_spider.png", 2.5, "left"),
     ("body", "In a grove of frost-covered trees, branches creak under an unnatural weight "
              "and a faint skittering echoes overhead. Then icy webs glisten in the dappled "
              "light, and frost-coated spiders the size of wolves drop from the canopy, "
              "mandibles glittering with rime."),
-    # Anchored below the body so it clears the snowman float's overhang above.
-    ("imgfloat", f"{A}/monsters/ice_spider.png", 2.9),
     ("dm", "**2d6 Ice Spiders (CR 1 each).** Wisdom (Perception) DC 15 spots them before "
            "they drop; Wisdom (Survival) DC 14 keeps the party out of the sticky web traps "
            "(DC 13 Strength to break free). Their bite carries a venomous chill (DC 13 "
@@ -440,9 +437,10 @@ BLOCKS = [
            "damage if touched, and the ground beneath the grove is slick ice, Dexterity "
            "(Acrobatics) DC 14 to keep footing."),
 
-    ("pagebreak",),
-    ("h2", "Frozen Will-o'-Wisps"),
-    ("imgfloat", f"{A}/monsters/frozen_will_o_wisps.png", 2.9),
+    # Hardbreak: the wisps float needs a page's top half; anchored lower it
+    # collides with the ice spider float and mangles the wrap.
+    ("h2", "Frozen Will-o'-Wisps", {"hardbreak": True}),
+    ("imgfloat", f"{A}/monsters/frozen_will_o_wisps.png", 2.7),
     ("body", "Above a frozen pond, ghostly blue lights flicker and bob, beckoning travelers "
              "out onto the ice with whispers of false promises. The scene looks tranquil, "
              "almost inviting, but the mist around the lights is far, far too cold."),
@@ -700,9 +698,10 @@ BLOCKS = [
              "cracks with frost where he walks."),
     ("gold", "**Krampusshade:** “Your defiance ends here. I will feast on your fear, and the "
              "children shall be mine forever!”"),
-    # Showpiece (DM request): the session's villain gets a big centered plate.
+    # Showpiece (DM request): the session's villain gets a big centered plate
+    # (height tuned so the harmony lead-in paragraphs share his page).
     ("img", f"{A}/monsters/krampusshade.png",
-     "The Krampusshade comes for Havenmoor.", 4.4, {"hmax": 4.8}),
+     "The Krampusshade comes for Havenmoor.", 4.4, {"hmax": 4.1}),
 
     ("h2", "The Bells' Harmony"),
     ("gold", "He slams his claws together and freezing power rolls across the square; his "
@@ -712,10 +711,8 @@ BLOCKS = [
     ("gold", "While blade, bolt, claw, and starlight hold the imps back, bell after bell rings "
              "out through the fog, weaving into the one carol big enough for the moment, eight "
              "notes of Elaria's light striking through the dark like lantern beams."),
-    # Page balance: the finale card grew a battlefield bullet and full bell
-    # mechanics; it opens a fresh page whole, with the carol plate beneath it,
-    # rather than splitting across the plate page.
-    ("pagebreak",),
+    # Page balance: the finale card keeps together and jumps whole on its own;
+    # no explicit break, so the lead-in paragraphs fill the villain's page.
     ("game", "The Bells' Harmony: Carol of the Bells", [
         "**The last song.** To weaken the Krampusshade and banish him for good, all **eight "
         "Winter Bells** must ring in harmony while the battle rages: one haunting, hopeful "
@@ -741,7 +738,7 @@ BLOCKS = [
     # Showpiece: the carol finale plate rides directly under the rules card,
     # keeping the song spread together and the page full.
     ("img", f"{A}/scenes/s4_carol_finale.png",
-     "The Carol of the Bells rings out, and the Krampusshade comes apart into shadow above them.", 4.2, {"hmax": 4.6}),
+     "The Carol of the Bells rings out, and the Krampusshade comes apart into shadow above them.", 4.2, {"hmax": 4.0}),
     ("gold", "With every toll the Krampusshade flinches. Threads of shadow "
              "peel from his shoulders like smoke from a dying fire. His chains crack. His "
              "outline gutters like a candle flame."),
@@ -795,7 +792,7 @@ BLOCKS = [
     ("imgrow", [(f"{A}/characters/lilly_session4.png",
                  "Lilly and the Frostbite Shard Dagger."),
                 (f"{A}/characters/stabby_cane.png",
-                 "Stabby and the Candyfang Katana. Yes, he licked it.")], 3.1),
+                 "Stabby and the Candyfang Katana. Yes, he licked it.")], 3.2),
     ("divider",),
     ("bridge", "Their fourth adventure was done: a stolen child brought home, eight bells rung "
                "into one great carol, a bitter old shadow banished into the dark between the "

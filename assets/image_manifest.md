@@ -227,3 +227,4 @@ Embedded images recovered from the original raw session documents (word/media). 
 | `assets/scenes/s5_vigil_dawn.png` (v2, canon fix DM-approved 2026-07-06: sleeping Floraburst, not Ghostbloom; v1 retired to `_triage/superseded_art/s5_vigil_dawn_v1_ghostbloom_error.png`) | `assets/gen_prompts/s5_vigil_dawn_v2.txt` | REF_floraburst (first), REF_lilly_1, REF_stabby_1, REF_ursa_1 |
 | `assets/scenes/s4_frostpine_glade.png` (DM-approved 2026-07-06) | `assets/gen_prompts/s4_frostpine_glade.txt` | s4_havenmoor_town (palette) |
 | `assets/world/havenmoor_wilds_map.png` (DM-approved 2026-07-06) | `assets/gen_prompts/s4_havenmoor_wilds_map.txt` | elaria_region_map (map style) |
+| `assets/scenes/s4_crystalbrook_stream.png` (v2, DM-approved 2026-07-06: wilderness barrier site with visible dark seal; v1 town-look retired to `_triage/superseded_art/s4_crystalbrook_stream_v1_town_look.png`) | `assets/gen_prompts/s4_crystalbrook_stream_v2.txt` | s4_frostpine_glade (palette) |

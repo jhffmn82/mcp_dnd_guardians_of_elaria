@@ -377,6 +377,11 @@ def build_doc(blocks, out_path):
                 # zero spacing INSIDE the card so the fill reads as one
                 # continuous panel; the frame closes after the last line.
                 p.paragraph_format.space_after = Pt(14 if i == len(glines) - 1 else 0)
+                # a card NEVER splits across a page turn: every line keeps
+                # its own lines together and chains to the next line.
+                p.paragraph_format.keep_together = True
+                if i < len(glines) - 1:
+                    p.paragraph_format.keep_with_next = True
                 _rich(p, line, base_size=Pt(10.5))
 
         elif kind == "stat":
