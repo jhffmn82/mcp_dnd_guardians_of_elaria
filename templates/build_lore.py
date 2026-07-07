@@ -88,6 +88,11 @@ BLOCKS = [
              "Waking Constellations that relights a star with every victory, the Sash of the Swift "
              "Current, and the Pocket Dynamo. One chest, three gifts, one goddess guiding three "
              "chosen hands. Their full powers are set down in the compendium of treasures."),
+    # The goddess's gifts in one gallery row (DM request 2026-07-06): the
+    # potatoes, the three relics together, and the Sphere.
+    ("imgrow", [("assets/items/three_potatoes.png", "The three enchanted potatoes."),
+                ("assets/items/three_relics_display.png", "The three relics of Wraithpine."),
+                ("assets/items/essence_sphere.png", "The Essence Sphere.")], 2.15),
 
     ("h1", "A Gazetteer of Elaria"),
     ("body", "The chronicle's road runs west to east, village by village, and every stop on it has "

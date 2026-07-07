@@ -335,6 +335,44 @@ def build_doc(blocks, out_path):
                 r = p.add_run(label + "   "); _set_font(r, Pt(11.5), True, color=acc)
                 r = p.add_run("● " * int(n)); _set_font(r, Pt(14), True, color=acc)
 
+        elif kind == "game":
+            # (game, title, [lines]) - a SET-PIECE RULES CARD for playable
+            # table moments (dice games, song seals, storm sequences). A full
+            # double-ruled teal frame, big title, roomy text: the one box in
+            # the book that says "put the book down and play this".
+            _, gtitle, glines = blk[0], blk[1], blk[2]
+            G_FILL, G_EDGE = "EAF4F3", "1F7A78"
+            def _card(par, first=False, last=False):
+                ppr = par._p.get_or_add_pPr()
+                pbdr = OxmlElement('w:pBdr')
+                for side, on in [("top", first), ("bottom", last), ("left", True), ("right", True)]:
+                    if not on:
+                        continue
+                    el = OxmlElement('w:' + side)
+                    el.set(qn('w:val'), 'double'); el.set(qn('w:sz'), '12')
+                    el.set(qn('w:space'), '10' if side in ("left", "right") else '4')
+                    el.set(qn('w:color'), G_EDGE)
+                    pbdr.append(el)
+                ppr.append(pbdr)
+                shd = OxmlElement('w:shd')
+                shd.set(qn('w:val'), 'clear'); shd.set(qn('w:color'), 'auto')
+                shd.set(qn('w:fill'), G_FILL)
+                ppr.append(shd)
+                par.paragraph_format.left_indent = Twips(400)
+                par.paragraph_format.right_indent = Twips(400)
+            p = doc.add_paragraph(); _card(p, first=True)
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.space_before = Pt(14); p.paragraph_format.space_after = Pt(3)
+            p.paragraph_format.keep_with_next = True
+            r = p.add_run("✦  " + gtitle + "  ✦"); _set_font(r, Pt(13.5), True, color=G_EDGE)
+            for i, line in enumerate(glines):
+                p = doc.add_paragraph(); _card(p, last=(i == len(glines) - 1))
+                p.paragraph_format.space_before = Pt(0)
+                # zero spacing INSIDE the card so the fill reads as one
+                # continuous panel; the frame closes after the last line.
+                p.paragraph_format.space_after = Pt(14 if i == len(glines) - 1 else 0)
+                _rich(p, line, base_size=Pt(10.5))
+
         elif kind == "stat":
             # (stat, title, [lines])
             p = doc.add_paragraph(); _shade(p, STAT_FILL, STAT_EDGE)

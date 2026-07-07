@@ -222,3 +222,5 @@ Embedded images recovered from the original raw session documents (word/media). 
 | `assets/scenes/s6_hydra_lair.png` | `assets/gen_prompts/s6_hydra_lair.txt` | false_hydra.png |
 | `assets/scenes/s6_chest_opening.png` | `assets/gen_prompts/s6_chest_opening.txt` | REF_lilly_1, REF_stabby_1, REF_ursa_1, REF_ghostbloom |
 | `assets/world/elaria_region_map.png` (v2, landscape 1536x1024, DM-approved 2026-07-06; v1 square retired to `_triage/superseded_art/elaria_region_map_v1_square.png`) | `assets/gen_prompts/elaria_world_map.txt` | none (pure generation; geography from Sessions 1-7 travel canon, sea crossing included) |
+| `assets/world/elaria_region_map.png` (v3, route-free edit of v2, DM-approved 2026-07-06) | `assets/gen_prompts/elaria_world_map.txt` + removal edit | v2 map as edit reference |
+| `assets/items/three_relics_display.png` (DM-approved 2026-07-06) | `assets/gen_prompts/three_relics_display.txt` | staff_of_waking_constellations, sash_of_the_swift_current, lilly_with_dynamo |
