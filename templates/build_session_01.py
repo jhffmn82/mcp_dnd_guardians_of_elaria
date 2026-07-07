@@ -12,6 +12,11 @@ BLOCKS = [
      "An illustrated adventure. Read the gold boxes aloud; the purple boxes are for the DM."),
 
     ("h1", "Our Story Begins"),
+    # Session opener: half-page landscape plate directly under the first
+    # heading, cropped 3:2 so the square art spans the full text column
+    # and dominates page 1.
+    ("img", f"{A}/scenes/s1_eldridge_village.png",
+     "Eldridge Village at dusk, where our story begins.", 6.0, {"crop": "3:2", "hmax": 4.6}),
     ("gold", "Far to the west, in a land called **Eldridge Vale**, the hills roll green and soft, "
              "and the roads wind between hedgerows and sleepy farms. Folk here live quiet lives. "
              "They mend fences, bake bread, and tell stories by the fire. But lately the stories "
@@ -25,24 +30,24 @@ BLOCKS = [
              "themselves have been waiting for this evening."),
     ("dm", "The heroes begin this chronicle at **level 3**. Full creature statistics for every "
            "session live in the compendium; a compact appendix closes each session."),
-    # Sized to close out page 1 exactly (3.3 tipped onto page 2 and stranded
-    # the bottom third of the opening page).
-    ("img", f"{A}/scenes/s1_eldridge_village.png",
-     "Eldridge Village at dusk, where our story begins.", 3.0),
     ("img", f"{A}/world/elaria_region_map.png",
-     "Eldridge Vale and the lands of Elaria, as mapped by the cartographers of Gearhaven.", 4.2),
+     "Eldridge Vale and the lands of Elaria, as mapped by the cartographers of Gearhaven.", 6.5, {"hmax": 4.6}),
 
     # ------------------------------------------------------------------
-    ("h1", "Part One: The Gilded Acorn", {"pagebreak": True}),
+    ("h1", "Part One: The Gilded Acorn", {"hardbreak": True}),
     ("gold", "The **Gilded Acorn Tavern** is the heart of Eldridge Village: a warm, golden room "
              "that smells of roasting meat and fresh bread. Wooden beams cross the ceiling, hunting "
              "trophies and faded banners line the walls, and a great stone hearth crackles against "
              "the evening chill. A minstrel strums a lute on the little stage in the corner. The "
              "tavern is crowded tonight, and every table hums with the same uneasy talk: the forest, "
              "the lights, the whispers."),
-    # Tavern establishing shot floats right beside the opening paragraphs
-    # (anchored below the first paragraph so the heading keeps its text).
-    ("imgfloat", f"{A}/scenes/s1_gilded_acorn_meeting.png", 2.4),
+    # Tavern interior: promoted to a half-page landscape plate per DM review.
+    # 5:4 crop keeps this plate tall as well as wide; the three heroes fill the frame.
+    ("img", f"{A}/scenes/s1_gilded_acorn_meeting.png",
+     "The Gilded Acorn Tavern, the heart of Eldridge Village.", 5.8, {"crop": "5:4", "hmax": 4.6}),
+    # Portrait floats right beside the Osric paragraph and Lilly's arrival;
+    # anchored above the h2 so it sits high enough to clear the bottom margin.
+    ("imgfloat", f"{A}/characters/lilly_with_essence_sphere_dalle.webp", 2.9),
     ("gold", "Behind the bar stands **Osric the innkeeper**, broad shouldered and bushy bearded, "
              "his laugh booming over the noise. Between tables darts **Rhea the barmaid**, quick "
              "handed and quicker witted, hearing every rumor in the room twice before anyone "
@@ -55,9 +60,6 @@ BLOCKS = [
              "surface world is almost too much: too bright, too loud, too wonderfully strange. She "
              "clutches a brass and crystal device to her chest, a sphere that hums softly, like "
              "something inside it is dreaming."),
-    # Portrait floats right; anchored on the second paragraph so a section
-    # break near a page foot cannot push the float over the bottom margin.
-    ("imgfloat", f"{A}/characters/lilly_with_essence_sphere_dalle.webp", 2.2),
     ("gold", "Her mother, the tinkerer **Poots Glimmergear**, pressed the **Essence Sphere** into her "
              "hands before she left. Inside it sleeps the spark of a creature called **Pikachu**, an "
              "old friend trapped without a body. *Find Ursa Catchum*, her mother said. *The son of my "
@@ -80,8 +82,8 @@ BLOCKS = [
              "natural flow of things, and when word reaches him that a stranger is asking for him by "
              "name, Ursa is already walking toward the village. Some part of him, the part his father "
              "left him, knows: something is beginning."),
-    # Portrait floats right; the tavern meeting paragraphs wrap around it.
-    ("imgfloat", f"{A}/npcs/s1_ursa_intro.png", 2.2),
+    # Portrait floats left; the tavern meeting paragraphs wrap around it.
+    ("imgfloat", f"{A}/npcs/s1_ursa_intro.png", 3.3, "left"),
     ("gold", "In the tavern, Ursa spots the silver haired gnome girl at once, and the strange "
              "contraption glowing faintly in her lap. He crosses the room, cautious and curious in "
              "equal measure."),
@@ -103,7 +105,7 @@ BLOCKS = [
              "hungry for excitement."),
     # Portrait floats right; anchored two paragraphs in so the section start
     # at a page foot cannot push the float over the bottom margin.
-    ("imgfloat", f"{A}/npcs/s1_stabby_intro.png", 2.2),
+    ("imgfloat", f"{A}/npcs/s1_stabby_intro.png", 3.3),
     ("gold", "He notices the glowing sphere immediately. He notices the two interesting strangers "
              "around it immediately after. He invites himself to their table before either can say a word."),
     ("gold", "**Stabby:** “Oi! You two look like you are planning an adventure!” He plops "
@@ -114,8 +116,6 @@ BLOCKS = [
              "adventure involved, count me in!”"),
 
     ("h2", "Rumors and a Brawl"),
-    # Brawl scene floats right beside the rumor and brawl paragraphs.
-    ("imgfloat", f"{A}/scenes/s1_bar_brawl.png", 2.45),
     ("gold", "Osric brings mugs and news to the new table of three. All around them the tavern "
              "murmurs: *old Jarek saw something glowing in the woods again... strange winds out "
              "there... the trees do not sound right... folk say the forest is waking up.*"),
@@ -130,6 +130,11 @@ BLOCKS = [
              "A little friendly brawl, eh?”"),
     ("dm", "**The brawl.** Bren and two friends, fists, chairs, and one regrettable mug. Strictly "
            "non lethal. The three strangers fight together for the first time, and win."),
+    # Brawl scene promoted to a half-page plate: it is a tavern interior
+    # action scene, and the DM wants those big.
+    ("img", f"{A}/scenes/s1_bar_brawl.png",
+     "A little friendly brawl, and the first fight the three ever won together.", 6.2,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "It is short, loud, and glorious. Stabby fights like a rumor: everywhere and nowhere. "
              "Lilly's gadgets spark and startle. Ursa never even stands up all the way. When Bren "
              "finally sits down hard, rubbing his jaw, the whole tavern is laughing, and so, almost, "
@@ -145,7 +150,7 @@ BLOCKS = [
              "that walks out, under a sky thick with watching stars."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Two: The Whispering Pond", {"pagebreak": True}),
+    ("h1", "Part Two: The Whispering Pond", {"hardbreak": True}),
     ("bridge", "The new friends left the warm noise of the tavern behind and followed the path "
                "toward the forest, drawn by rumor and the glow of adventure."),
     ("gold", "Beyond the last cottages, the night turns soft and silver. Mist rolls in from the "
@@ -158,8 +163,11 @@ BLOCKS = [
              "it is tall, which flicks out to taste the pond, then a wildflower, then the air in the "
              "party's direction. Around it the reeds sway toward it like friends leaning in, and the "
              "colors of the night seem brighter, dreamlike, wherever it goes."),
-    # Pond scene floats right beside the Lickgloom introduction.
-    ("imgfloat", f"{A}/scenes/s1_lickgloom_pond.png", 2.3),
+    # Pond establishing shot: half-page landscape plate per DM review.
+    # 16:9 crop: a wide cinematic plate that lets Part Two close out its page.
+    ("img", f"{A}/scenes/s1_lickgloom_pond.png",
+     "The Whispering Pond, where the water holds the starlight strangely.", 5.8,
+     {"crop": "16:9", "hmax": 4.6}),
     ("gold", "This is **Lickgloom**, a creature of the **Feywild**, a realm of wild wonder that "
              "presses close against our own. It did not break into the world. It simply wandered "
              "through a door that should not have been open."),
@@ -173,23 +181,26 @@ BLOCKS = [
              "pond, where Lickgloom passed, the wildflowers are blooming out of season."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Three: The Forest of Whispers", {"pagebreak": True}),
+    ("h1", "Part Three: The Forest of Whispers", {"hardbreak": True}),
     ("bridge", "With Lickgloom trotting alongside, the party stepped beneath the eaves of the "
                "forest everyone in Eldridge Vale had warned them about."),
     ("gold", "The Forest of Whispers earns its name at once. The canopy closes overhead until the "
              "starlight comes through in coins and slivers, and the wind moving in the leaves makes a "
              "long, low murmur, like a crowd whispering just out of sight. The mist thickens around "
              "your boots. The air feels charged, the way it does before a storm breaks."),
+    # The DM flagged this one by name: landscapes go half-page big.
     ("img", f"{A}/scenes/s1_forest_of_whispers.png",
-     "Beneath the eaves of the Forest of Whispers, where the starlight comes through in coins and slivers.", 2.3),
+     "Beneath the eaves of the Forest of Whispers, where the starlight comes through in coins and slivers.",
+     5.8, {"crop": "3:2", "hmax": 4.6}),
 
+    # Duckleaf floats right beside the whole stone circle section; anchored
+    # above the h2 and cropped 5:4 so it stays clear of the bottom margin.
+    ("imgfloat", f"{A}/monsters/duckleaf_stone_circle.png", 3.3, {"crop": "5:4"}),
     ("h2", "The Stone Circle and the Duck with the Leek"),
     ("gold", "The trees open into a wide clearing where five towering stones stand in a rough ring, "
              "mossy and carved with runes too old to read. The air above them ripples like heat over "
              "a summer road. And perched atop the tallest stone, silhouetted against the sky, stands "
              "a bird."),
-    # Duckleaf art floats right beside the duel paragraphs.
-    ("imgfloat", f"{A}/monsters/duckleaf_stone_circle.png", 2.3),
     ("gold", "It is a large, sturdy duck. It is holding a leek like a sword. Its eyes glow with a "
              "pale light, and the wind in the clearing moves when it moves, swirling leaves in slow "
              "spirals around the stones. A voice arrives in your minds, sharp as a whistle: a "
@@ -216,8 +227,8 @@ BLOCKS = [
     ("gold", "Deeper still, the ground turns soft and the sound of water leads the party to a hidden "
              "grove, where a wide pond glows a gentle blue from beneath, and droplets of water hang "
              "in the air, suspended as if time forgot them. Nothing here feels quite of this world."),
-    # Cognifin art floats right beside the grove paragraphs.
-    ("imgfloat", f"{A}/monsters/cognifin_grove.png", 2.3),
+    # Cognifin art floats left beside the grove paragraphs.
+    ("imgfloat", f"{A}/monsters/cognifin_grove.png", 3.0, "left"),
     ("gold", "The water stirs. From the center of the pond rises a duck like creature wrapped in "
              "pale blue light, hovering above its own reflection, eyes gleaming with psychic energy. "
              "The ripples spread from it in perfect rings, and its voice arrives not in the ears but "
@@ -235,7 +246,7 @@ BLOCKS = [
              "behind is bigger than the grove: *who is opening the doors between worlds?*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Four: The Road to Oakshade", {"pagebreak": True}),
+    ("h1", "Part Four: The Road to Oakshade", {"hardbreak": True}),
     ("bridge", "Carrying two mysteries and one new friend, the party pressed on through the "
                "forest's far side, toward the next village on the map."),
     ("gold", "The road to **Oakshade Village** winds through hills as the sun goes down, and with "
@@ -245,7 +256,7 @@ BLOCKS = [
     ("dm", "Dexterity (Acrobatics) DC 12 across the root falls; Wisdom (Perception) DC 13 to hold "
            "the path in fog. Then: two **Mist Stalkers**, ambushing from the white."),
     # Mist Stalker scene floats right beside the ambush paragraphs.
-    ("imgfloat", f"{A}/scenes/s1_mist_stalkers.png", 2.3),
+    ("imgfloat", f"{A}/scenes/s1_mist_stalkers.png", 3.1),
     ("gold", "They come with no sound at all: two sleek predators of fog and hunger, eyes like cold "
              "lamps, wearing the mist like a cloak. Their howls roll through the whiteness from "
              "every direction at once, hunting fear the way wolves hunt the slow. But this party "
@@ -262,8 +273,6 @@ BLOCKS = [
              "the windows. At the heart of the village square stands one ancient oak hung with faded "
              "ribbons and charms, an old well beside it, and the smell of woodsmoke and fresh bread "
              "on the air."),
-    # Oakshade at twilight floats right beside the arrival paragraphs.
-    ("imgfloat", f"{A}/scenes/s1_oakshade_twilight.png", 2.2),
     ("gold", "It should feel peaceful. It almost does. But the villagers walk quickly, and their "
              "eyes keep sliding to the forest's edge, as if the trees might follow them home."),
     ("gold", "**Elder Merwin**, the village's gray streaked blacksmith and elder, meets the party "
@@ -290,6 +299,11 @@ BLOCKS = [
              "three strangers collided at the Gilded Acorn, the new friends sleep under one roof: a "
              "gnome far from the deep places, a goblin far from his clan, a boy whose father watched "
              "these same stars, and one small fey creature dreaming, whatever fey creatures dream."),
+    # Closing vignette: the village establishing shot as a half-page plate,
+    # placed here so Part Four ends flush on a full page.
+    ("img", f"{A}/scenes/s1_oakshade_twilight.png",
+     "Oakshade Village at twilight, nestled beneath the ancient oaks.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("divider",),
     ("bridge", "Their first day together was done: a friendship, a brawl, two guardians bested, "
                "three motes of runaway magic, and a mystery with no bottom yet. In the morning, the "

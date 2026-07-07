@@ -28,11 +28,12 @@ BLOCKS = [
              "beds for the night."),
 
     # ------------------------------------------------------------------
+    # Half-page establishing plate: fills out page 1 beneath the recap.
     ("img", f"{A}/npcs/ravenstone_laboratory_dalle.webp",
-     "Ravenstone Laboratory in the morning light.", 3.8),
+     "Ravenstone Laboratory in the morning light.", 6.0, {"crop": "3:2", "hmax": 4.6}),
 
     # ------------------------------------------------------------------
-    ("h1", "Part One: A Morning of Marvels", {"pagebreak": True}),
+    ("h1", "Part One: A Morning of Marvels", {"hardbreak": True}),
     ("bridge", "The heroes woke on their first morning at Ravenstone Laboratory, in a tower where "
                "magic and science share every shelf."),
     ("gold", "Morning sun filters through the high, arched windows of **Ravenstone Laboratory**, "
@@ -49,7 +50,7 @@ BLOCKS = [
              "glowing gently before him. He has clearly been up since dawn. His silver hair glimmers "
              "in the sunlight, and his emerald eyes are wide with wonder."),
     # The workbench study floats right beside the morning dialogue.
-    ("imgfloat", f"{A}/scenes/s3_sphere_examination.png", 2.7),
+    ("imgfloat", f"{A}/scenes/s3_sphere_examination.png", 3.3, {"crop": "4:5", "hmax": 4.2}),
     ("gold", "**Aelwyn:** “By the Spheres! Even after a whole morning's study I can scarcely "
              "believe it. A fully functional Essence Sphere! Poots Glimmergear is a true genius of "
              "her craft. This device is beyond what I thought possible.”"),
@@ -65,11 +66,13 @@ BLOCKS = [
              "my little tower. Upgraded with a proper core, this Sphere could hold many essences at "
              "once, more than enough for your Pikachu to step back into the world.”"),
 
+    # The Essence Sphere section fills page two past the seventy percent mark;
+    # break here so the Guardian section carries its page instead of stranding
+    # a half-empty part-final page.
+    ("pagebreak",),
     ("h2", "The Guardian of Balance"),
     ("gold", "Aelwyn's gaze drifts to the little collection the party has gathered on their travels: "
              "faint captured orbs of water, air, and earth, each one humming softly in its jar."),
-    # Portrait floats right beside the professor's warning.
-    ("imgfloat", f"{A}/npcs/professor_aelwyn_dalle.webp", 2.3),
     ("gold", "**Aelwyn:** “These motes of yours are not stray magical oddities. They are "
              "fragments of planar essence, torn loose from their home realms. The balance of the "
              "planes is unraveling, and creatures are slipping through the cracks.”"),
@@ -77,6 +80,9 @@ BLOCKS = [
              "was Elaria. She said her power was fading, and that we needed to restore it.”"),
     ("gold", "The professor goes very still. When he speaks again, the scientist's excitement is "
              "gone, and something older and graver has taken its place."),
+    # Portrait floats beside the map and the professor's charge; the tall
+    # 4:5 crop carries the page to a fuller foot.
+    ("imgfloat", f"{A}/npcs/professor_aelwyn_dalle.webp", 3.3, {"crop": "4:5", "hmax": 4.2}),
     ("gold", "**Aelwyn:** “Elaria. The Guardian of Balance. Children, if *her* power is waning, "
              "then the boundaries between the planes will not merely leak. They will collapse. "
              "Everything you have seen, the motes, the strange creatures, the thin places in the "
@@ -90,7 +96,7 @@ BLOCKS = [
              "secret of how to stitch a world back together.”"),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Two: Three Small Wonders", {"pagebreak": True}),
+    ("h1", "Part Two: Three Small Wonders", {"hardbreak": True}),
     ("bridge", "Before the road, the professor had one more gift to offer: a choice that would "
                "change the party forever."),
     ("gold", "As Aelwyn speaks, the laboratory's smallest residents come out to investigate the "
@@ -100,7 +106,7 @@ BLOCKS = [
              "small fox-like creature with flames dancing harmlessly along its paws and tail darts "
              "between the table legs, chasing an automaton twice its size: an **Emberpaws**."),
     # The three little wonders float right beside Aelwyn's offer.
-    ("imgfloat", f"{A}/scenes/s3_choose_companion.png", 2.6),
+    ("imgfloat", f"{A}/scenes/s3_choose_companion.png", 3.2),
     ("gold", "**Aelwyn:** “These little ones are manifestations of the unstable boundaries, each "
              "one carrying a fragment of elemental essence. They are not curiosities. They are "
              "clues. And they can sense planar anomalies long before you or I could.” He kneels "
@@ -125,7 +131,7 @@ BLOCKS = [
              "night at the pond. Aelwyn watches it herd a family of glimmering hatchlings across the "
              "floor and chuckles."),
     # The farewell scene floats right beside Aelwyn's offer of a home.
-    ("imgfloat", f"{A}/scenes/s3_lickgloom_farewell.png", 2.6),
+    ("imgfloat", f"{A}/scenes/s3_lickgloom_farewell.png", 3.3),
     ("gold", "**Aelwyn:** “You know, the road to Gearhaven is long, and a laboratory full of "
              "planar creatures could use a friendly guide who speaks their language. Lickgloom "
              "would have a home here. Friends here. And you would always know where to find it.”"),
@@ -162,7 +168,7 @@ BLOCKS = [
              "The wind carries a whisper of adventure, and the promise of revelations to come."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Three: The Wild Road", {"pagebreak": True}),
+    ("h1", "Part Three: The Wild Road", {"hardbreak": True}),
     ("bridge", "The road south proved everything the professor promised: beautiful, strange, and "
                "increasingly full of teeth."),
 
@@ -172,7 +178,10 @@ BLOCKS = [
              "sunlight struggle through the canopy. The air grows damp and cold, smelling of moss "
              "and something faintly metallic, like a storm that has not broken yet. Then, all at "
              "once, the birds stop singing."),
-    ("imgfloat", f"{A}/scenes/s3_brambleshadow_thicket.png", 2.5),
+    # Establishing plate: the thicket closing over the southward road.
+    ("img", f"{A}/scenes/s3_brambleshadow_thicket.png",
+     "The southward road disappears into Brambleshadow Thicket.", 5.6,
+     {"crop": "3:2", "hmax": 4.6}),
     ("dm", "Wisdom (Perception) DC 14 to notice the unnatural silence; Intelligence (Arcana) DC 15 "
            "to sense necrotic planar energy soaked into the shadows."),
     ("gold", "**Ursa**, whispering, his breath misting: “This does not feel right. Something is "
@@ -184,10 +193,10 @@ BLOCKS = [
              "into a grin, wisps of shadow trailing from its limbs like ghostly fire."),
     ("gold", "**Shadowflame**, in a whispery, disembodied voice: “Your fears are tasty... let me "
              "see them... let me taste them!”"),
-    ("imgfloat", f"{A}/monsters/shadowflame.png", 2.5),
     ("dm", "**The fight.** Shadowflame, CR 4 (appendix). It splits into three identical illusions; "
            "Intelligence (Arcana) or Wisdom (Perception) DC 18 to pick the real one. Terror Wave in "
            "a 15 foot cone (Wisdom DC 14 or frightened); Shadowmeld to teleport through the mist."),
+    ("imgfloat", f"{A}/monsters/shadowflame.png", 2.9),
     ("gold", "The clearing becomes a hall of dark mirrors. Four grinning shadows circle the party, "
              "moving as one, and blades pass through two of them before Lilly starts calling out "
              "which flame casts no light. Stabby is frightened for exactly one round, which he later "
@@ -202,7 +211,11 @@ BLOCKS = [
              "grinning: “More shadows, more fights! We are going to need sharper swords!”"),
 
     ("h2", "Whisperwind Meadow"),
-    ("imgfloat", f"{A}/scenes/s3_whisperwind_meadow.png", 2.4),
+    # Establishing plate: the one gentle stretch of the wild road. The sky-heavy
+    # art crops to a wide panorama, which also keeps this part to four pages.
+    ("img", f"{A}/scenes/s3_whisperwind_meadow.png",
+     "Whisperwind Meadow, where the wind talks in its sleep.", 5.8,
+     {"crop": "16:9", "hmax": 4.6}),
     ("gold", "Beyond the thicket the land opens into **Whisperwind Meadow**, and for one golden "
              "afternoon the road is kind. The grass runs in long silver waves, and the wind moving "
              "through it truly does whisper, half-words in no language anyone knows, as if the air "
@@ -216,7 +229,7 @@ BLOCKS = [
              "and the fog comes back with a grudge. Twisted trees knit out the sun, the mist curls "
              "around ankles, and every footstep lands muffled, as if the forest is holding a pillow "
              "over the sound."),
-    ("imgfloat", f"{A}/scenes/s3_displacer_beasts.png", 2.6),
+    ("imgfloat", f"{A}/scenes/s3_displacer_beasts.png", 2.9),
     ("dm", "Wisdom (Perception) DC 15: shapes flickering in the fog, pacing the party. Wisdom "
            "(Survival) DC 14: padded tracks that stop abruptly, mid-stride. Intelligence (Arcana) "
            "DC 16: planar distortion is warping the creatures here, granting them abilities they "
@@ -250,13 +263,17 @@ BLOCKS = [
              "through the earth like veins of metal. The higher the party climbs, the stranger the "
              "hills grow: bulbous mushrooms sprout between the rocks, their caps glowing with eerie "
              "blue-green light, until the whole hillside shines like a dream having a dream."),
-    ("imgfloat", f"{A}/scenes/s3_ironroot_hills.png", 2.3),
     ("dm", "Wisdom (Perception) DC 14: the ground pulses faintly; the roots shift. Intelligence "
            "(Arcana) DC 15: the mushrooms are suffused with Feywild energy, reacting to the "
            "party's presence."),
     ("gold", "**Lilly**, adjusting her goggles: “These mushrooms are not just glowing. They are "
              "responding to us. Be ready for anything.” **Stabby**, twirling his sword: "
              "“Living mushrooms? Bet they are not ready for a good stabbing.”"),
+    # Establishing plate: the glowing climb into the hills. Placed after the
+    # scouting dialogue so the text can fill the previous page's foot.
+    ("img", f"{A}/scenes/s3_ironroot_hills.png",
+     "Glowing mushrooms light the climb into the Ironroot Hills.", 5.6,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "The moment the party steps into a clearing ringed with glowing caps, the ground "
              "shudders. With a series of wet, tearing sounds, four **Shroomytes** pull themselves "
              "free of the soil, squat fungal bodies pulsing with inner light, tendrils of mycelium "
@@ -264,7 +281,7 @@ BLOCKS = [
              "menacing at once."),
     ("gold", "**Shroomyte**, in a vibrating, musical tone: “Intruders... the grove... must be "
              "protected!”"),
-    ("imgfloat", f"{A}/monsters/shroomyte_grove.png", 2.5),
+    ("imgfloat", f"{A}/monsters/shroomyte_grove.png", 2.9),
     ("dm", "**The fight.** Four Shroomytes, CR 2 each (appendix). Spore Blasts from range, "
            "Mycelium Tendrils to entangle, difficult terrain everywhere. Lilly's fire found their "
            "weakness; Stabby simply refused to be caught."),
@@ -277,7 +294,7 @@ BLOCKS = [
              "quiet agreement. The collection grows, and so does the mystery."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Four: Stormwatch Cliffs", {"pagebreak": True}),
+    ("h1", "Part Four: Stormwatch Cliffs", {"hardbreak": True}),
     ("bridge", "By the time the hills gave way to open sky, the party could hear the sea, and the "
                "storm that lived above it."),
     ("gold", "**Stormwatch Cliffs** rise at the edge of the world: jagged stone ramparts above "
@@ -324,9 +341,10 @@ BLOCKS = [
              "boundaries between realms are mine to shatter and shape. The goddess's light fades, "
              "and chaos will reign. The motes you gather are but embers of a dying flame. You "
              "cannot stop the unraveling.”"),
-    # The vision on the cliffs floats right beside the aftermath (anchored a
-    # paragraph deeper so it clears the page foot).
-    ("imgfloat", f"{A}/scenes/s3_stormwatch_vision.png", 2.6),
+    # Establishing plate: the vision above the monolith.
+    ("img", f"{A}/scenes/s3_stormwatch_vision.png",
+     "The dark figure appears above the monolith at Stormwatch Cliffs.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "The vision collapses into darkness, and the light curtain blows out like a candle. "
              "Where it stood, something small falls to the stone with a crystalline chime: a "
              "**Dark Fragment**, a shard of crystallized energy swirling with elemental chaos, cold "
@@ -343,14 +361,16 @@ BLOCKS = [
              "get a taste of my blade!”"),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Five: The Lights of Havenmoor", {"pagebreak": True}),
+    ("h1", "Part Five: The Lights of Havenmoor", {"hardbreak": True}),
     ("bridge", "The storm broke behind them, and the path wound down from the cliffs toward the "
                "glow of a town that smelled like cookies."),
     ("gold", "As the party descends, the roar of the sea softens, and new sounds drift up to meet "
              "them: distant laughter, jingling bells, a thread of festive music. The path becomes a "
              "cobblestone road flanked by frost-dusted pines, and the cold air fills with the "
              "mingled scents of sea salt, pine needles, cinnamon, nutmeg, and fresh-baked cookies."),
-    ("imgfloat", f"{A}/scenes/s3_havenmoor_arrival.png", 2.7),
+    # Establishing plate: the town at dusk, dressed for the festival.
+    ("img", f"{A}/scenes/s3_havenmoor_arrival.png",
+     "Havenmoor at dusk, every window aglow.", 6.2, {"crop": "3:2", "hmax": 4.6}),
     ("gold", "Ahead at dusk lies **Havenmoor**, a coastal town sprung whole from a holiday "
              "fairytale. Stone and timber houses wear wreaths and garlands and twinkling lights. "
              "Red ribbons wrap the lamp posts, snow dusts the rooftops, and warm hearth-glow spills "

@@ -13,6 +13,11 @@ BLOCKS = [
      "The Curse of Davy Jones",
      "An illustrated adventure. Read the gold boxes aloud; the purple boxes are for the DM."),
 
+    # Session-opening plate: dominates page 1, directly under the title block.
+    ("img", f"{A}/scenes/s5_harbor_sendoff.png",
+     "A grateful Havenmoor cheers the Guardians up the Stormwind's gangplank.", 6.2,
+     {"crop": "3:2", "hmax": 4.5}),
+
     ("h1", "Previously, on The Guardians of Elaria..."),
     ("gold", "Winter came early to **Havenmoor**, and it came wrong. The **Krampusshade** slipped "
              "out of a crack between worlds and began stealing the town's children into its great "
@@ -30,11 +35,10 @@ BLOCKS = [
            "compendium; a compact appendix closes the session."),
 
     # ------------------------------------------------------------------
-    ("img", f"{A}/scenes/s5_harbor_sendoff.png",
-     "A grateful Havenmoor cheers the Guardians up the Stormwind's gangplank.", 2.8),
-
     # ------------------------------------------------------------------
-    ("h1", "Part One: Fair Winds from Havenmoor", {"pagebreak": True}),
+    # Part One flows on from the recap; the page before it is well under
+    # 70% full, so no hardbreak here.
+    ("h1", "Part One: Fair Winds from Havenmoor"),
     ("gold", "Rosy dawn light spills over Havenmoor's busy harbor. Fishing boats lie tethered "
              "beside merchant galleys, sails unfurling in the sea breeze, and salt spray drifts "
              "across the docks with the cries of gulls. On every lamppost flutters a brightly "
@@ -54,7 +58,7 @@ BLOCKS = [
              "ask me why, just keep it close.”"),
 
     ("h2", "Captain Brynn Wavewarden"),
-    ("imgfloat", f"{A}/npcs/brynn_wavewarden.png", 2.2),
+    ("imgfloat", f"{A}/npcs/brynn_wavewarden.png", 3.0),
     ("gold", "At the top of the Stormwind's gangplank waits a tall, steely eyed woman in a "
              "weathered naval coat, brass buttons gleaming, salt streaked hair tied back in a knot "
              "so tight it could moor a ship. **Captain Brynn Wavewarden** looks the three small "
@@ -79,7 +83,9 @@ BLOCKS = [
              "the vessel. In the evenings, Captain Brynn herself teaches them knots by lantern "
              "light: bowline, clove hitch, and a curious looping knot she says her grandmother "
              "called a keepsake knot. The heroes' small hands learn every one."),
-    ("imgfloat", f"{A}/scenes/s5_open_sea.png", 2.7),
+    ("img", f"{A}/scenes/s5_open_sea.png",
+     "The Stormwind under full sail, two bright days east of Havenmoor.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("dm", "**Ship stations.** Lookout: Wisdom (Perception) DC 12. Helm: Dexterity (Acrobatics) "
            "DC 13. Rigging: Strength (Athletics) DC 14. Bilge: Constitution DC 13. From the "
            "crow's nest, Survival (Navigation) DC 17 plotted the safer channel into the storm."),
@@ -91,14 +97,16 @@ BLOCKS = [
              "ones, and do not let the sea hear you boasting.”"),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Two: The Storm in Three Great Blows", {"pagebreak": True}),
+    ("h1", "Part Two: The Storm in Three Great Blows", {"hardbreak": True}),
     ("bridge", "On the third day the sky went the color of old iron, and the sea rose to meet it."),
     ("gold", "Dark clouds boil up from the horizon, turning the sky into a rolling cauldron of "
              "steel and shadow. The wind shrieks like a living thing, whipping the spray into "
              "stinging needles. Captain Brynn lashes herself to the wheel beside Breesh and roars "
              "over the gale: **“We ride every blow together! Fight this storm as one, or we all "
              "go down!”** Every hero takes a station. The storm comes on in three great blows."),
-    ("imgfloat", f"{A}/scenes/s5_storm.png", 2.7),
+    ("img", f"{A}/scenes/s5_storm.png",
+     "The sky turns to rolling iron as the storm breaks over the Stormwind.", 6.0,
+     {"crop": "3:2", "hmax": 4.6}),
 
     ("h2", "The First Blow: The Wall of Water"),
     ("gold", "A monstrous swell rises off the port bow, its crest glowing with strange pale foam. "
@@ -133,24 +141,28 @@ BLOCKS = [
              "ropes swing in the gloom, and somewhere in the dark a sailor coughs, and another "
              "answers, and another: the crew, alive, clinging to the ribs of their poor drowned "
              "ship."),
-    # The rising ghost ship floats right beside the sighting.
-    ("imgfloat", f"{A}/scenes/s5_dutchman_rises.png", 2.7),
     ("hero", "Stabby", "Everyone always says goblins sink. Ha! Still floating!"),
     ("gold", "And then, through the largest crack, the heroes see it. Far below, in the inky "
              "deep, something is rising. Ghost white sails unfurl in water where no wind blows. "
              "A barnacle crusted keel, vast and old and glowing sea sick green, climbs toward "
              "the wreck like a whale rising for air. The **Flying Dutchman** is coming up "
              "directly beneath them."),
+    # The rising ghost ship as a full plate right beside the sighting.
+    ("img", f"{A}/scenes/s5_dutchman_rises.png",
+     "Ghost white sails unfurl in the deep: the Flying Dutchman rises beneath the wreck.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Three: Aboard the Flying Dutchman", {"pagebreak": True}),
+    ("h1", "Part Three: Aboard the Flying Dutchman", {"hardbreak": True}),
     ("gold", "A deep, resonant groan rolls through the wreck as the Dutchman's hull slides "
              "beneath it and lifts. Water sheets away. Cold luminescence floods the hold. And "
              "then, without warning, **spectral chains** snake up through the broken planks, "
              "glowing links coiling around arms and ankles like living serpents, and haul every "
              "soul aboard the wreck, heroes and sailors alike, up into the green light of the "
              "ghost ship's deck."),
-    ("imgfloat", f"{A}/scenes/s5_dutchman_deck.png", 2.7),
+    ("img", f"{A}/scenes/s5_dutchman_deck.png",
+     "Spectral chains haul every soul aboard onto the Dutchman's green lit deck.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "The crew of the Dutchman shuffles out to meet them, and they are the funniest "
              "frightening things the heroes have ever seen: drowned sailors gone all barnacled "
              "and green, crabs riding in their beards, seaweed for hair, one with a starfish "
@@ -171,7 +183,9 @@ BLOCKS = [
              "barnacles glowing along his arms like embers, each one holding some little trapped "
              "spark of life. **Davy Jones** taps one hooked fingertip, very gently, against the "
              "Essence Sphere at Lilly's belt, and smiles like a shipwreck."),
-    ("imgfloat", f"{A}/npcs/davy_jones.png", 2.5),
+    # The session villain gets a big showing: a centered plate.
+    ("img", f"{A}/npcs/davy_jones.png",
+     "Davy Jones, captain of the Flying Dutchman.", 4.2),
     ("gold", "**Davy Jones:** “Ah. The bright spark of little Floraburst. Feywild sunlight, "
              "bottled and carried right to my door. The perfect spark to ignite my anchor and "
              "rend the veil open. Surrender her essence... or I shall harvest it by force.”"),
@@ -182,7 +196,9 @@ BLOCKS = [
              "you can win them back. Let our game begin.”"),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Four: The Dice Game of Souls", {"pagebreak": True}),
+    # Part Four flows directly under Davy's challenge; the Davy Jones float
+    # page is under half full, so no hardbreak here.
+    ("h1", "Part Four: The Dice Game of Souls"),
     ("gold", "The mess deck is lit by lanterns burning a sick green. At its center stands a "
              "scarred oak table, and every scar is a name: the names of sailors who sat here, "
              "and gambled, and lost. The heroes are set on rough benches, chains clinking at "
@@ -193,7 +209,9 @@ BLOCKS = [
     ("gold", "**Davy Jones:** “Three rounds of Seven-Eyes, target seventy and seven. Win, and "
              "your chains fall and your little friend keeps her light. Lose, and I snuff out "
              "every spark of your souls... and her fey light with them.”"),
-    ("imgfloat", f"{A}/scenes/s5_dice_game.png", 2.7),
+    ("img", f"{A}/scenes/s5_dice_game.png",
+     "Three rounds of Seven-Eyes at the scarred oak table.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("dm", "**Seven-Eyes, target 77.** Each player rolls all seven dice twice, summing toward 77 "
            "without going over; between tosses they may gift one die's value to a teammate. Davy "
            "rolls three times and may discard a die after each roll. Beat his total or bust him; "
@@ -217,7 +235,7 @@ BLOCKS = [
              "was wrong about that."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Five: No Flesh Leaves This Ship", {"pagebreak": True}),
+    ("h1", "Part Five: No Flesh Leaves This Ship", {"hardbreak": True}),
     ("bridge", "The heroes had won their souls back fairly. They could have slipped away quietly. "
                "Instead, they thought about the cages."),
     ("gold", "Two skeletal wardens, bound by the game's result and clearly disgusted about it, "
@@ -248,9 +266,11 @@ BLOCKS = [
              "and now, waking one by one, the things that guard them. The timbers themselves "
              "hum with stolen magic."),
     ("hero", "Ursa", "This is not Davy's doing alone. Something darker haunts this ship."),
-    ("imgfloat", f"{A}/scenes/s5_hold_of_essences.png", 2.5),
     ("gold", "Lilly draws her **Frostbite Shard Dagger**, frost curling off its edge into the "
              "green dark, and her eyes narrow. **Lilly:** “Then we cut it out at the source.”"),
+    ("img", f"{A}/scenes/s5_hold_of_essences.png",
+     "The hold of harvested magic: crystal jars, iron cages, and crates stamped with the "
+     "Gearhaven Guild sigil.", 5.8, {"crop": "3:2", "hmax": 4.6}),
     ("gold", "The guardians of the hold come all at once: a hulking **Smuggler's Golem** patched "
              "with metal plates and powered by stolen essences, two **Arcane Corsairs**, guild "
              "artificers turned pirate with enchanted sabers and no shame at all, and a "
@@ -272,7 +292,7 @@ BLOCKS = [
              "of his operation. Now we face the head.”"),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Six: The Captain Goes Down with the Ship", {"pagebreak": True}),
+    ("h1", "Part Six: The Captain Goes Down with the Ship", {"hardbreak": True}),
     ("gold", "Lantern light pools on warped floorboards as the final hatch swings open. Davy "
              "Jones's own chambers pulse with stolen power: jars of glowing motes line the "
              "walls, and seawater drips slow and endless from a vaulted skylight onto a raised "
@@ -313,7 +333,9 @@ BLOCKS = [
              "out the whole battle tucked in Lilly's pack, and who now reaches up toward it "
              "with every leaf and petal she has. Lilly cups her hands around the little ghost "
              "light, steady as her mother taught her, and guides it home."),
-    ("imgfloat", f"{A}/scenes/s5_ghost_essence.png", 2.6),
+    ("img", f"{A}/scenes/s5_ghost_essence.png",
+     "Lilly guides the pale ghost essence home to Floraburst.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "Floraburst drinks in the essence, shudders once from root to petal, and collapses. "
              "For one terrible heartbeat she is still. Then a slow pulse begins inside her, deep "
              "and rhythmic as a sleeping heart, and before the heroes' eyes each petal comes "
@@ -341,9 +363,6 @@ BLOCKS = [
              "gleaming silhouette of clockwork spires. In Lilly's arms their little friend "
              "sleeps on, pulsing gently, petals etched with frost and fire, becoming whatever "
              "she is going to be."),
-    # Closing showpiece: dawn over the water fills the chapter's final page.
-    ("img", f"{A}/scenes/s5_vigil_dawn.png",
-     "The Vigil rows east at dawn, Gearhaven's spires gleaming on the horizon.", 4.0),
     ("divider",),
     ("bridge", "The curse of Davy Jones was ended, the stolen magic freed, and every soul of "
                "the Stormwind saved. But the crates in that hold had worn the sigil of the "
@@ -357,6 +376,10 @@ BLOCKS = [
     ("gold", "*Next: Session 6, in which the fog rolls in over Wraithpine, the Guardians learn "
              "why you should always tie a keepsake knot, and their sleeping little friend "
              "finally opens her eyes.*"),
+    # Closing showpiece: dawn over the water closes the chapter.
+    ("img", f"{A}/scenes/s5_vigil_dawn.png",
+     "The Vigil rows east at dawn, Gearhaven's spires gleaming on the horizon.", 6.2,
+     {"crop": "3:2", "hmax": 4.6}),
 
     # ------------------------------------------------------------------
     ("h1", "Appendix: Creatures of Session Five", {"pagebreak": True}),

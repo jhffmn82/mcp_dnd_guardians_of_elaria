@@ -95,12 +95,28 @@ def _footer_stars(section):
     re_._element.append(fld2)
     r2 = p.add_run(" ✦"); _set_font(r2, Pt(9), color=CAPTION_GRAY)
 
-def _image_png_bytes(path, max_w_px=1200):
+def _image_png_bytes(path, max_w_px=1200, crop=None):
     """Return compressed JPEG bytes for any raster (webp converted, large images
     downscaled). JPEG keeps the illustrated docx/PDF a sane size; the art is
-    opaque painterly work, so no alpha is lost."""
+    opaque painterly work, so no alpha is lost.
+    crop: optional "W:H" string (e.g. "4:3"). Square art cropped to a landscape
+    ratio renders as a full-width plate instead of a tall centered square."""
     from PIL import Image
     im = Image.open(path).convert("RGB")
+    if crop:
+        wr, hr = (float(x) for x in crop.split(":"))
+        target = hr / wr
+        cur = im.height / im.width
+        if cur > target + 0.01:
+            # too tall: trim height, biased slightly above center (skies crop
+            # better than foregrounds)
+            nh = int(im.width * target)
+            top = int((im.height - nh) * 0.42)
+            im = im.crop((0, top, im.width, top + nh))
+        elif cur < target - 0.01:
+            nw = int(im.height / target)
+            left = (im.width - nw) // 2
+            im = im.crop((left, 0, left + nw, im.height))
     if im.width > max_w_px:
         im = im.resize((max_w_px, int(im.height * max_w_px / im.width)), Image.LANCZOS)
     buf = io.BytesIO()
@@ -139,7 +155,7 @@ def _float_right(paragraph, data, w_in):
     anchor = parse_xml(
         '<wp:anchor xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" '
         'xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" '
-        'behindDoc="0" distT="91440" distB="91440" distL="201600" distR="0" simplePos="0" locked="0" '
+        'behindDoc="0" distT="91440" distB="100584" distL="201600" distR="201600" simplePos="0" locked="0" '
         'layoutInCell="1" allowOverlap="0" relativeHeight="2">'
         '<wp:simplePos x="0" y="0"/>'
         '<wp:positionH relativeFrom="column"><wp:align>right</wp:align></wp:positionH>'
@@ -300,8 +316,24 @@ def build_doc(blocks, out_path):
             _rich(p, blk[1])
 
         elif kind == "dm":
+            # (dm, text[, {"size": pt}]) - optional size for lines meant to be
+            # read at the table rather than skimmed (character-sheet stats).
+            dsz = blk[2].get("size", 9.5) if len(blk) > 2 and isinstance(blk[2], dict) else 9.5
             p = doc.add_paragraph(); _shade(p, PURPLE_FILL, PURPLE_EDGE)
-            _rich(p, "▶ " + blk[1], base_size=Pt(9.5))
+            _rich(p, "▶ " + blk[1], base_size=Pt(dsz))
+
+        elif kind == "slots":
+            # (slots, accent_key, [(label, count), ...]) - a character-sheet
+            # style resource tracker: big filled pips in the hero's accent
+            # color, one row per slot level. Reads at arm's length.
+            _, who, rows = blk
+            acc = ACCENTS.get(who, INK)
+            for i, (label, n) in enumerate(rows):
+                p = doc.add_paragraph(); _shade(p, GOLD_FILL, acc)
+                p.paragraph_format.space_before = Pt(0)
+                p.paragraph_format.space_after = Pt(2 if i < len(rows) - 1 else 8)
+                r = p.add_run(label + "   "); _set_font(r, Pt(11.5), True, color=acc)
+                r = p.add_run("● " * int(n)); _set_font(r, Pt(14), True, color=acc)
 
         elif kind == "stat":
             # (stat, title, [lines])
@@ -338,13 +370,16 @@ def build_doc(blocks, out_path):
             r = p.add_run("✦ ✦ ✦"); _set_font(r, Pt(12), color=GOLD_EDGE)
 
         elif kind == "img":
-            # (img, path, caption, width_inches)
-            _, path, caption, w = blk
-            data, pw, ph = _image_png_bytes(path)
+            # (img, path, caption, width_inches[, opts])
+            # opts: {"crop": "4:3", "hmax": 5.2} - crop square art to a
+            # landscape plate; hmax raises the height cap for showpieces.
+            _, path, caption, w = blk[0], blk[1], blk[2], blk[3]
+            opts = blk[4] if len(blk) > 4 and isinstance(blk[4], dict) else {}
+            data, pw, ph = _image_png_bytes(path, crop=opts.get("crop"))
             # Cap rendered HEIGHT so tall/portrait art cannot eat a whole page
             # and strand whitespace. Landscape art keeps its requested width.
             aspect = ph / pw
-            max_h = 4.2
+            max_h = opts.get("hmax", 4.2)
             if w * aspect > max_h:
                 w = max_h / aspect
             p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -397,10 +432,12 @@ def build_doc(blocks, out_path):
             # into the following text with square wrap; no caption. The text
             # that comes AFTER this block flows around the image.
             _, path, w = blk[0], blk[1], blk[2]
-            side = blk[3] if len(blk) > 3 else "right"
-            data, pw, ph = _image_png_bytes(path)
-            if w * (ph / pw) > 3.4:
-                w = 3.4 / (ph / pw)
+            side = blk[3] if len(blk) > 3 and isinstance(blk[3], str) else "right"
+            opts = next((b for b in blk[3:] if isinstance(b, dict)), {})
+            data, pw, ph = _image_png_bytes(path, crop=opts.get("crop"))
+            fmax = opts.get("hmax", 3.4)
+            if w * (ph / pw) > fmax:
+                w = fmax / (ph / pw)
             p = doc.add_paragraph()
             p.paragraph_format.space_after = Pt(0); p.paragraph_format.space_before = Pt(0)
             _float_right(p, data, w)

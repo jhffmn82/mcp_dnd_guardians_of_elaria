@@ -31,15 +31,21 @@ BLOCKS = [
     ("dm", "The heroes begin this session at **level 4**, grown by the long road south."),
 
     # ------------------------------------------------------------------
+    # Dominant page-1 plate (DM request): the festival aerial, cropped to a
+    # landscape and run at near-full text width.
     ("img", f"{A}/scenes/s4_havenmoor_town.png",
-     "Havenmoor in its festival best, the Great Pine shining above the harbor.", 2.8),
+     "Havenmoor in its festival best, the Great Pine shining above the harbor.", 6.2,
+     {"crop": "3:2", "hmax": 4.5}),
 
     # ------------------------------------------------------------------
-    ("h1", "Part One: The Morning the Music Changed", {"pagebreak": True}),
+    ("h1", "Part One: The Morning the Music Changed"),
     ("gold", "The morning chill seeps through the windows of your rooms at the **Sugarplum Hearth**. "
              "Dawn is only a pale gray promise, and for a moment all seems calm. Then a sound "
              "threads through the silence: crying. Somewhere below, out in the snow, a woman is "
              "sobbing as if her heart has cracked in half."),
+    # The singing children float right beside the rhyme itself (anchored high
+    # so the image clears the bottom margin).
+    ("imgfloat", f"{A}/scenes/s4_children_singing.png", 3.0),
     ("gold", "From the window, the scene outside chills you more than the frosted air. In the "
              "snow-covered street, a group of children stands huddled together, their eyes vacant "
              "and far away. Their small voices rise together in a quiet, sing-song rhyme:"),
@@ -49,8 +55,6 @@ BLOCKS = [
                "It takes the lost ones, then fades to the wind."),
     ("gold", "The melody lingers, unsettling in its simplicity. The children are not playing. They "
              "are caught in something, like sleepwalkers singing in a dream."),
-    # The singing children float right beside the mother's cry.
-    ("imgfloat", f"{A}/scenes/s4_children_singing.png", 2.6),
     ("gold", "Near them, a woman kneels in the snow, clutching a small, empty mitten. Her cry cuts "
              "the morning like a knife: **“They took him! My boy... he is gone! The shadows took "
              "my little Finn!”** Villagers gather, pale and hushed, their eyes darting to the dark "
@@ -74,7 +78,7 @@ BLOCKS = [
              "at the empty mitten in the mother's hands, and the choice makes itself."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Two: The Hunt for the Winter Bells", {"pagebreak": True}),
+    ("h1", "Part Two: The Hunt for the Winter Bells"),
     ("bridge", "Map in hand, the four friends went bell hunting through a frightened town, and "
                "found that every bell came wrapped in a story."),
 
@@ -84,8 +88,11 @@ BLOCKS = [
              "hearth, gleaming quietly in plain sight, hangs an old brass bell: the **C Bell**. "
              "Greta lifts it down herself. “It has watched over this room longer than I have. "
              "Take it, and bring it back singing.”"),
-    # The common room floats right beside the fireside gossip.
-    ("imgfloat", f"{A}/scenes/s4_sugarplum_hearth.png", 2.6),
+    # Wintry establishing shot (DM request): the common room as a half-page
+    # landscape plate instead of a small float.
+    ("img", f"{A}/scenes/s4_sugarplum_hearth.png",
+     "The Sugarplum Hearth, all warmth and cinnamon, the C Bell above the fire.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "By the fire, **Elda Merrywhistle**, a cheerful half-elf bard, strums her lute and "
              "hums. “The songs we sing tonight are meant to bring joy. But some songs are darker. "
              "You have heard the one the children sing?” She plays a few notes of an old ballad, "
@@ -105,8 +112,11 @@ BLOCKS = [
              "garland, the smell of roasted chestnuts and cinnamon pastries, and at the center a "
              "towering pine tree dressed in glass ornaments and golden ribbon. But the laughter "
              "here is forced, and every parent keeps one hand on a small shoulder."),
-    # The market hunt floats right beside the E and F bell trail.
-    ("imgfloat", f"{A}/scenes/s4_bell_hunt_market.png", 2.7),
+    # Wintry establishing shot (DM request): the market square as a half-page
+    # landscape plate.
+    ("img", f"{A}/scenes/s4_bell_hunt_market.png",
+     "Bell hunting in Frostwind Market Square, under the towering festival pine.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "The **E Bell** hangs from one of the pine's lower branches, silver, engraved with "
              "stars and snowflakes, chiming softly in the breeze as if it had been waiting to be "
              "noticed. When Ursa lifts it free, the cold air feels, for one breath, warmer."),
@@ -136,7 +146,7 @@ BLOCKS = [
              "what they see. I wish they didn't. Something is wrong this winter. The nights feel "
              "colder. The shadows, longer.”"),
     # The orphanage floats right beside the attic search and Milo.
-    ("imgfloat", f"{A}/scenes/s4_orphanage_milo.png", 2.5),
+    ("imgfloat", f"{A}/scenes/s4_orphanage_milo.png", 3.0),
     ("gold", "In the attic, among old trunks and forgotten toys, a dusty toy chest holds the "
              "**G Bell**, brass etched with tiny snowflakes, nested between stuffed animals like "
              "a secret someone hid for safekeeping. As Lilly lifts it out, a whisper seems to "
@@ -169,8 +179,11 @@ BLOCKS = [
              "winter because, as he puts it, nobody else has the stomach for it. “Storms rage "
              "out at sea, but sometimes the real danger comes from the shadows that walk these "
              "cliffs. Watch the light. Mind the dark.”"),
-    # The lighthouse floats right beside the climb for the last two bells.
-    ("imgfloat", f"{A}/scenes/s4_lighthouse.png", 2.7),
+    # Wintry establishing shot (DM request): the lighthouse as a half-page
+    # landscape plate.
+    ("img", f"{A}/scenes/s4_lighthouse.png",
+     "The Wyrmgale Lighthouse, tall and steadfast on the cliffs.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "The **B Bell** hangs from a rusted iron hook near the very top of the tower, past "
              "a rickety ladder and footing slick with spray, chiming a strangely mournful note "
              "in the wind. Stabby, naturally, is up and back before anyone can say *be careful*, "
@@ -189,13 +202,13 @@ BLOCKS = [
            "C, D, E, F, G, A, B, High C."),
 
     # ------------------------------------------------------------------
-    ("h1", "The Frozen Roads: A Winter Bestiary of Chances", {"pagebreak": True}),
+    ("h1", "The Frozen Roads: A Winter Bestiary of Chances"),
     ("gold", "The roads around Havenmoor that week were thick with wonders and dangers. Not all of "
              "them crossed the heroes' path, but every one of them was out there, waiting in the "
              "white silence between the pines. What follows is the DM's deck of chances, exactly "
              "as it hung over every journey out of town that winter."),
     # The frozen wilds float right beside the encounter table.
-    ("imgfloat", f"{A}/scenes/s4_frozen_hollow.png", 2.4),
+    ("imgfloat", f"{A}/scenes/s4_frozen_hollow.png", 2.9),
     ("dm", "**Travel Encounters.** Whenever the party sets out through the frozen wilds around "
            "Havenmoor, roll a d20 on the table below. Notes on the most colorful entries follow; "
            "full statistics for every creature live in the bestiary compendium."),
@@ -260,7 +273,7 @@ BLOCKS = [
              "throw within 24 hours."),
 
     ("h2", "The Yule Cat"),
-    ("imgfloat", f"{A}/monsters/yule_cat.png", 2.25),
+    ("imgfloat", f"{A}/monsters/yule_cat.png", 2.9),
     ("body", "A massive black feline with frost-covered fur and glowing yellow eyes, the Yule "
              "Cat is a creature of fey legend that judges those who lack generosity or "
              "kindness. It prowls the deep snow on silent paws, and a low growl through the "
@@ -275,7 +288,7 @@ BLOCKS = [
            "Gift Box Table follows."),
 
     ("h2", "The Frost Hag"),
-    ("imgfloat", f"{A}/monsters/frost_hag_disguised.png", 2.25),
+    ("imgfloat", f"{A}/monsters/frost_hag_disguised.png", 2.9),
     ("body", "In a lonely clearing, a kindly old woman tends a bubbling cauldron and waves "
              "travelers over to warm themselves and share pastries dusted with powdered "
              "sugar. Her voice is honey and her fire is warm, but her eyes glint far too "
@@ -289,7 +302,7 @@ BLOCKS = [
            "reach."),
 
     ("h2", "Snowbound Bandits"),
-    ("imgfloat", f"{A}/monsters/snowbound_bandits.png", 2.25),
+    ("imgfloat", f"{A}/monsters/snowbound_bandits.png", 2.9),
     ("body", "On a narrow, snow-choked path, four desperate figures rise out of the drifts "
              "with weapons trembling in frostbitten hands, and a grizzled leader with a "
              "frost-crusted beard demands the party's packs. They are cold and hungry rather "
@@ -305,7 +318,7 @@ BLOCKS = [
            "two days, and a Gift Box."),
 
     ("h2", "Frost Golems"),
-    ("imgfloat", f"{A}/monsters/frost_golems.png", 2.25),
+    ("imgfloat", f"{A}/monsters/frost_golems.png", 2.9),
     ("body", "On a serene snowfield, the powder suddenly trembles and pulls itself together, "
              "packing into two jagged shapes of snow and ice shard. Their eyes glow with an "
              "eerie blue light as they lumber forward, frost radiating from their bodies, "
@@ -316,8 +329,11 @@ BLOCKS = [
            "to move quickly without falling prone. The golems trudge relentlessly and try "
            "to corner heroes on the worst of the ice."),
 
+    # Page balance: two bestiary sections fill a page cleanly; a third strands
+    # its float against the bottom margin.
+    ("pagebreak",),
     ("h2", "Enchanted Snowmen"),
-    ("imgfloat", f"{A}/monsters/enchanted_snowman.png", 2.25),
+    ("imgfloat", f"{A}/monsters/enchanted_snowman.png", 2.9),
     ("body", "Three cheerful roadside snowmen with coal-black eyes and wicked twig grins "
              "shudder to life as travelers pass, stick arms lifting to pelt them with "
              "snowballs laced with ice magic. It would almost be funny, if the snowballs "
@@ -328,11 +344,12 @@ BLOCKS = [
            "HP 30, and they never stop grinning."),
 
     ("h2", "Ice Spiders"),
-    ("imgfloat", f"{A}/monsters/ice_spider.png", 2.25),
     ("body", "In a grove of frost-covered trees, branches creak under an unnatural weight "
              "and a faint skittering echoes overhead. Then icy webs glisten in the dappled "
              "light, and frost-coated spiders the size of wolves drop from the canopy, "
              "mandibles glittering with rime."),
+    # Anchored below the body so it clears the snowman float's overhang above.
+    ("imgfloat", f"{A}/monsters/ice_spider.png", 2.9),
     ("dm", "**2d6 Ice Spiders (CR 1 each).** Wisdom (Perception) DC 15 spots them before "
            "they drop; Wisdom (Survival) DC 14 keeps the party out of the sticky web traps "
            "(DC 13 Strength to break free). Their bite carries a venomous chill (DC 13 "
@@ -340,8 +357,9 @@ BLOCKS = [
            "damage if touched, and the ground beneath the grove is slick ice, Dexterity "
            "(Acrobatics) DC 14 to keep footing."),
 
+    ("pagebreak",),
     ("h2", "Frozen Will-o'-Wisps"),
-    ("imgfloat", f"{A}/monsters/frozen_will_o_wisps.png", 2.25),
+    ("imgfloat", f"{A}/monsters/frozen_will_o_wisps.png", 2.9),
     ("body", "Above a frozen pond, ghostly blue lights flicker and bob, beckoning travelers "
              "out onto the ice with whispers of false promises. The scene looks tranquil, "
              "almost inviting, but the mist around the lights is far, far too cold."),
@@ -412,7 +430,7 @@ BLOCKS = [
            "the Appendix at the back of this session."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Three: The Lorekeeper's Tale", {"pagebreak": True}),
+    ("h1", "Part Three: The Lorekeeper's Tale"),
     ("bridge", "With eight bells wrapped warm in their packs, the heroes crossed town as the light "
                "failed, to a small cottage swallowed in ivy at the edge of Havenmoor."),
     ("gold", "The door creaks open before anyone can knock. **Faelan**, the village lorekeeper, "
@@ -421,7 +439,7 @@ BLOCKS = [
              "You have done well to gather the bells: relics of light and hope. Please, come in. "
              "We have much to discuss.”"),
     # The lorekeeper floats right beside his tale of the bells.
-    ("imgfloat", f"{A}/npcs/faelan.png", 2.6),
+    ("imgfloat", f"{A}/npcs/faelan.png", 3.1),
     ("gold", "Inside, the cottage smells of herbs, pine, and old parchment. Shelves of ancient "
              "tomes and glowing crystals hum with stories. Faelan sets a wooden tray before the "
              "party: three **frosted cookies**, each shimmering faintly with magic. “Take these. "
@@ -450,7 +468,7 @@ BLOCKS = [
              "Elaria's light shield you from the shadows.”"),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Four: The Three Barriers of Darkness", {"pagebreak": True}),
+    ("h1", "Part Four: The Three Barriers of Darkness"),
     ("bridge", "Three marks on a map, eight bells, and one long winter day: the heroes went out "
                "into the white silence to take the Krampusshade's power apart, one song at a time."),
 
@@ -461,7 +479,7 @@ BLOCKS = [
              "faint, mournful whispers: the far-off cries of taken children. The black ice pulses "
              "with a sickly blue light, humming a low, wrong-noted mockery of a holiday tune."),
     # Bells raised: the carol scene floats right beside the true song.
-    ("imgfloat", f"{A}/scenes/s4_barrier_carol.png", 2.6),
+    ("imgfloat", f"{A}/scenes/s4_barrier_carol.png", 3.0),
     ("gold", "The answer is the true song. The heroes line up their bells and play it the way it "
              "was always meant to sound, bright and defiant in the dead air:"),
     ("melody", "Jingle Bells"),
@@ -481,7 +499,11 @@ BLOCKS = [
              "it, dark tendrils snake along the underside of the planks, pulsing. Shadowy shapes "
              "flicker under the ice, faces twisted in silent song. Frost blooms across the "
              "boards as the party steps up."),
-    ("imgfloat", f"{A}/scenes/s4_crystalbrook_stream.png", 2.3),
+    # Wintry establishing shot (DM request): the stream as a half-page
+    # landscape plate.
+    ("img", f"{A}/scenes/s4_crystalbrook_stream.png",
+     "The Crystalbrook Stream and the rickety bridge at the narrows.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "Eight bells ring out, lively and warm, the notes echoing down the frozen water "
              "like skaters:"),
     ("melody", "Deck the Halls"),
@@ -501,7 +523,7 @@ BLOCKS = [
              "stones churns a slow vortex of shadow, radiating waves of cold that sap warmth and "
              "hope together."),
     # The hollow floats right beside the last barrier.
-    ("imgfloat", f"{A}/scenes/s4_whispering_hollow.png", 2.6),
+    ("imgfloat", f"{A}/scenes/s4_whispering_hollow.png", 3.1),
     ("gold", "This song cannot be loud. The heroes play it slow and gentle, each note held like "
              "a candle against the dark:"),
     ("melody", "Silent Night"),
@@ -519,9 +541,8 @@ BLOCKS = [
            "while held. Third barrier down."),
 
     ("h2", "The Krampusshade Awakens"),
-    # The gathering storm floats right beside the awakening (anchored at the
-    # section top and sized 2.4 so it clears the bottom margin).
-    ("imgfloat", f"{A}/scenes/s4_krampusshade_over_havenmoor.png", 2.4),
+    # The gathering storm floats right beside the awakening.
+    ("imgfloat", f"{A}/scenes/s4_krampusshade_over_havenmoor.png", 3.0),
     ("gold", "As the last barrier shatters, an unnatural silence grips the land. The wind dies. "
              "The cold bites deeper, down past skin, down to the brave part of you. Far off over "
              "Havenmoor, dark clouds swirl into a slow vortex that swallows the stars, and the "
@@ -533,7 +554,8 @@ BLOCKS = [
     ("gold", "The heroes look at each other for exactly one heartbeat. Then they run."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Five: The Longest Night", {"pagebreak": True}),
+    # The preceding page ends well over 70% full, so the part earns a fresh page.
+    ("h1", "Part Five: The Longest Night", {"hardbreak": True}),
     ("bridge", "Down out of the hills and along the frozen road the four friends raced the "
                "darkness home, eight bells jangling in their packs like a heart beating."),
     ("gold", "A thick, unnatural fog rolls through Havenmoor's streets, muffling sound and "
@@ -548,9 +570,9 @@ BLOCKS = [
              "cracks with frost where he walks."),
     ("gold", "**Krampusshade:** “Your defiance ends here. I will feast on your fear, and the "
              "children shall be mine forever!”"),
-    # Showpiece: the Krampusshade reveal, at the engine's 4.2in cap.
+    # Showpiece (DM request): the session's villain gets a big centered plate.
     ("img", f"{A}/monsters/krampusshade.png",
-     "The Krampusshade comes for Havenmoor.", 3.8),
+     "The Krampusshade comes for Havenmoor.", 4.4, {"hmax": 4.8}),
 
     ("h2", "The Bells' Harmony"),
     ("gold", "He slams his claws together and freezing power rolls across the square; his "
@@ -572,9 +594,9 @@ BLOCKS = [
              "and dissolving into the night sky, banished from the world he had grown too "
              "bitter to guard. The frost gripping the village begins to melt. The fog lifts. "
              "And the burlap sack drops to the snow and bursts open."),
-    # Showpiece: the carol finale, at the engine's 4.2in cap.
+    # Showpiece: the carol finale, raised to a big centered plate.
     ("img", f"{A}/scenes/s4_carol_finale.png",
-     "The Carol of the Bells rings out, and the Krampusshade comes apart into shadow above them.", 3.8),
+     "The Carol of the Bells rings out, and the Krampusshade comes apart into shadow above them.", 4.2, {"hmax": 4.6}),
     ("gold", "Children tumble out, dazed, blinking, rubbing their eyes, **every single one of "
              "them safe**, and in the middle of them a small boy with one missing mitten. "
              "**Finn** hits his mother's arms at a dead run, and the sound she makes is the "
@@ -590,10 +612,11 @@ BLOCKS = [
              "shining. “You have saved us all. The darkness has lifted, and hope shines once "
              "more.” Somewhere behind her, Milo is showing the other orphans exactly how the "
              "bells went, loudly, and mostly in tune."),
-    # The reunion floats right beside the rejoicing and the gifts.
-    ("imgfloat", f"{A}/scenes/s4_children_freed.png", 2.2),
 
     ("h2", "Gifts of Gratitude"),
+    # The reunion floats right beside the morning gifts (anchored on the page
+    # after the finale plate so the image clears the bottom margin).
+    ("imgfloat", f"{A}/scenes/s4_children_freed.png", 3.2),
     ("gold", "As dawn breaks over Havenmoor, Faelan comes through the celebrating crowd with "
              "three carefully wrapped packages. “Tokens of our eternal gratitude. May they aid "
              "you on the journey ahead.”"),
@@ -604,15 +627,16 @@ BLOCKS = [
     ("gold", "And for **Stabby**, the **Candyfang Katana**: a katana of impossible candy-cane "
              "steel, red and white and wickedly sharp, trailing a faint scent of sugar. Stabby "
              "licks it immediately. It is delicious."),
-    # The two gift portraits share one row instead of stacking dead space.
-    ("imgrow", [(f"{A}/characters/lilly_session4.png",
-                 "Lilly and the Frostbite Shard Dagger."),
-                (f"{A}/characters/stabby_cane.png",
-                 "Stabby and the Candyfang Katana. Yes, he licked it.")], 2.1),
     ("dm", "Full statistics for all three gifts live in the treasures compendium."),
     ("gold", "Down at the harbor, the shipwright **Master Doran Bramblebeard**, lighthouse soot "
              "still on his sleeves, nods toward a trim vessel rocking at the dock. “The "
              "**Stormwind** is ready when you are. Gearhaven awaits.”"),
+    # The two gift portraits share one row, sized so the pair opens the final
+    # story page instead of stranding a near-empty page after it.
+    ("imgrow", [(f"{A}/characters/lilly_session4.png",
+                 "Lilly and the Frostbite Shard Dagger."),
+                (f"{A}/characters/stabby_cane.png",
+                 "Stabby and the Candyfang Katana. Yes, he licked it.")], 3.1),
     ("divider",),
     ("bridge", "Their fourth adventure was done: a stolen child brought home, eight bells rung "
                "into one great carol, a bitter old shadow banished into the dark between the "
@@ -624,7 +648,7 @@ BLOCKS = [
              "souls.*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Appendix: Creatures of Session Four", {"pagebreak": True}),
+    ("h1", "Appendix: Creatures of Session Four", {"hardbreak": True}),
     ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives "
              "in the compendium."),
     ("stat", "Krampusshade", [

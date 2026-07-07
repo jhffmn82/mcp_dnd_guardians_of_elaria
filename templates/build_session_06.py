@@ -15,8 +15,14 @@ BLOCKS = [
     ("titlepage", "THE GUARDIANS OF ELARIA", "SESSION 6",
      "Lanterns in the Fog",
      "An illustrated adventure. Read the gold boxes aloud; the purple boxes are for the DM."),
+    # Session-opening showpiece: Wraithpine from the coastal ridge dominates page 1.
+    ("img", f"{A}/scenes/s6_wraithpine_ridge.png",
+     "Wraithpine from the coastal ridge: Lantern Night glowing through the fog.", 6.2,
+     {"crop": "3:2", "hmax": 4.5}),
 
-    ("h1", "Previously, on The Guardians of Elaria..."),
+    # Page 1 is title + the ridge showpiece; the recap starts fresh on page 2
+    # and Part One flows directly after it, so no page is left near-empty.
+    ("h1", "Previously, on The Guardians of Elaria...", {"hardbreak": True}),
     ("gold", "The sea took almost everything. The **Stormwind** capsized in a storm with a voice "
              "in it, and the heroes woke aboard the **Flying Dutchman**, where **Davy Jones** "
              "harvested the essences of living things into Guild-stamped crates bound for "
@@ -33,11 +39,15 @@ BLOCKS = [
            "compendium; a compact appendix closes this session."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part One: The Village of Lanterns", {"pagebreak": True}),
+    ("h1", "Part One: The Village of Lanterns"),
     ("bridge", "The Vigil ground ashore at dawn on an unfamiliar coast, and the heroes climbed "
                "out of the sea's cold hand and started walking."),
 
     ("h2", "Landfall"),
+    # Ghostbloom floats beside the landfall path and her waking below it: an
+    # emotional peak, sized generously. Anchored this high on the page so the
+    # full-height portrait clears the bottom margin.
+    ("imgfloat", f"{A}/characters/ghostbloom.png", 2.9, {"hmax": 4.0}),
     ("gold", "The surf leaves salt on lips and sand in boots. Morning fog burns slowly to pearl "
              "as the Guardians of Elaria follow a narrow footpath along wind-gnarled pines, gulls "
              "wheeling far below, the whole world smelling of brine and cold green needles. Ahead, "
@@ -51,8 +61,6 @@ BLOCKS = [
              "chime, a tiny frost-cold music. She lifts free of Ursa's arms and simply stays "
              "there, floating at shoulder height, blinking at the fog with eyes full of soft "
              "white light. She is new. She is still, unmistakably, their friend."),
-    # Ghostbloom floats right beside her naming (portrait, height-capped).
-    ("imgfloat", f"{A}/characters/ghostbloom.png", 2.2),
     ("gold", "**Lilly**, very quietly: “She is not Floraburst now, is she. Look at her. She is "
              "like a bloom made of ghost-light.” The little creature chimes, pleased, and turns "
              "a slow circle in the air. And so, on a fog-bound footpath above the sea, she is "
@@ -66,8 +74,7 @@ BLOCKS = [
              "kettles, and a fiddle finds its first notes. The air is cider, beeswax, damp "
              "leaves. It is **Lantern Night**, the village's own festival, and everything about "
              "it is warm and bright and welcoming."),
-    # The ridge-crest view floats right beside Lantern Night.
-    ("imgfloat", f"{A}/scenes/s6_wraithpine_ridge.png", 2.7),
+    # (The ridge-crest view now leads the whole session as the page 1 plate.)
     ("gold", "Almost everything. As boots cross under the first lantern arch, a pressure pricks "
              "at the ears, like a mountain pass without a mountain. A thin note is drifting "
              "through the chimney flues and cellar grates. Wind, perhaps. Or the tail of a song "
@@ -87,6 +94,9 @@ BLOCKS = [
              "but two sit cooling on a tray that nobody comes for. Her ledger skips a line, the "
              "numbers hopping neatly over the gap as if something had been neatly erased, or "
              "neatly never was. Keys for every room gleam untouched on their hooks."),
+    # Maera floats beside the square's small wrongnesses. Anchored here, high
+    # on the page, so the float clears the bottom margin.
+    ("imgfloat", f"{A}/npcs/maera.png", 3.3),
     ("gold", "Out in the square it is the same song in different keys. A chandler presses a "
              "sugared chip into Lilly's palm, “for remembering,” then blinks, the thought sliding "
              "off her face like rain. A curio-mender dusts a bundle of old theater playbills; on "
@@ -94,9 +104,6 @@ BLOCKS = [
              "lace. “Moths,” the mender mutters, and ties the twine tighter. Black ribbons hang "
              "everywhere, knotted to gates and wrists and lantern posts, and nobody can quite say "
              "why. Villagers forget what they are saying in the middle of saying it."),
-    # Maera floats right beside the square's small wrongnesses (anchored two
-    # paragraphs down so the anchor cannot slip into the page-2 foot).
-    ("imgfloat", f"{A}/npcs/maera.png", 2.2),
     ("gold", "Ghostbloom drifts near a lantern, and the flame dims, then swells, as if testing "
              "harmony with the thin hidden note. In Lilly's pocket, the **Essence Sphere** gives "
              "a heartbeat: two tones seeking each other, failing, seeking again."),
@@ -107,15 +114,17 @@ BLOCKS = [
              "in his ears. His eyes are winter-sharp, the only pair in Wraithpine that seem to be "
              "looking *at* things. He taps his ear. He taps his slate. Then he writes three words "
              "with a patient hand and holds them up:"),
-    # Bellshadow floats right beside the slate's warning.
-    ("imgfloat", f"{A}/scenes/s6_belltower_square.png", 2.5),
     ("gold", "**WRITE. DON'T LISTEN.**"),
+    # Bellshadow as a half-page establishing plate beneath the slate's warning.
+    ("img", f"{A}/scenes/s6_belltower_square.png",
+     "Bellshadow, the old quarter beneath the belltower, where the bellkeeper keeps watch.", 6.2,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "Above him the bell gives a single accidental chime. Across the square, in the "
              "Gasping Gull, a fourth bowl of stew cools untouched, and Maera smiles at a chair "
              "the village cannot quite hold in mind."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Two: Three Threads in the Fog", {"pagebreak": True}),
+    ("h1", "Part Two: Three Threads in the Fog", {"hardbreak": True}),
     ("bridge", "Something was wrong in Wraithpine, and it had left threads hanging everywhere. "
                "The heroes pulled three of them: a cellar, a lane of pumpkins, and a hill of "
                "leaning headstones."),
@@ -132,7 +141,7 @@ BLOCKS = [
              "heavier drops straight for the heroes' shoulders."),
     ("dm", "**The cellar fight.** 2 Swarms of Rats (one starting in the rafters) and 4 Giant "
            "Rats, in a tight aisle of barrels and shelves. Book statistics; see the appendix note."),
-    ("imgfloat", f"{A}/scenes/s6_cellar_rats.png", 2.7),
+    ("imgfloat", f"{A}/scenes/s6_cellar_rats.png", 3.3),
     ("gold", "When the last tail goes still, the cellar gives up its stranger secrets. Under the "
              "shelves lies a chewed dog collar. A thin drag-mark crosses the dust to the far "
              "wall, and there, when Ursa holds the lantern close, the flame leans toward a "
@@ -153,7 +162,10 @@ BLOCKS = [
              "fog swells, steady as a bow drawn across the rim of a glass."),
     ("dm", "**Straw stirs.** 2 Scarecrows and 6 Strawlings among the flickering "
            "jack-o'-lanterns. Statistics in the appendix."),
-    ("imgfloat", f"{A}/scenes/s6_pumpkin_row.png", 2.7),
+    # Pumpkin Row as a half-page establishing plate.
+    ("img", f"{A}/scenes/s6_pumpkin_row.png",
+     "Pumpkin Row: every carved face along the lane turns toward the old theater roof.", 6.0,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "It is a wild, whirling scrap among the pumpkins, candy-striped steel flashing, "
              "sparks and starlight scattering straw in every direction. When the last strawling "
              "collapses into a harmless heap, Stabby cuts open the heart-gourd charm stitched "
@@ -173,10 +185,10 @@ BLOCKS = [
     ("gold", "As the heroes study the stone, the churned earth stirs. The recently quiet do not "
              "wish to be laid twice, and a pair of the restless dead claw up out of the soil, "
              "moaning, drawn to the same wrongness that scraped the name away."),
-    # Kept centered: the rite of the forgotten name, restored to full width so
-    # the chest showpiece downstream lands flush on its page.
+    # The rite of the forgotten name, as a generous landscape plate.
     ("img", f"{A}/scenes/s6_graveyard_rite.png",
-     "Lilly lights the blue lantern and begins the rite of the forgotten name.", 3.8),
+     "Lilly lights the blue lantern and begins the rite of the forgotten name.", 6.0,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "The heroes put them gently back to rest, and then they do the older, kinder work. "
              "Charcoal rubbed across the blank line raises the ghosts of letters, like footprints "
              "in frost. The name is written back where it belongs. The post bell's clapper is "
@@ -192,7 +204,7 @@ BLOCKS = [
            "against forgetfulness or the song."),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Three: Names the Stone Won't Keep", {"pagebreak": True}),
+    ("h1", "Part Three: Names the Stone Won't Keep", {"hardbreak": True}),
     ("bridge", "Three threads, one knot. A cellar that breathed, a field of straw that pointed "
                "at the theater, a grave that forgot its name. And in Stabby's pocket, a parcel "
                "slip found along the way, made out to a man nobody in Wraithpine could remember."),
@@ -244,6 +256,9 @@ BLOCKS = [
              "feels thick, like the moment before thunder. The heroes cross the square to the "
              "Gasping Gull, where Maera is laying out bowls and humming, and the moment they "
              "step inside they finally, truly, **see**."),
+    # The session villain, floated large right at the moment of the reveal
+    # (directive: 3.4in float with a raised height cap).
+    ("imgfloat", f"{A}/scenes/s6_tavern_reveal.png", 3.4, {"hmax": 4.0}),
     ("gold", "There has always been a head in this room. That is the terrible, simple truth the "
              "song has been singing over, night after night. A long pale neck rises out of the "
              "open trapdoor behind the bar, and atop it sways a face that is almost a person's "
@@ -256,10 +271,6 @@ BLOCKS = [
              "Sometimes it's nice to hear yourself think.” The head turns. Not toward Maera. "
              "Toward the heroes. Its eyes aim at the place where their thoughts are, not the "
              "place where their bodies stand."),
-    # Kept centered: the reveal is the session's pivot, and at full size it
-    # also fills the final narrative page.
-    ("img", f"{A}/scenes/s6_tavern_reveal.png",
-     "With wax in their ears, the heroes finally see what has always been there.", 4.2),
     ("dm", "**The tavern fight.** One **False Hydra Tavern Head** (appendix), in a room full of "
            "tables, stew pots, and one oblivious innkeeper to keep out of harm's way."),
     ("gold", "The fight is close and crashing: tables flipped for cover, the neck writhing "
@@ -276,7 +287,7 @@ BLOCKS = [
              "she grips the bar until it passes. “Forgive me. I... I'll fetch more bowls.”"),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Four: Where the Song Lives", {"pagebreak": True}),
+    ("h1", "Part Four: Where the Song Lives", {"hardbreak": True}),
     ("bridge", "A trail led from the tavern's broken floor into the dark beneath Wraithpine, "
                "and the thin note grew into a pressure, a hand laid gently on the inside of the "
                "skull. The heroes plugged their ears, lit their lanterns, and followed it down."),
@@ -287,8 +298,10 @@ BLOCKS = [
              "quick hand: *Upstage. Hold. Places.* The passage opens at last into the drowned "
              "orchestra pit below the **Old Theater**, crossed by catwalks of beam and rope, "
              "stage machines jutting up like broken ribs."),
-    # The shuttered theater floats right beside the descent.
-    ("imgfloat", f"{A}/scenes/s6_old_theater.png", 2.7),
+    # The shuttered theater as a half-page establishing plate above the descent.
+    ("img", f"{A}/scenes/s6_old_theater.png",
+     "The Old Theater, shuttered and dark, with the song living beneath it.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "And in the center, filling the pit, it waits. The **False Hydra** entire: a pale "
              "bulk resting on a mound of remembrances, boots and playbills, keepsakes and "
              "ribbons, every ribbon black, with four long necks coiled up through round ports "
@@ -308,7 +321,8 @@ BLOCKS = [
            "resists weapon damage while heads remain; each destroyed head strips one layer of "
            "that protection, and the body acts more often the more heads still sing."),
     ("img", f"{A}/scenes/s6_hydra_lair.png",
-     "The False Hydra entire, in the drowned orchestra pit below the Old Theater.", 4.6),
+     "The False Hydra entire, in the drowned orchestra pit below the Old Theater.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "It is the hardest fight since the Dutchman. Necks lash up through the floor ports "
              "and slither between them, hunting; the mound shifts under pale limbs to open and "
              "close the ground; sandbags and pulleys crash down from the fly loft. But the "
@@ -335,7 +349,10 @@ BLOCKS = [
     ("gold", "**HARLAN WICKE, HOME.**"),
 
     # ------------------------------------------------------------------
-    ("h1", "Part Five: The Light Beneath the Earth", {"pagebreak": True}),
+    # No hardbreak: "HARLAN WICKE, HOME." lands at the very top of this page
+    # and Part Five opens right under it, which reads far better than leaving
+    # that single line stranded on an otherwise empty page.
+    ("h1", "Part Five: The Light Beneath the Earth"),
     ("bridge", "The song was dead, the village was waking, and in the quiet under the theater, "
                "something golden stirred."),
 
@@ -350,7 +367,8 @@ BLOCKS = [
              "resistance, as if it had been waiting all along for exactly this moment and "
              "exactly these heroes."),
     ("img", f"{A}/scenes/s6_chest_opening.png",
-     "Elaria's gift: the chest bound in silver vines opens without a sound.", 4.6),
+     "Elaria's gift: the chest bound in silver vines opens without a sound.", 6.2,
+     {"crop": "3:2", "hmax": 4.6}),
 
     ("h2", "Three Relics"),
     ("gold", "Inside rest three objects, each radiating a faint, familiar magic. A slim **staff "
@@ -408,7 +426,7 @@ BLOCKS = [
              "the stars themselves turn out to be part of the story.*"),
 
     # ------------------------------------------------------------------
-    ("h1", "Appendix: Creatures of Session Six", {"pagebreak": True}),
+    ("h1", "Appendix: Creatures of Session Six", {"hardbreak": True}),
     ("body", "Compact statistics for the table. The full bestiary, with lore and pictures, lives "
              "in the compendium."),
     ("stat", "False Hydra, the Tavern Head", [

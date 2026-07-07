@@ -221,3 +221,4 @@ Embedded images recovered from the original raw session documents (word/media). 
 | `assets/scenes/s6_tavern_reveal.png` | `assets/gen_prompts/s6_tavern_reveal.txt` | false_hydra.png, REF_ghostbloom |
 | `assets/scenes/s6_hydra_lair.png` | `assets/gen_prompts/s6_hydra_lair.txt` | false_hydra.png |
 | `assets/scenes/s6_chest_opening.png` | `assets/gen_prompts/s6_chest_opening.txt` | REF_lilly_1, REF_stabby_1, REF_ursa_1, REF_ghostbloom |
+| `assets/world/elaria_region_map.png` (v2, landscape 1536x1024, DM-approved 2026-07-06; v1 square retired to `_triage/superseded_art/elaria_region_map_v1_square.png`) | `assets/gen_prompts/elaria_world_map.txt` | none (pure generation; geography from Sessions 1-7 travel canon, sea crossing included) |
