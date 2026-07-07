@@ -921,7 +921,8 @@ BLOCKS = [
     # APPENDIX 2: the bestiary (S7 gold-standard format). Numbers transcribed
     # faithfully from the audited compact boxes; only the format is new.
     ("appendix_title", "APPENDIX", "Bestiary: Enemy Stat Blocks",
-     "All four encounters of Session 4, in the order the party meets them."),
+     "All four encounters of Session 4 in the order the party meets them, plus the "
+     "wandering threats of the frozen roads."),
 
     ("fight_header", "ENEMIES, Fight 1: The First Barrier",
      "Frostpine Glade ✦ Difficulty: Moderate ✦ 3× Frozen Wolf"),
@@ -1003,6 +1004,172 @@ BLOCKS = [
                 "scatter the party, then drifts through the frightened gaps with Chilling "
                 "Touch, whispering all the while. Let Ursa's starlight land the ending. It "
                 "guards the Shadow-Touched Rune Fragment and a Gift Box roll."),
+
+    # ------------------------------------------------------------------
+    # The travel mobs (DM directive 2026-07-07): every hostile creature type
+    # on the d20 travel table gets its full block here, doubled up two or
+    # three to a page so a DM can run the frozen roads from this book alone.
+    # Numbers transcribed faithfully from templates/build_bestiary.py.
+    ("fight_header", "THE FROZEN ROADS: Travel Encounters",
+     "The wilds around Havenmoor ✦ roll a d20 per trek (tables in Part Two) ✦ "
+     "the wandering threats"),
+    ("enemy_cards", [{
+        "name": "Snowbound Bandit Leader",
+        "sub": "Medium humanoid, neutral ✦ leads a band of 3",
+        "img": f"{A}/monsters/snowbound_bandits.png", "img_w": 1.8,
+        "stats": [
+            "**AC** 14  **HP** 32  **Speed** 30 ft",
+            "**STR** 14  **DEX** 13  **CON** 12  **INT** 10  **WIS** 11  **CHA** 11",
+        ],
+        "traits": [
+            ("Desperate, Not Cruel", "Driven mad by the cold; kindness (food, "
+             "warmth) or a DC 14 Intimidation check can end the fight before it "
+             "begins."),
+        ],
+        "actions": [
+            ("Scimitar", "+5 to hit, reach 5 ft. Hit: 7 (1d6+3) slashing."),
+            ("Dagger", "+5 to hit, melee or ranged. Hit: 5 (1d4+3) piercing."),
+            ("Frostbite Strike (Recharge 5-6)", "+5 to hit; an extra 1d6 cold, and "
+             "a DC 13 Con save or speed reduced by 10 ft until its next turn."),
+        ],
+    }, {
+        "name": "Snowbound Bandit",
+        "sub": "Medium humanoid, neutral ✦ 3 rise from the drifts",
+        "stats": [
+            "**AC** 12  **HP** 20  **Speed** 30 ft",
+        ],
+        "traits": [
+            ("Desperate, Not Cruel", "Like their leader, the bandits fight out of "
+             "hunger and cold; kindness can end the fight before it begins."),
+        ],
+        "actions": [
+            ("Scimitar", "+4 to hit, reach 5 ft. Hit: 5 (1d6+2) slashing."),
+            ("Shortbow", "+4 to hit, ranged. Hit: 5 (1d6+2) piercing."),
+        ],
+    }, {
+        "name": "Frost Golem",
+        "sub": "Medium elemental, neutral ✦ CR 2 ✦ they rise in pairs",
+        "img": f"{A}/monsters/frost_golems.png", "img_w": 1.8,
+        "stats": [
+            "**AC** 14 (natural armor)  **HP** 42 (5d10+15)  **Speed** 20 ft",
+            "**STR** 16  **DEX** 10  **CON** 16  **INT** 6  **WIS** 10  **CHA** 5",
+            "**Resist** cold; nonmagical B/P/S",
+            "**Imm.** (cond) exhaustion, poisoned",
+            "**Challenge** 2 (450 XP)",
+        ],
+        "traits": [
+            ("Frost Aura", "At the start of each creature's turn within 5 ft of the "
+             "golem, that creature takes 2 cold."),
+        ],
+        "actions": [
+            ("Icy Slam", "+5 to hit, reach 5 ft. Hit: 7 (2d6+3) bludgeoning plus "
+             "3 (1d4) cold."),
+        ],
+    }]),
+    ("enemy_cards", [{
+        "name": "Yule Cat",
+        "sub": "Large fey beast, neutral ✦ CR 3 ✦ prowls alone; generosity delays it",
+        "img": f"{A}/monsters/yule_cat.png", "img_w": 2.75,
+        "stats": [
+            "**AC** 15 (natural armor)  **HP** 52 (7d10+14)  **Speed** 40 ft, "
+            "climb 30 ft",
+            "**STR** 18  **DEX** 16  **CON** 14  **INT** 6  **WIS** 14  **CHA** 10",
+            "**Skills** Perception +4, Stealth +6",
+            "**Resist** cold",
+            "**Senses** darkvision 60 ft",
+            "**Challenge** 3 (700 XP)",
+        ],
+        "actions": [
+            ("Frost Claw", "+6 to hit, reach 5 ft. Hit: 10 (2d6+3) slashing plus "
+             "3 (1d6) cold."),
+            ("Frostbite Pounce", "If the cat moves 20 ft and hits with Frost Claw, "
+             "the target makes a DC 14 Str save or is knocked prone; if prone, the "
+             "cat makes another Frost Claw as a bonus action."),
+            ("Chilling Gaze (Recharge 5-6)", "One target within 30 ft makes a DC 14 "
+             "Con save or takes 9 (2d8) cold and is paralyzed until the end of its "
+             "next turn."),
+        ],
+    }, {
+        "name": "Frost Hag (disguised)",
+        "sub": "Medium fey, neutral evil ✦ CR 4 ✦ alone at her roadside cauldron",
+        "img": f"{A}/monsters/frost_hag_disguised.png", "img_w": 2.75,
+        "stats": [
+            "**AC** 15  **HP** 52  **Speed** 30 ft",
+            "**STR** 14  **DEX** 14  **CON** 14  **INT** 13  **WIS** 12  **CHA** 14",
+            "**Challenge** 4 (1,100 XP)",
+        ],
+        "traits": [
+            ("Kindly Guise", "The hag appears as a sweet old woman offering sugared "
+             "pastries; those who eat them make a DC 13 Con save or are poisoned for "
+             "1 hour, taking 1d4 cold."),
+        ],
+        "actions": [
+            ("Icy Claw", "+6 to hit, reach 5 ft. Hit: 10 (2d6+3) slashing plus "
+             "4 (1d6) cold."),
+            ("Frostbite Breath (Recharge 5-6)", "15-ft cone, DC 14 Con save; "
+             "16 (4d6) cold, half on a success, and slowed until its next turn on a "
+             "failure."),
+            ("Misty Step (Bonus Action)", "The hag teleports 30 ft."),
+        ],
+    }]),
+    ("enemy_cards", [{
+        "name": "Enchanted Snowman",
+        "sub": "Small construct, unaligned ✦ CR 1 ✦ roadside trio",
+        "img": f"{A}/monsters/enchanted_snowman.png", "img_w": 1.7,
+        "stats": [
+            "**AC** 13  **HP** 30 (4d8+12)  **Speed** 20 ft",
+            "**STR** 12  **DEX** 10  **CON** 16  **INT** 3  **WIS** 10  **CHA** 6",
+            "**Challenge** 1 (200 XP)",
+        ],
+        "actions": [
+            ("Frostball", "+4 to hit, ranged. Hit: 2d4 cold, and a DC 12 Con save "
+             "or speed halved until the end of its next turn."),
+        ],
+    }, {
+        "name": "Ice Spider",
+        "sub": "Medium beast, unaligned ✦ CR 1 ✦ 2d6 drop from the canopy",
+        "img": f"{A}/monsters/ice_spider.png", "img_w": 1.7,
+        "stats": [
+            "**AC** 14 (natural armor)  **HP** 26 (4d10+4)  **Speed** 30 ft, "
+            "climb 30 ft",
+            "**STR** 12  **DEX** 14  **CON** 12  **INT** 2  **WIS** 11  **CHA** 4",
+            "**Challenge** 1 (200 XP)",
+        ],
+        "actions": [
+            ("Bite", "+5 to hit, reach 5 ft. Hit: 9 (1d8+1) piercing plus 4 (1d6) "
+             "cold, and a DC 13 Con save or poisoned for 1 minute."),
+            ("Web (Recharge 5-6)", "+4 to hit, range 30 ft. On a hit the target is "
+             "restrained by webbing (DC 13 Str to escape)."),
+        ],
+    }, {
+        "name": "Frozen Will-o'-Wisp",
+        "sub": "Tiny undead, chaotic evil ✦ CR 2 ✦ lights over a frozen pond",
+        "img": f"{A}/monsters/frozen_will_o_wisps.png", "img_w": 1.7,
+        "stats": [
+            "**AC** 15  **HP** 22 (5d8)  **Speed** 0 ft, fly 50 ft (hover)",
+            "**STR** 1  **DEX** 18  **CON** 10  **INT** 10  **WIS** 12  **CHA** 11",
+            "**Resist** cold, lightning; nonmagical B/P/S",
+            "**Imm.** poison ✦ (cond) exhaustion, grappled, paralyzed, prone",
+            "**Challenge** 2 (450 XP)",
+        ],
+        "actions": [
+            ("Icy Shock", "+5 to hit (melee spell), reach 5 ft. Hit: 9 (2d8) "
+             "lightning plus 4 (1d6) cold."),
+            ("Invisibility", "The wisp turns invisible until it attacks."),
+        ],
+    }]),
+    ("tactics", "One roll per trek: whenever the party sets out from Havenmoor or "
+                "heads back, roll once on the d20 travel table in Part Two. Not "
+                "every threat must end in blows: the Yule Cat seeks generosity, so "
+                "offering food or gifts can delay its attack entirely (Wisdom "
+                "(Animal Handling) DC 15 calms it for a round), and Wisdom "
+                "(Insight) DC 14 catches the malice behind the Frost Hag's smile "
+                "before anyone touches her treats. The bandits are desperate, not "
+                "wicked; Persuasion DC 15 with an offer of food or warmth avoids "
+                "that fight altogether. And when one of the Krampusshade's "
+                "creatures is defeated (win against the Yule Cat or appease it, "
+                "either way), it leaves behind a wrapped gift box: roll on the "
+                "Gift Box Table."),
 
     ("fight_header", "BOSS: The Longest Night",
      "Havenmoor market square ✦ Difficulty: Boss ✦ Krampusshade + 4× shadow imp (2 more, round 2)"),
