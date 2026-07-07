@@ -225,3 +225,5 @@ Embedded images recovered from the original raw session documents (word/media). 
 | `assets/world/elaria_region_map.png` (v3, route-free edit of v2, DM-approved 2026-07-06) | `assets/gen_prompts/elaria_world_map.txt` + removal edit | v2 map as edit reference |
 | `assets/items/three_relics_display.png` (DM-approved 2026-07-06) | `assets/gen_prompts/three_relics_display.txt` | staff_of_waking_constellations, sash_of_the_swift_current, lilly_with_dynamo |
 | `assets/scenes/s5_vigil_dawn.png` (v2, canon fix DM-approved 2026-07-06: sleeping Floraburst, not Ghostbloom; v1 retired to `_triage/superseded_art/s5_vigil_dawn_v1_ghostbloom_error.png`) | `assets/gen_prompts/s5_vigil_dawn_v2.txt` | REF_floraburst (first), REF_lilly_1, REF_stabby_1, REF_ursa_1 |
+| `assets/scenes/s4_frostpine_glade.png` (DM-approved 2026-07-06) | `assets/gen_prompts/s4_frostpine_glade.txt` | s4_havenmoor_town (palette) |
+| `assets/world/havenmoor_wilds_map.png` (DM-approved 2026-07-06) | `assets/gen_prompts/s4_havenmoor_wilds_map.txt` | elaria_region_map (map style) |

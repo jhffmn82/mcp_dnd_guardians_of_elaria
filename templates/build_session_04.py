@@ -280,11 +280,17 @@ BLOCKS = [
              "them crossed the heroes' path, but every one of them was out there, waiting in the "
              "white silence between the pines. What follows is the DM's deck of chances, exactly "
              "as it hung over every journey out of town that winter."),
-    # (The s4_frozen_hollow float that sat here read as an unexplained
-    # location; DM cut it 2026-07-06. The monster floats below carry the art.)
-    ("dm", "**Travel Encounters.** Whenever the party sets out through the frozen wilds around "
-           "Havenmoor, roll a d20 on the table below. Notes on the most colorful entries follow; "
-           "full statistics for every creature live in the bestiary compendium."),
+    # The winter overworld leads the deck of chances (DM request 2026-07-06):
+    # the three barrier sites are found by exploring, and every trek rolls.
+    ("img", f"{A}/world/havenmoor_wilds_map.png",
+     "The frozen wilds around Havenmoor: the town and the Wyrmgale Lighthouse on the coast, and "
+     "somewhere in the white silence, the three barriers waiting to be found.", 6.2,
+     {"hmax": 4.6}),
+    ("dm", "**Exploring the wilds.** Faelan's directions mark the three barriers only roughly; "
+           "the party must range out into the frozen wilds and FIND each one (the map above is "
+           "the shape of that search). Whenever the party sets out from Havenmoor, to a barrier "
+           "or back again, roll a d20 on the table below. Notes on the most colorful entries "
+           "follow; full statistics for every creature live in the bestiary compendium."),
 
     ("h2", "Travel Encounter Table (d20)"),
     ("body", "**1.** Krampusshade's Minion: a shadowy imp attacks, attempting to steal something "
@@ -556,14 +562,16 @@ BLOCKS = [
                "into the white silence to take the Krampusshade's power apart, one song at a time."),
 
     ("h2", "The Frostpine Glade: Jingle Bells"),
-    # Bells raised: the carol scene floats beside the glade description, so the
-    # rules card below sits clear of the wrap at full width.
-    ("imgfloat", f"{A}/scenes/s4_barrier_carol.png", 3.0),
     ("gold", "The pines around the glade creak under armor of ice, and the mist between them "
              "curls as though alive. At the center stands a massive frozen pine, its trunk twisted "
              "and blackened, jagged chains of black ice wrapped around its roots. On the wind ride "
              "faint, mournful whispers: the far-off cries of taken children. The black ice pulses "
              "with a sickly blue light, humming a low, wrong-noted mockery of a holiday tune."),
+    # The area shot leads the seal (DM request: show each place BEFORE the
+    # song breaks its barrier); the carol scene floats beside the aftermath.
+    ("img", f"{A}/scenes/s4_frostpine_glade.png",
+     "The Frostpine Glade, its great pine bound in chains of black ice.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "The answer is the true song. The heroes line up their bells and play it the way it "
              "was always meant to sound, bright and defiant in the dead air."),
     ("game", "Seal the First: Jingle Bells", [
@@ -583,6 +591,7 @@ BLOCKS = [
     ]),
     ("gold", "On the last note, golden light bursts from the bells and rolls through the black "
              "ice, and the chains shatter with a crack that shakes snow from every branch."),
+    ("imgfloat", f"{A}/scenes/s4_barrier_carol.png", 3.0),
     ("gold", "The mist answers back. It gathers itself into three snarling shapes: **Frozen "
              "Wolves**, frost-armored, eyes burning icy blue, guardians grown from the "
              "Krampusshade's own cold. The fight is knives and starlight on slick ground, wolf "
@@ -595,6 +604,11 @@ BLOCKS = [
              "it, dark tendrils snake along the underside of the planks, pulsing. Shadowy shapes "
              "flicker under the ice, faces twisted in silent song. Frost blooms across the "
              "boards as the party steps up."),
+    # The area shot leads the seal (DM request: show each place BEFORE the
+    # song breaks its barrier).
+    ("img", f"{A}/scenes/s4_crystalbrook_stream.png",
+     "The Crystalbrook Stream and the rickety bridge at the narrows.", 5.8,
+     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "Eight bells ring out, lively and warm, the notes echoing down the frozen water "
              "like skaters."),
     ("game", "Seal the Second: Deck the Halls", [
@@ -609,11 +623,6 @@ BLOCKS = [
         "Then the treetops giggle: **4 Frostbite Pixies** (Ray of Frost, invisibility, slick "
         "ice underfoot) dart down to defend what is left of it.",
     ]),
-    # Wintry establishing shot (DM request): the stream as a half-page
-    # landscape plate, riding under the rules card.
-    ("img", f"{A}/scenes/s4_crystalbrook_stream.png",
-     "The Crystalbrook Stream and the rickety bridge at the narrows.", 5.8,
-     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "The tendrils hiss, thrash once, and dissipate like "
              "smoke in sunlight. And then the treetops giggle. Four tiny figures dart into view "
              "on frost-covered wings, faces fixed in mischievous grins, fingers glowing with "
