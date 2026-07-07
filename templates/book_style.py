@@ -546,12 +546,13 @@ def build_doc(blocks, out_path):
             r = p.add_run(fsub); _set_font(r, Pt(9), color=CAPTION_GRAY)
 
         elif kind == "enemy_cards":
-            # (enemy_cards, [card, ...]) - 1 or 2 S7-style bestiary cards side
-            # by side. card: {name, sub, img (optional), stats: [lines],
-            # traits: [(n,t)], actions: [(n,t)], reactions: [(n,t)]}. Lines
-            # support **bold** / *italic* markup.
+            # (enemy_cards, [card, ...]) - 1 to 3 S7-style bestiary cards side
+            # by side (DM directive 2026-07-07: multi-type encounters sit side
+            # by side; bosses go solo full-width). card: {name, sub, img
+            # (optional), stats: [lines], traits: [(n,t)], actions: [(n,t)],
+            # reactions: [(n,t)]}. Lines support **bold** / *italic* markup.
             _, cards = blk
-            ncols = max(1, min(2, len(cards)))
+            ncols = max(1, min(3, len(cards)))
             tbl = doc.add_table(rows=1, cols=ncols)
             tbl.autofit = False
             tbl.alignment = 1

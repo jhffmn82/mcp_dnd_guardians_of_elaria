@@ -709,8 +709,6 @@ BLOCKS = [
                 ("Reinforced Hide", "+2 AC against one melee attack."),
             ],
         },
-    ]),
-    ("enemy_cards", [
         {
             "name": "Arcane Corsair",
             "sub": "Medium humanoid ✦ CR 1 (200 XP) ✦ x2 ✦ guild artificers turned pirate",

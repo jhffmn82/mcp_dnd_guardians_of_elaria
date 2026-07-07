@@ -493,8 +493,6 @@ BLOCKS = [
                  "bludgeoning damage (a fist, a chair, or one regrettable mug)."),
             ],
         },
-    ]),
-    ("enemy_cards", [
         {
             "name": "Tavern Regular",
             "sub": "Medium humanoid ✦ bandit stats, softened ✦ 2 in the brawl",
