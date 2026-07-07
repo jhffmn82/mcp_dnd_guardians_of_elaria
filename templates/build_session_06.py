@@ -590,6 +590,11 @@ BLOCKS = [
     ("gold", "*Next: Session 7, in which the heroes reach Gearhaven, the clockwork city, where "
              "the Essence Sphere's makers have answers, a locksmith has a ten-year secret, and "
              "the stars themselves turn out to be part of the story.*"),
+    # Closing showpiece (DM-approved 2026-07-07): the departure east fills the
+    # chapter-end page instead of stranding it 80 percent empty.
+    ("img", f"{A}/scenes/s6_departure_east.png",
+     "East, toward Gearhaven: three heroes, three relics, and one small ghost-light friend.",
+     6.2, {"crop": "3:2", "hmax": 4.5}),
 
     # ------------------------------------------------------------------
     # APPENDIX I: the DM run sheet (Session 7 format).
@@ -818,6 +823,7 @@ BLOCKS = [
         {
             "name": "Zombie",
             "sub": "Medium undead, unaligned ✦ CR 1/4 (50 XP)",
+            "img": f"{A}/monsters/wraithpine_zombie.png",
             "stats": [
                 "**AC** 8  **HP** 22 (3d8 + 9)  **Speed** 20 ft",
                 "**STR** 13  **DEX** 6  **CON** 16  **INT** 3  **WIS** 6  **CHA** 5",
@@ -836,6 +842,7 @@ BLOCKS = [
         },
         {
             "name": "Skeleton",
+            "img": f"{A}/monsters/wraithpine_skeleton.png",
             "sub": "Medium undead, unaligned ✦ CR 1/4 (50 XP) ✦ only if the rite is begun "
                    "loud and careless",
             "stats": [

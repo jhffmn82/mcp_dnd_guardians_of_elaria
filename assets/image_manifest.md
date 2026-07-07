@@ -228,3 +228,6 @@ Embedded images recovered from the original raw session documents (word/media). 
 | `assets/scenes/s4_frostpine_glade.png` (DM-approved 2026-07-06) | `assets/gen_prompts/s4_frostpine_glade.txt` | s4_havenmoor_town (palette) |
 | `assets/world/havenmoor_wilds_map.png` (DM-approved 2026-07-06) | `assets/gen_prompts/s4_havenmoor_wilds_map.txt` | elaria_region_map (map style) |
 | `assets/scenes/s4_crystalbrook_stream.png` (v2, DM-approved 2026-07-06: wilderness barrier site with visible dark seal; v1 town-look retired to `_triage/superseded_art/s4_crystalbrook_stream_v1_town_look.png`) | `assets/gen_prompts/s4_crystalbrook_stream_v2.txt` | s4_frostpine_glade (palette) |
+| `assets/scenes/s6_departure_east.png` (DM-approved 2026-07-07) | `assets/gen_prompts/s6_departure_east.txt` | REF_lilly_4_later, REF_stabby_3_later, REF_ursa_3_later, REF_ghostbloom |
+| `assets/monsters/wraithpine_zombie.png` (DM-approved 2026-07-07) | `assets/gen_prompts/wraithpine_zombie.txt` | scarecrow.png (palette) |
+| `assets/monsters/wraithpine_skeleton.png` (DM-approved 2026-07-07) | `assets/gen_prompts/wraithpine_skeleton.txt` | scarecrow.png (palette) |
