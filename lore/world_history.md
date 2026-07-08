@@ -253,6 +253,40 @@ not a road lost, the Circle says, only a road lent to someone else. Every path i
 pages was true; a Guardian simply cannot be three heroes at once, and the year apart is
 the world's kind way of asking each of them who they most wish to become.
 
+**D8. The Kept Company** (companion/Ghostbloom/first-friend pages)
+The sky-readers keep a gentler list beside their catalogue of frights: the wonders that
+chose to stay. A creature woken by the Darkening can turn wild or turn kind, and the
+Circle has never found a rule for which, only a pattern, that the ones met with a shared
+meal and a true name tend to follow the heroes home. A companion, the old teaching runs,
+is a mote that decided to belong to someone. They are counted among the Guardians'
+truest treasures, and guarded twice as fiercely for having been freely given.
+
+**D9. The Rings and Their Keepers** (stone-circle/Session 1/Forest of Whispers pages)
+Where a plane leans closest to the world, the old builders raised a ring of stones and
+asked one creature to keep it: a duck grown huge and wind-wrapped, a fish that swims the
+open air, a hound woven of mist that hunts the lantern-edge. The keepers were never meant
+to be fierce, the sky-readers say, only faithful, and a keeper turns dangerous only when
+the wall it guards begins to fail. Meet one swinging, the Circle teaches, and the kinder
+question is not how to beat it but what it is so frightened of losing.
+
+**D10. Where the Silence Pools** (deep/drowned/False Hydra pages)
+In the deepest drowned places, the flooded warrens and the sunken halls, silence gathers
+the way cold water gathers at the bottom of a well. Something learned long ago to live in
+that silence and to feed on the memory of itself, so that the ones it takes are not
+mourned but only, quietly, forgotten. The Circle's warning for such places is the oldest
+kind: count your companions by name, out loud, and if the count will not come right, do
+not go deeper. Sing instead, for the one thing the silence has never been able to swallow
+is a song freely shared.
+
+**L14. The Glowing Groves** (fungal-grove/Shroomyte/Session 3 pages)
+South of the vale the forest thins and the light begins to come up out of the ground
+instead of down through the leaves. Whole hillsides of luminous fungus keep a slow green
+daylight there, and the Shroomytes tend it the way shepherds tend a flock, kindling and
+hooding their own glow to signal one another across the dark. Travelers of the Long Peace
+learned the grove's single rule quickly: the light is not yours to carry off, only to
+walk by, and a grove left unspoiled will light you the whole way to the coast. Trample it,
+the old warning ends, and the spores remember longer than you will.
+
 Note: several existing fragments (D4 Why the Guardians, W4 The Thorn Clans, W5 The
 Stone Rings, L11 The Grove Roads, D3 The Machines Remember, F5 The Bells of the Coast,
 F2 The Warden's Price, D2 Motes) were placed on Compendium pages in this pass, some with

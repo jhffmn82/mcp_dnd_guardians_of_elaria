@@ -96,6 +96,14 @@ B = [
         ],
     }]),
 
+    ("lore", "The Kept Company",
+     "The sky-readers keep a gentler list beside their catalogue of frights: the wonders "
+     "that chose to stay. A creature woken by the Darkening can turn wild or turn kind, and "
+     "the Circle has never found a rule for which, only a pattern, that the ones met with a "
+     "shared meal and a true name tend to follow the heroes home. A companion, the old "
+     "teaching runs, is a mote that decided to belong to someone. They are counted among the "
+     "Guardians' truest treasures, and guarded twice as fiercely for having been freely given."),
+
     ("body", "*Floraburst, as she was before the change: a leafy sprout-backed creature who loved "
              "sunlight and berries. This is the form the party first knew and loved in Session 3.*"),
     ("enemy_cards", [{
@@ -266,6 +274,14 @@ B = [
              "a DC 14 Wisdom save or is frightened for 1 minute (repeat save at end of each turn)."),
         ],
     }]),
+
+    ("lore", "The Rings and Their Keepers",
+     "Where a plane leans closest to the world, the old builders raised a ring of stones and "
+     "asked one creature to keep it: a duck grown huge and wind-wrapped, a fish that swims the "
+     "open air, a hound woven of mist that hunts the lantern-edge. The keepers were never meant "
+     "to be fierce, the sky-readers say, only faithful, and a keeper turns dangerous only when "
+     "the wall it guards begins to fail. Meet one swinging, the Circle teaches, and the kinder "
+     "question is not how to beat it but what it is so frightened of losing."),
 
     ("body", "*A fish that swims through open air above its grove pool, trailing glowing water "
              "and speaking in pictures pressed gently into the mind.*"),
@@ -516,12 +532,14 @@ B = [
              "the attacker makes a DC 13 Constitution save or takes 5 (2d4) poison."),
         ],
     }]),
-    ("lore", "The Grove Roads",
-     "The wild country between the cliffs and the coast has never been tamed, only crossed. "
-     "The old grove roads are kept by creatures rather than kingdoms, and travelers of the "
-     "Long Peace learned the etiquette that still holds: walk through singing, take nothing "
-     "green, and leave a bite of supper at the trailhead. The glowing groves keep the oldest "
-     "manners of all."),
+    ("lore", "The Glowing Groves",
+     "South of the vale the forest thins and the light begins to come up out of the ground "
+     "instead of down through the leaves. Whole hillsides of luminous fungus keep a slow green "
+     "daylight there, and the Shroomytes tend it the way shepherds tend a flock, kindling and "
+     "hooding their own glow to signal one another across the dark. Travelers of the Long Peace "
+     "learned the grove's single rule quickly: the light is not yours to carry off, only to walk "
+     "by, and a grove left unspoiled will light you the whole way to the coast. Trample it, the "
+     "old warning ends, and the spores remember longer than you will."),
 
     # ==================================================================
     ("h1", "Session 4: The Longest Night of Havenmoor", {"hardbreak": True}),
@@ -1190,6 +1208,15 @@ B = [
             ("Coordinate Strike", "One head makes a Snap."),
         ],
     }]),
+
+    ("lore", "Where the Silence Pools",
+     "In the deepest drowned places, the flooded warrens and the sunken halls, silence gathers "
+     "the way cold water gathers at the bottom of a well. Something learned long ago to live in "
+     "that silence and to feed on the memory of itself, so that the ones it takes are not "
+     "mourned but only, quietly, forgotten. The Circle's warning for such places is the oldest "
+     "kind: count your companions by name, out loud, and if the count will not come right, do "
+     "not go deeper. Sing instead, for the one thing the silence has never been able to swallow "
+     "is a song freely shared."),
 
     ("body", "**Festival frights.** *Before the theater, the hydra's hungry song had stirred lesser echoes "
              "all over Wraithpine: animated Scarecrows and rustling Strawlings on Pumpkin Row, rats and rat "
