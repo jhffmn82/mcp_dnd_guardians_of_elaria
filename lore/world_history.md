@@ -194,6 +194,71 @@ from memory, waiting for a key shaped like a heart.
 
 ---
 
+## Fragments: The Paths and Relics (the gifts and the hero-roads)
+
+**P1. The Sign of Seven Points** (relic/seven-point-star pages)
+The old tellings agree that Elaria signed her safeguards the way a mother sews a name
+into a coat: not so the gift would be admired, but so it could always find its way
+home. The seven points are said to be the seven planes she kept turning, and the leafed
+vine that wraps them is the world itself, holding on. When one of her gifts is near, the
+sign is said to warm, as if glad to be recognized.
+
+**P2. One Chest, Three Gifts** (Wraithpine chest/relic pages)
+The Circle teaches that the Warden never gave a gift to one hand alone. Her safeguards
+came in sets, they say, because a thing meant to hold up the sky is too heavy for any
+single pair of arms. The chest that opened to a song beneath the old theater held three
+gifts and one lesson: a stave for the sky, a sash for the swift, and a small bright core
+for the maker, and none of the three was meant to be carried without the other two.
+
+**P3. What a Breathing Style Is** (breathing/monk/Nichirin pages)
+The mountain monks say a breathing style is not a trick of the lungs but a way of
+remembering. Every warrior carries a wild thing, a still river, and a patch of honest
+dark somewhere inside them; a breathing style is simply the practice of calling one of
+them up on purpose, and setting it down again when the fight is done. The breath, the
+old masters warn, is easy to light and hard to quench, which is why they teach the
+quenching first.
+
+**P4. The Star-Paths of the Circle** (Circle of Stars/Ursa path pages)
+The Circle holds that no druid chooses the stars; the stars choose, and the druid only
+walks to meet them. Three roads are said to open before a sky-reader who has served the
+Circle well: one into the wild, where the living world answers; one into the sky, where
+the constellations lend their light; and one along a father's trail, where the omens
+stop coming at random and begin, at last, to obey. A druid walks one road and comes back
+changed, and the two roads not taken wait, patient as starlight, for whoever comes next.
+
+---
+
+## Fragments: Added in the density/lore pass (2026-07)
+
+These were written to fill near-empty tails on specific Compendium pages, in the
+same mythic voice, additive to canon and never contradicting it.
+
+**L13. The Forest of Whispers** (Lickgloom/first-friend/grove pages)
+The old grove roads are kept by creatures rather than kingdoms, and the etiquette that
+holds there is the same one the Long Peace taught: walk through singing, take nothing
+green, and leave a bite of supper at the trailhead. The kind ones answer kindness, the
+sky-readers say, which is why the first friend a traveler makes in the Forest of
+Whispers is so often the truest.
+
+**D7. The Longest Night** (Havenmoor/winter-court/Krampusshade pages)
+The Circle marks one night a year when the dark leans hardest on the world, and teaches
+that it is not to be feared but outlasted. Kindle a light, share a warm meal, ring a
+true bell, and keep one another company until dawn, the old rule runs, for the longest
+night has never once failed to end, and the things that walk it are hungriest for the
+lonely.
+
+**P5. The Roads Not Taken** (hero-path/Three-Doors pages)
+The old tellings are gentle about the doors a hero leaves closed. A road not walked is
+not a road lost, the Circle says, only a road lent to someone else. Every path in these
+pages was true; a Guardian simply cannot be three heroes at once, and the year apart is
+the world's kind way of asking each of them who they most wish to become.
+
+Note: several existing fragments (D4 Why the Guardians, W4 The Thorn Clans, W5 The
+Stone Rings, L11 The Grove Roads, D3 The Machines Remember, F5 The Bells of the Coast,
+F2 The Warden's Price, D2 Motes) were placed on Compendium pages in this pass, some with
+a single closing sentence adapted to the page's subject; the adapted sentences hedge as
+legend and add no new facts.
+
 ## Usage rules
 
 - Fragments are placed in "Lore of Elaria" boxes (the ("lore", title, text) engine

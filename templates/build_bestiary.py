@@ -47,6 +47,11 @@ B = [
     # ==================================================================
     ("h1", "Companions & Friends"),
     ("gold", "Not every creature in this book is an enemy. Some walk the road beside the Guardians."),
+    ("lore", "Why the Guardians",
+     "The Warden's safeguards do not choose the strong. Every tale of the scattered gifts "
+     "agrees on this one point: they choose the kind, because kindness is the only power "
+     "Maldrith has never once predicted correctly. The friends who walk beside the Guardians "
+     "were won the same way, one small mercy at a time."),
 
     ("body", "*Ghostbloom is the party's dearest companion, chosen in Session 3 as Floraburst, "
              "changed aboard the sinking Dutchman and again in Wraithpine's ghost-light. Her petals "
@@ -118,6 +123,12 @@ B = [
              "Action to eat one and restore 3 hit points (house rule 4, as Goodberry)."),
         ],
     }]),
+
+    ("lore", "Motes",
+     "A mote is a crumb of another world, and the world it lands in treats it the way a "
+     "pond treats a dropped lantern: strange light, strange ripples, and every fish in the "
+     "pond suddenly having opinions. The wondrous creatures of the chronicle, the talking, "
+     "glowing, impossible ones, are what happens when the ripples reach something alive."),
 
     ("body", "*In Session 3, Professor Aelwyn offered the party three little wards; they chose Floraburst. "
              "The two who stayed behind, Aqualump and Emberpaws, are catalogued here too, for they are "
@@ -211,13 +222,20 @@ B = [
         ],
     }]),
 
+    ("lore", "The Forest of Whispers",
+     "The old grove roads are kept by creatures rather than kingdoms, and the etiquette that "
+     "holds there is the same one the Long Peace taught: walk through singing, take nothing "
+     "green, and leave a bite of supper at the trailhead. The kind ones answer kindness, the "
+     "sky-readers say, which is why the first friend a traveler makes in the Forest of "
+     "Whispers is so often the truest."),
+
     ("body", "**Pikachu, the Spark Fox.** *An old friend of the Glimmergear family, bodiless since before "
              "the chronicle began, sleeping inside the Essence Sphere. His golden projection first appeared "
              "in Gearhaven: two long ears, a lightning-bolt tail, and a warning carried through Ursa's Mark. "
              "He has no statistics yet; he is more a key than a creature, and his full return is still to come.*"),
 
     # ==================================================================
-    ("h1", "Session 1: The Forest of Whispers"),
+    ("h1", "Session 1: The Forest of Whispers", {"hardbreak": True}),
     ("gold", "The first creatures the Guardians ever faced, all touched by the thinning boundary "
              "between the planes. Each left behind a fading mote, the party's very first clue."),
 
@@ -311,7 +329,7 @@ B = [
     }]),
 
     # ==================================================================
-    ("h1", "Session 2: The Road to Ravenstone"),
+    ("h1", "Session 2: The Road to Ravenstone", {"hardbreak": True}),
     ("gold", "On the road to Oakshade and Ravenstone the party met slick water-elementals, an old "
              "goblin grudge come calling, and a serpent of living stone."),
 
@@ -377,6 +395,11 @@ B = [
     }]),
     ("body", "*The band also fielded standard **Goblins** (AC 15, HP 7), a **Worg** (AC 13, HP 26), an "
              "**Orc** (AC 13, HP 15), and a **Hobgoblin** sniper (AC 18, HP 11).*"),
+    ("lore", "The Thorn Clans",
+     "Goblins tell it plainly: when the world was woven, some threads stuck out, quick and "
+     "bright and impossible to trim flat. Those threads became goblins. The briar-maze of "
+     "Bloodthorn Hollow grew up around the clans, they say, because even the thorns wanted "
+     "to keep them, and a grudge between two clans can outlast the briar itself."),
 
     ("body", "*The serpent of living stone itself: patient as a mountain, and about as easy to "
              "push over.*"),
@@ -409,9 +432,14 @@ B = [
              "DC 15 Dexterity save, taking 14 (4d6) bludgeoning and knocked prone on a fail (half, no prone, on a success)."),
         ],
     }]),
+    ("lore", "The Stone Rings",
+     "The standing stones scattered across the vales are older than every road. Each ring "
+     "was raised where a plane leans close to the world, and each was given a guardian, "
+     "feathered, finned, or worse, to keep the leaning from becoming a fall. When the "
+     "Darkening thinned the walls, some of those old guardians woke confused and swinging."),
 
     # ==================================================================
-    ("h1", "Session 3: The Road South"),
+    ("h1", "Session 3: The Road South", {"hardbreak": True}),
     ("gold", "South toward the sea, the party crossed shadowed thickets and glowing fungal groves, "
              "and learned that the planar wounds are teaching old monsters new tricks."),
 
@@ -488,9 +516,15 @@ B = [
              "the attacker makes a DC 13 Constitution save or takes 5 (2d4) poison."),
         ],
     }]),
+    ("lore", "The Grove Roads",
+     "The wild country between the cliffs and the coast has never been tamed, only crossed. "
+     "The old grove roads are kept by creatures rather than kingdoms, and travelers of the "
+     "Long Peace learned the etiquette that still holds: walk through singing, take nothing "
+     "green, and leave a bite of supper at the trailhead. The glowing groves keep the oldest "
+     "manners of all."),
 
     # ==================================================================
-    ("h1", "Session 4: The Longest Night of Havenmoor"),
+    ("h1", "Session 4: The Longest Night of Havenmoor", {"hardbreak": True}),
     ("gold", "A whole winter court had risen with the Krampusshade. These are the dangers that stalked "
              "the frozen roads of Havenmoor, and the fiend that ruled them."),
 
@@ -853,9 +887,15 @@ B = [
             ],
         },
     ]),
+    ("lore", "The Longest Night",
+     "The Circle marks one night a year when the dark leans hardest on the world, and teaches "
+     "that it is not to be feared but outlasted. Kindle a light, share a warm meal, ring a "
+     "true bell, and keep one another company until dawn, the old rule runs, for the longest "
+     "night has never once failed to end, and the things that walk it are hungriest for the "
+     "lonely."),
 
     # ==================================================================
-    ("h1", "Session 5: The Flying Dutchman"),
+    ("h1", "Session 5: The Flying Dutchman", {"hardbreak": True}),
     ("gold", "Aboard the ghost-ship of Davy Jones the party fought a drowned crew of smugglers and "
              "spirits, all of them (like the Captain) undone by cold and by the sea taking back its own."),
 
@@ -1061,7 +1101,7 @@ B = [
     ]),
 
     # ==================================================================
-    ("h1", "Session 6: The False Hydra of Wraithpine"),
+    ("h1", "Session 6: The False Hydra of Wraithpine", {"hardbreak": True}),
     ("gold", "The worst monster the Guardians ever faced, because no one knew it was there. Beneath the "
              "Old Theater of Wraithpine, its endless song made the whole village forget the people it took. "
              "Beeswax in the ears let the truth through."),
@@ -1203,7 +1243,7 @@ B = [
     # ==================================================================
     # DM-adjudicated numbering 2026-07-06: Gearhaven is Session 7; the
     # chronicle reads 1 through 7 with no gap.
-    ("h1", "Session 7: Gearhaven, the Clockwork City"),
+    ("h1", "Session 7: Gearhaven, the Clockwork City", {"hardbreak": True}),
     ("gold", "In the clockwork city, the enemy was no monster at all but corruption bleeding up through "
              "the cracks, reaching INTO the machines the people loved. Note the rotation: the lightning "
              "eaters and the fire eaters trade off. Freed, not killed: these were innocents."),
@@ -1405,6 +1445,11 @@ B = [
              "save or takes 2d6 force and is blinded until end of its next turn."),
         ],
     }]),
+    ("lore", "The Machines Remember",
+     "Machines feel the Darkening before people do. A machine is a promise written in brass, "
+     "and promises are exactly what the Weaver of Fractures unpicks first. When the mills and "
+     "servitors of the world began to stumble, the made folk of Gearhaven understood it the "
+     "way sailors understand a red sky, and grieved for the gentle giant most of all."),
 ]
 
 if __name__ == "__main__":

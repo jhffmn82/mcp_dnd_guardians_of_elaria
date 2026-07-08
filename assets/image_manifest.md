@@ -231,3 +231,6 @@ Embedded images recovered from the original raw session documents (word/media). 
 | `assets/scenes/s6_departure_east.png` (DM-approved 2026-07-07) | `assets/gen_prompts/s6_departure_east.txt` | REF_lilly_4_later, REF_stabby_3_later, REF_ursa_3_later, REF_ghostbloom |
 | `assets/monsters/wraithpine_zombie.png` (DM-approved 2026-07-07) | `assets/gen_prompts/wraithpine_zombie.txt` | scarecrow.png (palette) |
 | `assets/monsters/wraithpine_skeleton.png` (DM-approved 2026-07-07) | `assets/gen_prompts/wraithpine_skeleton.txt` | scarecrow.png (palette) |
+| `assets/world/compendium_frontispiece.png` (DM-approved 2026-07-08) | `assets/gen_prompts/compendium_frontispiece.txt` | none (pure generation) |
+| `assets/world/treasures_opener.png` (DM-approved 2026-07-08) | `assets/gen_prompts/treasures_opener.txt` | none (pure generation) |
+| `assets/world/paths_opener.png` (DM-approved 2026-07-08) | `assets/gen_prompts/paths_opener.txt` | none (pure generation) |

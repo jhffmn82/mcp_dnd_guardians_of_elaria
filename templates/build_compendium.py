@@ -20,7 +20,7 @@ I = [
     ("gold", "Every treasure of the Guardians' road, from a mother's parting gift to the relics of "
              "a sleeping goddess. Items marked with the seven-point star are Elaria's own."),
 
-    ("h1", "The Great Mysteries", {"pagebreak": True}),
+    ("h1", "The Great Mysteries", {"hardbreak": True}),
     ("h2", "The Essence Sphere"),
     ("imgfloat", "assets/items/essence_sphere.png", 2.6),
     ("body", "Brass and crystal, warm as a heartbeat, made by the deep-gnome masters of Glimmerspire "
@@ -29,28 +29,58 @@ I = [
              "itself and survives holding them, which no other vessel can. It is the missing anchor "
              "of Vane's Rift Portal, and it never leaves the party's keeping. Gained **Planar "
              "Attunement** at the Whispering Glade (advantage on Arcana concerning planar magic)."),
+    ("body", "The Circle has no proper word for what the Sphere is, only what it does: it keeps. "
+             "Whatever loose scrap of another world drifts past, the Sphere gathers it in and holds "
+             "it steady, the way a lantern keeps a single flame out of the wind. Every other vessel "
+             "the deep gnomes ever tried cracked, dimmed, or worse. This one only glows a little "
+             "warmer, and waits."),
+    ("lore", "The Sign of Seven Points",
+     "The old tellings agree that Elaria signed her safeguards the way a mother sews a name "
+     "into a coat: not so the gift would be admired, but so it could always find its way home. "
+     "The seven points are said to be the seven planes she kept turning, and the leafed vine "
+     "that wraps them is the world itself, holding on. When one of her gifts is near, the sign "
+     "is said to warm, as if glad to be recognized."),
+
     ("h2", "The Three Enchanted Potatoes"),
     ("imgfloat", "assets/items/three_potatoes.png", 2.6),
     ("body", "Ash Catchum's legacy to his son: three unassuming potatoes that are anything but. The "
              "goddess named them **remnants of a shattered covenant**, safeguards bound from her own "
              "essence in the old lore (Healing, Transformation, Insight). They pulse when the world "
-             "thins. Their hour has not yet come."),
+             "thins, a slow warm beat you feel in the palm more than hear, and they have never once "
+             "spoiled, sprouted crooked, or agreed to be eaten. Their hour has not yet come, but the "
+             "Circle is patient, and so, apparently, are the potatoes."),
+    ("body", "Ursa carries them wrapped in a cloth his father knotted, and will not say why he trusts "
+             "three root vegetables with the fate of anything. He only shrugs and says they came from "
+             "Ash, and that Ash was rarely wrong about which small things turned out to matter."),
     ("lore", "The Enchanted Potatoes",
      "The Circle keeps a very old, very short list titled \"Safeguards, Probable.\" Entry "
      "nine reads: \"The traveling potatoes. Warm to the touch. Kindly disposition. Keep "
      "planting them.\" Nobody knows who wrote it. The handwriting is extremely old."),
-    # Refit note (0.9in bottom margin): the Idol's float straddled the page-1
-    # foot at any size; break so the entry rides page 2 whole.
-    ("pagebreak",),
+
     ("h2", "Stabby's Idol"),
     ("imgfloat", "assets/items/stabbys_doll.png", 2.2, "left"),
     ("body", "A small carved figure Stabby found tucked in his bag after Wraithpine, though nobody "
              "saw who put it there. It goes ice cold near rifts, and corruption recoils from it. It "
              "has dreams in it. That is all anyone knows, yet."),
+    ("body", "Stabby will not part with it, and cannot say why. He only knows the dark feels friendlier "
+             "when the idol rides in his pack, that the coldest nights on the road are the ones it warns "
+             "him of, and that once, half asleep, he heard it breathing in time with him. The idol keeps "
+             "its own counsel. So, for now, does he."),
+    ("lore", "The Scattered Safeguards",
+     "No one has ever counted the safeguards, which is the point of scattering. Some hang in "
+     "plain sight in tavern rafters. Some sleep in root cellars, humble as potatoes. The old "
+     "rule of the Circle is: treat every odd little thing kindly, in case it is holding up "
+     "the sky."),
 
-    ("h1", "Relics of Elaria (the Wraithpine Chest)", {"pagebreak": True}),
+    ("h1", "Relics of Elaria (the Wraithpine Chest)", {"hardbreak": True}),
     ("body", "One half-buried chest, bound in vines of silver and root, opened by Ghostbloom's song "
              "beneath the Old Theater. Inside, three gifts, each bearing the seven-point star."),
+    ("lore", "One Chest, Three Gifts",
+     "The Circle teaches that the Warden never gave a gift to one hand alone. Her safeguards "
+     "came in sets, they say, because a thing meant to hold up the sky is too heavy for any "
+     "single pair of arms. The chest that opened to a song beneath the old theater held three "
+     "gifts and one lesson: a stave for the sky, a sash for the swift, and a small bright core "
+     "for the maker, and none of the three was meant to be carried without the other two."),
     ("img", "assets/items/wraithpine_chest.png", "The Wraithpine chest, bound in silver vines.", 3.4),
     ("h2", "Staff of Waking Constellations (Ursa)"),
     ("stat", "Staff of Waking Constellations", [
@@ -80,7 +110,7 @@ I = [
                 ("assets/characters/lilly_with_dynamo.png",
                  "Lilly with the Pocket Dynamo.")], 2.05),
 
-    ("h1", "Gifts of Faelan (Havenmoor, Session 4)", {"pagebreak": True}),
+    ("h1", "Gifts of Faelan (Havenmoor, Session 4)", {"hardbreak": True}),
     ("h2", "Frostbite Shard Dagger (Lilly)"),
     ("stat", "Frostbite Shard Dagger", [
         "Rare, attunement by an Artificer. Crystalline ice that never melts. 1d4 piercing + 1d4 cold, +1 to attack.",
@@ -106,7 +136,7 @@ I = [
                 ("assets/items/candyfang_katana.png",
                  "The Candyfang Katana.")], 2.05),
 
-    ("h1", "Boons, Baubles & Blessings"),
+    ("h1", "Boons, Baubles & Blessings", {"hardbreak": True}),
     ("imgfloat", "assets/items/carol_rune_tablet.png", 2.0),
     ("body", "**Elaria's boons (the Whispering Glade, Session 2):** Ursa, Planar Awareness (sense "
              "planar disturbances, 24 hours); Lilly, the Sphere's Planar Attunement; Stabby, Glimpse "
@@ -120,6 +150,12 @@ I = [
              "Terranox's stone fragments and the elemental mud samples of the Grove of Elemental "
              "Waters; beeswax earplugs that beat a monster's song; a bell-handled "
              "blue lantern from Pumpkin Row; Alwen's flasks of lucky seawater."),
+    ("lore", "The Bells of the Coast",
+     "When the safeguards were scattered, eight fell along the southern coast as bells, each "
+     "holding one clear note of the song Elaria sang while she worked. Havenmoor built its "
+     "festival around them centuries before anyone remembered why the bells mattered. The "
+     "town rang them every winter anyway. Traditions are how a town remembers what its people "
+     "forget, and one winter the ringing unmade a fiend."),
 ]
 
 # ----------------------------------------------------------------------
@@ -143,6 +179,11 @@ C = [
              "Self and Nondetection 1/long rest each)."),
     ("body", "7. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule)."),
     ("body", "8. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7)."),
+    ("lore", "The First Listeners",
+     "Before there were villages there were listeners. The first druids did not learn magic; "
+     "they learned quiet, and the forests, glad of the company, taught them the rest. The "
+     "Circle of the Eternal Stars still opens every gathering with a full minute of silence, "
+     "in honor of the age when that was the whole religion."),
 
     ("h1", "The Three Doors"),
     ("gold", "At the close of the Gearhaven chapter the Guardians parted for a year: a year of "
@@ -154,15 +195,35 @@ C = [
              "will choose exactly one door, and none of the three has chosen yet. When they do, the "
              "doors not taken will remain in these pages, roads not walked, ready for other heroes "
              "in other tellings."),
+    # The three heroes at the parting: each stands before a different set of
+    # doors. Fills the tail before Stabby's path opens on a fresh page.
+    ("imgrow", [("assets/characters/stabby_v3_portrait.png",
+                 "Stabby, before the three breathing styles."),
+                ("assets/characters/ursa_v3_portrait.png",
+                 "Ursa, before the three paths of the stars."),
+                ("assets/characters/lilly_v3_portrait.png",
+                 "Lilly, before the three artifacts.")], 1.95),
+    ("lore", "The Roads Not Taken",
+     "The old tellings are gentle about the doors a hero leaves closed. A road not walked is "
+     "not a road lost, the Circle says, only a road lent to someone else. Every path in these "
+     "pages was true; a Guardian simply cannot be three heroes at once, and the year apart is "
+     "the world's kind way of asking each of them who they most wish to become."),
 
     # ------------------------------------------------------------------
     # WARRIOR OF BREATHING: full text of warrior_of_breathing_v2.pdf
     # ------------------------------------------------------------------
-    ("h1", "Warrior of Breathing (Stabby's Path)", {"pagebreak": True}),
+    ("h1", "Warrior of Breathing (Stabby's Path)", {"hardbreak": True}),
     ("body", "A homebrew monk subclass taken at level 7 in place of Kensei. A Warrior of Breathing "
              "kindles an inner style, a visible breath that wreathes the blade. Three doors, three "
              "breathing styles; every road grants the **Nichirin Katana**, and every First Form "
              "replaces Flurry of Blows. The full text of all three follows."),
+    ("lore", "What a Breathing Style Is",
+     "The mountain monks say a breathing style is not a trick of the lungs but a way of "
+     "remembering. Every warrior carries a wild thing, a still river, and a patch of honest "
+     "dark somewhere inside them; a breathing style is simply the practice of calling one of "
+     "them up on purpose, and setting it down again when the fight is done. The breath, the "
+     "old masters warn, is easy to light and hard to quench, which is why they teach the "
+     "quenching first."),
 
     ("h2", "Beast Breathing: the Bloodfang Form"),
     ("gold", "*“You think too much, little storm. The beast does not think. The beast moves, "
@@ -402,11 +463,18 @@ C = [
     # ------------------------------------------------------------------
     # PATHS OF THE STARS: full text of ursa_path_rewards_v2.pdf
     # ------------------------------------------------------------------
-    ("h1", "Paths of the Stars (Ursa's Path)"),
+    ("h1", "Paths of the Stars (Ursa's Path)", {"hardbreak": True}),
     ("gold", "*For Ursa Catchum, Circle of the Stars Druid: the year apart, Level 5 to 7.* "
              "Ursa walked one of three roads during the year apart, and came back changed. Each "
              "road grants a feat (what he sought) and a keepsake (what found him): he gains the "
              "pair matching his road. Special story feats: no ability score increase."),
+    ("lore", "The Star-Paths of the Circle",
+     "The Circle holds that no druid chooses the stars; the stars choose, and the druid only "
+     "walks to meet them. Three roads are said to open before a sky-reader who has served the "
+     "Circle well: one into the wild, where the living world answers; one into the sky, where "
+     "the constellations lend their light; and one along a father's trail, where the omens stop "
+     "coming at random and begin, at last, to obey. A druid walks one road and comes back "
+     "changed, and the two roads not taken wait, patient as starlight, for whoever comes next."),
 
     ("h2", "Beast Handler: The Living World (the road into the wild)"),
     ("gold", "*“You went out to learn the speech of wild things. You came back, and the wild "
@@ -481,7 +549,7 @@ C = [
     # ------------------------------------------------------------------
     # GLIMMERSTONE ARTIFACTS: full text of glimmerstone_artifacts_v2.pdf
     # ------------------------------------------------------------------
-    ("h1", "Glimmerstone Artifacts (Lilly's Path)"),
+    ("h1", "Glimmerstone Artifacts (Lilly's Path)", {"hardbreak": True}),
     ("gold", "Three masterworks of deep gnome artifice, forged for Lilly Glimmergear in the year "
              "apart. Three masterworks, one choice. Each door of Lilly's year apart leads to one "
              "of these treasures: stay and build the portal (the Sentinel), go home to "
@@ -492,9 +560,9 @@ C = [
              "rebuilt into the guardian."),
 
     ("h2", "Boomstick"),
+    ("imgfloat", "assets/items/boomstick.png", 2.2),
     ("gold", "*“It doesn't jam. It doesn't misfire. It simply states its opinion, "
              "loudly.”*"),
-    ("imgfloat", "assets/items/boomstick.png", 2.4),
     ("body", "On this road, Boomstick takes the dagger's watch. Boomstick becomes Lilly's "
              "spellcasting focus and her designated Arcane Firearm (an artificer designates only "
              "one). With her shield in the other hand, her hands are exactly full: pistol, shield, "
@@ -521,9 +589,9 @@ C = [
         "*Forged by the masters of Glimmerstone.*",
     ]),
 
-    ("h2", "The Awakened Essence Sphere"),
-    ("gold", "*“It was never a keepsake. It was a key, and it is finally awake.”*"),
+    ("h2", "The Awakened Essence Sphere", {"hardbreak": True}),
     ("imgfloat", "assets/items/awakened_essence_sphere.png", 2.4),
+    ("gold", "*“It was never a keepsake. It was a key, and it is finally awake.”*"),
     ("body", "The Sphere has spent the whole journey quietly pulling loose motes from the air. "
              "Now awakened, it holds a swirling jumble of collected aether that powers it from "
              "the start, and as the party clears each elemental rift and installs its pure Mote, "
@@ -644,6 +712,12 @@ C = [
     ("body", "**The seven-point star.** Elaria's sigil, wrapped in a leafed vine (or cupped in "
              "wings, on the Sash), found on every gift along the Guardians' path. When you see it, "
              "she saw you coming."),
+    ("lore", "The Warden's Price",
+     "Elaria spent her power the way a candle spends itself: all at once, on purpose, so "
+     "others could see. When Maldrith was sealed beyond the last wall, the Warden had nothing "
+     "left but her name and her sign, the seven-pointed star wrapped in a leafed vine. She "
+     "scattered what remained into small safeguards and lay down to sleep, trusting the kind "
+     "to find them. So far, the old tellings say, her trust has held."),
 ]
 
 if __name__ == "__main__":

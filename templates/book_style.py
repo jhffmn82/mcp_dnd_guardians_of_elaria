@@ -607,6 +607,11 @@ def build_doc(blocks, out_path):
             trpr = tbl.rows[0]._tr.get_or_add_trPr()
             trpr.append(OxmlElement('w:cantSplit'))
             col_in = 6.3 / ncols
+            # A SOLO card (one enemy, usually a boss) floats its portrait to the
+            # side so the stats wrap alongside it, instead of stacking a big
+            # centered image above the text and doubling the card's height
+            # (DM directive 2026-07-08). Multi-card rows keep the centered look.
+            solo = (ncols == 1)
             for ci, card in enumerate(cards[:ncols]):
                 cell = tbl.cell(0, ci)
                 cell.width = Inches(col_in)
@@ -621,19 +626,27 @@ def build_doc(blocks, out_path):
                 # type line
                 p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(2)
                 r = p.add_run(card.get("sub", "")); _set_font(r, Pt(8), italic=True, color=STAT_EDGE)
-                # portrait
+                solo_float = None
                 if card.get("img"):
                     try:
                         data, pw, ph = _image_png_bytes(card["img"], crop=card.get("crop"))
-                        iw = min(card.get("img_w", col_in - 0.28), col_in - 0.28)
-                        p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(3)
-                        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                        p.add_run().add_picture(io.BytesIO(data), width=Inches(iw))
+                        if solo:
+                            # float right on the first following paragraph
+                            solo_float = (data, min(card.get("img_w", 2.5), 2.8))
+                        else:
+                            iw = min(card.get("img_w", col_in - 0.28), col_in - 0.28)
+                            p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(3)
+                            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                            p.add_run().add_picture(io.BytesIO(data), width=Inches(iw))
                     except Exception:
                         pass
+                first_wrap = True
+                sz = Pt(8.5) if solo else Pt(7.5)
                 for line in card.get("stats", []):
                     p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(1)
-                    _rich(p, line, base_size=Pt(7.5))
+                    if solo_float and first_wrap:
+                        _float_right(p, solo_float[0], solo_float[1]); first_wrap = False
+                    _rich(p, line, base_size=sz)
                 for sect, key in (("Traits", "traits"), ("Actions", "actions"),
                                   ("Reactions", "reactions"), ("Legendary Actions", "legendary")):
                     items = card.get(key)
@@ -641,13 +654,18 @@ def build_doc(blocks, out_path):
                         continue
                     p = cell.add_paragraph(); p.paragraph_format.space_before = Pt(3)
                     p.paragraph_format.space_after = Pt(1); p.paragraph_format.keep_with_next = True
-                    r = p.add_run(sect); _set_font(r, Pt(8), True, color=STAT_EDGE)
+                    if solo_float and first_wrap:
+                        _float_right(p, solo_float[0], solo_float[1]); first_wrap = False
+                    r = p.add_run(sect); _set_font(r, Pt(9 if solo else 8), True, color=STAT_EDGE)
                     for nm, txt in items:
                         p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(1)
                         if nm:
-                            r = p.add_run(nm + ". "); _set_font(r, Pt(7.5), True, italic=True, color=INK)
-                        _rich(p, txt, base_size=Pt(7.5))
-            sp = doc.add_paragraph(); sp.paragraph_format.space_after = Pt(2)
+                            r = p.add_run(nm + ". "); _set_font(r, sz, True, italic=True, color=INK)
+                        _rich(p, txt, base_size=sz)
+            # No trailing spacer paragraph: it strands a blank page when a card
+            # group ends exactly at a page boundary before a hardbreak header.
+            # Inter-group separation comes from the following fight_header /
+            # h1 spacing; the table's own bottom cell margin handles the rest.
 
         elif kind == "tactics":
             # (tactics, text) - the S7 "Tactics:" line under a fight's cards.
