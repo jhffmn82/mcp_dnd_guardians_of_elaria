@@ -425,6 +425,15 @@ BLOCKS = [
              "quick hand: *Upstage. Hold. Places.* The passage opens at last into the drowned "
              "orchestra pit below the **Old Theater**, crossed by catwalks of beam and rope, "
              "stage machines jutting up like broken ribs."),
+    # Lore of Elaria (L7, lore/world_history.md): the Gilded Curtain fills the
+    # open foot of the descent page, right under the chalk stage-marks and the
+    # first naming of the Old Theater. World legend only; it asserts no table
+    # fact, and its "forget the play was a play" chills nicely against the song.
+    ("lore", "The Gilded Curtain",
+     "Wraithpine's Old Theater was once home to the Gilded Curtain, the most famous "
+     "traveling troupe on either coast. Their masks and prop rooms were legendary; it was "
+     "said they could make you forget the play was a play. The troupe vanished from the "
+     "records generations ago. The theater kept their playbills up, waiting."),
     # The shuttered theater as a half-page establishing plate above the descent.
     ("img", f"{A}/scenes/s6_old_theater.png",
      "The Old Theater, shuttered and dark, with the song living beneath it.", 5.8,
@@ -595,6 +604,14 @@ BLOCKS = [
     ("img", f"{A}/scenes/s6_departure_east.png",
      "East, toward Gearhaven: three heroes, three relics, and one small ghost-light friend.",
      6.2, {"crop": "3:2", "hmax": 4.5}),
+    # Lore of Elaria (F4, lore/world_history.md): the Old Shrine closes the
+    # chapter under the departure-east plate, pointing the same way the heroes
+    # walk and filling the page's open lower third.
+    ("lore", "The Old Shrine",
+     "Far east of the sea stands the shrine where, the elders say, the Warden stood last "
+     "before her long sleep. Pilgrims once walked a year to reach it. The road is "
+     "forgotten now, which troubles the Circle less than the fact that something else "
+     "seems to have remembered it."),
 
     # ------------------------------------------------------------------
     # APPENDIX I: the DM run sheet (Session 7 format).

@@ -107,6 +107,13 @@ BLOCKS = [
              "Kaelon Windstep** of the Whispering Breeze, taught him balance, patience (a little), "
              "and gave him his name. Then the road called, and Stabby followed it here, bored and "
              "hungry for excitement."),
+    # Lore of Elaria: L3, placed at the mention of Master Kaelon and the
+    # Whispering Breeze; the overflow lands in the brawl page's deep tail.
+    ("lore", "The Whispering Breeze Monastery",
+     "High in the passes stands a monastery whose monks study the oldest wind, the one that "
+     "has been circling the world since the Weaving. They say every storm is just that wind "
+     "remembering something. Their teaching is short: when the whole world is screaming, "
+     "get still."),
     # Portrait floats right; anchored two paragraphs in so the section start
     # at a page foot cannot push the float over the bottom margin.
     ("imgfloat", f"{A}/npcs/s1_stabby_intro.png", 3.3),
@@ -214,6 +221,13 @@ BLOCKS = [
     ("img", f"{A}/scenes/s1_forest_of_whispers.png",
      "Beneath the eaves of the Forest of Whispers, where the starlight comes through in coins and slivers.",
      5.8, {"crop": "3:2", "hmax": 4.6}),
+    # Lore of Elaria: W2, under the forest plate; the first druids and the
+    # Circle of the Eternal Stars, on the Forest of Whispers page.
+    ("lore", "The First Listeners",
+     "Before there were villages there were listeners. The first druids did not learn magic; "
+     "they learned quiet, and the forests, glad of the company, taught them the rest. The "
+     "Circle of the Eternal Stars still opens every gathering with a full minute of silence, "
+     "in honor of the age when that was the whole religion."),
 
     # The stone circle section starts on a fresh page: the forest plate fills
     # the rest of Part Three's opening page, and the Duckleaf float would
@@ -297,6 +311,13 @@ BLOCKS = [
              "bows its head, and a **mote of water energy** rises from the pond, pulsing soft and "
              "blue, before it too fades into the mist. The test is passed. The question it leaves "
              "behind is bigger than the grove: *who is opening the doors between worlds?*"),
+    # Lore of Elaria: D2, closing the grove page right after the second mote
+    # rises; the chronicler explains what a mote is.
+    ("lore", "Motes",
+     "A mote is a crumb of another world, and the world it lands in treats it the way a pond "
+     "treats a dropped lantern: strange light, strange ripples, and every fish in the pond "
+     "suddenly having opinions. The wondrous creatures of the chronicle, the talking, glowing, "
+     "impossible ones, are what happens when the ripples reach something alive."),
 
     # ------------------------------------------------------------------
     # Fresh page: keeps the Oakshade shop card whole and the closing plate
@@ -514,6 +535,13 @@ BLOCKS = [
                 "regrettable mug. Waving Bren off only makes him louder, so let the fight come to "
                 "the table, and have Osric step in if things get too hot. The point of the scene "
                 "is three strangers fighting together for the first time, and winning."),
+    # Lore of Elaria: L10, filling the bar-brawl card page's deep tail; the
+    # vale that builds its tavern first, under the tavern brawl stat blocks.
+    ("lore", "The Vale Villages",
+     "The villages of Eldridge Vale were founded by families who followed the Warden's star "
+     "west until it set behind friendly hills, then stopped. Every village in the vale still "
+     "builds its tavern first and its walls never, which tells you everything about the "
+     "thousand years the vale has had."),
 
     ("fight_header", "ALLIES: Lickgloom",
      "The Whispering Pond ✦ Befriended with bread and patience ✦ Fey companion"),
@@ -597,6 +625,12 @@ BLOCKS = [
                 "and disrupting one stone grounds it; it defends the stones fiercely once it "
                 "realizes what the heroes are doing. A guardian, not a hunter: heroes who heed the "
                 "warning may withdraw, and it never pursues beyond the stones."),
+    # Lore of Elaria: W5, on the Duckleaf card page; why the stone rings
+    # stand, and why they come with guardians.
+    ("lore", "The Stone Rings",
+     "The standing stones scattered across the vales are older than every road. Each ring "
+     "was raised where a plane leans close to the world, and each was given a guardian, "
+     "feathered, finned, or worse, to keep the leaning from becoming a fall."),
 
     ("fight_header", "ENEMIES, Fight 3: The Grove of Elemental Waters",
      "The Forest of Whispers ✦ Difficulty: Medium ✦ 1x Cognifin, the guardian's test"),

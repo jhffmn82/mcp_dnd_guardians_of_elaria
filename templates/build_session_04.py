@@ -272,6 +272,15 @@ BLOCKS = [
         "**The chime completes.** With B and High C found, all **eight Winter Bells** are "
         "gathered: C, D, E, F, G, A, B, High C. One full octave, one unfinished song.",
     ]),
+    # Lore of Elaria (F3): the bell hunt ends with eight odd little things
+    # gathered from rafters, wreaths, and toy chests; the Circle's old rule
+    # about scattered safeguards lands right here, filling the page tail
+    # before the Frozen Roads open.
+    ("lore", "The Scattered Safeguards",
+     "No one has ever counted the safeguards, which is the point of scattering. Some hang in "
+     "plain sight in tavern rafters. Some sleep in root cellars, humble as potatoes. The old "
+     "rule of the Circle is: treat every odd little thing kindly, in case it is holding up "
+     "the sky."),
 
     # ------------------------------------------------------------------
     ("h1", "The Frozen Roads: A Winter Bestiary of Chances"),
@@ -553,6 +562,15 @@ BLOCKS = [
     ("gold", "Faelan raises his hands, and a soft silver light washes over each of you, warmth "
              "seeping into your bones. “Go now, brave souls. May the bells guide you, and may "
              "Elaria's light shield you from the shadows.”"),
+    # Lore of Elaria (F5): Faelan has just told the table what the Winter
+    # Bells are; the chronicler adds where they came from. Fills the deep
+    # whitespace tail under the lorekeeper's page.
+    ("lore", "The Bells of the Coast",
+     "When the safeguards were scattered, eight fell along the southern coast as bells, each "
+     "holding one clear note of the song Elaria sang while she worked. Havenmoor built its "
+     "festival around them centuries before anyone remembered why the bells mattered. The "
+     "town rang them every winter anyway. Traditions are how a town remembers what its "
+     "people forget."),
 
     # ------------------------------------------------------------------
     ("h1", "Part Four: The Three Barriers of Darkness"),
@@ -767,6 +785,14 @@ BLOCKS = [
              "shining. “You have saved us all. The darkness has lifted, and hope shines once "
              "more.” Somewhere behind her, Milo is showing the other orphans exactly how the "
              "bells went, loudly, and mostly in tune."),
+    # Lore of Elaria (D4): the shadow is banished and the gifts come next;
+    # the chronicler explains why it is always the kind ones. Placed here so
+    # it absorbs the celebration page's tail instead of pushing the closing
+    # spread past its last page.
+    ("lore", "Why the Guardians",
+     "The Warden's safeguards do not choose the strong. Every tale of the scattered gifts "
+     "agrees on this one point: they choose the kind, because kindness is the only power "
+     "Maldrith has never once predicted correctly."),
 
     ("h2", "Gifts of Gratitude"),
     # The reunion floats right beside the morning gifts (anchored on the page

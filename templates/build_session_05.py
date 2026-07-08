@@ -134,6 +134,15 @@ BLOCKS = [
         "**No roll saves the ship.** However bravely the crew fights, the maelstrom takes her in "
         "the end: the Stormwind capsizes, and the story continues underwater.",
     ]),
+    # Lore of Elaria (L9, lore/world_history.md): the Dutchman legend rides the
+    # storm-card page's open foot, between Brynn's stern-rail ghost story on the
+    # facing page and the rise itself two pages on. Its sailors' rule ("whatever
+    # the sea takes, let it go") also seeds next session's Remembrance Knot.
+    ("lore", "The Legend of the Dutchman",
+     "Every coast tells it differently, but the bones agree: a captain who could not bear "
+     "to lose what he loved bargained with something in the deep water to keep it, and "
+     "the bargain kept HIM instead. The old sailors' rule survives the legend: whatever "
+     "the sea takes, let it go, or it will hold you to the letter of the trade."),
     ("img", f"{A}/scenes/s5_storm.png",
      "The sky turns to rolling iron as the storm breaks over the Stormwind.", 6.0,
      {"crop": "3:2", "hmax": 4.6}),

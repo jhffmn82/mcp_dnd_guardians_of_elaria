@@ -94,6 +94,13 @@ BLOCKS = [
              "You will need knowledge, allies, and tools forged where magic and technology meet. The "
              "Artificer's Guild can upgrade your Sphere, yes. But its archives may also hold the "
              "secret of how to stitch a world back together.”"),
+    # Lore of Elaria (world_history.md L6): the Ravenstone family history sits
+    # at the foot of the Guardian of Balance page, beside Aelwyn's portrait.
+    ("lore", "The House of Ravenstone",
+     "The Ravenstones have studied the planes from their cliff for nine generations of high "
+     "elves, which is to say about one generation of anyone else's family business. Their "
+     "laboratory was built on the cliffs because, as the first Ravenstone wrote, the edge of "
+     "the land is the best place to study the edges of everything else."),
 
     # ------------------------------------------------------------------
     ("h1", "Part Two: Three Small Wonders", {"hardbreak": True}),
@@ -433,6 +440,12 @@ BLOCKS = [
              "them.” **Lilly:** “The Artificer's Guild might be our best chance to figure this "
              "out, and to bring Pikachu back.” **Stabby:** “Whoever they are, they are going to "
              "get a taste of my blade!”"),
+    # Lore of Elaria (world_history.md F1): the chronicler names the dark
+    # figure the party could not; fills the foot of the vision-plate page.
+    ("lore", "The Weaver of Fractures",
+     "Maldrith did not hate the world. The old verses are careful about this. She was hunger "
+     "given patience, a thing from beyond the walls that wanted in, and the walls, being made "
+     "of starlight, could only hold if someone kept the stars lit."),
 
     # ------------------------------------------------------------------
     ("h1", "Part Five: The Lights of Havenmoor", {"hardbreak": True}),
@@ -482,6 +495,14 @@ BLOCKS = [
              "by to talk of passage north. Below the window, the Great Pine glows on through the "
              "dark: a small, stubborn light against a gathering storm, which is, after all, exactly "
              "what Guardians are."),
+    # Lore of Elaria (world_history.md D1): the stars-going-dark thread closes
+    # the session under Havenmoor's night sky, echoing Aelwyn's charge to Ursa
+    # about his connection to the stars.
+    ("lore", "The First Star Out",
+     "Betelgeuse went dark on a clear night, with half the Circle watching. The records of "
+     "that night are strange to read: forty sky-readers, and not one of them wrote the word "
+     "“impossible,” because every one of them had been trained by the list of names to know "
+     "exactly what it meant."),
     ("divider",),
     ("bridge", "Their third adventure was done: a professor's warning, a leafy new companion, a "
                "farewell to a fey friend, four battles on the wild road, and a shadowy figure who "

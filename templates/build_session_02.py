@@ -282,6 +282,11 @@ BLOCKS = [
     ]),
     ("dm", "The glade is safe ground: the party took a short rest here, talking the vision "
            "through before pressing on."),
+    ("lore", "The Warden's Price",
+     "Elaria spent her power the way a candle spends itself: all at once, on purpose, so "
+     "others could see. When Maldrith was sealed beyond the last wall, the Warden had "
+     "nothing left but her name and her sign, the seven-pointed star wrapped in a leafed "
+     "vine. She scattered what remained into small safeguards and lay down to sleep."),
 
     # ------------------------------------------------------------------
     ("h1", "Part Four: The Stone Serpent"),
@@ -309,6 +314,11 @@ BLOCKS = [
            "Each round, roll a d6: on a 5 or 6, rocks shake free of the cliffs, DC 12 Dexterity "
            "save or 1d10 bludgeoning. The longer the battle roars, the more attention it "
            "risks drawing."),
+    ("lore", "The Grove Roads",
+     "The wild country between the cliffs and the coast has never been tamed, only crossed. "
+     "The old grove roads are kept by creatures rather than kingdoms, and travelers of the "
+     "Long Peace learned the etiquette that still holds: walk through singing, take nothing "
+     "green, and leave a bite of supper at the trailhead."),
     # The session's boss gets a full reveal plate; the encounter notes ride
     # with the reveal paragraph so the plate opens its own page cleanly.
     ("img", f"{A}/monsters/terranox.png",
@@ -331,6 +341,10 @@ BLOCKS = [
              "the Plane of Earth. This one does not drift away. Lilly wraps it carefully with the "
              "mud samples and a few glittering **stone fragments** of the serpent's hide. The "
              "professor is going to have questions. So do they."),
+    ("lore", "The Clockmaker's Gift",
+     "The oldest tale says the world was wound like a clock: five planes set turning around "
+     "the Material world, each cradled by a star lit for it alone. Elaria was not the "
+     "clockmaker. She was the one who stayed behind to keep it wound."),
 
     # ------------------------------------------------------------------
     # The Terranox fight fills its page well past the 70% mark, which would
@@ -596,6 +610,11 @@ BLOCKS = [
                 "the worg and orc press the front, and the hobgoblin's covered position hands "
                 "Stabby a perfect chance to catch an arrow out of the air with Deflect Attacks. "
                 "Beaten, the survivors flee into the brush. The Grimfang remember."),
+    ("lore", "The Thorn Clans",
+     "Goblins tell it plainly: when the world was woven, some threads stuck out, quick and "
+     "bright and impossible to trim flat. Those threads became goblins. The briar-maze of "
+     "Bloodthorn Hollow grew up around the clans, they say, because even the thorns wanted "
+     "to keep them."),
 
     ("fight_header", "ENEMIES, BOSS: Terranox",
      "The Mountain Pass ✦ Difficulty: Hard (no parley) ✦ Fight 3 ✦ the stone "
