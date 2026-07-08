@@ -179,6 +179,13 @@ The Warden's safeguards do not choose the strong. Every tale of the scattered gi
 agrees on this one point: they choose the kind, because kindness is the only power
 Maldrith has never once predicted correctly.
 
+**D6. The Wakened** (bestiary/creature-collection pages)
+The scholars of Ravenstone keep trying to sort the wondrous creatures of the Darkening
+into families, and the creatures keep declining. A duck with a leek. A fish that swims
+through air. A plant that chose three children. The only taxonomy that has ever held is
+the Circle's: some things wake up when the worlds lean close, and what they become
+depends entirely on who finds them first.
+
 **D5. The Rift Portal** (Vane/portal pages)
 Doors between worlds are older than the Darkening; the Weaving was full of them, all
 closed politely behind the movers when the furniture of creation was arranged. What

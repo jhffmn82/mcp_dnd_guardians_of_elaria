@@ -35,6 +35,10 @@ I = [
              "goddess named them **remnants of a shattered covenant**, safeguards bound from her own "
              "essence in the old lore (Healing, Transformation, Insight). They pulse when the world "
              "thins. Their hour has not yet come."),
+    ("lore", "The Enchanted Potatoes",
+     "The Circle keeps a very old, very short list titled \"Safeguards, Probable.\" Entry "
+     "nine reads: \"The traveling potatoes. Warm to the touch. Kindly disposition. Keep "
+     "planting them.\" Nobody knows who wrote it. The handwriting is extremely old."),
     # Refit note (0.9in bottom margin): the Idol's float straddled the page-1
     # foot at any size; break so the entry rides page 2 whole.
     ("pagebreak",),

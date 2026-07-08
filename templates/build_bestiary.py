@@ -1,10 +1,14 @@
 # build_bestiary.py
 # The Guardians of Elaria: THE BESTIARY.
 # A comprehensive, illustrated field guide to every creature, companion, and
-# enemy the party has met across the whole chronicle (Sessions 1-7 / Gearhaven),
-# each with a full 5e-style statblock in the Session 7 / Gearhaven appendix style.
+# enemy the party has met across the whole chronicle (Sessions 1-7), each in
+# the Session 7 / Gearhaven CARD format that all session appendices now use:
+# ("enemy_cards", [...]) rows, regulars doubled up two or three to a row,
+# bosses and stars solo at full width, companions under teal banners, and
+# every creature's italic lore lead kept right before its card.
 #
-# Stats are taken AS WRITTEN from the session documents:
+# Stats are transcribed AS WRITTEN from the previous house-box edition of this
+# file, which itself took them from the session documents:
 #   sessions/session_01_gathering_of_friends.docx (Lickgloom, Duckleaf, Cognifin, Mist Stalker)
 #   sessions/session_02_oakshade_village.docx (Mudskip, Grimfang war band, Terranox)
 #   sessions/session_03_quest_for_knowledge.docx (Shadowflame, Displacer Beasts, Shroomyte,
@@ -19,53 +23,11 @@
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from book_style import build_doc
-import book_style as _bs
-
-# ------------------------------------------------------------------
-# Bestiary-tuned portrait sizing. The house renderer caps every floated
-# portrait at 2.6 inches tall, which flattens the visual hierarchy: the
-# Session 7 model gives its bosses visibly LARGER art than its minions.
-# An optional "img_hmax" key on a statblock raises that cap for showpiece
-# creatures. We wrap the stock renderer and, for the one call, report a
-# flattened aspect ratio so its 2.6-inch clamp resolves to img_hmax inches.
-_stock_render = _bs._render_statblock
-_stock_image = _bs._image_png_bytes
-
-def _render_statblock_sized(doc, sb):
-    hmax = sb.pop("img_hmax", None)
-    start = len(doc.paragraphs)
-    if not hmax:
-        _stock_render(doc, sb)
-    else:
-        def _scaled(path, max_w_px=1200):
-            data, pw, ph = _stock_image(path, max_w_px)
-            return data, pw, int(ph * 2.6 / hmax)
-
-        _bs._image_png_bytes = _scaled
-        try:
-            _stock_render(doc, sb)
-        finally:
-            _bs._image_png_bytes = _stock_image
-    # Refit for the 0.9in bottom margin: chain keep-with-next through the
-    # header cluster (name, type, AC/HP/speed, ability line, and their rules)
-    # so a statblock never strands its name at a page foot with its floated
-    # portrait clipping the page edge; the whole head moves to the next page
-    # together with the first line of its body.
-    for p in doc.paragraphs[start:start + 9]:
-        p.paragraph_format.keep_with_next = True
-
-_bs._render_statblock = _render_statblock_sized
-
-# Portrait sizing scheme (a designed feel, in the Session 7 spirit):
-#   bosses & stars   img_w 3.0-3.4 (with img_hmax where the art is square/tall)
-#   standard foes    img_w 2.3-2.6
-#   minor & small    img_w 1.8-2.1
 
 NOTE = "A running reference for The Guardians of Elaria. Updated as the chronicle grows."
 
-# Handy ability-score dict shorthand
-def ab(s, d, c, i, w, ch):
-    return {"STR": s, "DEX": d, "CON": c, "INT": i, "WIS": w, "CHA": ch}
+# Companions and friends carry the Ghostbloom teal banner instead of crimson.
+TEAL = "1F7A78"
 
 B = [
     ("titlepage", "THE GUARDIANS OF ELARIA", "THE BESTIARY",
@@ -75,6 +37,12 @@ B = [
              "with its lore and its complete statistics. When a planar creature falls, it leaves "
              "no body: a gleaming mote of its home plane rises, hangs a moment, and fades (and the "
              "Essence Sphere tugs toward it). Read on, brave heroes, and know your monsters."),
+    ("lore", "The Wakened",
+     "The scholars of Ravenstone keep trying to sort the wondrous creatures of the Darkening "
+     "into families, and the creatures keep declining. A duck with a leek. A fish that swims "
+     "through air. A plant that chose three children. The only taxonomy that has ever held is "
+     "the Circle's: some things wake up when the worlds lean close, and what they become "
+     "depends entirely on who finds them first."),
 
     # ==================================================================
     ("h1", "Companions & Friends"),
@@ -84,21 +52,23 @@ B = [
              "changed aboard the sinking Dutchman and again in Wraithpine's ghost-light. Her petals "
              "are glass-pale now and chime like frost; she floats, speaks in soft telepathy, and "
              "glows brighter near planar wounds. Some say she is Elaria's own little voice.*"),
-    ("statblock", {
+    # Reconciled 2026-07-06 to characters/ghostbloom_statblock_v3.pdf
+    # (recency rule); the full companion sheet lives in Part IV.
+    ("enemy_cards", [{
         "name": "Ghostbloom, Spectral Blossom",
-        "type": "Tiny fey (Ghost/Grass), chaotic good",
-        "img": "assets/characters/ghostbloom.png", "img_w": 3.0, "img_hmax": 3.4,
-        "ac": "15 (natural armor)", "hp": "52 (8d4 + 32)", "speed": "30 ft., fly 30 ft. (hover)",
-        "abilities": ab(8, 18, 18, 12, 14, 16),
-        "saves": "Dex +7, Con +7, Wis +5",
-        "skills": "Perception +5, Stealth +7",
-        "vulnerabilities": "fire, cold (mind the friendly fire)",
-        "resistances": "necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
-        "condition_immunities": "charmed, frightened",
-        "senses": "darkvision 60 ft., passive Perception 15",
-        "languages": "Sylvan, telepathy 30 ft. (to her keeper)",
-        # Reconciled 2026-07-06 to characters/ghostbloom_statblock_v3.pdf
-        # (recency rule); the full companion sheet lives in Part IV.
+        "sub": "Tiny fey (Ghost/Grass), chaotic good ✦ the party's companion",
+        "img": "assets/characters/ghostbloom.png", "img_w": 2.4,
+        "banner": TEAL,
+        "stats": [
+            "**AC** 15 (natural armor)  **HP** 52 (8d4 + 32)  **Speed** 30 ft., fly 30 ft. (hover)",
+            "**STR** 8  **DEX** 18  **CON** 18  **INT** 12  **WIS** 14  **CHA** 16",
+            "**Saves** Dex +7, Con +7, Wis +5  **Skills** Perception +5, Stealth +7",
+            "**Vulnerable** fire, cold (mind the friendly fire)",
+            "**Resist** necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
+            "**Imm.** (cond) charmed, frightened",
+            "**Senses** darkvision 60 ft., passive Perception 15",
+            "**Languages** Sylvan, telepathy 30 ft. (to her keeper)",
+        ],
         "traits": [
             ("Fey Step (1/Short Rest)", "As a bonus action, teleport up to 20 ft. to an unoccupied space "
              "she can see. Her next attack this turn has advantage."),
@@ -119,20 +89,22 @@ B = [
             ("Dread Shroud", "*Bonus Action, 30 ft., one creature.* A chill bloom settles over the target: "
              "DC 15 Wisdom save or disadvantage on all attack rolls until the start of her next turn."),
         ],
-    }),
+    }]),
 
     ("body", "*Floraburst, as she was before the change: a leafy sprout-backed creature who loved "
              "sunlight and berries. This is the form the party first knew and loved in Session 3.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "Floraburst",
-        "type": "Small fey, neutral good",
-        "img": "assets/characters/floraburst.png", "img_w": 2.5,
-        "ac": "14 (natural armor)", "hp": "45 (6d6 + 18)", "speed": "30 ft.",
-        "abilities": ab(14, 12, 16, 10, 14, 10),
-        "skills": "Nature +4, Survival +4",
-        "resistances": "poison",
-        "senses": "darkvision 60 ft., passive Perception 12",
-        "languages": "understands Sylvan and Common but cannot speak",
+        "sub": "Small fey, neutral good ✦ the companion as she was chosen",
+        "img": "assets/characters/floraburst.png", "img_w": 3.0,
+        "banner": TEAL,
+        "stats": [
+            "**AC** 14 (natural armor)  **HP** 45 (6d6 + 18)  **Speed** 30 ft.",
+            "**STR** 14  **DEX** 12  **CON** 16  **INT** 10  **WIS** 14  **CHA** 10",
+            "**Skills** Nature +4, Survival +4  **Resist** poison",
+            "**Senses** darkvision 60 ft., passive Perception 12",
+            "**Languages** understands Sylvan and Common but cannot speak",
+        ],
         "traits": [
             ("Plant Camouflage", "Advantage on Stealth checks to hide in heavy foliage."),
             ("Photosynthesis", "During a short or long rest in sunlight, Floraburst recovers 10 extra hit points."),
@@ -145,90 +117,99 @@ B = [
             ("Floraberry (3/Day)", "Floraburst produces 1d4 + 1 magical berries. A creature can use a Bonus "
              "Action to eat one and restore 3 hit points (house rule 4, as Goodberry)."),
         ],
-    }),
+    }]),
 
-    # Whitespace pass 2026-07: the old refit pagebreak here left the previous
-    # page two-fifths empty; the statblock head now guards itself with its
-    # keep-chain, so the bridge and block head flow up to fill the page foot.
     ("body", "*In Session 3, Professor Aelwyn offered the party three little wards; they chose Floraburst. "
              "The two who stayed behind, Aqualump and Emberpaws, are catalogued here too, for they are "
              "part of the story.*"),
-    ("statblock", {
-        "name": "Aqualump",
-        "type": "Small elemental, neutral good",
-        "img": "assets/characters/aqualump.png", "img_w": 2.3,
-        "ac": "16 (natural armor, Shell Defense)", "hp": "54 (7d6 + 21)", "speed": "25 ft., swim 30 ft.",
-        "abilities": ab(15, 14, 17, 10, 13, 11),
-        "skills": "Athletics +4, Perception +3",
-        "resistances": "cold",
-        "senses": "darkvision 60 ft., passive Perception 13",
-        "languages": "understands Aquan and Common but cannot speak",
-        "traits": [
-            ("Shell Defense", "As a bonus action, Aqualump withdraws into its shell, gaining +4 AC until the "
-             "start of its next turn; while in its shell its speed is 0."),
-            ("Water Veil", "Aqualump cannot be set on fire and has advantage on saves against being ignited or burned."),
-        ],
-        "actions": [
-            ("Water Bolt", "*Ranged Weapon Attack:* +4 to hit, range 30 ft., one target. *Hit:* 10 (2d8 + 2) "
-             "bludgeoning, and the target must succeed on a DC 14 Strength save or be knocked prone."),
-            ("Surf (Recharge 5-6)", "A 15-ft. cone of water. Each creature there makes a DC 14 Dexterity save, "
-             "taking 14 (4d6) cold on a fail (half on a success); those who fail are knocked prone."),
-            ("Frost Shell", "*Ranged Weapon Attack:* +4 to hit, range 20 ft., one target. *Hit:* 8 (1d10 + 2) "
-             "cold, and the target's speed is reduced by 10 ft. until the end of its next turn."),
-        ],
-    }),
-    ("statblock", {
-        "name": "Emberpaws",
-        "type": "Small elemental, chaotic good",
-        "img": "assets/characters/emberpaws.png", "img_w": 2.3,
-        "ac": "15 (natural armor)", "hp": "42 (6d6 + 15)", "speed": "30 ft.",
-        "abilities": ab(13, 16, 15, 10, 12, 12),
-        "skills": "Acrobatics +5, Perception +3",
-        "immunities": "fire",
-        "senses": "darkvision 60 ft., passive Perception 13",
-        "languages": "understands Ignan and Common but cannot speak",
-        "traits": [
-            ("Fiery Spirit", "When reduced to 0 hit points, Emberpaws bursts into flame. Each creature within "
-             "10 ft. makes a DC 13 Dexterity save, taking 7 (2d6) fire on a fail (half on a success)."),
-            ("Heatwave (3/Day)", "As a bonus action, Emberpaws radiates heat for 1 minute; any creature that "
-             "hits it with a melee attack takes 4 (1d8) fire."),
-        ],
-        "actions": [
-            ("Ember", "*Ranged Weapon Attack:* +5 to hit, range 30 ft., one target. *Hit:* 9 (2d6 + 2) fire."),
-            ("Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 8 (1d8 + 3) piercing."),
-            ("Tail Flame Whip", "*Melee Weapon Attack:* +5 to hit, reach 10 ft., one target. *Hit:* 10 (2d6 + 3) "
-             "fire, and the target must succeed on a DC 13 Dexterity save or be ignited, taking 2 (1d4) fire at "
-             "the start of each of its turns until the flames are put out."),
-        ],
-    }),
+    ("enemy_cards", [
+        {
+            "name": "Aqualump",
+            "sub": "Small elemental, neutral good ✦ stayed with Aelwyn",
+            "img": "assets/characters/aqualump.png",
+            "banner": TEAL,
+            "stats": [
+                "**AC** 16 (natural armor, Shell Defense)  **HP** 54 (7d6 + 21)",
+                "**Speed** 25 ft., swim 30 ft.",
+                "**STR** 15  **DEX** 14  **CON** 17  **INT** 10  **WIS** 13  **CHA** 11",
+                "**Skills** Athletics +4, Perception +3  **Resist** cold",
+                "**Senses** darkvision 60 ft., passive Perception 13",
+                "**Languages** understands Aquan and Common but cannot speak",
+            ],
+            "traits": [
+                ("Shell Defense", "As a bonus action, Aqualump withdraws into its shell, gaining +4 AC until the "
+                 "start of its next turn; while in its shell its speed is 0."),
+                ("Water Veil", "Aqualump cannot be set on fire and has advantage on saves against being ignited or burned."),
+            ],
+            "actions": [
+                ("Water Bolt", "*Ranged Weapon Attack:* +4 to hit, range 30 ft., one target. *Hit:* 10 (2d8 + 2) "
+                 "bludgeoning, and the target must succeed on a DC 14 Strength save or be knocked prone."),
+                ("Surf (Recharge 5-6)", "A 15-ft. cone of water. Each creature there makes a DC 14 Dexterity save, "
+                 "taking 14 (4d6) cold on a fail (half on a success); those who fail are knocked prone."),
+                ("Frost Shell", "*Ranged Weapon Attack:* +4 to hit, range 20 ft., one target. *Hit:* 8 (1d10 + 2) "
+                 "cold, and the target's speed is reduced by 10 ft. until the end of its next turn."),
+            ],
+        },
+        {
+            "name": "Emberpaws",
+            "sub": "Small elemental, chaotic good ✦ stayed with Aelwyn",
+            "img": "assets/characters/emberpaws.png",
+            "banner": TEAL,
+            "stats": [
+                "**AC** 15 (natural armor)  **HP** 42 (6d6 + 15)",
+                "**Speed** 30 ft.",
+                "**STR** 13  **DEX** 16  **CON** 15  **INT** 10  **WIS** 12  **CHA** 12",
+                "**Skills** Acrobatics +5, Perception +3  **Imm.** fire",
+                "**Senses** darkvision 60 ft., passive Perception 13",
+                "**Languages** understands Ignan and Common but cannot speak",
+            ],
+            "traits": [
+                ("Fiery Spirit", "When reduced to 0 hit points, Emberpaws bursts into flame. Each creature within "
+                 "10 ft. makes a DC 13 Dexterity save, taking 7 (2d6) fire on a fail (half on a success)."),
+                ("Heatwave (3/Day)", "As a bonus action, Emberpaws radiates heat for 1 minute; any creature that "
+                 "hits it with a melee attack takes 4 (1d8) fire."),
+            ],
+            "actions": [
+                ("Ember", "*Ranged Weapon Attack:* +5 to hit, range 30 ft., one target. *Hit:* 9 (2d6 + 2) fire."),
+                ("Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 8 (1d8 + 3) piercing."),
+                ("Tail Flame Whip", "*Melee Weapon Attack:* +5 to hit, reach 10 ft., one target. *Hit:* 10 (2d6 + 3) "
+                 "fire, and the target must succeed on a DC 13 Dexterity save or be ignited, taking 2 (1d4) fire at "
+                 "the start of each of its turns until the flames are put out."),
+            ],
+        },
+    ]),
 
     ("body", "*Lickgloom was the party's very first friend, met on their first night by a pond in the "
              "Forest of Whispers: round-bodied, endlessly curious, with a tongue longer than it is tall "
              "and a telepathic voice of pure feeling ('Food? Friend?'). It chose to stay among Professor "
              "Aelwyn's creatures at Ravenstone. Visits are owed.*"),
-    ("statblock", {
-        # Whitespace pass 2026-07: 1.8in (was 2.0) so the square portrait
-        # clears the bottom margin when the head starts in a page's last band.
+    ("enemy_cards", [{
         "name": "Lickgloom",
-        "img": "assets/monsters/lickgloom.png", "img_w": 1.65,
-        "type": "Small fey, neutral good",
-        "ac": "13 (natural armor)", "hp": "27 (5d6 + 10)", "speed": "30 ft.",
-        "abilities": ab(10, 15, 14, 8, 12, 13),
-        "cr": "1 (200 XP)",
-        "senses": "darkvision 60 ft., passive Perception 11",
-        "languages": "telepathy 30 ft. (simple feelings and impressions)",
+        "sub": "Small fey (Feywild), neutral ✦ CR 1 (200 XP) ✦ the first friend",
+        "img": "assets/monsters/lickgloom.png", "img_w": 3.0,
+        "banner": TEAL,
+        "stats": [
+            "**AC** 13 (natural armor)  **HP** 27 (5d6 + 10)  **Speed** 30 ft.",
+            "**STR** 14  **DEX** 12  **CON** 14  **INT** 6  **WIS** 10  **CHA** 8",
+            "**Saves** Dex +3  **Skills** Perception +2, Stealth +4",
+            "**Resist** acid, poison",
+            "**Senses** darkvision 60 ft., passive Perception 12",
+            "**Languages** understands Common but cannot speak; telepathic impressions",
+            "**Challenge** 1 (200 XP)",
+        ],
         "traits": [
-            ("Curious Palate", "Lickgloom can taste the world through its tongue, granting an ally advantage "
-             "on Investigation or Perception checks it helps with."),
+            ("Helpful Tongue", "Traveling with the party, Lickgloom can fetch small objects with its "
+             "10 foot tongue, and once per scene its tasting tongue grants one hero advantage on a "
+             "Wisdom (Perception) or Intelligence (Investigation) check."),
         ],
         "actions": [
-            ("Tongue Whip", "*Melee Weapon Attack:* reach 10 ft., one target. *Hit:* 1d6 + 2 bludgeoning."),
-            ("Lick Attack", "The tongue delivers a stunning slap. *Hit:* 1d8 + 2 bludgeoning, and the target "
-             "must succeed on a DC 12 Constitution save or be stunned until the end of its next turn."),
-            ("Sticky Lick (Recharge 5-6)", "Lickgloom tries to steal a small item from a creature within 10 ft.; "
-             "the target must succeed on a DC 13 Dexterity save or the item is pulled to Lickgloom."),
+            ("Tongue Whip", "*Melee Attack:* +4 to hit, reach 10 ft. *Hit:* 1d6 + 2 bludgeoning, and the "
+             "target must succeed on a DC 12 Strength saving throw or be grappled (escape DC 12)."),
+            ("Sticky Lick (Recharge 5-6)", "One creature within 10 ft. must succeed on a DC 13 Dexterity "
+             "saving throw or lose one small item (a weapon, potion, or trinket), which Lickgloom pulls "
+             "to itself."),
         ],
-    }),
+    }]),
 
     ("body", "**Pikachu, the Spark Fox.** *An old friend of the Glimmergear family, bodiless since before "
              "the chronicle began, sleeping inside the Essence Sphere. His golden projection first appeared "
@@ -236,27 +217,25 @@ B = [
              "He has no statistics yet; he is more a key than a creature, and his full return is still to come.*"),
 
     # ==================================================================
-    # Whitespace pass 2026-07: the old refit pagebreak here left the Pikachu
-    # page two-thirds empty; the statblock keep-chain now guards Duckleaf's
-    # head, so Session 1 opens mid-page like the other session headings.
     ("h1", "Session 1: The Forest of Whispers"),
     ("gold", "The first creatures the Guardians ever faced, all touched by the thinning boundary "
              "between the planes. Each left behind a fading mote, the party's very first clue."),
 
     ("body", "*A duck grown huge and wind-wrapped, roosting in an old rune-carved stone circle; "
              "its furious quacks arrive straight in the mind.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "Duckleaf",
-        "type": "Small beast (Elemental Air), neutral",
-        "img": "assets/monsters/duckleaf_stone_circle.png", "img_w": 2.5,
-        "ac": "15 (natural armor)", "hp": "52 (8d8 + 16)", "speed": "30 ft., fly 30 ft.",
-        "abilities": ab(14, 16, 14, 10, 12, 10),
-        "saves": "Dex +5, Wis +3",
-        "skills": "Acrobatics +5, Perception +3",
-        "resistances": "slashing, bludgeoning (wind-shielded)",
-        "senses": "darkvision 60 ft., passive Perception 13",
-        "languages": "telepathy 30 ft. (in quacks)",
-        "cr": "4 (1,100 XP)",
+        "sub": "Small beast (Elemental Air), neutral ✦ CR 4 (1,100 XP) ✦ guardian of the stone circle",
+        "img": "assets/monsters/duckleaf_stone_circle.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 15 (natural armor)  **HP** 52 (8d8 + 16)  **Speed** 30 ft., fly 30 ft.",
+            "**STR** 14  **DEX** 16  **CON** 14  **INT** 10  **WIS** 12  **CHA** 10",
+            "**Saves** Dex +5, Wis +3  **Skills** Acrobatics +5, Perception +3",
+            "**Resist** slashing, bludgeoning (wind-shielded)",
+            "**Senses** darkvision 60 ft., passive Perception 13",
+            "**Languages** telepathy 30 ft. (in quacks)",
+            "**Challenge** 4 (1,100 XP)",
+        ],
         "traits": [
             ("Winged Leap", "Duckleaf can leap 30 ft. in any direction without provoking opportunity attacks. "
              "Disrupting a stone of the rune-circle ends this ability for the rest of the battle."),
@@ -268,21 +247,23 @@ B = [
             ("Quack of Fury (Recharge 5-6)", "A thunderous telepathic quack. Each creature within 15 ft. makes "
              "a DC 14 Wisdom save or is frightened for 1 minute (repeat save at end of each turn)."),
         ],
-    }),
+    }]),
+
     ("body", "*A fish that swims through open air above its grove pool, trailing glowing water "
              "and speaking in pictures pressed gently into the mind.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "Cognifin",
-        "type": "Small beast (Elemental Water), neutral",
-        "img": "assets/monsters/cognifin_grove.png", "img_w": 2.4,
-        "ac": "14 (natural armor)", "hp": "45 (6d8 + 18)", "speed": "0 ft., fly 30 ft. (hover)",
-        "abilities": ab(10, 14, 16, 10, 14, 12),
-        "saves": "Dex +4, Wis +4",
-        "skills": "Perception +4, Arcana +2",
-        "resistances": "cold, psychic",
-        "senses": "darkvision 60 ft., passive Perception 14",
-        "languages": "telepathy 60 ft. (images and feelings)",
-        "cr": "3 (700 XP)",
+        "sub": "Small beast (Elemental Water), neutral ✦ CR 3 (700 XP) ✦ the grove's test",
+        "img": "assets/monsters/cognifin_grove.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 14 (natural armor)  **HP** 45 (6d8 + 18)  **Speed** 0 ft., fly 30 ft. (hover)",
+            "**STR** 10  **DEX** 14  **CON** 16  **INT** 10  **WIS** 14  **CHA** 12",
+            "**Saves** Dex +4, Wis +4  **Skills** Perception +4, Arcana +2",
+            "**Resist** cold, psychic",
+            "**Senses** darkvision 60 ft., passive Perception 14",
+            "**Languages** telepathy 60 ft. (images and feelings)",
+            "**Challenge** 3 (700 XP)",
+        ],
         "actions": [
             ("Headache Blast", "*Ranged Attack:* +4 to hit, range 30 ft., one target. *Hit:* 2d6 + 2 psychic."),
             ("Water Pulse", "*Ranged Spell Attack:* +4 to hit, range 30 ft., one target. *Hit:* 2d6 + 2 "
@@ -300,26 +281,34 @@ B = [
             ("Tidal Wave", "A 10-ft. line of water. Creatures in its path make a DC 12 Dexterity save or take "
              "2d4 bludgeoning and are pushed back 5 ft."),
         ],
-    }),
+    }]),
+
     ("body", "*A shape of fog and hunger that hunts at the edge of lantern-light, more shadow "
              "than wolf.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "Mist Stalker",
-        "img": "assets/monsters/mist_stalker.png", "img_w": 1.9,
-        "type": "Medium fey, unaligned",
-        "ac": "13", "hp": "39", "speed": "40 ft.",
-        "abilities": ab(14, 16, 12, 6, 12, 10),
-        "cr": "2 (450 XP)",
-        "senses": "darkvision 60 ft.",
+        "sub": "Medium fey (Feywild), unaligned ✦ CR 2 (450 XP) ✦ they hunt in pairs",
+        "img": "assets/monsters/mist_stalker.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 13  **HP** 39 (6d8 + 12)  **Speed** 40 ft.",
+            "**STR** 14  **DEX** 16  **CON** 14  **INT** 6  **WIS** 12  **CHA** 8",
+            "**Skills** Perception +3, Stealth +5",
+            "**Senses** darkvision 60 ft., passive Perception 13",
+            "**Challenge** 2 (450 XP)",
+        ],
         "traits": [
-            ("Fog Cloak", "As a bonus action, the stalker wraps itself in fog, becoming heavily obscured for 1 turn."),
+            ("Fog Cloak (Bonus Action)", "The stalker wraps itself in mist, becoming heavily obscured "
+             "until the start of its next turn."),
         ],
         "actions": [
-            ("Claw", "*Melee Weapon Attack:* one target. *Hit:* slashing damage from raking claws."),
-            ("Bite", "*Melee Weapon Attack:* one target. *Hit:* piercing damage."),
-            ("Howl of the Mist", "Each creature within 30 ft. that can hear it must save or be frightened."),
+            ("Multiattack", "The mist stalker makes one bite attack and one claw attack."),
+            ("Bite", "*Melee Attack:* +5 to hit, reach 5 ft. *Hit:* 1d8 + 3 piercing."),
+            ("Claw", "*Melee Attack:* +5 to hit, reach 5 ft. *Hit:* 2d4 + 3 slashing."),
+            ("Howl of the Mist (Recharge 5-6)", "A howl rolls through the fog from every direction at "
+             "once. Each enemy within 30 ft. must succeed on a DC 13 Wisdom saving throw or be "
+             "frightened until the end of the stalker's next turn."),
         ],
-    }),
+    }]),
 
     # ==================================================================
     ("h1", "Session 2: The Road to Ravenstone"),
@@ -328,18 +317,19 @@ B = [
 
     ("body", "*Slick little elementals of the wayside ponds, harmless-looking right up until the "
              "mud starts flying.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "Mudskip",
-        "img": "assets/monsters/mudskip.png", "img_w": 1.9,
-        "type": "Small elemental (Plane of Water), neutral",
-        "ac": "13 (natural armor)", "hp": "22 (4d6 + 8)", "speed": "20 ft., swim 30 ft.",
-        "abilities": ab(12, 14, 14, 6, 12, 8),
-        "skills": "Stealth +4, Perception +3",
-        "resistances": "fire",
-        "vulnerabilities": "lightning",
-        "senses": "darkvision 60 ft., passive Perception 13",
-        "languages": "understands Aquan but can't speak",
-        "cr": "1/2 (100 XP)",
+        "sub": "Small elemental (Plane of Water), neutral ✦ CR 1/2 (100 XP) ✦ mischief in numbers",
+        "img": "assets/monsters/mudskip.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 13 (natural armor)  **HP** 22 (4d6 + 8)  **Speed** 20 ft., swim 30 ft.",
+            "**STR** 12  **DEX** 14  **CON** 14  **INT** 6  **WIS** 12  **CHA** 8",
+            "**Skills** Stealth +4, Perception +3",
+            "**Vulnerable** lightning  **Resist** fire",
+            "**Senses** darkvision 60 ft., passive Perception 13",
+            "**Languages** understands Aquan but can't speak",
+            "**Challenge** 1/2 (100 XP)",
+        ],
         "traits": [
             ("Amphibious", "The Mudskip can breathe air and water."),
             ("Mud Dweller", "It ignores difficult terrain made of mud or shallow water."),
@@ -353,22 +343,24 @@ B = [
             ("Mud Splash (Recharge 5-6)", "A 15-ft. cone of mud. DC 12 Dexterity save; 9 (2d6 + 2) bludgeoning "
              "and blinded until end of next turn on a fail, half and no blind on a success."),
         ],
-    }),
+    }]),
 
     ("body", "**The Grimfang war band.** *A rival goblin clan carrying an old grudge against Stabby's "
              "Bloodfang: two goblin archers, a worg, a club-swinging orc, a hobgoblin sniper, and a "
              "scar-faced Goblin Boss who taunted Stabby and regretted it. Driven off, not destroyed; "
              "grudges keep. Their statistics are the standard Monster Manual entries.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "Goblin Boss (the Grimfang leader)",
-        "type": "Small humanoid (goblinoid), neutral evil",
-        "img": "assets/monsters/grimfang_clan.png", "img_w": 2.6,
-        "ac": "17 (chain shirt, shield)", "hp": "21 (6d6)", "speed": "30 ft.",
-        "abilities": ab(10, 14, 10, 10, 8, 10),
-        "skills": "Stealth +6",
-        "senses": "darkvision 60 ft., passive Perception 9",
-        "languages": "Common, Goblin",
-        "cr": "1 (200 XP)",
+        "sub": "Small humanoid (goblinoid), neutral evil ✦ CR 1 (200 XP) ✦ leads the war band",
+        "img": "assets/monsters/grimfang_clan.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 17 (chain shirt, shield)  **HP** 21 (6d6)  **Speed** 30 ft.",
+            "**STR** 10  **DEX** 14  **CON** 10  **INT** 10  **WIS** 8  **CHA** 10",
+            "**Skills** Stealth +6",
+            "**Senses** darkvision 60 ft., passive Perception 9",
+            "**Languages** Common, Goblin",
+            "**Challenge** 1 (200 XP)",
+        ],
         "traits": [
             ("Nimble Escape", "The boss can Disengage or Hide as a bonus action on each of its turns."),
         ],
@@ -382,23 +374,24 @@ B = [
             ("Redirect Attack", "When a creature the boss can see targets it with an attack, it swaps places "
              "with a goblin ally within 5 ft.; that ally becomes the target instead."),
         ],
-    }),
+    }]),
     ("body", "*The band also fielded standard **Goblins** (AC 15, HP 7), a **Worg** (AC 13, HP 26), an "
              "**Orc** (AC 13, HP 15), and a **Hobgoblin** sniper (AC 18, HP 11).*"),
 
     ("body", "*The serpent of living stone itself: patient as a mountain, and about as easy to "
              "push over.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "Terranox",
-        "type": "Large elemental (Plane of Earth), unaligned",
-        "img": "assets/monsters/terranox.png", "img_w": 3.0, "img_hmax": 3.0,
-        "ac": "16 (natural armor)", "hp": "95 (10d10 + 40)", "speed": "30 ft., burrow 30 ft.",
-        "abilities": ab(20, 10, 18, 5, 11, 6),
-        "resistances": "bludgeoning, piercing, and slashing from nonmagical, non-adamantine weapons",
-        "immunities": "fire, poison",
-        "condition_immunities": "exhaustion, paralyzed, petrified, poisoned, prone",
-        "senses": "darkvision 60 ft., tremorsense 60 ft., passive Perception 10",
-        "cr": "4 (1,100 XP)",
+        "sub": "Large elemental (Plane of Earth), unaligned ✦ CR 4 (1,100 XP) ✦ the boss of Session 2",
+        "img": "assets/monsters/terranox.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 16 (natural armor)  **HP** 95 (10d10 + 40)  **Speed** 30 ft., burrow 30 ft.",
+            "**STR** 20  **DEX** 10  **CON** 18  **INT** 5  **WIS** 11  **CHA** 6",
+            "**Resist** bludgeoning, piercing, and slashing from nonmagical, non-adamantine weapons",
+            "**Imm.** fire, poison ✦ (cond) exhaustion, paralyzed, petrified, poisoned, prone",
+            "**Senses** darkvision 60 ft., tremorsense 60 ft., passive Perception 10",
+            "**Challenge** 4 (1,100 XP)",
+        ],
         "traits": [
             ("Earth Glide", "Terranox burrows through unworked earth and stone without disturbing it."),
             ("Siege Monster", "Deals double damage to objects and structures."),
@@ -415,7 +408,7 @@ B = [
             ("Earthquake Stomp (Recharge 6)", "A tremor in a 20-ft. radius; each creature on the ground makes a "
              "DC 15 Dexterity save, taking 14 (4d6) bludgeoning and knocked prone on a fail (half, no prone, on a success)."),
         ],
-    }),
+    }]),
 
     # ==================================================================
     ("h1", "Session 3: The Road South"),
@@ -424,19 +417,22 @@ B = [
 
     ("body", "*A hollow shape of darkness crowned in cold blue flame, hiding among perfect copies "
              "of itself.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "Shadowflame",
-        "type": "Medium undead, chaotic evil",
-        "img": "assets/monsters/shadowflame.png", "img_w": 2.6,
-        "ac": "14 (natural armor)", "hp": "58 (9d8 + 18)", "speed": "0 ft., fly 40 ft. (hover)",
-        "abilities": ab(8, 18, 14, 12, 15, 18),
-        "skills": "Stealth +8, Intimidation +6",
-        "resistances": "acid, fire, lightning, necrotic; bludgeoning, piercing, and slashing from nonmagical weapons",
-        "immunities": "poison, psychic",
-        "condition_immunities": "charmed, frightened, grappled, paralyzed, poisoned, prone, restrained",
-        "senses": "darkvision 60 ft., passive Perception 12",
-        "languages": "understands Common, Sylvan, and Abyssal (does not speak)",
-        "cr": "4 (1,100 XP)",
+        "sub": "Medium undead, chaotic evil ✦ CR 4 (1,100 XP) ✦ fights alone",
+        "img": "assets/monsters/shadowflame.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 14 (natural armor)  **HP** 58 (9d8 + 18)  **Speed** 0 ft., fly 40 ft. (hover)",
+            "**STR** 8  **DEX** 18  **CON** 14  **INT** 12  **WIS** 15  **CHA** 18",
+            "**Skills** Stealth +8, Intimidation +6",
+            "**Resist** acid, fire, lightning, necrotic; bludgeoning, piercing, and slashing from "
+            "nonmagical weapons",
+            "**Imm.** poison, psychic ✦ (cond) charmed, frightened, grappled, paralyzed, poisoned, "
+            "prone, restrained",
+            "**Senses** darkvision 60 ft., passive Perception 12",
+            "**Languages** understands Common, Sylvan, and Abyssal (does not speak)",
+            "**Challenge** 4 (1,100 XP)",
+        ],
         "traits": [
             ("Illusions of Fear", "At the start of combat, the Shadowflame conjures three identical illusions "
              "(AC 14). A creature attacking one must succeed on a DC 18 Arcana or Perception check to know it is "
@@ -452,7 +448,7 @@ B = [
             ("Shadowmeld", "When hit, the Shadowflame teleports up to 20 ft. to an unoccupied space it can see, "
              "becoming lightly obscured until the start of its next turn."),
         ],
-    }),
+    }]),
 
     ("body", "**Displacer Beasts (a pair).** *Six-legged, tentacled, and impossibly TALKING ('Fresh prey... "
              "too easy.'): the planar distortion had given old monsters new voices. Their shimmering forms "
@@ -460,24 +456,21 @@ B = [
              "strike at 10 ft. Their fall revealed rune-tears in the forest floor. (Statistics as the "
              "standard Displacer Beast, CR 3, AC 13, HP 85.)*"),
 
-    # Whitespace pass 2026-07: the old refit pagebreak here left the Displacer
-    # Beast page three-quarters empty; the statblock keep-chain now guards
-    # Shroomyte's head, so let the bridge and block flow up.
     ("body", "*A guardian of the glowing fungal groves, all soft lantern-light and stubborn "
              "spores.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "Shroomyte",
-        "type": "Small plant, neutral",
-        "img": "assets/monsters/shroomyte_grove.png", "img_w": 2.4,
-        "ac": "13 (natural armor)", "hp": "27 (5d8 + 5)", "speed": "20 ft.",
-        "abilities": ab(12, 12, 14, 6, 12, 7),
-        "saves": "Con +4, Wis +3",
-        "skills": "Stealth +3, Perception +3",
-        "resistances": "poison",
-        "condition_immunities": "poisoned",
-        "senses": "darkvision 60 ft., passive Perception 13",
-        "languages": "understands Sylvan but can't speak",
-        "cr": "2 (450 XP)",
+        "sub": "Small plant, neutral ✦ CR 2 (450 XP) ✦ they defend the grove in fours",
+        "img": "assets/monsters/shroomyte_grove.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 13 (natural armor)  **HP** 27 (5d8 + 5)  **Speed** 20 ft.",
+            "**STR** 12  **DEX** 12  **CON** 14  **INT** 6  **WIS** 12  **CHA** 7",
+            "**Saves** Con +4, Wis +3  **Skills** Stealth +3, Perception +3",
+            "**Resist** poison  **Imm.** (cond) poisoned",
+            "**Senses** darkvision 60 ft., passive Perception 13",
+            "**Languages** understands Sylvan but can't speak",
+            "**Challenge** 2 (450 XP)",
+        ],
         "traits": [
             ("Bioluminescent Glow", "The Shroomyte sheds dim light in a 10-ft. radius, which it can suppress or "
              "rekindle as a bonus action."),
@@ -494,31 +487,29 @@ B = [
             ("Fungal Retribution", "When a creature within 5 ft. hits it in melee, the Shroomyte bursts spores; "
              "the attacker makes a DC 13 Constitution save or takes 5 (2d4) poison."),
         ],
-    }),
+    }]),
 
     # ==================================================================
     ("h1", "Session 4: The Longest Night of Havenmoor"),
     ("gold", "A whole winter court had risen with the Krampusshade. These are the dangers that stalked "
              "the frozen roads of Havenmoor, and the fiend that ruled them."),
 
-    # Whitespace pass 2026-07: the old refit pagebreak here left the Shroomyte
-    # tail page nine-tenths empty; the statblock keep-chain guards the boss's
-    # head and its 3.2in showpiece float, so the Session 4 opener flows up.
     ("body", "*The fiend of the longest night itself: horned, chain-draped, and smiling, striding "
              "the snows with a sack of cursed gifts over one shoulder.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "The Krampusshade",
-        "type": "Large fiend, chaotic evil",
-        "img": "assets/monsters/krampusshade.png", "img_w": 3.2, "img_hmax": 3.2,
-        "ac": "15 (natural armor)", "hp": "102 (12d10 + 36)", "speed": "40 ft.",
-        "abilities": ab(18, 14, 16, 12, 14, 17),
-        "saves": "Wis +5, Cha +6",
-        "resistances": "cold, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
-        "immunities": "poison",
-        "condition_immunities": "charmed, frightened, poisoned",
-        "senses": "darkvision 120 ft., passive Perception 14",
-        "languages": "Abyssal, Common, Infernal",
-        "cr": "5 (1,800 XP)",
+        "sub": "Large fiend, chaotic evil ✦ CR 5 (1,800 XP) ✦ the boss of Session 4",
+        "img": "assets/monsters/krampusshade.png", "img_w": 3.2,
+        "stats": [
+            "**AC** 15 (natural armor)  **HP** 102 (12d10 + 36)  **Speed** 40 ft.",
+            "**STR** 18  **DEX** 14  **CON** 16  **INT** 12  **WIS** 14  **CHA** 17",
+            "**Saves** Wis +5, Cha +6",
+            "**Resist** cold, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
+            "**Imm.** poison ✦ (cond) charmed, frightened, poisoned",
+            "**Senses** darkvision 120 ft., passive Perception 14",
+            "**Languages** Abyssal, Common, Infernal",
+            "**Challenge** 5 (1,800 XP)",
+        ],
         "actions": [
             ("Multiattack", "One Claw and one Chains of Despair."),
             ("Claw", "*Melee Weapon Attack:* +7 to hit, reach 10 ft., one target. *Hit:* 12 (2d6 + 4) slashing "
@@ -536,282 +527,332 @@ B = [
             ("Shadow Step", "The Krampusshade teleports up to 20 ft. to an unoccupied space in dim light or "
              "darkness. (Rung together, the eight Winter Bells strip away its power.)"),
         ],
-    }),
+    }]),
 
-    # Refit note (0.9in bottom margin): the imp's header stranded below the
-    # Krampusshade with a clipped portrait; give the boss its page to itself.
-    ("pagebreak",),
     ("body", "*A red-eyed sliver of shadow that giggles in the dark between the lantern posts.*"),
-    ("statblock", {
-        "name": "Krampus's Imp",
-        "type": "Small fiend (shadow), chaotic evil",
-        "img": "assets/monsters/krampus_imp.png", "img_w": 2.1,
-        "ac": "14 (natural armor)", "hp": "22 (5d6 + 5)", "speed": "30 ft., fly 40 ft.",
-        "abilities": ab(10, 16, 12, 13, 11, 14),
-        "skills": "Stealth +6, Deception +4",
-        "resistances": "cold, fire, necrotic; bludgeoning, piercing, slashing from nonmagical attacks",
-        "immunities": "poison",
-        "condition_immunities": "poisoned",
-        "senses": "darkvision 120 ft., passive Perception 10",
-        "languages": "Infernal, Common",
-        "cr": "2 (450 XP)",
-        "traits": [
-            ("Shadow Stealth", "Can Hide as a bonus action in dim light or darkness."),
-            ("Invisibility (3/short rest)", "Turns invisible as a bonus action until it attacks or casts a spell."),
-            ("Magic Resistance", "Advantage on saves against spells and magical effects."),
-            ("Shadow Glide", "Can move through creatures' spaces in dim light or darkness."),
-        ],
-        "actions": [
-            ("Shadow Claws", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 8 (2d4 + 3) slashing plus 3 (1d6) cold."),
-            ("Shadowy Grasp (Recharge 5-6)", "A target makes a DC 13 Dexterity save or is restrained until end of "
-             "the imp's next turn, taking 5 (1d10) cold at the start of each of its turns while restrained."),
-        ],
-    }),
     ("body", "*Sneak-thieves of the winter court: shadowy imps with glowing red eyes and jagged claws, "
              "leaping from cover to steal whatever shone brightest in a hero's pack.*"),
-    ("statblock", {
-        "name": "Krampusshade Minion",
-        "type": "Small fiend, chaotic evil",
-        "img": "assets/monsters/krampusshade_imps.png", "img_w": 2.4,
-        "ac": "15 (natural armor)", "hp": "33 (6d6 + 12)", "speed": "40 ft., fly 30 ft.",
-        "skills": "Stealth +6, Sleight of Hand +6",
-        "resistances": "cold, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
-        "senses": "darkvision 120 ft., passive Perception 12",
-        "languages": "Common, Infernal",
-        "cr": "2 (450 XP)",
-        "actions": [
-            ("Shadow Claw", "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 9 (2d4 + 4) "
-             "slashing, and the target must succeed on a DC 13 Wisdom save or be frightened until the end "
-             "of its next turn."),
-            ("Steal Object", "The minion tries to snatch a small item; the target must succeed on a DC 14 "
-             "Dexterity save or lose the item."),
-        ],
-    }),
-
-    ("body", "*The gift-box mimics were the season's cruelest joke: presents that bit back, and stuck fast "
-             "to any hand that reached for them.*"),
-    ("statblock", {
-        "name": "Mimic (Gift Box)",
-        "type": "Medium monstrosity (shapechanger), neutral",
-        "ac": "12 (natural armor)", "hp": "58 (9d8 + 18)", "speed": "15 ft.",
-        "skills": "Stealth +5",
-        "immunities": "acid",
-        "condition_immunities": "prone",
-        "senses": "darkvision 60 ft., passive Perception 11",
-        "languages": "none",
-        "cr": "2 (450 XP)",
-        "traits": [
-            ("Shapechanger", "The mimic can use its action to polymorph into an object (a wrapped gift box, "
-             "most often) or back into its true, toothy form."),
-        ],
-        "actions": [
-            ("Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 7 (1d8 + 3) piercing "
-             "plus 4 (1d8) acid."),
-            ("Adhesive", "The mimic adheres to anything that touches it; a creature grappled by the mimic "
-             "must succeed on a DC 13 Strength check to escape."),
-        ],
-    }),
+    ("body", "*And the gift-box mimics were the season's cruelest joke: presents that bit back, and stuck "
+             "fast to any hand that reached for them.*"),
+    ("enemy_cards", [
+        {
+            "name": "Krampus's Imp",
+            "sub": "Small fiend (shadow), chaotic evil ✦ CR 2 (450 XP)",
+            "img": "assets/monsters/krampus_imp.png",
+            "stats": [
+                "**AC** 14 (natural armor)  **HP** 22 (5d6 + 5)",
+                "**Speed** 30 ft., fly 40 ft.",
+                "**STR** 10  **DEX** 16  **CON** 12  **INT** 13  **WIS** 11  **CHA** 14",
+                "**Skills** Stealth +6, Deception +4",
+                "**Resist** cold, fire, necrotic; nonmagical B/P/S",
+                "**Imm.** poison ✦ (cond) poisoned",
+                "**Senses** darkvision 120 ft.",
+                "**Languages** Infernal, Common",
+                "**Challenge** 2 (450 XP)",
+            ],
+            "traits": [
+                ("Shadow Stealth", "Can Hide as a bonus action in dim light or darkness."),
+                ("Invisibility (3/short rest)", "Turns invisible as a bonus action until it attacks or casts a spell."),
+                ("Magic Resistance", "Advantage on saves against spells and magical effects."),
+                ("Shadow Glide", "Can move through creatures' spaces in dim light or darkness."),
+            ],
+            "actions": [
+                ("Shadow Claws", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 8 (2d4 + 3) slashing "
+                 "plus 3 (1d6) cold."),
+                ("Shadowy Grasp (Recharge 5-6)", "A target makes a DC 13 Dexterity save or is restrained until "
+                 "end of the imp's next turn, taking 5 (1d10) cold at the start of each of its turns while "
+                 "restrained."),
+            ],
+        },
+        {
+            "name": "Krampusshade Minion",
+            "sub": "Small fiend, chaotic evil ✦ CR 2 (450 XP)",
+            "img": "assets/monsters/krampusshade_imps.png",
+            "stats": [
+                "**AC** 15 (natural armor)  **HP** 33 (6d6 + 12)",
+                "**Speed** 40 ft., fly 30 ft.",
+                "**Skills** Stealth +6, Sleight of Hand +6",
+                "**Resist** cold, necrotic; nonmagical B/P/S",
+                "**Senses** darkvision 120 ft., passive Perception 12",
+                "**Languages** Common, Infernal",
+                "**Challenge** 2 (450 XP)",
+            ],
+            "actions": [
+                ("Shadow Claw", "*Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 9 (2d4 + 4) "
+                 "slashing, and the target must succeed on a DC 13 Wisdom save or be frightened until the end "
+                 "of its next turn."),
+                ("Steal Object", "The minion tries to snatch a small item; the target must succeed on a DC 14 "
+                 "Dexterity save or lose the item."),
+            ],
+        },
+        {
+            "name": "Mimic (Gift Box)",
+            "sub": "Medium monstrosity (shapechanger), neutral ✦ CR 2 (450 XP)",
+            "stats": [
+                "**AC** 12 (natural armor)  **HP** 58 (9d8 + 18)",
+                "**Speed** 15 ft.",
+                "**Skills** Stealth +5",
+                "**Imm.** acid ✦ (cond) prone",
+                "**Senses** darkvision 60 ft., passive Perception 11",
+                "**Languages** none",
+                "**Challenge** 2 (450 XP)",
+            ],
+            "traits": [
+                ("Shapechanger", "The mimic can use its action to polymorph into an object (a wrapped gift box, "
+                 "most often) or back into its true, toothy form."),
+            ],
+            "actions": [
+                ("Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 7 (1d8 + 3) piercing "
+                 "plus 4 (1d8) acid."),
+                ("Adhesive", "The mimic adheres to anything that touches it; a creature grappled by the mimic "
+                 "must succeed on a DC 13 Strength check to escape."),
+            ],
+        },
+    ]),
 
     ("body", "*Winter-touched wolves with frost-blue eyes, running the drifts in hungry packs.*"),
-    ("statblock", {
-        "name": "Frozen Wolf",
-        "type": "Medium beast, neutral evil",
-        "img": "assets/monsters/frozen_wolf.png", "img_w": 2.4,
-        "ac": "15 (natural armor)", "hp": "45 (6d10 + 12)", "speed": "40 ft.",
-        "abilities": ab(16, 15, 14, 3, 12, 6),
-        "immunities": "cold",
-        "senses": "darkvision 60 ft., passive Perception 14",
-        "languages": "understands Sylvan but cannot speak",
-        "traits": [
-            ("Pack Tactics", "Advantage on attacks against a creature if an ally is within 5 ft. of it and not incapacitated."),
-            ("Icy Terrain", "The ground within 10 ft. of the wolf is difficult terrain for other creatures."),
-        ],
-        "actions": [
-            ("Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 12 (2d6 + 3) piercing plus 4 (1d8) cold, "
-             "and a DC 13 Constitution save or speed reduced by 10 ft. until end of its next turn."),
-            ("Frost Breath (Recharge 5-6)", "A 15-ft. cone of icy air. Each creature makes a DC 13 Dexterity save, "
-             "taking 18 (4d8) cold on a fail (half on a success); those who fail are slowed until end of next turn."),
-        ],
-    }),
     ("body", "*A wicked little wisp of a fey, all giggles and ice needles.*"),
-    ("statblock", {
-        "name": "Frostbite Pixie",
-        "type": "Tiny fey, chaotic neutral",
-        "img": "assets/monsters/frostbite_pixie.png", "img_w": 1.9,
-        "ac": "15", "hp": "14 (4d4 + 4)", "speed": "20 ft., fly 60 ft.",
-        "abilities": ab(3, 20, 12, 14, 11, 16),
-        "skills": "Stealth +7",
-        "immunities": "cold",
-        "languages": "Sylvan, Common",
-        "cr": "1/4 (50 XP)",
-        "actions": [
-            ("Ray of Frost", "*Ranged Spell Attack:* +5 to hit, range 60 ft. *Hit:* 7 (2d8) cold, and the target's "
-             "speed is reduced by 10 ft. until end of its next turn."),
-            ("Invisibility", "The pixie turns invisible until it attacks or casts a spell."),
-        ],
-    }),
-    ("body", "*A mournful spirit of the deep cold that drifts through walls and wails away "
+    ("body", "*And a mournful spirit of the deep cold that drifts through walls and wails away "
              "courage.*"),
-    ("statblock", {
-        "name": "Icy Specter",
-        "type": "Medium undead, neutral evil",
-        "img": "assets/monsters/icy_specter.png", "img_w": 2.1,
-        "ac": "12", "hp": "45 (10d8)", "speed": "0 ft., fly 50 ft. (hover)",
-        "abilities": ab(1, 14, 11, 10, 10, 16),
-        "resistances": "cold, necrotic; bludgeoning, piercing, and slashing from nonmagical attacks",
-        "immunities": "poison",
-        "condition_immunities": "charmed, exhaustion, grappled, paralyzed, poisoned, prone, restrained",
-        "actions": [
-            ("Chilling Touch", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 10 (3d6) cold."),
-            ("Wail of Despair (Recharge 5-6)", "Each creature within 30 ft. makes a DC 14 Wisdom save or is "
-             "frightened for 1 minute (repeat save at end of each turn)."),
-        ],
-    }),
-    # Refit note (0.9in bottom margin): the golem's header stranded at the
-    # page foot and its portrait clipped the page edge.
-    ("pagebreak",),
-    ("body", "*Walking snowdrifts with hearts of blue ice, slow, cold, and very hard to argue "
-             "with.*"),
-    ("statblock", {
-        "name": "Frost Golem",
-        "type": "Medium elemental, neutral",
-        "img": "assets/monsters/frost_golems.png", "img_w": 2.4,
-        "ac": "14 (natural armor)", "hp": "42 (5d10 + 15)", "speed": "20 ft.",
-        "abilities": ab(16, 10, 16, 6, 10, 5),
-        "resistances": "cold; bludgeoning, piercing, and slashing from nonmagical attacks",
-        "condition_immunities": "exhaustion, poisoned",
-        "cr": "2 (450 XP)",
-        "traits": [
-            ("Frost Aura", "At the start of each creature's turn within 5 ft. of the golem, that creature takes 2 cold."),
-        ],
-        "actions": [
-            ("Icy Slam", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 7 (2d6 + 3) bludgeoning plus 3 (1d4) cold."),
-        ],
-    }),
-    ("body", "*A top-hatted snowman gone slightly wrong, lobbing frostballs at anyone who walks "
-             "past.*"),
-    ("statblock", {
-        "name": "Enchanted Snowman",
-        "img": "assets/monsters/enchanted_snowman.png", "img_w": 1.8,
-        "type": "Small construct, unaligned",
-        "ac": "13", "hp": "30 (4d8 + 12)", "speed": "20 ft.",
-        "abilities": ab(12, 10, 16, 3, 10, 6),
-        "cr": "1 (200 XP)",
-        "actions": [
-            ("Frostball", "*Ranged Weapon Attack:* +4 to hit. *Hit:* 2d4 cold, and a DC 12 Constitution save or "
-             "speed halved until end of its next turn."),
-        ],
-    }),
-    # Refit note (0.9in bottom margin): the Yule Cat's showpiece art clipped
-    # the page edge when the block started at the page foot.
-    ("pagebreak",),
-    ("body", "*The great black cat of midwinter tales, silent on the snow and quick to pounce.*"),
-    ("statblock", {
-        "name": "Yule Cat",
-        "type": "Large fey beast, neutral",
-        "img": "assets/monsters/yule_cat.png", "img_w": 2.6,
-        "ac": "15 (natural armor)", "hp": "52 (7d10 + 14)", "speed": "40 ft., climb 30 ft.",
-        "abilities": ab(18, 16, 14, 6, 14, 10),
-        "skills": "Perception +4, Stealth +6",
-        "resistances": "cold",
-        "senses": "darkvision 60 ft., passive Perception 14",
-        "cr": "3 (700 XP)",
-        "actions": [
-            ("Frost Claw", "*Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 10 (2d6 + 3) slashing plus 3 (1d6) cold."),
-            ("Frostbite Pounce", "If the Yule Cat moves 20 ft. and hits with Frost Claw, the target makes a DC 14 "
-             "Strength save or is knocked prone; if prone, the cat makes another Frost Claw as a bonus action."),
-            ("Chilling Gaze (Recharge 5-6)", "One target within 30 ft. makes a DC 14 Constitution save or takes "
-             "9 (2d8) cold and is paralyzed until end of its next turn."),
-        ],
-    }),
-    ("body", "*She waits by the roadside with warm pastries and a warmer smile; neither is what "
-             "it seems.*"),
-    ("statblock", {
-        "name": "Frost Hag (disguised)",
-        "type": "Medium fey, neutral evil",
-        "img": "assets/monsters/frost_hag_disguised.png", "img_w": 2.3,
-        "ac": "15", "hp": "52", "speed": "30 ft.",
-        "abilities": ab(14, 14, 14, 13, 12, 14),
-        "cr": "4 (1,100 XP)",
-        "traits": [
-            ("Kindly Guise", "The hag appears as a sweet old woman offering sugared pastries; those who eat them "
-             "make a DC 13 Constitution save or are poisoned for 1 hour, taking 1d4 cold."),
-        ],
-        "actions": [
-            ("Icy Claw", "*Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 10 (2d6 + 3) slashing plus 4 (1d6) cold."),
-            ("Frostbite Breath (Recharge 5-6)", "A 15-ft. cone; DC 14 Constitution save, 16 (4d6) cold (half on a "
-             "success); on a fail the target is slowed until its next turn."),
-            ("Misty Step (Bonus Action)", "The hag teleports 30 ft."),
-        ],
-    }),
-    ("body", "*Crystal-bodied spiders whose webs glitter like spun frost.*"),
-    ("statblock", {
-        "name": "Ice Spider",
-        "img": "assets/monsters/ice_spider.png", "img_w": 1.9,
-        "type": "Medium beast, unaligned",
-        "ac": "14 (natural armor)", "hp": "26 (4d10 + 4)", "speed": "30 ft., climb 30 ft.",
-        "abilities": ab(12, 14, 12, 2, 11, 4),
-        "cr": "1 (200 XP)",
-        "actions": [
-            ("Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 9 (1d8 + 1) piercing plus 4 (1d6) cold, "
-             "and a DC 13 Constitution save or poisoned for 1 minute."),
-            ("Web (Recharge 5-6)", "*Ranged Weapon Attack:* +4 to hit, range 30 ft. On a hit the target is "
-             "restrained by webbing (DC 13 Strength to escape)."),
-        ],
-    }),
-    ("body", "*Cold lights that bob invitingly over the snow, luring travelers off the safe "
-             "path.*"),
-    ("statblock", {
-        "name": "Frozen Will-o'-Wisp",
-        "type": "Tiny undead, chaotic evil",
-        "img": "assets/monsters/frozen_will_o_wisps.png", "img_w": 1.9,
-        "ac": "15", "hp": "22 (5d8)", "speed": "0 ft., fly 50 ft. (hover)",
-        "abilities": ab(1, 18, 10, 10, 12, 11),
-        "resistances": "cold, lightning; bludgeoning, piercing, and slashing from nonmagical attacks",
-        "immunities": "poison",
-        "condition_immunities": "exhaustion, grappled, paralyzed, prone",
-        "cr": "2 (450 XP)",
-        "actions": [
-            ("Icy Shock", "*Melee Spell Attack:* +5 to hit, reach 5 ft. *Hit:* 9 (2d8) lightning plus 4 (1d6) cold."),
-            ("Invisibility", "The wisp turns invisible until it attacks."),
-        ],
-    }),
-    ("body", "*Not villains so much as frozen, starving folk; a warm meal has ended more of "
-             "these fights than any sword.*"),
-    ("statblock", {
-        "name": "Snowbound Bandit Leader",
-        "type": "Medium humanoid, neutral",
-        "img": "assets/monsters/snowbound_bandits.png", "img_w": 2.5,
-        "ac": "14", "hp": "32", "speed": "30 ft.",
-        "abilities": ab(14, 13, 12, 10, 11, 11),
-        "traits": [
-            ("Desperate, Not Cruel", "Driven mad by the cold; kindness (food, warmth) or a DC 14 Intimidation "
-             "check can end the fight before it begins."),
-        ],
-        "actions": [
-            ("Scimitar", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 7 (1d6 + 3) slashing."),
-            ("Dagger", "*Melee or Ranged Weapon Attack:* +5 to hit. *Hit:* 5 (1d4 + 3) piercing."),
-            ("Frostbite Strike (Recharge 5-6)", "+5 to hit; an extra 1d6 cold, and a DC 13 Constitution save or "
-             "speed reduced by 10 ft. until its next turn."),
-        ],
-    }),
-    ("statblock", {
-        "name": "Snowbound Bandit",
-        "type": "Medium humanoid, neutral",
-        "ac": "12", "hp": "20", "speed": "30 ft.",
-        "traits": [
-            ("Desperate, Not Cruel", "Like their leader, the bandits fight out of hunger and cold; kindness "
-             "can end the fight before it begins."),
-        ],
-        "actions": [
-            ("Scimitar", "*Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 5 (1d6 + 2) slashing."),
-            ("Shortbow", "*Ranged Weapon Attack:* +4 to hit. *Hit:* 5 (1d6 + 2) piercing."),
-        ],
-    }),
+    ("enemy_cards", [
+        {
+            "name": "Frozen Wolf",
+            "sub": "Medium beast, neutral evil ✦ pack hunters",
+            "img": "assets/monsters/frozen_wolf.png",
+            "stats": [
+                "**AC** 15 (natural armor)  **HP** 45 (6d10 + 12)",
+                "**Speed** 40 ft.",
+                "**STR** 16  **DEX** 15  **CON** 14  **INT** 3  **WIS** 12  **CHA** 6",
+                "**Imm.** cold",
+                "**Senses** darkvision 60 ft., passive Perception 14",
+                "**Languages** understands Sylvan but cannot speak",
+            ],
+            "traits": [
+                ("Pack Tactics", "Advantage on attacks against a creature if an ally is within 5 ft. of it and "
+                 "not incapacitated."),
+                ("Icy Terrain", "The ground within 10 ft. of the wolf is difficult terrain for other creatures."),
+            ],
+            "actions": [
+                ("Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 12 (2d6 + 3) piercing plus "
+                 "4 (1d8) cold, and a DC 13 Constitution save or speed reduced by 10 ft. until end of its "
+                 "next turn."),
+                ("Frost Breath (Recharge 5-6)", "A 15-ft. cone of icy air. Each creature makes a DC 13 Dexterity "
+                 "save, taking 18 (4d8) cold on a fail (half on a success); those who fail are slowed until "
+                 "end of next turn."),
+            ],
+        },
+        {
+            "name": "Frostbite Pixie",
+            "sub": "Tiny fey, chaotic neutral ✦ CR 1/4 (50 XP)",
+            "img": "assets/monsters/frostbite_pixie.png",
+            "stats": [
+                "**AC** 15  **HP** 14 (4d4 + 4)",
+                "**Speed** 20 ft., fly 60 ft.",
+                "**STR** 3  **DEX** 20  **CON** 12  **INT** 14  **WIS** 11  **CHA** 16",
+                "**Skills** Stealth +7",
+                "**Imm.** cold",
+                "**Languages** Sylvan, Common",
+                "**Challenge** 1/4 (50 XP)",
+            ],
+            "actions": [
+                ("Ray of Frost", "*Ranged Spell Attack:* +5 to hit, range 60 ft. *Hit:* 7 (2d8) cold, and the "
+                 "target's speed is reduced by 10 ft. until end of its next turn."),
+                ("Invisibility", "The pixie turns invisible until it attacks or casts a spell."),
+            ],
+        },
+        {
+            "name": "Icy Specter",
+            "sub": "Medium undead, neutral evil ✦ drifts through walls",
+            "img": "assets/monsters/icy_specter.png",
+            "stats": [
+                "**AC** 12  **HP** 45 (10d8)",
+                "**Speed** 0 ft., fly 50 ft. (hover)",
+                "**STR** 1  **DEX** 14  **CON** 11  **INT** 10  **WIS** 10  **CHA** 16",
+                "**Resist** cold, necrotic; nonmagical B/P/S",
+                "**Imm.** poison ✦ (cond) charmed, exhaustion, grappled, paralyzed, poisoned, "
+                "prone, restrained",
+            ],
+            "actions": [
+                ("Chilling Touch", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 10 (3d6) cold."),
+                ("Wail of Despair (Recharge 5-6)", "Each creature within 30 ft. makes a DC 14 Wisdom save or is "
+                 "frightened for 1 minute (repeat save at end of each turn)."),
+            ],
+        },
+    ]),
+
+    ("body", "*The great black cat of midwinter tales, silent on the snow and quick to pounce; and "
+             "she who waits by the roadside with warm pastries and a warmer smile, neither of which "
+             "is what it seems.*"),
+    ("enemy_cards", [
+        {
+            "name": "Yule Cat",
+            "sub": "Large fey beast, neutral ✦ CR 3 (700 XP) ✦ prowls alone",
+            "img": "assets/monsters/yule_cat.png", "img_w": 2.75,
+            "stats": [
+                "**AC** 15 (natural armor)  **HP** 52 (7d10 + 14)",
+                "**Speed** 40 ft., climb 30 ft.",
+                "**STR** 18  **DEX** 16  **CON** 14  **INT** 6  **WIS** 14  **CHA** 10",
+                "**Skills** Perception +4, Stealth +6  **Resist** cold",
+                "**Senses** darkvision 60 ft., passive Perception 14",
+                "**Challenge** 3 (700 XP)",
+            ],
+            "actions": [
+                ("Frost Claw", "*Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 10 (2d6 + 3) slashing "
+                 "plus 3 (1d6) cold."),
+                ("Frostbite Pounce", "If the Yule Cat moves 20 ft. and hits with Frost Claw, the target makes "
+                 "a DC 14 Strength save or is knocked prone; if prone, the cat makes another Frost Claw as a "
+                 "bonus action."),
+                ("Chilling Gaze (Recharge 5-6)", "One target within 30 ft. makes a DC 14 Constitution save or "
+                 "takes 9 (2d8) cold and is paralyzed until end of its next turn."),
+            ],
+        },
+        {
+            "name": "Frost Hag (disguised)",
+            "sub": "Medium fey, neutral evil ✦ CR 4 (1,100 XP) ✦ alone at her cauldron",
+            "img": "assets/monsters/frost_hag_disguised.png", "img_w": 2.75,
+            "stats": [
+                "**AC** 15  **HP** 52",
+                "**Speed** 30 ft.",
+                "**STR** 14  **DEX** 14  **CON** 14  **INT** 13  **WIS** 12  **CHA** 14",
+                "**Challenge** 4 (1,100 XP)",
+            ],
+            "traits": [
+                ("Kindly Guise", "The hag appears as a sweet old woman offering sugared pastries; those who eat "
+                 "them make a DC 13 Constitution save or are poisoned for 1 hour, taking 1d4 cold."),
+            ],
+            "actions": [
+                ("Icy Claw", "*Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 10 (2d6 + 3) slashing plus "
+                 "4 (1d6) cold."),
+                ("Frostbite Breath (Recharge 5-6)", "A 15-ft. cone; DC 14 Constitution save, 16 (4d6) cold "
+                 "(half on a success); on a fail the target is slowed until its next turn."),
+                ("Misty Step (Bonus Action)", "The hag teleports 30 ft."),
+            ],
+        },
+    ]),
+
+    ("body", "*Walking snowdrifts with hearts of blue ice; top-hatted snowmen gone slightly wrong; "
+             "crystal-bodied spiders whose webs glitter like spun frost; and cold lights that bob "
+             "invitingly over the snow, luring travelers off the safe path.*"),
+    ("enemy_cards", [
+        {
+            "name": "Enchanted Snowman",
+            "sub": "Small construct, unaligned ✦ CR 1 (200 XP)",
+            "img": "assets/monsters/enchanted_snowman.png",
+            "stats": [
+                "**AC** 13  **HP** 30 (4d8 + 12)",
+                "**Speed** 20 ft.",
+                "**STR** 12  **DEX** 10  **CON** 16  **INT** 3  **WIS** 10  **CHA** 6",
+                "**Challenge** 1 (200 XP)",
+            ],
+            "actions": [
+                ("Frostball", "*Ranged Weapon Attack:* +4 to hit. *Hit:* 2d4 cold, and a DC 12 Constitution "
+                 "save or speed halved until end of its next turn."),
+            ],
+        },
+        {
+            "name": "Ice Spider",
+            "sub": "Medium beast, unaligned ✦ CR 1 (200 XP)",
+            "img": "assets/monsters/ice_spider.png",
+            "stats": [
+                "**AC** 14 (natural armor)  **HP** 26 (4d10 + 4)",
+                "**Speed** 30 ft., climb 30 ft.",
+                "**STR** 12  **DEX** 14  **CON** 12  **INT** 2  **WIS** 11  **CHA** 4",
+                "**Challenge** 1 (200 XP)",
+            ],
+            "actions": [
+                ("Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 9 (1d8 + 1) piercing plus "
+                 "4 (1d6) cold, and a DC 13 Constitution save or poisoned for 1 minute."),
+                ("Web (Recharge 5-6)", "*Ranged Weapon Attack:* +4 to hit, range 30 ft. On a hit the target "
+                 "is restrained by webbing (DC 13 Strength to escape)."),
+            ],
+        },
+        {
+            "name": "Frozen Will-o'-Wisp",
+            "sub": "Tiny undead, chaotic evil ✦ CR 2 (450 XP)",
+            "img": "assets/monsters/frozen_will_o_wisps.png",
+            "stats": [
+                "**AC** 15  **HP** 22 (5d8)",
+                "**Speed** 0 ft., fly 50 ft. (hover)",
+                "**STR** 1  **DEX** 18  **CON** 10  **INT** 10  **WIS** 12  **CHA** 11",
+                "**Resist** cold, lightning; nonmagical B/P/S",
+                "**Imm.** poison ✦ (cond) exhaustion, grappled, paralyzed, prone",
+                "**Challenge** 2 (450 XP)",
+            ],
+            "actions": [
+                ("Icy Shock", "*Melee Spell Attack:* +5 to hit, reach 5 ft. *Hit:* 9 (2d8) lightning plus "
+                 "4 (1d6) cold."),
+                ("Invisibility", "The wisp turns invisible until it attacks."),
+            ],
+        },
+    ]),
+
+    # The gentle-ones note sits between rows on purpose: it fills the page
+    # foot under the snowman trio so the bandit row's page opens clean.
     ("body", "*Kinder meetings walked the same roads: a resting reindeer whose glowing nose blessed kind "
              "travelers, a friendly caribou that healed the weary, and Aurora Spirits, gentle messengers of "
              "Elaria who traded a prophecy for a moment's respect. None of these gentle ones has statistics; "
              "they were never for fighting.*"),
+    ("body", "*Not villains so much as frozen, starving folk; a warm meal has ended more of these "
+             "fights than any sword. The frost golems that rise beside them argue less.*"),
+    ("enemy_cards", [
+        {
+            "name": "Snowbound Bandit Leader",
+            "sub": "Medium humanoid, neutral ✦ leads a desperate band",
+            "img": "assets/monsters/snowbound_bandits.png",
+            "stats": [
+                "**AC** 14  **HP** 32",
+                "**Speed** 30 ft.",
+                "**STR** 14  **DEX** 13  **CON** 12  **INT** 10  **WIS** 11  **CHA** 11",
+            ],
+            "traits": [
+                ("Desperate, Not Cruel", "Driven mad by the cold; kindness (food, warmth) or a DC 14 "
+                 "Intimidation check can end the fight before it begins."),
+            ],
+            "actions": [
+                ("Scimitar", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 7 (1d6 + 3) slashing."),
+                ("Dagger", "*Melee or Ranged Weapon Attack:* +5 to hit. *Hit:* 5 (1d4 + 3) piercing."),
+                ("Frostbite Strike (Recharge 5-6)", "+5 to hit; an extra 1d6 cold, and a DC 13 Constitution "
+                 "save or speed reduced by 10 ft. until its next turn."),
+            ],
+        },
+        {
+            "name": "Snowbound Bandit",
+            "sub": "Medium humanoid, neutral ✦ the rank and file",
+            "stats": [
+                "**AC** 12  **HP** 20",
+                "**Speed** 30 ft.",
+            ],
+            "traits": [
+                ("Desperate, Not Cruel", "Like their leader, the bandits fight out of hunger and cold; "
+                 "kindness can end the fight before it begins."),
+            ],
+            "actions": [
+                ("Scimitar", "*Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 5 (1d6 + 2) slashing."),
+                ("Shortbow", "*Ranged Weapon Attack:* +4 to hit. *Hit:* 5 (1d6 + 2) piercing."),
+            ],
+        },
+        {
+            "name": "Frost Golem",
+            "sub": "Medium elemental, neutral ✦ CR 2 (450 XP)",
+            "img": "assets/monsters/frost_golems.png",
+            "stats": [
+                "**AC** 14 (natural armor)  **HP** 42 (5d10 + 15)",
+                "**Speed** 20 ft.",
+                "**STR** 16  **DEX** 10  **CON** 16  **INT** 6  **WIS** 10  **CHA** 5",
+                "**Resist** cold; nonmagical B/P/S",
+                "**Imm.** (cond) exhaustion, poisoned",
+                "**Challenge** 2 (450 XP)",
+            ],
+            "traits": [
+                ("Frost Aura", "At the start of each creature's turn within 5 ft. of the golem, that creature "
+                 "takes 2 cold."),
+            ],
+            "actions": [
+                ("Icy Slam", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 7 (2d6 + 3) bludgeoning "
+                 "plus 3 (1d4) cold."),
+            ],
+        },
+    ]),
 
     # ==================================================================
     ("h1", "Session 5: The Flying Dutchman"),
@@ -820,19 +861,21 @@ B = [
 
     ("body", "*The Captain himself: barnacle-armored, tentacle-bearded, master of the Dutchman "
              "and keeper of the souls that serve aboard her.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "Davy Jones, Captain of the Flying Dutchman",
-        "img": "assets/npcs/davy_jones.png", "img_w": 3.1, "img_hmax": 3.1,
-        "type": "Medium undead (formerly humanoid), chaotic evil",
-        "ac": "17 (barnacle armor)", "hp": "85 (10d10 + 30)", "speed": "30 ft., swim 30 ft.",
-        "abilities": ab(18, 12, 16, 14, 12, 16),
-        "saves": "Con +6, Wis +4, Cha +6",
-        "skills": "Intimidation +6, Perception +4, Athletics +7, Survival +4",
-        "resistances": "bludgeoning, piercing, and slashing from nonmagical attacks",
-        "condition_immunities": "charmed, frightened, poisoned, exhaustion",
-        "senses": "darkvision 60 ft., passive Perception 14",
-        "languages": "Common, Aquan",
-        "cr": "6 (2,300 XP)",
+        "sub": "Medium undead (formerly humanoid), chaotic evil ✦ CR 6 (2,300 XP) ✦ the boss of Session 5",
+        "img": "assets/npcs/davy_jones.png", "img_w": 3.1,
+        "stats": [
+            "**AC** 17 (barnacle armor)  **HP** 85 (10d10 + 30)  **Speed** 30 ft., swim 30 ft.",
+            "**STR** 18  **DEX** 12  **CON** 16  **INT** 14  **WIS** 12  **CHA** 16",
+            "**Saves** Con +6, Wis +4, Cha +6",
+            "**Skills** Intimidation +6, Perception +4, Athletics +7, Survival +4",
+            "**Resist** bludgeoning, piercing, and slashing from nonmagical attacks",
+            "**Imm.** (cond) charmed, frightened, poisoned, exhaustion",
+            "**Senses** darkvision 60 ft., passive Perception 14",
+            "**Languages** Common, Aquan",
+            "**Challenge** 6 (2,300 XP)",
+        ],
         "traits": [
             ("Barnacle Armor", "Nonmagical melee attacks against him deal half damage."),
             ("Legendary Resistance (3/Day)", "If Davy fails a save, he can choose to succeed instead."),
@@ -850,156 +893,172 @@ B = [
             ("Tentacle Strike", "Davy makes one Tentacle Slam."),
             ("Raise Tide (2 actions)", "A 20-ft. line; DC 14 Dexterity save or 13 (3d8) bludgeoning."),
         ],
-    }),
+    }]),
 
     ("body", "*The rank and file of the drowned crew, still following orders long past their "
-             "last breath.*"),
-    ("statblock", {
-        "name": "Drowned Pirate",
-        "img": "assets/monsters/drowned_pirate.png", "img_w": 2.2,
-        "type": "Medium undead, chaotic evil",
-        "ac": "14 (studded leather or chain shirt)", "hp": "58 (9d8 + 18)", "speed": "30 ft., swim 30 ft.",
-        "abilities": ab(18, 14, 14, 6, 10, 7),
-        "saves": "Wis +2",
-        "skills": "Perception +2",
-        "resistances": "bludgeoning, piercing, and slashing from nonmagical attacks",
-        "immunities": "poison",
-        "condition_immunities": "charmed, exhaustion, frightened, paralyzed, poisoned",
-        "senses": "darkvision 60 ft., passive Perception 12",
-        "languages": "understands Common but can't speak",
-        "cr": "1 (200 XP)",
-        "traits": [
-            ("Amphibious", "The pirate can breathe air and water."),
-            ("Undead Fortitude", "If reduced to 0 HP (not by radiant or a crit), a DC 5 + damage Constitution save "
-             "drops it to 1 HP instead."),
-        ],
-        "actions": [
-            ("Multiattack", "Two melee attacks."),
-            ("Cutlass", "*Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 8 (1d8 + 4) slashing."),
-            ("Harpoon", "*Melee or Ranged Weapon Attack:* +6 to hit, reach 10 ft. or range 30/120 ft. *Hit:* "
-             "9 (1d10 + 4) piercing, and the target is grappled (escape DC 14)."),
-        ],
-        "reactions": [
-            ("Death Burst", "When the pirate dies it bursts; each creature within 5 ft. makes a DC 12 Constitution "
-             "save or takes 5 (2d4) cold and gains one level of exhaustion."),
-        ],
-    }),
-    ("body", "*A ghost still at its post at the wheel, pale scimitars of force in both hands.*"),
-    ("statblock", {
-        "name": "Spectral Helmsman",
-        "img": "assets/monsters/spectral_helmsman.png", "img_w": 2.3,
-        "type": "Medium undead, chaotic evil",
-        "ac": "12", "hp": "45 (6d8 + 18)", "speed": "0 ft., fly 50 ft. (hover)",
-        "abilities": ab(6, 14, 16, 10, 12, 11),
-        "saves": "Wis +3, Cha +2",
-        "skills": "Perception +3, Stealth +4",
-        "resistances": "acid, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical attacks",
-        "immunities": "cold, necrotic, poison",
-        "condition_immunities": "charmed, exhaustion, grappled, paralyzed, petrified, poisoned, prone, restrained",
-        "senses": "darkvision 60 ft., passive Perception 13",
-        "languages": "understands Common but can't speak",
-        "cr": "1 (200 XP)",
-        "traits": [
-            ("Incorporeal Movement", "Can move through creatures and objects as difficult terrain."),
-            ("Sea-Wraith Aura", "At the start of each of its turns, creatures within 5 ft. make a DC 12 Wisdom save "
-             "or are frightened until their next turn."),
-        ],
-        "actions": [
-            ("Multiattack", "Two Spectral Scimitar attacks."),
-            ("Spectral Scimitar", "*Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 7 (1d6 + 4) force."),
-            ("Harpoon Throw", "*Ranged Weapon Attack:* +4 to hit, range 20/60 ft. *Hit:* 9 (1d10 + 4) piercing and "
-             "the target is pulled up to 10 ft."),
-        ],
-        "reactions": [
-            ("Phantom Helm Block", "When attacked, it imposes disadvantage on one weapon attack roll."),
-        ],
-    }),
-    ("body", "*A hulking crate-stacker of the smugglers' hold, built to guard cargo and happy to "
-             "crush anything else.*"),
-    ("statblock", {
-        "name": "Smuggler's Golem",
-        "img": "assets/monsters/smugglers_golem.png", "img_w": 2.5,
-        "type": "Large construct, unaligned",
-        "ac": "14 (natural armor)", "hp": "85 (10d10 + 30)", "speed": "30 ft.",
-        "abilities": ab(19, 9, 16, 3, 10, 5),
-        "resistances": "fire, lightning, acid",
-        "immunities": "poison, psychic; bludgeoning, piercing, and slashing from nonmagical attacks",
-        "vulnerabilities": "cold",
-        "condition_immunities": "charmed, exhaustion, frightened, paralyzed, petrified, poisoned, prone",
-        "senses": "darkvision 60 ft., tremorsense 30 ft., passive Perception 10",
-        "languages": "understands the commands of its creator but can't speak",
-        "cr": "2 (450 XP)",
-        "traits": [
-            ("Immutable Form", "Immune to effects that would alter its form."),
-            ("Magic Resistance", "Advantage on saves against spells."),
-            ("Siege Monster", "Deals double damage to objects."),
-        ],
-        "actions": [
-            ("Multiattack", "Two Slam attacks."),
-            ("Slam", "*Melee Weapon Attack:* +7 to hit, reach 10 ft. *Hit:* 2d8 + 5 bludgeoning."),
-            ("Crush Crate (Recharge 5-6)", "One object or creature takes 6d6 (DC 15 Dexterity save for half); a "
-             "creature that fails is knocked prone."),
-        ],
-        "reactions": [
-            ("Reinforced Hide", "+2 AC against one melee attack."),
-        ],
-    }),
-    ("body", "*Duelists of the drowned crew with sorcery stitched into their sabers.*"),
-    ("statblock", {
-        "name": "Arcane Corsair",
-        "img": "assets/monsters/arcane_corsair.png", "img_w": 2.3,
-        "type": "Medium humanoid, chaotic neutral",
-        "ac": "14 (studded leather)", "hp": "52 (7d8 + 21)", "speed": "30 ft.",
-        "abilities": ab(16, 16, 16, 12, 11, 14),
-        "saves": "Dex +5, Cha +4",
-        "skills": "Acrobatics +5, Perception +2",
-        "resistances": "fire, lightning",
-        "vulnerabilities": "cold",
-        "condition_immunities": "frightened",
-        "languages": "Common, Thieves' Cant",
-        "cr": "1 (200 XP)",
-        "traits": [
-            ("Sneak Attack (1/turn)", "+2d6 damage when it has advantage or an ally is adjacent to the target."),
-            ("Parry", "+2 AC against one melee attack."),
-        ],
-        "actions": [
-            ("Multiattack", "Two Arcane Saber attacks."),
-            ("Arcane Saber", "*Melee Weapon Attack:* +5 to hit. *Hit:* 1d8 + 3 slashing plus 1d6 force."),
-            ("Riposte (Recharge 5-6)", "A reaction attack after an enemy misses it in melee."),
-        ],
-        "reactions": [
-            ("Evasive Step", "It Disengages, moving without provoking opportunity attacks."),
-        ],
-    }),
-    ("body", "*A flickering lantern-spirit of the Dutchman's rigging, nearly impossible to see "
-             "and harder to catch.*"),
-    ("statblock", {
-        "name": "Ghost-Light Engineer",
-        "img": "assets/monsters/ghost_light_engineer.png", "img_w": 2.0,
-        "type": "Tiny undead, neutral evil",
-        "ac": "15 (natural armor)", "hp": "27 (6d4 + 12)", "speed": "0 ft., fly 50 ft. (hover)",
-        "abilities": ab(1, 18, 14, 12, 14, 16),
-        "saves": "Wis +4, Cha +5",
-        "skills": "Arcana +3, Perception +4, Stealth +8",
-        "resistances": "acid, fire, lightning, thunder; bludgeoning, piercing, slashing from nonmagical attacks",
-        "immunities": "necrotic, poison, psychic",
-        "vulnerabilities": "cold",
-        "condition_immunities": "charmed, exhaustion, frightened, grappled, paralyzed, petrified, poisoned, prone, restrained",
-        "senses": "darkvision 60 ft., passive Perception 14",
-        "languages": "Common, its creator's languages",
-        "cr": "2 (450 XP)",
-        "traits": [
-            ("Invisibility (Recharge 4-6)", "Turns invisible until it attacks, casts, or its concentration ends."),
-            ("Glowing Core", "A faint glow is visible within 5 ft. even while invisible."),
-        ],
-        "actions": [
-            ("Shock Touch", "*Melee Spell Attack:* +6 to hit. *Hit:* 2d6 + 2 lightning."),
-            ("Arcane Pulse (Recharge 5-6)", "A 10-ft. cone; DC 13 Dexterity save, 4d6 force (half on a success)."),
-        ],
-        "reactions": [
-            ("Engineered Reflexes", "Halves the damage from one attack or harmful spell."),
-        ],
-    }),
+             "last breath; and a ghost still at its post at the wheel, pale scimitars of force in "
+             "both hands.*"),
+    ("enemy_cards", [
+        {
+            "name": "Drowned Pirate",
+            "sub": "Medium undead, chaotic evil ✦ CR 1 (200 XP) ✦ the deck crew",
+            "img": "assets/monsters/drowned_pirate.png",
+            "stats": [
+                "**AC** 14 (studded leather or chain shirt)  **HP** 58 (9d8 + 18)",
+                "**Speed** 30 ft., swim 30 ft.",
+                "**STR** 18  **DEX** 14  **CON** 14  **INT** 6  **WIS** 10  **CHA** 7",
+                "**Saves** Wis +2  **Skills** Perception +2",
+                "**Resist** nonmagical B/P/S",
+                "**Imm.** poison ✦ (cond) charmed, exhaustion, frightened, paralyzed, poisoned",
+                "**Senses** darkvision 60 ft., passive Perception 12",
+                "**Languages** understands Common but can't speak",
+                "**Challenge** 1 (200 XP)",
+            ],
+            "traits": [
+                ("Amphibious", "The pirate can breathe air and water."),
+                ("Undead Fortitude", "If reduced to 0 HP (not by radiant or a crit), a DC 5 + damage "
+                 "Constitution save drops it to 1 HP instead."),
+            ],
+            "actions": [
+                ("Multiattack", "Two melee attacks."),
+                ("Cutlass", "*Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 8 (1d8 + 4) slashing."),
+                ("Harpoon", "*Melee or Ranged Weapon Attack:* +6 to hit, reach 10 ft. or range 30/120 ft. "
+                 "*Hit:* 9 (1d10 + 4) piercing, and the target is grappled (escape DC 14)."),
+            ],
+            "reactions": [
+                ("Death Burst", "When the pirate dies it bursts; each creature within 5 ft. makes a DC 12 "
+                 "Constitution save or takes 5 (2d4) cold and gains one level of exhaustion."),
+            ],
+        },
+        {
+            "name": "Spectral Helmsman",
+            "sub": "Medium undead, chaotic evil ✦ CR 1 (200 XP) ✦ still at the wheel",
+            "img": "assets/monsters/spectral_helmsman.png",
+            "stats": [
+                "**AC** 12  **HP** 45 (6d8 + 18)",
+                "**Speed** 0 ft., fly 50 ft. (hover)",
+                "**STR** 6  **DEX** 14  **CON** 16  **INT** 10  **WIS** 12  **CHA** 11",
+                "**Saves** Wis +3, Cha +2  **Skills** Perception +3, Stealth +4",
+                "**Resist** acid, fire, lightning, thunder; nonmagical B/P/S",
+                "**Imm.** cold, necrotic, poison ✦ (cond) charmed, exhaustion, grappled, "
+                "paralyzed, petrified, poisoned, prone, restrained",
+                "**Senses** darkvision 60 ft., passive Perception 13",
+                "**Languages** understands Common but can't speak",
+                "**Challenge** 1 (200 XP)",
+            ],
+            "traits": [
+                ("Incorporeal Movement", "Can move through creatures and objects as difficult terrain."),
+                ("Sea-Wraith Aura", "At the start of each of its turns, creatures within 5 ft. make a DC 12 "
+                 "Wisdom save or are frightened until their next turn."),
+            ],
+            "actions": [
+                ("Multiattack", "Two Spectral Scimitar attacks."),
+                ("Spectral Scimitar", "*Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 7 (1d6 + 4) force."),
+                ("Harpoon Throw", "*Ranged Weapon Attack:* +4 to hit, range 20/60 ft. *Hit:* 9 (1d10 + 4) "
+                 "piercing and the target is pulled up to 10 ft."),
+            ],
+            "reactions": [
+                ("Phantom Helm Block", "When attacked, it imposes disadvantage on one weapon attack roll."),
+            ],
+        },
+    ]),
+
+    ("body", "*Deeper in the ship waited the hold guard: a hulking crate-stacker built to guard cargo "
+             "and happy to crush anything else, duelists with sorcery stitched into their sabers, and a "
+             "flickering lantern-spirit of the rigging, nearly impossible to see and harder to catch.*"),
+    ("enemy_cards", [
+        {
+            "name": "Smuggler's Golem",
+            "sub": "Large construct, unaligned ✦ CR 2 (450 XP)",
+            "img": "assets/monsters/smugglers_golem.png",
+            "stats": [
+                "**AC** 14 (natural armor)  **HP** 85 (10d10 + 30)",
+                "**Speed** 30 ft.",
+                "**STR** 19  **DEX** 9  **CON** 16  **INT** 3  **WIS** 10  **CHA** 5",
+                "**Vulnerable** cold",
+                "**Resist** fire, lightning, acid",
+                "**Imm.** poison, psychic; nonmagical B/P/S ✦ (cond) charmed, exhaustion, "
+                "frightened, paralyzed, petrified, poisoned, prone",
+                "**Senses** darkvision 60 ft., tremorsense 30 ft., passive Perception 10",
+                "**Languages** understands its creator's commands",
+                "**Challenge** 2 (450 XP)",
+            ],
+            "traits": [
+                ("Immutable Form", "Immune to effects that would alter its form."),
+                ("Magic Resistance", "Advantage on saves against spells."),
+                ("Siege Monster", "Deals double damage to objects."),
+            ],
+            "actions": [
+                ("Multiattack", "Two Slam attacks."),
+                ("Slam", "*Melee Weapon Attack:* +7 to hit, reach 10 ft. *Hit:* 2d8 + 5 bludgeoning."),
+                ("Crush Crate (Recharge 5-6)", "One object or creature takes 6d6 (DC 15 Dexterity save for "
+                 "half); a creature that fails is knocked prone."),
+            ],
+            "reactions": [
+                ("Reinforced Hide", "+2 AC against one melee attack."),
+            ],
+        },
+        {
+            "name": "Arcane Corsair",
+            "sub": "Medium humanoid, chaotic neutral ✦ CR 1 (200 XP)",
+            "img": "assets/monsters/arcane_corsair.png",
+            "stats": [
+                "**AC** 14 (studded leather)  **HP** 52 (7d8 + 21)",
+                "**Speed** 30 ft.",
+                "**STR** 16  **DEX** 16  **CON** 16  **INT** 12  **WIS** 11  **CHA** 14",
+                "**Vulnerable** cold  **Saves** Dex +5, Cha +4",
+                "**Skills** Acrobatics +5, Perception +2",
+                "**Resist** fire, lightning",
+                "**Imm.** (cond) frightened",
+                "**Languages** Common, Thieves' Cant",
+                "**Challenge** 1 (200 XP)",
+            ],
+            "traits": [
+                ("Sneak Attack (1/turn)", "+2d6 damage when it has advantage or an ally is adjacent to the "
+                 "target."),
+                ("Parry", "+2 AC against one melee attack."),
+            ],
+            "actions": [
+                ("Multiattack", "Two Arcane Saber attacks."),
+                ("Arcane Saber", "*Melee Weapon Attack:* +5 to hit. *Hit:* 1d8 + 3 slashing plus 1d6 force."),
+                ("Riposte (Recharge 5-6)", "A reaction attack after an enemy misses it in melee."),
+            ],
+            "reactions": [
+                ("Evasive Step", "It Disengages, moving without provoking opportunity attacks."),
+            ],
+        },
+        {
+            "name": "Ghost-Light Engineer",
+            "sub": "Tiny undead, neutral evil ✦ CR 2 (450 XP)",
+            "img": "assets/monsters/ghost_light_engineer.png",
+            "stats": [
+                "**AC** 15 (natural armor)  **HP** 27 (6d4 + 12)",
+                "**Speed** 0 ft., fly 50 ft. (hover)",
+                "**STR** 1  **DEX** 18  **CON** 14  **INT** 12  **WIS** 14  **CHA** 16",
+                "**Vulnerable** cold  **Saves** Wis +4, Cha +5",
+                "**Skills** Arcana +3, Perception +4, Stealth +8",
+                "**Resist** acid, fire, lightning, thunder; nonmagical B/P/S",
+                "**Imm.** necrotic, poison, psychic ✦ (cond) charmed, exhaustion, frightened, "
+                "grappled, paralyzed, petrified, poisoned, prone, restrained",
+                "**Senses** darkvision 60 ft., passive Perception 14",
+                "**Languages** Common, its creator's languages",
+                "**Challenge** 2 (450 XP)",
+            ],
+            "traits": [
+                ("Invisibility (Recharge 4-6)", "Turns invisible until it attacks, casts, or its concentration "
+                 "ends."),
+                ("Glowing Core", "A faint glow is visible within 5 ft. even while invisible."),
+            ],
+            "actions": [
+                ("Shock Touch", "*Melee Spell Attack:* +6 to hit. *Hit:* 2d6 + 2 lightning."),
+                ("Arcane Pulse (Recharge 5-6)", "A 10-ft. cone; DC 13 Dexterity save, 4d6 force (half on a "
+                 "success)."),
+            ],
+            "reactions": [
+                ("Engineered Reflexes", "Halves the damage from one attack or harmful spell."),
+            ],
+        },
+    ]),
 
     # ==================================================================
     ("h1", "Session 6: The False Hydra of Wraithpine"),
@@ -1009,15 +1068,17 @@ B = [
 
     ("body", "*The first glimpse of the horror: a single pale head and neck rising through the "
              "tavern trapdoor, singing all the while.*"),
-    ("statblock", {
+    ("body", "*Each head is pale, blind-eyed, and always singing, even as it bites.*"),
+    ("enemy_cards", [{
         "name": "False Hydra: Tavern Head",
-        "type": "Large aberration (one head and neck), unaligned",
-        "img": "assets/monsters/false_hydra.png", "img_w": 2.2, "img_hmax": 3.0,
-        "ac": "14", "hp": "70 (9d10 + 18)", "speed": "10 ft., climb 10 ft.",
-        "abilities": ab(16, 12, 14, 6, 14, 7),
-        "resistances": "psychic",
-        "condition_immunities": "charmed, frightened, prone",
-        "senses": "blindsight 10 ft., tremorsense 30 ft., darkvision 60 ft., passive Perception 14",
+        "sub": "Large aberration (one head and neck), unaligned ✦ it has been in the taproom all along",
+        "img": "assets/monsters/false_hydra.png", "img_w": 1.9,
+        "stats": [
+            "**AC** 14  **HP** 70 (9d10 + 18)  **Speed** 10 ft., climb 10 ft.",
+            "**STR** 16  **DEX** 12  **CON** 14  **INT** 6  **WIS** 14  **CHA** 7",
+            "**Resist** psychic  **Imm.** (cond) charmed, frightened, prone",
+            "**Senses** blindsight 10 ft., tremorsense 30 ft., darkvision 60 ft., passive Perception 14",
+        ],
         "traits": [
             ("Mind-Humming Aura", "Creatures without beeswax that start their turn within 30 ft. make a DC 13 "
              "Wisdom save or have disadvantage on attack rolls that turn. Beeswax grants advantage on the save."),
@@ -1034,20 +1095,40 @@ B = [
         "reactions": [
             ("Recoil from Flame", "When it takes fire damage, it has disadvantage on its next attack."),
         ],
-    }),
+    }, {
+        "name": "False Hydra Head (x4)",
+        "sub": "Large aberration (an extension of the body), unaligned ✦ four in the pit",
+        "img": "assets/monsters/false_hydra_head.png", "img_w": 2.2,
+        "stats": [
+            "**AC** 14  **HP** 45 (6d10 + 12) each  **Speed** 30 ft. (platforms, tunnels), climb 20 ft.",
+            "**STR** 16  **DEX** 12  **CON** 14  **INT** 6  **WIS** 14  **CHA** 7",
+            "**Saves** Wis +4",
+            "**Resist** psychic  **Imm.** (cond) charmed, frightened, prone",
+        ],
+        "actions": [
+            ("Bite", "*Melee Weapon Attack:* +7 to hit, reach 15 ft. *Hit:* 14 (2d10 + 3) piercing and grappled "
+             "(escape DC 14). While grappling it can't bite a different target."),
+            ("Reel", "A creature grappled by the head makes a DC 14 Strength save or is pulled 10 ft. toward the "
+             "port and knocked prone."),
+        ],
+        "reactions": [
+            ("Snap", "When a creature moves within 15 ft., the head makes one Bite against it."),
+        ],
+    }]),
 
     ("body", "*Deeper still, in the drowned orchestra pit, waited the true body and its four heads, all "
              "singing as one. The moment the song stopped, every stolen name came flooding home.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "False Hydra (Adult): Body",
-        "img": "assets/monsters/false_hydra_body.png", "img_w": 3.0, "img_hmax": 3.0,
-        "type": "Huge aberration, unaligned",
-        "ac": "15", "hp": "130 (12d12 + 48)", "speed": "10 ft., climb 10 ft.",
-        "abilities": ab(18, 10, 18, 7, 14, 8),
-        "saves": "Con +8, Wis +5",
-        "resistances": "psychic",
-        "condition_immunities": "charmed, frightened, prone",
-        "senses": "tremorsense 60 ft., darkvision 60 ft., blindsight 10 ft., passive Perception 12",
+        "sub": "Huge aberration, unaligned ✦ the boss of Session 6",
+        "img": "assets/monsters/false_hydra_body.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 15  **HP** 130 (12d12 + 48)  **Speed** 10 ft., climb 10 ft.",
+            "**STR** 18  **DEX** 10  **CON** 18  **INT** 7  **WIS** 14  **CHA** 8",
+            "**Saves** Con +8, Wis +5",
+            "**Resist** psychic  **Imm.** (cond) charmed, frightened, prone",
+            "**Senses** tremorsense 60 ft., darkvision 60 ft., blindsight 10 ft., passive Perception 12",
+        ],
         "traits": [
             ("Song of Unremembering", "While any head lives, creatures without earplugs that start their turn "
              "within 60 ft. make a DC 15 Wisdom save or have disadvantage on attacks and can't take reactions "
@@ -1068,237 +1149,243 @@ B = [
              "difficult terrain."),
             ("Coordinate Strike", "One head makes a Snap."),
         ],
-    }),
-    ("body", "*Each head is pale, blind-eyed, and always singing, even as it bites.*"),
-    ("statblock", {
-        "name": "False Hydra Head (x4)",
-        "img": "assets/monsters/false_hydra_head.png", "img_w": 2.2,
-        "type": "Large aberration (an extension of the body), unaligned",
-        "ac": "14", "hp": "45 (6d10 + 12)", "speed": "30 ft. (platforms, tunnels), climb 20 ft.",
-        "abilities": ab(16, 12, 14, 6, 14, 7),
-        "saves": "Wis +4",
-        "resistances": "psychic",
-        "condition_immunities": "charmed, frightened, prone",
-        "actions": [
-            ("Bite", "*Melee Weapon Attack:* +7 to hit, reach 15 ft. *Hit:* 14 (2d10 + 3) piercing and grappled "
-             "(escape DC 14). While grappling it can't bite a different target."),
-            ("Reel", "A creature grappled by the head makes a DC 14 Strength save or is pulled 10 ft. toward the "
-             "port and knocked prone."),
-        ],
-        "reactions": [
-            ("Snap", "When a creature moves within 15 ft., the head makes one Bite against it."),
-        ],
-    }),
+    }]),
 
     ("body", "**Festival frights.** *Before the theater, the hydra's hungry song had stirred lesser echoes "
              "all over Wraithpine: animated Scarecrows and rustling Strawlings on Pumpkin Row, rats and rat "
              "swarms in Maera's cellar, and restless Zombies (and, if things went loud, Skeletons) at the "
              "graveyard rite.*"),
-    ("statblock", {
-        "name": "Animated Scarecrow",
-        "img": "assets/monsters/scarecrow.png", "img_w": 2.4,
-        "type": "Medium construct, neutral",
-        "ac": "11", "hp": "36 (8d8)", "speed": "30 ft.",
-        "abilities": ab(16, 12, 11, 10, 10, 10),
-        "vulnerabilities": "fire",
-        "resistances": "bludgeoning, piercing, and slashing from nonmagical attacks",
-        "condition_immunities": "charmed, frightened, paralyzed, poisoned",
-        "senses": "darkvision 60 ft., passive Perception 10",
-        "languages": "understands its creator's languages but can't speak",
-        "cr": "1 (200 XP)",
-        "traits": [
-            ("Terrifying Glare", "One creature within 30 ft. must succeed on a DC 11 Wisdom save or be frightened "
-             "for 1 minute (repeat save at end of each turn)."),
-            ("Heart-Gourd", "A coin-sized gourd charm is sewn under its ribs; snipping it (an action within 5 ft., "
-             "no roll) makes the scarecrow fall limp."),
-        ],
-        "actions": [
-            ("Claw", "*Melee Weapon Attack:* two claws, +5 to hit, reach 5 ft. *Hit:* 6 (2d4 + 1) slashing."),
-        ],
-    }),
-    ("body", "*Bundles of straw that rustle to life underfoot on Pumpkin Row, more startling "
-             "than deadly.*"),
-    ("statblock", {
-        "name": "Strawling",
-        "img": "assets/monsters/strawling.png", "img_w": 1.9,
-        "type": "Medium plant, neutral",
-        "ac": "12", "hp": "11 (2d8 + 2)", "speed": "30 ft.",
-        "abilities": ab(12, 12, 12, 4, 10, 3),
-        "senses": "passive Perception 10",
-        "cr": "1/4 (50 XP)",
-        "actions": [
-            ("Needles", "*Melee or Ranged Weapon Attack:* a bristle of straw-needles; easily bowled over by a "
-             "hay cart or a kicked pumpkin stack."),
-        ],
-    }),
+    ("enemy_cards", [
+        {
+            "name": "Animated Scarecrow",
+            "sub": "Medium construct, neutral ✦ CR 1 (200 XP) ✦ Pumpkin Row",
+            "img": "assets/monsters/scarecrow.png",
+            "stats": [
+                "**AC** 11  **HP** 36 (8d8)  **Speed** 30 ft.",
+                "**STR** 16  **DEX** 12  **CON** 11  **INT** 10  **WIS** 10  **CHA** 10",
+                "**Vulnerable** fire",
+                "**Resist** nonmagical B/P/S",
+                "**Imm.** (cond) charmed, frightened, paralyzed, poisoned",
+                "**Senses** darkvision 60 ft., passive Perception 10",
+                "**Languages** understands its creator's languages but can't speak",
+                "**Challenge** 1 (200 XP)",
+            ],
+            "traits": [
+                ("Terrifying Glare", "One creature within 30 ft. must succeed on a DC 11 Wisdom save or be "
+                 "frightened for 1 minute (repeat save at end of each turn)."),
+                ("Heart-Gourd", "A coin-sized gourd charm is sewn under its ribs; snipping it (an action within "
+                 "5 ft., no roll) makes the scarecrow fall limp."),
+            ],
+            "actions": [
+                ("Claw", "*Melee Weapon Attack:* two claws, +5 to hit, reach 5 ft. *Hit:* 6 (2d4 + 1) slashing."),
+            ],
+        },
+        {
+            "name": "Strawling",
+            "sub": "Medium plant, neutral ✦ CR 1/4 (50 XP) ✦ more startling than deadly",
+            "img": "assets/monsters/strawling.png",
+            "stats": [
+                "**AC** 12  **HP** 11 (2d8 + 2)  **Speed** 30 ft.",
+                "**STR** 12  **DEX** 12  **CON** 12  **INT** 4  **WIS** 10  **CHA** 3",
+                "**Senses** passive Perception 10",
+                "**Challenge** 1/4 (50 XP)",
+            ],
+            "actions": [
+                ("Needles", "*Melee or Ranged Weapon Attack:* a bristle of straw-needles; easily bowled over "
+                 "by a hay cart or a kicked pumpkin stack."),
+            ],
+        },
+    ]),
     ("body", "*The cellar vermin were ordinary **Rats** (AC 12, HP 7, CR 1/8) and a **Swarm of Rats** (AC 10, "
              "HP 24, CR 1/4). The graveyard undead were standard **Zombies** (AC 8, HP 22, CR 1/4; Undead "
              "Fortitude) and, only if the rite went loud, **Skeletons** (AC 13, HP 13, CR 1/4).*"),
 
     # ==================================================================
-    # DM-adjudicated numbering: Gearhaven keeps its Session 8 branding (the
-    # played sequence is 1, 2, 3, 4, 5, 6, 8; there was never a Session 7).
+    # DM-adjudicated numbering 2026-07-06: Gearhaven is Session 7; the
+    # chronicle reads 1 through 7 with no gap.
     ("h1", "Session 7: Gearhaven, the Clockwork City"),
     ("gold", "In the clockwork city, the enemy was no monster at all but corruption bleeding up through "
              "the cracks, reaching INTO the machines the people loved. Note the rotation: the lightning "
              "eaters and the fire eaters trade off. Freed, not killed: these were innocents."),
 
-    ("body", "*Cogtooth Market's little brass helpers gone haywire, sparks snapping from every "
-             "joint.*"),
-    ("statblock", {
-        "name": "Rogue Servitor",
-        "type": "Small construct, unaligned",
-        "img": "assets/session_08/beat_2/rogue_servitor.png", "img_w": 2.5,
-        "ac": "15", "hp": "39 (6d6 + 18)", "speed": "30 ft.",
-        "abilities": ab(13, 16, 16, 3, 8, 5),
-        "resistances": "poison; bludgeoning, piercing, and slashing from nonmagical attacks",
-        "condition_immunities": "charmed, frightened, poisoned, exhaustion",
-        "senses": "darkvision 60 ft.",
-        "cr": "2",
-        "traits": [
-            ("Overclocked Death-Spark", "At 0 HP, each creature within 10 ft. makes a DC 13 Dexterity save or "
-             "takes 7 (2d6) lightning."),
-            ("Shutdown Switch", "An action within 5 ft. plus a DC 14 Arcana or Sleight of Hand check shuts it "
-             "down instantly, no kill needed."),
-        ],
-        "actions": [
-            ("Multiattack", "Two Flailing Slams."),
-            ("Flailing Slam", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 8 (1d10 + 3) bludgeoning."),
-            ("Spark Lash (Recharge 5-6)", "*Ranged Attack:* +5 to hit, range 30 ft. *Hit:* 10 (3d6) lightning; "
-             "the target's speed is halved until end of its next turn."),
-        ],
-    }),
-    # Whitespace pass 2026-07: the old refit pagebreak here stranded a page
-    # that was seven-eighths empty after the Rogue Servitor's tail; the
-    # statblock keep-chain guards the hauler's head, so let it flow.
-    ("body", "*A dockside lifter the size of a shed, swinging its forklift arms like siege "
-             "weapons.*"),
-    ("statblock", {
-        "name": "Cargo Hauler",
-        "type": "Large construct, unaligned",
-        "img": "assets/session_08/beat_2/cargo_hauler.png", "img_w": 2.6,
-        "ac": "16", "hp": "76 (8d10 + 32)", "speed": "30 ft.",
-        "abilities": ab(19, 8, 18, 3, 8, 5),
-        "resistances": "bludgeoning, piercing, and slashing from nonmagical attacks",
-        "vulnerabilities": "lightning (overloaded core; telegraph the crackling blue!)",
-        "condition_immunities": "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
-        "cr": "3",
-        "traits": [
-            ("Out-of-Reach Switch", "Its shutdown lever is 15 ft. up on its back; reaching it (climb DC 13 or "
-             "flight) plus an action and a DC 15 Arcana or Sleight of Hand check disables it."),
-        ],
-        "actions": [
-            ("Multiattack", "Two Forklift Slams, or one Slam and one Hurl Crate."),
-            ("Forklift Slam", "*Melee Weapon Attack:* +6 to hit, reach 10 ft. *Hit:* 13 (2d8 + 4) bludgeoning, "
-             "and a DC 14 Strength save or knocked prone."),
-            ("Hurl Crate", "*Ranged Weapon Attack:* +6 to hit, range 60 ft. *Hit:* 14 (3d6 + 4) bludgeoning."),
-            ("Grab & Crush (Recharge 5-6)", "One creature within 10 ft. makes a DC 14 Dexterity save or is "
-             "grappled (escape DC 14), taking 10 (3d6) at the start of each of its turns until it escapes."),
-        ],
-    }),
-    ("body", "*Spark-yellow skitterers of the Underworks, flickering in and out of the Real.*"),
-    ("statblock", {
-        "name": "Voltcrawler",
-        "type": "Small aberration (planar intruder), unaligned",
-        "img": "assets/session_08/beat_4/volt_crawler.png", "img_w": 2.1,
-        "ac": "15", "hp": "22 (5d6 + 5)", "speed": "30 ft., climb 30 ft.",
-        "abilities": ab(7, 17, 13, 5, 10, 6),
-        "resistances": "lightning",
-        "senses": "darkvision 60 ft.",
-        "traits": [
-            ("Phase-Blink", "At the start of its turn, roll a d6: on a 1-2 it goes Unreal, resisting all damage "
-             "except force and radiant, and attacks against it have disadvantage; it can't be webbed or grappled "
-             "and must become Real to attack. (Force and radiant are the counter.)"),
-            ("Static Cling", "The first time it hits a creature each turn, that target's lightning resistance is "
-             "ignored and its allies have advantage on their next attack against it."),
-        ],
-        "actions": [
-            ("Spark Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 1d6 + 3 piercing plus 1d6 lightning."),
-            ("Arc (Recharge 5-6)", "A 15-ft. line; DC 13 Dexterity save, 2d8 lightning (half on a success). Two or "
-             "more Voltcrawlers within 15 ft. can chain into one 3d8 line."),
-        ],
-    }),
-    ("body", "*The nest-queen of the swarm, spinning webs of living lightning.*"),
-    ("statblock", {
-        "name": "Voltcrawler Broodmother",
-        "type": "Medium aberration (planar intruder), unaligned",
-        "img": "assets/session_08/beat_4/broodmother.png", "img_w": 2.6,
-        "ac": "16", "hp": "95 (10d8 + 50)", "speed": "40 ft., climb 40 ft.",
-        "abilities": ab(14, 18, 20, 6, 12, 8),
-        "saves": "Dex +7, Con +8",
-        "resistances": "lightning; bludgeoning, piercing, and slashing from nonmagical attacks",
-        "senses": "darkvision 60 ft.",
-        "traits": [
-            ("Phase-Blink (greater)", "She chooses to go Unreal as a free action once per round (no roll)."),
-            ("Crackling Web", "At the start of her turn, one creature she sees within 30 ft. makes a DC 15 "
-             "Dexterity save or is restrained by planar silk (action plus DC 15 Strength to break; web AC 12, "
-             "15 HP, immune lightning, VULNERABLE fire and cold)."),
-        ],
-        "actions": [
-            ("Multiattack", "Two Lash attacks."),
-            ("Lash", "*Melee Weapon Attack:* +7 to hit, reach 10 ft. *Hit:* 1d10 + 4 slashing plus 1d8 lightning."),
-            ("Overcharge (Recharge 6)", "A 20-ft.-radius burst; DC 15 Constitution save, 4d8 lightning (half on a "
-             "success). On a fail the target also can't take reactions until end of its next turn."),
-        ],
-    }),
+    ("body", "*Cogtooth Market's little brass helpers gone haywire, sparks snapping from every joint; "
+             "and a dockside lifter the size of a shed, swinging its forklift arms like siege weapons.*"),
+    ("enemy_cards", [
+        {
+            "name": "Rogue Servitor",
+            "sub": "Small construct, unaligned ✦ CR 2 ✦ freed, not killed",
+            "img": "assets/session_08/beat_2/rogue_servitor.png",
+            "stats": [
+                "**AC** 15  **HP** 39 (6d6 + 18)  **Speed** 30 ft.",
+                "**STR** 13  **DEX** 16  **CON** 16  **INT** 3  **WIS** 8  **CHA** 5",
+                "**Resist** poison; nonmagical B/P/S",
+                "**Imm.** (cond) charmed, frightened, poisoned, exhaustion",
+                "**Senses** darkvision 60 ft.",
+                "**Challenge** 2",
+            ],
+            "traits": [
+                ("Overclocked Death-Spark", "At 0 HP, each creature within 10 ft. makes a DC 13 Dexterity save "
+                 "or takes 7 (2d6) lightning."),
+                ("Shutdown Switch", "An action within 5 ft. plus a DC 14 Arcana or Sleight of Hand check shuts "
+                 "it down instantly, no kill needed."),
+            ],
+            "actions": [
+                ("Multiattack", "Two Flailing Slams."),
+                ("Flailing Slam", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 8 (1d10 + 3) bludgeoning."),
+                ("Spark Lash (Recharge 5-6)", "*Ranged Attack:* +5 to hit, range 30 ft. *Hit:* 10 (3d6) "
+                 "lightning; the target's speed is halved until end of its next turn."),
+            ],
+        },
+        {
+            "name": "Cargo Hauler",
+            "sub": "Large construct, unaligned ✦ CR 3 ✦ the dockside lifter",
+            "img": "assets/session_08/beat_2/cargo_hauler.png",
+            "stats": [
+                "**AC** 16  **HP** 76 (8d10 + 32)  **Speed** 30 ft.",
+                "**STR** 19  **DEX** 8  **CON** 18  **INT** 3  **WIS** 8  **CHA** 5",
+                "**Vulnerable** lightning (overloaded core; telegraph the crackling blue!)",
+                "**Resist** nonmagical B/P/S",
+                "**Imm.** (cond) charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
+                "**Challenge** 3",
+            ],
+            "traits": [
+                ("Out-of-Reach Switch", "Its shutdown lever is 15 ft. up on its back; reaching it (climb DC 13 "
+                 "or flight) plus an action and a DC 15 Arcana or Sleight of Hand check disables it."),
+            ],
+            "actions": [
+                ("Multiattack", "Two Forklift Slams, or one Slam and one Hurl Crate."),
+                ("Forklift Slam", "*Melee Weapon Attack:* +6 to hit, reach 10 ft. *Hit:* 13 (2d8 + 4) "
+                 "bludgeoning, and a DC 14 Strength save or knocked prone."),
+                ("Hurl Crate", "*Ranged Weapon Attack:* +6 to hit, range 60 ft. *Hit:* 14 (3d6 + 4) bludgeoning."),
+                ("Grab & Crush (Recharge 5-6)", "One creature within 10 ft. makes a DC 14 Dexterity save or is "
+                 "grappled (escape DC 14), taking 10 (3d6) at the start of each of its turns until it escapes."),
+            ],
+        },
+    ]),
+
+    ("body", "*Spark-yellow skitterers of the Underworks, flickering in and out of the Real; and the "
+             "nest-queen of the swarm, spinning webs of living lightning.*"),
+    ("enemy_cards", [
+        {
+            "name": "Voltcrawler",
+            "sub": "Small aberration (planar intruder), unaligned ✦ the swarm",
+            "img": "assets/session_08/beat_4/volt_crawler.png",
+            "stats": [
+                "**AC** 15  **HP** 22 (5d6 + 5)  **Speed** 30 ft., climb 30 ft.",
+                "**STR** 7  **DEX** 17  **CON** 13  **INT** 5  **WIS** 10  **CHA** 6",
+                "**Resist** lightning",
+                "**Senses** darkvision 60 ft.",
+            ],
+            "traits": [
+                ("Phase-Blink", "At the start of its turn, roll a d6: on a 1-2 it goes Unreal, resisting all "
+                 "damage except force and radiant, and attacks against it have disadvantage; it can't be webbed "
+                 "or grappled and must become Real to attack. (Force and radiant are the counter.)"),
+                ("Static Cling", "The first time it hits a creature each turn, that target's lightning "
+                 "resistance is ignored and its allies have advantage on their next attack against it."),
+            ],
+            "actions": [
+                ("Spark Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 1d6 + 3 piercing plus "
+                 "1d6 lightning."),
+                ("Arc (Recharge 5-6)", "A 15-ft. line; DC 13 Dexterity save, 2d8 lightning (half on a success). "
+                 "Two or more Voltcrawlers within 15 ft. can chain into one 3d8 line."),
+            ],
+        },
+        {
+            "name": "Voltcrawler Broodmother",
+            "sub": "Medium aberration (planar intruder), unaligned ✦ the nest-queen",
+            "img": "assets/session_08/beat_4/broodmother.png",
+            "stats": [
+                "**AC** 16  **HP** 95 (10d8 + 50)  **Speed** 40 ft., climb 40 ft.",
+                "**STR** 14  **DEX** 18  **CON** 20  **INT** 6  **WIS** 12  **CHA** 8",
+                "**Saves** Dex +7, Con +8",
+                "**Resist** lightning; nonmagical B/P/S",
+                "**Senses** darkvision 60 ft.",
+            ],
+            "traits": [
+                ("Phase-Blink (greater)", "She chooses to go Unreal as a free action once per round (no roll)."),
+                ("Crackling Web", "At the start of her turn, one creature she sees within 30 ft. makes a DC 15 "
+                 "Dexterity save or is restrained by planar silk (action plus DC 15 Strength to break; web AC 12, "
+                 "15 HP, immune lightning, VULNERABLE fire and cold)."),
+            ],
+            "actions": [
+                ("Multiattack", "Two Lash attacks."),
+                ("Lash", "*Melee Weapon Attack:* +7 to hit, reach 10 ft. *Hit:* 1d10 + 4 slashing plus "
+                 "1d8 lightning."),
+                ("Overcharge (Recharge 6)", "A 20-ft.-radius burst; DC 15 Constitution save, 4d8 lightning "
+                 "(half on a success). On a fail the target also can't take reactions until end of its next turn."),
+            ],
+        },
+    ]),
+
     ("body", "*Worker-machines with corrupted vine knotted through their gears: slow, sad, and "
-             "unstoppable.*"),
-    ("statblock", {
-        "name": "Iron Drudge",
-        "type": "Large construct (planar-corrupted), unaligned",
-        "img": "assets/session_08/beat_5/iron_drudge.png", "img_w": 2.5,
-        "ac": "17", "hp": "68 (8d10 + 24)", "speed": "25 ft.",
-        "abilities": ab(19, 8, 17, 3, 8, 1),
-        "vulnerabilities": "fire (corrupted wood and vine in its joints; telegraph the smoke!)",
-        "resistances": "bludgeoning, piercing, and slashing from nonmagical attacks",
-        "condition_immunities": "charmed, frightened, exhaustion, poisoned",
-        "senses": "darkvision 60 ft.",
-        "cr": "3",
-        "traits": [
-            ("Slow but Unstoppable", "Can't be knocked prone; ignores difficult terrain. It is slow enough to "
-             "outrun, but it keeps coming."),
-            ("Corruption Leak", "At 0 HP the blue light gutters out and it slumps, harmless. No death-burst: these "
-             "were innocent worker-machines, freed rather than destroyed."),
-        ],
-        "actions": [
-            ("Multiattack", "Two Cargo-Arm Slams."),
-            ("Cargo-Arm Slam", "*Melee Weapon Attack:* +6 to hit, reach 10 ft. *Hit:* 2d8 + 4 bludgeoning."),
-            ("Sweep (Recharge 5-6)", "A wide swing; each creature within 10 ft. makes a DC 14 Dexterity save, "
-             "taking 2d6 + 4 bludgeoning (half on a success) and shoved 10 ft. on a fail."),
-        ],
-    }),
-    ("body", "*Fist-sized knots of corrupted vine that keep coming as long as the engine feeds "
-             "them.*"),
-    ("statblock", {
-        "name": "Corrupted Sproutling",
-        "type": "Small plant (planar-corrupted), unaligned",
-        "img": "assets/session_08/beat_5/corrupted_sproutling.png", "img_w": 1.8,
-        "ac": "12", "hp": "7 (2d6)", "speed": "10 ft., climb 10 ft.",
-        "abilities": ab(8, 14, 10, 2, 6, 4),
-        "vulnerabilities": "fire",
-        "senses": "darkvision 30 ft.",
-        "traits": [
-            ("Weak but Many", "Dies to almost any solid hit; an area effect clears several at once (reward AoE)."),
-            ("Group Turn & Spawn", "All Sproutlings act together on one shared initiative. While the engine runs "
-             "corrupt, a new one crawls from a crack each time one dies."),
-        ],
-        "actions": [
-            ("Thorn-Lash", "*Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 1d6 + 2 piercing."),
-            ("Latch", "Instead of attacking, it grabs a hero (no damage); the next attack against that hero has advantage."),
-        ],
-    }),
+             "unstoppable. Around their feet, fist-sized knots of corrupted vine keep coming as long "
+             "as the engine feeds them.*"),
+    ("enemy_cards", [
+        {
+            "name": "Iron Drudge",
+            "sub": "Large construct (planar-corrupted), unaligned ✦ CR 3 ✦ freed, not killed",
+            "img": "assets/session_08/beat_5/iron_drudge.png",
+            "stats": [
+                "**AC** 17  **HP** 68 (8d10 + 24)  **Speed** 25 ft.",
+                "**STR** 19  **DEX** 8  **CON** 17  **INT** 3  **WIS** 8  **CHA** 1",
+                "**Vulnerable** fire (corrupted wood and vine in its joints; telegraph the smoke!)",
+                "**Resist** nonmagical B/P/S",
+                "**Imm.** (cond) charmed, frightened, exhaustion, poisoned",
+                "**Senses** darkvision 60 ft.",
+                "**Challenge** 3",
+            ],
+            "traits": [
+                ("Slow but Unstoppable", "Can't be knocked prone; ignores difficult terrain. It is slow enough "
+                 "to outrun, but it keeps coming."),
+                ("Corruption Leak", "At 0 HP the blue light gutters out and it slumps, harmless. No death-burst: "
+                 "these were innocent worker-machines, freed rather than destroyed."),
+            ],
+            "actions": [
+                ("Multiattack", "Two Cargo-Arm Slams."),
+                ("Cargo-Arm Slam", "*Melee Weapon Attack:* +6 to hit, reach 10 ft. *Hit:* 2d8 + 4 bludgeoning."),
+                ("Sweep (Recharge 5-6)", "A wide swing; each creature within 10 ft. makes a DC 14 Dexterity "
+                 "save, taking 2d6 + 4 bludgeoning (half on a success) and shoved 10 ft. on a fail."),
+            ],
+        },
+        {
+            "name": "Corrupted Sproutling",
+            "sub": "Small plant (planar-corrupted), unaligned ✦ weak but many",
+            "img": "assets/session_08/beat_5/corrupted_sproutling.png",
+            "stats": [
+                "**AC** 12  **HP** 7 (2d6)  **Speed** 10 ft., climb 10 ft.",
+                "**STR** 8  **DEX** 14  **CON** 10  **INT** 2  **WIS** 6  **CHA** 4",
+                "**Vulnerable** fire",
+                "**Senses** darkvision 30 ft.",
+            ],
+            "traits": [
+                ("Weak but Many", "Dies to almost any solid hit; an area effect clears several at once "
+                 "(reward AoE)."),
+                ("Group Turn & Spawn", "All Sproutlings act together on one shared initiative. While the engine "
+                 "runs corrupt, a new one crawls from a crack each time one dies."),
+            ],
+            "actions": [
+                ("Thorn-Lash", "*Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 1d6 + 2 piercing."),
+                ("Latch", "Instead of attacking, it grabs a hero (no damage); the next attack against that "
+                 "hero has advantage."),
+            ],
+        },
+    ]),
 
     ("body", "*And then the boss: not a monster, but the city's beloved gentle giant, possessed and "
              "grieving inside its own iron. The Guardians broke its legs to bring the core into reach, and "
              "the last blow drained the corruption away rather than killing it. A gentle death, never an execution.*"),
-    ("statblock", {
+    ("enemy_cards", [{
         "name": "The Grand Custodian (possessed)",
-        "type": "Gargantuan construct (planar-possessed), unaligned",
-        "img": "assets/session_08/beat_5/grand_custodian.png", "img_w": 3.4,
-        "ac": "17 (Body); Legs (x2) AC 15", "hp": "220 (Body); Legs 90 each", "speed": "30 ft.",
-        "abilities": ab(24, 6, 22, 3, 10, 5),
-        "resistances": "bludgeoning, piercing, and slashing from nonmagical attacks",
-        "condition_immunities": "charmed, frightened, exhaustion, poisoned, paralyzed, petrified",
+        "sub": "Gargantuan construct (planar-possessed), unaligned ✦ the boss of Session 7 ✦ a two-phase fight",
+        # Landscape plate (1672x941): 4.5 in. wide renders ~2.5 in. tall, the
+        # same visual weight the square boss portraits get at 3.0-3.4.
+        "img": "assets/session_08/beat_5/grand_custodian.png", "img_w": 4.5,
+        "stats": [
+            "**AC** 17 (Body); Legs (x2) AC 15  **HP** 220 (Body); Legs 90 each  **Speed** 30 ft.",
+            "**STR** 24  **DEX** 6  **CON** 22  **INT** 3  **WIS** 10  **CHA** 5",
+            "**Resist** bludgeoning, piercing, and slashing from nonmagical attacks",
+            "**Imm.** (cond) charmed, frightened, exhaustion, poisoned, paralyzed, petrified",
+        ],
         "traits": [
             ("The Core Is High", "Standing, the core is 40-50 ft. up: only 60-ft.+ ranged attacks and flyers reach "
              "it. The legs are ground-level and anyone can strike them."),
@@ -1317,7 +1404,7 @@ B = [
             ("Core Flare", "(Phase 2, body below half HP) Each creature within 20 ft. makes a DC 15 Constitution "
              "save or takes 2d6 force and is blinded until end of its next turn."),
         ],
-    }),
+    }]),
 ]
 
 if __name__ == "__main__":
