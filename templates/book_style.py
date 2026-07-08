@@ -516,6 +516,39 @@ def build_doc(blocks, out_path):
                     if al is not None:
                         al.text = 'left'
 
+        elif kind == "lore":
+            # (lore, title, text) - a "Lore of Elaria" fragment: world history
+            # in the chronicler's voice, dropped onto art-heavy pages. Deep
+            # blue (the one unused house color), thin double rules above and
+            # below, small caps kicker. Reads as a margin note from an older
+            # book. Fragments come from lore/world_history.md only.
+            _, ltitle, ltext = blk
+            p = doc.add_paragraph()
+            p.paragraph_format.space_before = Pt(10); p.paragraph_format.space_after = Pt(1)
+            p.paragraph_format.keep_with_next = True
+            p.paragraph_format.left_indent = Twips(500); p.paragraph_format.right_indent = Twips(500)
+            ppr = p._p.get_or_add_pPr()
+            pbdr = OxmlElement('w:pBdr')
+            top = OxmlElement('w:top')
+            top.set(qn('w:val'), 'double'); top.set(qn('w:sz'), '6')
+            top.set(qn('w:space'), '4'); top.set(qn('w:color'), H3_COLOR)
+            pbdr.append(top); ppr.append(pbdr)
+            r = p.add_run("✦ LORE OF ELARIA ✦  ")
+            _set_font(r, Pt(8), True, color=H3_COLOR)
+            r = p.add_run(ltitle)
+            _set_font(r, Pt(9.5), True, color=H3_COLOR)
+            p = doc.add_paragraph()
+            p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(10)
+            p.paragraph_format.left_indent = Twips(500); p.paragraph_format.right_indent = Twips(500)
+            p.paragraph_format.keep_together = True
+            ppr = p._p.get_or_add_pPr()
+            pbdr = OxmlElement('w:pBdr')
+            bot = OxmlElement('w:bottom')
+            bot.set(qn('w:val'), 'double'); bot.set(qn('w:sz'), '6')
+            bot.set(qn('w:space'), '4'); bot.set(qn('w:color'), H3_COLOR)
+            pbdr.append(bot); ppr.append(pbdr)
+            _rich(p, ltext, base_size=Pt(9.5), base_italic=True)
+
         elif kind == "appendix_title":
             # (appendix_title, kicker, title, subtitle) - the S7 appendix
             # opener: centered gold kicker, big crimson title, sienna

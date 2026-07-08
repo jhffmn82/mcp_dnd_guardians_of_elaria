@@ -49,6 +49,11 @@ BLOCKS = [
     ("body", "**Shadow, the plane Umbra:** anchored to **Algol**, dark."),
     ("body", "**Betelgeuse:** the first star put out, the one Ash Catchum chased into the east."),
     ("body", "**Achernar:** a reserve anchor, held back against the worst."),
+    ("lore", "The Sky-Readers",
+     "The Circle of the Eternal Stars was founded by druids who noticed the stars did not "
+     "wander like the wild things do. Somebody, they reasoned, must be holding them still. "
+     "The Circle has watched the sky for forty generations, keeping lists of every star by "
+     "name, which is why they were the first to notice when one of the names went dark."),
 
     ("h1", "Elaria, the Sleeping Warden"),
     ("gold", "Elaria is not a goddess of war or harvest, but of balance: the Warden who once tended "
@@ -64,7 +69,7 @@ BLOCKS = [
 
     # Refit note: without the break this h1 orphaned at the foot of page 2
     # with a single line; page 2 ends about 80 percent full without it.
-    ("h1", "The Shadow: Nyxthid and Maldrith", {"hardbreak": True}),
+    ("h1", "The Shadow: Nyxthid and Maldrith"),
     ("body", "Two threats stand behind the failing world, one seen and one still hidden."),
     ("gold", "**Nyxthid, the Harbinger of Decay**, is the one the Guardians have glimpsed: a fallen "
              "celestial who once guarded the planes and now, twisted by despair, works to snuff the "
@@ -246,6 +251,11 @@ BLOCKS = [
              "Skitch. In the **Verdant Plaza**, the city's one green place, they freed the corrupted "
              "**Grand Custodian** and laid it gently to rest, proving that a fraying world is saved "
              "by mercy, not by force. The city's wounds closed behind them."),
+    ("lore", "The Raising of Gearhaven",
+     "Gearhaven was not built on the mountain; it was built INTO a promise. The Mechagnome "
+     "founders raised the Grand Custodian first, a gentle giant to hold the city's weight, "
+     "and only then laid the first street. A city that begins with kindness to its largest "
+     "citizen, the founders reasoned, will remember kindness to its smallest."),
 
     # Refit note: without the break the Bloodthorn float clipped the bottom
     # page edge; Gearhaven fills its page about three quarters on its own.
@@ -268,9 +278,10 @@ BLOCKS = [
     ("img", f"{A}/scenes/glimmerspire.png",
      "Glimmerspire, the deep-gnome city of forges in the Underdark, where the Essence Sphere "
      "was made before anyone knew why.", 6.0, {"crop": "3:2", "hmax": 4.6}),
-    # Refit note: anchored after the Glimmerspire plate this float ran off
-    # the bottom page edge; page 10 ends about 90 percent full without it.
-    ("pagebreak",),
+    ("lore", "The Delvers",
+     "The deep gnomes say they were born of the world's own curiosity: stone that wanted to "
+     "know what stone was. They delved not for gold but for questions, and Deepforge Hollow "
+     "sits at the bottom of the longest question anyone ever asked."),
     ("imgfloat", f"{A}/scenes/old_shrine.png", 3.2, "left"),
     ("body", "**The Old Shrine in the east**: Ash Catchum's last logbook entry reads, \"The pattern "
              "leads east. Following the dark. To the old shrine.\" The Circle's elders believe he "
@@ -289,6 +300,11 @@ BLOCKS = [
              "dimming Antares, then Unda, Ignis, Aer, and last of all Umbra, the plane of Shadow, "
              "under a star already dark. Each failing world keeps a corrupted guardian of its own, "
              "and each guardian is waiting, whether it knows it or not, to be freed."),
+    ("lore", "The Rift Portal",
+     "Doors between worlds are older than the Darkening; the Weaving was full of them, all "
+     "closed politely behind the movers when the furniture of creation was arranged. What "
+     "Guildmaster Vane built in Gearhaven is not a new idea. It is a very old door, rebuilt "
+     "from memory, waiting for a key shaped like a heart."),
 
     ("gold", "Why the gazetteer matters: the sky is going out, one anchor-star at a time, and in "
              "one year the Rift Portal opens. Every road on these pages leads, in the end, to a "
