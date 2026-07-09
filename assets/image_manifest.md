@@ -234,3 +234,9 @@ Embedded images recovered from the original raw session documents (word/media). 
 | `assets/world/compendium_frontispiece.png` (DM-approved 2026-07-08) | `assets/gen_prompts/compendium_frontispiece.txt` | none (pure generation) |
 | `assets/world/treasures_opener.png` (DM-approved 2026-07-08) | `assets/gen_prompts/treasures_opener.txt` | none (pure generation) |
 | `assets/world/paths_opener.png` (DM-approved 2026-07-08) | `assets/gen_prompts/paths_opener.txt` | none (pure generation) |
+| `assets/monsters/grimfang_warband.png` (DM-approved 2026-07-09; replaces the tribe-logo `grimfang_clan.png` on the Goblin Boss / Grimfang cards in the bestiary and Session 2) | `assets/gen_prompts/grimfang_warband.txt` | grimfang_clan.png (clan emblem, carried onto shield and banner) |
+| `assets/monsters/snowbound_bandit.png` (DM-approved 2026-07-09; bestiary + Session 4 rank-and-file cards) | `assets/gen_prompts/snowbound_bandit.txt` | snowbound_bandits.png (group art, style match) |
+| `assets/monsters/giant_rat.png` (DM-approved 2026-07-09; Session 6 cellar card) | `assets/gen_prompts/giant_rat.txt` | s6_cellar_rats.png (swarm art, style match) |
+| `assets/monsters/gift_mimic.png` (DM-approved 2026-07-09; bestiary winter-court Mimic card) | `assets/gen_prompts/gift_mimic.txt` | none (pure generation) |
+| `assets/npcs/bren_rowdy_local.png` (DM-approved 2026-07-09; Session 1 bar-brawl card) | `assets/gen_prompts/bren_rowdy_local.txt` | none (pure generation) |
+| `assets/npcs/tavern_regular.png` (DM-approved 2026-07-09; Session 1 bar-brawl card) | `assets/gen_prompts/tavern_regular.txt` | none (pure generation) |

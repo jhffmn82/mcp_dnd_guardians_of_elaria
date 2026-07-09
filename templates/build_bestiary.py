@@ -386,7 +386,7 @@ B = [
     ("enemy_cards", [{
         "name": "Goblin Boss (the Grimfang leader)",
         "sub": "Small humanoid (goblinoid), neutral evil ✦ CR 1 (200 XP) ✦ leads the war band",
-        "img": "assets/monsters/grimfang_clan.png", "img_w": 3.0,
+        "img": "assets/monsters/grimfang_warband.png", "img_w": 3.2,
         "stats": [
             "**AC** 17 (chain shirt, shield)  **HP** 21 (6d6)  **Speed** 30 ft.",
             "**STR** 10  **DEX** 14  **CON** 10  **INT** 10  **WIS** 8  **CHA** 10",
@@ -640,6 +640,7 @@ B = [
         {
             "name": "Mimic (Gift Box)",
             "sub": "Medium monstrosity (shapechanger), neutral ✦ CR 2 (450 XP)",
+            "img": "assets/monsters/gift_mimic.png", "img_w": 2.2,
             "stats": [
                 "**AC** 12 (natural armor)  **HP** 58 (9d8 + 18)",
                 "**Speed** 15 ft.",
@@ -870,6 +871,7 @@ B = [
         {
             "name": "Snowbound Bandit",
             "sub": "Medium humanoid, neutral ✦ the rank and file",
+            "img": "assets/monsters/snowbound_bandit.png", "img_w": 2.2,
             "stats": [
                 "**AC** 12  **HP** 20",
                 "**Speed** 30 ft.",

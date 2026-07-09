@@ -587,7 +587,7 @@ BLOCKS = [
     ("enemy_cards", [{
         "name": "The Grimfang War Band",
         "sub": "Rival goblin clan raiders ✦ standard 2024 Monster Manual roster",
-        "img": f"{A}/monsters/grimfang_clan.png",
+        "img": f"{A}/monsters/grimfang_warband.png",
         "img_w": 3.2,
         "stats": [
             "**The roster.** 2× **Goblin** with shortbows on the flanks, 1× **Worg** "

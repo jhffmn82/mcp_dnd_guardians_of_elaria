@@ -753,6 +753,7 @@ BLOCKS = [
         {
             "name": "Giant Rat",
             "sub": "Small beast, unaligned ✦ CR 1/8 (25 XP) ✦ 4 in the cellar",
+            "img": "assets/monsters/giant_rat.png", "img_w": 2.4,
             "stats": [
                 "**AC** 12  **HP** 7 (2d6)  **Speed** 30 ft",
                 "**STR** 7  **DEX** 15  **CON** 11  **INT** 2  **WIS** 10  **CHA** 4",

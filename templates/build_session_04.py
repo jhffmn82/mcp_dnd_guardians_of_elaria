@@ -1061,6 +1061,7 @@ BLOCKS = [
     }, {
         "name": "Snowbound Bandit",
         "sub": "Medium humanoid, neutral ✦ 3 rise from the drifts",
+        "img": "assets/monsters/snowbound_bandit.png", "img_w": 2.2,
         "stats": [
             "**AC** 12  **HP** 20  **Speed** 30 ft",
         ],

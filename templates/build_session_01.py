@@ -502,6 +502,7 @@ BLOCKS = [
         {
             "name": "Bren, the Rowdy Local",
             "sub": "Medium humanoid ✦ bandit stats, softened for a friendly brawl",
+            "img": "assets/npcs/bren_rowdy_local.png", "img_w": 2.6,
             "stats": [
                 "**AC** 12  **HP** 8  **Speed** 30 ft",
             ],
@@ -517,6 +518,7 @@ BLOCKS = [
         {
             "name": "Tavern Regular",
             "sub": "Medium humanoid ✦ bandit stats, softened ✦ 2 in the brawl",
+            "img": "assets/npcs/tavern_regular.png", "img_w": 2.6,
             "stats": [
                 "**AC** 11  **HP** 6  **Speed** 30 ft",
             ],
