@@ -876,7 +876,7 @@ BLOCKS = [
                  "piercing damage."),
             ],
         },
-    ]),
+    ], {"pack": True}),
     ("tactics", "These are the recently quiet, not villains: they rise only if the restored "
                 "name is wrong or unknown, and the bigger roster answers a rite begun loud and "
                 "careless. Lay them gently back down; the rite can always be tried again. When "

@@ -1038,7 +1038,7 @@ BLOCKS = [
     # Numbers transcribed faithfully from templates/build_bestiary.py.
     ("fight_header", "THE FROZEN ROADS: Travel Encounters",
      "The wilds around Havenmoor ✦ roll a d20 per trek (tables in Part Two) ✦ "
-     "the wandering threats"),
+     "the wandering threats", {"compact": True}),
     ("enemy_cards", [{
         "name": "Snowbound Bandit Leader",
         "sub": "Medium humanoid, neutral ✦ leads a band of 3",
@@ -1092,7 +1092,7 @@ BLOCKS = [
             ("Icy Slam", "+5 to hit, reach 5 ft. Hit: 7 (2d6+3) bludgeoning plus "
              "3 (1d4) cold."),
         ],
-    }]),
+    }], {"pack": True}),
     ("enemy_cards", [{
         "name": "Yule Cat",
         "sub": "Large fey beast, neutral ✦ CR 3 ✦ prowls alone; generosity delays it",
@@ -1138,7 +1138,7 @@ BLOCKS = [
              "failure."),
             ("Misty Step (Bonus Action)", "The hag teleports 30 ft."),
         ],
-    }]),
+    }], {"pack": True}),
     ("enemy_cards", [{
         "name": "Enchanted Snowman",
         "sub": "Small construct, unaligned ✦ CR 1 ✦ roadside trio",
@@ -1184,7 +1184,7 @@ BLOCKS = [
              "lightning plus 4 (1d6) cold."),
             ("Invisibility", "The wisp turns invisible until it attacks."),
         ],
-    }]),
+    }], {"pack": True}),
     ("tactics", "One roll per trek: whenever the party sets out from Havenmoor or "
                 "heads back, roll once on the d20 travel table in Part Two. Not "
                 "every threat must end in blows: the Yule Cat seeks generosity, so "

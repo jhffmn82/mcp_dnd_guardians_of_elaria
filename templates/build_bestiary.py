@@ -781,7 +781,7 @@ B = [
                 ("Misty Step (Bonus Action)", "The hag teleports 30 ft."),
             ],
         },
-    ]),
+    ], {"pack": True}),
 
     ("body", "*Walking snowdrifts with hearts of blue ice; top-hatted snowmen gone slightly wrong; "
              "crystal-bodied spiders whose webs glitter like spun frost; and cold lights that bob "
@@ -837,7 +837,7 @@ B = [
                 ("Invisibility", "The wisp turns invisible until it attacks."),
             ],
         },
-    ]),
+    ], {"pack": True}),
 
     # The gentle-ones note sits between rows on purpose: it fills the page
     # foot under the snowman trio so the bandit row's page opens clean.

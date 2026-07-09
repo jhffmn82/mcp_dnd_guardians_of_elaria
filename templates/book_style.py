@@ -567,24 +567,36 @@ def build_doc(blocks, out_path):
             r = p.add_run(asub); _set_font(r, Pt(10.5), color=H2_COLOR)
 
         elif kind == "fight_header":
-            # (fight_header, title, subline) - "ENEMIES, Fight 1: ..." over a
-            # gray location/difficulty/roster line, both centered (S7 style).
-            _, ftitle, fsub = blk
+            # (fight_header, title, subline[, {"compact": True}]) - "ENEMIES,
+            # Fight 1: ..." over a gray location/difficulty/roster line, both
+            # centered (S7 style). compact=True lowers the space_before and
+            # drops the subline's keep_with_next so a fight can begin low on a
+            # page under a preceding short card row instead of reserving a whole
+            # block and forcing a page break (2026-07-09 whitespace pass).
+            _, ftitle, fsub = blk[0], blk[1], blk[2]
+            fopts = blk[3] if len(blk) > 3 and isinstance(blk[3], dict) else {}
+            compact = fopts.get("compact", False)
             p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            p.paragraph_format.space_before = Pt(16); p.paragraph_format.space_after = Pt(1)
+            p.paragraph_format.space_before = Pt(10 if compact else 16)
+            p.paragraph_format.space_after = Pt(1)
             p.paragraph_format.keep_with_next = True
             r = p.add_run(ftitle); _set_font(r, Pt(13), True, color=STAT_EDGE)
             p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            p.paragraph_format.space_after = Pt(6); p.paragraph_format.keep_with_next = True
+            p.paragraph_format.space_after = Pt(6)
+            p.paragraph_format.keep_with_next = not compact
             r = p.add_run(fsub); _set_font(r, Pt(9), color=CAPTION_GRAY)
 
         elif kind == "enemy_cards":
-            # (enemy_cards, [card, ...]) - 1 to 3 S7-style bestiary cards side
-            # by side (DM directive 2026-07-07: multi-type encounters sit side
-            # by side; bosses go solo full-width). card: {name, sub, img
-            # (optional), stats: [lines], traits: [(n,t)], actions: [(n,t)],
-            # reactions: [(n,t)]}. Lines support **bold** / *italic* markup.
-            _, cards = blk
+            # (enemy_cards, [card, ...][, {"pack": True}]) - 1 to 3 S7-style
+            # bestiary cards side by side (DM directive 2026-07-07: multi-type
+            # encounters sit side by side; bosses go solo full-width). card:
+            # {name, sub, img (optional), stats: [lines], traits: [(n,t)],
+            # actions: [(n,t)], reactions: [(n,t)]}. Lines support **bold** /
+            # *italic*. pack=True compacts a minor-mob reference row (smaller
+            # thumbnails) so several rows fit one page (2026-07-09 whitespace).
+            _, cards = blk[0], blk[1]
+            ecopts = blk[2] if len(blk) > 2 and isinstance(blk[2], dict) else {}
+            packmode = ecopts.get("pack", False)
             ncols = max(1, min(3, len(cards)))
             tbl = doc.add_table(rows=1, cols=ncols)
             tbl.autofit = False
@@ -603,15 +615,32 @@ def build_doc(blocks, out_path):
                 el.set(qn('w:space'), '0'); el.set(qn('w:color'), STAT_EDGE)
                 borders.append(el)
             tpr.append(borders)
-            # a card row never splits across a page turn
-            trpr = tbl.rows[0]._tr.get_or_add_trPr()
-            trpr.append(OxmlElement('w:cantSplit'))
             col_in = 6.3 / ncols
-            # A SOLO card (one enemy, usually a boss) floats its portrait to the
-            # side so the stats wrap alongside it, instead of stacking a big
-            # centered image above the text and doubling the card's height
-            # (DM directive 2026-07-08). Multi-card rows keep the centered look.
+            # A SOLO card (one enemy, usually a boss or companion) renders its
+            # portrait as a big centered PLATE below the statblock, so the card
+            # fills the page and the art gets the size the DM keeps asking for,
+            # instead of a small side float that strands a tail (2026-07-09
+            # whitespace pass). A card may force plate=False to keep the float.
+            # Multi-card rows keep the centered-above look.
             solo = (ncols == 1)
+
+            def _bodylen(c):
+                n = len(c.get("stats", []))
+                for _k in ("traits", "actions", "reactions", "legendary"):
+                    _it = c.get(_k)
+                    if _it:
+                        n += 1 + len(_it)
+                return n
+
+            solo_plate = bool(solo and cards[0].get("img") and cards[0].get("plate", True))
+            # A solo card with a long statblock PLUS a full plate can exceed one
+            # page; let that (and only that) card split at a paragraph boundary so
+            # it fills two pages rather than jumping wholesale and stranding a tail.
+            allow_split = bool(solo_plate and _bodylen(cards[0]) >= 22)
+            # Every other card row never splits across a page turn.
+            if not allow_split:
+                trpr = tbl.rows[0]._tr.get_or_add_trPr()
+                trpr.append(OxmlElement('w:cantSplit'))
             for ci, card in enumerate(cards[:ncols]):
                 cell = tbl.cell(0, ci)
                 cell.width = Inches(col_in)
@@ -627,14 +656,19 @@ def build_doc(blocks, out_path):
                 p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(2)
                 r = p.add_run(card.get("sub", "")); _set_font(r, Pt(8), italic=True, color=STAT_EDGE)
                 solo_float = None
+                plate = None
                 if card.get("img"):
                     try:
                         data, pw, ph = _image_png_bytes(card["img"], crop=card.get("crop"))
-                        if solo:
-                            # float right on the first following paragraph
-                            solo_float = (data, min(card.get("img_w", 2.5), 2.8))
+                        if solo and solo_plate:
+                            # big plate rendered BELOW the stats (see loop end)
+                            plate = (data, pw, ph)
+                        elif solo:
+                            # side float, cap raised from 2.8 to 3.4 (2026-07-09)
+                            solo_float = (data, min(card.get("img_w", 2.5), 3.4))
                         else:
-                            iw = min(card.get("img_w", col_in - 0.28), col_in - 0.28)
+                            cap = (col_in * 0.5) if packmode else (col_in - 0.15)
+                            iw = min(card.get("img_w", cap), cap)
                             p = cell.add_paragraph(); p.paragraph_format.space_after = Pt(3)
                             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
                             p.add_run().add_picture(io.BytesIO(data), width=Inches(iw))
@@ -662,6 +696,30 @@ def build_doc(blocks, out_path):
                         if nm:
                             r = p.add_run(nm + ". "); _set_font(r, sz, True, italic=True, color=INK)
                         _rich(p, txt, base_size=sz)
+                # SOLO plate: a big centered portrait below the whole statblock.
+                # Landscape art becomes a wide half-page plate; square/portrait
+                # art a generous centered figure. Height is capped so a near
+                # square plate cannot re-strand a page below it.
+                if plate:
+                    pdata, ppw, pph = plate
+                    aspect = pph / ppw  # rendered height / width
+                    landscape = ppw >= pph * 1.15
+                    # Moderate plate below the statblock: landscape art becomes a
+                    # wide half-page plate, square/portrait a generous centered
+                    # figure (floored so a small legacy img_w still fills). Height
+                    # is capped so a card stays under one page and never orphans
+                    # the following creature's intro line (2026-07-09).
+                    if landscape:
+                        pw_in = min(col_in - 0.25, 5.7)
+                        if pw_in * aspect > 3.5:
+                            pw_in = 3.5 / aspect
+                    else:
+                        pw_in = min(max(card.get("plate_w", card.get("img_w", 3.6)), 3.0), 4.1)
+                        if pw_in * aspect > 4.1:
+                            pw_in = 4.1 / aspect
+                    pp = cell.add_paragraph(); pp.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    pp.paragraph_format.space_before = Pt(5); pp.paragraph_format.space_after = Pt(1)
+                    pp.add_run().add_picture(io.BytesIO(pdata), width=Inches(pw_in))
             # No trailing spacer paragraph: it strands a blank page when a card
             # group ends exactly at a page boundary before a hardbreak header.
             # Inter-group separation comes from the following fight_header /

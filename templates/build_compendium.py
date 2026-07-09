@@ -20,7 +20,7 @@ I = [
     ("gold", "Every treasure of the Guardians' road, from a mother's parting gift to the relics of "
              "a sleeping goddess. Items marked with the seven-point star are Elaria's own."),
 
-    ("h1", "The Great Mysteries", {"hardbreak": True}),
+    ("h1", "The Great Mysteries"),
     ("h2", "The Essence Sphere"),
     ("imgfloat", "assets/items/essence_sphere.png", 2.6),
     ("body", "Brass and crystal, warm as a heartbeat, made by the deep-gnome masters of Glimmerspire "
@@ -72,7 +72,7 @@ I = [
      "rule of the Circle is: treat every odd little thing kindly, in case it is holding up "
      "the sky."),
 
-    ("h1", "Relics of Elaria (the Wraithpine Chest)", {"hardbreak": True}),
+    ("h1", "Relics of Elaria (the Wraithpine Chest)"),
     ("body", "One half-buried chest, bound in vines of silver and root, opened by Ghostbloom's song "
              "beneath the Old Theater. Inside, three gifts, each bearing the seven-point star."),
     ("lore", "One Chest, Three Gifts",
@@ -110,7 +110,7 @@ I = [
                 ("assets/characters/lilly_with_dynamo.png",
                  "Lilly with the Pocket Dynamo.")], 2.05),
 
-    ("h1", "Gifts of Faelan (Havenmoor, Session 4)", {"hardbreak": True}),
+    ("h1", "Gifts of Faelan (Havenmoor, Session 4)"),
     ("h2", "Frostbite Shard Dagger (Lilly)"),
     ("stat", "Frostbite Shard Dagger", [
         "Rare, attunement by an Artificer. Crystalline ice that never melts. 1d4 piercing + 1d4 cold, +1 to attack.",
@@ -136,7 +136,7 @@ I = [
                 ("assets/items/candyfang_katana.png",
                  "The Candyfang Katana.")], 2.05),
 
-    ("h1", "Boons, Baubles & Blessings", {"hardbreak": True}),
+    ("h1", "Boons, Baubles & Blessings"),
     ("imgfloat", "assets/items/carol_rune_tablet.png", 2.0),
     ("body", "**Elaria's boons (the Whispering Glade, Session 2):** Ursa, Planar Awareness (sense "
              "planar disturbances, 24 hours); Lilly, the Sphere's Planar Attunement; Stabby, Glimpse "
@@ -168,7 +168,7 @@ C = [
              "override the books. The heroes themselves, every number, slot, and spell, now live "
              "in Part IV: The Guardians' Character Sheets."),
 
-    ("h1", "House Rules & Standing Rulings", {"pagebreak": True}),
+    ("h1", "House Rules & Standing Rulings"),
     ("body", "1. Ursa's Starseed +1d4 applies only to actual druid spells, never the Starry Form "
              "Archer's luminous arrow."),
     ("body", "2. Patient Defense grants a free Disengage (add Dodge by spending 1 Focus)."),
