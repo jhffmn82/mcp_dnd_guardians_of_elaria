@@ -522,6 +522,9 @@ C = [
     ]),
 
     ("h2", "Reader of Omens: The Father's Trail (the road east)"),
+    # Ursa's portrait floated into the omens page to fill an otherwise
+    # text-only hero-path page (2026-07-09 whitespace pass).
+    ("imgfloat", "assets/characters/ursa_v3_portrait.png", 2.7),
     ("gold", "*“Your father read the sky the way other folk read a map. On his trail you "
              "learned his art: the omens no longer come at random, and you choose your "
              "moment.”*"),

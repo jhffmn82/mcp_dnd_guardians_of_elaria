@@ -84,6 +84,11 @@ BLOCKS = [
              "reveals its purpose, the stars are found to be going dark one by one, and a gentle "
              "giant is freed. Then the heroes part for a year, and this chronicle pauses, to be "
              "continued."),
+    # A road-so-far send-off plate closes the front matter and bridges into the
+    # Lore primer (2026-07-09 whitespace pass; reuses an approved scene).
+    ("img", "assets/scenes/s6_departure_east.png",
+     "The Guardians take the road on, and the chronicle pauses here, to be continued.",
+     5.5, {"crop": "3:2", "hmax": 3.4}),
 ]
 
 if __name__ == "__main__":
