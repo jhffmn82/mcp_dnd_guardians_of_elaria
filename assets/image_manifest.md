@@ -240,3 +240,5 @@ Embedded images recovered from the original raw session documents (word/media). 
 | `assets/monsters/gift_mimic.png` (DM-approved 2026-07-09; bestiary winter-court Mimic card) | `assets/gen_prompts/gift_mimic.txt` | none (pure generation) |
 | `assets/npcs/bren_rowdy_local.png` (DM-approved 2026-07-09; Session 1 bar-brawl card) | `assets/gen_prompts/bren_rowdy_local.txt` | none (pure generation) |
 | `assets/npcs/tavern_regular.png` (DM-approved 2026-07-09; Session 1 bar-brawl card) | `assets/gen_prompts/tavern_regular.txt` | none (pure generation) |
+| `assets/world/bestiary_opener.png` (DM-approved 2026-07-09; Compendium Part I: The Bestiary divider plate) | `assets/gen_prompts/bestiary_opener.txt` | none (pure generation; creature menagerie in a stone-circle grove) |
+| `assets/scenes/s7_one_year_later.png` (DM-approved 2026-07-09; Session 7 "One Year Later" epilogue plate) | `assets/gen_prompts/s7_one_year_later.txt` | none (pure generation; half-built Rift portal ring at dawn) |

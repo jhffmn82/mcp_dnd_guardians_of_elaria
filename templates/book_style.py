@@ -267,8 +267,9 @@ def build_doc(blocks, out_path):
     st_normal.font.size = BODY_SIZE
     st_normal.font.color.rgb = RGBColor.from_string(INK)
 
-    for blk in blocks:
+    for _bi, blk in enumerate(blocks):
         kind = blk[0]
+        _next_kind = blocks[_bi + 1][0] if _bi + 1 < len(blocks) else None
 
         if kind == "titlepage":
             # (titlepage, kicker, title, subtitle, note)

@@ -28,7 +28,10 @@ def part(number, title, blocks, opener=None):
     # opener: a landscape section-plate placed right under the part heading.
     head = [("h1", f"Part {number}: {title}", {"hardbreak": True})]
     if opener:
-        head.append(("img", opener, None, 6.2, {"crop": "3:2", "hmax": 4.2}))
+        # Sized so the part opener plate plus the part's intro text share the
+        # divider page without pushing the first entry's teaser onto a near
+        # blank page (2026-07-09 whitespace pass).
+        head.append(("img", opener, None, 5.7, {"crop": "3:2", "hmax": 3.4}))
     return head + list(blocks[1:])
 
 
@@ -47,7 +50,7 @@ FULL = (
                  "of this table; and the heroes' own character sheets, ready for the "
                  "table. Four parts, one book, growing with the chronicle."),
     ]
-    + part("I", "The Bestiary", BESTIARY)
+    + part("I", "The Bestiary", BESTIARY, opener="assets/world/bestiary_opener.png")
     + part("II", "Treasures & Relics", TREASURES, opener="assets/world/treasures_opener.png")
     + part("III", "Custom Content", CUSTOM, opener="assets/world/paths_opener.png")
     + part("IV", "The Guardians' Character Sheets", SHEETS)
