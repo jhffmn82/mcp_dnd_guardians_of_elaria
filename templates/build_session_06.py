@@ -728,6 +728,7 @@ BLOCKS = [
         {
             "name": "Swarm of Rats",
             "sub": "Medium swarm of Tiny beasts, unaligned ✦ CR 1/4 (50 XP) ✦ 2 in the cellar",
+            "img": "assets/scenes/s6_cellar_rats.png", "img_w": 2.4,
             "stats": [
                 "**AC** 10  **HP** 24 (7d8 - 7)  **Speed** 30 ft",
                 "**STR** 9  **DEX** 11  **CON** 9  **INT** 2  **WIS** 10  **CHA** 3",
