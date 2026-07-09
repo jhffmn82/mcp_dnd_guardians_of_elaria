@@ -310,7 +310,7 @@ BLOCKS = [
              "the right pips at exactly the right moment. Davy's grin gets thinner. His discards "
              "get angrier."),
     ("img", f"{A}/scenes/s5_dice_game.png",
-     "Three rounds of Seven-Eyes at the scarred oak table.", 5.8,
+     "Three rounds of Seven-Eyes at the scarred oak table.", 6.5,
      {"crop": "3:2", "hmax": 4.6}),
     ("gold", "The third round comes down to the last toss of the last die. Davy Jones sits at "
              "seventy six, one smug point from feasting. The heroes' running totals hang just "

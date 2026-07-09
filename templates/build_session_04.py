@@ -1198,6 +1198,14 @@ BLOCKS = [
                 "either way), it leaves behind a wrapped gift box: roll on the "
                 "Gift Box Table."),
 
+    # Fills the travel-section closer page before the boss appendix begins.
+    ("lore", "The Bells of the Coast",
+     "When the safeguards were scattered, eight fell along the southern coast as bells, each "
+     "holding one clear note of the song Elaria sang while she worked. Havenmoor built its "
+     "festival around them centuries before anyone remembered why the bells mattered. The town "
+     "rang them every winter anyway, and on the longest night, the old tellings say, a true "
+     "bell rung with a whole heart still keeps the dark a step further from the door."),
+
     ("fight_header", "BOSS: The Longest Night",
      "Havenmoor market square ✦ Difficulty: Boss ✦ Krampusshade + 4× shadow imp (2 more, round 2)"),
     ("enemy_cards", [{

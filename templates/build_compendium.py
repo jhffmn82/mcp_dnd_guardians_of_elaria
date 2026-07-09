@@ -705,10 +705,7 @@ C = [
     # depicts, the row sits safely and the closing text seals the page foot.
     # (2.4in: at 2.7in the closing paragraph's last line still spilled and
     # stranded a near-blank page before the Part IV opener.)
-    ("imgrow", [("assets/characters/ursa_with_amulet.png",
-                 "The seven-point star of Elaria, held close."),
-                ("assets/world/elaria_goddess.png",
-                 "Elaria, the sleeping goddess who lit the way.")], 2.4),
+    ("imgfloat", "assets/characters/ursa_with_amulet.png", 3.0),
     ("body", "**The seven-point star.** Elaria's sigil, wrapped in a leafed vine (or cupped in "
              "wings, on the Sash), found on every gift along the Guardians' path. When you see it, "
              "she saw you coming."),
@@ -718,6 +715,10 @@ C = [
      "left but her name and her sign, the seven-pointed star wrapped in a leafed vine. She "
      "scattered what remained into small safeguards and lay down to sleep, trusting the kind "
      "to find them. So far, the old tellings say, her trust has held."),
+    # Part III closes on a full-width showpiece of the Warden herself; Part IV
+    # opens on its own hardbreak, so this plate fills the section-end page.
+    ("img", "assets/world/elaria_goddess.png",
+     "Elaria, the sleeping goddess who lit the way.", 6.5, {"crop": "3:2", "hmax": 4.6}),
 ]
 
 if __name__ == "__main__":

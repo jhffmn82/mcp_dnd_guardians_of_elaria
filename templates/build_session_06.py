@@ -281,14 +281,15 @@ BLOCKS = [
              "creased and dirt-stained but legible, made out in tidy ink. *To HARLAN WICKE, 3 "
              "Lantern Lane.* Nobody in Wraithpine remembers any Harlan. Stabby pockets the "
              "slip."),
+    # The rite of the forgotten name, as a generous landscape plate placed
+    # ABOVE the DM-check note so it fills this page foot instead of being pushed
+    # to a near-empty page (2026-07-09 whitespace pass).
+    ("img", f"{A}/scenes/s6_graveyard_rite.png",
+     "Lilly lights the blue lantern and begins the rite of the forgotten name.", 6.5,
+     {"crop": "3:2", "hmax": 4.6}),
     ("dm", "[DM CHECK: the original document never records whose grave this is or what name "
            "the heroes restored. The stage-mask maker's mark points to a performer the "
            "creature took long ago. Any remembered name, laid with care, satisfies the rite.]"),
-    # The rite of the forgotten name, as a generous landscape plate between
-    # the discovery of the slip and the rite itself.
-    ("img", f"{A}/scenes/s6_graveyard_rite.png",
-     "Lilly lights the blue lantern and begins the rite of the forgotten name.", 6.0,
-     {"crop": "3:2", "hmax": 4.6}),
     ("gold", "Then they do the older, kinder work. "
              "Charcoal rubbed across the blank line raises the ghosts of letters, like footprints "
              "in frost. The name is written back where it belongs. The post bell's clapper is "
