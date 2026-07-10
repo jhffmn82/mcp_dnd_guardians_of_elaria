@@ -10,7 +10,7 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RD = os.path.join(ROOT, "art_review")
 
-def data_uri(path, maxpx=900, q=80):
+def data_uri(path, maxpx=1600, q=90):
     im = Image.open(path).convert("RGB")
     im.thumbnail((maxpx, maxpx))
     buf = io.BytesIO(); im.save(buf, format="JPEG", quality=q)
@@ -39,13 +39,13 @@ def build():
     n_pend = len(pend)
     head = f'''{n_pend} image{'s' if n_pend != 1 else ''} awaiting your approval''' if n_pend else "All caught up. Nothing pending."
     doc = f'''<style>
-  .wrap {{ max-width: 1000px; margin: 0 auto; padding: 2rem 1rem 3rem; font-family: Georgia, 'Iowan Old Style', serif; color: #2a2118; }}
+  .wrap {{ max-width: 1500px; margin: 0 auto; padding: 2rem 1rem 3rem; font-family: Georgia, 'Iowan Old Style', serif; color: #2a2118; }}
   .wrap * {{ box-sizing: border-box; }}
   .masthead {{ text-align: center; border-bottom: 2px solid #b8860b; padding-bottom: 1rem; margin-bottom: 1.75rem; }}
   .kicker {{ font-size: .72rem; letter-spacing: .28em; text-transform: uppercase; color: #8a6d1f; margin: 0; }}
   .masthead h1 {{ font-size: 1.9rem; font-weight: 600; color: #7a4a12; margin: .25rem 0 .35rem; }}
   .tally {{ font-size: .95rem; color: #6b5d45; font-style: italic; margin: 0; }}
-  .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }}
+  .grid {{ display: grid; grid-template-columns: 1fr; gap: 2rem; }}
   .card {{ margin: 0; background: #fbf6ea; border: 1px solid #e6dcc4; border-radius: 12px; overflow: hidden; }}
   .card.pending {{ border-color: #b8860b; box-shadow: 0 0 0 2px rgba(184,134,11,.18); }}
   .card img {{ display: block; width: 100%; height: auto; }}
