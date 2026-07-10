@@ -10,7 +10,7 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RD = os.path.join(ROOT, "art_review")
 
-def data_uri(path, maxpx=1600, q=90):
+def data_uri(path, maxpx=2000, q=90):
     im = Image.open(path).convert("RGB")
     im.thumbnail((maxpx, maxpx))
     buf = io.BytesIO(); im.save(buf, format="JPEG", quality=q)

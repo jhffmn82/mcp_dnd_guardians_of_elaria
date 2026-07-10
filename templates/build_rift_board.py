@@ -7,19 +7,18 @@
 # generator SELF-CHECKS (no overlapping spaces, space-to-seam clearance, no
 # location bumping the title) and refuses to render if a check fails.
 #
+# Resolution: all geometry is computed in a base 1536x1024 space, then drawn on
+# a canvas scaled by cfg["scale"] (default 3 -> 4608x3072, ~270 dpi across two
+# Letter sheets) so the path/circles/text stay crisp. The painterly backdrop is
+# Lanczos-upscaled to match; its fine detail is still limited by the source art,
+# so for the final print regenerate the backdrop at higher resolution first.
+#
 # Reskin for the Water/Fire/Air boards by copying the UNDERROOT config: swap the
 # backdrop, the four location medallions (position + which region of the art to
 # crop for each), and the winding waypoints. Everything else is shared.
 #
-# Standards (locked with the Session 8 Underroot board, DM-approved 2026-07-10):
-#   thick token-path (~92px); token-sized round spaces (r~31); cut-out location
-#   circles ON TOP of the path (r~112, ~126 for the boss); muted jewel palette
-#   (slate Move, garnet Encounter, moss Boon, ochre Hazard, amethyst Wild);
-#   ~half the spaces are events; roughly even spacing with a clean gap on the
-#   cut; labels auto-placed on an open side; legend top-right; no essence bar.
-#
 # Build:  python templates/build_rift_board.py  ->  assets/session_08/underroot_board.png
-import os, sys, math
+import os, math
 from PIL import Image, ImageDraw, ImageFont, ImageEnhance
 
 PALETTE = {  # muted jewel/earth tones, not primaries
@@ -34,7 +33,7 @@ FONTS = ("C:/Windows/Fonts/arialbd.ttf", "C:/Windows/Fonts/arial.ttf")
 
 def _font(sz, bold=True):
     try:
-        return ImageFont.truetype(FONTS[0] if bold else FONTS[1], sz)
+        return ImageFont.truetype(FONTS[0] if bold else FONTS[1], int(sz))
     except Exception:
         return ImageFont.load_default()
 
@@ -59,19 +58,17 @@ def build_board(cfg):
     SEAM = W // 2
     SR, LR, BR = cfg["space_r"], cfg["loc_r"], cfg["boss_r"]
     RIB, STEP = cfg["ribbon_w"], cfg["step"]
-    GAP, HG, MIN = SR + 10, SR + 14, 2 * SR + 4   # medallion gap, seam half-gap, min space spacing
+    GAP, HG, MIN = SR + 10, SR + 14, 2 * SR + 4
     slots = cfg["slots"]
     TITLE = (34, 30, 500, 120)
 
-    board = ImageEnhance.Brightness(plate).enhance(cfg.get("dim", 0.56))
-    ov = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(ov)
-
-    # location circles/badges must not bump the title
+    # --- title clearance check (base coords) ---
     for s in slots:
         cx, cy = s["pos"]; r = s["r"]
         if cx - r < TITLE[2] and cy - r - 22 < TITLE[3] and cx + r > TITLE[0] and cy + r > TITLE[1]:
             raise SystemExit(f"location '{s['label']}' overlaps the title box; move it")
 
+    # --- geometry in base space ---
     spine = _catmull(cfg["waypoints"])
     cum = [0.0]
     for a, b in zip(spine, spine[1:]):
@@ -96,7 +93,7 @@ def build_board(cfg):
                for j in range(len(slots))}
     order = sorted(range(len(slots)), key=lambda j: slotpos[j])
 
-    def subsplit(u, v):  # remove a clean zone around every seam crossing
+    def subsplit(u, v):
         segs = [(u, v)]
         for C in crossings:
             fa, fb = C - HG, C + HG; ns = []
@@ -112,7 +109,7 @@ def build_board(cfg):
     dots = []
     for a, b in zip(order, order[1:]):
         A0 = slotpos[a] + slots[a]["r"] + GAP
-        B1 = slotpos[b] - slots[b]["r"] + (-GAP)
+        B1 = slotpos[b] - slots[b]["r"] - GAP
         if B1 <= A0:
             continue
         for u, v in subsplit(A0, B1):
@@ -125,7 +122,6 @@ def build_board(cfg):
             for i in range(K + 1):
                 dots.append(pt_at(u + L * i / K))
 
-    # --- self-checks ---
     md = min(abs(x - SEAM) for x, y in dots)
     mind = min(math.hypot(dots[i][0] - dots[j][0], dots[i][1] - dots[j][1])
                for i in range(len(dots)) for j in range(i + 1, len(dots)))
@@ -134,7 +130,7 @@ def build_board(cfg):
     if mind < 2 * SR:
         raise SystemExit(f"two spaces overlap ({mind:.0f}px apart); loosen spacing")
 
-    # --- space types: ~half events, mixed; a red just left of the cut; two wilds ---
+    # --- space types: ~half events; a red just left of the cut; two wilds ---
     ecyc = ["enc", "boon", "haz", "enc", "boon", "enc", "haz", "enc", "boon", "haz", "enc", "boon"]
     dtypes = [(ecyc[(i // 2) % len(ecyc)] if i % 2 == 1 else "trav") for i in range(len(dots))]
     left_cut = [(abs(x - SEAM), idx) for idx, (x, y) in enumerate(dots) if x < SEAM and 150 < y < 430]
@@ -146,24 +142,14 @@ def build_board(cfg):
         tgt = int(len(dots) * frac); best = min(travs, key=lambda i: abs(i - tgt))
         dtypes[best] = "wild"; travs.remove(best)
 
-    # --- draw: ribbon, seam, spaces, medallions, title, legend ---
-    for (x1, y1), (x2, y2) in zip(spine, spine[1:]):
-        d.line([x1, y1, x2, y2], fill=(236, 228, 203, 186), width=RIB)
-    for x, y in spine[::4]:
-        d.ellipse([x - RIB // 2, y - RIB // 2, x + RIB // 2, y + RIB // 2], fill=(236, 228, 203, 186))
-    for yy in range(120, H - 40, 26):
-        d.line([SEAM, yy, SEAM, yy + 13], fill=(255, 255, 255, 80), width=2)
-    for (x, y), t in zip(dots, dtypes):
-        d.ellipse([x - SR + 2, y - SR + 3, x + SR + 2, y + SR + 3], fill=(0, 0, 0, 90))
-        d.ellipse([x - SR, y - SR, x + SR, y + SR], fill=PALETTE[t], outline=(244, 238, 224, 245), width=4)
-        if t == "wild":
-            d.text((x - 6, y - 20), "!", font=_font(33), fill=(248, 244, 235, 255))
-
+    # --- label placement (base coords, collision-checked) ---
     LEG = (1284, 30, W - 28, 206); placed = []
     def _bc(bx, by, bx2, by2, cx, cy, rr):
         nx = max(bx, min(cx, bx2)); ny = max(by, min(cy, by2)); return (nx - cx) ** 2 + (ny - cy) ** 2 < rr * rr
     def _bb(a, b):
         return not (a[2] < b[0] or b[2] < a[0] or a[3] < b[1] or b[3] < a[1])
+    mdraw = ImageDraw.Draw(Image.new("RGBA", (W, H)))
+    labelbox = {}
     def place(cx, cy, r, tw, ph=34):
         for bx, by in [(cx - tw / 2 - 12, cy + r + 12), (cx - tw / 2 - 12, cy - r - 46),
                        (cx - r - 16 - (tw + 24), cy - ph / 2), (cx + r + 16, cy - ph / 2)]:
@@ -176,38 +162,61 @@ def build_board(cfg):
             if any(_bb(box, pb) for pb in placed): continue
             placed.append(box); return box
         bx, by = cx - tw / 2 - 12, cy - r - 46; box = (bx, by, bx + tw + 24, by + ph); placed.append(box); return box
+    for j in order:
+        s = slots[j]
+        tw = mdraw.textlength(s["label"], font=_font(23))
+        labelbox[j] = place(s["pos"][0], s["pos"][1], s["r"], tw)
+
+    # ===================== HIGH-RES DRAW =====================
+    S = cfg.get("scale", 3)
+    def q(v): return v * S
+    HW, HH = W * S, H * S
+    board = ImageEnhance.Brightness(plate.resize((HW, HH), Image.LANCZOS)).enhance(cfg.get("dim", 0.56))
+    ov = Image.new("RGBA", (HW, HH), (0, 0, 0, 0)); d = ImageDraw.Draw(ov)
+
+    for (x1, y1), (x2, y2) in zip(spine, spine[1:]):
+        d.line([q(x1), q(y1), q(x2), q(y2)], fill=(236, 228, 203, 186), width=int(RIB * S))
+    for x, y in spine[::4]:
+        d.ellipse([q(x) - RIB * S / 2, q(y) - RIB * S / 2, q(x) + RIB * S / 2, q(y) + RIB * S / 2], fill=(236, 228, 203, 186))
+    for yy in range(120, H - 40, 26):
+        d.line([q(SEAM), q(yy), q(SEAM), q(yy + 13)], fill=(255, 255, 255, 80), width=int(2 * S))
+    for (x, y), t in zip(dots, dtypes):
+        cx, cy, rr = q(x), q(y), SR * S
+        d.ellipse([cx - rr + 2 * S, cy - rr + 3 * S, cx + rr + 2 * S, cy + rr + 3 * S], fill=(0, 0, 0, 90))
+        d.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], fill=PALETTE[t], outline=(244, 238, 224, 245), width=int(4 * S))
+        if t == "wild":
+            f = _font(33 * S); w = d.textlength("!", font=f); d.text((cx - w / 2, cy - 20 * S), "!", font=f, fill=(248, 244, 235, 255))
 
     for j in order:
-        s = slots[j]; cx, cy = s["pos"]; r = s["r"]; ring = s["ring"] + (255,)
+        s = slots[j]; cx, cy = s["pos"]; r = s["r"]; ring = tuple(s["ring"]) + (255,)
         sr = int(r * 1.25); sx, sy = s["src"]
-        d.ellipse([cx - r - 3, cy - r + 5, cx + r + 6, cy + r + 10], fill=(0, 0, 0, 75))  # drop shadow
-        reg = plate.crop((max(0, sx - sr), max(0, sy - sr), min(W, sx + sr), min(H, sy + sr))).resize((2 * r, 2 * r))
-        m = Image.new("L", (2 * r, 2 * r), 0); ImageDraw.Draw(m).ellipse([0, 0, 2 * r, 2 * r], fill=255)
-        board.paste(reg, (cx - r, cy - r), m)
-        d.ellipse([cx - r - 3, cy - r - 3, cx + r + 3, cy + r + 3], outline=(12, 10, 16, 255), width=3)
-        d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=ring, width=12)
+        d.ellipse([q(cx) - r * S - 3 * S, q(cy) - r * S + 5 * S, q(cx) + r * S + 6 * S, q(cy) + r * S + 10 * S], fill=(0, 0, 0, 75))
+        reg = plate.crop((max(0, sx - sr), max(0, sy - sr), min(W, sx + sr), min(H, sy + sr))).resize((int(2 * r * S), int(2 * r * S)), Image.LANCZOS)
+        m = Image.new("L", reg.size, 0); ImageDraw.Draw(m).ellipse([0, 0, reg.size[0], reg.size[1]], fill=255)
+        board.paste(reg, (int(q(cx) - r * S), int(q(cy) - r * S)), m)
+        d.ellipse([q(cx) - r * S - 3 * S, q(cy) - r * S - 3 * S, q(cx) + r * S + 3 * S, q(cy) + r * S + 3 * S], outline=(12, 10, 16, 255), width=int(3 * S))
+        d.ellipse([q(cx) - r * S, q(cy) - r * S, q(cx) + r * S, q(cy) + r * S], outline=ring, width=int(12 * S))
         if s["num"]:
-            d.ellipse([cx - 21, cy - r - 21, cx + 21, cy - r + 21], fill=ring, outline=(255, 255, 255, 255), width=3)
-            w = d.textlength(s["num"], font=_font(26)); d.text((cx - w / 2, cy - r - 17), s["num"], font=_font(26), fill=(20, 16, 10, 255))
-        f = _font(23); tw = d.textlength(s["label"], font=f)
-        bx, by, bx2, by2 = place(cx, cy, r, tw)
-        d.rounded_rectangle([bx, by, bx2, by2], radius=9, fill=(16, 14, 22, 220))
-        d.text((bx + 12, by + 6), s["label"], font=f, fill=(246, 240, 230, 255))
+            bx, by = q(cx), q(cy) - r * S
+            d.ellipse([bx - 21 * S, by - 21 * S, bx + 21 * S, by + 21 * S], fill=ring, outline=(255, 255, 255, 255), width=int(3 * S))
+            fn = _font(26 * S); w = d.textlength(s["num"], font=fn); d.text((bx - w / 2, by - 17 * S), s["num"], font=fn, fill=(20, 16, 10, 255))
+        bx, by, bx2, by2 = labelbox[j]; f = _font(23 * S)
+        d.rounded_rectangle([q(bx), q(by), q(bx2), q(by2)], radius=int(9 * S), fill=(16, 14, 22, 220))
+        d.text((q(bx) + 12 * S, q(by) + 6 * S), s["label"], font=f, fill=(246, 240, 230, 255))
 
-    d.rounded_rectangle([34, 30, 500, 120], radius=12, fill=(16, 14, 22, 210))
-    d.text((52, 42), cfg["title"], font=_font(40), fill=(246, 240, 230, 255))
-    d.text((54, 92), cfg["subtitle"], font=_font(18, False), fill=(212, 206, 226, 255))
+    d.rounded_rectangle([q(34), q(30), q(500), q(120)], radius=int(12 * S), fill=(16, 14, 22, 210))
+    d.text((q(52), q(42)), cfg["title"], font=_font(40 * S), fill=(246, 240, 230, 255))
+    d.text((q(54), q(92)), cfg["subtitle"], font=_font(18 * S, False), fill=(212, 206, 226, 255))
     lx, ly = 1300, 44
+    d.rounded_rectangle([q(lx - 16), q(ly - 14), q(W - 28), q(ly + 14 + 5 * 32)], radius=int(12 * S), fill=(16, 14, 22, 215))
     for i, (k, name) in enumerate([("trav", "Move"), ("enc", "Encounter"), ("boon", "Boon"), ("haz", "Hazard"), ("wild", "Wild")]):
-        if i == 0:
-            d.rounded_rectangle([lx - 16, ly - 14, W - 28, ly + 14 + 5 * 32], radius=12, fill=(16, 14, 22, 215))
         yy = ly + i * 32
-        d.ellipse([lx, yy, lx + 24, yy + 24], fill=PALETTE[k], outline=(244, 238, 224, 235), width=2)
-        d.text((lx + 34, yy + 2), name, font=_font(19, False), fill=(242, 238, 230, 255))
+        d.ellipse([q(lx), q(yy), q(lx + 24), q(yy + 24)], fill=PALETTE[k], outline=(244, 238, 224, 235), width=int(2 * S))
+        d.text((q(lx + 34), q(yy + 2)), name, font=_font(19 * S, False), fill=(242, 238, 230, 255))
 
     os.makedirs(os.path.dirname(cfg["out"]), exist_ok=True)
     Image.alpha_composite(board, ov).convert("RGB").save(cfg["out"], "PNG")
-    print(f"built {cfg['out']} | {len(dots)} spaces, seam clearance {md - SR:.0f}px, min spacing {mind:.0f}px")
+    print(f"built {cfg['out']} at {HW}x{HH} | {len(dots)} spaces, seam clearance {md - SR:.0f}px, min spacing {mind:.0f}px")
 
 
 # --- Session 8: The Underroot (Earth rift). Copy and edit this for other planes. ---
@@ -216,6 +225,7 @@ UNDERROOT = {
     "out": "assets/session_08/underroot_board.png",
     "title": "The Underroot",
     "subtitle": "Earth Rift  .  Session 8  .  reach Groudon",
+    "scale": 3,
     "space_r": 31, "loc_r": 112, "boss_r": 126, "ribbon_w": 92, "step": 68, "dim": 0.56,
     "wild_fracs": (0.30, 0.72),
     "waypoints": [
