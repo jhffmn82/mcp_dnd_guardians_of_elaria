@@ -40,7 +40,7 @@ All three relics came from a single Wraithpine chest as Elaria's gift (one chest
 - **Recency wins.** The project evolved over time and fixes were never back-populated, so the newest documents (Session_8_Gearhaven_v2, Campaign_Handoff_v2) are the most accurate. When older and newer docs conflict, the newer one is canon.
 - **Fix clear inconsistencies without asking** (spelling drift, name drift, stale titles, rules drift): apply the recency rule and correct silently. Reserve CONTRADICTIONS.md and [DM CHECK] flags for genuinely ambiguous questions about what actually happened at the table.
 - Session 7 (`sessions/session_07_gearhaven.docx`, the Gearhaven doc, formerly branded Session 8) is the gold-standard format. All session revisions target that structure.
-- Content is for kids: adventurous tone, real stakes, never gruesome.
+- Content is for kids: adventurous tone, real stakes, never gruesome. This governs CONTENT and TONE, not reading level: write the PROSE at a young-adult level (rich vocabulary, real sentence complexity, genuine emotional depth). The youngest player already reads chapter books; keep the content kid-safe but never simplify the language.
 - No em dashes in any generated document; use commas, colons, semicolons, or parentheses.
 - Destructive operations: never delete files. Move unclear or superseded files to `_triage/`. Use `git mv` for renames so history is preserved.
 - Commit at the end of every work phase with a descriptive message, and push.
