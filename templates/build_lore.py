@@ -235,7 +235,7 @@ BLOCKS = [
     # Fresh page: beside the Old Theater float the heading orphans at the
     # foot of the Wraithpine page otherwise.
     ("h2", "Gearhaven, the Clockwork City", {"hardbreak": True}),
-    ("img", f"{A}/session_08/beat_1/team_arrives_at_gearhaven.png",
+    ("img", f"{A}/session_07/beat_1/team_arrives_at_gearhaven.png",
      "The eastern gate of Gearhaven, where every arriving traveler is wished steady gears.",
      6.0, {"crop": "3:2", "hmax": 4.6}),
     ("body", "The great city of inventors and the party's home base: brass towers, steam vents, "

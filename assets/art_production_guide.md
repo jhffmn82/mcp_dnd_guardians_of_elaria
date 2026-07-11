@@ -45,7 +45,7 @@ Significant recurring characters (NPCs, villains, the goddess) have canonical re
 | Character art: lilly/stabby/ursa 2,4,5-series, with-staff, with-sash, holding-sphere, ghostbloom.png | S4-S6 |
 | Scene art: ursa_vs_rats, stabby_vs_strawlings, lilly_vs_zombies, ghostbloom_vs_hydra_head, lilly_opening_chest | S6 |
 | Stabby breathing styles (red/water/shadow), boomstick, awakened sphere, eldritch cannon | Compendium/paths |
-| Session 7 (Gearhaven): 41 beat images (in `assets/session_08/`; folder name kept) | S7 |
+| Session 7 (Gearhaven): 41 beat images (in `assets/session_07/`) | S7 |
 
 ---
 

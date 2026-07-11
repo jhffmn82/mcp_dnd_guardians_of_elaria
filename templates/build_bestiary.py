@@ -1283,7 +1283,7 @@ B = [
         {
             "name": "Rogue Servitor",
             "sub": "Small construct, unaligned ✦ CR 2 ✦ freed, not killed",
-            "img": "assets/session_08/beat_2/rogue_servitor.png",
+            "img": "assets/session_07/beat_2/rogue_servitor.png",
             "stats": [
                 "**AC** 15  **HP** 39 (6d6 + 18)  **Speed** 30 ft.",
                 "**STR** 13  **DEX** 16  **CON** 16  **INT** 3  **WIS** 8  **CHA** 5",
@@ -1308,7 +1308,7 @@ B = [
         {
             "name": "Cargo Hauler",
             "sub": "Large construct, unaligned ✦ CR 3 ✦ the dockside lifter",
-            "img": "assets/session_08/beat_2/cargo_hauler.png",
+            "img": "assets/session_07/beat_2/cargo_hauler.png",
             "stats": [
                 "**AC** 16  **HP** 76 (8d10 + 32)  **Speed** 30 ft.",
                 "**STR** 19  **DEX** 8  **CON** 18  **INT** 3  **WIS** 8  **CHA** 5",
@@ -1338,7 +1338,7 @@ B = [
         {
             "name": "Voltcrawler",
             "sub": "Small aberration (planar intruder), unaligned ✦ the swarm",
-            "img": "assets/session_08/beat_4/volt_crawler.png",
+            "img": "assets/session_07/beat_4/volt_crawler.png",
             "stats": [
                 "**AC** 15  **HP** 22 (5d6 + 5)  **Speed** 30 ft., climb 30 ft.",
                 "**STR** 7  **DEX** 17  **CON** 13  **INT** 5  **WIS** 10  **CHA** 6",
@@ -1362,7 +1362,7 @@ B = [
         {
             "name": "Voltcrawler Broodmother",
             "sub": "Medium aberration (planar intruder), unaligned ✦ the nest-queen",
-            "img": "assets/session_08/beat_4/broodmother.png",
+            "img": "assets/session_07/beat_4/broodmother.png",
             "stats": [
                 "**AC** 16  **HP** 95 (10d8 + 50)  **Speed** 40 ft., climb 40 ft.",
                 "**STR** 14  **DEX** 18  **CON** 20  **INT** 6  **WIS** 12  **CHA** 8",
@@ -1393,7 +1393,7 @@ B = [
         {
             "name": "Iron Drudge",
             "sub": "Large construct (planar-corrupted), unaligned ✦ CR 3 ✦ freed, not killed",
-            "img": "assets/session_08/beat_5/iron_drudge.png",
+            "img": "assets/session_07/beat_5/iron_drudge.png",
             "stats": [
                 "**AC** 17  **HP** 68 (8d10 + 24)  **Speed** 25 ft.",
                 "**STR** 19  **DEX** 8  **CON** 17  **INT** 3  **WIS** 8  **CHA** 1",
@@ -1419,7 +1419,7 @@ B = [
         {
             "name": "Corrupted Sproutling",
             "sub": "Small plant (planar-corrupted), unaligned ✦ weak but many",
-            "img": "assets/session_08/beat_5/corrupted_sproutling.png",
+            "img": "assets/session_07/beat_5/corrupted_sproutling.png",
             "stats": [
                 "**AC** 12  **HP** 7 (2d6)  **Speed** 10 ft., climb 10 ft.",
                 "**STR** 8  **DEX** 14  **CON** 10  **INT** 2  **WIS** 6  **CHA** 4",
@@ -1448,7 +1448,7 @@ B = [
         "sub": "Gargantuan construct (planar-possessed), unaligned ✦ the boss of Session 7 ✦ a two-phase fight",
         # Landscape plate (1672x941): 4.5 in. wide renders ~2.5 in. tall, the
         # same visual weight the square boss portraits get at 3.0-3.4.
-        "img": "assets/session_08/beat_5/grand_custodian.png", "img_w": 4.5,
+        "img": "assets/session_07/beat_5/grand_custodian.png", "img_w": 4.5,
         "stats": [
             "**AC** 17 (Body); Legs (x2) AC 15  **HP** 220 (Body); Legs 90 each  **Speed** 30 ft.",
             "**STR** 24  **DEX** 6  **CON** 22  **INT** 3  **WIS** 10  **CHA** 5",

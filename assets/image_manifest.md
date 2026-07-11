@@ -53,48 +53,48 @@ Every image's original filename is preserved here. For DALL-E and ChatGPT images
 | `assets/scenes/stabby_twilight_forest_dalle.webp` | `DALL·E 2024-11-08 17.53.29 - A dynamic anime-style fantasy scene set in a dense, twilight forest. In the center is Stabby Sharpblade, an 8-year-old goblin monk boy with green skin.webp` | DALL-E prompt preserved |
 | `assets/scenes/stabby_vs_strawlings.png` | `staby vs strawlings.png` | filename typo 'staby' fixed |
 | `assets/scenes/ursa_vs_rats.png` | `Ursa vs rats.png` |  |
-| `assets/session_08/beat_1/burls_cart.png` | `burl's cart.png` |  |
-| `assets/session_08/beat_1/city_at_night.png` | `city at night.png` |  |
-| `assets/session_08/beat_1/lamplighter.png` | `lamplighter.png` |  |
-| `assets/session_08/beat_1/sprocket_and_sons.png` | `sprocket and sons.png` |  |
-| `assets/session_08/beat_1/tavern.png` | `tavern.png` |  |
-| `assets/session_08/beat_1/team_arrives_at_gearhaven.png` | `session8 - The team arrives at Gearhaven.png` |  |
-| `assets/session_08/beat_1/through_the_gate.png` | `Through the Gate.png` |  |
-| `assets/session_08/beat_1/wandering_streets.png` | `wandering streets.png` |  |
-| `assets/session_08/beat_2/cargo_hauler.png` | `cargo hauler.png` |  |
-| `assets/session_08/beat_2/market.png` | `Market.png` |  |
-| `assets/session_08/beat_2/rogue_servitor.png` | `rogue servitor.png` |  |
-| `assets/session_08/beat_3/ashs_logbook.png` | `ash's logbook.png` |  |
-| `assets/session_08/beat_3/entry.png` | `Entry.png` |  |
-| `assets/session_08/beat_3/guild_interior.png` | `Guild Interior.png` |  |
-| `assets/session_08/beat_3/orrery_reacts.png` | `orerey reacts.png` |  |
-| `assets/session_08/beat_3/quill.png` | `quill.png` |  |
-| `assets/session_08/beat_3/sphere_reacts_motes.png` | `sphere reacts motes.png` |  |
-| `assets/session_08/beat_3/ursas_revelation.png` | `ursa's revelation.png` |  |
-| `assets/session_08/beat_3/vane.png` | `vane.png` |  |
-| `assets/session_08/beat_3/vanes_folly.png` | `Vane's Folly.png` |  |
-| `assets/session_08/beat_4/broodmother.png` | `broodmother.png` |  |
-| `assets/session_08/beat_4/descent.png` | `descent.png` |  |
-| `assets/session_08/beat_4/lilly_faces_the_rift.png` | `lilly faces the rift.png` |  |
-| `assets/session_08/beat_4/stabby_and_skitch.png` | `stabby and skitch.png` |  |
-| `assets/session_08/beat_4/the_swarm_descends.png` | `the swarm decends.png` |  |
-| `assets/session_08/beat_4/ursa_heals_skitch.png` | `ursa heals skitch.png` |  |
-| `assets/session_08/beat_4/volt_crawler.png` | `VoltCrawler.png` |  |
-| `assets/session_08/beat_5/corrupted_sproutling.png` | `Corrupted Sproutling.png` |  |
-| `assets/session_08/beat_5/garden.png` | `Garden.png` |  |
-| `assets/session_08/beat_5/garden_corrupted.png` | `Garden Corrupted.png` |  |
-| `assets/session_08/beat_5/grand_custodian.png` | `Grand Custodian.png` |  |
-| `assets/session_08/beat_5/iron_drudge.png` | `Iron Drudge.png` |  |
-| `assets/session_08/beat_5/lilly_at_clockwork_fountain.png` | `ChatGPT Image Jun 13, 2026, 11_38_43 AM.png` | identified: Lilly channels energy at the clockwork fountain |
-| `assets/session_08/beat_5/lilly_garden_meeting.png` | `ChatGPT Image Jun 13, 2026, 11_38_36 AM.png` | identified: Lilly meets an elderly artificer in the Custodian's Garden |
-| `assets/session_08/beat_6/aerial_assault.png` | `Aerial Assault.png` |  |
-| `assets/session_08/beat_6/grand_custodian.png` | `grand custodian.png` |  |
-| `assets/session_08/beat_6/grand_custodian_in_the_distance.png` | `Grand custodiant in the distance.png` |  |
-| `assets/session_08/beat_6/torso.png` | `Torso.png` |  |
-| `assets/session_08/beat_6/ursa_approaches_the_core.png` | `ursa approaches the core.png` |  |
-| `assets/session_08/beat_7/pikachu_returns.png` | `pikachu returns.png` |  |
-| `assets/session_08/beat_7/the_party_parts.png` | `the party parts.png` |  |
-| `assets/session_08/beat_7/vane_explains_the_situation.png` | `vane explains the situation.png` |  |
+| `assets/session_07/beat_1/burls_cart.png` | `burl's cart.png` |  |
+| `assets/session_07/beat_1/city_at_night.png` | `city at night.png` |  |
+| `assets/session_07/beat_1/lamplighter.png` | `lamplighter.png` |  |
+| `assets/session_07/beat_1/sprocket_and_sons.png` | `sprocket and sons.png` |  |
+| `assets/session_07/beat_1/tavern.png` | `tavern.png` |  |
+| `assets/session_07/beat_1/team_arrives_at_gearhaven.png` | `session8 - The team arrives at Gearhaven.png` |  |
+| `assets/session_07/beat_1/through_the_gate.png` | `Through the Gate.png` |  |
+| `assets/session_07/beat_1/wandering_streets.png` | `wandering streets.png` |  |
+| `assets/session_07/beat_2/cargo_hauler.png` | `cargo hauler.png` |  |
+| `assets/session_07/beat_2/market.png` | `Market.png` |  |
+| `assets/session_07/beat_2/rogue_servitor.png` | `rogue servitor.png` |  |
+| `assets/session_07/beat_3/ashs_logbook.png` | `ash's logbook.png` |  |
+| `assets/session_07/beat_3/entry.png` | `Entry.png` |  |
+| `assets/session_07/beat_3/guild_interior.png` | `Guild Interior.png` |  |
+| `assets/session_07/beat_3/orrery_reacts.png` | `orerey reacts.png` |  |
+| `assets/session_07/beat_3/quill.png` | `quill.png` |  |
+| `assets/session_07/beat_3/sphere_reacts_motes.png` | `sphere reacts motes.png` |  |
+| `assets/session_07/beat_3/ursas_revelation.png` | `ursa's revelation.png` |  |
+| `assets/session_07/beat_3/vane.png` | `vane.png` |  |
+| `assets/session_07/beat_3/vanes_folly.png` | `Vane's Folly.png` |  |
+| `assets/session_07/beat_4/broodmother.png` | `broodmother.png` |  |
+| `assets/session_07/beat_4/descent.png` | `descent.png` |  |
+| `assets/session_07/beat_4/lilly_faces_the_rift.png` | `lilly faces the rift.png` |  |
+| `assets/session_07/beat_4/stabby_and_skitch.png` | `stabby and skitch.png` |  |
+| `assets/session_07/beat_4/the_swarm_descends.png` | `the swarm decends.png` |  |
+| `assets/session_07/beat_4/ursa_heals_skitch.png` | `ursa heals skitch.png` |  |
+| `assets/session_07/beat_4/volt_crawler.png` | `VoltCrawler.png` |  |
+| `assets/session_07/beat_5/corrupted_sproutling.png` | `Corrupted Sproutling.png` |  |
+| `assets/session_07/beat_5/garden.png` | `Garden.png` |  |
+| `assets/session_07/beat_5/garden_corrupted.png` | `Garden Corrupted.png` |  |
+| `assets/session_07/beat_5/grand_custodian.png` | `Grand Custodian.png` |  |
+| `assets/session_07/beat_5/iron_drudge.png` | `Iron Drudge.png` |  |
+| `assets/session_07/beat_5/lilly_at_clockwork_fountain.png` | `ChatGPT Image Jun 13, 2026, 11_38_43 AM.png` | identified: Lilly channels energy at the clockwork fountain |
+| `assets/session_07/beat_5/lilly_garden_meeting.png` | `ChatGPT Image Jun 13, 2026, 11_38_36 AM.png` | identified: Lilly meets an elderly artificer in the Custodian's Garden |
+| `assets/session_07/beat_6/aerial_assault.png` | `Aerial Assault.png` |  |
+| `assets/session_07/beat_6/grand_custodian.png` | `grand custodian.png` |  |
+| `assets/session_07/beat_6/grand_custodian_in_the_distance.png` | `Grand custodiant in the distance.png` |  |
+| `assets/session_07/beat_6/torso.png` | `Torso.png` |  |
+| `assets/session_07/beat_6/ursa_approaches_the_core.png` | `ursa approaches the core.png` |  |
+| `assets/session_07/beat_7/pikachu_returns.png` | `pikachu returns.png` |  |
+| `assets/session_07/beat_7/the_party_parts.png` | `the party parts.png` |  |
+| `assets/session_07/beat_7/vane_explains_the_situation.png` | `vane explains the situation.png` |  |
 | `assets/world/artifice_academy_symbol.png` | `Artifice Academy Symbol.png` |  |
 | `assets/world/circle_of_the_eternal_stars_symbol.png` | `Circle of the Eternal Stars Symbol.png` |  |
 | `assets/world/elaria_region_map.pdf` | `DALL·E 2024-10-20 21.53.42 - A detailed fantasy map for a DnD campaign, featuring regions with a medieval style design. The map should include five regions_ Eldridge Vale, Oakshad.pdf` | DALL-E prompt preserved as original filename |
