@@ -76,7 +76,7 @@ Here is a full tile-by-tile trace of the Session 8 tutorial run, so the math is 
 | 5 | **L3: Glassed Gallery** | Rescue fight, idol callback | **+20** | **80** |
 | 6 | Encounter | Thornhopper Swarm (standard) | +8 | 88 |
 | 7 | Encounter | Bramblehorn Bull leftovers, calmed | +8 | 96 |
-| 8 | **L4: Heartroot Hollow (BOSS)** | Free Terranox; the lair's cache lands | **+20** | **116** |
+| 8 | **L4: Heartroot Hollow (BOSS)** | Free Groudon; the lair's cache lands | **+20** | **116** |
 
 The party crosses the 100 notch as the boss lair resolves, exactly on cue. Even a leaner run that skipped an encounter or two still banks the guaranteed 80 from the four Locations plus at least one or two scripted encounters, landing in the 96 to 116 band. **The economy cannot soft-lock the catch**, and it cannot be ground past its ceiling either, because the essence sources in Session 8 are all fixed rather than rolled.
 
@@ -98,7 +98,7 @@ The roster is a **shared party resource**, not any one player's pet. This matter
 
 Catching happens through **Lilly's Essence Sphere**, which is canonically a gatherer. When the shared essence counter reaches roughly 100 and the party defeats or frees the rift's boss, the Sphere is charged and a catch is offered:
 
-1. The DM presents the catchable creature. In Session 8 this is a single young stone-shelled creature, **Cindershell** (Section 3.9). From Session 9 on, present a **choose-1-of-3** offer (echoing Aelwyn's original three creatures in Session 3); the party picks one and the others slip back into the rift as it closes.
+1. The DM presents the catchable creature. In Session 8 this is a single young stone-shelled creature, **the stone-shell** (Section 3.9). From Session 9 on, present a **choose-1-of-3** offer (echoing Aelwyn's original three creatures in Session 3); the party picks one and the others slip back into the rift as it closes.
 2. Lilly's player rolls the Sphere's **Gathering check:** a flat d20, DC 10, with **advantage** if the party freed the guardian peacefully rather than only bludgeoning it. This roll is theater more than gate. A kid who has earned a creature across a whole session should not lose it to one bad d20. On a failure the creature wriggles free but stays nearby; the party gets one more roll at advantage, and the catch should essentially always land within two tries, so the session ends on triumph. It is never lost forever.
 3. On success the creature is drawn into the Sphere and added to the roster permanently. Narrate the creature **choosing to come**, not being trapped. These are friends, not prisoners.
 
@@ -115,13 +115,13 @@ To keep the roster fair and to head off sibling arguments before they start, eac
 
 The handler is the player who runs that creature on its turn in combat and who gets first say in welcoming and naming it. Alternating in fixed catch order means the assignment is never up for negotiation, so there is nothing to argue about: the game decided, not a parent. Each caught creature also gets a **physical "active creature" card** (a half-page: AC, HP, speed, one attack, one special move, and a field note). That card is what the handler holds during a fight; it is all a young player needs.
 
-In **Session 8 specifically**, the roster is just Ghostbloom, so she is simply auto-fielded in every fight and there is no selection step yet. The moment the **second** creature (Cindershell) is caught at the end of Session 8, the select step (below) switches on for Session 9.
+In **Session 8 specifically**, the roster is just Ghostbloom, so she is simply auto-fielded in every fight and there is no selection step yet. The moment the **second** creature (the stone-shell) is caught at the end of Session 8, the select step (below) switches on for Session 9.
 
 ### 2.4 Selecting who to field
 
 At the **start of each battle**, before initiative, the party selects **ONE** companion from the roster to field. Only one companion is active at a time. This is the core Pokemon-flavored decision and it belongs to the whole table:
 
-- Look at the enemies (type, resistances, the terrain) and pick the companion whose kit fits best. This is a real, kid-legible choice: "the bug guys are on fire tiles, so maybe not Cindershell, his moss doesn't grow on hot metal."
+- Look at the enemies (type, resistances, the terrain) and pick the companion whose kit fits best. This is a real, kid-legible choice: "the bug guys are on fire tiles, so maybe not the stone-shell, his moss doesn't grow on hot metal."
 - Let the kids debate it for about thirty seconds, then call it. Keep it snappy.
 - The fielded companion is summoned at the start of the first round (no action cost the first time; it appears with the party) and stays until the battle ends, it drops to 0 HP, or the party swaps it.
 
@@ -204,7 +204,7 @@ That is the whole cost of a future catch: a name, a look, a personality, six abi
 
 Seed this expectation from Session 8 and never let it go: **every catch is a future finale hero.** In Session 14 the whole accrued roster manifests at once, and each companion spends its stored essence to reach the sleeping Elaria and restore the downed party. The kids should understand, in their bones, that the little creature they name at the end of the Earth Rift will one day stand in that final circle. Collecting is the point precisely because the collection is what saves everyone at the end.
 
-Cindershell, the first catch, should be the one that plants itself in front of the fallen party one last time and pours out its little glowing garden to shield them, calm and unafraid, because being the brave little bodyguard was the only thing it ever wanted to be, and this time it finally gets it right.
+the stone-shell, the first catch, should be the one that plants itself in front of the fallen party one last time and pours out its little glowing garden to shield them, calm and unafraid, because being the brave little bodyguard was the only thing it ever wanted to be, and this time it finally gets it right.
 
 ---
 
@@ -241,7 +241,7 @@ When the party steps through, they do not fall into a cave. They arrive on a **b
 
 **What it sounds like.** A low, contented humming comes up through the soles of your boots, the sound of stone that is not quite asleep. Beetles the size of ponies click and burr in the ivy. Water drips somewhere, always, into pools that chime because they are full of crystal grit.
 
-**Who lives here.** The **Mycoid** (say "MY-koyd"): gentle mushroom-people, knee-high to waist-high, who tend the glowing groves the way shepherds tend a flock, kindling and hooding their own caps to signal one another across the dark. They are close cousins of the Shroomytes the party already knows, and the kids should feel that echo. Around them live stone-shelled life of every size (pebble-beetles that roll into geodes when startled, reef-crawlers with backs of living crystal, moss-oxen, dinner-plate glimmer-moths) and, beneath it all, **Terranox's kin**, the great stone serpents that garden the deep. One of them has grown into something far larger and older, and it is sick.
+**Who lives here.** The **Mycoid** (say "MY-koyd"): gentle mushroom-people, knee-high to waist-high, who tend the glowing groves the way shepherds tend a flock, kindling and hooding their own caps to signal one another across the dark. They are close cousins of the Shroomytes the party already knows, and the kids should feel that echo. Around them live stone-shelled life of every size (pebble-beetles that roll into geodes when startled, reef-crawlers with backs of living crystal, moss-oxen, dinner-plate glimmer-moths) and, beneath it all, the great stone serpents that garden the deep, cousins to the Terranox the party met on the road to Ravenstone. Deeper and older than any of them, an ancient Earth-guardian sleeps at the world's root, and it is sick.
 
 **Where the sickness shows.** Antares is dimming, so the corruption creeps in a **direction**, and the party watches it thicken as they descend. Near the landing the moss is lush and the Mycoid only nervous. The closer the path winds toward the deep heart, the more the living rock goes wrong: a hard black glass-crust spreads over the moss like a frost that kills what it touches; the warm underlight curdles to bruised violet; crystal reefs crack and weep dark sap. The corruption is not the world. It is a wound in the world, and the kids are walking toward it to close it.
 
@@ -285,11 +285,11 @@ This is also the tutorial tile: teach the roll-move-resolve loop here on gentle 
 
 **Guaranteed essence: +20.**
 
-#### L4: The Heartroot Hollow (the guardian's lair, the boss)
+#### L4: The Heartroot Hollow (the guardian's lair and the boss; labeled "Groudon's Hollow" on the play board)
 
-**Art:** The deep heart of the Underroot, a vast circular chamber where every root, vein of crystal, and river of moss converges like the spokes of a wheel. At the center, coiled around the **Heartroot** (a colossal pillar of living stone that is the world's spine), sleeps **Terranox**, the Earth-guardian: a mountain-huge serpent of living stone, scales like slabs of moss-veined granite, spine a ridge of enormous crystals gone violet-black and cracked. Jagged mote-glass has grown over its eyes and jaws like a muzzle of frozen tar. Overhead, through a natural oculus, the anchor-star **Antares** shows as a dim, guttering red ember, almost out. The chamber pulses with the serpent's pain.
+**Art:** The deep heart of the Underroot, a vast circular chamber where every root, vein of crystal, and river of moss converges like the spokes of a wheel. At the center, coiled around the **Heartroot** (a colossal pillar of living stone that is the world's spine), sleeps **Groudon**, the Earth-guardian: a mountain-huge serpent of living stone, scales like slabs of moss-veined granite, spine a ridge of enormous crystals gone violet-black and cracked. Jagged mote-glass has grown over its eyes and jaws like a muzzle of frozen tar. Overhead, through a natural oculus, the anchor-star **Antares** shows as a dim, guttering red ember, almost out. The chamber pulses with the serpent's pain.
 
-The full boss design is Section 3.8. The lair's guaranteed **+20** essence is the chunk that tips the shared bar to or past 100 (Section 1.3), and it lands as Terranox is freed, so the catch becomes possible in the same breath.
+The full boss design is Section 3.8. The lair's guaranteed **+20** essence is the chunk that tips the shared bar to or past 100 (Section 1.3), and it lands as Groudon is freed, so the catch becomes possible in the same breath.
 
 ### 3.4 The two-sheet gameboard (17 x 11)
 
@@ -355,7 +355,7 @@ The resolved spine is about **seven tiles**: the four Locations plus about three
 | Travel + Encounter, leg to L3 | ~15 min |
 | L3 Glassed Gallery (rescue fight) | ~25 min |
 | Travel + final Encounter, leg to L4 | ~15 min |
-| L4 Heartroot Hollow: the Terranox fight | ~30 to 40 min |
+| L4 Heartroot Hollow: the Groudon fight | ~30 to 40 min |
 | Antares relights + the catch + tag scene | ~15 to 20 min |
 | **Total** | **~3 to 3.5 hours** |
 
@@ -394,13 +394,13 @@ All three creatures are drawn from the Earth bestiary below. They fight **reluct
 
 *The rest of the Earth roster, for Session 9+ reskins and any extra Encounter needed: Pebblchurl (trash, catch-adjacent, +3), Mossback Trundler (trash, +4), Glowmoth Drifter (trash, catch-adjacent, +5), Geckalodon (elite, +16), Bramblehorn Bull (elite, +18, can be calmed to end the fight early: a rehearsal for the boss). Full statblocks live in the campaign bestiary; two entries, Pebblchurl and Glowmoth, can be calmed instead of fought for the first taste of the catch loop.*
 
-### 3.8 The boss: Terranox (legendary-flavored, not a by-the-book legendary)
+### 3.8 The boss: Groudon (legendary-flavored, not a by-the-book legendary)
 
-*Deep under a ceiling of dead-black crystal, the guardian sleeps in agony: a serpent of living stone the length of a village street, scales seamed with moss and ore, eyes two dimming embers the exact fading red of Antares overhead. Corruption has driven black crystal spikes down its spine like nails, and where they bite, the stone goes wrong. It does not roar. It groans, a sound like a mountain trying to say a name. This is Terranox. It is not your enemy. It is a friend in pain, and the black crystal is the thing you have come to break.*
+*Deep under a ceiling of dead-black crystal, the guardian sleeps in agony: a serpent of living stone the length of a village street, scales seamed with moss and ore, eyes two dimming embers the exact fading red of Antares overhead. Corruption has driven black crystal spikes down its spine like nails, and where they bite, the stone goes wrong. It does not roar. It groans, a sound like a mountain trying to say a name. This is Groudon. It is not your enemy. It is a friend in pain, and the black crystal is the thing you have come to break.*
 
 This is the corrupted Earth-guardian, a legendary-**flavored** boss echoing the Large stone serpent the party first glimpsed in Session 2, now grown vast and sick. It is tuned as an effective CR 8 to 9 fight for three level-7 PCs plus one companion (Ghostbloom in Session 8). Crucially, it is **not** a by-the-book legendary monster: no legendary action economy, no lair-action gauntlet, no stacked legendary resistances. It fights like a cornered, grieving animal, and the win condition is **freeing** it, echoing the Grand Custodian in Session 7.
 
-> **DM framing (say this to the table):** "You do not have to destroy Terranox. You have to free it. Every black crystal you shatter is one less nail in a good creature's back. When the last one falls, the guardian wakes up, and the rift begins to close."
+> **DM framing (say this to the table):** "You do not have to destroy Groudon. You have to free it. Every black crystal you shatter is one less nail in a good creature's back. When the last one falls, the guardian wakes up, and the rift begins to close."
 
 **TERRANOX, the Undermountain Warden**, *Huge celestial (corrupted earth-guardian), boss-tier*
 
@@ -416,44 +416,44 @@ This is the corrupted Earth-guardian, a legendary-**flavored** boss echoing the 
 | **Senses** | tremorsense 60 ft., darkvision 120 ft., passive Perception 14 |
 | **Corruption Vulnerability** | the black crystal nodes take double damage from radiant damage and from Ursa's Staff of Waking Constellations. Tell the kids this early. Ursa is the key. |
 
-**The win condition: break the crystals, free the Warden.** Terranox has **four black corruption crystals** (spine, left flank, right flank, brow), each **AC 15, 20 HP,** a separate target. The fight is a race to shatter all four, not to drain the guardian's HP. Terranox's own ~200 HP is a "sadness meter": it never reaches 0 by the party's hand, and the kids should be told that. Bringing the guardian low only makes it groan and slow; the crystals are the objective. When the last crystal breaks, the guardian simply opens clear golden eyes. **No death, no final blow.**
+**The win condition: break the crystals, free the Warden.** Groudon has **four black corruption crystals** (spine, left flank, right flank, brow), each **AC 15, 20 HP,** a separate target. The fight is a race to shatter all four, not to drain the guardian's HP. Groudon's own ~200 HP is a "sadness meter": it never reaches 0 by the party's hand, and the kids should be told that. Bringing the guardian low only makes it groan and slow; the crystals are the objective. When the last crystal breaks, the guardian simply opens clear golden eyes. **No death, no final blow.**
 
 **Balance decisions locked into this fight (from playtest review):**
 
-- **Single-hit damage capped ~20 to 25.** Terranox's attacks knock heroes around, never one-shot them. Crush does 2d10+5 (avg 16, max 25); Boulder Toss does 2d8+5 (avg 14). Scary, never lethal in one blow to a level-7 PC.
-- **One telegraphed big move on a timer.** Terranox **rears** on one turn (visibly, narrate it: "the whole serpent gathers itself and lifts"), and only on its **next** turn does it slam: **Sunder Tunnel**, each creature within 30 ft. makes a DC 15 Dex save for 4d6 bludgeoning (half on success) as the stone heaves. The rear gives the kids a full turn to spread out or take cover. It also opens a new tunnel for cover and can dislodge a crystal (dropping one crystal to 10 HP: the guardian fighting the corruption alongside them).
-- **At most one legendary-resistance-style save,** used once, so Ursa's control still matters. Reserve it for a single dramatic moment (Terranox shrugging off one hold or one banishment attempt) and never again. Ursa's moonbeam, faerie fire, and battlefield control should otherwise land normally; the whole point of the Staff's double-damage rule is that her control is central, not fought against.
-- **Fail-forward on a dropped PC.** A hero who hits 0 is **"knocked breathless,"** not dying: Terranox's own corruption recoils from hurting them (it does not want to), leaving them at 1 HP and prone, or Ghostbloom's Guardian's Light (1d8+3, 3/short rest) tops them up, or the fielded companion can rouse them. Nobody sits out the finale of the first rift. No death saves at this table in Session 8.
+- **Single-hit damage capped ~20 to 25.** Groudon's attacks knock heroes around, never one-shot them. Crush does 2d10+5 (avg 16, max 25); Boulder Toss does 2d8+5 (avg 14). Scary, never lethal in one blow to a level-7 PC.
+- **One telegraphed big move on a timer.** Groudon **rears** on one turn (visibly, narrate it: "the whole serpent gathers itself and lifts"), and only on its **next** turn does it slam: **Sunder Tunnel**, each creature within 30 ft. makes a DC 15 Dex save for 4d6 bludgeoning (half on success) as the stone heaves. The rear gives the kids a full turn to spread out or take cover. It also opens a new tunnel for cover and can dislodge a crystal (dropping one crystal to 10 HP: the guardian fighting the corruption alongside them).
+- **At most one legendary-resistance-style save,** used once, so Ursa's control still matters. Reserve it for a single dramatic moment (Groudon shrugging off one hold or one banishment attempt) and never again. Ursa's moonbeam, faerie fire, and battlefield control should otherwise land normally; the whole point of the Staff's double-damage rule is that her control is central, not fought against.
+- **Fail-forward on a dropped PC.** A hero who hits 0 is **"knocked breathless,"** not dying: Groudon's own corruption recoils from hurting them (it does not want to), leaving them at 1 HP and prone, or Ghostbloom's Guardian's Light (1d8+3, 3/short rest) tops them up, or the fielded companion can rouse them. Nobody sits out the finale of the first rift. No death saves at this table in Session 8.
 
 **Ordinary actions (no legendary action block):**
 - **Multiattack:** one Crush and one Boulder Toss, OR Sunder Tunnel (after rearing) in place of both.
 - **Crush:** Melee, +8, 15 ft. reach. Hit: 2d10+5 bludgeoning; a Medium-or-smaller target is pushed 10 ft. and must succeed on a DC 15 Str save or be knocked prone.
 - **Boulder Toss:** Ranged, +7, 60 ft. Hit: 2d8+5 bludgeoning. On a miss, the boulder shatters into difficult terrain (scree) in a 10-ft. square (terrain, not extra damage).
-- **Bonus Action, Groan of the Deep:** Terranox strains against a crystal from within. Roll d6; on 5-6 a random crystal takes 5 damage. The guardian is helping. Narrate it.
+- **Bonus Action, Groan of the Deep:** Groudon strains against a crystal from within. Roll d6; on 5-6 a random crystal takes 5 damage. The guardian is helping. Narrate it.
 
 **Phases (three, a clean 3 to 4 round shape):**
-- **Phase 1, four crystals:** Terranox lashes out unwillingly, always with the push/prone effects that knock heroes down rather than truly hurt them. Establish the pattern: hit the crystals, ride out the tail.
-- **Phase 2, two crystals remain:** *"The great serpent's groan changes. It is fighting the corruption now, and it is fighting on your side."* Groan of the Deep now triggers on 4-6. Sunder Tunnel now always dislodges a crystal (drops one to 10 HP). Terranox stops targeting whoever last hit a crystal and starts cracking the crystals itself.
+- **Phase 1, four crystals:** Groudon lashes out unwillingly, always with the push/prone effects that knock heroes down rather than truly hurt them. Establish the pattern: hit the crystals, ride out the tail.
+- **Phase 2, two crystals remain:** *"The great serpent's groan changes. It is fighting the corruption now, and it is fighting on your side."* Groan of the Deep now triggers on 4-6. Sunder Tunnel now always dislodges a crystal (drops one to 10 HP). Groudon stops targeting whoever last hit a crystal and starts cracking the crystals itself.
 - **Phase 3, one crystal remains (the last nail):** the final crystal glows and grows to AC 15, 30 HP. Stage this so the whole team breaks the last nail together, and let **Ursa land the finishing hit with the Staff** whenever natural (the double damage makes it easy). If a younger player is itching, let Stabby's speed set it up and Ursa land it.
 
 **Waking the Warden (the win, read aloud):**
 
-> *The black crystal bursts like ice off a spring branch, and for one held breath the whole cavern is silent. Then Terranox lifts its enormous head, and its eyes, which were dying embers, kindle clear and gold. The wrongness drains out of the stone. Moss greens. Ore glints. The guardian looks down at three small heroes who came all this way to pull the nails from its back, and it lowers its great brow to the floor before you, the way a mountain might bow if a mountain could be grateful.*
+> *The black crystal bursts like ice off a spring branch, and for one held breath the whole cavern is silent. Then Groudon lifts its enormous head, and its eyes, which were dying embers, kindle clear and gold. The wrongness drains out of the stone. Moss greens. Ore glints. The guardian looks down at three small heroes who came all this way to pull the nails from its back, and it lowers its great brow to the floor before you, the way a mountain might bow if a mountain could be grateful.*
 
 - **The essence payoff:** the Heartroot Hollow's guaranteed +20 lands here (Section 1.3), tipping the shared counter to or past 100. This is the moment the catch becomes possible. Cue Lilly's Sphere.
 - **The rift closes:** with the guardian freed, the cracks in Terra seal, exactly as they did for the Grand Custodian in Session 7. The living world is safe.
 - **MUST-DO, relighting Antares (Ursa's spotlight):** Ursa raises the Staff of Waking Constellations to the oculus. She does not speak a spell; the Staff draws a line of pale fire from the guardian's golden eyes to the dimming red star, and **Antares relights**, flaring back to a steady, warm coal. The Underroot's underlight surges from bruised violet back to living green. If Ursa is not at the table, the Staff is the party's shared relic and any hero can raise it, but this is Ursa's moment by design.
-- **MUST-DO, the idol beat closes:** at the moment the last crystal breaks, Stabby's idol goes ice-cold in his bag one last time (a callback to the Landing), radiating chill while the corruption recoils, then goes quiet and merely cool as Terranox wakes. No explanation. *"The idol has been ice-cold since you entered this place, Stabby. The moment the guardian wakes, it stops fighting you and rests in your hand, cool as a river stone. It knew something was wrong here. It seems glad it is over, too."*
+- **MUST-DO, the idol beat closes:** at the moment the last crystal breaks, Stabby's idol goes ice-cold in his bag one last time (a callback to the Landing), radiating chill while the corruption recoils, then goes quiet and merely cool as Groudon wakes. No explanation. *"The idol has been ice-cold since you entered this place, Stabby. The moment the guardian wakes, it stops fighting you and rests in your hand, cool as a river stone. It knew something was wrong here. It seems glad it is over, too."*
 
 **Safety valves:** Too easy? Add a fifth crystal, or have a broken crystal reform at 10 HP once in Phase 1. Too hard? Skip Boulder Toss, or let every crystal-hit also chip a neighbor for 5. Runtime flagging? Jump to Phase 3 after the second crystal; the emotional beat is the wake-up, not the grind. Aim for 3 to 4 rounds.
 
-### 3.9 The first catch: Cindershell
+### 3.9 The first catch (a kid-named Ground/Rock tank)
 
 With the guardian freed and the Sphere brimming, the deep keeps its promise from the Landing. In Session 8 this is a **single** creature, not a choose-1-of-3 (the three-way offer begins in Session 9). Deep in the plane, on the tumbled moss-furred boulders, the party had earlier found what looked like one more mossy rock, until it sneezed, rolled over, and looked up with two enormous hopeful eyes. It had been rolling itself downhill after the guardian's tremors knocked its family's nest apart, and it is very brave about being very lost. It decided, wordlessly, that the party is its family now.
 
-> **Anchoring the catch to a specific board moment:** Cindershell is first *seen* as a scripted background creature during the leg between L3 (Glassed Gallery) and L4 (the boss), so the kids meet it before they catch it. The actual **catch resolves in the tag scene**, right after Antares relights and the Sphere fires. It pours out of the Sphere onto the Guild gallery floor at session's end (Section 3.10).
+> **Anchoring the catch to a specific board moment:** The stone-shell is first *seen* as a scripted background creature during the leg between L3 (Glassed Gallery) and L4 (the boss), so the kids meet it before they catch it. The actual **catch resolves in the tag scene**, right after Antares relights and the Sphere fires. It pours out of the Sphere onto the Guild gallery floor at session's end (Section 3.10).
 
-**CINDERSHELL**, *Small elemental (living stone), loyal to the party. Earth / Rock companion.*
+**THE FIRST CATCH** (a realistic-fantasy reskin of a real Ground/Rock Pokemon, finalized by the DM and named by the child at session's end; "Cindershell" was a retired working name), *Small elemental (living stone), loyal to the party. Earth / Rock companion.*
 
 - **Look:** A round, dome-shelled little tortoise-beetle of living gray stone, mossy green fuzz growing along the seams of its back like a tiny garden, with two big amber eyes and stubby stone feet that click when it walks.
 - **Personality:** The party's clumsy, fearless little bodyguard. It plants itself between the heroes and danger every single time, whether or not that is a good idea, and it makes a happy pebbly rumble like a purr when someone is kind to it. The moss on its back has glowing seed-embers that brighten when it is happy and go dark when it is scared, so the kids read its mood by how brightly its little garden glows.
@@ -479,16 +479,16 @@ With the guardian freed and the Sphere brimming, the deep keeps its promise from
 
 **Actions:**
 - **Shell Bash:** Melee, +5, 5 ft. Hit: 2d6+3 bludgeoning (avg 10) (Growth: Bloom 3d6+3, Radiant 4d6+3). If it moved at least 10 ft. straight toward the target first, the target must succeed on a DC 13 Str save or be knocked prone. It gets a running start and just... bonks. It is very proud of this.
-- **SIGNATURE, Curl and Roll!** (Recharge 6; Radiant: Recharge 5-6): Cindershell tucks in and rolls a 15-ft. line. Each creature in the line makes a DC 13 Dex save (DC = 8 + prof + CON). Fail: 2d8+3 bludgeoning (avg 12) and knocked prone. Success: half, not prone (Growth: Bloom 3d8+3, Radiant 4d8+3). It ends at the far end of the line so pleased that one ally it ends within 5 ft. of gains 5 temporary HP. It rolled all that way to come stand next to a friend. That was always the plan.
+- **SIGNATURE, Curl and Roll!** (Recharge 6; Radiant: Recharge 5-6): the stone-shell tucks in and rolls a 15-ft. line. Each creature in the line makes a DC 13 Dex save (DC = 8 + prof + CON). Fail: 2d8+3 bludgeoning (avg 12) and knocked prone. Success: half, not prone (Growth: Bloom 3d8+3, Radiant 4d8+3). It ends at the far end of the line so pleased that one ally it ends within 5 ft. of gains 5 temporary HP. It rolled all that way to come stand next to a friend. That was always the plan.
 
 **Reactions:**
-- **Take the Hit** (recharge after a short or long rest): when an ally it can see within 5 ft. is hit by an attack, Cindershell throws its shell in the way and becomes the target instead (its resistances still apply). It will do this every time it is allowed to; you may have to tell it to stop.
+- **Take the Hit** (recharge after a short or long rest): when an ally it can see within 5 ft. is hit by an attack, the stone-shell throws its shell in the way and becomes the target instead (its resistances still apply). It will do this every time it is allowed to; you may have to tell it to stop.
 
-**Field note:** pick Cindershell when the party expects to get hit hard and wants a wall that heals itself on the ground. Shines on Earth, Water-ice, and outdoor boards; weakest on metal Fire-forge floors (no Mossy Mend) and against thunder-users (its one true fear).
+**Field note:** pick the stone-shell when the party expects to get hit hard and wants a wall that heals itself on the ground. Shines on Earth, Water-ice, and outdoor boards; weakest on metal Fire-forge floors (no Mossy Mend) and against thunder-users (its one true fear).
 
 *Balance check: AC 16 / HP 54 sits right on the Ghostbloom-anchored line (HP 52). Average damage ~10 per Shell Bash, ~12 on a recharged Signature, both under the ~14 Sprout ceiling. One 3rd-level-ish Signature on Recharge 6, one thematic passive (Mossy Mend), one support passive (Little Bodyguard), one clean weakness (thunder). It is a tank/protector, deliberately not a striker, so it complements Ghostbloom's healer role and never competes with the PCs for the big-damage spotlight.*
 
-**Command ownership:** as catch #2, Cindershell's permanent handler is the **7-year-old** (Stabby's player), per the fixed catch-order rule (Section 2.3). A young kid running a big friendly creature that plants itself in front of danger is pure joy. Hand Stabby's player Cindershell's card. From Session 9 on, the party must **select** which of Ghostbloom or Cindershell to field at the start of each battle.
+**Command ownership:** as catch #2, the stone-shell's permanent handler is the **7-year-old** (Stabby's player), per the fixed catch-order rule (Section 2.3). A young kid running a big friendly creature that plants itself in front of danger is pure joy. Hand Stabby's player the stone-shell's card. From Session 9 on, the party must **select** which of Ghostbloom or the stone-shell to field at the start of each battle.
 
 ### 3.10 The tag scene: "What Came Back Through"
 
@@ -498,11 +498,11 @@ Then Ghostbloom goes still, and Elaria's voice speaks through her (the voice the
 
 > *"One star lit. Four still dark. And the one who is putting them out has noticed you now. He was there, at the edge of the stone world. You did not see him. He saw you. He is not troubled. He is pleased. He wanted to know what you could do. There was a mark on the far mountains of that world, burned into the rock in a hand you would know, Ursa. A word. It said: the pattern leads on. Following the dark. Your father stood in that world once. And the next star, the little one, the water-star, the thing that guards it is not sleeping and gentle like the serpent was. It is awake. And it is afraid of nothing."*
 
-Then the weight lifts and Ghostbloom is just Ghostbloom again. The Sphere pulses, insistent, something inside pressing outward like a chick at an egg. Lilly opens her hands, and **Cindershell pours out and stands on the brass floor**, blinking, brand new to the world, the creature they chose to help instead of harm. It does not run. It came home with them.
+Then the weight lifts and Ghostbloom is just Ghostbloom again. The Sphere pulses, insistent, something inside pressing outward like a chick at an egg. Lilly opens her hands, and **the stone-shell pours out and stands on the brass floor**, blinking, brand new to the world, the creature they chose to help instead of harm. It does not run. It came home with them.
 
 > *"Well," said Ursa, kneeling to its level with a smile the whole year had not quite managed to put on her face. "Hello, you. Let's find out your name."*
 
-**End the session on the name.** Hand the naming to the table; the 7-year-old (Cindershell's handler) should do the honors.
+**End the session on the name.** Hand the naming to the table; the 7-year-old (the stone-shell's handler) should do the honors.
 
 **DM notes on the tag scene:**
 - The party won cleanly, and the tag immediately complicates it: Nyxthid (unnamed, "he") saw the whole thing and was *pleased*. The victory was a test he set, and they passed, which is worse. This keeps the arc from feeling like a checklist of five easy rifts.
@@ -516,7 +516,7 @@ Then the weight lifts and Ghostbloom is just Ghostbloom again. The Sphere pulses
 | **Ash Catchum** | A word burned into the far mountains in Ash's hand: "the pattern leads on, following the dark." Ursa's private jolt: her father stood in a rift world. | Major clue S12 (Shadow); Ash's fate decided before S12. Echoes the canonical Guild log. Resonates with Ursa's Door B if taken. |
 | **Elaria** | Speaks through Ghostbloom: "One star lit, four still dark." Antares relit is the first of her lights rekindled. | Culminates S14: the built roster manifests at once and spends its essences to reach the sleeping Elaria and restore the downed party. |
 | **Pikachu** | The Sphere "has held Pikachu's spark all these years"; the caught companion pours from the same Sphere, proving the mechanism. | Pikachu's full return S13. The catch mechanic is the dry-run for the spark's release. |
-| **Companions-as-finale-army** | Vane's pre-transit promise; the first catch (Cindershell) walks out at session's end. Ghostbloom (#1) + Cindershell (#2). | S14 climax: the whole built team manifests together and sacrifices essences. Set the expectation now: collecting is the point. |
+| **Companions-as-finale-army** | Vane's pre-transit promise; the first catch (the stone-shell) walks out at session's end. Ghostbloom (#1) + the stone-shell (#2). | S14 climax: the whole built team manifests together and sacrifices essences. Set the expectation now: collecting is the point. |
 | **Nyxthid** | Unnamed "he" who watched the run and was pleased, treating the win as a test the party passed. | Named at the Shadow Rift (S12); first glimpsed as the Dark Figure at Stormwatch Cliffs (S3). His approval now = his ambush later. |
 | **Stabby's idol** | Goes ice-cold at the threshold, at L1, and at the boss; corruption recoils from it; Ghostbloom almost hears something in it. | Door C seed (the Idol's Dreams / Shadow Breathing). Unexplained by design. Watch it at every future rift. |
 | **The next guardian is worse** | Elaria's warning: the Water-star's guardian is "awake, and afraid of nothing." | Direct on-ramp to S9 (Water/Fomalhaut). Each rift's guardian harder to free than the last. |
@@ -541,7 +541,7 @@ The Session 8 build is a template. To spin up any later plane, keep the fixed fr
 | Plane | Type family | World feel (replace the Underroot) | Anchor-star to relight | Guardian & catch flavor |
 |---|---|---|---|---|
 | **Water (Unda), S9** | Water, Ice, Poison | Drowned reef-halls, cold currents, sunken light; its guardian is **awake and afraid of nothing** (per S8's tag warning) | Fomalhaut | A restless, defensive water-guardian; catch options lean tanky/control (an ice-shell, a healing tide, a poison-warding eel) |
-| **Fire (Ignis), S10** | Fire, Fighting, Steel | A volcanic forge-world of ember-rivers and clanging metal terraces; **note:** metal floors switch OFF ground-based passives like Cindershell's Mossy Mend | Aldebaran | A forge-guardian; catch options lean striker/steel (Cindershell is weakest here, so the plane rewards fielding a fire-immune or metal creature) |
+| **Fire (Ignis), S10** | Fire, Fighting, Steel | A volcanic forge-world of ember-rivers and clanging metal terraces; **note:** metal floors switch OFF ground-based passives like the stone-shell's Mossy Mend | Aldebaran | A forge-guardian; catch options lean striker/steel (the stone-shell is weakest here, so the plane rewards fielding a fire-immune or metal creature) |
 | **Air (Aer), S11** | Flying, Electric, Fairy | Sky-islands and storm-light, wind-bridges between floating stones; verticality is the tactical theme | Vega (going dark) | A tempest-guardian; catch options lean fast/flying/electric, rewarding mobility |
 
 **Systems that switch on after Session 8 (all deferred out of the tutorial):**
@@ -562,8 +562,8 @@ None of these block Session 8; they are choices that sharpen the arc.
    - **Ursa Door C (Beast Handler / Living World):** if chosen, Ursa's player becomes a natural co-runner for fielded companions, and you may grant a small buff (e.g. Ursa spends her own Bonus Action to let the fielded companion take Dash/Disengage/Dodge, mirroring 2024 companion handling). Does this change the fixed catch-order handler rule, or layer on top of it?
    - **Lilly Door C (Awakened Essence Sphere):** if chosen, consider dropping the Gathering-check DC from 10 to auto-success, or granting permanent advantage on catch rolls, since the Sphere is now sentient and eager. Confirm which.
 2. **Catch-order vs. favorites.** The fixed catch-order handler rule (Section 2.3) is designed to prevent sibling arguments. Do you want a release valve where the kids may **trade** handler assignments by mutual agreement, or is the fixed order strictly better for your table?
-3. **The choose-1-of-3 from Session 9.** Section 4 begins the three-way catch offer at Water. Confirm you want Session 8 to stay a single guaranteed catch (Cindershell) with the three-way offer starting in Session 9, versus offering three even in Session 8.
-4. **Terranox HP and the crystal count.** The boss is written at ~200 HP with four crystals for a 3 to 4 round fight. If your table burst-damages hard, four crystals may fall in two rounds; if they are cautious, consider whether the fifth-crystal safety valve should be default-on. A quick gut-check against your kids' actual damage output would let me pin the exact number.
+3. **The choose-1-of-3 from Session 9.** Section 4 begins the three-way catch offer at Water. Confirm you want Session 8 to stay a single guaranteed catch (the stone-shell) with the three-way offer starting in Session 9, versus offering three even in Session 8.
+4. **Groudon HP and the crystal count.** The boss is written at ~200 HP with four crystals for a 3 to 4 round fight. If your table burst-damages hard, four crystals may fall in two rounds; if they are cautious, consider whether the fifth-crystal safety valve should be default-on. A quick gut-check against your kids' actual damage output would let me pin the exact number.
 5. **Ash's fate.** Canon says Ash Catchum's fate is decided before Session 12. The Session 8 tag scene plants the breadcrumb but commits to nothing. Flagging only so the plant and the eventual reveal stay consistent; no decision needed yet.
 6. **The idol's eventual answer.** The idol is unexplained by design (Door C seed). Its Session 8 reactions (ice-cold at the threshold, at L1, and at the boss; corruption recoils) are all consistent with any of the three eventual explanations. No decision needed now; noting so future rifts keep its behavior consistent.
 ```
