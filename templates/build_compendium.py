@@ -450,6 +450,7 @@ C = [
     ]),
 
     ("h2", "The Demon-Slayer's Blade: the Nichirin Katana"),
+    ("imgfloat", "assets/items/nichirin_katana.png", 2.4),
     ("body", "This sun-forged demon-slayer blade was made from crimson ore that drinks in "
              "dawnlight. While sheathed, the steel looks dark and almost ordinary, but when Stabby "
              "ignites his breathing, the blade catches that breath and burns with the color of his "
