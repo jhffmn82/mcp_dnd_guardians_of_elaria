@@ -6,10 +6,9 @@ House rules override RAW. 2024 (revised 5e) rules only; where 2014 and 2024 text
 2. Patient Defense (Monk) grants a free Disengage, not Dodge (add Dodge by spending 1 Focus).
 3. Shillelagh replaces Primal Savagery on Ursa's sheet (2024 rules).
 4. Goodberry: eating a berry is a Bonus Action (2024).
-5. Air spirit HP is 20.
-6. Deep gnome uses the current 2024-era printing.
-7. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule).
-8. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7).
+5. Deep gnome uses the current 2024-era printing.
+6. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule).
+7. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7).
 
 ## Document rulings
 

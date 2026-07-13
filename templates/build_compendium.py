@@ -174,11 +174,10 @@ C = [
     ("body", "2. Patient Defense grants a free Disengage (add Dodge by spending 1 Focus)."),
     ("body", "3. Shillelagh replaces Primal Savagery on Ursa's sheet (2024 rules)."),
     ("body", "4. Goodberry: eating a berry is a Bonus Action (2024)."),
-    ("body", "5. Ursa's summoned Air spirit has 20 HP."),
-    ("body", "6. Deep gnome uses the current 2024-era printing (Svirfneblin Camouflage, Disguise "
+    ("body", "5. Deep gnome uses the current 2024-era printing (Svirfneblin Camouflage, Disguise "
              "Self and Nondetection 1/long rest each)."),
-    ("body", "7. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule)."),
-    ("body", "8. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7)."),
+    ("body", "6. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule)."),
+    ("body", "7. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7)."),
     ("lore", "The First Listeners",
      "Before there were villages there were listeners. The first druids did not learn magic; "
      "they learned quiet, and the forests, glad of the company, taught them the rest. The "

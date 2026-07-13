@@ -401,16 +401,15 @@ Places this campaign deliberately departs from pure SRD style. These are intenti
 
 **2. Personal attunement scoping.** The reward set attunes to a person, not a class: the type line reads "(Requires Attunement by Lilly)", "(Requires Attunement by Stabby)", or "(Requires Attunement by Ursa)" in place of the SRD's "by a [Class]" form (an editorial convention of this campaign). The Awakened Essence Sphere attunes to Lilly.
 
-**3. House rules 1-8 override RAW** (from `memory/house_rules.md`, which matches the list printed in the Compendium; never regress these when writing or revising rules text):
+**3. House rules 1-7 override RAW** (from `memory/house_rules.md`, which matches the list printed in the Compendium; never regress these when writing or revising rules text):
 
 1. Ursa's Starseed +1d4 applies only to actual druid spells, NOT the Starry Form Archer luminous arrow.
 2. Patient Defense (Monk) grants a free Disengage, not Dodge. (Matches SRD 2024 text; never regress to the 2014 free Dodge.)
 3. Shillelagh replaces Primal Savagery on Ursa's sheet (2024 rules).
 4. Goodberry: eating a berry is a Bonus Action (2024).
-5. Air spirit HP is 20.
-6. Deep gnome uses the current 2024-era printing.
-7. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule).
-8. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7).
+5. Deep gnome uses the current 2024-era printing.
+6. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule).
+7. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7).
 
 Document-workflow rulings (session numbering, recency-wins) live in `memory/house_rules.md` and CLAUDE.md. Rulings from the 2026-07-13 path-reward pass are printed directly in the path documents; the printed text is authoritative.
 
@@ -437,5 +436,5 @@ Run any homebrew rules block against these before it ships. Every answer should 
 11. Magic items headed with an italic type line "Category (Subtype), Rarity (Requires Attunement by Lilly/Stabby/Ursa)", charges spent with "expend", and "Regaining Charges." as the last property where applicable?
 12. Feat-shaped rewards using the exact stock lines: "You gain the following benefits.", "Prerequisite: Level N+", Ability Score Increase first, "Repeatable." last (or absent)?
 13. Areas phrased as "N-foot-radius Sphere", "N-foot Emanation", or "N-foot Cube", and teleports as "teleport up to N feet to an unoccupied space you can see"?
-14. No house rule (1-8) contradicted, and no regression of a locked fix (Patient Defense free Disengage, Starseed scope, Shillelagh swap, Bonus Action Goodberry)?
+14. No house rule (1-7) contradicted, and no regression of a locked fix (Patient Defense free Disengage, Starseed scope, Shillelagh swap, Bonus Action Goodberry)?
 15. All flavor, warmth, and campaign voice confined to flavor paragraphs, gold quotes, and lore boxes, with the rules text underneath indistinguishable in register from SRD 5.2.1?

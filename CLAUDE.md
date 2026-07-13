@@ -29,8 +29,7 @@ All three relics came from a single Wraithpine chest as Elaria's gift (one chest
 2. Patient Defense (Monk) grants a free Disengage, not Dodge.
 3. Shillelagh replaces Primal Savagery on Ursa's sheet (2024 rules).
 4. Goodberry: eating a berry is a Bonus Action (2024).
-5. Air spirit HP is 20.
-6. Deep gnome uses the current 2024-era printing.
+5. Deep gnome uses the current 2024-era printing.
 
 ## Rules of engagement
 
