@@ -23,13 +23,13 @@ All three relics came from a single Wraithpine chest as Elaria's gift (one chest
 
 **Level timeline (DM-confirmed points; refine during Phase 3):** the party started at level 3 in Session 1. They are level 5 as of Session 7 (Gearhaven), and the planned timeskip takes them to 7. The "pre 4 / post 4" sheets in Old blocks are pre- and post-SESSION-4 snapshots (DM confirmed), bracketing the Session 4 item rewards and any level-up that came with it. Pin the exact 3-to-4 and 4-to-5 level-up moments from session text during canon extraction, and flag with [DM CHECK] if the docs do not settle them.
 
-## House rules and standing rulings (seed for memory/house_rules.md)
+## House rules and standing rulings (the live list is memory/house_rules.md)
 
+True house rules (adjudications beyond the printed rules):
 1. Ursa's Starseed +1d4 applies only to actual druid spells, NOT the Starry Form Archer luminous arrow.
-2. Patient Defense (Monk) grants a free Disengage, not Dodge.
-3. Shillelagh replaces Primal Savagery on Ursa's sheet (2024 rules).
-4. Goodberry: eating a berry is a Bonus Action (2024).
-5. Deep gnome uses the current 2024-era printing.
+2. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7).
+
+2024 migration notes (RAW, recorded so documents never regress to 2014 text): Patient Defense's free tier is Disengage (Dodge costs 1 Focus); Goodberry eating is a Bonus Action; Shillelagh replaced Primal Savagery; deep gnome uses the current printing; the Eldritch Cannon picks its mode on every activation; the Air Bestial Spirit has 20 HP by its own stat block.
 
 ## Rules of engagement
 

@@ -401,15 +401,14 @@ Places this campaign deliberately departs from pure SRD style. These are intenti
 
 **2. Personal attunement scoping.** The reward set attunes to a person, not a class: the type line reads "(Requires Attunement by Lilly)", "(Requires Attunement by Stabby)", or "(Requires Attunement by Ursa)" in place of the SRD's "by a [Class]" form (an editorial convention of this campaign). The Awakened Essence Sphere attunes to Lilly.
 
-**3. House rules 1-7 override RAW** (from `memory/house_rules.md`, which matches the list printed in the Compendium; never regress these when writing or revising rules text):
+**3. House rules and 2024 migration notes** (from `memory/house_rules.md`, which matches the list printed in the Compendium; never regress these when writing or revising rules text):
+
+True house rules (adjudications beyond the printed rules):
 
 1. Ursa's Starseed +1d4 applies only to actual druid spells, NOT the Starry Form Archer luminous arrow.
-2. Patient Defense (Monk) grants a free Disengage, not Dodge. (Matches SRD 2024 text; never regress to the 2014 free Dodge.)
-3. Shillelagh replaces Primal Savagery on Ursa's sheet (2024 rules).
-4. Goodberry: eating a berry is a Bonus Action (2024).
-5. Deep gnome uses the current 2024-era printing.
-6. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule).
-7. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7).
+2. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7; no double-dipping with a cantrip in the same turn).
+
+2024 migration notes (these are RAW; listed only so no document regresses to 2014 text): Patient Defense's free tier is Disengage and Dodge costs 1 Focus Point; eating a Goodberry is a Bonus Action; Shillelagh replaced Primal Savagery on Ursa's sheet; deep gnome uses the current printing; the Eldritch Cannon picks its mode on every activation (Forge of the Artificer); the Air Bestial Spirit has 20 Hit Points by its own stat block.
 
 Document-workflow rulings (session numbering, recency-wins) live in `memory/house_rules.md` and CLAUDE.md. Rulings from the 2026-07-13 path-reward pass are printed directly in the path documents; the printed text is authoritative.
 
@@ -436,5 +435,5 @@ Run any homebrew rules block against these before it ships. Every answer should 
 11. Magic items headed with an italic type line "Category (Subtype), Rarity (Requires Attunement by Lilly/Stabby/Ursa)", charges spent with "expend", and "Regaining Charges." as the last property where applicable?
 12. Feat-shaped rewards using the exact stock lines: "You gain the following benefits.", "Prerequisite: Level N+", Ability Score Increase first, "Repeatable." last (or absent)?
 13. Areas phrased as "N-foot-radius Sphere", "N-foot Emanation", or "N-foot Cube", and teleports as "teleport up to N feet to an unoccupied space you can see"?
-14. No house rule (1-7) contradicted, and no regression of a locked fix (Patient Defense free Disengage, Starseed scope, Shillelagh swap, Bonus Action Goodberry)?
+14. No house rule contradicted (Starseed scope, Potent-on-staff), and no regression of a 2024 migration note (Patient Defense free Disengage, Bonus Action Goodberry, per-activation cannon mode)?
 15. All flavor, warmth, and campaign voice confined to flavor paragraphs, gold quotes, and lore boxes, with the rules text underneath indistinguishable in register from SRD 5.2.1?

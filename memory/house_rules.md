@@ -1,14 +1,20 @@
 # House Rules and Standing Rulings
 
-House rules override RAW. 2024 (revised 5e) rules only; where 2014 and 2024 text conflict, 2024 wins. Never regress these fixes when revising documents. This list matches the one printed in the Compendium.
+2024 (revised 5e) rules only; where 2014 and 2024 text conflict, 2024 wins. This list matches the one printed in the Compendium.
+
+## House rules (adjudications beyond the printed rules)
 
 1. Ursa's Starseed +1d4 applies only to actual druid spells, NOT the Starry Form Archer luminous arrow.
-2. Patient Defense (Monk) grants a free Disengage, not Dodge (add Dodge by spending 1 Focus).
-3. Shillelagh replaces Primal Savagery on Ursa's sheet (2024 rules).
-4. Goodberry: eating a berry is a Bonus Action (2024).
-5. Deep gnome uses the current 2024-era printing.
-6. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule).
-7. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7).
+2. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7; no double-dipping with a cantrip in the same turn).
+
+## 2024 migration notes (these are RAW, recorded so documents never regress to 2014 text)
+
+- Patient Defense's free tier is Disengage as a Bonus Action; Dodge costs 1 Focus Point (2024).
+- Goodberry: eating a berry is a Bonus Action (2024).
+- Shillelagh replaced Primal Savagery on Ursa's sheet (Primal Savagery does not exist in 2024).
+- Deep gnome uses the current 2024-era printing (Svirfneblin Camouflage; Disguise Self and Nondetection 1/long rest each).
+- The Eldritch Cannon picks its mode on every activation (Forge of the Artificer, 2024-era artificer).
+- The Air Bestial Spirit has 20 HP by its own stat block (10 under Land/Water).
 
 ## Document rulings
 

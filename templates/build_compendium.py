@@ -169,15 +169,18 @@ C = [
              "in Part IV: The Guardians' Character Sheets."),
 
     ("h1", "House Rules & Standing Rulings"),
+    ("body", "**House rules (adjudications beyond the printed rules).**"),
     ("body", "1. Ursa's Starseed +1d4 applies only to actual druid spells, never the Starry Form "
              "Archer's luminous arrow."),
-    ("body", "2. Patient Defense grants a free Disengage (add Dodge by spending 1 Focus)."),
-    ("body", "3. Shillelagh replaces Primal Savagery on Ursa's sheet (2024 rules)."),
-    ("body", "4. Goodberry: eating a berry is a Bonus Action (2024)."),
-    ("body", "5. Deep gnome uses the current 2024-era printing (Svirfneblin Camouflage, Disguise "
-             "Self and Nondetection 1/long rest each)."),
-    ("body", "6. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule)."),
-    ("body", "7. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7)."),
+    ("body", "2. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7; "
+             "no double-dipping with a cantrip in the same turn)."),
+    ("body", "**2024 notes (these are the printed rules, recorded so the table never slips back "
+             "to older text).** Patient Defense's free tier is Disengage; Dodge costs 1 Focus "
+             "Point. Eating a Goodberry is a Bonus Action. Shillelagh replaced Primal Savagery "
+             "on Ursa's sheet. Deep gnome uses the current printing (Svirfneblin Camouflage; "
+             "Disguise Self and Nondetection 1/long rest each). The Eldritch Cannon picks its "
+             "mode on every activation. The Air Bestial Spirit has 20 Hit Points by its own "
+             "stat block."),
     ("lore", "The First Listeners",
      "Before there were villages there were listeners. The first druids did not learn magic; "
      "they learned quiet, and the forests, glad of the company, taught them the rest. The "
