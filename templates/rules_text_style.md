@@ -371,7 +371,7 @@ Rarity price anchors (p. 206): Common 100 GP, Uncommon 400 GP, Rare 4,000 GP, Ve
 
 > cause spectral trees and vines to appear in a 15-foot Cube on the ground within 120 feet of yourself (p. 46, Nature's Sanctuary)
 
-**Magical darkness uses the exact blocking clause, and overlap dispelling is level-gated. (Relevant to Umbral Slash, house rule 13.)**
+**Magical darkness uses the exact blocking clause, and overlap dispelling is level-gated. (Relevant to Umbral Slash, whose printed sight and placement clauses are authoritative.)**
 
 > Darkvision can't see through it, and nonmagical light can't illuminate it. ... If any of this spell's area overlaps with an area of Bright Light or Dim Light created by a spell of level 2 or lower, that other spell is dispelled. (p. 122, Darkness)
 
@@ -399,9 +399,9 @@ Places this campaign deliberately departs from pure SRD style. These are intenti
 
 **1. Kid-facing warmth in flavor text.** SRD multi-benefit feats carry no flavor at all, and SRD item descriptions are dry. Our homebrew leads with a warm flavor paragraph, a gold quote, or a lore box in the campaign's voice (young-adult prose level, adventurous, never gruesome). The boundary is hard: once the rules text begins, the SRD register takes over completely. No jokes, endearments, or narrative asides inside a rules sentence.
 
-**2. Personal attunement scoping.** The reward set attunes to a person, not a class: the type line reads "(Requires Attunement by Lilly)", "(Requires Attunement by Stabby)", or "(Requires Attunement by Ursa)" in place of the SRD's "by a [Class]" form (house rule 14). The Awakened Essence Sphere attunes to Lilly.
+**2. Personal attunement scoping.** The reward set attunes to a person, not a class: the type line reads "(Requires Attunement by Lilly)", "(Requires Attunement by Stabby)", or "(Requires Attunement by Ursa)" in place of the SRD's "by a [Class]" form (an editorial convention of this campaign). The Awakened Essence Sphere attunes to Lilly.
 
-**3. House rules 1-14 override RAW** (from `memory/house_rules.md`; never regress these when writing or revising rules text):
+**3. House rules 1-8 override RAW** (from `memory/house_rules.md`, which matches the list printed in the Compendium; never regress these when writing or revising rules text):
 
 1. Ursa's Starseed +1d4 applies only to actual druid spells, NOT the Starry Form Archer luminous arrow.
 2. Patient Defense (Monk) grants a free Disengage, not Dodge. (Matches SRD 2024 text; never regress to the 2014 free Dodge.)
@@ -409,14 +409,10 @@ Places this campaign deliberately departs from pure SRD style. These are intenti
 4. Goodberry: eating a berry is a Bonus Action (2024).
 5. Air spirit HP is 20.
 6. Deep gnome uses the current 2024-era printing.
-7. Session numbering: Gearhaven is Session 7; the chronicle runs 1-7 continuously; reunion + Earth rift is Session 8; finale is Session 14.
-8. Recency wins: when older and newer documents conflict, the newer one is canon; clear inconsistencies are fixed without asking.
-9. Boomstick's +2 bonus also applies to Lilly's Eldritch Cannon attack rolls (printed as an explicit item property, not a rules inference).
-10. On the Boomstick road, the Frostbite Shard retires UNATTUNED (a true keepsake): Lilly sits at two of three attunement slots there. Sphere road is exactly three (Shard, Dynamo, Sphere); Sentinel road is two (the Dynamo is rebuilt into the guardian).
-11. Starlit Channeler is "The Warden Stands Guard": the bonus-action second staff strike is REPLACED by Warden's Intercession (Reaction when an ally inside the 20-ft glow is hit: reduce the damage by 1d8 + Wis). The party-wide +1 to attacks and saves inside the glow is printed as the constellation's own feature.
-12. Water Breathing gains Healing Spring (First Water) at the Level 6 tier: 1/Short Rest, Bonus Action touch, 2d8 + Wis healing; it grows into the full Healing Spring at Level 11.
-13. Umbral Slash: Stabby sees through his own Darkness, places the cube himself, and can end it early (no action). Allies make ranged attacks against a creature in the gloom at Disadvantage; spells that require a visible target cannot reach it.
-14. Attunement scoping across the reward set is personal ("Requires Attunement by Lilly/Stabby/Ursa"); the Awakened Essence Sphere attunes to Lilly.
+7. Lilly's cannon picks its mode on EVERY activation (Forge of the Artificer rule).
+8. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7).
+
+Document-workflow rulings (session numbering, recency-wins) live in `memory/house_rules.md` and CLAUDE.md. Rulings from the 2026-07-13 path-reward pass are printed directly in the path documents; the printed text is authoritative.
 
 **4. No em dashes ANYWHERE, including rules text.** The SRD itself habitually uses em dashes ("organized by category—Origin, General, Fighting Style, or Epic Boon—and alphabetized"). The family style rule outranks WotC typography: when imitating an SRD construction that uses an em dash, repunctuate with commas, colons, semicolons, or parentheses. Quoted SRD exemplars in this guide keep their original em dashes because quotes are verbatim; new text never does.
 
@@ -441,5 +437,5 @@ Run any homebrew rules block against these before it ships. Every answer should 
 11. Magic items headed with an italic type line "Category (Subtype), Rarity (Requires Attunement by Lilly/Stabby/Ursa)", charges spent with "expend", and "Regaining Charges." as the last property where applicable?
 12. Feat-shaped rewards using the exact stock lines: "You gain the following benefits.", "Prerequisite: Level N+", Ability Score Increase first, "Repeatable." last (or absent)?
 13. Areas phrased as "N-foot-radius Sphere", "N-foot Emanation", or "N-foot Cube", and teleports as "teleport up to N feet to an unoccupied space you can see"?
-14. No house rule (1-14) contradicted, and no regression of a locked fix (Patient Defense free Disengage, Starseed scope, Shillelagh swap, Bonus Action Goodberry)?
+14. No house rule (1-8) contradicted, and no regression of a locked fix (Patient Defense free Disengage, Starseed scope, Shillelagh swap, Bonus Action Goodberry)?
 15. All flavor, warmth, and campaign voice confined to flavor paragraphs, gold quotes, and lore boxes, with the rules text underneath indistinguishable in register from SRD 5.2.1?
