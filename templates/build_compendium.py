@@ -238,47 +238,60 @@ C = [
     ("body", "It is a form born of survival rather than discipline, favored by those who grew up "
              "where the strong eat and the slow are eaten. To master it is not to tame the beast, "
              "but to become it on command, and to remember how to set it down again afterward."),
-    ("body", "**Features by monk level:** 3rd, Beast Breathing; 6th, First Form: Devour; 11th, "
-             "Advanced Beast Breathing; 17th, Third Form: Apex Predator."),
+    ("body", "**Features by Monk Level.** You gain Warrior of Beast Breathing features at Monk "
+             "levels 3 (Beast Breathing), 6 (First Form: Devour), 11 (Advanced Beast Breathing), "
+             "and 17 (Third Form: Apex Predator)."),
     ("stat", "Level 3: Beast Breathing", [
-        "**Monk Weapons.** A katana (and any sword you take up as your signature blade) counts as "
-        "a Monk weapon for you. You can use your Martial Arts die with it, make your Bonus Action "
-        "Unarmed Strikes alongside it, and use this subclass's features through it.",
+        "**Monk Weapons.** A katana, as well as any sword you adopt as your signature blade, "
+        "counts as a Monk weapon for you. You can use your Martial Arts die with it, and you can "
+        "use this subclass's features with it. You can still make an Unarmed Strike as a Bonus "
+        "Action.",
         "**Beast Sense.** Your senses are sharp as a hunting animal's, even out of combat. You "
         "have Advantage on Wisdom (Survival) checks made to track creatures, on Wisdom "
         "(Perception) checks that rely on smell or hearing, and on Charisma (Intimidation) checks.",
         "**Igniting the Breath.** When you roll Initiative, you can expend 1 Focus Point to ignite "
-        "your breath for the rest of the combat. It lasts until the combat ends, you have the "
-        "Incapacitated condition, or you end it (no action required). While your breath is "
-        "ignited, your weapon glows blood-red and deals an extra 2 Force damage on every hit.",
-        "**Beast's Vigor.** While your breath is ignited, your Speed increases by 10 feet and you "
-        "have Advantage on Dexterity saving throws: the wild reflexes of a cornered animal.",
+        "your breath. It lasts until the combat ends, until you have the Incapacitated condition, "
+        "or until you end it (no action required). While your breath is ignited, your weapon "
+        "glows blood-red, and whenever you hit a target with it, the target takes an extra 2 "
+        "Force damage.",
+        "**Beast's Vigor.** While your breath is ignited, your Speed increases by 10 feet, and "
+        "you have Advantage on Dexterity saving throws.",
     ]),
     ("stat", "Level 6: First Form: Devour", [
         "**First Form: Devour.** As a Bonus Action, you can expend 1 Focus Point to move up to 15 "
         "feet without provoking Opportunity Attacks and make one attack with your Monk weapon. On "
-        "a hit, the attack deals 3d8 plus your Dexterity modifier Force damage. If this attack "
-        "reduces the target to 0 Hit Points, you regain the expended Focus Point. This feature "
-        "replaces Flurry of Blows for you.",
+        "a hit, the target takes Force damage equal to 3d8 plus your Dexterity modifier instead "
+        "of the weapon's normal damage. Bonuses to the weapon's damage rolls (such as the "
+        "Nichirin katana's +2 bonus and the extra damage from your ignited breath) apply as "
+        "normal. If the attack reduces the target to 0 Hit Points, you regain the expended Focus "
+        "Point. This feature replaces Flurry of Blows for you.",
     ]),
     ("stat", "Level 11: Advanced Beast Breathing", [
-        "**Advanced Breathing.** Your ignited breath grows fiercer. While it is active you gain "
-        "all its original benefits, and you also have Resistance to Bludgeoning, Piercing, and "
-        "Slashing damage. In addition, your weapon's bonus damage increases from 2 to 3.",
+        "**Advanced Breathing.** Your ignited breath grows fiercer. While your breath is ignited, "
+        "you retain all its other benefits, you have Resistance to Bludgeoning, Piercing, and "
+        "Slashing damage, and the extra Force damage your weapon deals increases from 2 to 3.",
         "**Sharpened Fang.** The damage of your First Form: Devour increases to 5d10 plus your "
         "Dexterity modifier.",
     ]),
     ("stat", "Level 17: Third Form: Apex Predator", [
-        "**Third Form: Apex Predator.** As a Bonus Action, you can expend 3 Focus Points to "
-        "become a blur of fang and steel. Move up to your Speed without provoking Opportunity "
+        "**Third Form: Apex Predator.** You become a blur of fang and steel. As a Bonus Action, "
+        "you can expend 3 Focus Points to move up to your Speed without provoking Opportunity "
         "Attacks and make one attack with your Monk weapon against each of up to three different "
-        "creatures you move within reach of. Each attack deals 5d10 plus your Dexterity modifier "
-        "Force damage on a hit, and each creature hit must succeed on a Strength saving throw or "
-        "have the Prone condition. For each creature reduced to 0 Hit Points, you regain 1 "
-        "expended Focus Point.",
+        "creatures you move within reach of. On a hit, the target takes Force damage equal to "
+        "5d10 plus your Dexterity modifier instead of the weapon's normal damage. Bonuses to the "
+        "weapon's damage rolls (such as the Nichirin katana's +2 bonus and the extra damage from "
+        "your ignited breath) apply as normal. Each creature hit must succeed on a Strength "
+        "saving throw (DC 8 plus your Wisdom modifier and Proficiency Bonus) or have the Prone "
+        "condition. You regain 1 expended Focus Point for each "
+        "creature this feature reduces to 0 Hit Points.",
     ]),
-    ("body", "**At Level 7, Stabby has:** Beast Breathing (the Level 3 stance) + First Form: "
-             "Devour (Level 6, 3d8 + Dex). The Level 11 and 17 features unlock as he grows."),
+    ("game", "At Level 7, Beast Breathing Has", [
+        "**Live now:** the full Level 3 stance (the katana as a Monk weapon, Beast Sense, "
+        "Igniting the Breath for +2 Force on every hit, and Beast's Vigor) plus First Form: "
+        "Devour (3d8 + Dex, with 15 feet of free movement).",
+        "**Not yet:** Advanced Beast Breathing and Sharpened Fang arrive at Level 11, and Third "
+        "Form: Apex Predator at Level 17. They wait further down the road.",
+    ]),
 
     ("h2", "Water Breathing: the Monastery Form"),
     ("gold", "*“Be water. Water does not strike; it flows, and the rock is cut all the same. "
@@ -295,48 +308,65 @@ C = [
              "are as often menders as fighters, for the same stillness that turns a blade can also "
              "close a wound, and the same patience that wins a duel can sit a long vigil at a "
              "friend's side."),
-    ("body", "**Features by monk level:** 3rd, Water Breathing; 6th, First Form: Flowing Strike; "
-             "11th, Advanced Water Breathing and Healing Spring; 17th, Third Form: Tidal Crash."),
+    ("body", "**Features by Monk Level.** You gain Warrior of Water Breathing features at Monk "
+             "levels 3 (Water Breathing), 6 (First Form: Flowing Strike and Healing Spring, First "
+             "Water), 11 (Advanced Water Breathing and the full Healing Spring), and 17 (Third "
+             "Form: Tidal Crash)."),
     ("stat", "Level 3: Water Breathing", [
-        "**Monk Weapons.** A katana (and any sword you take up as your signature blade) counts as "
-        "a Monk weapon for you. You can use your Martial Arts die with it, make your Bonus Action "
-        "Unarmed Strikes alongside it, and use this subclass's features through it.",
+        "**Monk Weapons.** A katana, as well as any sword you adopt as your signature blade, "
+        "counts as a Monk weapon for you. You can use your Martial Arts die with it, and you can "
+        "use this subclass's features with it. You can still make an Unarmed Strike as a Bonus "
+        "Action.",
         "**Igniting the Breath.** When you roll Initiative, you can expend 1 Focus Point to ignite "
-        "your breath for the rest of the combat. It lasts until the combat ends, you have the "
-        "Incapacitated condition, or you end it (no action required). While your breath is "
-        "ignited, your weapon glows pale blue and deals an extra 2 Cold damage on every hit.",
+        "your breath. It lasts until the combat ends, until you have the Incapacitated condition, "
+        "or until you end it (no action required). While your breath is ignited, your weapon "
+        "glows pale blue, and whenever you hit a target with it, the target takes an extra 2 Cold "
+        "damage.",
         "**Flowing Guard.** While your breath is ignited, you gain a +2 bonus to Armor Class "
-        "against the first attack roll made against you before the start of each of your turns: "
-        "an ever-moving guard that turns the first blow aside.",
+        "against the first attack roll made against you before the start of each of your turns.",
     ]),
     ("stat", "Level 6: First Form: Flowing Strike", [
-        "**First Form: Flowing Strike.** As a Bonus Action, you can expend 1 Focus Point to shift "
+        "**First Form: Flowing Strike.** As a Bonus Action, you can expend 1 Focus Point to move "
         "up to 15 feet without provoking Opportunity Attacks and make one attack with your Monk "
-        "weapon. On a hit, the attack deals 3d8 plus your Dexterity modifier Cold damage, and the "
-        "target must succeed on a Dexterity saving throw or have the Prone condition as the "
-        "current sweeps its feet. This feature replaces Flurry of Blows for you.",
+        "weapon. On a hit, the target takes Cold damage equal to 3d8 plus your Dexterity modifier "
+        "instead of the weapon's normal damage. Bonuses to the weapon's damage rolls (such as the "
+        "Nichirin katana's +2 bonus and the extra damage from your ignited breath) apply as "
+        "normal. If the attack hits, the target must also succeed on a Dexterity saving throw "
+        "(DC 8 plus your Wisdom modifier and Proficiency Bonus) or have the Prone condition. "
+        "This feature replaces Flurry of Blows for you.",
+        "**Healing Spring (First Water).** As a Bonus Action, you can touch yourself or another "
+        "creature, and the target regains a number of Hit Points equal to 2d8 plus your Wisdom "
+        "modifier. Once you use this benefit, you can't use it again until you finish a Short or "
+        "Long Rest. This benefit improves when you reach Monk level 11 (Healing Spring).",
     ]),
     ("stat", "Level 11: Advanced Water Breathing", [
-        "**Advanced Breathing.** Your ignited breath deepens. While it is active you gain all its "
-        "original benefits, and also: whenever you hit a creature with your Monk weapon, that "
-        "creature's Speed is reduced by 10 feet until the start of your next turn as the cold "
-        "seeps into its limbs.",
+        "**Advanced Breathing.** Your ignited breath deepens. While your breath is ignited, you "
+        "retain all its other benefits, and whenever you hit a creature with your Monk weapon, "
+        "that creature's Speed is reduced by 10 feet until the start of your next turn.",
         "**Sharpened Flow.** The damage of your First Form: Flowing Strike increases to 5d10 plus "
         "your Dexterity modifier.",
-        "**Healing Spring.** Once per Long Rest, you can take a Bonus Action to touch a creature "
-        "(or yourself) and channel the still water's mending. The target regains 4d8 plus your "
-        "Wisdom modifier Hit Points.",
+        "**Healing Spring.** When you use your Healing Spring, the target now regains a number "
+        "of Hit Points equal to 4d8 plus your Wisdom modifier. Once you use this benefit, you "
+        "can't use it again until you finish a Short or Long Rest.",
     ]),
     ("stat", "Level 17: Third Form: Tidal Crash", [
-        "**Third Form: Tidal Crash.** As a Bonus Action, you can expend 3 Focus Points to shift "
+        "**Third Form: Tidal Crash.** As a Bonus Action, you can expend 3 Focus Points to move "
         "up to 20 feet and make one attack with your Monk weapon against each of up to three "
-        "different creatures within your reach as you flow among them. Each attack deals 5d10 "
-        "plus your Dexterity modifier Cold damage on a hit, and each creature hit must succeed on "
-        "a Dexterity saving throw or have the Prone condition and its Speed becomes 0 until the "
-        "end of its next turn, frozen in place by the flood.",
+        "different creatures within your reach during that movement. On a hit, the target takes "
+        "Cold damage equal to 5d10 plus your Dexterity modifier instead of the weapon's normal "
+        "damage. Bonuses to the weapon's damage rolls (such as the Nichirin katana's +2 bonus "
+        "and the extra damage from your ignited breath) apply as normal. Each creature hit must "
+        "succeed on a Dexterity saving throw (DC 8 plus your Wisdom modifier and Proficiency "
+        "Bonus) or have the Prone condition and a Speed of 0 until the end of its next turn.",
     ]),
-    ("body", "**At Level 7, Stabby has:** Water Breathing (the Level 3 stance) + First Form: "
-             "Flowing Strike (Level 6, 3d8 + Dex). The Level 11 and 17 features unlock as he grows."),
+    ("game", "At Level 7, Water Breathing Has", [
+        "**Live now:** the full Level 3 stance (the katana as a Monk weapon, Igniting the Breath "
+        "for +2 Cold on every hit, and Flowing Guard) plus First Form: Flowing Strike (3d8 + Dex "
+        "with a tripping save, DC 13) and Healing Spring, First Water (2d8 + Wis, once per "
+        "Short Rest).",
+        "**Not yet:** the full Healing Spring (4d8 + Wis), Advanced Water Breathing, and "
+        "Sharpened Flow arrive at Level 11; Third Form: Tidal Crash at Level 17.",
+    ]),
 
     ("h2", "Shadow Breathing: the Idol Form"),
     ("gold", "*“Do not fear the dark. Breathe it in. Let it fill you, and then there is "
@@ -353,54 +383,71 @@ C = [
              "heeds them, where the breath truly comes from, and what waits at the end of the path "
              "they have started down. Mastered well, it makes a warrior into something the night "
              "itself seems to bend around."),
-    ("body", "**Features by monk level:** 3rd, Shadow Breathing; 6th, First Form: Umbral Slash; "
-             "11th, Advanced Shadow Breathing; 17th, Third Form: Eclipse."),
+    ("body", "**Features by Monk Level.** You gain Warrior of Shadow Breathing features at Monk "
+             "levels 3 (Shadow Breathing), 6 (First Form: Umbral Slash), 11 (Advanced Shadow "
+             "Breathing), and 17 (Third Form: Eclipse)."),
     ("stat", "Level 3: Shadow Breathing", [
-        "**Monk Weapons.** A katana (and any sword you take up as your signature blade) counts as "
-        "a Monk weapon for you. You can use your Martial Arts die with it, make your Bonus Action "
-        "Unarmed Strikes alongside it, and use this subclass's features through it.",
+        "**Monk Weapons.** A katana, as well as any sword you adopt as your signature blade, "
+        "counts as a Monk weapon for you. You can use your Martial Arts die with it, and you can "
+        "use this subclass's features with it. You can still make an Unarmed Strike as a Bonus "
+        "Action.",
         "**Eyes of the Idol.** The idol's gift never fully leaves you. You have Darkvision with a "
         "range of 60 feet (if you already have Darkvision, its range increases by 60 feet), and "
-        "you have Advantage on Dexterity (Stealth) checks; the gloom favors you.",
+        "you have Advantage on Dexterity (Stealth) checks.",
         "**Igniting the Breath.** When you roll Initiative, you can expend 1 Focus Point to ignite "
-        "your breath for the rest of the combat. It lasts until the combat ends, you have the "
-        "Incapacitated condition, or you end it (no action required). While your breath is "
-        "ignited, your weapon glows violet-black and deals an extra 2 Necrotic damage on every hit.",
-        "**One With the Gloom.** While your breath is ignited, the dark wraps around you: you have "
-        "Half Cover (a +2 bonus to AC) against ranged attacks (anywhere, not just in shadow), and "
-        "you can see normally in magical Darkness.",
+        "your breath. It lasts until the combat ends, until you have the Incapacitated condition, "
+        "or until you end it (no action required). While your breath is ignited, your weapon "
+        "glows violet-black, and whenever you hit a target with it, the target takes an extra 2 "
+        "Necrotic damage.",
+        "**One With the Gloom.** While your breath is ignited, you gain a +2 bonus to Armor "
+        "Class against ranged attack rolls, and you can see normally in magical Darkness.",
     ]),
     ("stat", "Level 6: First Form: Umbral Slash", [
         "**First Form: Umbral Slash.** As a Bonus Action, you can expend 1 Focus Point to "
-        "teleport up to 15 feet to an unoccupied space you can see next to a creature, engulf "
-        "that creature in a 10-foot Cube of magical Darkness, and make one attack with your Monk "
-        "weapon against it, with Advantage. On a hit, the attack deals 3d8 plus your Dexterity "
-        "modifier Necrotic damage. The Darkness lasts until the end of your next turn. This "
-        "feature replaces Flurry of Blows for you.",
+        "teleport up to 15 feet to an unoccupied space you can see within 5 feet of a creature. "
+        "Magical Darkness then fills a 10-foot Cube of your choice, which must contain that "
+        "creature's space. You then make one attack with your Monk weapon against that creature, "
+        "and you have Advantage on the attack roll. On a hit, the target takes Necrotic damage "
+        "equal to 3d8 plus your Dexterity modifier instead of the weapon's normal damage. "
+        "Bonuses to the weapon's damage rolls (such as the Nichirin katana's +2 bonus and the "
+        "extra damage from your ignited breath) apply as normal.",
+        "You can see through Darkness created by this feature. The Darkness lasts until the end "
+        "of your next turn, or you can end it early (no action required). This feature replaces "
+        "Flurry of Blows for you.",
     ]),
+    ("dm", "The gloom is his alone. Stabby sees through his own Darkness; his allies cannot. "
+           "Allies make ranged attack rolls with Disadvantage against a creature wrapped in the "
+           "gloom, and spells that require a visible target cannot reach it at all, so the party "
+           "learns to pick different targets while the shadow does its work."),
     ("stat", "Level 11: Advanced Shadow Breathing", [
-        "**Advanced Breathing.** Your ignited breath drinks deeper of the dark. While it is "
-        "active you gain all its original benefits, and also: once per turn, when you hit a "
-        "creature with an attack roll you made with Advantage, the attack deals an extra 2d6 "
-        "Necrotic damage.",
+        "**Advanced Breathing.** Your ignited breath drinks deeper of the dark. While your "
+        "breath is ignited, you retain all its other benefits. In addition, once per turn when "
+        "you hit a creature with an attack roll that had Advantage, the target takes an extra "
+        "2d6 Necrotic damage.",
         "**Sharpened Gloom.** The damage of your First Form: Umbral Slash increases to 5d10 plus "
         "your Dexterity modifier.",
     ]),
-    ("dm", "The gloom is his alone. Stabby sees through his own Darkness; his allies can't. "
-           "Creatures wrapped in his gloom are hidden from Ursa's bolts and Lilly's cannon until "
-           "the dark lifts, so the party learns to pick different targets while the shadow does "
-           "its work."),
     ("stat", "Level 17: Third Form: Eclipse", [
-        "**Third Form: Eclipse.** As a Bonus Action, you can expend 3 Focus Points to vanish "
-        "into the gloom and strike from everywhere at once. Create a 20-foot Cube of magical "
-        "Darkness centered on yourself (you can see through it), then teleport to and make one "
-        "attack with your Monk weapon against each of up to three different creatures within it, "
-        "with Advantage. Each attack deals 5d10 plus your Dexterity modifier Necrotic damage on a "
-        "hit. Each creature hit has the Blinded condition until the end of your next turn, and "
-        "you remain effectively unseen by everyone but yourself until the Darkness ends.",
+        "**Third Form: Eclipse.** You vanish into the gloom and strike from everywhere at once. "
+        "As a Bonus Action, you can expend 3 Focus Points to fill a 20-foot Cube centered on "
+        "yourself with magical Darkness, which you can see through. For each of up to three "
+        "different creatures in the Cube, you can teleport to an unoccupied space you can see "
+        "within 5 feet of that creature and make one attack with your Monk weapon against it, "
+        "and you have Advantage on each attack roll. On a hit, the target "
+        "takes Necrotic damage equal to 5d10 plus your Dexterity modifier instead of the "
+        "weapon's normal damage. Bonuses to the weapon's damage rolls (such as the Nichirin "
+        "katana's +2 bonus and the extra damage from your ignited breath) apply as normal. Each "
+        "creature hit has the Blinded condition until the end of your next turn, and creatures "
+        "other than you can't see you until the Darkness ends.",
     ]),
-    ("body", "**At Level 7, Stabby has:** Shadow Breathing (the Level 3 stance) + First Form: "
-             "Umbral Slash (Level 6, 3d8 + Dex). The Level 11 and 17 features unlock as he grows."),
+    ("game", "At Level 7, Shadow Breathing Has", [
+        "**Live now:** the full Level 3 stance (the katana as a Monk weapon, Eyes of the Idol, "
+        "Igniting the Breath for +2 Necrotic on every hit, and One With the Gloom) plus First "
+        "Form: Umbral Slash (3d8 + Dex from inside a pocket of Darkness only Stabby sees "
+        "through).",
+        "**Not yet:** Advanced Shadow Breathing and Sharpened Gloom arrive at Level 11, and "
+        "Third Form: Eclipse at Level 17. The deeper dark is still ahead.",
+    ]),
 
     ("h2", "The Demon-Slayer's Blade: the Nichirin Katana"),
     ("body", "This sun-forged demon-slayer blade was made from crimson ore that drinks in "
@@ -410,22 +457,22 @@ C = [
     ("stat", "Nichirin Katana", [
         "*Weapon (Katana), Rare (Requires Attunement by Stabby)*",
         "**Weapon Statistics.** The Nichirin katana uses the statistics of a Longsword (1d8 "
-        "Slashing damage) with the Finesse and Versatile (1d10) properties, and it counts as a "
-        "Monk weapon for Stabby. Because it has Finesse and is a Monk weapon, Stabby uses his "
-        "Dexterity for its attack and damage rolls.",
-        "**Magic Weapon.** You gain a +2 bonus to attack and damage rolls made with this magic "
-        "weapon.",
-        "**Breath-Kindled Steel.** When Stabby ignites his breathing, the blade glows with the "
+        "Slashing damage) and has the Finesse and Versatile (1d10) properties, and it counts as "
+        "a Monk weapon for you. Because the weapon has the Finesse property and is a Monk weapon "
+        "for you, you can use your Dexterity modifier for its attack and damage rolls.",
+        "**Magic Weapon.** You gain a +2 bonus to attack rolls and damage rolls made with this "
+        "magic weapon.",
+        "**Breath-Kindled Steel.** When you ignite your breathing, the blade glows with the "
         "color and nature of that form: blood-red for Beast Breathing, pale blue for Water "
-        "Breathing, or violet-black for Shadow Breathing. This glow is magical but sheds only dim "
-        "light unless Stabby chooses otherwise.",
-        "**Cleansing Edge.** Once on each of your turns when you hit a Fiend, Undead, shadow "
-        "creature, or creature empowered by planar corruption with this katana, the blade burns "
-        "away corruption until the start of your next turn. While affected, the creature can't "
-        "regain Hit Points, can't benefit from magical Darkness or shadowy concealment against "
-        "Stabby, and any visible corruption around the wound briefly burns, cracks, or peels away "
-        "in sparks of purified light.",
-        "**Demon-Slayer's Mark.** The katana is especially dangerous to creatures twisted by "
+        "Breathing, or violet-black for Shadow Breathing. This glow is magical but sheds only "
+        "Dim Light unless you choose otherwise.",
+        "**Cleansing Edge.** Once per turn when you hit a Fiend, an Undead, a shadow creature, "
+        "or a creature empowered by planar corruption with this weapon, the blade burns away "
+        "corruption until the start of your next turn. Until then, the target can't regain Hit "
+        "Points and can't benefit from magical Darkness or shadowy concealment against you. Any "
+        "visible corruption around the wound briefly burns, cracks, or peels away in sparks of "
+        "purified light.",
+        "The katana is especially dangerous to creatures twisted by "
         "darkness, undeath, or planar corruption. It leaves wounds that glow faintly like banked "
         "embers, revealing that the creature has been marked by cleansing sunlight. The blade "
         "wounds the corruption, not the creature beneath. When a corrupted guardian falls to it, "
@@ -437,11 +484,11 @@ C = [
              "The ore came from a single mountain that caught the morning sun before anywhere else "
              "in the world, and steel drawn from it never forgot that first warmth. A finished "
              "blade looks plain and dark in an idle hand; it is waiting. Only a warrior who can "
-             "kindle their own breath can wake the colour sleeping in the metal."),
+             "kindle their own breath can wake the color sleeping in the metal."),
     ("body", "For a creature of corruption, that waking light is a death sentence. Where an "
              "ordinary sword cuts flesh, a Nichirin blade cuts the rot itself: the shadow that "
              "hides a fiend, the dark magic that knits an undead back together, the planar taint "
-             "that lets a horror shrug off honest steel. Stabby's blade chose its colours from his "
+             "that lets a horror shrug off honest steel. Stabby's blade chose its colors from his "
              "own breathing forms, and now it burns red, blue, or violet to match whichever beast, "
              "river, or shadow he calls upon."),
     ("gold", "**A whispered rumor.** Old hunters claim a Nichirin blade can never be truly stolen: "
@@ -450,10 +497,10 @@ C = [
              "living memory has dared find out."),
     ("h2", "Setting Down the Kensei's Way"),
     ("body", "When Stabby takes up a breathing form at Level 7, the Kensei's tricks retire with "
-             "his old teacher's lessons. He loses Kensei's Shot (the bow's bonus-action +1d4) and "
+             "his old teacher's lessons. He loses Kensei's Shot (the bow's Bonus Action +1d4) and "
              "Agile Parry (his +2 AC after blade-and-fist turns), and the Repeating Longbow "
              "becomes simply a very good bow, no longer a Monk weapon. In exchange he gains a "
-             "stance he can ignite every single fight, a First Form that turns his bonus action "
+             "stance he can ignite every single fight, a First Form that turns his Bonus Action "
              "into a 3d8 + 5 strike with 15 feet of free movement, form gifts that work all day, "
              "and a road that grows with him to Level 17. He is trading a parry for a predator's "
              "gait, and he gains far more than he gives up. (And Candyfang, outshone by the "
@@ -467,7 +514,8 @@ C = [
     ("gold", "*For Ursa Catchum, Circle of the Stars Druid: the year apart, Level 5 to 7.* "
              "Ursa walked one of three roads during the year apart, and came back changed. Each "
              "road grants a feat (what he sought) and a keepsake (what found him): he gains the "
-             "pair matching his road. Special story feats: no ability score increase."),
+             "pair matching his road. These are special story feats: they grant no Ability Score "
+             "Increase."),
     ("lore", "The Star-Paths of the Circle",
      "The Circle holds that no druid chooses the stars; the stars choose, and the druid only "
      "walks to meet them. Three roads are said to open before a sky-reader who has served the "
@@ -480,45 +528,85 @@ C = [
     ("gold", "*“You went out to learn the speech of wild things. You came back, and the wild "
              "things follow you home.”*"),
     ("stat", "Beast Handler (feat)", [
-        "**Mightier Summons.** Whenever you cast the Summon Beast spell, you cast it as though "
-        "using a spell slot of the highest level you can cast, without expending a higher-level "
-        "slot. (The spell's effects scale to that level, 4th now, and growing as Ursa does, but "
-        "it still uses only a 2nd-level slot.)",
-        "**Wild Speech.** You and your summoned creatures share simple thoughts freely, no words "
-        "needed. With ordinary Beasts, you understand their sounds and gestures even without your "
-        "Mark's magic, and they understand yours.",
+        "*Story Feat*",
+        "You gain the following benefits.",
+        "**Mightier Summons.** Whenever you cast the Summon Beast spell, the spell takes effect "
+        "as if you had cast it using a spell slot of the highest level you can cast, without "
+        "expending a slot of that level.",
+        "**Wild Speech.** You and any creature you summon can communicate simple ideas with each "
+        "other telepathically. In addition, you can understand the sounds and "
+        "gestures of ordinary Beasts even without your Mark's magic, and they can understand "
+        "yours.",
     ]),
+    # [DM CHECK: the Wildheart Token has no italic type line (compare Ash's Sigil-Stone's
+    # "*Wondrous Item, Rare (Requires Attunement by Ursa)*"). Adding one forces a rarity call,
+    # and adding attunement would change Ursa's slot math on the Beast Handler road, so this
+    # is flagged for a DM decision rather than fixed silently.]
+    # [DM CHECK: "the player names the beast, and names the friend" is a table instruction
+    # inside the item's flavor lead; suggested home is a dm block.]
     ("stat", "The Wildheart Token", [
         "*Carved by his own hand.*",
-        "A totem of a beast Ursa befriended in the wild year: the player names it, and names the "
-        "friend. His Bestial Spirit now always takes that companion's shape. Once per day, when "
-        "the spirit would drop to 0 hit points, it drops to 1 instead: it refuses to leave him.",
+        "A totem of a beast Ursa befriended during the wild year: the player names the beast, "
+        "and names the friend. It refuses to leave you. The Bestial Spirit you summon always "
+        "takes that companion's shape. When the spirit would drop to 0 Hit Points, it drops to "
+        "1 Hit Point instead. Once this property is used, it can't be used again until the "
+        "next dawn.",
+    ]),
+    ("game", "At Level 7, Beast Handler Has", [
+        "**Live now:** Summon Beast cast as a level 4 spell for a level 2 slot, free "
+        "thought-speech with his summoned creatures, plain understanding of ordinary Beasts, and "
+        "the Wildheart Token (his Bestial Spirit always wears his friend's shape, and once per "
+        "day drops to 1 Hit Point instead of 0).",
+        "**Not yet:** Mightier Summons keeps growing on its own. When Ursa's highest spell slot "
+        "reaches level 5 at Druid level 9, the summons rise with it, no new feat required.",
     ]),
 
     ("h2", "Starlit Channeler: The Circle of Stars (the road into the sky)"),
     ("gold", "*“You returned to the Circle, and the constellations answered: their light now "
-             "runs down your arm and out through the staff.”*"),
+             "runs down your arm and out through the staff. The Warden's spear sweeps between "
+             "danger and the party.”*"),
     ("stat", "Starlit Channeler (feat)", [
-        "**The Warden.** You learn the Shillelagh cantrip (Wisdom is your spellcasting ability "
-        "for it), and your Starry Form gains a fourth constellation: the Warden, a spear-bearing "
-        "figure of starlight. When you assume your form, you can choose it. As part of the same "
-        "Bonus Action, you cast Shillelagh through your staff, and the spell lasts as long as the "
-        "form does (instead of 1 minute). While the Warden shines: the kindled staff's damage "
-        "becomes Radiant, its strikes deal an extra 1d6 Radiant damage (2d6 at 11th level, 3d6 at "
-        "17th), and as a Bonus Action on each of your later turns, you can make one strike with "
-        "the kindled staff.",
+        "*Story Feat*",
+        "You gain the following benefits.",
+        "**The Warden.** You learn the Shillelagh cantrip, and Wisdom is your spellcasting "
+        "ability for it. In addition, your Starry Form gains a fourth constellation: the Warden, "
+        "a spear-bearing figure of starlight that holds its ground. When you assume your Starry "
+        "Form, you can choose the Warden. If you do so, you cast Shillelagh through your staff "
+        "as part of the same Bonus Action, and the spell lasts until your Starry Form ends "
+        "rather than for 1 minute. While the Warden constellation is active, the kindled staff "
+        "deals Radiant damage, and when you hit with it, the target takes an extra 1d6 Radiant "
+        "damage. The extra damage increases by 1d6 when you reach Druid levels 11 (2d6) and 17 "
+        "(3d6).",
+        "**The Warden's Light.** While the Warden constellation is active, the radius of the "
+        "Staff's Starlight increases to 20 feet, and each ally within that light gains a +1 "
+        "bonus to attack rolls and saving throws.",
+        "**Warden's Intercession.** "
+        "When a creature you can see hits an ally within your Starlight, you can take a "
+        "Reaction to reduce the attack's damage against that ally. The reduction equals 1d8 "
+        "plus your Wisdom modifier.",
     ]),
     ("dm", "The kindled staff IS the Shillelagh spell: Starseed (+1d4) rides its strikes (unlike "
            "the Archer's arrow, a form feature), and its damage counts as cantrip damage "
-           "(Elemental Fury: Potent Spellcasting applies from 7th, once per turn, like Starseed). "
-           "Sheet note: the feat grants Shillelagh, so Ursa's known copy frees up for a cantrip "
-           "swap at his next level."),
+           "(Elemental Fury: Potent Spellcasting applies from Druid level 7, once per turn, like "
+           "Starseed). Sheet note: the feat grants Shillelagh, so Ursa's known copy frees up for "
+           "a cantrip swap at his next level."),
     ("stat", "The Staff Wakes Further", [
         "*The relic grows, as promised.* "
-        "The Staff of Waking Constellations has always brightened a new star after every victory: "
-        "on this road, it brightens for him. Capacity rises to 6 charges (regain 1d4+2 at dawn), "
-        "and its Starlight glow reaches 20 feet: the whole party fits inside his Starry Form's "
-        "light, and inside the Amulet of Guiding Light's +1 to attacks and saves.",
+        "The Staff of Waking Constellations has always brightened a new star after every "
+        "victory; on this road, it brightens for him. It is the vessel the Warden shines "
+        "through: when the constellation widens its Starlight to 20 feet, it is this staff "
+        "carrying the light, and the whole party fits inside it. The staff now has 6 charges "
+        "and regains 1d4 + 2 expended charges daily at dawn.",
+    ]),
+    ("game", "At Level 7, Starlit Channeler Has", [
+        "**Live now:** the Warden constellation (a kindled staff dealing Radiant damage with an "
+        "extra 1d6 Radiant damage on a hit, plus Starseed's +1d4 once per turn), Starlight "
+        "widened to 20 feet while the Warden shines, with the Amulet's +1 bonus to attack rolls "
+        "and saving throws for every ally inside, Warden's Intercession (a Reaction that "
+        "reduces the damage of a hit against an ally in the glow by 1d8 plus his Wisdom "
+        "modifier), and the Staff at 6 charges.",
+        "**Not yet:** the Warden's extra Radiant damage grows to 2d6 at Druid level 11 and 3d6 "
+        "at Druid level 17. The constellation keeps pace with the sky.",
     ]),
 
     ("h2", "Reader of Omens: The Father's Trail (the road east)"),
@@ -528,24 +616,48 @@ C = [
     ("gold", "*“Your father read the sky the way other folk read a map. On his trail you "
              "learned his art: the omens no longer come at random, and you choose your "
              "moment.”*"),
+    # [DM CHECK: Shared Tides says "a number of times equal to your Wisdom modifier" without
+    # the SRD's "(minimum of once)". The PHB Cosmic Omen base feature carries the minimum, so
+    # adding it would match the underlying feature, but it touches a floor mechanic, so it is
+    # flagged for a DM decision rather than fixed silently.]
     ("stat", "Reader of Omens (feat)", [
-        "**Both Omens.** When you consult your Star Map after a Long Rest, you do not roll for a "
-        "single omen. Instead, you gain access to both Weal and Woe until your next Long Rest.",
-        "**Read the Moment.** You can wait to use your Cosmic Omen reaction until after the d20 "
-        "is rolled, but before you know the outcome. You then choose whether to apply Weal (add "
-        "1d6 to the roll) or Woe (subtract 1d6).",
-        "**Shared Tides.** Your uses of Cosmic Omen remain a single pool equal to your Wisdom "
-        "modifier (regaining all uses on a Long Rest). Spend each use on either Weal or Woe.",
-        "*Prerequisite: the Cosmic Omen feature (gained at druid level 6).*",
+        "*Story Feat (Prerequisite: Cosmic Omen Feature)*",
+        "You gain the following benefits.",
+        "**Both Omens.** When you consult your Star Map after finishing a Long Rest, you don't "
+        "roll for a single omen. Instead, you gain access to both Weal and Woe until your next "
+        "Long Rest.",
+        "**Read the Moment.** When you take the Reaction granted by your Cosmic Omen feature, "
+        "you can wait until after the d20 is rolled but before you know whether the roll "
+        "succeeds or fails. You then choose whether to apply Weal (adding 1d6 to the roll) or "
+        "Woe (subtracting 1d6 from it).",
+        "**Shared Tides.** Your uses of Cosmic Omen remain a single pool: you can use the "
+        "feature a number of times equal to your Wisdom modifier, expending one use on either "
+        "Weal or Woe, and you regain all expended uses when you finish a Long Rest.",
     ]),
+    ("dm", "Cosmic Omen is the Circle of Stars feature Ursa gained at Druid level 6."),
+    ("body", "Woe lands after the die is cast: turning an enemy's save into a failure at the "
+             "perfect moment feels like fate itself."),
     ("stat", "Ash's Sigil-Stone", [
-        "*Recovered on the trail. Attunement.*",
-        "A river-smooth stone etched with a half-finished sigil of Elaria, in Ash's own hand. It "
-        "sits warm in the palm when carried east. 1/long rest: cast Aura of Vitality from it "
-        "without a spell slot, healing between fights (triggers his Chalice splash). One day, "
-        "when the sigil is finished, it may wake.",
+        "*Wondrous Item, Rare (Requires Attunement by Ursa)*",
+        "A river-smooth stone etched with a half-finished sigil of Elaria, in Ash's own hand. "
+        "Recovered on the trail, it sits warm in the palm whenever it is carried east. Cast "
+        "between fights, it knits the party whole and kindles Ursa's Chalice splash besides. "
+        "One day, when the sigil is finished, it may wake.",
+        "While holding the stone, you can cast Aura of Vitality from it without expending a "
+        "spell slot. Once this property is used, it can't be used again until you finish a "
+        "Long Rest.",
+        "With the Staff and the Amulet, the Stone closes Ursa's third and final attunement "
+        "slot.",
     ]),
-    ("dm", "The S13 clue rides here."),
+    ("dm", "The Session 12 clue rides here."),
+    ("game", "At Level 7, Reader of Omens Has", [
+        "**Live now:** both Weal and Woe after every Long Rest, the patience to expend them "
+        "after the d20 is rolled (but before the outcome is known), a pool of uses equal to his "
+        "Wisdom modifier, and Ash's Sigil-Stone (Aura of Vitality once per Long Rest without "
+        "expending a spell slot).",
+        "**Not yet:** the sigil on the stone is only half finished. One day it may wake, and "
+        "what it wakes into is a question for the road east.",
+    ]),
     ("body", "Ursa gains the one road he walked, feat and keepsake together. The other two roads "
              "remain: the stars are patient, and the wild does not forget him."),
 
@@ -557,10 +669,12 @@ C = [
              "apart. Three masterworks, one choice. Each door of Lilly's year apart leads to one "
              "of these treasures: stay and build the portal (the Sentinel), go home to "
              "Glimmerspire and Poots (Boomstick), or give the year to mote research (the Awakened "
-             "Sphere). She walks one road and claims one masterwork. The attunement ledger closes "
-             "on every road: her Frostbite Shard, her Pocket Dynamo, and the new artifact make "
-             "exactly three, and on the Sentinel's road it is only two, for the Dynamo itself is "
-             "rebuilt into the guardian."),
+             "Sphere). She walks one road and claims one masterwork. Every road fits inside her "
+             "three attunement slots. On the Sphere's road the ledger closes at exactly three: "
+             "Shard, Dynamo, Sphere. On the Sentinel's road a slot stays free, for the Dynamo "
+             "itself is rebuilt into the guardian: two of three. And on Boomstick's road the "
+             "Shard truly retires, unattuned at her belt, a keepsake and one day a gift: two of "
+             "three, with room to spare."),
 
     ("h2", "Boomstick"),
     ("imgfloat", "assets/items/boomstick.png", 2.2),
@@ -569,27 +683,37 @@ C = [
     ("body", "On this road, Boomstick takes the dagger's watch. Boomstick becomes Lilly's "
              "spellcasting focus and her designated Arcane Firearm (an artificer designates only "
              "one). With her shield in the other hand, her hands are exactly full: pistol, shield, "
-             "and nothing wasted. The Frostbite Shard retires to her belt as a keepsake, or one "
-             "day, a gift."),
+             "and nothing wasted. Its clockwork drum conjures its own rounds, so Lilly will never "
+             "want for ammunition again. The Frostbite Shard retires to her belt as a keepsake, or "
+             "one day, a gift."),
     ("stat", "Boomstick", [
-        "*Weapon (Repeating Pistol), Rare (Requires Attunement by an Artificer)*",
-        "**Repeating Pistol, +2.** You gain a +2 bonus to attack and damage rolls made with this "
-        "magic firearm. It deals 1d10 Thunder damage and never needs reloading or ammunition; its "
-        "clockwork drum conjures its own rounds.",
+        "*Weapon (Repeating Pistol), Rare (Requires Attunement by Lilly)*",
+        "**Repeating Pistol, +2.** You gain a +2 bonus to attack rolls and damage rolls made "
+        "with this magic weapon, which deals 1d10 Thunder damage on a hit. The weapon requires "
+        "no ammunition and never needs reloading.",
         "**Wand of the War Mage.** While holding Boomstick, you gain a +2 bonus to spell attack "
-        "rolls, and you ignore Half Cover when making a spell attack. This also improves your "
-        "Eldritch Cannon's attack rolls, since they use your spell attack modifier.",
-        "**Spell Focus and Arcane Firearm.** Boomstick serves as your artificer spellcasting "
-        "focus and as your Arcane Firearm: you can add 1d8 to one damage roll of an artificer "
-        "spell you cast through it, dealt as Thunder damage.",
+        "rolls, and you ignore Half Cover when making a spell attack. Your Eldritch Cannon also "
+        "gains a +2 bonus to its attack rolls.",
+        "**Spell Focus and Arcane Firearm.** While holding Boomstick, you can use it as a "
+        "Spellcasting Focus for your Artificer spells, and it is your designated Arcane Firearm. "
+        "When you cast an Artificer spell through Boomstick, you can add 1d8 to one of the "
+        "spell's damage rolls; the extra damage is Thunder damage.",
         "**Concussion Infusion.** When a creature takes damage from a spell you cast through "
-        "Boomstick, it takes an additional 2 Thunder damage and can't take Reactions until the "
-        "start of its next turn (the disorienting boom).",
-        "**Made to Channel.** When you cast True Strike through Boomstick, the shot uses your "
-        "Intelligence, counts as a spell attack (gaining the +2 and ignoring Half Cover), and "
-        "deals Boomstick's Thunder plus True Strike's Radiant. A reliable scaling shot that "
-        "leaves your Bonus Action free for your cannon.",
+        "Boomstick, that creature takes an extra 2 Thunder damage and can't take Reactions "
+        "until the start of its next turn.",
+        "**Made to Channel.** When you cast True Strike using Boomstick, the attack uses your "
+        "Intelligence and counts as a spell attack, gaining Boomstick's +2 bonus to spell "
+        "attack rolls and ignoring Half Cover. On a hit, the attack deals Boomstick's Thunder "
+        "damage plus the spell's Radiant damage.",
         "*Forged by the masters of Glimmerstone.*",
+    ]),
+    ("game", "At Level 7, Boomstick Has", [
+        "**Live now:** everything. The +2 pistol with its bottomless clockwork drum, +2 to spell "
+        "attack rolls (a bonus that reaches her Eldritch Cannon's attacks too), ignored Half "
+        "Cover on spell attacks, the 1d8 Thunder Arcane Firearm rider, the Concussion boom that "
+        "steals Reactions, and True Strike channeled through the barrel.",
+        "**Not yet:** nothing held back. Boomstick arrives complete, and this door pays its "
+        "whole price on day one; what grows from here is only the legend.",
     ]),
 
     ("h2", "The Awakened Essence Sphere", {"hardbreak": True}),
@@ -598,45 +722,65 @@ C = [
     ("body", "The Sphere has spent the whole journey quietly pulling loose motes from the air. "
              "Now awakened, it holds a swirling jumble of collected aether that powers it from "
              "the start, and as the party clears each elemental rift and installs its pure Mote, "
-             "the Sphere learns that plane's mighty discharge."),
+             "the Sphere learns that plane's mighty discharge. The Sphere is honest about its "
+             "bargain: at Session 8 it grants Aether Ward alone (twice per Short Rest), and "
+             "every one of its five discharges sleeps behind a rift still to be won. This door "
+             "is the campaign's long game: the quietest of the three at the choosing, and by "
+             "the end of the arc, the mightiest of them all."),
     ("stat", "The Awakened Essence Sphere", [
-        "*Wondrous Item, Rare (Requires Attunement). Mote Channeling.*",
-        "**Mote Channeling.** You can use the Sphere's powers a total of 2 times per Short Rest "
-        "(a shared pool). You start with the base Aether Ward and unlock one elemental discharge "
-        "each time you install a rift's Mote. Where a save is called for, the DC is your spell "
+        "*Wondrous Item, Rare (Requires Attunement by Lilly)*",
+        "**Mote Channeling.** The Sphere's powers share a pool of 2 uses, and you regain all "
+        "expended uses when you finish a Short Rest. The Sphere starts with the Aether Ward "
+        "power, and it gains one Elemental Discharge each time a rift's Mote is installed in "
+        "it. If one of the Sphere's powers requires a saving throw, the DC equals your spell "
         "save DC.",
-        "**Base Power: Collected Aether. Aether Ward.** Action. You and each ally within 15 feet "
-        "gain 2d8 + your Intelligence modifier Temporary Hit Points as the gathered motes form a "
-        "protective shell. (Available from the start.)",
-        "**Rift Tracker.** Mark each Mote as it comes home: Ignis, Unda, Aer, Terra, Umbra. Five "
-        "rifts, five discharges, and a Sphere that remembers every one.",
+        "**Aether Ward (Base Power).** As a Magic action, you can expend 1 use "
+        "to release the gathered motes as a protective shell. You and each ally within 15 feet "
+        "of you gain a number of Temporary Hit Points equal to 2d8 plus your Intelligence "
+        "modifier.",
+        "**Rift Tracker.** When a rift's Mote is installed in the Sphere, record it: Ignis, "
+        "Unda, Aer, Terra, Umbra.",
     ]),
     ("stat", "Elemental Discharges", [
         "*Each unlocks when its rift is cleared and its Mote installed. The menu grows as the "
         "campaign goes.*",
-        "**Fire / Ignis, Cinderstorm (LOCKED).** Action. A 40-foot-radius firestorm within 120 "
-        "feet. Each creature in the area makes a Dexterity saving throw, taking 8d6 Fire damage "
-        "on a failed save, or half as much on a success. The area becomes burning terrain until "
-        "the start of your next turn: difficult terrain, and any creature that enters it or "
-        "starts its turn there takes 2d6 Fire damage.",
-        "**Water / Unda, Drowning Surge (LOCKED).** Action. A 30-foot Cone of crushing water. "
-        "Each creature in the Cone makes a Constitution saving throw, taking 6d8 Cold damage on a "
-        "failed save, or half as much on a success. On a failure, the creature also has the Prone "
-        "condition and its Speed is halved until the end of its next turn.",
-        "**Air / Aer, Cyclone (LOCKED).** Action. A 30-foot-radius whirlwind within 120 feet. "
-        "Each creature in the area makes a Strength saving throw, taking 6d8 Thunder damage on a "
-        "failed save, or half as much on a success. On a failure, the creature is also flung 20 "
-        "feet and has the Prone condition.",
-        "**Earth / Terra, Tectonic Slam (LOCKED).** Action. A 20-foot-radius eruption within 120 "
-        "feet. Each creature in the area makes a Dexterity saving throw, taking 7d8 Force damage "
-        "on a failed save; creatures that fail also have the Prone condition. The area becomes a "
-        "Jagged Field until your next turn: difficult terrain that deals 5 Piercing damage for "
-        "every 5 feet a creature travels through it, and you and your allies in the area have "
-        "Half Cover from the raised stone.",
-        "**Shadow / Umbra, Soul Siphon (LOCKED).** Action. One creature within 60 feet (or split "
-        "the dice among up to three). Each target makes a Constitution saving throw, taking 8d6 "
-        "Necrotic damage on a failed save, or half as much on a success. You regain Hit Points "
-        "(or grant them to an ally within 30 feet) equal to half the Necrotic damage dealt.",
+        "**Fire / Ignis, Cinderstorm (LOCKED).** As a Magic action, you can expend 1 use to "
+        "unleash a firestorm that fills a 40-foot-radius Sphere centered on a point within 120 "
+        "feet of yourself. Each creature in the Sphere must make a Dexterity saving throw, "
+        "taking 8d6 Fire damage on a failed save or half as much damage on a successful one. "
+        "Until the start of your next turn, the area burns: it is Difficult Terrain, and any "
+        "creature that enters the area or starts its turn there takes 2d6 Fire damage.",
+        "**Water / Unda, Drowning Surge (LOCKED).** As a Magic action, you can expend 1 use to "
+        "release a surge of crushing water in a 30-foot Cone. Each creature in the Cone must "
+        "make a Constitution saving throw, taking 6d8 Cold damage on a failed save or half as "
+        "much damage on a successful one. On a failed save, the creature also has the Prone "
+        "condition, and its Speed is halved until the end of its next turn.",
+        "**Air / Aer, Cyclone (LOCKED).** As a Magic action, you can expend 1 use to conjure a "
+        "whirlwind that fills a 30-foot-radius Sphere centered on a point within 120 feet of "
+        "yourself. Each creature in the Sphere must make a Strength saving throw, taking 6d8 "
+        "Thunder damage on a failed save or half as much damage on a successful one. On a "
+        "failed save, the creature is also pushed 20 feet away from the Sphere's center and "
+        "has the Prone condition.",
+        "**Earth / Terra, Tectonic Slam (LOCKED).** As a Magic action, you can expend 1 use to "
+        "make the ground erupt in a 20-foot-radius Sphere centered on a point within 120 feet "
+        "of yourself. Each creature in the Sphere must succeed on a Dexterity saving throw or "
+        "take 7d8 Force damage and have the Prone condition. Until the start of your next "
+        "turn, the raised stone makes the area Difficult Terrain, a creature takes 5 Piercing "
+        "damage for every 5 feet it moves in the area, and you and your allies have Half Cover "
+        "while in the area.",
+        "**Shadow / Umbra, Soul Siphon (LOCKED).** As a Magic action, you can expend 1 use to "
+        "target one creature within 60 feet of yourself, or you can divide the damage dice "
+        "among up to three creatures within that range. Each target must make a Constitution "
+        "saving throw, taking 8d6 Necrotic damage on a failed save or half as much damage on a "
+        "successful one. You or one ally within 30 feet of you (your choice) regains Hit "
+        "Points equal to half the amount of Necrotic damage dealt.",
+    ]),
+    ("game", "At Level 7, the Awakened Essence Sphere Has", [
+        "**Live now:** Aether Ward, twice per Short Rest: Lilly and each ally within 15 feet "
+        "gain 2d8 + her Intelligence modifier Temporary Hit Points.",
+        "**Not yet:** all five discharges. Cinderstorm, Drowning Surge, Cyclone, Tectonic Slam, "
+        "and Soul Siphon each wake only when their rift falls and its Mote comes home. Five "
+        "rifts stand between this Sphere and its full voice, and it means to earn every one.",
     ]),
 
     ("h2", "The Sentinel"),
@@ -646,8 +790,8 @@ C = [
         "name": "The Sentinel",
         "type": "Medium Construct (the Pocket Dynamo, rebuilt; Requires Attunement by Lilly)",
         "ac": "18",
-        "hp": "5 + five times your artificer level (40 at Level 7); it has a number of d8 Hit "
-              "Dice equal to your artificer level",
+        "hp": "5 + five times your Artificer level (40 at Level 7); it has a number of d8 Hit "
+              "Dice equal to your Artificer level",
         "speed": "30 ft.",
         "abilities": {"STR": 14, "DEX": 10, "CON": 16, "INT": 4, "WIS": 12, "CHA": 6},
         "immunities": "Poison",
@@ -656,34 +800,33 @@ C = [
         "languages": "understands the languages you know",
         "img": "assets/items/upgraded_eldritch_cannon.png",
         "traits": [
-            ("Duration", "None: it stays until it drops to 0 Hit Points or you dismiss it (no "
-                         "action required); deploy or recall it as a Bonus Action."),
+            ("Duration", "None. The Sentinel remains until it drops to 0 Hit Points or until "
+                         "you dismiss it (no action required). As a Bonus Action, you can "
+                         "deploy or recall it."),
             ("Bound Construct", "Add your Proficiency Bonus to any ability check or saving throw "
                                 "the Sentinel makes."),
-            ("Rebuilt Dynamo", "The Sentinel is Lilly's Eldritch Cannon feature, rebuilt: while "
-                               "attuned, she deploys the Sentinel instead of a cannon (never "
-                               "both). The Dynamo's gifts live on inside it: free deployment, no "
-                               "duration, and a hotter frame: the old cannon threw 2d8 flat, the "
-                               "Dynamo warmed that to 2d8+2, and the Sentinel's blasts now carry "
-                               "her full Intelligence (2d8+5). Mending repairs it 2d6, and if it "
-                               "ever drops to 0 Hit Points, she reboots it with a spell slot of "
-                               "1st level or higher, just as a cannon is rebuilt."),
+            ("Rebuilt Dynamo", "The Sentinel replaces your Eldritch Cannon feature: while you "
+                               "are attuned to it, you deploy the Sentinel instead of a cannon, "
+                               "never both at once. Deploying the Sentinel doesn't expend a "
+                               "spell slot, and the Sentinel has no maximum duration. When the "
+                               "Mending spell is cast on the Sentinel, it regains 2d6 Hit "
+                               "Points. If the Sentinel has dropped to 0 Hit Points, you can "
+                               "rebuild it by expending a level 1+ spell slot."),
         ],
         "actions": [
-            ("Activate", "On your turn you can use a Bonus Action to activate the Sentinel. When "
-                         "you do, it takes one of the following actions of your choice."),
-            ("Force Blast", "Ranged Attack Roll: your spell attack modifier, range 120 feet. "
-                            "Hit: 2d8 + your Intelligence modifier Force damage."),
-            ("Electric Pulse", "Lightning arcs from the Sentinel's core. Each creature of your "
-                               "choice within 15 feet of the Sentinel makes a Dexterity saving "
-                               "throw (DC equals your spell save DC), taking 2d8 + your "
-                               "Intelligence modifier Lightning damage on a failure, or half as "
-                               "much on a success. A creature that fails is jolted: it can't "
-                               "take Reactions until the start of your next turn."),
+            ("Activate", "As a Bonus Action, you can activate the Sentinel, and it then takes "
+                         "one of the following actions of your choice."),
+            ("Force Blast", "Ranged Attack Roll: Bonus equals your spell attack modifier, range "
+                            "120 ft. Hit: 2d8 + your Intelligence modifier Force damage."),
+            ("Electric Pulse", "Dexterity Saving Throw: DC equals your spell save DC, each "
+                               "creature of your choice within 15 feet of the Sentinel. "
+                               "Failure: 2d8 + your Intelligence modifier Lightning damage, and "
+                               "the target can't take Reactions until the start of your next "
+                               "turn. Success: Half damage."),
         ],
         "reactions": [
-            ("Guardian Protocol (1/round)", "Trigger: an ally within 15 feet of the Sentinel "
-                                            "takes damage. Response: that ally gains 1d8 + your "
+            ("Guardian Protocol (1/round)", "Trigger: An ally within 15 feet of the Sentinel "
+                                            "takes damage. Response: The ally gains 1d8 + your "
                                             "Intelligence modifier Temporary Hit Points."),
         ],
     }),
@@ -694,6 +837,14 @@ C = [
              "Electric Pulse, and the Protector stands watch as Guardian Protocol. The "
              "Flamethrower was traded for lightning, Gearhaven's own element. Forged by the "
              "masters of Glimmerstone."),
+    ("game", "At Level 7, the Sentinel Has", [
+        "**Live now:** the whole statblock. 40 Hit Points behind AC 18, its own 30 feet of "
+        "Speed, Force Blast or Electric Pulse on her Bonus Action (her pick every round), "
+        "Guardian Protocol once per round, and a free attunement slot besides, since the Dynamo "
+        "lives on inside the frame.",
+        "**Not yet:** its Hit Points keep pace with her, 5 + five times her Artificer level, so "
+        "the guardian grows sturdier every time Lilly does.",
+    ]),
 
     ("h1", "Marks & Mysteries"),
     ("body", "**Ursa's Mark of Handling.** A dragonmark that woke when he was six: it prickles near "
