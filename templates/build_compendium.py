@@ -210,6 +210,10 @@ C = [
      "not a road lost, the Circle says, only a road lent to someone else. Every path in these "
      "pages was true; a Guardian simply cannot be three heroes at once, and the year apart is "
      "the world's kind way of asking each of them who they most wish to become."),
+    # The parting itself fills the chapter-turn page (DM directive 2026-07-13).
+    ("img", "assets/session_07/beat_7/the_party_parts.png",
+     "The parting at Gearhaven's gates: three friends, three roads, one year.",
+     5.8, {"crop": "3:2", "hmax": 3.9}),
 
     # ------------------------------------------------------------------
     # WARRIOR OF BREATHING: full text of warrior_of_breathing_v2.pdf
@@ -900,6 +904,19 @@ C = [
      "left but her name and her sign, the seven-pointed star wrapped in a leafed vine. She "
      "scattered what remained into small safeguards and lay down to sleep, trusting the kind "
      "to find them. So far, the old tellings say, her trust has held."),
+    ("lore", "The Warden's Watch",
+     "Ask the Circle what Elaria is warden OF, and the old druids only point: at the turning "
+     "planes, at the anchor-stars strung between them like a lantern-line, at the small safe "
+     "things of the world that have no other reason to be safe. The tellings do not agree on "
+     "why she sleeps. Some say the sealing emptied her to the last drop. Some say the sleep is "
+     "itself the seal, and that waking her would open a door best left shut. The very oldest "
+     "telling says she is not asleep at all, only listening, on a scale too slow and too deep "
+     "for waking folk to follow. On one point every telling closes ranks: the stars her enemy "
+     "puts out, her gifts relight. A staff kindles. A sash carries. A small bright core "
+     "remembers. And somewhere beneath the turning of all seven planes, something that loves "
+     "the world very much is dreaming it safe passage."),
+    ("gold", "*“She is not gone,” the first druids wrote. “She is holding. When you carry her "
+             "sign, hold with her.”*"),
     # Part III closes on a full-width showpiece of the Warden herself; Part IV
     # opens on its own hardbreak, so this plate fills the section-end page.
     ("img", "assets/world/elaria_goddess.png",
