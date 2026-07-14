@@ -287,13 +287,6 @@ C = [
         "condition. You regain 1 expended Focus Point for each "
         "creature this feature reduces to 0 Hit Points.",
     ]),
-    ("game", "At Level 7, Beast Breathing Has", [
-        "**Live now:** the full Level 3 stance (the katana as a Monk weapon, Beast Sense, "
-        "Igniting the Breath for +2 Force on every hit, and Beast's Vigor) plus First Form: "
-        "Devour (3d8 + Dex, with 15 feet of free movement).",
-        "**Not yet:** Advanced Beast Breathing and Sharpened Fang arrive at Level 11, and Third "
-        "Form: Apex Predator at Level 17. They wait further down the road.",
-    ]),
 
     ("h2", "Water Breathing: the Monastery Form"),
     ("gold", "*“Be water. Water does not strike; it flows, and the rock is cut all the same. "
@@ -360,14 +353,6 @@ C = [
         "and the extra damage from your ignited breath) apply as normal. Each creature hit must "
         "succeed on a Dexterity saving throw (DC 8 plus your Wisdom modifier and Proficiency "
         "Bonus) or have the Prone condition and a Speed of 0 until the end of its next turn.",
-    ]),
-    ("game", "At Level 7, Water Breathing Has", [
-        "**Live now:** the full Level 3 stance (the katana as a Monk weapon, Igniting the Breath "
-        "for +2 Cold on every hit, and Flowing Guard) plus First Form: Flowing Strike (3d8 + Dex "
-        "with a tripping save, DC 13) and Healing Spring, First Water (2d8 + Wis, once per "
-        "Short Rest).",
-        "**Not yet:** the full Healing Spring (4d8 + Wis), Advanced Water Breathing, and "
-        "Sharpened Flow arrive at Level 11; Third Form: Tidal Crash at Level 17.",
     ]),
 
     ("h2", "Shadow Breathing: the Idol Form"),
@@ -441,14 +426,6 @@ C = [
         "katana's +2 bonus and the extra damage from your ignited breath) apply as normal. Each "
         "creature hit has the Blinded condition until the end of your next turn, and creatures "
         "other than you can't see you until the Darkness ends.",
-    ]),
-    ("game", "At Level 7, Shadow Breathing Has", [
-        "**Live now:** the full Level 3 stance (the katana as a Monk weapon, Eyes of the Idol, "
-        "Igniting the Breath for +2 Necrotic on every hit, and One With the Gloom) plus First "
-        "Form: Umbral Slash (3d8 + Dex from inside a pocket of Darkness only Stabby sees "
-        "through).",
-        "**Not yet:** Advanced Shadow Breathing and Sharpened Gloom arrive at Level 11, and "
-        "Third Form: Eclipse at Level 17. The deeper dark is still ahead.",
     ]),
 
     ("h2", "The Demon-Slayer's Blade: the Nichirin Katana"),
@@ -631,15 +608,6 @@ C = [
            "calls it, exactly like a first catch, and the chosen names go into the printed "
            "book alongside the species. Base creatures locked by the DM 2026-07-13: "
            "Arcanine, Lapras, and Noctowl, played as realistic-fantasy reskins."),
-    ("game", "At Level 7, Beast Handler Has", [
-        "**Live now:** any of his three partners summoned at level 4 for free (2 Rend "
-        "attacks, AC 15, and 50 Hit Points, or 40 for Noctowl), each with its own trait "
-        "and signature move, Wild Speech with any beast he summons, and the Wildheart "
-        "Token (once per dawn, a partner drops to 1 Hit Point instead of 0).",
-        "**Not yet:** the partners grow as his highest spell slot grows, no new feat "
-        "required. At Druid level 11 the spell rises to level 6 and each partner makes "
-        "3 Rend attacks.",
-    ]),
 
     ("h2", "Starlit Channeler: The Circle of Stars (the road into the sky)"),
     ("imgfloat", "assets/characters/starlit_warden_mantle.png", 2.6),
@@ -685,16 +653,6 @@ C = [
         "through: when the constellation widens its Starlight to 20 feet, it is this staff "
         "carrying the light, and the whole party fits inside it. The staff now has 6 charges "
         "and regains 1d4 + 2 expended charges daily at dawn.",
-    ]),
-    ("game", "At Level 7, Starlit Channeler Has", [
-        "**Live now:** the Warden's Mantle in every constellation (Starlight kindled to 20 feet "
-        "with a +1 bonus to attack rolls and saving throws for every ally inside, the kindled "
-        "staff dealing Radiant damage with an extra 1d6 Radiant damage on a hit, and Warden's "
-        "Intercession, a Reaction that reduces the damage an ally in the glow takes by 1d8 plus "
-        "his Wisdom modifier), one Constellation Gift for whichever form he wears (Archer, "
-        "Chalice, or Dragon), and the Staff at 6 charges.",
-        "**Not yet:** the staff's extra Radiant damage grows to 2d6 at Druid level 11 and 3d6 "
-        "at Druid level 17. The mantle keeps pace with the sky.",
     ]),
 
     ("h2", "Reader of Omens: The Father's Trail (the road east)"),
@@ -754,16 +712,6 @@ C = [
         "slot.",
     ]),
     ("dm", "The Session 12 clue rides here."),
-    ("game", "At Level 7, Reader of Omens Has", [
-        "**Live now:** two dreamed d20s a day (rolled after every Long Rest and spent before "
-        "the die falls), both Weal and Woe after every Long Rest with the patience to expend "
-        "them after the d20 is rolled (but before the outcome is known), a pool of five uses a "
-        "day, and Ash's Sigil-Stone (two charges at dawn for Ask the Day, Glimpse the Trail, "
-        "or Read the Heart, plus Aura of Vitality once per Long Rest without expending a spell "
-        "slot).",
-        "**Not yet:** the sigil on the stone is only half finished. One day it may wake, and "
-        "what it wakes into is a question for the road east.",
-    ]),
     ("body", "Ursa gains the one road he walked, feat and keepsake together. The other two roads "
              "remain: the stars are patient, and the wild does not forget him."),
 
@@ -812,14 +760,6 @@ C = [
         "attack rolls and ignoring Half Cover. On a hit, the attack deals Boomstick's Thunder "
         "damage plus the spell's Radiant damage.",
         "*Forged by the masters of Glimmerstone.*",
-    ]),
-    ("game", "At Level 7, Boomstick Has", [
-        "**Live now:** everything. The +2 pistol with its bottomless clockwork drum, +2 to spell "
-        "attack rolls (a bonus that reaches her Eldritch Cannon's attacks too), ignored Half "
-        "Cover on spell attacks, the 1d8 Thunder Arcane Firearm rider, the Concussion boom that "
-        "steals Reactions, and True Strike channeled through the barrel.",
-        "**Not yet:** nothing held back. Boomstick arrives complete, and this door pays its "
-        "whole price on day one; what grows from here is only the legend.",
     ]),
 
     ("h2", "The Awakened Essence Sphere", {"hardbreak": True}),
@@ -888,15 +828,6 @@ C = [
         "successful one. You, or one ally within 30 feet of you, regains a number of Hit "
         "Points equal to half the Necrotic damage dealt.",
     ]),
-    ("game", "At Level 7, the Awakened Essence Sphere Has", [
-        "**Live now:** Aether Ward, twice per Short Rest: Lilly and each ally within 15 feet "
-        "gain 2d8 + her Intelligence modifier Temporary Hit Points.",
-        "**Not yet:** all five discharges. A fire nova (Cinderstorm), a lull that stills a "
-        "warband (the Drowning Lull), a tailwind at every ally's back (Tailwind), the ground "
-        "turned weapon (Tectonic Slam), and a shadow's hungry pull (Soul Siphon) each wake "
-        "only when their rift falls and its Mote comes home. Five rifts stand between this "
-        "Sphere and its full voice, and it means to earn every one.",
-    ]),
 
     ("h2", "The Sentinel"),
     ("gold", "*“An upgraded Eldritch Cannon, rebuilt at the bench into a faithful "
@@ -952,14 +883,6 @@ C = [
              "Electric Pulse, and the Protector stands watch as Guardian Protocol. The "
              "Flamethrower was traded for lightning, Gearhaven's own element. Forged by the "
              "masters of Glimmerstone."),
-    ("game", "At Level 7, the Sentinel Has", [
-        "**Live now:** the whole statblock. 40 Hit Points behind AC 18, its own 30 feet of "
-        "Speed, Force Blast or Electric Pulse on her Bonus Action (her pick every round), "
-        "Guardian Protocol once per round, and a free attunement slot besides, since the Dynamo "
-        "lives on inside the frame.",
-        "**Not yet:** its Hit Points keep pace with her, 5 + five times her Artificer level, so "
-        "the guardian grows sturdier every time Lilly does.",
-    ]),
 
     ("h1", "Marks & Mysteries"),
     ("body", "**Ursa's Mark of Handling.** A dragonmark that woke when he was six: it prickles near "
