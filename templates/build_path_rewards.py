@@ -42,10 +42,12 @@ def strip_dm(blocks):
     return [b for b in blocks if not (isinstance(b, tuple) and b and b[0] == "dm")]
 
 def build():
-    intro = strip_dm(section(C, "The Three Doors"))
+    # Each handout opens directly on its hero's path (DM directive
+    # 2026-07-13): the shared "Three Doors" intro lives in the Compendium
+    # only, so the players aren't handed the same two pages three times.
     for h1, kicker, sub, out in HANDOUTS:
         body = strip_dm(section(C, h1))
-        blocks = [("titlepage", "THE GUARDIANS OF ELARIA", kicker, sub, NOTE)] + intro + body
+        blocks = [("titlepage", "THE GUARDIANS OF ELARIA", kicker, sub, NOTE)] + body
         docx = out + ".docx"
         print("built", build_doc(blocks, docx))
         render_check.docx_to_pdf(docx, out + ".pdf")
