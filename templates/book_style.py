@@ -403,6 +403,71 @@ def build_doc(blocks, out_path):
         elif kind == "statblock":
             _render_statblock(doc, blk[1])
 
+        elif kind == "ua_stat":
+            # (ua_stat, {name, type_line, top: [(label, text)], abilities:
+            # [(ab, score)], meta: [(label, text)], sections: [(header,
+            # [(entry, text)])]}) - the official summon-spell block anatomy
+            # (DM directive 2026-07-13): full-width banded name/section
+            # headers, labeled rows with hairline rules, a six-column
+            # ability table, and "(Partner Only)" annotated entries.
+            spec = blk[1]
+
+            def _ua_band(text, size=Pt(10.5)):
+                p = doc.add_paragraph()
+                pPr = p._p.get_or_add_pPr()
+                shd = OxmlElement('w:shd')
+                shd.set(qn('w:val'), 'clear'); shd.set(qn('w:fill'), GOLD_EDGE)
+                pPr.append(shd)
+                p.paragraph_format.keep_with_next = True
+                p.paragraph_format.space_before = Pt(6); p.paragraph_format.space_after = Pt(2)
+                r = p.add_run(text); _set_font(r, size, True, color="FFFFFF")
+                return p
+
+            def _ua_row(rich_text, keep=True):
+                p = doc.add_paragraph()
+                pPr = p._p.get_or_add_pPr()
+                bdr = OxmlElement('w:pBdr')
+                el = OxmlElement('w:bottom')
+                el.set(qn('w:val'), 'single'); el.set(qn('w:sz'), '4')
+                el.set(qn('w:space'), '2'); el.set(qn('w:color'), 'E0D8C4')
+                bdr.append(el); pPr.append(bdr)
+                if keep:
+                    p.paragraph_format.keep_with_next = True
+                p.paragraph_format.space_before = Pt(2); p.paragraph_format.space_after = Pt(2)
+                _rich(p, rich_text, base_size=Pt(9.5))
+                return p
+
+            _ua_band(spec["name"])
+            _ua_row("*" + spec.get("type_line", "") + "*")
+            for label, text in spec.get("top", []):
+                _ua_row("**" + label + ":** " + text)
+            abilities = spec.get("abilities", [])
+            if abilities:
+                atbl = doc.add_table(rows=2, cols=len(abilities))
+                atbl.alignment = 1
+                for j, (ab, score) in enumerate(abilities):
+                    hc = atbl.rows[0].cells[j]
+                    hp_ = hc.paragraphs[0]
+                    shd = OxmlElement('w:shd')
+                    shd.set(qn('w:val'), 'clear'); shd.set(qn('w:fill'), GOLD_EDGE)
+                    hc._tc.get_or_add_tcPr().append(shd)
+                    r = hp_.add_run(ab); _set_font(r, Pt(9), True, color="FFFFFF")
+                    vc = atbl.rows[1].cells[j]
+                    vp = vc.paragraphs[0]
+                    vp.paragraph_format.space_after = Pt(0)
+                    r = vp.add_run(score); _set_font(r, Pt(9.5))
+                sp = doc.add_paragraph()
+                sp.paragraph_format.space_before = Pt(0); sp.paragraph_format.space_after = Pt(0)
+                rr = sp.add_run(""); _set_font(rr, Pt(2))
+            for label, text in spec.get("meta", []):
+                _ua_row("**" + label + ":** " + text)
+            for header, entries in spec.get("sections", []):
+                # The band keeps with its first entry; entries flow freely so a
+                # long section can split across a page turn like official print.
+                _ua_band(header, size=Pt(10))
+                for ename, etext in entries:
+                    _ua_row("**" + ename + ".** " + etext, keep=False)
+
         elif kind == "body":
             p = doc.add_paragraph()
             p.paragraph_format.space_after = Pt(4)

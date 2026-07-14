@@ -26,6 +26,8 @@ The five type-planes:
 
 The home world is **Normal** type. **Dragon** is reserved for legendary and boss tier only. Earth is Session 8, the tutorial rift; the others follow in order.
 
+**Design principle: plot beats are never door-gated (DM, 2026-07-13).** A hero's chosen path changes how a story beat looks, never whether it happens. The star-relight belongs to the Staff (a relic Ursa carries on every road) and the crystal-key rule belongs to the boss design, so every door reaches the same climax; a Warden raises the Staff as a spear of light, a Reader speaks the star's forgotten name, a Beast Handler stands beside the freed guardian as it bows. The same rule protects the Ash trail: the Session 12 clue lands on every road. Ash's Sigil-Stone may enrich the trail with an early whisper or a private detail, but it is never the trail itself. When designing any path reward, companion power, or boss, check that nothing story-critical sits behind a choice a player might not make.
+
 ### 1.2 Shared-token, d6, co-op play
 
 A rift run plays out on a printed **gameboard** (fully specified in Section 3). The rules of motion are deliberately simple so a seven-year-old can run them:

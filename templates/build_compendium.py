@@ -516,6 +516,8 @@ C = [
     ("h1", "Paths of the Stars (Ursa's Path)", {"hardbreak": True}),
     ("gold", "*For Ursa Catchum, Circle of the Stars Druid: the year apart, Level 5 to 7.* "
              "Ursa walked one of three roads during the year apart, and came back changed. Each "
+             "road deepens something Ursa already does: his summons, his starry form, or his "
+             "omens. Each "
              "road grants a feat (what he sought) and a keepsake (what found him): he gains the "
              "pair matching his road. These are special story feats: they grant no Ability Score "
              "Increase."),
@@ -528,71 +530,153 @@ C = [
      "changed, and the two roads not taken wait, patient as starlight, for whoever comes next."),
 
     ("h2", "Beast Handler: The Living World (the road into the wild)"),
-    ("gold", "*“You went out to learn the speech of wild things. You came back, and the wild "
-             "things follow you home.”*"),
+    ("gold", "*“You went out to learn the speech of wild things. You came back, and three "
+             "of them followed you home.”*"),
     ("stat", "Beast Handler (feat)", [
         "*Story Feat*",
         "You gain the following benefits.",
-        "**Mightier Summons.** Whenever you cast the Summon Beast spell, the spell takes effect "
-        "as if you had cast it using a spell slot of the highest level you can cast, without "
-        "expending a slot of that level.",
-        "**Wild Speech.** You and any creature you summon can communicate simple ideas with each "
-        "other telepathically. In addition, you can understand the sounds and "
-        "gestures of ordinary Beasts even without your Mark's magic, and they can understand "
-        "yours.",
+        "**Mightier Summons.** Whenever you cast the Summon Beast spell, the spell takes "
+        "effect as if you had cast it using a spell slot of the highest level you can cast, "
+        "without expending a slot of that level.",
+        "**Signature Partners.** Your Summon Beast spell no longer conjures a nameless "
+        "spirit. When you cast the spell, one of your three partners answers the call: "
+        "Arcanine, Lapras, or Noctowl. The partner uses the Signature Partner stat block "
+        "below, with the traits and actions marked for it.",
+        "**Wild Speech.** You and any beast you summon can communicate simple ideas with "
+        "each other telepathically.",
     ]),
-    # [DM CHECK: the Wildheart Token has no italic type line (compare Ash's Sigil-Stone's
-    # "*Wondrous Item, Rare (Requires Attunement by Ursa)*"). Adding one forces a rarity call,
-    # and adding attunement would change Ursa's slot math on the Beast Handler road, so this
-    # is flagged for a DM decision rather than fixed silently.]
-    # [DM CHECK: "the player names the beast, and names the friend" is a table instruction
-    # inside the item's flavor lead; suggested home is a dm block.]
+    ("body", "*Ursa walked the wild year with three companions, and they answer his call "
+             "still. These are not spirits wearing borrowed shapes; they are his friends, and "
+             "he named each one the day it chose him.*"),
+    ("imgrow", [("assets/characters/partner_arcanine.png",
+                 "Arcanine, the Land partner."),
+                ("assets/characters/partner_lapras.png",
+                 "Lapras, the Water partner."),
+                ("assets/characters/partner_noctowl.png",
+                 "Noctowl, the Air partner.")], 2.05),
+    ("ua_stat", {
+        "name": "Signature Partner",
+        "type_line": "Beast (Arcanine: Medium, Land. Lapras: Large, Water. Noctowl: Small, Air), Unaligned",
+        "top": [
+            ("Armor Class", "11 + the level of the spell (natural armor)"),
+            ("Hit Points", "30 + 10 for each spell level above 2 (Noctowl: 20 + 10 for "
+             "each spell level above 2nd)"),
+            ("Speed", "40 ft., climb 40 ft. (Arcanine only); 30 ft., swim 40 ft. (Lapras "
+             "only); 20 ft., fly 60 ft. (Noctowl only)"),
+        ],
+        "abilities": [("STR", "18 (+4)"), ("DEX", "11 (+0)"), ("CON", "16 (+3)"),
+                      ("INT", "4 (−3)"), ("WIS", "14 (+2)"), ("CHA", "5 (−3)")],
+        "meta": [
+            ("Damage Vulnerabilities", "Cold (Arcanine only); Lightning (Lapras and Noctowl only)"),
+            ("Damage Immunities", "Fire (Arcanine only); Cold (Lapras only); Necrotic (Noctowl only)"),
+            ("Senses", "darkvision 60 ft., passive Perception 12"),
+            ("Languages", "understands the languages you speak"),
+            ("Challenge", "None"),
+            ("Proficiency Bonus", "equals your bonus"),
+        ],
+        "sections": [
+            ("Traits", [
+                ("Intimidate (Arcanine Only)",
+                 "When the partner appears, each enemy within 15 feet of it must succeed "
+                 "on a Wisdom saving throw against your spell save DC or take a −2 penalty "
+                 "to attack rolls until the end of its next turn."),
+                ("Shell Armor (Lapras Only)",
+                 "Attack rolls against the partner can't be Critical Hits."),
+                ("Keen Eye (Noctowl Only)",
+                 "The partner's attack rolls can't have Disadvantage, and its sight isn't "
+                 "impeded by Dim Light or Darkness."),
+                ("Flyby (Noctowl Only)",
+                 "The partner doesn't provoke Opportunity Attacks when it flies out of an "
+                 "enemy's reach."),
+            ]),
+            ("Actions", [
+                ("Multiattack",
+                 "The partner makes a number of Rend attacks equal to half this spell's "
+                 "level (round down)."),
+                ("Rend",
+                 "*Melee Attack Roll:* your spell attack modifier, reach 5 ft. *Hit:* "
+                 "1d8 + 4 + the spell's level Slashing damage."),
+                ("Extreme Speed (Arcanine Only)",
+                 "The partner moves up to its Speed without provoking Opportunity Attacks "
+                 "and makes one Rend attack. On a hit, the target takes extra Fire damage "
+                 "equal to twice the spell's level."),
+                ("Ice Beam (Lapras Only)",
+                 "When the partner uses Multiattack, it can replace any Rend with an Ice "
+                 "Beam. *Ranged Attack Roll:* your spell attack modifier, range 60 ft. "
+                 "*Hit:* 1d8 + 4 + the spell's level Cold damage, and the target's Speed "
+                 "decreases by 10 feet until the start of the partner's next turn."),
+                ("Hypnosis (Noctowl Only; Recharge 5–6)",
+                 "One creature the partner can see within 30 feet must succeed on a Wisdom "
+                 "saving throw against your spell save DC or have the Incapacitated "
+                 "condition until the end of the partner's next turn or until it takes "
+                 "damage."),
+            ]),
+        ],
+    }),
+    ("body", "**Arcanine.** *Legendary for its speed, it is said to run six thousand miles "
+             "in a day and a night, driven by a flame that burns within. The old tales say "
+             "folk stood entranced just watching it run.*"),
+    ("body", "**Lapras.** *Intelligent enough to understand speech, it ferries travelers "
+             "across cold water on its broad back, and it sings where sailors can hear.*"),
+    ("body", "**Noctowl.** *Its eyes see by the faintest starlight, its head turns all the "
+             "way around when it thinks, and its wings make no sound at all.*"),
     ("stat", "The Wildheart Token", [
-        "*Carved by his own hand.*",
-        "A totem of a beast Ursa befriended during the wild year: the player names the beast, "
-        "and names the friend. It refuses to leave you. The Bestial Spirit you summon always "
-        "takes that companion's shape. When the spirit would drop to 0 Hit Points, it drops to "
-        "1 Hit Point instead. Once this property is used, it can't be used again until the "
-        "next dawn.",
+        "*Wondrous Item (carved by his own hand)*",
+        "Three small totems strung on one leather cord, one for each partner, whittled "
+        "beside the wild year's campfires. When a partner you summoned would drop to 0 "
+        "Hit Points, it drops to 1 Hit Point instead. Once this property is used, it "
+        "can't be used again until the next dawn.",
     ]),
+    ("dm", "Naming is a table ceremony: the player names each partner the first time Ursa "
+           "calls it, exactly like a first catch, and the chosen names go into the printed "
+           "book alongside the species. Base creatures locked by the DM 2026-07-13: "
+           "Arcanine, Lapras, and Noctowl, played as realistic-fantasy reskins."),
     ("game", "At Level 7, Beast Handler Has", [
-        "**Live now:** Summon Beast cast as a level 4 spell for a level 2 slot, free "
-        "thought-speech with his summoned creatures, plain understanding of ordinary Beasts, and "
-        "the Wildheart Token (his Bestial Spirit always wears his friend's shape, and once per "
-        "day drops to 1 Hit Point instead of 0).",
-        "**Not yet:** Mightier Summons keeps growing on its own. When Ursa's highest spell slot "
-        "reaches level 5 at Druid level 9, the summons rise with it, no new feat required.",
+        "**Live now:** any of his three partners summoned at level 4 for free (2 Rend "
+        "attacks, AC 15, and 50 Hit Points, or 40 for Noctowl), each with its own trait "
+        "and signature move, Wild Speech with any beast he summons, and the Wildheart "
+        "Token (once per dawn, a partner drops to 1 Hit Point instead of 0).",
+        "**Not yet:** the partners grow as his highest spell slot grows, no new feat "
+        "required. At Druid level 11 the spell rises to level 6 and each partner makes "
+        "3 Rend attacks.",
     ]),
 
     ("h2", "Starlit Channeler: The Circle of Stars (the road into the sky)"),
-    ("gold", "*“You returned to the Circle, and the constellations answered: their light now "
-             "runs down your arm and out through the staff. The Warden's spear sweeps between "
-             "danger and the party.”*"),
+    ("gold", "*“You returned to the Circle, and every constellation answered: their light now "
+             "runs down your arm and out through the staff. Whatever stars you wear, the "
+             "Warden's spear sweeps between danger and the party.”*"),
     ("stat", "Starlit Channeler (feat)", [
-        "*Story Feat*",
+        "*Story Feat (Prerequisite: Starry Form Feature)*",
         "You gain the following benefits.",
-        "**The Warden.** You learn the Shillelagh cantrip, and Wisdom is your spellcasting "
-        "ability for it. In addition, your Starry Form gains a fourth constellation: the Warden, "
-        "a spear-bearing figure of starlight that holds its ground. When you assume your Starry "
-        "Form, you can choose the Warden. If you do so, you cast Shillelagh through your staff "
-        "as part of the same Bonus Action, and the spell lasts until your Starry Form ends "
-        "rather than for 1 minute. While the Warden constellation is active, the kindled staff "
-        "deals Radiant damage, and when you hit with it, the target takes an extra 1d6 Radiant "
-        "damage. The extra damage increases by 1d6 when you reach Druid levels 11 (2d6) and 17 "
-        "(3d6).",
-        "**The Warden's Light.** While the Warden constellation is active, the radius of the "
-        "Staff's Starlight increases to 20 feet, and each ally within that light gains a +1 "
-        "bonus to attack rolls and saving throws.",
-        "**Warden's Intercession.** "
-        "When a creature you can see hits an ally within your Starlight, you can take a "
-        "Reaction to reduce the attack's damage against that ally. The reduction equals 1d8 "
-        "plus your Wisdom modifier.",
+        "**The Warden's Mantle.** You learn the Shillelagh cantrip, and Wisdom is your "
+        "spellcasting ability for it. When you assume your Starry Form, you cast Shillelagh "
+        "through your Staff of Waking Constellations as part of the same Bonus Action, and the "
+        "spell lasts until the form ends rather than for 1 minute. While your Starry Form is "
+        "active, whichever constellation you chose: the Staff's Starlight kindles with the form "
+        "(no action required) and reaches 20 feet, and each ally within that light gains a +1 "
+        "bonus to attack rolls and saving throws; the kindled staff deals Radiant damage, and "
+        "when you hit with it, the target takes an extra 1d6 Radiant damage (this extra damage "
+        "increases to 2d6 at Druid level 11 and 3d6 at Druid level 17); and the Warden, a "
+        "spear-bearing figure of starlight, stands guard in your glow.",
+        "**Warden's Intercession.** While your Starry Form is active, when a creature you can "
+        "see hits an ally within your Starlight, you can take a Reaction to reduce the damage "
+        "the ally takes by 1d8 plus your Wisdom modifier.",
+        "**Constellation Gifts.** While your Starry Form is active, you also gain the benefit "
+        "below for the constellation you chose.",
+        "**Archer.** When you hit a creature with the Archer's luminous arrow, the arrow's "
+        "light clings to it, and the next attack roll made against that creature before the "
+        "start of your next turn has Advantage.",
+        "**Chalice.** When the Chalice's light restores Hit Points, you can divide those Hit "
+        "Points between two creatures within 30 feet of yourself.",
+        "**Dragon.** Allies within your Starlight can treat a d20 roll of 9 or lower as a 10 "
+        "on Constitution saving throws to maintain Concentration.",
     ]),
-    ("dm", "The kindled staff IS the Shillelagh spell: Starseed (+1d4) rides its strikes (unlike "
-           "the Archer's arrow, a form feature), and its damage counts as cantrip damage "
-           "(Elemental Fury: Potent Spellcasting applies from Druid level 7, once per turn, like "
-           "Starseed). Sheet note: the feat grants Shillelagh, so Ursa's known copy frees up for "
-           "a cantrip swap at his next level."),
+    ("dm", "The kindled staff IS the Shillelagh spell, so Starseed (+1d4) rides its strikes "
+           "once per turn (house rule 1; never the Archer's arrow), and its damage counts as "
+           "cantrip damage (Potent Spellcasting applies from Druid level 7, once per turn, "
+           "house rule 2). The Warden is no longer a fourth constellation to pick: the mantle "
+           "rides every form (DM ruling 2026-07-13). Sheet note: the feat grants Shillelagh, "
+           "so Ursa's known copy frees up for a swap."),
     ("stat", "The Staff Wakes Further", [
         "*The relic grows, as promised.* "
         "The Staff of Waking Constellations has always brightened a new star after every "
@@ -602,14 +686,14 @@ C = [
         "and regains 1d4 + 2 expended charges daily at dawn.",
     ]),
     ("game", "At Level 7, Starlit Channeler Has", [
-        "**Live now:** the Warden constellation (a kindled staff dealing Radiant damage with an "
-        "extra 1d6 Radiant damage on a hit, plus Starseed's +1d4 once per turn), Starlight "
-        "widened to 20 feet while the Warden shines, with the Amulet's +1 bonus to attack rolls "
-        "and saving throws for every ally inside, Warden's Intercession (a Reaction that "
-        "reduces the damage of a hit against an ally in the glow by 1d8 plus his Wisdom "
-        "modifier), and the Staff at 6 charges.",
-        "**Not yet:** the Warden's extra Radiant damage grows to 2d6 at Druid level 11 and 3d6 "
-        "at Druid level 17. The constellation keeps pace with the sky.",
+        "**Live now:** the Warden's Mantle in every constellation (Starlight kindled to 20 feet "
+        "with a +1 bonus to attack rolls and saving throws for every ally inside, the kindled "
+        "staff dealing Radiant damage with an extra 1d6 Radiant damage on a hit, and Warden's "
+        "Intercession, a Reaction that reduces the damage an ally in the glow takes by 1d8 plus "
+        "his Wisdom modifier), one Constellation Gift for whichever form he wears (Archer, "
+        "Chalice, or Dragon), and the Staff at 6 charges.",
+        "**Not yet:** the staff's extra Radiant damage grows to 2d6 at Druid level 11 and 3d6 "
+        "at Druid level 17. The mantle keeps pace with the sky.",
     ]),
 
     ("h2", "Reader of Omens: The Father's Trail (the road east)"),
@@ -626,6 +710,11 @@ C = [
     ("stat", "Reader of Omens (feat)", [
         "*Story Feat (Prerequisite: Cosmic Omen Feature)*",
         "You gain the following benefits.",
+        "**Omen Dreams.** When you finish a Long Rest, roll two d20s and record the numbers "
+        "rolled. These are your omens for the day. When you or a creature you can see is about "
+        "to make a D20 Test, you can replace the d20 roll with one of your omens (no action "
+        "required). You must choose to do so before the roll, and you can use each omen only "
+        "once. When you finish a Long Rest, you lose any unused omens.",
         "**Both Omens.** When you consult your Star Map after finishing a Long Rest, you don't "
         "roll for a single omen. Instead, you gain access to both Weal and Woe until your next "
         "Long Rest.",
@@ -640,6 +729,9 @@ C = [
     ("dm", "Cosmic Omen is the Circle of Stars feature Ursa gained at Druid level 6."),
     ("body", "Woe lands after the die is cast: turning an enemy's save into a failure at the "
              "perfect moment feels like fate itself."),
+    ("body", "The dreamed day has its own table craft: when an omen is spent, Ursa's player "
+             "speaks the dreamed number aloud before the die would fall. “I dreamed this. The "
+             "arrow lands on a 3.” Watching the world obey the dream is the whole art."),
     ("stat", "Ash's Sigil-Stone", [
         "*Wondrous Item, Rare (Requires Attunement by Ursa)*",
         "A river-smooth stone etched with a half-finished sigil of Elaria, in Ash's own hand. "
@@ -649,15 +741,25 @@ C = [
         "While holding the stone, you can cast Aura of Vitality from it without expending a "
         "spell slot. Once this property is used, it can't be used again until you finish a "
         "Long Rest.",
+        "**The Stone Looks Ahead.** The stone has 2 charges and regains all expended charges "
+        "daily at dawn. As a Magic action, you can expend 1 charge to do one of the following.",
+        "**Ask the Day.** Ask the DM one yes-or-no question about the day ahead. You receive a "
+        "truthful “yes” or “no,” or silence if the answer cannot be known.",
+        "**Glimpse the Trail.** Learn what waits on one unrevealed rift-board space within 1 "
+        "mile.",
+        "**Read the Heart.** Learn a visible creature's emotional state and attitude toward "
+        "the party.",
         "With the Staff and the Amulet, the Stone closes Ursa's third and final attunement "
         "slot.",
     ]),
     ("dm", "The Session 12 clue rides here."),
     ("game", "At Level 7, Reader of Omens Has", [
-        "**Live now:** both Weal and Woe after every Long Rest, the patience to expend them "
-        "after the d20 is rolled (but before the outcome is known), a pool of uses equal to his "
-        "Wisdom modifier, and Ash's Sigil-Stone (Aura of Vitality once per Long Rest without "
-        "expending a spell slot).",
+        "**Live now:** two dreamed d20s a day (rolled after every Long Rest and spent before "
+        "the die falls), both Weal and Woe after every Long Rest with the patience to expend "
+        "them after the d20 is rolled (but before the outcome is known), a pool of five uses a "
+        "day, and Ash's Sigil-Stone (two charges at dawn for Ask the Day, Glimpse the Trail, "
+        "or Read the Heart, plus Aura of Vitality once per Long Rest without expending a spell "
+        "slot).",
         "**Not yet:** the sigil on the stone is only half finished. One day it may wake, and "
         "what it wakes into is a question for the road east.",
     ]),
@@ -727,9 +829,13 @@ C = [
              "the start, and as the party clears each elemental rift and installs its pure Mote, "
              "the Sphere learns that plane's mighty discharge. The Sphere is honest about its "
              "bargain: at Session 8 it grants Aether Ward alone (twice per Short Rest), and "
-             "every one of its five discharges sleeps behind a rift still to be won. This door "
-             "is the campaign's long game: the quietest of the three at the choosing, and by "
-             "the end of the arc, the mightiest of them all."),
+             "every one of its five discharges sleeps behind a rift still to be won. What it "
+             "builds toward is a toolbox of five distinct answers on a strict budget (a "
+             "firestorm, a lull that stills a warband, a wind at every ally's back, the ground "
+             "turned weapon, and a shadow's hungry pull), each the size of a spell Lilly has no "
+             "slot to cast, two of them burning for a full minute while her hands stay free for "
+             "the cannon. The Sphere bridges the gap between an Artificer and a full caster; it "
+             "never erases it."),
     ("stat", "The Awakened Essence Sphere", [
         "*Wondrous Item, Rare (Requires Attunement by Lilly)*",
         "**Mote Channeling.** The Sphere's powers share a pool of 2 uses, and you regain all "
@@ -741,6 +847,10 @@ C = [
         "to release the gathered motes as a protective shell. You and each ally within 15 feet "
         "of you gain a number of Temporary Hit Points equal to 2d8 plus your Intelligence "
         "modifier.",
+        "**Lingering Discharges.** A discharge that lasts for 1 minute is sustained by the "
+        "Sphere and doesn't require Concentration. The Sphere can sustain only one lingering "
+        "discharge at a time; if you activate a lingering discharge while another is active, "
+        "the earlier one ends. You can end a lingering discharge early (no action required).",
         "**Rift Tracker.** When a rift's Mote is installed in the Sphere, record it: Ignis, "
         "Unda, Aer, Terra, Umbra.",
     ]),
@@ -753,17 +863,17 @@ C = [
         "taking 8d6 Fire damage on a failed save or half as much damage on a successful one. "
         "Until the start of your next turn, the area burns: it is Difficult Terrain, and any "
         "creature that enters the area or starts its turn there takes 2d6 Fire damage.",
-        "**Water / Unda, Drowning Surge (LOCKED).** As a Magic action, you can expend 1 use to "
-        "release a surge of crushing water in a 30-foot Cone. Each creature in the Cone must "
-        "make a Constitution saving throw, taking 6d8 Cold damage on a failed save or half as "
-        "much damage on a successful one. On a failed save, the creature also has the Prone "
-        "condition, and its Speed is halved until the end of its next turn.",
-        "**Air / Aer, Cyclone (LOCKED).** As a Magic action, you can expend 1 use to conjure a "
-        "whirlwind that fills a 30-foot-radius Sphere centered on a point within 120 feet of "
-        "yourself. Each creature in the Sphere must make a Strength saving throw, taking 6d8 "
-        "Thunder damage on a failed save or half as much damage on a successful one. On a "
-        "failed save, the creature is also pushed 20 feet away from the Sphere's center and "
-        "has the Prone condition.",
+        "**Water / Unda, the Drowning Lull (LOCKED).** As a Magic action, you can expend 1 use "
+        "to fill a 20-foot-radius Sphere centered on a point within 120 feet of yourself with "
+        "the sound and shimmer of deep water. Each creature in the Sphere must succeed on a "
+        "Wisdom saving throw or have the Incapacitated condition and a Speed of 0 as it stands "
+        "entranced, staring into deep water only it can see. The lull lasts for 1 minute. It "
+        "ends early for a creature that takes damage or if another creature within 5 feet of "
+        "it takes an action to shake it awake.",
+        "**Air / Aer, Tailwind (LOCKED).** As a Magic action, you can expend 1 use to send a "
+        "following wind about your allies. For 1 minute, you and any number of allies within "
+        "30 feet of you gain a +2 bonus to attack rolls and saving throws, and your Speeds "
+        "increase by 10 feet.",
         "**Earth / Terra, Tectonic Slam (LOCKED).** As a Magic action, you can expend 1 use to "
         "make the ground erupt in a 20-foot-radius Sphere centered on a point within 120 feet "
         "of yourself. Each creature in the Sphere must succeed on a Dexterity saving throw or "
@@ -772,18 +882,19 @@ C = [
         "damage for every 5 feet it moves in the area, and you and your allies have Half Cover "
         "while in the area.",
         "**Shadow / Umbra, Soul Siphon (LOCKED).** As a Magic action, you can expend 1 use to "
-        "target one creature within 60 feet of yourself, or you can divide the damage dice "
-        "among up to three creatures within that range. Each target must make a Constitution "
+        "target one creature within 60 feet of yourself. The target must make a Constitution "
         "saving throw, taking 8d6 Necrotic damage on a failed save or half as much damage on a "
-        "successful one. You or one ally within 30 feet of you (your choice) regains Hit "
-        "Points equal to half the amount of Necrotic damage dealt.",
+        "successful one. You, or one ally within 30 feet of you, regains a number of Hit "
+        "Points equal to half the Necrotic damage dealt.",
     ]),
     ("game", "At Level 7, the Awakened Essence Sphere Has", [
         "**Live now:** Aether Ward, twice per Short Rest: Lilly and each ally within 15 feet "
         "gain 2d8 + her Intelligence modifier Temporary Hit Points.",
-        "**Not yet:** all five discharges. Cinderstorm, Drowning Surge, Cyclone, Tectonic Slam, "
-        "and Soul Siphon each wake only when their rift falls and its Mote comes home. Five "
-        "rifts stand between this Sphere and its full voice, and it means to earn every one.",
+        "**Not yet:** all five discharges. A fire nova (Cinderstorm), a lull that stills a "
+        "warband (the Drowning Lull), a tailwind at every ally's back (Tailwind), the ground "
+        "turned weapon (Tectonic Slam), and a shadow's hungry pull (Soul Siphon) each wake "
+        "only when their rift falls and its Mote comes home. Five rifts stand between this "
+        "Sphere and its full voice, and it means to earn every one.",
     ]),
 
     ("h2", "The Sentinel"),
