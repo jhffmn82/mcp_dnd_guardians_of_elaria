@@ -429,7 +429,7 @@ C = [
     ]),
 
     ("h2", "The Demon-Slayer's Blade: the Nichirin Katana"),
-    ("imgfloat", "assets/items/nichirin_katana.png", 2.4),
+    ("imgfloat", "assets/items/nichirin_katana.png", 1.9),
     ("body", "This sun-forged demon-slayer blade was made from crimson ore that drinks in "
              "dawnlight. While sheathed, the steel looks dark and almost ordinary, but when Stabby "
              "ignites his breathing, the blade catches that breath and burns with the color of his "
@@ -452,11 +452,8 @@ C = [
         "Points and can't benefit from magical Darkness or shadowy concealment against you. Any "
         "visible corruption around the wound briefly burns, cracks, or peels away in sparks of "
         "purified light.",
-        "The katana is especially dangerous to creatures twisted by "
-        "darkness, undeath, or planar corruption. It leaves wounds that glow faintly like banked "
-        "embers, revealing that the creature has been marked by cleansing sunlight. The blade "
-        "wounds the corruption, not the creature beneath. When a corrupted guardian falls to it, "
-        "what breaks is the darkness.",
+        "The blade wounds the corruption, not the creature beneath; when a corrupted guardian "
+        "falls to it, what breaks is the darkness.",
     ]),
     ("h2", "Lore of the Blade"),
     ("body", "They say the first Nichirin blades were quenched not in water or oil but in the "
@@ -473,19 +470,15 @@ C = [
              "river, or shadow he calls upon."),
     ("gold", "**A whispered rumor.** Old hunters claim a Nichirin blade can never be truly stolen: "
              "carried by the wrong hand, the steel stays cold and dull and will not take an edge. "
-             "Whether that is true, or simply a story told to keep thieves honest, no one in "
-             "living memory has dared find out."),
+             "No one in living memory has dared find out."),
     ("h2", "Setting Down the Kensei's Way"),
     ("body", "When Stabby takes up a breathing form at Level 7, the Kensei's tricks retire with "
-             "his old teacher's lessons. He loses Kensei's Shot (the bow's Bonus Action +1d4) and "
-             "Agile Parry (his +2 AC after blade-and-fist turns), and the Repeating Longbow "
-             "becomes simply a very good bow, no longer a Monk weapon. In exchange he gains a "
-             "stance he can ignite every single fight, a First Form that turns his Bonus Action "
-             "into a 3d8 + 5 strike with 15 feet of free movement, form gifts that work all day, "
-             "and a road that grows with him to Level 17. He is trading a parry for a predator's "
-             "gait, and he gains far more than he gives up. (And Candyfang, outshone by the "
-             "Nichirin blade, needn't vanish: an heirloom at his belt, or one day, a gift worthy "
-             "of a Bloodfang.)"),
+             "his old teacher's lessons: Kensei's Shot and Agile Parry go, and the Repeating "
+             "Longbow becomes simply a very good bow. In exchange he gains a stance he can ignite "
+             "every single fight, a First Form that turns his Bonus Action into a 3d8 + 5 strike "
+             "with 15 feet of free movement, and a road that grows with him to Level 17. He is "
+             "trading a parry for a predator's gait. (And Candyfang remains: an heirloom at his "
+             "belt, or one day a gift worthy of a Bloodfang.)"),
 
     # ------------------------------------------------------------------
     # PATHS OF THE STARS: full text of ursa_path_rewards_v2.pdf
@@ -910,7 +903,7 @@ C = [
     # Part III closes on a full-width showpiece of the Warden herself; Part IV
     # opens on its own hardbreak, so this plate fills the section-end page.
     ("img", "assets/world/elaria_goddess.png",
-     "Elaria, the sleeping goddess who lit the way.", 6.5, {"crop": "3:2", "hmax": 4.6}),
+     "Elaria, the sleeping goddess who lit the way.", 6.5, {"crop": "1:1", "hmax": 6.7}),
 ]
 
 if __name__ == "__main__":
