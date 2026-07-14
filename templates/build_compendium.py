@@ -642,6 +642,7 @@ C = [
     ]),
 
     ("h2", "Starlit Channeler: The Circle of Stars (the road into the sky)"),
+    ("imgfloat", "assets/characters/starlit_warden_mantle.png", 2.6),
     ("gold", "*“You returned to the Circle, and every constellation answered: their light now "
              "runs down your arm and out through the staff. Whatever stars you wear, the "
              "Warden's spear sweeps between danger and the party.”*"),
@@ -697,9 +698,9 @@ C = [
     ]),
 
     ("h2", "Reader of Omens: The Father's Trail (the road east)"),
-    # Ursa's portrait floated into the omens page to fill an otherwise
-    # text-only hero-path page (2026-07-09 whitespace pass).
-    ("imgfloat", "assets/characters/ursa_v3_portrait.png", 2.7),
+    # The Dreamed Day plate (DM-approved 2026-07-13) replaces the generic
+    # portrait from the 2026-07-09 whitespace pass: door-specific art wins.
+    ("imgfloat", "assets/characters/reader_omen_dreams.png", 2.6),
     ("gold", "*“Your father read the sky the way other folk read a map. On his trail you "
              "learned his art: the omens no longer come at random, and you choose your "
              "moment.”*"),
