@@ -234,7 +234,7 @@ C = [
     ("h2", "Beast Breathing: the Bloodfang Form"),
     ("gold", "*“You think too much, little storm. The beast does not think. The beast moves, "
              "and the beast is already behind you.”* (the lesson Stabby finally understood)"),
-    ("imgfloat", "assets/characters/stabby_breathing_style_red.png", 2.4),
+    ("imgfloat", "assets/characters/stabby_breathing_style_red.png", 3.0),
     ("body", "Some warriors learn to still the storm inside them. The Warrior of Beast Breathing "
              "learns to ride it. Where other monks seek calm, this form reaches into the wild, "
              "animal heart of the fighter: the part that does not hesitate, does not flinch, and "
@@ -295,7 +295,7 @@ C = [
     ("h2", "Water Breathing: the Monastery Form"),
     ("gold", "*“Be water. Water does not strike; it flows, and the rock is cut all the same. "
              "Now breathe, and begin again.”* (Master Kaelon Windstep)"),
-    ("imgfloat", "assets/characters/stabby_breathing_style_water.png", 2.4),
+    ("imgfloat", "assets/characters/stabby_breathing_style_water.png", 3.0),
     ("body", "The Warrior of Water Breathing is the form of the patient master, the discipline that "
              "other monks spend their whole lives chasing. Its practitioners learn to move like a "
              "river: never rigid, never still, every strike flowing into the next, every blow "
@@ -362,7 +362,7 @@ C = [
     ("h2", "Shadow Breathing: the Idol Form"),
     ("gold", "*“Do not fear the dark. Breathe it in. Let it fill you, and then there is "
              "nothing left in the dark to fear you.”* (a whisper from the idol)"),
-    ("imgfloat", "assets/characters/stabby_breathing_style_shadow.png", 2.4),
+    ("imgfloat", "assets/characters/stabby_breathing_style_shadow.png", 3.0),
     ("body", "The Warrior of Shadow Breathing is the strangest and most secretive of the forms, a "
              "discipline touched by something older than any monastery. Its practitioners breathe "
              "in the gloom itself, drawing the dark into their lungs until it answers to them. "
@@ -433,8 +433,7 @@ C = [
     ]),
 
     ("h2", "The Demon-Slayer's Blade: the Nichirin Katana"),
-    ("imgfloat", "assets/items/nichirin_katana.png", 1.9),
-    ("body", "This sun-forged demon-slayer blade was made from crimson ore that drinks in "
+        ("body", "This sun-forged demon-slayer blade was made from crimson ore that drinks in "
              "dawnlight. While sheathed, the steel looks dark and almost ordinary, but when Stabby "
              "ignites his breathing, the blade catches that breath and burns with the color of his "
              "chosen form."),
@@ -459,6 +458,9 @@ C = [
         "The blade wounds the corruption, not the creature beneath; when a corrupted guardian "
         "falls to it, what breaks is the darkness.",
     ]),
+    ("img", "assets/items/nichirin_katana.png",
+     "The Nichirin Katana: dark steel waiting for dawnlight.", 5.6,
+     {"crop": "3:2", "hmax": 3.8}),
     ("h2", "Lore of the Blade"),
     ("body", "They say the first Nichirin blades were quenched not in water or oil but in the "
              "light of dawn itself, folded by smiths who worked only in the hour before sunrise. "
@@ -607,10 +609,11 @@ C = [
            "Arcanine, Lapras, and Noctowl, played as realistic-fantasy reskins."),
 
     ("h2", "Starlit Channeler: The Circle of Stars (the road into the sky)"),
-    ("imgfloat", "assets/characters/starlit_warden_mantle.png", 2.6),
     ("gold", "*“You returned to the Circle, and every constellation answered: their light now "
              "runs down your arm and out through the staff. Whatever stars you wear, the "
              "Warden's spear sweeps between danger and the party.”*"),
+    ("img", "assets/characters/starlit_warden_mantle.png",
+     "The Warden stands guard in Ursa's starlight.", 5.6, {"crop": "3:2", "hmax": 3.8}),
     ("stat", "Starlit Channeler (feat)", [
         "*Story Feat (Prerequisite: Starry Form Feature)*",
         "You gain the following benefits.",
@@ -655,10 +658,11 @@ C = [
     ("h2", "Reader of Omens: The Father's Trail (the road east)"),
     # The Dreamed Day plate (DM-approved 2026-07-13) replaces the generic
     # portrait from the 2026-07-09 whitespace pass: door-specific art wins.
-    ("imgfloat", "assets/characters/reader_omen_dreams.png", 2.6),
     ("gold", "*“Your father read the sky the way other folk read a map. On his trail you "
              "learned his art: the omens no longer come at random, and you choose your "
              "moment.”*"),
+    ("img", "assets/characters/reader_omen_dreams.png",
+     "At dawn the stone dreams the day to come.", 5.6, {"crop": "3:2", "hmax": 3.8}),
     # [DM CHECK: Shared Tides says "a number of times equal to your Wisdom modifier" without
     # the SRD's "(minimum of once)". The PHB Cosmic Omen base feature carries the minimum, so
     # adding it would match the underlying feature, but it touches a floor mechanic, so it is
