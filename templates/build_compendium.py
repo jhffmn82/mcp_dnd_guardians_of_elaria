@@ -768,13 +768,14 @@ C = [
         "**Wand of the War Mage.** While holding Boomstick, you gain a +2 bonus to spell attack "
         "rolls, and you ignore Half Cover when making a spell attack. Your Eldritch Cannon also "
         "gains a +2 bonus to its attack rolls.",
-        "**Charged Rounds.** The Storm Cell holds two charged rounds of each kind below, and "
-        "you regain all expended rounds when you finish a Long Rest. If a round requires a "
-        "saving throw, the DC equals your spell save DC.",
-        "**Arc Round.** When you hit a creature with Boomstick, you can expend one Arc Round "
-        "to make the shot leap: lightning arcs from the target to up to two other creatures of "
-        "your choice within 15 feet of it. Each must make a Dexterity saving throw, taking 2d6 "
-        "Lightning damage on a failed save, or half as much damage on a successful one.",
+        "**Storm-Arc.** The drum never stops humming. Whenever you hit a creature with "
+        "Boomstick, lightning arcs from the target to up to two other creatures of your choice "
+        "within 15 feet of it. Each must make a Dexterity saving throw against your spell save "
+        "DC, taking 2d6 Lightning damage on a failed save, or half as much damage on a "
+        "successful one.",
+        "**Charged Rounds.** The Storm Cell holds two Thunder Wave Rounds and two "
+        "Counter-Bolts, and you regain all expended rounds when you finish a Long Rest. If a "
+        "round requires a saving throw, the DC equals your spell save DC.",
         "**Thunder Wave Round.** When you hit a creature with Boomstick, you can expend one "
         "Thunder Wave Round to overload the shot: the target takes an extra 1d10 Lightning "
         "damage and must succeed on a Constitution saving throw or have the Stunned condition "
