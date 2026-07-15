@@ -769,8 +769,9 @@ C = [
         "rolls, and you ignore Half Cover when making a spell attack. Your Eldritch Cannon also "
         "gains a +2 bonus to its attack rolls.",
         "**Storm-Arc.** The drum never stops humming. Whenever you hit a creature with "
-        "Boomstick, lightning arcs from the target to up to two other creatures of your choice "
-        "within 15 feet of it. Each must make a Dexterity saving throw against your spell save "
+        "Boomstick, the shot crackles: the target takes an extra 1d6 Lightning damage, and "
+        "lightning arcs from it to up to two other creatures of your choice within 15 feet of "
+        "it. Each arced creature must make a Dexterity saving throw against your spell save "
         "DC, taking 2d6 Lightning damage on a failed save, or half as much damage on a "
         "successful one.",
         "**Charged Rounds.** The Storm Cell holds two Thunder Wave Rounds and two "
