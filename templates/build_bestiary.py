@@ -91,8 +91,6 @@ B = [
             ("Ghostly Wail (1/Long Rest)", "A haunting cry in a 15-ft. cone. Each creature there makes a DC 15 "
              "Wisdom save, taking 14 (4d6) necrotic and frightened until the end of its next turn on a fail, "
              "or half damage and no fear on a success."),
-            ("Dread Shroud", "*Bonus Action, 30 ft., one creature.* A chill bloom settles over the target: "
-             "DC 15 Wisdom save or disadvantage on all attack rolls until the start of her next turn."),
         ],
     }]),
 
@@ -134,8 +132,6 @@ B = [
             ("Ghostly Wail (1/Long Rest)", "A haunting cry in a 15-ft. cone. Each creature there makes a DC 16 "
              "Wisdom save, taking 17 (5d6) necrotic and frightened until the end of its next turn on a fail, "
              "or half damage and no fear on a success."),
-            ("Dread Shroud", "*Bonus Action, 30 ft., one creature.* A chill bloom settles over the target: "
-             "DC 16 Wisdom save or disadvantage on all attack rolls until the start of her next turn."),
         ],
     }]),
 

@@ -462,9 +462,6 @@ S = [
              "in that area must succeed on a DC 15 Wisdom saving throw, taking 4d6 necrotic "
              "damage on a failed save, or half as much on a success. On a failed save, the "
              "target is frightened until the end of its next turn."),
-            ("Dread Shroud", "*Bonus Action; 30 ft.; one creature.* A chill bloom settles "
-             "over the target. It must succeed on a DC 15 Wisdom save or suffer disadvantage "
-             "on all attack rolls until the start of your next turn."),
         ],
     }),
     ("dm", "**Running Ghostbloom at the table.** Guardian's Light is the party's safety net: "
