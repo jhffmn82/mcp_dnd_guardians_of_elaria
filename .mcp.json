@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "claude-archive": {
+      "command": "python",
+      "args": ["C:\\Users\\jhffm\\claude-archive\\mcp_server\\archive_mcp.py"],
+      "env": { "ARCHIVE_ROOT": "C:\\Users\\jhffm\\claude-archive" }
+    }
+  }
+}

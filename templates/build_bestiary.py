@@ -57,7 +57,7 @@ B = [
              "changed aboard the sinking Dutchman and again in Wraithpine's ghost-light. Her petals "
              "are glass-pale now and chime like frost; she floats, speaks in soft telepathy, and "
              "glows brighter near planar wounds. Some say she is Elaria's own little voice.*"),
-    # Reconciled 2026-07-06 to characters/ghostbloom_statblock_v3.pdf
+    # Reconciled 2026-07-06 to characters/historical/ghostbloom_statblock_v3.pdf
     # (recency rule); the full companion sheet lives in Part IV.
     ("enemy_cards", [{
         "name": "Ghostbloom, Spectral Blossom",

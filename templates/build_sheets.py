@@ -5,7 +5,7 @@
 #   characters/lilly_glimmergear_sheet_v3.pdf
 #   characters/stabby_sharpblade_sheet_v3.pdf
 #   characters/ursa_catchum_sheet_v3.pdf
-#   characters/ghostbloom_statblock_v3.pdf
+#   characters/historical/ghostbloom_statblock_v3.pdf
 # House rules (memory/house_rules.md) are already baked into those sheets;
 # never regress them here (Shillelagh over Primal Savagery, Patient Defense
 # = free Disengage, Goodberry eat = Bonus Action, Starseed on druid spells
