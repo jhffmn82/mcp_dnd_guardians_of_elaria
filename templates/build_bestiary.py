@@ -105,7 +105,7 @@ B = [
     ("enemy_cards", [{
         "name": "Ghostbloom, Spectral Blossom (Level 7)",
         "sub": "Tiny fey (Ghost/Grass), chaotic good \u2726 the party's companion, rift arc",
-        "img": "assets/characters/ghostbloom.png", "img_w": 2.4,
+        "img": "assets/characters/ghostbloom_l7.png", "img_w": 2.4,
         "banner": TEAL,
         "stats": [
             "**AC** 16 (natural armor)  **HP** 62 (8d4 + 42)  **Speed** 30 ft., fly 30 ft. (hover)",
