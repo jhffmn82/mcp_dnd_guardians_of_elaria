@@ -139,13 +139,14 @@ B = [
         ],
     }]),
 
-    ("body", "*The Underroot's own answer to a charge. Sandslash plants itself between the party "
+    ("body", "*The Underroot's own answer to a charge. Sandshrew plants itself between the party "
              "and whatever is coming, and the ground it stands on stops being easy to cross.*"),
     # Earth-rift companion (DM directive 2026-07-18): the TANK of the roster.
     # No expendable uses: the Action and the Reaction are the whole limiter.
     ("enemy_cards", [{
-        "name": "Sandslash",
+        "name": "Sandshrew",
         "sub": "Medium beast (Ground), unaligned \u2726 Earth-rift companion",
+        "img": "assets/characters/sandshrew.png", "img_w": 2.4,
         "banner": TEAL,
         "stats": [
             "**AC** 17 (natural armor)  **HP** 78 (12d8 + 24)  **Speed** 30 ft., burrow 40 ft.",
@@ -157,19 +158,19 @@ B = [
             "**Languages** understands its handler, speaks none",
         ],
         "traits": [
-            ("Spiked Coat", "A creature that hits Sandslash with a melee attack takes 5 piercing "
-             "damage from its quills."),
+            ("Sand Veil", "Dust curls constantly from its plates. Attack rolls against Sandshrew "
+             "made from more than 15 feet away have Disadvantage."),
             ("Curl and Guard", "*Reaction, 15 ft.* When an ally it can see is hit by an attack, "
-             "Sandslash rolls into the path and becomes the target instead. It takes the damage, "
+             "Sandshrew rolls into the path and becomes the target instead. It takes the damage, "
              "reduced by 5."),
         ],
         "actions": [
             ("Multiattack", "It makes two Claw attacks."),
             ("Claw", "*Melee Weapon Attack:* +8 to hit, reach 5 ft., one target. *Hit:* 10 (1d10 + 5) "
              "slashing damage."),
-            ("Spike Field", "Sandslash churns the ground into a bristling field: a 20-foot Cube "
+            ("Spike Field", "Sandshrew churns the ground into a bristling field: a 20-foot Cube "
              "centered on itself. The field does not move with it and lasts until the start of "
-             "Sandslash's next turn. The area is Difficult Terrain, and a creature takes 5 (2d4) "
+             "Sandshrew's next turn. The area is Difficult Terrain, and a creature takes 5 (2d4) "
              "piercing damage for every 5 feet it moves inside it."),
         ],
     }]),
