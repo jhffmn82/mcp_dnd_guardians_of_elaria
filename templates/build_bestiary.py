@@ -136,7 +136,8 @@ B = [
     }]),
 
     ("body", "*The Underroot's own answer to a charge. Sandshrew plants itself between the party "
-             "and whatever is coming, and the ground it stands on stops being easy to cross.*"),
+             "and whatever is coming, dares the whole pack to come through him, and makes the "
+             "ground they would have to cross buck and split beneath them.*"),
     # Earth-rift companion (DM directive 2026-07-18): the TANK of the roster.
     # No expendable uses: the Action and the Reaction are the whole limiter.
     ("enemy_cards", [{
@@ -156,18 +157,22 @@ B = [
         "traits": [
             ("Sand Veil", "Dust curls constantly from its plates. Attack rolls against Sandshrew "
              "made from more than 15 feet away have Disadvantage."),
-            ("Curl and Guard", "*Reaction, 15 ft.* When an ally it can see is hit by an attack, "
-             "Sandshrew rolls into the path and becomes the target instead. It takes the damage, "
-             "reduced by 5."),
+            ("Curl Up", "*Reaction.* When Sandshrew is hit by an attack, it tucks behind its "
+             "plates. Reduce that attack's damage by 10."),
         ],
         "actions": [
             ("Multiattack", "It makes two Claw attacks."),
             ("Claw", "*Melee Weapon Attack:* +8 to hit, reach 5 ft., one target. *Hit:* 10 (1d10 + 5) "
              "slashing damage."),
-            ("Spike Field", "Sandshrew churns the ground into a bristling field: a 20-foot Cube "
-             "centered on itself. The field does not move with it and lasts until the start of "
-             "Sandshrew's next turn. The area is Difficult Terrain, and a creature takes 5 (2d4) "
-             "piercing damage for every 5 feet it moves inside it."),
+            ("Challenge", "*Bonus Action.* Sandshrew rears up with a rattling hiss and dares "
+             "them to try it. Until the start of its next turn, each enemy within 30 feet that "
+             "can see it has Disadvantage on attack rolls against any target other than "
+             "Sandshrew."),
+            ("Earthquake", "Sandshrew slams both forefeet down and the ground bucks and splits in "
+             "a 20-foot Cube centered on itself. Each creature of Sandshrew's choice in that area "
+             "makes a DC 15 Dexterity saving throw, taking 10 (3d6) Bludgeoning damage on a failed "
+             "save, or half as much damage on a successful one. The broken ground is Difficult "
+             "Terrain until the start of Sandshrew's next turn."),
         ],
     }]),
 
