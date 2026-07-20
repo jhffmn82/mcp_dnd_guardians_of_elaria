@@ -2,6 +2,8 @@
 
 *The Guardians of Elaria, a family D&D campaign on 2024 revised 5e. This document is the runnable design for the collecting-and-battling rift arc: the reusable game loop, the companion-catching system, a fully built Session 8 (the Earth Rift), a reskin guide for the other planes, and the open questions still owed to the DM.*
 
+> **PROVENANCE WARNING (2026-07-18).** Most of this document was AI-drafted in a single prior session and committed as canon without DM review. An audit found exactly ONE dated DM marker in it. Treat only dated DM rulings here as authoritative. The design of record is the `rift-run-pokemon-design` memory (2026-07-10) plus the rulings in `memory/house_rules.md` and `memory/campaign_canon.md`; where this document disagrees with those, they win. KNOWN DEAD SECTIONS: the catch procedure and Gathering check (nothing is caught; the essence manifests at home), the choose-1-of-3 offer (retired), the Sprout/Bloom/Radiant growth table and the ~14 damage ceiling (never DM-authored), the invented "stone-shell" companion (replaced by Sandshrew), and the invented Terranox-style boss (the Earth boss is Groudon). A full rebuild is pending.
+
 Built on `memory/campaign_canon.md` and `lore/world_history.md`. No canon is contradicted here and no table events are invented. This is a design layer that sits on top of the chronicle; where an older draft disagreed with the balance decisions below, the decisions below win.
 
 ---

@@ -48,7 +48,7 @@ All three began at level 3 (Sessions 1-3), reached level 4 after Session 3 (Sess
 - **Pikachu (Spark Fox)**: essence trapped in the Essence Sphere since before Session 1. Projected as golden energy in Session 7 (Gearhaven); communicates through Ursa's Mark; "a key". Full return planned Session 13.
 - **Lickgloom**: Feywild-touched creature befriended in Sessions 1-2; stayed at Ravenstone Laboratory with Professor Aelwyn (DM ruling C4; write into the Session 3 revision).
 - **Floraburst**: original companion, chosen from Aelwyn's three offered creatures (Floraburst, Aqualump, Emberpaws) in Session 3. Became Ghostbloom (see above). Blossomflare was an unused example design, never canon (statblock retired to _triage).
-- **PLANNED (DM directive 2026-07-06)**: after Session 8 is played, offer the party a NEW Pokemon-style companion, ideally another choose-1-of-3 (echoing Aelwyn's offer), to support the rift arcs. Fold into Session 8/9 prep.
+- **COMPANION ROSTER (DM, 2026-07-18; SUPERSEDES the 07-06 choose-1-of-3 directive)**: there is no three-way offer and nothing is caught. Each rift grants ONE designed companion, and the gathered essence takes form back home: Ghostbloom steps into the Essence Sphere as the tether (the Sphere holds only one physical form at a time) and the new creature manifests. Aelwyn briefs the party on the plane's wildlife beforehand and explains the mechanics afterward. Final roster of 6 = Ghostbloom + Earth tank (Sandshrew) + Water healer + Fire striker + Air controller + Pikachu (Session 12, revealed as Ash's). Companions are real Pokemon given 5e statblocks; art is a realistic-fantasy reinterpretation via the genart.py reference workflow, never pasted official art.
 
 ## Session and level timeline
 
@@ -122,7 +122,7 @@ Eldridge Village and the Gilded Acorn Tavern (Eldridge Vale); Forest of Whispers
 8. The Grimfang, the rival goblin clan from the S2 ambush, may resurface (adjudicated C2).
 9. Catchable-creatures mechanic: promised, never specced; spec at Session 8.
 10. Pocket Dynamo is "Mk II" and stamped PROP ROOM: unexplained Glimmerspire-to-theater link.
-11. SESSION 8 MUST-DOS: mention Stabby's idol (found in his bag after Wraithpine, C13); plan the new companion choose-1-of-3 for after S8 (C4 directive).
+11. SESSION 8 MUST-DOS: mention Stabby's idol (found in his bag after Wraithpine, C13); the Earth companion (Sandshrew) manifests from the gathered essence in the homecoming scene, with Ghostbloom entering the Sphere as tether. The old choose-1-of-3 plan is retired (DM, 2026-07-18).
 
 ## Campaign history (real world)
 
