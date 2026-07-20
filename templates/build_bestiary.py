@@ -164,10 +164,10 @@ B = [
             ("Multiattack", "It makes two Claw attacks."),
             ("Claw", "*Melee Weapon Attack:* +8 to hit, reach 5 ft., one target. *Hit:* 10 (1d10 + 5) "
              "slashing damage."),
-            ("Challenge", "*Bonus Action.* Sandshrew rears up with a rattling hiss and dares "
-             "them to try it. Until the start of its next turn, each enemy within 30 feet that "
-             "can see it has Disadvantage on attack rolls against any target other than "
-             "Sandshrew."),
+            ("Challenge", "*Bonus Action, 30 ft., one enemy that can see it.* Sandshrew rears "
+             "up with a rattling hiss and dares that one to try it. Until the start of "
+             "Sandshrew's next turn, the target has Disadvantage on attack rolls against any "
+             "target other than Sandshrew."),
             ("Earthquake", "Sandshrew slams both forefeet down and the ground bucks and splits in "
              "a 20-foot Cube centered on itself. Each creature of Sandshrew's choice in that area "
              "makes a DC 15 Dexterity saving throw, taking 10 (3d6) Bludgeoning damage on a failed "
