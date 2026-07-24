@@ -451,14 +451,14 @@ BLOCKS = [
              "Captain Brynn Wavewarden leads her whole crew blinking up into the strange light: "
              "every sailor of the Stormwind, alive."),
 
-    ("h2", "The Ghost Essence"),
-    ("gold", "One light does not fly away. A pale, drifting essence, cold and gentle as sea "
-             "mist, circles down out of the spiral and hangs before Floraburst, who has ridden "
-             "out the whole battle tucked in Lilly's pack, and who now reaches up toward it "
-             "with every leaf and petal she has. Lilly cups her hands around the little ghost "
-             "light, steady as her mother taught her, and guides it home."),
+    ("h2", "The Waiting Essence"),
+    ("gold", "One light does not fly away. A single drifting essence, its colors shifting and "
+             "impossible to name, circles down out of the spiral and hangs before Floraburst, "
+             "who has ridden out the whole battle tucked in Lilly's pack, and who now reaches "
+             "up toward it with every leaf and petal she has. Lilly cups her hands around the "
+             "little light, steady as her mother taught her, and guides it home."),
     ("img", f"{A}/scenes/s5_ghost_essence.png",
-     "Lilly guides the pale ghost essence home to Floraburst.", 5.8,
+     "Lilly guides the unknown essence home to Floraburst.", 5.8,
      {"crop": "3:2", "hmax": 4.6}),
     ("game", "WHAT WILL SHE BECOME?", [
         "*Hundreds of essences spiral free, and one of them answers Floraburst's reaching "
@@ -531,7 +531,7 @@ BLOCKS = [
              "aboard the Dutchman: the hold tour, Davy's offer, the refusal. P4 SEVEN-EYES for "
              "their souls (the table WON, 77 exactly) → SHORT REST in the guest chambers. P5 "
              "FIGHT 1 the weather deck → FIGHT 2 the hold. P6 BOSS: Davy Jones, gone for good "
-             "→ the essences fly free, the pale essence chooses Floraburst (roll stays "
+             "→ the essences fly free, the waiting essence chooses Floraburst (roll stays "
              "SEALED), the Vigil, dawn, LEVEL 5."),
 
     ("h1", "Fights at a Glance"),
@@ -595,7 +595,7 @@ BLOCKS = [
     ("body", "**Lilly:** falls in love with the helm, the pumps, every clever piece of the "
              "Stormwind → the quiet gift die that saves Ursa's round at the dice table → “You "
              "will not touch her. Not one petal.” → her frost dagger carries the hold fight → "
-             "she cups the pale essence home (Seeds: the change, sealed until she wakes; "
+             "she cups the waiting essence home (Seeds: the change, sealed until she wakes; "
              "Guild-stamped crates, her own guild's mark, waiting in Gearhaven)."),
     ("body", "**Stabby:** fastest thing in the rigging, faster than Hugo can shout → the "
              "dice-game reveal: the kid who cannot sit still in a classroom is terrifying at "
