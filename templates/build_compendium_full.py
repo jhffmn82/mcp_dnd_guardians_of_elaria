@@ -14,9 +14,22 @@ sys.path.insert(0, os.path.dirname(__file__))
 from book_style import build_doc
 from build_bestiary import B as BESTIARY
 from build_compendium import I as TREASURES, C as CUSTOM
-from build_sheets import S as SHEETS
 
 NOTE = "A running reference for The Guardians of Elaria. Updated as the chronicle grows."
+
+# Part IV is now a DIVIDER only: the heroes' real character sheets (the
+# ReportLab PDFs in characters/*_sheet_v3.pdf, full table-ready layout) are
+# merged in after this page by publish.py, each starting on its own page.
+# blocks[0] is dropped by part(); [1:] is the intro that follows the divider.
+CHARSHEET_DIVIDER = [
+    ("body", "placeholder-dropped-by-part"),
+    ("gold", "The three Guardians at the close of the Gearhaven chapter, level 5, on their own "
+             "table-ready sheets. Each hero's full sheet follows on its own pages: Lilly "
+             "Glimmergear, then Stabby Sharpblade, then Ursa Catchum."),
+    ("body", "These are the living sheets the players hold at the table, in full "
+             "character-sheet layout, kept current as the party levels up. The party's "
+             "companion Ghostbloom has her card in Part I, the Bestiary."),
+]
 
 
 def part(number, title, blocks, opener=None):
@@ -53,7 +66,7 @@ FULL = (
     + part("I", "The Bestiary", BESTIARY, opener="assets/world/bestiary_opener.png")
     + part("II", "Treasures & Relics", TREASURES, opener="assets/world/treasures_opener.png")
     + part("III", "Custom Content", CUSTOM, opener="assets/world/paths_opener.png")
-    + part("IV", "The Guardians' Character Sheets", SHEETS)
+    + part("IV", "The Guardians' Character Sheets", CHARSHEET_DIVIDER)
 )
 
 if __name__ == "__main__":
