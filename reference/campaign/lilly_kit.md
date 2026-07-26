@@ -62,10 +62,10 @@ Attuned: Dynamo + Storm Cell. Boomstick becomes stormcharged. Adds to the always
   - **Thunder Wave Round.** On a Boomstick hit, expend 1: extra **1d10 lightning** and a **CON save or Stunned** until the end of her next turn.
   - **Counter-Bolt.** **Reaction**, expend 1, when a creature within 60 ft attacks **an ally** (NOT Lilly herself, house rule): the triggering attack has **Disadvantage**, and she makes one Boomstick attack, +1d10 lightning on a hit.
 - **Made to Channel.** When she casts **True Strike through Boomstick**, it uses **INT**, **counts as a spell attack** (so it gains the Storm Cell's **+2** spell-attack bonus and ignores Half Cover), and on a hit deals Boomstick's thunder plus the spell's radiant.
-  - [DM CHECK, load-bearing: does the Storm Cell's +2 spell-attack bonus stack with Boomstick's +2 weapon bonus? Printed text reads as a stack (INT 5 + PB 3 + weapon 2 + Cell 2 = **+12**), but "counts as a spell attack" could instead mean the weapon's +2 is replaced (so **+10**). Sims of the other roads used +10; confirm the Door A number.]
+  - [DM RULING 2026-07-25: the two +2 bonuses do NOT stack. Door A True Strike is **+10** (INT 5 + PB 3 + one +2), same as the other roads. The Cell's +2 does not add on top of Boomstick's weapon +2.]
 
 **Combat loop (Door A).**
-- **Action:** True Strike through Boomstick, to hit **+12** (1d10 + 2 + INT 5 thunder + 1d6 radiant + Arcane Firearm 1d8 + Storm-Arc 1d6 to target + arc 2d6 to two more, DC 16 Dex). Spend a Thunder Wave Round for +1d10 and a Stun save when a stun matters.
+- **Action:** True Strike through Boomstick, to hit **+10** (1d10 + 2 + INT 5 thunder + 1d6 radiant + Arcane Firearm 1d8 + Storm-Arc 1d6 to target + arc 2d6 to two more, DC 16 Dex). Spend a Thunder Wave Round for +1d10 and a Stun save when a stun matters.
 - **Bonus:** Activate cannon, Force Ballista at **+10** (2d8 + 2 force, push 5), or Flamethrower / Protector as the field needs.
 - **Reaction:** Counter-Bolt when an **ally** is attacked (Disadvantage + a free Boomstick shot), else Shield (self) or Flash of Genius.
 
@@ -121,7 +121,7 @@ Quoted from memory/house_rules.md:
 ## Easy-to-forget checklist
 
 - **INT (+5) drives True Strike on BOTH the attack roll and the damage.** True Strike substitutes her spellcasting ability for Dex; the +5 to damage is the single most-dropped number.
-- **True Strike to-hit is +10 baseline** (PB 3 + INT 5 + Boomstick +2), rising to **+12 on Door A** (Made to Channel adds the Storm Cell's +2 spell-attack bonus).
+- **True Strike to-hit is +10 baseline** (PB 3 + INT 5 + Boomstick +2), on every road including Door A (DM ruling 2026-07-25: the Cell's +2 spell-attack bonus does not stack with Boomstick's weapon +2).
 - **Arcane Firearm adds 1d8 thunder to one spell's damage each turn** (via Boomstick). Add it to True Strike, Fire Bolt, a Scorching Ray, Shatter, or Thunderwave, once per turn.
 - **The Pocket Dynamo gives the cannon +2 damage** on Flamethrower and Force Ballista (not on Protector temp HP).
 - **The cannon fires on a BONUS action**; she still gets her full Action the same turn. Never charge her Action for it.

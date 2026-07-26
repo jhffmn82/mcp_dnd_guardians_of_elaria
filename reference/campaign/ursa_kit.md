@@ -17,7 +17,7 @@ A sim MUST walk this whole list each round or it will drop features. The most-dr
 
 HP **52** | AC **18** | Speed **30 ft.** | Init **+2** | Prof **+3** | Spell save **DC 16** | Spell attack **+8** | Shillelagh (weapon attack, +1 staff) **+9** | STR 8(-1) DEX 14(+2) CON 14(+2) INT 12(+1) **WIS 20 (+5)** CHA 8(-1)
 
-> **[DM CHECK, load-bearing] The +1 light bonus is ALLIES ONLY, not Ursa.** build_compendium.py line 122 grants Guiding Light to "allies," and Warden's Mantle (line 626) to "each ally within that light." By the printed text Ursa does NOT raise his own attacks or saves, so his spell attack is **+8**, not +9. Earlier sims used "+9 in his own light," which was wrong. If you intended Ursa to benefit from his own aura, it is +8 base / +9 lit; otherwise +8 flat.
+> **[DM RULING 2026-07-25, confirmed] The +1 light bonus is ALLIES ONLY, not Ursa.** build_compendium.py line 122 grants Guiding Light to "allies," and Warden's Mantle (line 626) to "each ally within that light." By the printed text Ursa does NOT raise his own attacks or saves, so his spell attack is **+8**, not +9. Earlier sims used "+9 in his own light," which was wrong. Ursa's own attacks and saves get no bonus from his own light; his spell attack is +8.
 Resources: **Wild Shape 3/rest** (1 back on short rest, all on long) | **Spell slots 4/3/3/1** (1st/2nd/3rd/4th) | **Staff 5 charges** (6 on the Starlit road) | **Cosmic Omen = Wis mod = 5 uses/long rest** | **Star Map free Guiding Bolts = Wis mod = 5/long rest**.
 
 ### Derivations (base numbers are level-5 on the sheet; level 7 shown here)
