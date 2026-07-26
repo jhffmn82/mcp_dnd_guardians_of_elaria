@@ -278,15 +278,15 @@ S = [
         "bludgeoning (1d8 two-handed). See Shillelagh!",
         "**Staff + Shillelagh (ignited).** Melee, +9 (+10) to hit: 1d10 + 6 force or "
         "bludgeoning. Bonus action to light, lasts 1 minute.",
-        "**Guiding Bolt (1st, from Staff or Star Map).** +8 (+9) to hit, 120 ft: 4d6 radiant "
+        "**Guiding Bolt (1st, from Staff or Star Map).** +8 to hit, 120 ft: 4d6 radiant "
         "+ 1d4 (Starseed); the next hit on that target has advantage.",
-        "**Star-Arrow (Starry Form: Archer).** Bonus action, +8 (+9) to hit: 1d8 + 5 radiant, "
+        "**Star-Arrow (Starry Form: Archer).** Bonus action, +8 to hit: 1d8 + 5 radiant, "
         "one enemy within 60 ft.",
-        "**Starry Wisp (cantrip).** +8 (+9) to hit, 60 ft: 2d8 radiant + 1d4 (Starseed); "
+        "**Starry Wisp (cantrip).** +8 to hit, 60 ft: 2d8 radiant + 1d4 (Starseed); "
         "lights up the target.",
-        "*The number in (parentheses) is his to-hit while his Starry Form is glowing: the "
-        "Amulet of Guiding Light gives +1 to attacks (and saves) for him and nearby friends. "
-        "He keeps it on, so that's usually his real number.*",
+        "*While his Starry Form glows, the Amulet of Guiding Light gives +1 to attacks and "
+        "saves to his nearby FRIENDS (allies only, not Ursa himself, DM ruling): it is a party "
+        "buff, so his own to-hit stays +8.*",
     ]),
     ("dm", "**How Ursa's turn works.** His summoned spirit acts on its own turn for free; Ursa "
            "just tells it what to do. His bonus action each turn goes to one move: fire a "
