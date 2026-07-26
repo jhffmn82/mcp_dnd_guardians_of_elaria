@@ -101,16 +101,16 @@ story.append(Paragraph('AC 18 normally \u2014 jumps to AC 20 right after Stabby 
     'katana the same turn (Agile Parry). Speed &amp; AC include his Sash. Best saves: Dex +8, Str +2.',small_it))
 
 story.append(Paragraph("All of Stabby's Skills", h2_st))
+TR='<b><font color="#7A1F1F">%s</font></b>'   # trained: red, per the caption
 skills=[
-    ('<b>Acrobatics +8</b>','History -1','Nature -1','Sleight of Hand +5'),
-    ('Animal Handling +2','Insight +2','Perception +2','<b>Stealth +8</b>'),
-    ('Arcana -1','Intimidation -1','Performance -1','<b>Survival +5</b>'),
-    ('<b>Athletics +2</b>','Investigation -1','Persuasion -1',''),
-    ('Deception -1','Medicine +2','Religion -1',''),
+    (TR%'Acrobatics +8',TR%'Athletics +2','Insight +2','Medicine +2','Performance -1','Sleight of Hand +5'),
+    ('Animal Handling +2','Deception -1','Intimidation -1','Nature -1','Persuasion -1',TR%'Stealth +8'),
+    ('Arcana -1','History -1','Investigation -1','Perception +2','Religion -1',TR%'Survival +5'),
 ]
-sk=Table([[Paragraph(c,cell_st) for c in r] for r in skills], colWidths=[1.825*inch]*4)
+sk=Table([[Paragraph(c,cell_st) for c in r] for r in skills], colWidths=[(7.3/6)*inch]*6)
 sk.setStyle(TableStyle([('BOX',(0,0),(-1,-1),0.5,LINE),('INNERGRID',(0,0),(-1,-1),0.3,RED_LT),
-    ('TOPPADDING',(0,0),(-1,-1),2.5),('BOTTOMPADDING',(0,0),(-1,-1),2.5),('LEFTPADDING',(0,0),(-1,-1),5),]))
+    ('TOPPADDING',(0,0),(-1,-1),2.5),('BOTTOMPADDING',(0,0),(-1,-1),2.5),
+    ('LEFTPADDING',(0,0),(-1,-1),4),('RIGHTPADDING',(0,0),(-1,-1),3),]))
 story.append(sk)
 story.append(Paragraph('Red = trained. Best: Acrobatics &amp; Stealth +8 (sneaky and springy!).',small_it))
 

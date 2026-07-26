@@ -126,20 +126,19 @@ story.append(ability_strip([('STR',8,'-1'),('DEX',14,'+2'),('CON',14,'+2'),
 story.append(Paragraph('Best saves: Wis +8, Int +4. WIS powers all his magic.', small_it))
 
 story.append(Paragraph("All of Ursa's Skills", h2_st))
+TR = '<b><font color="#4A357A">%s</font></b>'   # trained: purple, per the caption
 skills = [
-    ('Acrobatics +2','History +1','Nature +1','Sleight of Hand +2'),
-    ('<b>Animal Handling +8</b>','Insight +5','<b>Perception +8</b>','Stealth +2'),
-    ('Arcana +1','Intimidation -1','Performance -1','<b>Survival +8</b>'),
-    ('Athletics -1','Investigation +1','Persuasion -1',''),
-    ('Deception -1','Medicine +5','Religion +1',''),
+    ('Acrobatics +2','Athletics -1','Insight +5','Medicine +5','Performance -1','Sleight of Hand +2'),
+    (TR % 'Animal Handling +8','Deception -1','Intimidation -1','Nature +1','Persuasion -1','Stealth +2'),
+    ('Arcana +1','History +1','Investigation +1',TR % 'Perception +8','Religion +1',TR % 'Survival +8'),
 ]
 sk_data = [[Paragraph(c, cell_st) for c in row] for row in skills]
-sk = Table(sk_data, colWidths=[1.825*inch]*4)
+sk = Table(sk_data, colWidths=[(7.3/6)*inch]*6)
 sk.setStyle(TableStyle([
     ('BOX',(0,0),(-1,-1),0.5, LINE),
     ('INNERGRID',(0,0),(-1,-1),0.3, PURPLE_LT),
     ('TOPPADDING',(0,0),(-1,-1),2.5),('BOTTOMPADDING',(0,0),(-1,-1),2.5),
-    ('LEFTPADDING',(0,0),(-1,-1),5),
+    ('LEFTPADDING',(0,0),(-1,-1),4),('RIGHTPADDING',(0,0),(-1,-1),3),
 ]))
 story.append(sk)
 story.append(Paragraph('Purple = trained. Best: Animal Handling, Perception & Survival +8. '

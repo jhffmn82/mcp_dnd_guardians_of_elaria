@@ -43,7 +43,9 @@ def make_frame(footer_name):
         canvas.rect(0.38 * inch, 0.38 * inch, W - 0.76 * inch, H - 0.76 * inch, fill=0, stroke=1)
         canvas.setFont('Times-Italic', 7.5)
         canvas.setFillColor(GREY)
-        canvas.drawCentredString(W / 2.0, 0.30 * inch,
+        # Footer sits just above the inner border line (0.38"), inside the frame;
+        # at 0.30" it collided with the double border.
+        canvas.drawCentredString(W / 2.0, 0.41 * inch,
                                  f"{footer_name}  •  The Guardians of Elaria  •  Page {doc.page}")
         canvas.restoreState()
     return frame

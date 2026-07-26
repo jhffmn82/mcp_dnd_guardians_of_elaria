@@ -87,16 +87,16 @@ story.append(ability_strip([('STR',8,'-1'),('DEX',14,'+2'),('CON',14,'+2'),
 story.append(Paragraph('Best saves: Con +5, Int +8. INT powers all her magic.',small_it))
 
 story.append(Paragraph("All of Lilly's Skills", h2_st))
+TR='<b><font color="#134A7A">%s</font></b>'   # trained: blue, per the caption
 skills=[
-    ('Acrobatics +3','<b>History +5</b>','<b>Nature +5</b>','Sleight of Hand +3'),
-    ('<b>Animal Handling +2</b>','Insight -1','Perception -1','Stealth +3'),
-    ('<b>Arcana +8</b>','Intimidation -1','Performance -1','<b>Survival +2</b>'),
-    ('Athletics -1','<b>Investigation +8</b>','Persuasion -1',''),
-    ('Deception -1','Medicine -1','<b>Religion +5</b>',''),
+    ('Acrobatics +3','Athletics -1','Insight -1','Medicine -1','Performance -1','Sleight of Hand +3'),
+    (TR%'Animal Handling +2','Deception -1','Intimidation -1',TR%'Nature +5','Persuasion -1','Stealth +3'),
+    (TR%'Arcana +8',TR%'History +5',TR%'Investigation +8','Perception -1',TR%'Religion +5',TR%'Survival +2'),
 ]
-sk=Table([[Paragraph(c,cell_st) for c in r] for r in skills], colWidths=[1.825*inch]*4)
+sk=Table([[Paragraph(c,cell_st) for c in r] for r in skills], colWidths=[(7.3/6)*inch]*6)
 sk.setStyle(TableStyle([('BOX',(0,0),(-1,-1),0.5,LINE),('INNERGRID',(0,0),(-1,-1),0.3,BLUE_LT),
-    ('TOPPADDING',(0,0),(-1,-1),2.5),('BOTTOMPADDING',(0,0),(-1,-1),2.5),('LEFTPADDING',(0,0),(-1,-1),5)]))
+    ('TOPPADDING',(0,0),(-1,-1),2.5),('BOTTOMPADDING',(0,0),(-1,-1),2.5),
+    ('LEFTPADDING',(0,0),(-1,-1),4),('RIGHTPADDING',(0,0),(-1,-1),3)]))
 story.append(sk)
 story.append(Paragraph('Blue = trained. Best: Arcana &amp; Investigation +8.',small_it))
 
