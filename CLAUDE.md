@@ -34,6 +34,7 @@ True house rules (adjudications beyond the printed rules):
 ## Rules of engagement
 
 - 2024 (revised 5e) rules only. Where 2014 and 2024 text conflict, 2024 wins.
+- **Never state a 2024 rule from memory. Check a source first.** Claude's recall of the 2024 ruleset is unreliable and has caused errors (True Strike, Divine Order, Origin feats, firearm proficiency). Before answering any rules question or writing any mechanic: consult `reference/srd/` (the CC-BY SRD 5.2.1 transcription) and `reference/expansions/` for non-SRD content. For anything not covered there, read the actual text on the 2024 wiki at dnd2024.wikidot.com (via the in-app browser: preview_start + navigate + get_page_text; WebFetch loops on the site's HTTP/HTTPS redirect and cannot reach it). Cite what you used. If you cannot verify a rule against a source, say so plainly ("unverified, check your PHB") rather than asserting it. The wiki's UA and HB sections are off by default; only pull UA when the DM asks.
 - House rules override RAW. Never regress the RAW fixes above when revising documents.
 - **Never invent campaign events.** When revising sessions 1-7: fix consistency, names, lore, and formatting only. Never change what happened at the table. When in doubt, flag it in the document with [DM CHECK: ...] instead of changing it.
 - **Recency wins.** The project evolved over time and fixes were never back-populated, so the newest documents (Session_8_Gearhaven_v2, Campaign_Handoff_v2) are the most accurate. When older and newer docs conflict, the newer one is canon.
