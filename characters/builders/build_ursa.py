@@ -11,13 +11,15 @@ from reportlab.platypus import (SimpleDocTemplate, Paragraph, Spacer, Table, Tab
                                 Image, PageBreak, KeepTogether)
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
 
-# ---- Theme: starlight purple ----
-PURPLE      = colors.HexColor('#6B4FA8')   # primary
+# ---- Published-book styling (shared, committed in sheet_style.py) ----
+import sheet_style
+from sheet_style import make_frame
+INK  = sheet_style.INK
+GREY = sheet_style.GREY
+PURPLE      = sheet_style.ACCENTS['ursa']    # starlight-purple accent
 PURPLE_DK   = colors.HexColor('#4A357A')
-PURPLE_LT   = colors.HexColor('#EDE7F6')   # pale fill
+PURPLE_LT   = colors.HexColor('#EDE7F6')     # pale fill for table bands
 PURPLE_MID  = colors.HexColor('#B9A4DC')
-INK         = colors.HexColor('#2A2333')
-GREY        = colors.HexColor('#555555')
 LINE        = colors.HexColor('#C9B9E6')
 
 styles = getSampleStyleSheet()
@@ -26,20 +28,18 @@ def S(name, **kw):
     base = kw.pop('parent', styles['Normal'])
     return ParagraphStyle(name, parent=base, **kw)
 
-title_st   = S('t', fontName='Helvetica-Bold', fontSize=26, textColor=PURPLE, leading=28)
-sub_st     = S('s', fontName='Helvetica', fontSize=10.5, textColor=GREY, leading=13)
-flav_st    = S('f', fontName='Helvetica-Oblique', fontSize=9.5, textColor=INK, leading=12.5)
-h2_st      = S('h2', fontName='Helvetica-Bold', fontSize=13, textColor=PURPLE, leading=15,
-               spaceBefore=8, spaceAfter=3)
-body_st    = S('b', fontName='Helvetica', fontSize=8.6, textColor=INK, leading=11)
-small_it   = S('si', fontName='Helvetica-Oblique', fontSize=8, textColor=GREY, leading=10)
-cell_st    = S('c', fontName='Helvetica', fontSize=8.3, textColor=INK, leading=10)
-cellb_st   = S('cb', fontName='Helvetica-Bold', fontSize=8.3, textColor=INK, leading=10)
-white_lbl  = S('wl', fontName='Helvetica-Bold', fontSize=7.2, textColor=colors.white,
-               leading=8, alignment=TA_CENTER)
-big_num    = S('bn', fontName='Helvetica-Bold', fontSize=15, textColor=INK,
-               leading=16, alignment=TA_CENTER)
-note_st    = S('n', fontName='Helvetica', fontSize=8.4, textColor=INK, leading=11)
+_st = sheet_style.styles(PURPLE)
+title_st  = _st['title']
+sub_st    = _st['sub']
+flav_st   = _st['flav']
+h2_st     = _st['h2']
+body_st   = _st['body']
+small_it  = _st['small_it']
+cell_st   = _st['cell']
+cellb_st  = _st['cellb']
+white_lbl = _st['white_lbl']
+big_num   = _st['big_num']
+note_st   = _st['note']
 
 def stat_strip(pairs):
     """Top stat strip: list of (LABEL, big value) tuples."""
@@ -174,7 +174,7 @@ def summon_block(title, lines):
     rows = [[Paragraph(title, S('st', fontName='Helvetica-Bold', fontSize=9,
                                 textColor=colors.white, leading=11))]]
     for ln in lines:
-        rows.append([Paragraph(ln, S('sl', fontName='Helvetica', fontSize=7.8,
+        rows.append([Paragraph(ln, S('sl', fontName='Times-Roman', fontSize=7.8,
                                      textColor=INK, leading=9.5))])
     t = Table(rows, colWidths=[3.55*inch])
     t.setStyle(TableStyle([
@@ -212,9 +212,9 @@ story.append(both)
 story.append(Spacer(1,4))
 story.append(Paragraph("Spells at a Glance &nbsp;"
     "<font size=7 color='#555555'>([ ] = one slot, check it when spent; full rules on page 3)</font>",
-    S('sgh', fontName='Helvetica-Bold', fontSize=11, textColor=PURPLE, leading=13,
+    S('sgh', fontName='Times-Bold', fontSize=11, textColor=PURPLE, leading=13,
       spaceBefore=3, spaceAfter=2)))
-gl_st = S('gl', fontName='Helvetica', fontSize=7.6, textColor=INK, leading=9.2)
+gl_st = S('gl', fontName='Times-Roman', fontSize=7.6, textColor=INK, leading=9.2)
 def _glance(lbl, boxes, names):
     box = ('[ ]&nbsp;' * boxes) if boxes else '<i>at will</i>'
     return [Paragraph(f'<b>{lbl}</b>&nbsp; {box}', gl_st), Paragraph(names, gl_st)]
@@ -237,7 +237,7 @@ story.append(gt)
 story.append(PageBreak())
 
 # ============================ PAGE 2 ============================
-story.append(Paragraph('Ursa Catchum', S('p2t', fontName='Helvetica-Bold',
+story.append(Paragraph('Ursa Catchum', S('p2t', fontName='Times-Bold',
             fontSize=15, textColor=PURPLE, leading=18, spaceAfter=2)))
 story.append(Paragraph('Page 2 — Powers, Gear &amp; Story', sub_st))
 story.append(Spacer(1,8))
@@ -299,7 +299,7 @@ per = [
     ('Flaw — Fear of Failure', 'He worries he can’t live up to his father’s legacy, which can make him '
         'hesitate or push too hard. “What if I’m not strong enough?”'),
 ]
-per_cells = [Paragraph(f'<b>{t}</b><br/>{d}', S('pc', fontName='Helvetica', fontSize=8,
+per_cells = [Paragraph(f'<b>{t}</b><br/>{d}', S('pc', fontName='Times-Roman', fontSize=8,
              textColor=INK, leading=10)) for t,d in per]
 pt = Table([[per_cells[0], per_cells[1]],[per_cells[2], per_cells[3]]],
            colWidths=[3.65*inch,3.65*inch])
@@ -320,7 +320,7 @@ story.append(Paragraph('<b>Fun Facts:</b> &nbsp;Ursa is a boy, follows the drago
 story.append(PageBreak())
 
 # ============================ PAGE 3 — SPELLBOOK ============================
-story.append(Paragraph('Ursa Catchum', S('p3t', fontName='Helvetica-Bold',
+story.append(Paragraph('Ursa Catchum', S('p3t', fontName='Times-Bold',
             fontSize=15, textColor=PURPLE, leading=18, spaceAfter=2)))
 story.append(Paragraph('Page 3 — Spellbook', sub_st))
 story.append(Spacer(1,7))
@@ -332,11 +332,11 @@ story.append(Spacer(1,4))
 # Spell cards — richer format: name, meta line (action/range/duration), then full mechanics
 def spell_card(name, meta, text):
     inner = [
-        [Paragraph(f'<b>{name}</b>', S('scn', fontName='Helvetica-Bold', fontSize=9,
+        [Paragraph(f'<b>{name}</b>', S('scn', fontName='Times-Bold', fontSize=9,
                    textColor=PURPLE_DK, leading=11))],
-        [Paragraph(meta, S('sct', fontName='Helvetica-Oblique', fontSize=6.8,
+        [Paragraph(meta, S('sct', fontName='Times-Italic', fontSize=6.8,
                    textColor=GREY, leading=8.2))],
-        [Paragraph(text, S('scx', fontName='Helvetica', fontSize=7.6,
+        [Paragraph(text, S('scx', fontName='Times-Roman', fontSize=7.6,
                    textColor=INK, leading=9.6))],
     ]
     t = Table(inner, colWidths=[3.55*inch])
@@ -436,6 +436,7 @@ story.append(grid)
 
 doc = SimpleDocTemplate('../ursa_catchum_sheet_v3.pdf', pagesize=letter,
                         leftMargin=0.55*inch, rightMargin=0.55*inch,
-                        topMargin=0.4*inch, bottomMargin=0.32*inch)
-doc.build(story)
+                        topMargin=0.45*inch, bottomMargin=0.5*inch)
+frame = make_frame('Ursa Catchum')
+doc.build(story, onFirstPage=frame, onLaterPages=frame)
 print('built ../ursa_catchum_sheet_v3.pdf')
