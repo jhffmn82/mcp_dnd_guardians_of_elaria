@@ -348,6 +348,33 @@ def build_doc(blocks, out_path):
                 r = p.add_run(label + "   "); _set_font(r, Pt(11.5), True, color=acc)
                 r = p.add_run("● " * int(n)); _set_font(r, Pt(14), True, color=acc)
 
+        elif kind == "spellref":
+            # (spellref, accent_key, {"note": str, "levels": [(label, slots, [names]), ...]})
+            # A compact "Spells at a Glance" play aid for a caster's sheet: a
+            # check-off slot tracker (open boxes) beside the spell NAMES known
+            # at each level. Complements the pips (glance the count) and the
+            # full spellbook (rules); this is the mid-fight tracker plus index.
+            _, who, spec = blk
+            acc = ACCENTS.get(who, INK)
+            levels = spec["levels"]
+            p = doc.add_paragraph(); _shade(p, GOLD_FILL, acc)
+            p.paragraph_format.space_before = Pt(6); p.paragraph_format.space_after = Pt(2)
+            p.paragraph_format.keep_with_next = True
+            r = p.add_run("Spells at a Glance"); _set_font(r, Pt(12.5), True, color=acc)
+            if spec.get("note"):
+                r = p.add_run("   " + spec["note"]); _set_font(r, Pt(9), italic=True, color=INK)
+            for i, (label, slots, sp) in enumerate(levels):
+                p = doc.add_paragraph(); _shade(p, GOLD_FILL, acc)
+                p.paragraph_format.space_before = Pt(0)
+                p.paragraph_format.space_after = Pt(2 if i < len(levels) - 1 else 8)
+                p.paragraph_format.keep_with_next = i < len(levels) - 1
+                r = p.add_run(label + "  "); _set_font(r, Pt(11), True, color=acc)
+                if slots and int(slots) > 0:
+                    r = p.add_run("☐ " * int(slots)); _set_font(r, Pt(12.5), True, color=acc)
+                else:
+                    r = p.add_run("at will"); _set_font(r, Pt(9.5), italic=True, color=INK)
+                r = p.add_run("   " + ", ".join(sp)); _set_font(r, Pt(10), color=INK)
+
         elif kind == "game":
             # (game, title, [lines]) - a SET-PIECE RULES CARD for playable
             # table moments (dice games, song seals, storm sequences). A full

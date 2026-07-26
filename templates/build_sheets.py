@@ -80,6 +80,16 @@ S = [
         "same turn. Free to deploy or recall (Pocket Dynamo), +2 damage, lasts a full 24 hours.",
     ]),
 
+    ("spellref", "lilly", {
+        "note": "☐ = one slot; check it off when it is spent.",
+        "levels": [
+            ("Cantrips", 0, ["True Strike", "Fire Bolt", "Mending"]),
+            ("1st", 4, ["Shield", "Thunderwave", "Absorb Elements", "Catapult",
+                        "Snare", "Faerie Fire", "Tasha's Caustic Brew"]),
+            ("2nd", 2, ["Scorching Ray", "Shatter", "Heat Metal", "Web"]),
+        ],
+    }),
+
     ("h2", "Special Powers & Deep Gnome Gifts"),
     ("stat", "Class Features & Species Traits", [
         "**Replicate Magic Item.** Lilly builds magic gear for the team. Her two creations in "
@@ -274,9 +284,9 @@ S = [
         "Perception, and Survival, +8).",
     ]),
     ("stat", "What Ursa Does in a Fight", [
-        "**Staff of Waking Constellations (+1), unlit.** Melee, +3 (+4) to hit: 1d6 "
+        "**Staff of Waking Constellations (+1), unlit.** Melee, +3 to hit: 1d6 "
         "bludgeoning (1d8 two-handed). See Shillelagh!",
-        "**Staff + Shillelagh (ignited).** Melee, +9 (+10) to hit: 1d10 + 6 force or "
+        "**Staff + Shillelagh (ignited).** Melee, +9 to hit: 1d10 + 6 force or "
         "bludgeoning. Bonus action to light, lasts 1 minute.",
         "**Guiding Bolt (1st, from Staff or Star Map).** +8 to hit, 120 ft: 4d6 radiant "
         "+ 1d4 (Starseed); the next hit on that target has advantage.",
@@ -332,6 +342,17 @@ S = [
         "ft., Wis save DC 16 or Charmed. Tricksy: fills a 10-ft cube with magical Darkness.",
     ]),
 
+    ("spellref", "ursa", {
+        "note": "☐ = one slot; check it off when it is spent.",
+        "levels": [
+            ("Cantrips", 0, ["Shillelagh", "Starry Wisp", "Guidance", "Druidcraft"]),
+            ("1st", 4, ["Guiding Bolt", "Healing Word", "Goodberry", "Faerie Fire",
+                        "Speak with Animals", "Animal Friendship"]),
+            ("2nd", 3, ["Moonbeam", "Flaming Sphere", "Spike Growth", "Summon Beast"]),
+            ("3rd", 2, ["Call Lightning", "Summon Fey"]),
+        ],
+    }),
+
     ("h2", "Ursa's Signature Gear"),
     ("stat", "Ursa's Stuff", [
         "**Staff of Waking Constellations (Elaria's gift).** His Wraithpine relic. +1 "
@@ -361,7 +382,7 @@ S = [
              "those use his 9. Spell save DC 16, spell attack +8."),
     ("stat", "Cantrips (free forever)", [
         "**Shillelagh.** Bonus action, self, 1 minute. Starlight sheathes his staff: for 1 "
-        "minute it swings with WISDOM, +9 to hit (+10 in Starry Form), 1d10 + 6 force or "
+        "minute it swings with WISDOM, +9 to hit, 1d10 + 6 force or "
         "bludgeoning, his choice. Recast any time. His answer when something gets right in "
         "his face. (House rule: replaces Primal Savagery, 2024 rules.)",
         "**Starry Wisp.** Action, 60 ft. Ranged spell attack +8: 2d8 radiant + 1d4 (Starseed). "
