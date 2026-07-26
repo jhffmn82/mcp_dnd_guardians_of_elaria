@@ -30,6 +30,7 @@ Not open-licensed, so these are factual mechanics in our own words with a source
 | File | Contents |
 |---|---|
 | artificer.md | **Artificer** class + **Artillerist** subclass (Lilly). Source: Eberron: Forge of the Artificer (official 2024). |
+| druid-circle-of-stars.md | **Circle of the Stars** subclass (Ursa) + the base-Druid level-7 Elemental Fury / Potent Spellcasting. Source: 2024 PHB. Not in the SRD (which has Circle of the Land). |
 
 ## Known coverage gaps (use the wiki, cite it)
 - Not in SRD: Artificer (see expansions/), most subclasses beyond the SRD's samples, firearms (DMG optional), the 2014-only Peace Domain.
