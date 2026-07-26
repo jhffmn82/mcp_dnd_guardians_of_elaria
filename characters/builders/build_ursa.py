@@ -98,7 +98,7 @@ def callout(text):
         ('BACKGROUND',(0,0),(-1,-1), PURPLE_LT),
         ('BOX',(0,0),(-1,-1),1, PURPLE),
         ('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),
-        ('TOPPADDING',(0,0),(-1,-1),6),('BOTTOMPADDING',(0,0),(-1,-1),6),
+        ('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),
     ]))
     return t
 
@@ -116,7 +116,7 @@ hdr = Table([[
 hdr.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),
                          ('LEFTPADDING',(1,0),(1,0),10)]))
 story.append(hdr)
-story.append(Spacer(1,8))
+story.append(Spacer(1,4))
 
 story.append(stat_strip([('ARMOR CLASS',18),('HIT POINTS',38),('SPEED','30 ft'),
                          ('INITIATIVE','+2'),('SAVE DC',16),('SPELL ATK','+8')]))
@@ -163,17 +163,13 @@ story.append(Paragraph('While his Starry Form glows, the Amulet of Guiding Light
 
 story.append(Spacer(1,4))
 story.append(callout(
-    "<b>How Ursa's turn works:</b> Each turn he picks <b>one big bonus-action move</b> — "
-    "either keep his <b>Starry Form</b> firing star-arrows (Archer: 1d8+5 radiant at range), "
-    "OR command a <b>summoned spirit</b> to attack. He can't do both well, since both want the "
-    "bonus action — so choose the right tool for the fight!<br/>"
-    "<b>Free Guiding Bolts:</b> before touching his real spell slots, he can throw about "
-    "<b>10 Guiding Bolts a day</b> for free — <b>5</b> from the Star Map (per long rest) plus "
-    "<b>up to 5</b> from the Staff's charges. So he can spam radiant comets all session and save his slots."))
+    "<b>How Ursa's turn works:</b> pick <b>one bonus-action move</b> each turn: fire his "
+    "<b>Starry Form</b> star-arrow (Archer, 1d8+5) OR command a <b>summoned spirit</b>, not both. "
+    "<b>Free Guiding Bolts:</b> about <b>10 a day</b> for free (5 from the Star Map, up to 5 from "
+    "the Staff) before he spends a slot."))
 
-# Two summon stat blocks side by side
-story.append(Paragraph("Ursa's Summoned Spirits", h2_st))
-
+# Two summon stat blocks side by side (built here, RENDERED ON PAGE 2 so page 1
+# has room for the Spells at a Glance tracker at its foot).
 def summon_block(title, lines):
     rows = [[Paragraph(title, S('st', fontName='Helvetica-Bold', fontSize=9,
                                 textColor=colors.white, leading=11))]]
@@ -209,7 +205,34 @@ fey = summon_block("Fey Spirit — Summon Fey (3rd)", [
 both = Table([[beast, fey]], colWidths=[3.65*inch, 3.65*inch])
 both.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),
                           ('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(0,0),10)]))
+story.append(Paragraph("Ursa's Summoned Spirits", h2_st))
 story.append(both)
+
+# ---- Spells at a Glance (compact quick tracker, bottom of page 1) ----
+story.append(Spacer(1,4))
+story.append(Paragraph("Spells at a Glance &nbsp;"
+    "<font size=7 color='#555555'>([ ] = one slot, check it when spent; full rules on page 3)</font>",
+    S('sgh', fontName='Helvetica-Bold', fontSize=11, textColor=PURPLE, leading=13,
+      spaceBefore=3, spaceAfter=2)))
+gl_st = S('gl', fontName='Helvetica', fontSize=7.6, textColor=INK, leading=9.2)
+def _glance(lbl, boxes, names):
+    box = ('[ ]&nbsp;' * boxes) if boxes else '<i>at will</i>'
+    return [Paragraph(f'<b>{lbl}</b>&nbsp; {box}', gl_st), Paragraph(names, gl_st)]
+glance = [
+    _glance('Cantrips', 0, 'Shillelagh, Starry Wisp, Guidance, Druidcraft'),
+    _glance('1st', 4, 'Guiding Bolt, Healing Word, Goodberry, Faerie Fire, Speak with Animals, Animal Friendship'),
+    _glance('2nd', 3, 'Moonbeam, Flaming Sphere, Spike Growth, Summon Beast'),
+    _glance('3rd', 2, 'Call Lightning, Summon Fey'),
+]
+gt = Table(glance, colWidths=[2.3*inch, 5.0*inch])
+gt.setStyle(TableStyle([
+    ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
+    ('GRID',(0,0),(-1,-1),0.5, LINE),
+    ('ROWBACKGROUNDS',(0,0),(-1,-1),[colors.white, PURPLE_LT]),
+    ('LEFTPADDING',(0,0),(-1,-1),5),('RIGHTPADDING',(0,0),(-1,-1),5),
+    ('TOPPADDING',(0,0),(-1,-1),1.8),('BOTTOMPADDING',(0,0),(-1,-1),1.8),
+]))
+story.append(gt)
 
 story.append(PageBreak())
 
@@ -413,6 +436,6 @@ story.append(grid)
 
 doc = SimpleDocTemplate('../ursa_catchum_sheet_v3.pdf', pagesize=letter,
                         leftMargin=0.55*inch, rightMargin=0.55*inch,
-                        topMargin=0.45*inch, bottomMargin=0.4*inch)
+                        topMargin=0.4*inch, bottomMargin=0.32*inch)
 doc.build(story)
 print('built ../ursa_catchum_sheet_v3.pdf')
