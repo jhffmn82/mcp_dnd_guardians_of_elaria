@@ -148,15 +148,18 @@ story.append(Paragraph('Purple = trained. Best: Animal Handling, Perception & Su
 story.append(Paragraph("What Ursa Does in a Fight", h2_st))
 atk = [
     ['Attack','To Hit','Damage'],
-    ['Staff of Waking Constellations (+1)','+5','1d8+3 bludgeoning (a starlit quarterstaff)'],
+    ['Staff of Waking Constellations (+1), unlit','+3','1d6 bludgeoning (1d8 two-handed). See Shillelagh!'],
+    ['Staff + Shillelagh (ignited)','+9','1d10+6 force or bludgeoning; bonus action to light, 1 min'],
     ['Guiding Bolt (1st, from Staff or Star Map)','+8','4d6 radiant + 1d4 (Starseed); next hit on it has advantage'],
     ['Star-Arrow (Starry Form: Archer)','+8','1d8+5 radiant, one enemy within 60 ft (bonus action)'],
-    ['Primal Savagery (cantrip)','+8','2d10 acid (close-up bite of magic)'],
-    ['Produce Flame (cantrip)','+8','2d8 fire, thrown up to 30 ft'],
+    ['Starry Wisp (cantrip)','+8','2d8 radiant + 1d4 (Starseed); lights up the target (60 ft)'],
 ]
 atk_data = [[Paragraph(c, cellb_st if i==0 else cell_st) for c in row]
             for i,row in enumerate(atk)]
 story.append(section_table(atk_data, [3.0*inch, 0.9*inch, 3.4*inch]))
+story.append(Paragraph('While his Starry Form glows, the Amulet of Guiding Light gives '
+    '+1 to attacks and saves to his nearby FRIENDS (allies only, not Ursa himself): '
+    'a party buff, so his own to-hit stays +8.', small_it))
 
 story.append(Spacer(1,4))
 story.append(callout(
@@ -165,7 +168,7 @@ story.append(callout(
     "OR command a <b>summoned spirit</b> to attack. He can't do both well, since both want the "
     "bonus action — so choose the right tool for the fight!<br/>"
     "<b>Free Guiding Bolts:</b> before touching his real spell slots, he can throw about "
-    "<b>8 Guiding Bolts a day</b> for free — <b>3</b> from the Star Map (per long rest) plus "
+    "<b>10 Guiding Bolts a day</b> for free — <b>5</b> from the Star Map (per long rest) plus "
     "<b>up to 5</b> from the Staff's charges. So he can spam radiant comets all session and save his slots."))
 
 # Two summon stat blocks side by side
@@ -223,37 +226,38 @@ powers = [
     ('&nbsp;&nbsp;&bull; Archer', 'Bonus action: fire a star-arrow at one enemy within 60 ft for <b>1d8+5 radiant</b>.'),
     ('&nbsp;&nbsp;&bull; Chalice', 'When he heals someone with a spell slot, he or a nearby friend also heals <b>1d8+5</b>.'),
     ('&nbsp;&nbsp;&bull; Dragon', 'Treat a roll of 9 or lower as a 10 on Int/Wis checks and concentration saves — super steady.'),
-    ('Wild Shape (2/short rest)', 'Two uses that fuel his Starry Forms (or turn into a beast he has seen).'),
-    ('Star Map', 'His star chart is a magic focus. Free <b>Guiding Bolt</b> 3×/day even without the Staff. Backup focus he still carries.'),
+    ('Wild Shape (2/short rest)', 'Two uses that fuel his Starry Forms (or turn into a beast he has seen). Regain 1 on a short rest, all on a long rest.'),
+    ('Wild Resurgence', 'Once per turn (no action), spend a spell slot to get back one Wild Shape use. Once per long rest, the reverse: spend a Wild Shape use to regain a 1st-level spell slot.'),
+    ('Star Map', 'His star chart is a magic focus. Free <b>Guiding Bolt</b> 5×/day even without the Staff. Backup focus he still carries.'),
     ('Wild Intuition', 'Add 1d4 to any Animal Handling or Nature check.'),
     ('Primal Connection (1/short rest)', 'Cast Animal Friendship or Speak with Animals for free, no materials.'),
     ('The Bigger They Are', 'Can charm or talk to beasts AND monstrosities (if their Intelligence is 3 or lower).'),
-    ('Mark of Handling', 'His dragonmark lets him read animals\u2019 feelings and calm wild or magical creatures with ease.'),
+    ('Mark of Handling', 'His dragonmark lets him read animals’ feelings and calm wild or magical creatures with ease.'),
 ]
 pw_data = [[Paragraph(f'<b>{n}</b>', cell_st), Paragraph(d, cell_st)] for n,d in powers]
 story.append(section_table(pw_data, [2.15*inch, 5.15*inch], header=False))
 
 story.append(Paragraph("Ursa's Stuff", h2_st))
 gear = [
-    ('Staff of Waking Constellations<br/><i>(new! \u2605 Elaria\u2019s gift)</i>',
+    ('Staff of Waking Constellations<br/><i>(new! ★ Elaria’s gift)</i>',
      'His Wraithpine relic. <b>+1 quarterstaff &amp; druidic focus.</b> Holds <b>5 charges</b> (regain 1d4+1 at dawn): '
      '<i>Guiding Bolt</i> (1), <i>Faerie Fire</i> (1), <i>Moonbeam</i> (2). '
      '<b>Starseed:</b> once a turn, when a druid spell deals radiant damage, add <b>+1d4 radiant</b>. '
      '<b>Starlight:</b> bonus action to light a soft 10-ft glow and get advantage on night-navigation. <b>Attuned.</b>'),
-    ('Star Map', 'A Tiny star chart that doubles as a spellcasting focus. Free Guiding Bolt 3×/day. (Backup focus.)'),
-    ('Amulet of Guiding Light', '<b>Guiding Light:</b> during Starry Form, Ursa and allies in the bright light get +1 to attacks and saves. '
+    ('Star Map', 'A Tiny star chart that doubles as a spellcasting focus. Free Guiding Bolt 5×/day. (Backup focus.)'),
+    ('Amulet of Guiding Light', '<b>Guiding Light:</b> during Starry Form, his <b>allies</b> in the bright light get +1 to attacks and saves (allies only, not Ursa). '
         '<b>Starry Glow (1/day, reaction):</b> when he or a nearby ally is hit, the attacker takes 2d8 radiant and may be blinded (Con save DC 15). '
         '<b>Celestial Resilience (2/day):</b> reroll a natural 1.'),
     ('Spiked Armor &amp; Shield', 'Dwarf-made spiked armor plus a shield — together they make his <b>AC 18</b>.'),
-    ('Explorer\u2019s Pack', 'Backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 ft of rope.'),
-    ('Three Enchanted Potatoes', 'His mysterious quest trinket — the strange spuds tied to his father\u2019s disappearance.'),
+    ('Explorer’s Pack', 'Backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 ft of rope.'),
+    ('Three Enchanted Potatoes', 'His mysterious quest trinket — the strange spuds tied to his father’s disappearance.'),
 ]
 g_data = [[Paragraph(n, cell_st), Paragraph(d, cell_st)] for n,d in gear]
 story.append(section_table(g_data, [1.9*inch, 5.4*inch], header=False))
 
 story.append(Paragraph("Ursa's Story", h2_st))
 story.append(Paragraph(
-    "Ursa grew up under the wide, dark skies of a quiet farming village, raised on his father\u2019s tales of the "
+    "Ursa grew up under the wide, dark skies of a quiet farming village, raised on his father’s tales of the "
     "stars and the secrets they keep. His father — a wandering sky-reader and beast-friend who carried the "
     "<b>Mark of Handling</b> — vanished one night chasing a mystery tied to a handful of <b>enchanted potatoes</b>, "
     "leaving Ursa only a star chart and a promise to follow it. Ursa studied the constellations until he could call "
@@ -264,13 +268,13 @@ story.append(Paragraph(
 
 per = [
     ('Personality', 'Determined and resilient. Quiet and watchful, but never gives up. '
-        '\u201cI won\u2019t stop until I find the answers.\u201d'),
+        '“I won’t stop until I find the answers.”'),
     ('Ideal — Fate', 'The stars guide every destiny, and his path is part of a greater cosmic plan. '
-        '\u201cThe stars have written my path, and I will follow it.\u201d'),
+        '“The stars have written my path, and I will follow it.”'),
     ('Bond — His Crew', 'Fiercely loyal to Lilly and Stabby, his new family. '
-        '\u201cTogether, we will uncover the truth and face whatever comes.\u201d'),
-    ('Flaw — Fear of Failure', 'He worries he can\u2019t live up to his father\u2019s legacy, which can make him '
-        'hesitate or push too hard. \u201cWhat if I\u2019m not strong enough?\u201d'),
+        '“Together, we will uncover the truth and face whatever comes.”'),
+    ('Flaw — Fear of Failure', 'He worries he can’t live up to his father’s legacy, which can make him '
+        'hesitate or push too hard. “What if I’m not strong enough?”'),
 ]
 per_cells = [Paragraph(f'<b>{t}</b><br/>{d}', S('pc', fontName='Helvetica', fontSize=8,
              textColor=INK, leading=10)) for t,d in per]
@@ -298,7 +302,7 @@ story.append(Paragraph('Ursa Catchum', S('p3t', fontName='Helvetica-Bold',
 story.append(Paragraph('Page 3 — Spellbook', sub_st))
 story.append(Spacer(1,7))
 story.append(Paragraph('Slots per day: 4 first-level, 3 second-level, 2 third-level. '
-    'Cantrips (\u2605) are free forever. He prepares 10 spells and can swap them on a long rest. '
+    'Cantrips (★) are free forever. He prepares 9 spells and can swap one on a long rest. '
     'Spell save DC 16, spell attack +8.', small_it))
 story.append(Spacer(1,4))
 
@@ -324,70 +328,72 @@ def spell_card(name, meta, text):
     return t
 
 cards = [
-    spell_card('\u2605 Primal Savagery',
-        'Cantrip \u2022 Action \u2022 Self (5 ft reach) \u2022 Instant',
-        'His teeth/claws sharpen with acid. Make a melee spell attack: <b>+8 to hit</b>, '
-        '<b>2d10 acid</b> on a hit. No save \u2014 it\u2019s an attack roll. Good when something\u2019s right next to him.'),
-    spell_card('\u2605 Produce Flame',
-        'Cantrip \u2022 Action \u2022 Self / 30 ft throw \u2022 10 min',
-        'A flame in his hand gives <b>10-ft bright light</b> (10 more dim) and lasts 10 min. '
-        'Or hurl it: ranged spell attack <b>+8 to hit</b>, <b>2d8 fire</b> (ends the light). Lantern + weapon in one.'),
-    spell_card('\u2605 Guidance',
-        'Cantrip \u2022 Action \u2022 Touch \u2022 Concentration, 1 min',
+    spell_card('★ Shillelagh',
+        'Cantrip • Bonus Action • Self • 1 min',
+        'Starlight sheathes his staff: for 1 minute it swings with <b>WISDOM</b>, <b>+9 to hit</b>, '
+        '<b>1d10+6</b> force or bludgeoning (his choice). Recast any time. His answer when something '
+        'gets right in his face. (House rule: replaces Primal Savagery.)'),
+    spell_card('★ Starry Wisp',
+        'Cantrip • Action • 60 ft • Instant',
+        'Ranged spell attack <b>+8 to hit</b>: <b>2d8 radiant + 1d4</b> (Starseed). The target glows '
+        '(dim light) and can’t turn invisible until the end of his next turn.'),
+    spell_card('★ Guidance',
+        'Cantrip • Action • Touch • Concentration, 1 min',
         'Touch a willing friend. Once before it ends, they add <b>1d4</b> to one ability check '
         '(can roll the d4 after seeing the result). Great before a tricky skill roll.'),
-    spell_card('\u2605 Druidcraft',
-        'Cantrip \u2022 Action \u2022 30 ft \u2022 Instant',
+    spell_card('★ Druidcraft',
+        'Cantrip • Action • 30 ft • Instant',
         'Tiny nature magic: predict the next 24 hr of weather, bloom a flower, make a harmless '
         'sound/smell in a 5-ft cube, or light/snuff a small flame. Pure utility &amp; flavor.'),
     spell_card('Guiding Bolt',
-        '1st \u2022 Action \u2022 120 ft \u2022 1 round &nbsp;(Star Map: free 3/day)',
+        '1st • Action • 120 ft • 1 round &nbsp;(Star Map: free 5/day)',
         'Ranged spell attack <b>+8 to hit</b>. On a hit: <b>4d6 radiant + 1d4</b> (Starseed). '
-        'The <b>next attack</b> against that target before Ursa\u2019s next turn has <b>advantage</b> \u2014 set up a teammate.'),
+        'The <b>next attack</b> against that target before Ursa’s next turn has <b>advantage</b> — set up a teammate.'),
     spell_card('Faerie Fire',
-        '1st \u2022 Action \u2022 60 ft \u2022 Concentration, 1 min',
-        'Foes in a 20-ft cube make a <b>Dex save DC 16</b>; on a fail they\u2019re outlined in light. '
-        'Attacks vs them have <b>advantage</b>, and they <b>can\u2019t hide/be invisible</b>. Team-wide accuracy boost.'),
+        '1st • Action • 60 ft • Concentration, 1 min',
+        'Foes in a 20-ft cube make a <b>Dex save DC 16</b>; on a fail they’re outlined in light. '
+        'Attacks vs them have <b>advantage</b>, and they <b>can’t hide/be invisible</b>. Team-wide accuracy boost.'),
     spell_card('Healing Word',
-        '1st \u2022 Bonus Action \u2022 60 ft \u2022 Instant',
-        'Heal one creature you can see <b>1d4+5</b> HP \u2014 as a <b>bonus action</b>, so he can still '
+        '1st • Bonus Action • 60 ft • Instant',
+        'Heal one creature you can see <b>2d4+5</b> HP — as a <b>bonus action</b>, so he can still '
         'cast or attack the same turn. Best for popping a downed friend back up from range.'),
     spell_card('Goodberry',
-        '1st \u2022 Action \u2022 Touch \u2022 lasts 24 hr',
+        '1st • Action • Touch • lasts 24 hr',
         'Creates <b>10 berries</b>; eating one (an action) heals <b>1 HP</b> and feeds someone for a day. '
         'Cast before a fight to bank 10 little heals the whole party can use.'),
     spell_card('Speak with Animals',
-        '1st \u2022 Ritual \u2022 Action \u2022 Self \u2022 10 min',
-        'Talk with beasts for 10 min \u2014 they can describe nearby places, monsters, and what they\u2019ve '
-        'seen in the last day. Cast as a <b>ritual</b> (no slot) when there\u2019s no rush. Pairs with his animal charm.'),
+        '1st • Ritual • Action • Self • 10 min',
+        'Talk with beasts for 10 min — they can describe nearby places, monsters, and what they’ve '
+        'seen in the last day. Cast as a <b>ritual</b> (no slot) when there’s no rush. Pairs with his animal charm.'),
     spell_card('Animal Friendship',
-        '1st \u2022 Action \u2022 30 ft \u2022 24 hr',
-        'One beast (Int 3 or lower) makes a <b>Wis save DC 16</b>; on a fail it\u2019s <b>charmed</b> '
-        'and friendly for 24 hr. With \u201cThe Bigger They Are,\u201d he can target dumb monstrosities too.'),
+        '1st • Action • 30 ft • 24 hr',
+        'One beast (Int 3 or lower) makes a <b>Wis save DC 16</b>; on a fail it’s <b>charmed</b> '
+        'and friendly for 24 hr. With “The Bigger They Are,” he can target dumb monstrosities too.'),
     spell_card('Moonbeam',
-        '2nd \u2022 Action \u2022 120 ft \u2022 Concentration, 1 min &nbsp;(Staff: 2 charges)',
+        '2nd • Action • 120 ft • Concentration, 1 min &nbsp;(Staff: 2 charges)',
         'A 5-ft pillar of light. A creature that enters it or starts its turn there makes a <b>Con save DC 16</b>: '
         '<b>2d10 radiant + 1d4</b> (Starseed) on a fail, half on a success. <b>Move it 60 ft</b> each turn as part of the spell.'),
     spell_card('Flaming Sphere',
-        '2nd \u2022 Action \u2022 60 ft \u2022 Concentration, 1 min',
+        '2nd • Action • 60 ft • Concentration, 1 min',
         'A 5-ft fire ball. A creature ending its turn within 5 ft makes a <b>Dex save DC 16</b>: <b>2d6 fire</b> on a fail, '
         'half on success. <b>Bonus action to roll it 30 ft</b> (ram a foe to force the save). Lights the area too.'),
-    spell_card('Healing Spirit',
-        '2nd \u2022 Bonus Action \u2022 60 ft \u2022 Concentration, 1 min',
-        'A spirit fills a 5-ft cube. When a friend enters or starts its turn there, heal <b>1d6</b> '
-        '(no action) \u2014 up to <b>6 times</b> total. <b>Move it 30 ft</b> with a bonus action. Great in a clustered scrap.'),
+    spell_card('Spike Growth',
+        '2nd • Action • 150 ft • Concentration, 10 min',
+        'A 20-ft circle of ground sprouts hidden thorns: <b>difficult terrain</b>, and <b>2d4 piercing</b> '
+        'for every 5 ft a creature moves through. It looks like normal ground; herd foes across it or '
+        'drop it under a charging monster.'),
     spell_card('Summon Beast',
-        '2nd \u2022 Action \u2022 90 ft \u2022 Concentration, 1 hr',
+        '2nd • Action • 90 ft • Concentration, 1 hr',
         'Calls the <b>Bestial Spirit</b> (full stats on page 1). It acts right after Ursa on his initiative and '
-        'obeys his commands for free. His go-to summon \u2014 a sturdy front-line ally that lasts a whole hour.'),
+        'obeys his commands for free. His go-to summon — a sturdy front-line ally that lasts a whole hour.'),
     spell_card('Call Lightning',
-        '3rd \u2022 Action \u2022 120 ft \u2022 Concentration, 10 min',
+        '3rd • Action • 120 ft • Concentration, 10 min',
         'Make a storm cloud. Each turn, use your <b>action</b> to strike: creatures within 5 ft of the point make a '
-        '<b>Dex save DC 16</b> \u2014 <b>3d10 lightning</b> on a fail, half on success. +1d10 if it\u2019s already stormy. Repeatable AoE.'),
+        '<b>Dex save DC 16</b> — <b>3d10 lightning</b> on a fail, half on success. +1d10 if it’s already stormy. Repeatable AoE.'),
     spell_card('Summon Fey',
-        '3rd \u2022 Action \u2022 90 ft \u2022 Concentration, 1 hr',
+        '3rd • Action • 90 ft • Concentration, 1 hr',
         'Calls the <b>Fey Spirit</b> (full stats on page 1). Faster and hits harder than the beast, with a mood power '
-        '(Fuming/Mirthful/Tricksy) and a 30-ft teleport. Acts on Ursa\u2019s turn and obeys him for free.'),
+        '(Fuming/Mirthful/Tricksy) and a 30-ft teleport. Acts on Ursa’s turn and obeys him for free.'),
 ]
 
 # Lay cards into a 2-wide grid
@@ -405,8 +411,8 @@ grid.setStyle(TableStyle([
 ]))
 story.append(grid)
 
-doc = SimpleDocTemplate('/home/claude/Ursa_Catchum_Sheet.pdf', pagesize=letter,
+doc = SimpleDocTemplate('../ursa_catchum_sheet_v3.pdf', pagesize=letter,
                         leftMargin=0.55*inch, rightMargin=0.55*inch,
                         topMargin=0.45*inch, bottomMargin=0.4*inch)
 doc.build(story)
-print('built Ursa_Catchum_Sheet.pdf')
+print('built ../ursa_catchum_sheet_v3.pdf')
