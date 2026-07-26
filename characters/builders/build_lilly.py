@@ -148,6 +148,32 @@ cdata=[
 ]
 story.append(section_table(cdata, [1.4*inch, 5.9*inch], header=False))
 
+# ---- Spells at a Glance (compact quick tracker, bottom of page 1) ----
+story.append(Spacer(1,4))
+story.append(Paragraph("Spells at a Glance &nbsp;"
+    "<font size=7 color='#6F6046'>([ ] = one slot, check it when spent; * = Always Prepared, "
+    "free from her subclass; full rules on page 3)</font>",
+    S('sgh', fontName='Times-Bold', fontSize=11, textColor=BLUE, leading=13,
+      spaceBefore=3, spaceAfter=2)))
+gl_st = S('gl', fontName='Times-Roman', fontSize=7.6, textColor=INK, leading=9.2)
+def _glance(lbl, boxes, names):
+    box = ('[ ]&nbsp;' * boxes) if boxes else '<i>at will</i>'
+    return [Paragraph(f'<b>{lbl}</b>&nbsp; {box}', gl_st), Paragraph(names, gl_st)]
+glance = [
+    _glance('Cantrips', 0, 'True Strike, Fire Bolt, Mending'),
+    _glance('1st', 4, "Absorb Elements, Shield*, Thunderwave*, Catapult, Snare, Faerie Fire, Tasha's Caustic Brew"),
+    _glance('2nd', 2, 'Scorching Ray*, Shatter*, Heat Metal, Web'),
+]
+gt = Table(glance, colWidths=[2.3*inch, 5.0*inch])
+gt.setStyle(TableStyle([
+    ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
+    ('GRID',(0,0),(-1,-1),0.5, LINE),
+    ('ROWBACKGROUNDS',(0,0),(-1,-1),[colors.white, BLUE_LT]),
+    ('LEFTPADDING',(0,0),(-1,-1),5),('RIGHTPADDING',(0,0),(-1,-1),5),
+    ('TOPPADDING',(0,0),(-1,-1),1.8),('BOTTOMPADDING',(0,0),(-1,-1),1.8),
+]))
+story.append(gt)
+
 story.append(PageBreak())
 
 # ===== PAGE 2 =====
