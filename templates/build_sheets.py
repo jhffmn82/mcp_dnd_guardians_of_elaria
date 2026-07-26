@@ -293,8 +293,8 @@ S = [
            "star-arrow (Starry Form: Archer), move a Moonbeam or Flaming Sphere, cast Healing "
            "Word, or ignite Shillelagh. And he still casts a spell or cantrip with his action "
            "the same turn.", {"size": 11}),
-    ("dm", "**Free Guiding Bolts.** Before touching his real spell slots, he can throw about 8 "
-           "Guiding Bolts a day for free: 3 from the Star Map (per long rest) plus up to 5 "
+    ("dm", "**Free Guiding Bolts.** Before touching his real spell slots, he can throw about 10 "
+           "Guiding Bolts a day for free: 5 from the Star Map (per long rest) plus up to 5 "
            "from the Staff's charges. **Starseed (+1d4 radiant).** Once a turn, rides his "
            "druid spells that deal radiant damage (Guiding Bolt, Moonbeam, Starry Wisp), NOT "
            "the Archer arrow (a form feature, not a spell; house rule).", {"size": 11}),
@@ -311,7 +311,7 @@ S = [
         "**Wild Resurgence.** Once per turn (no action), spend a spell slot to get back one "
         "Wild Shape use. And once per long rest, the reverse: spend a Wild Shape use (no "
         "action) to regain a 1st-level spell slot.",
-        "**Star Map.** His star chart is a magic focus. Free Guiding Bolt 3/day even without "
+        "**Star Map.** His star chart is a magic focus. Free Guiding Bolt 5/day even without "
         "the Staff. Backup focus he still carries.",
         "**Wild Intuition.** Add 1d4 to any Animal Handling or Nature check.",
         "**Primal Connection (1/short rest).** Cast Animal Friendship or Speak with Animals "
@@ -340,7 +340,7 @@ S = [
         "deals radiant damage, add +1d4 radiant. Starlight: bonus action to light a soft "
         "10-ft glow and get advantage on night navigation. Attuned.",
         "**Star Map.** A Tiny star chart that doubles as a spellcasting focus. Free Guiding "
-        "Bolt 3/day. (Backup focus.)",
+        "Bolt 5/day. (Backup focus.)",
         "**Amulet of Guiding Light.** Guiding Light: during Starry Form, Ursa and allies in "
         "the bright light get +1 to attacks and saves. Starry Glow (1/day, reaction): when he "
         "or a nearby ally is hit, the attacker takes 2d8 radiant and may be blinded (Con save "
@@ -373,7 +373,7 @@ S = [
         "flame.",
     ]),
     ("stat", "1st-Level Spells", [
-        "**Guiding Bolt.** Action, 120 ft (Star Map: free 3/day). Ranged spell attack +8: 4d6 "
+        "**Guiding Bolt.** Action, 120 ft (Star Map: free 5/day). Ranged spell attack +8: 4d6 "
         "radiant + 1d4 (Starseed), and the next attack against that target before Ursa's next "
         "turn has advantage.",
         "**Healing Word.** Bonus action, 60 ft. Heal one creature he can see 2d4 + 5 HP, and "
