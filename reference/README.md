@@ -32,6 +32,17 @@ Not open-licensed, so these are factual mechanics in our own words with a source
 | artificer.md | **Artificer** class + **Artillerist** subclass (Lilly). Source: Eberron: Forge of the Artificer (official 2024). |
 | druid-circle-of-stars.md | **Circle of the Stars** subclass (Ursa) + the base-Druid level-7 Elemental Fury / Potent Spellcasting. Source: 2024 PHB. Not in the SRD (which has Circle of the Land). |
 
+## campaign/ (per-hero level-7 kit checklists)
+Consolidated, verified loadouts so a combat sim forgets nothing. Each covers base class (level 7) + relics + gift + all three path-reward doors + house rules, every number traced to `templates/build_compendium.py`. **Consult the relevant kit before simming or answering a "what can X do" question.**
+
+| File | Hero |
+|---|---|
+| campaign/stabby_kit.md | Stabby, Monk 7 (Warrior of Breathing: Beast / Water / Shadow doors, Nichirin Katana, Sash Air Dance) |
+| campaign/lilly_kit.md | Lilly, Artificer 7 (Artillerist: Storm Cell / Sentinel / Awakened Sphere doors, Boomstick, the +5 INT on True Strike) |
+| campaign/ursa_kit.md | Ursa, Druid 7 (Circle of Stars: Beast Handler / Starlit Channeler / Reader of Omens doors, Staff, Amulet Starry Glow) |
+
+Open [DM CHECK]s flagged in the kits: Ursa's +1 light aura is allies-only (his own attack is +8, not +9, contradicting earlier sims); Lilly's Door A True Strike is +10 or +12 depending on whether the two +2 bonuses stack; Cosmic Omen self-target.
+
 ## Known coverage gaps (use the wiki, cite it)
 - Not in SRD: Artificer (see expansions/), most subclasses beyond the SRD's samples, firearms (DMG optional), the 2014-only Peace Domain.
 - The wiki's **UA and HB sections are off by default.** Only pull Unearthed Arcana when the DM explicitly asks; the wiki is where to find it.
