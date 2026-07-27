@@ -20,6 +20,7 @@ GREY = sheet_style.GREY
 BLUE     = sheet_style.ACCENTS['lilly']      # frost-blue accent
 BLUE_HEX = '#1F6FB8'
 BLUE_LT  = colors.HexColor('#E4EFF8')        # pale fill for table bands
+BLUE_MID = colors.HexColor('#8FB4DA')        # spell-card border/divider (matches Ursa's mid tone)
 LINE     = colors.HexColor('#BBD6EC')
 
 styles = getSampleStyleSheet()
@@ -322,16 +323,40 @@ spells=[
         'save DC 16 or are restrained; restrained creatures can retry with a Str check. '
         'Locks down a crowd.'),
 ]
-def spell_entry(name, meta, text):
-    return [Paragraph(name, sp_name), Paragraph(meta, sp_meta), Paragraph(text, sp_text)]
-half=(len(spells)+1)//2
-lcol=[f for sp in spells[:half] for f in spell_entry(*sp)]
-rcol=[f for sp in spells[half:] for f in spell_entry(*sp)]
-grid=Table([[lcol,rcol]],colWidths=[3.65*inch]*2)
-grid.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),
-    ('LINEAFTER',(0,0),(0,0),0.5,LINE),
-    ('LEFTPADDING',(0,0),(0,0),0),('RIGHTPADDING',(0,0),(0,0),9),
-    ('LEFTPADDING',(1,0),(1,0),9),('RIGHTPADDING',(1,0),(1,0),0)]))
+# Boxed spell cards in Lilly's blue, matching Ursa's page-3 format.
+def spell_card(name, meta, text):
+    inner = [
+        [Paragraph(f'<b>{name}</b>', S('lscn', fontName='Times-Bold', fontSize=9,
+                   textColor=BLUE, leading=11))],
+        [Paragraph(meta, S('lsct', fontName='Times-Italic', fontSize=6.8,
+                   textColor=GREY, leading=8.2))],
+        [Paragraph(text, S('lscx', fontName='Times-Roman', fontSize=7.6,
+                   textColor=INK, leading=9.6))],
+    ]
+    t = Table(inner, colWidths=[3.55*inch])
+    t.setStyle(TableStyle([
+        ('BACKGROUND',(0,0),(0,1), BLUE_LT),
+        ('BOX',(0,0),(-1,-1),0.6, BLUE_MID),
+        ('LINEBELOW',(0,1),(0,1),0.4, BLUE_MID),
+        ('LEFTPADDING',(0,0),(-1,-1),5),('RIGHTPADDING',(0,0),(-1,-1),5),
+        ('TOPPADDING',(0,0),(-1,-1),2),('BOTTOMPADDING',(0,0),(-1,-1),2),
+        ('TOPPADDING',(0,2),(0,2),4),('BOTTOMPADDING',(0,2),(0,2),5),
+    ]))
+    return t
+
+cards = [spell_card(*sp) for sp in spells]
+rows = []
+for i in range(0, len(cards), 2):
+    chunk = cards[i:i+2]
+    while len(chunk) < 2:
+        chunk.append(Paragraph('', body_st))
+    rows.append(chunk)
+grid = Table(rows, colWidths=[3.66*inch]*2)
+grid.setStyle(TableStyle([
+    ('VALIGN',(0,0),(-1,-1),'TOP'),
+    ('LEFTPADDING',(0,0),(-1,-1),2),('RIGHTPADDING',(0,0),(-1,-1),2),
+    ('TOPPADDING',(0,0),(-1,-1),3),('BOTTOMPADDING',(0,0),(-1,-1),3),
+]))
 story.append(grid)
 
 doc=SimpleDocTemplate('../lilly_glimmergear_sheet_v3.pdf',pagesize=letter,
