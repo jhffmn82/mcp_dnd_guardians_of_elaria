@@ -99,7 +99,7 @@ hdr=Table([[Image('stabby_new.png',width=1.35*inch,height=1.35*inch),
     [Paragraph('Stabby Sharpblade',title_st),
      Paragraph('Goblin &bull; Monk (Way of the Kensei) &bull; Level 5',sub_st),Spacer(1,3),
      Paragraph('The wild one. Stabby is a tiny, lightning-fast goblin who fights with a '
-               'candy-cane katana and his own two fists. Chaos with a smile.',flav_st)]]],
+               'candy-striped katana and his own two fists. Chaos with a smile.',flav_st)]]],
     colWidths=[1.5*inch,5.8*inch])
 hdr.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(1,0),(1,0),10)]))
 story.append(hdr); story.append(Spacer(1,8))
@@ -189,7 +189,7 @@ story.append(Spacer(1,8))
 h2("Stabby's Stuff")
 GN='<b><font color="%s">%%s</font></b>' % RED_HEX   # gear names: accent bold
 gear=[
-    ('Candyfang Katana +1','His prized candy-cane katana. +1 to hit and damage, +2 cold. Has Sugar Rush: once a day, lick the blade (bonus action) for 2d8 + 3 temp HP and a jolt of chaos energy.'),
+    ('Candyfang Katana +1','His prized candy-striped katana. +1 to hit and damage, +2 cold. Has Sugar Rush: once a day, lick the blade (bonus action) for 2d8 + 3 temp HP and a jolt of chaos energy.'),
     ('Repeating Longbow +1','A magic bow that makes its own arrows — never runs out. +1 to hit and damage.'),
     ('Sash of the Swift Current (★ Elaria’s gift)','Scarlet stage-silk from the Wraithpine chest. +1 AC, +10 speed, plus Air Dance (fly for 1 minute, 1/day) and Feather Fall (1/day). Attuned.'),
     ('Explorer’s Pack','Backpack, bedroll, rope, torches, rations — the usual adventuring kit.'),

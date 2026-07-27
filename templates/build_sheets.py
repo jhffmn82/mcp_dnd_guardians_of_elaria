@@ -175,7 +175,7 @@ S = [
     # Whitespace pass 2026-07: 2.3in (was 2.9) - see the Ursa portrait note.
     ("imgfloat", "assets/characters/stabby_v3_portrait.png", 2.3),
     ("body", "**Goblin Monk (Way of the Kensei), Level 5.** The wild one. Stabby is a tiny, "
-             "lightning-fast goblin who fights with a candy-cane katana and his own two fists. "
+             "lightning-fast goblin who fights with a candy-striped katana and his own two fists. "
              "Chaos with a smile."),
     ("dm", "**Armor Class** 18   **Hit Points** 43   **Speed** 50 ft.   **Initiative** +5   "
            "**Proficiency** +3", {"size": 11}),
@@ -238,7 +238,7 @@ S = [
 
     ("h2", "Stabby's Signature Gear"),
     ("stat", "Stabby's Stuff", [
-        "**Candyfang Katana +1.** His prized candy-cane katana. +1 to hit and damage, +2 cold. "
+        "**Candyfang Katana +1.** His prized candy-striped katana. +1 to hit and damage, +2 cold. "
         "Sugar Rush: once a day, lick the blade (bonus action) for 2d8 + 3 temporary HP and a "
         "jolt of chaos energy.",
         "**Repeating Longbow +1.** A magic bow that makes its own arrows; it never runs out. "

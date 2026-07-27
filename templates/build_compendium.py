@@ -124,7 +124,7 @@ I = [
     ]),
     ("h2", "Candyfang Katana (Stabby)"),
     ("stat", "Candyfang Katana", [
-        "Rare, attunement by a Monk. A katana of impossible candy-cane steel. 1d8/1d10 slashing, +1 attack and damage.",
+        "Rare, attunement by a Monk. A katana of impossible candy-striped steel. 1d8/1d10 slashing, +1 attack and damage.",
         "**Sugar Rush.** Bonus action lick, 1/long rest: 2d8 + Con temporary HP. **Frostbite Infusion.** +2 frost on hit.",
         "Destined to become a Bloodfang heirloom when the Nichirin blade comes.",
     ]),
