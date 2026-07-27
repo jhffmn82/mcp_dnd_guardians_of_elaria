@@ -45,16 +45,16 @@ Note: the char-sheet flavor line "his prized candy-cane katana" (`build_stabby.p
 - **D5. Ordinary sash vs relic (S5).** Stabby's "candy-red sash" in S5 is his accent color, but he receives the Sash of the Swift Current in S6. Confirm the S5 sash reads as his ordinary sash (recommended: it does), or reword to avoid the echo.
 - **D6. "The Circle" shorthand.** Several lore boxes use bare "the Circle." The in-world order is "the Circle of the Eternal Stars" ("Circle of Stars" is only the 2024 subclass / door label). Low priority; spell the order out once per box if you want it airtight. Same for the S7 door label "The Circle of Stars."
 
-## Rules-verification punch list (check against source before print; do not assert from memory)
+## Rules-verification punch list (VERIFIED against source 2026-07-26)
 
-These are player-facing mechanics the reviewers could not confirm without a source. Verify against `reference/srd`, `reference/expansions`, or dnd2024.wikidot.com, and cite.
+Checked against `reference/srd` (SRD 5.2.1), `reference/expansions`, and the SRD PDF bestiary. Citations below.
 
-- **R1 (S7, high stakes).** Stabby's signature boss moment hangs on "his Deflect Attack turning aside the Chain Lightning Burst." Confirm the 2024 Monk's Deflect Attacks applies to LIGHTNING damage; if it is limited to bludgeoning/piercing/slashing, the moment needs a different save (the DM note already offers Patient Defense or a clutch save as fallback).
-- **R2 (S7).** "Ursa regains one Wild Shape use" on the built-in short rest. 2024 Wild Shape may restore all expended uses on a short or long rest; confirm the number.
-- **R3 (S7).** "Starry Wisp" is used for Ursa's free 60-ft radiant attack, but Starry Wisp is also a distinct 2024 cantrip and the house-rules doc calls the Starry Form Archer attack the "luminous arrow." Three labels for one feature; pick one and confirm.
-- **R4 (S5).** A short rest that "recovers one expended spell slot of 2nd level or lower" is nonstandard; confirm it is a one-time scene boon, not a standing rule.
-- **R5 (S4).** Frostbite Shard Dagger grants "Arcane Firearm" via a magic item (normally the Artillerist's own feature); confirm the intended interaction.
-- **R6 (S6).** The stock SRD undead (Swarm of Rats, Zombie Undead Fortitude wording, Skeleton) were reworked in the 2024 Monster Manual; verify the stat blocks match 2024 text.
+- **R1 (S7): CONFIRMED ERROR, needs DM sign-off.** SRD Monk Level 3 *Deflect Attacks*: "When an attack roll hits you and its damage includes Bludgeoning, Piercing, or Slashing damage..." It extends to "any damage type" only at Level 13 (*Deflect Energy*). At level 5, Stabby cannot legally Deflect the Custodian's Chain Lightning Burst. The S7 note already offers fallbacks. FIX (his marquee beat, so DM chooses the wording): either have him deflect a Bludgeoning/Piercing/Slashing attack instead, or answer the lightning with Patient Defense, a Dexterity save, Absorb Elements, or Uncanny Metabolism.
+- **R2 (S7): NOT an error.** SRD Druid *Wild Shape*: "You regain one expended use when you finish a Short Rest, and all... on a Long Rest." The S7 line "Ursa regains one Wild Shape use" is correct as written. No change.
+- **R3 (S7): naming fix (clear drift).** *Starry Wisp* is a real 2024 Druid cantrip (SRD: Action, 60 ft), but it costs an Action. Ursa's FREE 60-ft radiant Bonus Action is the Circle of Stars Archer "luminous arrow" ("star-arrows"), per `reference/expansions/druid-circle-of-stars.md`. Change the S7 note "his Starry Wisp reaches 60 ft too, and it's free" to "his star-arrows reach 60 ft too, and they're free" (matches the doc's own "star-arrows (60 ft)" line).
+- **R4 (S5): intentional, no fix.** The short rest that recovers one low-level spell slot is a one-time scene boon, flagged as such in the text; non-RAW by design.
+- **R5 (S4): intentional homebrew, no fix.** RAW *Arcane Firearm* applies only to a Rod/Staff/Wand/Martial-Ranged weapon (`reference/expansions/artificer.md`); the Frostbite Shard Dagger granting a "+1d8 to one spell" rider is a designed magic-item ability, internally fine.
+- **R6 (S6): wording correct, minor stat deltas.** SRD Zombie *Undead Fortitude* matches S6 exactly ("Constitution saving throw (DC 5 plus the damage taken) unless the damage is Radiant or from a Critical Hit"). Small deviations: SRD Skeleton is AC 14 (S6 uses 13; vulnerable Bludgeoning is correct), SRD Swarm of Rats is HP 14 (S6 uses 24). Likely intentional tuning for a three-hero level-5 party; DM decides whether to align exactly. Low priority.
 
 ## Narrative-flow suggestions (need approval; no table events change)
 
