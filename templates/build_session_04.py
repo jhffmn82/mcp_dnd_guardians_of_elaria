@@ -232,7 +232,7 @@ BLOCKS = [
     ("h2", "The Wyrmgale Lighthouse: B and High C"),
     ("gold", "Last comes the lighthouse, tall and steadfast on the cliffs, battered by wind and "
              "salt spray, its beacon struggling against a mist that does not behave like mist. "
-             "The keeper meets them at the door: **Old Doran Bramblebeard**, Havenmoor's "
+             "The keeper meets them at the door: **Master Doran Bramblebeard**, Havenmoor's "
              "shipwright, a tall, wiry man in an oilskin coat who tends the Wyrmgale light in "
              "winter because, as he puts it, nobody else has the stomach for it. “Storms rage "
              "out at sea, but sometimes the real danger comes from the shadows that walk these "
@@ -392,7 +392,7 @@ BLOCKS = [
 
     ("h2", "Snowbound Bandits"),
     ("imgfloat", f"{A}/monsters/snowbound_bandits.png", 3.2),
-    ("body", "On a narrow, snow-choked path, four desperate figures rise out of the drifts "
+    ("body", "On a narrow, snow-choked path, three desperate figures rise out of the drifts "
              "with weapons trembling in frostbitten hands, and a grizzled leader with a "
              "frost-crusted beard demands the party's packs. They are cold and hungry rather "
              "than wicked, and a warm meal buys more peace than a drawn blade. A DM with a "
@@ -805,7 +805,7 @@ BLOCKS = [
              "never melts, glowing with faint blue arcane light, hungry to channel her spells."),
     ("gold", "For **Ursa**, the **Amulet of Guiding Light**: a polished silver starburst with a "
              "blue gem at its heart that pulses softly, like a distant star keeping watch."),
-    ("gold", "And for **Stabby**, the **Candyfang Katana**: a katana of impossible candy-cane "
+    ("gold", "And for **Stabby**, the **Candyfang Katana**: a katana of impossible candy-striped "
              "steel, red and white and wickedly sharp, trailing a faint scent of sugar. Stabby "
              "licks it immediately. It is delicious."),
     ("reward_card", "Rewards: The Gifts of Faelan",
@@ -820,7 +820,7 @@ BLOCKS = [
          "Reaction, 1/long rest: 2d8 radiant, DC 15 Con or blinded. *Celestial Resilience:* "
          "reroll natural 1s, 2/long rest."),
         ("Candyfang Katana (Stabby)",
-         "Rare, attunement by a Monk. Impossible candy-cane steel: 1d8/1d10 slashing, +1 to "
+         "Rare, attunement by a Monk. Impossible candy-striped steel: 1d8/1d10 slashing, +1 to "
          "attack and damage. *Sugar Rush:* Bonus Action lick, 1/long rest: 2d8 + Con "
          "temporary hit points. *Frostbite Infusion:* +2 frost on hit."),
     ]),
@@ -1199,12 +1199,14 @@ BLOCKS = [
                 "Gift Box Table."),
 
     # Fills the travel-section closer page before the boss appendix begins.
-    ("lore", "The Bells of the Coast",
-     "When the safeguards were scattered, eight fell along the southern coast as bells, each "
-     "holding one clear note of the song Elaria sang while she worked. Havenmoor built its "
-     "festival around them centuries before anyone remembered why the bells mattered. The town "
-     "rang them every winter anyway, and on the longest night, the old tellings say, a true "
-     "bell rung with a whole heart still keeps the dark a step further from the door."),
+    # D7 "The Longest Night" (world_history.md), placed here for the Krampusshade
+    # "Longest Night" boss that follows; avoids duplicating the "Bells of the Coast"
+    # box that already sits on Faelan's page in Part Three.
+    ("lore", "The Longest Night",
+     "The Circle marks one night a year when the dark leans hardest on the world, and teaches "
+     "that it is not to be feared but outlasted. Kindle a light, share a warm meal, ring a true "
+     "bell, and keep one another company until dawn, the old rule runs, for the longest night "
+     "has never once failed to end, and the things that walk it are hungriest for the lonely."),
 
     ("fight_header", "BOSS: The Longest Night",
      "Havenmoor market square ✦ Difficulty: Boss ✦ Krampusshade + 4× shadow imp (2 more, round 2)"),
