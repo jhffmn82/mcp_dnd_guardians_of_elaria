@@ -163,6 +163,11 @@ BLOCKS = [
            "failure the motes thin away before anything can be read; Professor Aelwyn can "
            "identify the samples later. Loot: **Elemental Mud Samples** for the professor."),
 
+    ("gold", "For a mile or two the road is kind. The party hauls itself back onto dry ground, "
+             "Stabby scraping mud from his ears and loudly declaring the marsh his sworn enemy, "
+             "and there is a little while of easy walking and easier laughter, the warm quiet of "
+             "friends who have just won something together."),
+
     ("h2", "The Grimfang War Band"),
     ("gold", "Beyond the marsh the path narrows, dense brush pressing close on either side: the "
              "kind of road that makes a traveler's neck prickle. The birdsong stops. A branch "
@@ -449,7 +454,7 @@ BLOCKS = [
                "house full of impossible creatures. Whatever the professor saw when he looked at "
                "the Sphere, morning would tell."),
     ("gold", "*Next: Session 3, in which the professor examines the Essence Sphere, three small "
-             "creatures wait in three baskets, and a dark figure watches from the top of Stormwatch "
+             "creatures roam his laboratory, and a dark figure watches from the top of Stormwatch "
              "Cliffs.*"),
 
     # ------------------------------------------------------------------
