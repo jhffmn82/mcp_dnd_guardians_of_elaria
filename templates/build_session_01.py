@@ -403,7 +403,7 @@ BLOCKS = [
      {"crop": "5:4", "hmax": 4.6}),
     ("divider",),
     ("bridge", "Their first day together was done: a friendship, a brawl, two guardians bested, "
-               "three motes of runaway magic, and a mystery with no bottom yet. In the morning, the "
+               "four motes of runaway magic, and a mystery with no bottom yet. In the morning, the "
                "search for the missing villagers would carry the Guardians of Elaria, though they "
                "did not yet know that name, deeper into the whispering wood, and toward a laboratory "
                "on the cliffs where an old elf kept watch on the doors between worlds."),
@@ -474,7 +474,7 @@ BLOCKS = [
     ("body", "**Stabby:** the BANG of the tavern door is his overture → the brawl is his "
              "stage: he fights like a rumor, everywhere and nowhere → faster than Duckleaf's "
              "wind, laughing on Cognifin's slick stones → seeds: the Bloodfang Clan and Master "
-             "Kaelon in his introduction (Door: the clan catches up with him in Session 2)."),
+             "Kaelon in his introduction (Door: a rival clan, the Grimfang, catches up with him in Session 2)."),
     ("body", "**Ursa:** a stranger asking for him BY NAME pulls him in from the fields → one "
              "piece of bread wins the party its first friend → his starlight finds Duckleaf "
              "wherever it lands → seeds: Ash Catchum's disappearance and the three enchanted "
