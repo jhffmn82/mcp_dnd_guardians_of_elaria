@@ -161,7 +161,7 @@ BLOCKS = [
              "instruments, and shelves of research on the magical creatures of the region."),
     ("body", "It was Aelwyn who first examined the Essence Sphere and pointed the party toward "
              "Gearhaven, and Aelwyn who offered them their first companion, three small creatures "
-             "in three warm crates (they chose Floraburst, who would one day become Ghostbloom). "
+             "roaming his laboratory (they chose Floraburst, who would one day become Ghostbloom). "
              "**Lickgloom** lives at the laboratory still, taste-testing everything the Professor "
              "will allow and some things he will not."),
 
