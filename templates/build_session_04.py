@@ -283,241 +283,16 @@ BLOCKS = [
      "the sky."),
 
     # ------------------------------------------------------------------
-    ("h1", "The Frozen Roads: A Winter Bestiary of Chances"),
-    ("gold", "The roads around Havenmoor that week were thick with wonders and dangers. Not all of "
-             "them crossed the heroes' path, but every one of them was out there, waiting in the "
-             "white silence between the pines. What follows is the DM's deck of chances, exactly "
-             "as it hung over every journey out of town that winter."),
-    # The winter overworld leads the deck of chances (DM request 2026-07-06):
-    # the three barrier sites are found by exploring, and every trek rolls.
-    ("img", f"{A}/world/havenmoor_wilds_map.png",
-     "The frozen wilds around Havenmoor: the town and the Wyrmgale Lighthouse on the coast, and "
-     "somewhere in the white silence, the three barriers waiting to be found.", 6.2,
-     {"hmax": 4.6}),
-    ("dm", "**Exploring the wilds.** Faelan's directions mark the three barriers only roughly; "
-           "the party must range out into the frozen wilds and FIND each one (the map above is "
-           "the shape of that search). Whenever the party sets out from Havenmoor, to a barrier "
-           "or back again, roll a d20 on the table below. Notes on the most colorful entries "
-           "follow; full statistics for every creature live in the bestiary compendium."),
-
-    ("h2", "Travel Encounter Table (d20)"),
-    ("body", "**1.** Krampusshade's Minion: a shadowy imp attacks, attempting to steal something "
-             "from the party."),
-    ("body", "**2.** Frozen Wolves: 2d4 frost-covered wolves stalk the party, their eyes glowing "
-             "with cold malice."),
-    ("body", "**3.** Frostbite Pixies: mischievous pixies cast Ray of Frost and try to confuse "
-             "the party."),
-    ("body", "**4.** Icy Specter: a ghostly figure whispers a chilling warning before attacking."),
-    ("body", "**5.** Snowbound Bandits: desperate bandits, half-mad with cold, ambush the party."),
-    ("body", "**6.** Frost Golems: two small frost golems rise from the snow and attack."),
-    ("body", "**7.** Blizzard Trap: a sudden blizzard cuts visibility to a few feet; Wisdom "
-             "(Survival) DC 14 to avoid becoming lost."),
-    ("body", "**8.** Enchanted Snowmen: three animated snowmen with coal-black eyes hurl "
-             "snowballs laced with Ray of Frost."),
-    ("body", "**9.** Yule Cat: a huge predatory feline prowls near the party, looking for those "
-             "who have not been good."),
-    ("body", "**10.** Friendly Caribou: a lost, enchanted caribou offers the party a brief rest "
-             "and warmth."),
-    ("body", "**11.** The Sleeping Traveler: a traveler frozen beneath the snow, one hand still "
-             "holding a cryptic note or map."),
-    ("body", "**12.** Holiday Illusions: visions of a warm celebration that hide a dangerous "
-             "snow drift."),
-    ("body", "**13.** Frozen Will-o'-Wisps: malevolent lights lure the party toward a frozen "
-             "pond."),
-    ("body", "**14.** Frost Hag Ambush: a frost hag disguised as a kind old woman offers "
-             "poisoned treats."),
-    ("body", "**15.** Ice Spiders: 2d6 ice spiders drop from the trees and attack."),
-    ("body", "**16.** Resting Reindeer: a magical reindeer grants the party Heroic Inspiration "
-             "if treated kindly."),
-    ("body", "**17.** Frozen Treasure: a chest sealed in a block of ice; Strength DC 15 or fire "
-             "magic to open."),
-    ("body", "**18.** Aurora Spirits: peaceful, glowing spirits offer a cryptic hint or "
-             "prophecy."),
-    ("body", "**19.** Fey Tricksters: playful fey challenge the party to a riddle contest or a "
-             "harmless prank."),
-    ("body", "**20.** Holiday Miracle: a warm breeze restores 1d4 hit points to each party "
-             "member."),
-
-    ("h2", "Gift Box Table (d20)"),
-    ("dm", "**Gift Boxes.** When one of the Krampusshade's creatures is defeated, it leaves "
-           "behind a wrapped gift box. Roll a d20 for its contents."),
-    ("body", "**1.** Mimic in Disguise! The gift box is a tiny mimic (CR 1), and it immediately "
-             "attacks."),
-    ("body", "**2-4.** Lump of Coal: a mundane lump of coal. Slightly warm, but otherwise "
-             "useless."),
-    ("body", "**5-6.** Handful of Peppermint Shards: slightly refreshing. No mechanical effect."),
-    ("body", "**7-9.** Gingerbread Cookie: a tasty treat that restores 1d4 hit points when "
-             "eaten."),
-    ("body", "**10-12.** Candy Cane Dagger: a simple weapon, 1d4 piercing damage. Melts after "
-             "24 hours."),
-    ("body", "**13-15.** Hot Cocoa Flask: when drunk, grants resistance to cold damage for "
-             "1 hour."),
-    ("body", "**16-17.** Sparkling Snow Globe: shaking it causes a harmless flurry of snow, and "
-             "it sheds light for 30 feet."),
-    ("body", "**18-19.** Frosted Cookie of Restoration: restores 2d8 hit points, grants the "
-             "benefit of a short rest, and restores one spell slot."),
-    ("body", "**20.** Holiday Miracle Charm: a small charm granting advantage on one saving "
-             "throw within 24 hours."),
-
-    # Page balance: the bestiary flows continuously after the tables; floats
-    # sized at 2.7 so the wrapped sections pack without stranding.
-    ("h2", "The Yule Cat"),
-    ("imgfloat", f"{A}/monsters/yule_cat.png", 2.7),
-    ("body", "A massive black feline with frost-covered fur and glowing yellow eyes, the Yule "
-             "Cat is a creature of fey legend that judges those who lack generosity or "
-             "kindness. It prowls the deep snow on silent paws, and a low growl through the "
-             "cold air is the only warning before it pounces. Legends around Havenmoor say "
-             "it circles the houses on festival nights, counting who has shared their "
-             "supper and who has not."),
-    ("dm", "**Yule Cat (CR 3).** Wisdom (Animal Handling) DC 15 calms it for a round; Wisdom "
-           "(Insight) DC 14 reveals that it seeks acts of generosity, so offering food or "
-           "gifts can delay its attack entirely. In a fight it relies on Frost Claw, a "
-           "Frostbite Pounce that knocks heroes prone, and a Chilling Gaze (DC 14 "
-           "Constitution) that paralyzes with cold. Win or appease it, and a roll on the "
-           "Gift Box Table follows."),
-
-    ("h2", "The Frost Hag"),
-    ("imgfloat", f"{A}/monsters/frost_hag_disguised.png", 3.2),
-    ("body", "In a lonely clearing, a kindly old woman tends a bubbling cauldron and waves "
-             "travelers over to warm themselves and share pastries dusted with powdered "
-             "sugar. Her voice is honey and her fire is warm, but her eyes glint far too "
-             "coldly for the warmth of her smile. The wisest travelers notice that no snow "
-             "melts anywhere near her fire."),
-    ("dm", "**Frost Hag (CR 4).** Wisdom (Insight) DC 14 catches the malice behind the "
-           "smile. Anyone who eats her treats must make a DC 13 Constitution save or be "
-           "poisoned for 1 hour, taking 1d4 cold damage. Unmasked, she is ice-crusted skin "
-           "and jagged teeth: Icy Claw, a 15-foot Frostbite Breath cone (DC 14 Constitution, "
-           "4d6 cold, slowed on a failure), and Misty Step as a bonus action to keep out of "
-           "reach."),
-
-    ("h2", "Snowbound Bandits"),
-    ("imgfloat", f"{A}/monsters/snowbound_bandits.png", 3.2),
-    ("body", "On a narrow, snow-choked path, three desperate figures rise out of the drifts "
-             "with weapons trembling in frostbitten hands, and a grizzled leader with a "
-             "frost-crusted beard demands the party's packs. They are cold and hungry rather "
-             "than wicked, and a warm meal buys more peace than a drawn blade. A DM with a "
-             "soft heart may let a fed and warmed bandit whisper a useful rumor about the "
-             "roads before the band slips away into the snow."),
-    ("dm", "**3 Bandits and 1 Bandit Leader.** Wisdom (Insight) DC 14 shows they are driven "
-           "by desperation, not malice. Charisma (Persuasion) DC 15 with an offer of food or "
-           "warmth avoids the fight; Intimidation DC 14 scares them into retreat, but "
-           "failure means combat on slippery ice (Dexterity DC 13 to move more than 15 feet "
-           "without falling prone). The leader's Frostbite Strike adds 1d6 cold damage and "
-           "can slow its target. Victory yields 1d4 healing potions, 10 gold, rations for "
-           "two days, and a Gift Box."),
-
-    # Hardbreak: started at a page bottom, the golems float sinks into the
-    # margin; opening the page lets golems + snowmen + spiders fill it whole.
-    ("h2", "Frost Golems", {"hardbreak": True}),
-    ("imgfloat", f"{A}/monsters/frost_golems.png", 2.7),
-    ("body", "On a serene snowfield, the powder suddenly trembles and pulls itself together, "
-             "packing into two jagged shapes of snow and ice shard. Their eyes glow with an "
-             "eerie blue light as they lumber forward, frost radiating from their bodies, "
-             "without hurry and without mercy."),
-    ("dm", "**2 Frost Golems (CR 2 each).** Icy Slam (2d6 + 3 bludgeoning plus 1d4 cold) and "
-           "a Frost Aura that deals 2 cold damage at the start of each creature's turn "
-           "within 5 feet. The snowfield itself is a hazard: Dexterity (Acrobatics) DC 14 "
-           "to move quickly without falling prone. The golems trudge relentlessly and try "
-           "to corner heroes on the worst of the ice."),
-
-    ("h2", "Enchanted Snowmen"),
-    ("imgfloat", f"{A}/monsters/enchanted_snowman.png", 2.5),
-    ("body", "Three cheerful roadside snowmen with coal-black eyes and wicked twig grins "
-             "shudder to life as travelers pass, stick arms lifting to pelt them with "
-             "snowballs laced with ice magic. It would almost be funny, if the snowballs "
-             "did not hit quite so hard."),
-    ("dm", "**3 Enchanted Snowmen (CR 1 each).** Wisdom (Perception) DC 14 to act before "
-           "the snowmen do. Frostball: +4 to hit, 2d4 cold damage, and a DC 12 Constitution "
-           "save or the target's speed is halved until the end of its next turn. AC 13, "
-           "HP 30, and they never stop grinning."),
-
-    ("h2", "Ice Spiders"),
-    # Anchored at the top of the section, floated LEFT so it cannot collide
-    # with the snowman float on the right edge above it.
-    ("imgfloat", f"{A}/monsters/ice_spider.png", 2.5, "left"),
-    ("body", "In a grove of frost-covered trees, branches creak under an unnatural weight "
-             "and a faint skittering echoes overhead. Then icy webs glisten in the dappled "
-             "light, and frost-coated spiders the size of wolves drop from the canopy, "
-             "mandibles glittering with rime."),
-    ("dm", "**2d6 Ice Spiders (CR 1 each).** Wisdom (Perception) DC 15 spots them before "
-           "they drop; Wisdom (Survival) DC 14 keeps the party out of the sticky web traps "
-           "(DC 13 Strength to break free). Their bite carries a venomous chill (DC 13 "
-           "Constitution or poisoned 1 minute), their frozen webbing stings for 1d4 cold "
-           "damage if touched, and the ground beneath the grove is slick ice, Dexterity "
-           "(Acrobatics) DC 14 to keep footing."),
-
-    # Hardbreak: the wisps float needs a page's top half; anchored lower it
-    # collides with the ice spider float and mangles the wrap.
-    ("h2", "Frozen Will-o'-Wisps", {"hardbreak": True}),
-    ("imgfloat", f"{A}/monsters/frozen_will_o_wisps.png", 2.7),
-    ("body", "Above a frozen pond, ghostly blue lights flicker and bob, beckoning travelers "
-             "out onto the ice with whispers of false promises. The scene looks tranquil, "
-             "almost inviting, but the mist around the lights is far, far too cold."),
-    ("dm", "**Frozen Will-o'-Wisps (CR 2 each).** Wisdom (Perception) DC 14 notices strange "
-           "ripples beneath the ice; Intelligence (Arcana) DC 15 names the lights for what "
-           "they are. The careless suffer a surprise round, slippery ice (Dexterity DC 13 "
-           "each round or fall prone), and 1d4 cold damage per round of exposure. Icy Shock "
-           "deals lightning and cold together, and the wisps blink invisible between "
-           "attacks. They guard a Gift Box, and a whispered warning of the Krampusshade's "
-           "icy influence."),
-
-    ("h2", "Tricks of the Road"),
-    ("dm", "**Blizzard Trap.** The wind rises and the world goes white. Wisdom (Survival) "
-           "DC 14 finds the way through to a small sheltered grove where the party can rest "
-           "and warm up; failure means an hour lost in the storm and 1d6 cold damage from "
-           "exposure."),
-    ("dm", "**Holiday Illusions.** A vision of a warmly lit cabin unfolds, all laughter, "
-           "glowing lanterns, roasted chestnuts, and spiced cider. Intelligence (Arcana) or "
-           "(Investigation) DC 15 spots the flickering seams. Those who walk in take 1d4 "
-           "psychic damage as the vision shatters over a deep snow drift: DC 13 Dexterity "
-           "save or become trapped and take 1d6 cold damage, then DC 14 Constitution save "
-           "or gain a level of exhaustion. Seeing through the trick earns a brief warmth, "
-           "a protective charm against illusions for the next hour."),
-    ("dm", "**Mimic in Disguise.** The prettiest gift box on the road is sometimes a tiny "
-           "mimic, all teeth and adhesive. Its bigger cousin (CR 2, AC 12, HP 58, bite plus "
-           "1d8 acid, DC 13 Strength to escape its grip) waits in the bestiary compendium "
-           "for DMs feeling festive."),
-
-    ("h2", "Kindly Wonders"),
-    ("body", "Not everything on the winter roads wished travelers ill. Some of it was "
-             "watching, quietly, to see if they would be kind."),
-    ("dm", "**Friendly Caribou.** An enchanted caribou with softly glowing antlers steps "
-           "from the treeline into the moonlight. Offering food or kind words earns its "
-           "aura of warmth: each party member regains 1d4 hit points, and Wisdom (Animal "
-           "Handling) DC 13 earns one hero Heroic Inspiration. Hostility makes it dissolve "
-           "sadly into mist."),
-    ("dm", "**Resting Reindeer.** A majestic reindeer with antlers like polished silver "
-           "rests beneath a frosted pine. Wisdom (Animal Handling) DC 14 to approach "
-           "calmly; treated kindly, its nose glows softly and each hero gains Heroic "
-           "Inspiration and temporary hit points equal to 1d6 + their level."),
-    ("dm", "**Aurora Spirits.** Beneath dancing ribbons of blue, purple, and green, serene "
-           "spirits descend, humming an ethereal tune. Wisdom (Insight) DC 14 or "
-           "Intelligence (Religion) DC 15 understands them as messengers of Elaria; they "
-           "impart a cryptic hint about the Krampusshade and grant advantage on the next "
-           "Wisdom saving throw."),
-    ("dm", "**Fey Tricksters.** Small winged pranksters flit between the trees and propose "
-           "a riddle contest (Intelligence DC 15) or spring a prank to dodge (Dexterity "
-           "DC 14). Winners receive a charm of luck, advantage on one roll of their choice; "
-           "losers get a pie in the face and disadvantage on their next skill check."),
-    ("dm", "**Holiday Miracle.** A sudden warm breeze carries the scent of pine, cinnamon, "
-           "and fresh cookies, restoring 1d4 hit points to each party member. For a moment, "
-           "the world feels kinder, and the shadows retreat just a little."),
-
-    ("h2", "Treasures in the Ice"),
-    ("dm", "**The Sleeping Traveler.** A traveler frozen beneath a drift, still and "
-           "peaceful as a statue, one outstretched hand holding a crumpled note. "
-           "Intelligence (Investigation) DC 12 preserves the brittle parchment: a warning "
-           "about the Krampusshade's minions and, tucked beneath the traveler's coat, a "
-           "**Map of Hidden Paths** granting advantage on the next Survival check to "
-           "navigate the snowy wilderness."),
-    ("dm", "**Frozen Treasure.** A sturdy chest sealed inside a block of ice carved with "
-           "faintly glowing runes. Strength DC 15 breaks it open, Intelligence (Arcana) "
-           "DC 14 finds the weak point, and fire magic melts it in a single round; a "
-           "failed attempt stings for 2d6 cold damage. Inside wait 50 gold pieces and a "
-           "Frosted Cookie of Restoration."),
-    ("dm", "Full statistics for every creature of the frozen roads live in the bestiary "
-           "compendium. The creatures the heroes actually crossed blades with appear in "
-           "the Appendix at the back of this session."),
+    # F1 (2026-07-27): the full "Frozen Roads" deck of chances moved to the
+    # appendix (with its stat blocks) so the read-aloud story runs straight
+    # from the bell hunt into the lorekeeper. A short bridge stays here.
+    ("gold", "The roads around Havenmoor that week were thick with wonders and dangers. Not all "
+             "of them crossed the heroes' path, but every one was out there, waiting in the white "
+             "silence between the pines."),
+    ("dm", "**The frozen roads.** Faelan's directions mark the three barriers only roughly, so "
+           "whenever the party sets out from Havenmoor, to a barrier or back, roll on the winter "
+           "travel table. The DM's full deck of chances, the d20 tables and every wandering "
+           "wonder of the frozen roads, waits in the appendix at the back of this session."),
 
     # ------------------------------------------------------------------
     ("h1", "Part Three: The Lorekeeper's Tale"),
@@ -576,6 +351,9 @@ BLOCKS = [
     ("h1", "Part Four: The Three Barriers of Darkness"),
     ("bridge", "Three marks on a map, eight bells, and one long winter day: the heroes went out "
                "into the white silence to take the Krampusshade's power apart, one song at a time."),
+
+    ("dm", "**Any order.** The three barriers can be met in whatever order the party's exploring "
+           "turns them up; the sites below are listed for convenience, not as a fixed sequence."),
 
     ("h2", "The Frostpine Glade: Jingle Bells"),
     ("gold", "The pines around the glade creak under armor of ice, and the mist between them "
@@ -1030,6 +808,243 @@ BLOCKS = [
                 "scatter the party, then drifts through the frightened gaps with Chilling "
                 "Touch, whispering all the while. Let Ursa's starlight land the ending. It "
                 "guards the Shadow-Touched Rune Fragment and a Gift Box roll."),
+
+    # ------------------------------------------------------------------
+    ("h1", "The Frozen Roads: A Winter Bestiary of Chances"),
+    ("gold", "The roads around Havenmoor that week were thick with wonders and dangers. Not all of "
+             "them crossed the heroes' path, but every one of them was out there, waiting in the "
+             "white silence between the pines. What follows is the DM's deck of chances, exactly "
+             "as it hung over every journey out of town that winter."),
+    # The winter overworld leads the deck of chances (DM request 2026-07-06):
+    # the three barrier sites are found by exploring, and every trek rolls.
+    ("img", f"{A}/world/havenmoor_wilds_map.png",
+     "The frozen wilds around Havenmoor: the town and the Wyrmgale Lighthouse on the coast, and "
+     "somewhere in the white silence, the three barriers waiting to be found.", 6.2,
+     {"hmax": 4.6}),
+    ("dm", "**Exploring the wilds.** Faelan's directions mark the three barriers only roughly; "
+           "the party must range out into the frozen wilds and FIND each one (the map above is "
+           "the shape of that search). Whenever the party sets out from Havenmoor, to a barrier "
+           "or back again, roll a d20 on the table below. Notes on the most colorful entries "
+           "follow; full statistics for every creature live in the bestiary compendium."),
+
+    ("h2", "Travel Encounter Table (d20)"),
+    ("body", "**1.** Krampusshade's Minion: a shadowy imp attacks, attempting to steal something "
+             "from the party."),
+    ("body", "**2.** Frozen Wolves: 2d4 frost-covered wolves stalk the party, their eyes glowing "
+             "with cold malice."),
+    ("body", "**3.** Frostbite Pixies: mischievous pixies cast Ray of Frost and try to confuse "
+             "the party."),
+    ("body", "**4.** Icy Specter: a ghostly figure whispers a chilling warning before attacking."),
+    ("body", "**5.** Snowbound Bandits: desperate bandits, half-mad with cold, ambush the party."),
+    ("body", "**6.** Frost Golems: two small frost golems rise from the snow and attack."),
+    ("body", "**7.** Blizzard Trap: a sudden blizzard cuts visibility to a few feet; Wisdom "
+             "(Survival) DC 14 to avoid becoming lost."),
+    ("body", "**8.** Enchanted Snowmen: three animated snowmen with coal-black eyes hurl "
+             "snowballs laced with Ray of Frost."),
+    ("body", "**9.** Yule Cat: a huge predatory feline prowls near the party, looking for those "
+             "who have not been good."),
+    ("body", "**10.** Friendly Caribou: a lost, enchanted caribou offers the party a brief rest "
+             "and warmth."),
+    ("body", "**11.** The Sleeping Traveler: a traveler frozen beneath the snow, one hand still "
+             "holding a cryptic note or map."),
+    ("body", "**12.** Holiday Illusions: visions of a warm celebration that hide a dangerous "
+             "snow drift."),
+    ("body", "**13.** Frozen Will-o'-Wisps: malevolent lights lure the party toward a frozen "
+             "pond."),
+    ("body", "**14.** Frost Hag Ambush: a frost hag disguised as a kind old woman offers "
+             "poisoned treats."),
+    ("body", "**15.** Ice Spiders: 2d6 ice spiders drop from the trees and attack."),
+    ("body", "**16.** Resting Reindeer: a magical reindeer grants the party Heroic Inspiration "
+             "if treated kindly."),
+    ("body", "**17.** Frozen Treasure: a chest sealed in a block of ice; Strength DC 15 or fire "
+             "magic to open."),
+    ("body", "**18.** Aurora Spirits: peaceful, glowing spirits offer a cryptic hint or "
+             "prophecy."),
+    ("body", "**19.** Fey Tricksters: playful fey challenge the party to a riddle contest or a "
+             "harmless prank."),
+    ("body", "**20.** Holiday Miracle: a warm breeze restores 1d4 hit points to each party "
+             "member."),
+
+    ("h2", "Gift Box Table (d20)"),
+    ("dm", "**Gift Boxes.** When one of the Krampusshade's creatures is defeated, it leaves "
+           "behind a wrapped gift box. Roll a d20 for its contents."),
+    ("body", "**1.** Mimic in Disguise! The gift box is a tiny mimic (CR 1), and it immediately "
+             "attacks."),
+    ("body", "**2-4.** Lump of Coal: a mundane lump of coal. Slightly warm, but otherwise "
+             "useless."),
+    ("body", "**5-6.** Handful of Peppermint Shards: slightly refreshing. No mechanical effect."),
+    ("body", "**7-9.** Gingerbread Cookie: a tasty treat that restores 1d4 hit points when "
+             "eaten."),
+    ("body", "**10-12.** Candy Cane Dagger: a simple weapon, 1d4 piercing damage. Melts after "
+             "24 hours."),
+    ("body", "**13-15.** Hot Cocoa Flask: when drunk, grants resistance to cold damage for "
+             "1 hour."),
+    ("body", "**16-17.** Sparkling Snow Globe: shaking it causes a harmless flurry of snow, and "
+             "it sheds light for 30 feet."),
+    ("body", "**18-19.** Frosted Cookie of Restoration: restores 2d8 hit points, grants the "
+             "benefit of a short rest, and restores one spell slot."),
+    ("body", "**20.** Holiday Miracle Charm: a small charm granting advantage on one saving "
+             "throw within 24 hours."),
+
+    # Page balance: the bestiary flows continuously after the tables; floats
+    # sized at 2.7 so the wrapped sections pack without stranding.
+    ("h2", "The Yule Cat"),
+    ("imgfloat", f"{A}/monsters/yule_cat.png", 2.7),
+    ("body", "A massive black feline with frost-covered fur and glowing yellow eyes, the Yule "
+             "Cat is a creature of fey legend that judges those who lack generosity or "
+             "kindness. It prowls the deep snow on silent paws, and a low growl through the "
+             "cold air is the only warning before it pounces. Legends around Havenmoor say "
+             "it circles the houses on festival nights, counting who has shared their "
+             "supper and who has not."),
+    ("dm", "**Yule Cat (CR 3).** Wisdom (Animal Handling) DC 15 calms it for a round; Wisdom "
+           "(Insight) DC 14 reveals that it seeks acts of generosity, so offering food or "
+           "gifts can delay its attack entirely. In a fight it relies on Frost Claw, a "
+           "Frostbite Pounce that knocks heroes prone, and a Chilling Gaze (DC 14 "
+           "Constitution) that paralyzes with cold. Win or appease it, and a roll on the "
+           "Gift Box Table follows."),
+
+    ("h2", "The Frost Hag"),
+    ("imgfloat", f"{A}/monsters/frost_hag_disguised.png", 3.2),
+    ("body", "In a lonely clearing, a kindly old woman tends a bubbling cauldron and waves "
+             "travelers over to warm themselves and share pastries dusted with powdered "
+             "sugar. Her voice is honey and her fire is warm, but her eyes glint far too "
+             "coldly for the warmth of her smile. The wisest travelers notice that no snow "
+             "melts anywhere near her fire."),
+    ("dm", "**Frost Hag (CR 4).** Wisdom (Insight) DC 14 catches the malice behind the "
+           "smile. Anyone who eats her treats must make a DC 13 Constitution save or be "
+           "poisoned for 1 hour, taking 1d4 cold damage. Unmasked, she is ice-crusted skin "
+           "and jagged teeth: Icy Claw, a 15-foot Frostbite Breath cone (DC 14 Constitution, "
+           "4d6 cold, slowed on a failure), and Misty Step as a bonus action to keep out of "
+           "reach."),
+
+    ("h2", "Snowbound Bandits"),
+    ("imgfloat", f"{A}/monsters/snowbound_bandits.png", 3.2),
+    ("body", "On a narrow, snow-choked path, three desperate figures rise out of the drifts "
+             "with weapons trembling in frostbitten hands, and a grizzled leader with a "
+             "frost-crusted beard demands the party's packs. They are cold and hungry rather "
+             "than wicked, and a warm meal buys more peace than a drawn blade. A DM with a "
+             "soft heart may let a fed and warmed bandit whisper a useful rumor about the "
+             "roads before the band slips away into the snow."),
+    ("dm", "**3 Bandits and 1 Bandit Leader.** Wisdom (Insight) DC 14 shows they are driven "
+           "by desperation, not malice. Charisma (Persuasion) DC 15 with an offer of food or "
+           "warmth avoids the fight; Intimidation DC 14 scares them into retreat, but "
+           "failure means combat on slippery ice (Dexterity DC 13 to move more than 15 feet "
+           "without falling prone). The leader's Frostbite Strike adds 1d6 cold damage and "
+           "can slow its target. Victory yields 1d4 healing potions, 10 gold, rations for "
+           "two days, and a Gift Box."),
+
+    # Hardbreak: started at a page bottom, the golems float sinks into the
+    # margin; opening the page lets golems + snowmen + spiders fill it whole.
+    ("h2", "Frost Golems", {"hardbreak": True}),
+    ("imgfloat", f"{A}/monsters/frost_golems.png", 2.7),
+    ("body", "On a serene snowfield, the powder suddenly trembles and pulls itself together, "
+             "packing into two jagged shapes of snow and ice shard. Their eyes glow with an "
+             "eerie blue light as they lumber forward, frost radiating from their bodies, "
+             "without hurry and without mercy."),
+    ("dm", "**2 Frost Golems (CR 2 each).** Icy Slam (2d6 + 3 bludgeoning plus 1d4 cold) and "
+           "a Frost Aura that deals 2 cold damage at the start of each creature's turn "
+           "within 5 feet. The snowfield itself is a hazard: Dexterity (Acrobatics) DC 14 "
+           "to move quickly without falling prone. The golems trudge relentlessly and try "
+           "to corner heroes on the worst of the ice."),
+
+    ("h2", "Enchanted Snowmen"),
+    ("imgfloat", f"{A}/monsters/enchanted_snowman.png", 2.5),
+    ("body", "Three cheerful roadside snowmen with coal-black eyes and wicked twig grins "
+             "shudder to life as travelers pass, stick arms lifting to pelt them with "
+             "snowballs laced with ice magic. It would almost be funny, if the snowballs "
+             "did not hit quite so hard."),
+    ("dm", "**3 Enchanted Snowmen (CR 1 each).** Wisdom (Perception) DC 14 to act before "
+           "the snowmen do. Frostball: +4 to hit, 2d4 cold damage, and a DC 12 Constitution "
+           "save or the target's speed is halved until the end of its next turn. AC 13, "
+           "HP 30, and they never stop grinning."),
+
+    ("h2", "Ice Spiders"),
+    # Anchored at the top of the section, floated LEFT so it cannot collide
+    # with the snowman float on the right edge above it.
+    ("imgfloat", f"{A}/monsters/ice_spider.png", 2.5, "left"),
+    ("body", "In a grove of frost-covered trees, branches creak under an unnatural weight "
+             "and a faint skittering echoes overhead. Then icy webs glisten in the dappled "
+             "light, and frost-coated spiders the size of wolves drop from the canopy, "
+             "mandibles glittering with rime."),
+    ("dm", "**2d6 Ice Spiders (CR 1 each).** Wisdom (Perception) DC 15 spots them before "
+           "they drop; Wisdom (Survival) DC 14 keeps the party out of the sticky web traps "
+           "(DC 13 Strength to break free). Their bite carries a venomous chill (DC 13 "
+           "Constitution or poisoned 1 minute), their frozen webbing stings for 1d4 cold "
+           "damage if touched, and the ground beneath the grove is slick ice, Dexterity "
+           "(Acrobatics) DC 14 to keep footing."),
+
+    # Hardbreak: the wisps float needs a page's top half; anchored lower it
+    # collides with the ice spider float and mangles the wrap.
+    ("h2", "Frozen Will-o'-Wisps", {"hardbreak": True}),
+    ("imgfloat", f"{A}/monsters/frozen_will_o_wisps.png", 2.7),
+    ("body", "Above a frozen pond, ghostly blue lights flicker and bob, beckoning travelers "
+             "out onto the ice with whispers of false promises. The scene looks tranquil, "
+             "almost inviting, but the mist around the lights is far, far too cold."),
+    ("dm", "**Frozen Will-o'-Wisps (CR 2 each).** Wisdom (Perception) DC 14 notices strange "
+           "ripples beneath the ice; Intelligence (Arcana) DC 15 names the lights for what "
+           "they are. The careless suffer a surprise round, slippery ice (Dexterity DC 13 "
+           "each round or fall prone), and 1d4 cold damage per round of exposure. Icy Shock "
+           "deals lightning and cold together, and the wisps blink invisible between "
+           "attacks. They guard a Gift Box, and a whispered warning of the Krampusshade's "
+           "icy influence."),
+
+    ("h2", "Tricks of the Road"),
+    ("dm", "**Blizzard Trap.** The wind rises and the world goes white. Wisdom (Survival) "
+           "DC 14 finds the way through to a small sheltered grove where the party can rest "
+           "and warm up; failure means an hour lost in the storm and 1d6 cold damage from "
+           "exposure."),
+    ("dm", "**Holiday Illusions.** A vision of a warmly lit cabin unfolds, all laughter, "
+           "glowing lanterns, roasted chestnuts, and spiced cider. Intelligence (Arcana) or "
+           "(Investigation) DC 15 spots the flickering seams. Those who walk in take 1d4 "
+           "psychic damage as the vision shatters over a deep snow drift: DC 13 Dexterity "
+           "save or become trapped and take 1d6 cold damage, then DC 14 Constitution save "
+           "or gain a level of exhaustion. Seeing through the trick earns a brief warmth, "
+           "a protective charm against illusions for the next hour."),
+    ("dm", "**Mimic in Disguise.** The prettiest gift box on the road is sometimes a tiny "
+           "mimic, all teeth and adhesive. Its bigger cousin (CR 2, AC 12, HP 58, bite plus "
+           "1d8 acid, DC 13 Strength to escape its grip) waits in the bestiary compendium "
+           "for DMs feeling festive."),
+
+    ("h2", "Kindly Wonders"),
+    ("body", "Not everything on the winter roads wished travelers ill. Some of it was "
+             "watching, quietly, to see if they would be kind."),
+    ("dm", "**Friendly Caribou.** An enchanted caribou with softly glowing antlers steps "
+           "from the treeline into the moonlight. Offering food or kind words earns its "
+           "aura of warmth: each party member regains 1d4 hit points, and Wisdom (Animal "
+           "Handling) DC 13 earns one hero Heroic Inspiration. Hostility makes it dissolve "
+           "sadly into mist."),
+    ("dm", "**Resting Reindeer.** A majestic reindeer with antlers like polished silver "
+           "rests beneath a frosted pine. Wisdom (Animal Handling) DC 14 to approach "
+           "calmly; treated kindly, its nose glows softly and each hero gains Heroic "
+           "Inspiration and temporary hit points equal to 1d6 + their level."),
+    ("dm", "**Aurora Spirits.** Beneath dancing ribbons of blue, purple, and green, serene "
+           "spirits descend, humming an ethereal tune. Wisdom (Insight) DC 14 or "
+           "Intelligence (Religion) DC 15 understands them as messengers of Elaria; they "
+           "impart a cryptic hint about the Krampusshade and grant advantage on the next "
+           "Wisdom saving throw."),
+    ("dm", "**Fey Tricksters.** Small winged pranksters flit between the trees and propose "
+           "a riddle contest (Intelligence DC 15) or spring a prank to dodge (Dexterity "
+           "DC 14). Winners receive a charm of luck, advantage on one roll of their choice; "
+           "losers get a pie in the face and disadvantage on their next skill check."),
+    ("dm", "**Holiday Miracle.** A sudden warm breeze carries the scent of pine, cinnamon, "
+           "and fresh cookies, restoring 1d4 hit points to each party member. For a moment, "
+           "the world feels kinder, and the shadows retreat just a little."),
+
+    ("h2", "Treasures in the Ice"),
+    ("dm", "**The Sleeping Traveler.** A traveler frozen beneath a drift, still and "
+           "peaceful as a statue, one outstretched hand holding a crumpled note. "
+           "Intelligence (Investigation) DC 12 preserves the brittle parchment: a warning "
+           "about the Krampusshade's minions and, tucked beneath the traveler's coat, a "
+           "**Map of Hidden Paths** granting advantage on the next Survival check to "
+           "navigate the snowy wilderness."),
+    ("dm", "**Frozen Treasure.** A sturdy chest sealed inside a block of ice carved with "
+           "faintly glowing runes. Strength DC 15 breaks it open, Intelligence (Arcana) "
+           "DC 14 finds the weak point, and fire magic melts it in a single round; a "
+           "failed attempt stings for 2d6 cold damage. Inside wait 50 gold pieces and a "
+           "Frosted Cookie of Restoration."),
+    ("dm", "Full statistics for every creature of the frozen roads live in the bestiary "
+           "compendium. The stat blocks for the ones the heroes actually fought follow on "
+           "the next pages."),
 
     # ------------------------------------------------------------------
     # The travel mobs (DM directive 2026-07-07): every hostile creature type
