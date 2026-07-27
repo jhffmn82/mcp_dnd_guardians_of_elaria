@@ -109,7 +109,7 @@ story.append(stat_strip([('ARMOR CLASS',18),('HIT POINTS',43),('SPEED','50 ft'),
 story.append(Spacer(1,4))
 story.append(ability_strip([('STR',8,'-1'),('DEX',20,'+5'),('CON',16,'+3'),
                             ('INT',8,'-1'),('WIS',14,'+2'),('CHA',8,'-1')]))
-story.append(Paragraph('AC 18 normally — jumps to AC 20 right after Stabby punches and swings his '
+story.append(Paragraph('AC 18 normally, jumps to AC 20 right after Stabby punches and swings his '
     'katana the same turn (Agile Parry). Speed &amp; AC include his Sash. Best saves: Dex +8, Str +2.',small_it))
 
 h2("All of Stabby's Skills")
@@ -136,14 +136,14 @@ story.append(section_table([atk[0]] + [[Paragraph(c,cell_st) for c in r] for r i
 story.append(Spacer(1,4))
 story.append(callout("<b>How Stabby's turn works:</b> He gets <b>2 attacks</b> with his Attack action, PLUS "
     "<b>1 extra punch</b> as a bonus action (Martial Arts). Spend Focus on <b>Flurry of Blows</b> for even "
-    "more — up to <b>3–4 hits a turn!</b>"))
+    "more, up to <b>3–4 hits a turn!</b>"))
 
 # Special moves in two columns
 h2("Stabby's Special Moves")
 moves=[
     ('Flurry of Blows','Spend 1 Focus as a bonus action to make two extra punches. His big damage button.'),
     ('Stunning Strike','When he hits, spend 1 Focus to try to stun the enemy (Con save vs DC 13). '
-        '<b>Fail:</b> stunned until his next turn — huge in a boss fight! <b>Success:</b> the enemy is '
+        '<b>Fail:</b> stunned until his next turn, huge in a boss fight! <b>Success:</b> the enemy is '
         'still slowed (speed halved) and the next attack against it has advantage.'),
     ('Patient Defense','Bonus action to <b>Disengage for free.</b> Spend 1 Focus to also <b>Dodge</b> '
         '(enemies hit him with disadvantage).'),
@@ -156,7 +156,7 @@ moves=[
     ('Slow Fall / Metabolism','Slow Fall: reaction to take 25 less falling damage. Uncanny Metabolism: '
         'once a day, when he rolls initiative, regain all Focus + heal 5 + 1d8 HP.'),
     ('Fury of the Small','When he hits a creature bigger than him (almost everyone!), deal +3 extra damage. '
-        'He can do this 3 times per long rest — once per turn.'),
+        'He can do this 3 times per long rest, once per turn.'),
     ('Nimble Escape','He can Disengage or Hide as a bonus action every turn. Slippery little goblin.'),
     ('Goblin Senses','Sees in the dark 60 ft. Speaks Common, Goblin &amp; Orc.'),
     ('Fey Ancestry','Goblins have a touch of fey blood: advantage on saves to avoid or shake off the charmed condition.'),
@@ -183,16 +183,16 @@ story.append(PageBreak())
 
 # ===== PAGE 2 =====
 story.append(Paragraph('Stabby Sharpblade', S('p2t',fontName='Times-Bold',fontSize=15,textColor=RED,leading=18,spaceAfter=2)))
-story.append(Paragraph('Page 2 — Gear &amp; Story', sub_st))
+story.append(Paragraph('Page 2: Gear &amp; Story', sub_st))
 story.append(Spacer(1,8))
 
 h2("Stabby's Stuff")
 GN='<b><font color="%s">%%s</font></b>' % RED_HEX   # gear names: accent bold
 gear=[
     ('Candyfang Katana +1','His prized candy-striped katana. +1 to hit and damage, +2 cold. Has Sugar Rush: once a day, lick the blade (bonus action) for 2d8 + 3 temp HP and a jolt of chaos energy.'),
-    ('Repeating Longbow +1','A magic bow that makes its own arrows — never runs out. +1 to hit and damage.'),
+    ('Repeating Longbow +1','A magic bow that makes its own arrows, never runs out. +1 to hit and damage.'),
     ('Sash of the Swift Current (★ Elaria’s gift)','Scarlet stage-silk from the Wraithpine chest. +1 AC, +10 speed, plus Air Dance (fly for 1 minute, 1/day) and Feather Fall (1/day). Attuned.'),
-    ('Explorer’s Pack','Backpack, bedroll, rope, torches, rations — the usual adventuring kit.'),
+    ('Explorer’s Pack','Backpack, bedroll, rope, torches, rations (the usual adventuring kit).'),
 ]
 story.append(section_table([[Paragraph(GN%n,cell_st),Paragraph(d,cell_st)] for n,d in gear],
     [1.9*inch,5.4*inch], header=False))
@@ -201,22 +201,22 @@ h2("Stabby's Story")
 story.append(Paragraph(
     "Stabby was born into the Bloodfang Clan, a fierce goblin tribe deep in the twisted woods of "
     "Bloodthorn Hollow. In a clan where the biggest goblin wins, little Stabby survived on speed, cunning, and "
-    "pure chaos — he earned the name Sharpblade after beating a whole group of rival goblins using nothing "
+    "pure chaos, he earned the name Sharpblade after beating a whole group of rival goblins using nothing "
     "but a broken sword.", body_st))
 story.append(Spacer(1,4))
 story.append(Paragraph(
     "One day he met Master Kaelon Windstep, a graceful monk of the Whispering Breeze Clan. Stabby was "
-    "amazed by the monk’s smooth, flowing fighting style — so different from goblin brawling. He never "
+    "amazed by the monk’s smooth, flowing fighting style, so different from goblin brawling. He never "
     "became calm and disciplined, but he blended those moves into his own wild style: grace plus chaos. Then he "
     "left the Hollow looking for adventure… and found Lilly and Ursa, who were chasing magical "
-    "creatures and enchanted potatoes. Stabby didn’t need any convincing — he jumped right in for the fun.", body_st))
+    "creatures and enchanted potatoes. Stabby didn’t need any convincing, he jumped right in for the fun.", body_st))
 
 h2("Personality")
 per=[
     ('Chaotic and mischievous','Loves trouble, excitement, and stirring things up. Acts first, thinks later (maybe).'),
-    ('Ideal — Freedom','“No one tells me what to do.” Everyone should live life their own way.'),
-    ('Bond — His Crew','Fiercely loyal to Lilly and Ursa — his first real friends. “They’re my crew — no one messes with them but me.”'),
-    ('Flaw — Reckless','Leaps into danger with no plan. “Who needs a plan when you’ve got guts?”'),
+    ('Ideal: Freedom','“No one tells me what to do.” Everyone should live life their own way.'),
+    ('Bond: His Crew','Fiercely loyal to Lilly and Ursa, his first real friends. “They’re my crew, no one messes with them but me.”'),
+    ('Flaw: Reckless','Leaps into danger with no plan. “Who needs a plan when you’ve got guts?”'),
 ]
 pc=[Paragraph(f'<b><font color="{RED_HEX}">{t}</font></b><br/><i>{d}</i>',
               S('pc',fontName='Times-Roman',fontSize=8,textColor=INK,leading=10)) for t,d in per]
@@ -226,9 +226,9 @@ pt.setStyle(TableStyle([('BOX',(0,0),(-1,-1),0.5,LINE),('INNERGRID',(0,0),(-1,-1
     ('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),
     ('LEFTPADDING',(0,0),(-1,-1),6),('RIGHTPADDING',(0,0),(-1,-1),6),]))
 story.append(Spacer(1,3)); story.append(pt); story.append(Spacer(1,8))
-story.append(callout('<b>Fun Facts:</b> &nbsp;Stabby is a boy goblin, age 8, just 2 feet 4 inches tall and 30 pounds '
-    '— small but mighty! &bull; Green skin, red eyes, green hair. &bull; He carries a creepy little idol that gives '
-    'him strange dreams. &bull; His old clan, the Bloodfang, are part of his past — and maybe future allies.', fill=None))
+story.append(callout('<b>Fun Facts:</b> &nbsp;Stabby is a boy goblin, age 8, just 2 feet 4 inches tall and 30 pounds, '
+    'small but mighty! &bull; Green skin, red eyes, green hair. &bull; He carries a creepy little idol that gives '
+    'him strange dreams. &bull; His old clan, the Bloodfang, are part of his past, and maybe future allies.', fill=None))
 
 doc=SimpleDocTemplate('../stabby_sharpblade_sheet_v3.pdf',pagesize=letter,
     leftMargin=0.55*inch,rightMargin=0.55*inch,topMargin=0.45*inch,bottomMargin=0.5*inch)

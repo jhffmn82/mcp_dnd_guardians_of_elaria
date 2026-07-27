@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ursa Catchum character sheet — built on the locked Lilly/Stabby template.
+"""Ursa Catchum character sheet, built on the locked Lilly/Stabby template.
 Three pages, starlight-purple theme, kid language, 2024 rules. All numbers
 image-verified from ursa5.pdf and Session_7.docx; summons verified vs 2024 SRD.
 """
@@ -142,7 +142,7 @@ sk.setStyle(TableStyle([
 ]))
 story.append(sk)
 story.append(Paragraph('Purple = trained. Best: Animal Handling, Perception & Survival +8. '
-                       'Passive Perception 18 — almost nothing sneaks past him.', small_it))
+                       'Passive Perception 18, almost nothing sneaks past him.', small_it))
 
 story.append(Paragraph("What Ursa Does in a Fight", h2_st))
 atk = [
@@ -186,14 +186,14 @@ def summon_block(title, lines):
     ]))
     return t
 
-beast = summon_block("Bestial Spirit — Summon Beast (2nd)", [
+beast = summon_block("Bestial Spirit: Summon Beast (2nd)", [
     "<b>AC</b> 13 &nbsp; <b>HP</b> 30 &nbsp; <b>Speed</b> 40 ft (Land), or fly/swim 30 ft",
     "Pick Air, Land, or Water when summoned.",
     "<b>Maul/Rend:</b> +8 to hit, <b>1d8+6</b> damage, 1 attack.",
-    "Flyby (Air) — no opportunity attacks. Great scout & striker.",
+    "Flyby (Air): no opportunity attacks. Great scout & striker.",
     "Shares Ursa's turn; obeys his commands for free.",
 ])
-fey = summon_block("Fey Spirit — Summon Fey (3rd)", [
+fey = summon_block("Fey Spirit: Summon Fey (3rd)", [
     "<b>AC</b> 15 &nbsp; <b>HP</b> 30 &nbsp; <b>Speed</b> 40 ft, fly 40 ft",
     "<b>Fey Blade:</b> +8 to hit, <b>2d6+6 force</b>, 1 attack.",
     "<b>Fey Step:</b> teleport up to 30 ft, then its mood triggers:",
@@ -238,7 +238,7 @@ story.append(PageBreak())
 # ============================ PAGE 2 ============================
 story.append(Paragraph('Ursa Catchum', S('p2t', fontName='Times-Bold',
             fontSize=15, textColor=PURPLE, leading=18, spaceAfter=2)))
-story.append(Paragraph('Page 2 — Powers, Gear &amp; Story', sub_st))
+story.append(Paragraph('Page 2: Powers, Gear &amp; Story', sub_st))
 story.append(Spacer(1,8))
 
 story.append(Paragraph("Ursa's Special Powers", h2_st))
@@ -247,7 +247,7 @@ powers = [
         'Pick a constellation each time:'),
     ('&nbsp;&nbsp;&bull; Archer', 'Bonus action: fire a star-arrow at one enemy within 60 ft for <b>1d8+5 radiant</b>.'),
     ('&nbsp;&nbsp;&bull; Chalice', 'When he heals someone with a spell slot, he or a nearby friend also heals <b>1d8+5</b>.'),
-    ('&nbsp;&nbsp;&bull; Dragon', 'Treat a roll of 9 or lower as a 10 on Int/Wis checks and concentration saves — super steady.'),
+    ('&nbsp;&nbsp;&bull; Dragon', 'Treat a roll of 9 or lower as a 10 on Int/Wis checks and concentration saves, super steady.'),
     ('Wild Shape (2/short rest)', 'Two uses that fuel his Starry Forms (or turn into a beast he has seen). Regain 1 on a short rest, all on a long rest.'),
     ('Wild Resurgence', 'Once per turn (no action), spend a spell slot to get back one Wild Shape use. Once per long rest, the reverse: spend a Wild Shape use to regain a 1st-level spell slot.'),
     ('Star Map', 'His star chart is a magic focus. Free <b>Guiding Bolt</b> 5×/day even without the Staff. Backup focus he still carries.'),
@@ -270,9 +270,9 @@ gear = [
     ('Amulet of Guiding Light', '<b>Guiding Light:</b> during Starry Form, his <b>allies</b> in the bright light get +1 to attacks and saves (allies only, not Ursa). '
         '<b>Starry Glow (1/day, reaction):</b> when he or a nearby ally is hit, the attacker takes 2d8 radiant and may be blinded (Con save DC 15). '
         '<b>Celestial Resilience (2/day):</b> reroll a natural 1.'),
-    ('Spiked Armor &amp; Shield', 'Dwarf-made spiked armor plus a shield — together they make his <b>AC 18</b>.'),
+    ('Spiked Armor &amp; Shield', 'Dwarf-made spiked armor plus a shield, together they make his <b>AC 18</b>.'),
     ('Explorer’s Pack', 'Backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 ft of rope.'),
-    ('Three Enchanted Potatoes', 'His mysterious quest trinket — the strange spuds tied to his father’s disappearance.'),
+    ('Three Enchanted Potatoes', 'His mysterious quest trinket, the strange spuds tied to his father’s disappearance.'),
 ]
 g_data = [[Paragraph(n, cell_st), Paragraph(d, cell_st)] for n,d in gear]
 story.append(section_table(g_data, [1.9*inch, 5.4*inch], header=False))
@@ -280,8 +280,8 @@ story.append(section_table(g_data, [1.9*inch, 5.4*inch], header=False))
 story.append(Paragraph("Ursa's Story", h2_st))
 story.append(Paragraph(
     "Ursa grew up under the wide, dark skies of a quiet farming village, raised on his father’s tales of the "
-    "stars and the secrets they keep. His father — a wandering sky-reader and beast-friend who carried the "
-    "<b>Mark of Handling</b> — vanished one night chasing a mystery tied to a handful of <b>enchanted potatoes</b>, "
+    "stars and the secrets they keep. His father, a wandering sky-reader and beast-friend who carried the "
+    "<b>Mark of Handling</b>, vanished one night chasing a mystery tied to a handful of <b>enchanted potatoes</b>, "
     "leaving Ursa only a star chart and a promise to follow it. Ursa studied the constellations until he could call "
     "their light down to earth, becoming a <b>Druid of the Circle of Stars</b>. Determined to find out what happened "
     "to his father, he set out and crossed paths with <b>Lilly</b> and her Essence Sphere, and the wild goblin "
@@ -291,11 +291,11 @@ story.append(Paragraph(
 per = [
     ('Personality', 'Determined and resilient. Quiet and watchful, but never gives up. '
         '“I won’t stop until I find the answers.”'),
-    ('Ideal — Fate', 'The stars guide every destiny, and his path is part of a greater cosmic plan. '
+    ('Ideal: Fate', 'The stars guide every destiny, and his path is part of a greater cosmic plan. '
         '“The stars have written my path, and I will follow it.”'),
-    ('Bond — His Crew', 'Fiercely loyal to Lilly and Stabby, his new family. '
+    ('Bond: His Crew', 'Fiercely loyal to Lilly and Stabby, his new family. '
         '“Together, we will uncover the truth and face whatever comes.”'),
-    ('Flaw — Fear of Failure', 'He worries he can’t live up to his father’s legacy, which can make him '
+    ('Flaw: Fear of Failure', 'He worries he can’t live up to his father’s legacy, which can make him '
         'hesitate or push too hard. “What if I’m not strong enough?”'),
 ]
 per_cells = [Paragraph(f'<b>{t}</b><br/>{d}', S('pc', fontName='Times-Roman', fontSize=8,
@@ -318,17 +318,17 @@ story.append(Paragraph('<b>Fun Facts:</b> &nbsp;Ursa is a boy, follows the drago
 
 story.append(PageBreak())
 
-# ============================ PAGE 3 — SPELLBOOK ============================
+# ============================ PAGE 3: SPELLBOOK ============================
 story.append(Paragraph('Ursa Catchum', S('p3t', fontName='Times-Bold',
             fontSize=15, textColor=PURPLE, leading=18, spaceAfter=2)))
-story.append(Paragraph('Page 3 — Spellbook', sub_st))
+story.append(Paragraph('Page 3: Spellbook', sub_st))
 story.append(Spacer(1,7))
 story.append(Paragraph('Slots per day: 4 first-level, 3 second-level, 2 third-level. '
     'Cantrips (★) are free forever. He prepares 9 spells and can swap one on a long rest. '
     'Spell save DC 16, spell attack +8.', small_it))
 story.append(Spacer(1,4))
 
-# Spell cards — richer format: name, meta line (action/range/duration), then full mechanics
+# Spell cards, richer format: name, meta line (action/range/duration), then full mechanics
 def spell_card(name, meta, text):
     inner = [
         [Paragraph(f'<b>{name}</b>', S('scn', fontName='Times-Bold', fontSize=9,
@@ -370,14 +370,14 @@ cards = [
     spell_card('Guiding Bolt',
         '1st • Action • 120 ft • 1 round &nbsp;(Star Map: free 5/day)',
         'Ranged spell attack <b>+8 to hit</b>. On a hit: <b>4d6 radiant + 1d4</b> (Starseed). '
-        'The <b>next attack</b> against that target before Ursa’s next turn has <b>advantage</b> — set up a teammate.'),
+        'The <b>next attack</b> against that target before Ursa’s next turn has <b>advantage</b>, set up a teammate.'),
     spell_card('Faerie Fire',
         '1st • Action • 60 ft • Concentration, 1 min',
         'Foes in a 20-ft cube make a <b>Dex save DC 16</b>; on a fail they’re outlined in light. '
         'Attacks vs them have <b>advantage</b>, and they <b>can’t hide/be invisible</b>. Team-wide accuracy boost.'),
     spell_card('Healing Word',
         '1st • Bonus Action • 60 ft • Instant',
-        'Heal one creature you can see <b>2d4+5</b> HP — as a <b>bonus action</b>, so he can still '
+        'Heal one creature you can see <b>2d4+5</b> HP, as a <b>bonus action</b>, so he can still '
         'cast or attack the same turn. Best for popping a downed friend back up from range.'),
     spell_card('Goodberry',
         '1st • Action • Touch • lasts 24 hr',
@@ -385,7 +385,7 @@ cards = [
         'Cast before a fight to bank 10 little heals the whole party can use.'),
     spell_card('Speak with Animals',
         '1st • Ritual • Action • Self • 10 min',
-        'Talk with beasts for 10 min — they can describe nearby places, monsters, and what they’ve '
+        'Talk with beasts for 10 min, they can describe nearby places, monsters, and what they’ve '
         'seen in the last day. Cast as a <b>ritual</b> (no slot) when there’s no rush. Pairs with his animal charm.'),
     spell_card('Animal Friendship',
         '1st • Action • 30 ft • 24 hr',
@@ -407,11 +407,11 @@ cards = [
     spell_card('Summon Beast',
         '2nd • Action • 90 ft • Concentration, 1 hr',
         'Calls the <b>Bestial Spirit</b> (full stats on page 1). It acts right after Ursa on his initiative and '
-        'obeys his commands for free. His go-to summon — a sturdy front-line ally that lasts a whole hour.'),
+        'obeys his commands for free. His go-to summon, a sturdy front-line ally that lasts a whole hour.'),
     spell_card('Call Lightning',
         '3rd • Action • 120 ft • Concentration, 10 min',
         'Make a storm cloud. Each turn, use your <b>action</b> to strike: creatures within 5 ft of the point make a '
-        '<b>Dex save DC 16</b> — <b>3d10 lightning</b> on a fail, half on success. +1d10 if it’s already stormy. Repeatable AoE.'),
+        '<b>Dex save DC 16</b>: <b>3d10 lightning</b> on a fail, half on success. +1d10 if it’s already stormy. Repeatable AoE.'),
     spell_card('Summon Fey',
         '3rd • Action • 90 ft • Concentration, 1 hr',
         'Calls the <b>Fey Spirit</b> (full stats on page 1). Faster and hits harder than the beast, with a mood power '

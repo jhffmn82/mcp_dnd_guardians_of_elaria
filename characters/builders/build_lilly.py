@@ -132,17 +132,17 @@ story.append(callout("<b>How Lilly's turn works:</b> She fires her cannon as a <
     "<b>both every turn!</b>"))
 
 h2("Lilly's Eldritch Cannon")
-story.append(Paragraph('The Cannon — can be attacked and broken. Mending repairs it 2d6.', small_it))
+story.append(Paragraph('The Cannon can be attacked and broken. Mending repairs it 2d6.', small_it))
 cannon = stat_strip([('AC',18),('HIT POINTS',25),('SIZE','Small/Tiny'),('SPEED','15 ft (legs)')])
 story.append(cannon)
 story.append(Spacer(1,3))
 LBL='<b><font color="%s">%%s</font></b>' % BLUE_HEX   # row labels: accent bold
 cdata=[
-    [Paragraph(LBL%'Pick the blast when she fires',cell_st), Paragraph('<b>New rule — the cannon is no longer '
+    [Paragraph(LBL%'Pick the blast when she fires',cell_st), Paragraph('<b>New rule: the cannon is no longer '
         'locked to one mode!</b> Each time she fires it, choose: <b>Flamethrower</b> (15-ft cone, 2d8+2 fire), '
         '<b>Force Ballista</b> (one faraway enemy, 2d8+2 force, push 5 ft), or <b>Protector</b> (shield-points '
         'to Lilly &amp; friends within 10 ft, 1d8+5).',cell_st)],
-    [Paragraph(LBL%'How to use it',cell_st), Paragraph('Fire it with a <b>bonus action</b> — so Lilly still gets '
+    [Paragraph(LBL%'How to use it',cell_st), Paragraph('Fire it with a <b>bonus action</b>, so Lilly still gets '
         'her main action the same turn! Free to deploy or recall (Pocket Dynamo), +2 damage, lasts a full 24 hours. '
         'Ignores conditions/poison/psychic; enemies must smash it to 0 HP.',cell_st)],
 ]
@@ -179,13 +179,13 @@ story.append(PageBreak())
 # ===== PAGE 2 =====
 story.append(Paragraph('Lilly Glimmergear', S('p2t',fontName='Times-Bold',fontSize=15,
             textColor=BLUE, leading=18, spaceAfter=2)))
-story.append(Paragraph('Page 2 — Powers, Gear &amp; Story', sub_st))
+story.append(Paragraph('Page 2: Powers, Gear &amp; Story', sub_st))
 story.append(Spacer(1,8))
 
 h2("Lilly's Special Powers")
 powers=[
-    ('Replicate Magic Item','Lilly builds magic gear for the team! Her two creations are in use now — her own +1 Half Plate and the +1 Repeating Longbow she made for Stabby.'),
-    ("Tinker's Magic",'Knows the Mending cantrip (fix broken things). Can also conjure handy mundane gear — rope, a torch, ball bearings — that lasts until her next rest. Great for puzzles and traps.'),
+    ('Replicate Magic Item','Lilly builds magic gear for the team! Her two creations are in use now: her own +1 Half Plate and the +1 Repeating Longbow she made for Stabby.'),
+    ("Tinker's Magic",'Knows the Mending cantrip (fix broken things). Can also conjure handy mundane gear (rope, a torch, ball bearings) that lasts until her next rest. Great for puzzles and traps.'),
     ('The Right Tool','With her tools, Lilly can magically make any set of artisan tools she needs (1 hour).'),
     ('Deep Gnome Gifts','<b>Gnomish Magic Resistance:</b> advantage on Int, Wis &amp; Cha saves vs spells. '
         '<b>Svirfneblin Camouflage:</b> advantage on Stealth checks. <b>Gift of the Svirfneblin:</b> casts '
@@ -197,9 +197,9 @@ story.append(section_table([[Paragraph(LBL%n,cell_st),Paragraph(d,cell_st)] for 
 
 h2("Lilly's Stuff")
 gear=[
-    ('Essence Sphere','A steampunk orb holding Pikachu’s spark. Lilly’s big quest item — she wants to give Pikachu a body again.'),
-    ('Frostbite Shard Dagger +1','Her magic frost dagger (1d4 piercing + 1d4 cold). Spell focus AND ‘arcane firearm’ — adds 1d8 frost to one spell she casts through it, plus +2 frost on any spell. +1 to hit.'),
-    ('Pocket Dynamo (★ Elaria’s gift)','From the Wraithpine chest. Summon/recall her cannon for free, lasts 24 hours, +2 damage. Reformat (1/long rest, action) — now mostly spare, since every cannon picks its blast when it fires. Needs attunement.'),
+    ('Essence Sphere','A steampunk orb holding Pikachu’s spark. Lilly’s big quest item: she wants to give Pikachu a body again.'),
+    ('Frostbite Shard Dagger +1','Her magic frost dagger (1d4 piercing + 1d4 cold). Spell focus AND ‘arcane firearm’: adds 1d8 frost to one spell she casts through it, plus +2 frost on any spell. +1 to hit.'),
+    ('Pocket Dynamo (★ Elaria’s gift)','From the Wraithpine chest. Summon/recall her cannon for free, lasts 24 hours, +2 damage. Reformat (1/long rest, action), now mostly spare, since every cannon picks its blast when it fires. Needs attunement.'),
     ('+1 Half Plate (her creation)','Half plate she replicated with Replicate Magic Item. Base of her AC 20.'),
     ('Shield','A sturdy steel shield. Adds +2 to her armor.'),
 ]
@@ -211,22 +211,22 @@ story.append(Paragraph(
     "Lilly grew up in Deepforge Hollow, a svirfneblin (deep gnome) city deep in the Underdark, surrounded by "
     "the hum of machines and magic. Her mother, Poots Glimmergear, was a famous artificer and adventurer who "
     "inspired Lilly to tinker from the time she was tiny. Lilly trained at the Glimmerspire Academy of Artifice "
-    "under Master Droven Sparkwick, and her proudest creation was her very own arcane turret — the cannon she "
+    "under Master Droven Sparkwick, and her proudest creation was her very own arcane turret, the cannon she "
     "still fights with today.", body_st))
 story.append(Spacer(1,4))
 story.append(Paragraph(
-    "On her seventh birthday, Poots handed Lilly the Essence Sphere — a device holding the spark of "
+    "On her seventh birthday, Poots handed Lilly the Essence Sphere, a device holding the spark of "
     "Pikachu, a lost companion from her mother’s adventuring days. Lilly’s quest became clear: find a way to "
     "give Pikachu a body again. That mission led her out of the Underdark to find Ursa, and along the way she "
-    "met Stabby. The three became an unlikely team, chasing the mystery of the Essence Sphere — and the "
+    "met Stabby. The three became an unlikely team, chasing the mystery of the Essence Sphere, and the "
     "planar cracks tied to the sleeping goddess Elaria.", body_st))
 
 h2("Personality")
 per=[
     ('Inventive and curious','Always tinkering, always asking “why settle for what’s already made when you can build something better?”'),
-    ('Ideal — Creativity','“There’s always a new way to make something better.” Lilly believes creativity solves any problem.'),
-    ('Bond — Her Friends','Fiercely loyal to Ursa and Stabby. “Together, we’ll solve these mysteries and prove ourselves.”'),
-    ('Flaw — Impatient','When a plan doesn’t work right away, she gets frustrated. “Why isn’t this working already?”'),
+    ('Ideal: Creativity','“There’s always a new way to make something better.” Lilly believes creativity solves any problem.'),
+    ('Bond: Her Friends','Fiercely loyal to Ursa and Stabby. “Together, we’ll solve these mysteries and prove ourselves.”'),
+    ('Flaw: Impatient','When a plan doesn’t work right away, she gets frustrated. “Why isn’t this working already?”'),
 ]
 pc=[Paragraph(f'<b><font color="{BLUE_HEX}">{t}</font></b><br/><i>{d}</i>',
               S('pc',fontName='Times-Roman',fontSize=8,textColor=INK,leading=10)) for t,d in per]
@@ -239,14 +239,14 @@ story.append(Spacer(1,3)); story.append(pt)
 
 story.append(PageBreak())
 
-# ===== PAGE 3 — SPELLBOOK =====
+# ===== PAGE 3: SPELLBOOK =====
 story.append(Paragraph('Lilly Glimmergear', S('p3t',fontName='Times-Bold',fontSize=15,
             textColor=BLUE, leading=18, spaceAfter=2)))
-story.append(Paragraph('Page 3 — Spellbook', sub_st))
+story.append(Paragraph('Page 3: Spellbook', sub_st))
 story.append(Spacer(1,7))
 story.append(Paragraph('Slots per day: 4 first-level, 2 second-level. Cantrips (★) are free forever. '
     'She prepares 7 spells; the four marked Always Prepared are free from her Artillerist subclass and '
-    'don’t count toward that. The +1d8 frost on a spell is her dagger’s arcane firearm — it adds to one '
+    'don’t count toward that. The +1d8 frost on a spell is her dagger’s arcane firearm: it adds to one '
     'spell she casts each turn (she only casts one anyway). The +2 frost rides along on any spell cast '
     'through the dagger.', small_it))
 story.append(Spacer(1,6))
@@ -265,28 +265,28 @@ spells=[
     ('★ Fire Bolt',
         'Cantrip • Action • 120 ft • Instant',
         'Hurl fire at one target. Ranged spell attack +8 to hit: 2d10 fire + 1d8 + 2 frost '
-        '(dagger). Her reliable ranged poke — never runs out.'),
+        '(dagger). Her reliable ranged poke, never runs out.'),
     ('★ Mending',
         'Cantrip • 1 minute • Touch • Instant',
-        'Repair a single break or tear in an object — a snapped chain, a torn cloak, a '
+        'Repair a single break or tear in an object: a snapped chain, a torn cloak, a '
         'cracked gear. No bigger than 1 ft. Free from Tinker’s Magic. Also heals her '
         'cannon 2d6!'),
     ('Absorb Elements',
         '1st • Reaction (when hit by the damage) • Self • 1 round',
         'Trigger when she takes acid/cold/fire/lightning/thunder: take half of it, and her '
         'next melee hit deals +1d6 of that type. A great defensive reaction.'),
-    ('Shield — Always Prepared',
+    ('Shield: Always Prepared',
         '1st • Reaction (when hit / by Magic Missile) • Self • 1 round',
         'Snap up a force wall: +5 AC until the start of her next turn (can turn a hit into a '
         'miss) and take no damage from Magic Missile. Cast after seeing the attack roll.'),
-    ('Thunderwave — Always Prepared',
+    ('Thunderwave: Always Prepared',
         '1st • Action • Self (15-ft cube) • Instant',
         'Foes in a 15-ft cube make a Con save DC 16: on a fail, 2d8 thunder + 1d8 + 2 '
         'frost (dagger) and shoved 10 ft away; half and no shove on a success.'),
     ('Catapult',
         '1st • Action • 60 ft • Instant',
         'Fling a loose object (up to 5 lb) at a foe. Dex save DC 16: on a fail, 3d8 '
-        'bludgeoning + 1d8 + 2 frost (dagger); no damage on a success. No attack roll — '
+        'bludgeoning + 1d8 + 2 frost (dagger); no damage on a success. No attack roll, '
         'it’s a save.'),
     ('Snare',
         '1st • 1 minute to set • Touch • 8 hr trap',
@@ -302,11 +302,11 @@ spells=[
         'Spray acid in a 30-ft line (Dex save to avoid being coated). A coated creature '
         'takes 2d4 acid + 1d8 + 2 frost (dagger) at the start of each of its turns until it uses '
         'an action to wash off.'),
-    ('Scorching Ray — Always Prepared',
+    ('Scorching Ray: Always Prepared',
         '2nd • Action • 120 ft • Instant',
         'Fire three rays. Each is a separate ranged spell attack +8 to hit: 2d6 fire each, plus '
         '1d8 + 2 frost (dagger, once). Aim them all at one foe or split them up.'),
-    ('Shatter — Always Prepared',
+    ('Shatter: Always Prepared',
         '2nd • Action • 60 ft (10-ft sphere) • Instant',
         'A loud burst. Creatures in a 10-ft sphere make a Con save DC 16: 3d8 thunder + '
         '1d8 + 2 frost (dagger) on a fail, half on success. Extra effective vs metal/stone '
