@@ -73,3 +73,32 @@ Highest value first.
 - **The "menace line, then fight" and "sing, then fight" templates** recur (S3 road fights, S4 barriers). Individually fine; across the arc they can read as formula. Varying the resolution shape of one encounter per session keeps the chronicle dynamic.
 - **Player agency is a genuine strength** in the later sessions (S6 "three threads, any order"; S7 builds the boss plan from the kids' own mouths and refuses to gate the climax on a die). The earlier sessions (S2, S3) are more of a guided corridor, which is normal for low-level travel but worth knowing as the through-line.
 - **Prose quality sits at the intended young-adult bar throughout**, with real emotional landings (S1's closing trio image, S4's Milo "bells are like stars," S6's Wicke whistle, S7's Gentle Death). None of it is too gruesome. No em dashes found in the prose.
+
+## Disposition (2026-07-27)
+
+Everything in this review has been actioned; applied and pushed unless noted.
+
+**Clear fixes:** C1-C9 all applied earlier; the three character-sheet builders were also stripped of em dashes (the whole book is now em-dash-free).
+
+**Villain naming:** KEPT the omniscient default. The primer and the S2/S3/S4 lore boxes name Maldrith to the reader; no character learns the names in-world. Change only if you want full reader-mystery (that would also edit the primer).
+
+**Rules punch-list:** R1 applied (Stabby's boss beat rerouted to a physical Bludgeoning deflection; the Chain Lightning Burst is answered by Shield/Absorb Elements/saves). R3 applied ("Starry Wisp" to "star-arrows"). R2, R4, R5 no change (correct as written or intentional homebrew). R6 no change (Undead Fortitude matches the SRD; Skeleton AC 13-vs-14 and Swarm HP 24-vs-14 kept as intentional tuning; align to RAW only if you prefer).
+
+**DM-checks:**
+- D1 applied: the primer and the S2 teaser now match the played S3 scene (creatures roaming Aelwyn's laboratory, not crates or baskets).
+- D2 no change: Poots IS a Glimmerspire master crafter, so "Poots's craft" and "Glimmerspire-forged" already agree.
+- D3 applied: the idol callback now points to Session 8, not 9.
+- D4 STILL YOURS: the S6 grave whose name the heroes restored was never recorded at the table; supply a name or keep the [DM CHECK] intentional. I will not invent a table fact.
+- D5 no change: Stabby's S5 "candy-red sash" is his accent-color sash, distinct from the S6 Sash relic; it reads fine.
+- D6 left as-is: "the Circle" as shorthand is clear after context; spell out "the Circle of the Eternal Stars" per box only if you want it airtight.
+
+**"Candy Cane Dagger"** (S4 gift-box item): KEPT. It is a distinct festive item, not the Candyfang Katana, so the name is intended; it moved to the appendix with the Frozen Roads deck.
+
+**Flow pass:**
+- F1 applied: the Frozen Roads bestiary moved to the S4 appendix (right before its stat blocks); a short bridge stays in the story. Renders clean (+1 page, no blank pages).
+- F2: F2c applied (heartbeat clarity). F2a (two-evening split) and F2b (breaking up Vane's monologue) are table-delivery calls for your own session; left to you rather than inserting how-to-run notes into your prep.
+- F3 applied: the S2 breather between the two ambushes.
+- F4 LEFT IN YOUR VOICE: the three S3 road-fight closers share an Ursa/Lilly/Stabby quip pattern; minor, and the quips are yours, so vary them yourself if you want.
+- F5 applied: the S4 barrier "any order" note.
+- F6 already present: the S6 run sheet already marks the belltower as the short-rest point.
+- F7 no change: the S1 "no talking their way past" line means Duckleaf will not negotiate passage, while the DM note's "withdraw" is a different option, so there is no real conflict.
