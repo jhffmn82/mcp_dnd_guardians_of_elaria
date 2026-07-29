@@ -164,31 +164,16 @@ fully custom view over a small bespoke engine. Decide at prototype time, not now
 - Placement quality bar is table-relative: score maps for what the kids actually do
   tactically, not RAW-optimal play.
 
-## The grad project tie-in (the merge)
+## Relationship to the memory-tree grad project: SEPARATE (Justin's call, 2026-07-29)
 
-The memory tree IS the consistency engine, so campaign 2 and the IT 494 project are
-one research program, two deployments:
-
-- **Part 1 (grad-project timeframe, 2026-2027):** productize the claude-archive
-  memory backend into an installable suite for Claude Desktop (memory MCP server,
-  journaling, chronicler write policy, review gate, scan-QR setup). Deployment domain:
-  a real human life. Deliverables: symposium poster, preprint (the PhD-application
-  publications fix). NOTE: whether this IS the IT 494 topic is undecided; it competes
-  with the already-approved LLM/NLP-on-government-documents proposal and would need
-  Dr. Fang's sign-off. The campaign 2 merge is an argument for the memory-tree
-  candidate, not a decision.
-- **Part 2 (late 2027, first PhD year if that lands):** re-root the same servers to a
-  fictional world, add the deterministic game engine, view, voice loop, and table
-  hardware. Deployment domain: the family campaign.
-
-Research framing that elevates it beyond stack bingo: **fiction-state consistency in
-interactive narrative agents.** The reconciler (prose in, schema-conformant state
-deltas out), the autonomous memory-write policy (what is leaf-worthy, when is truth
-settled), and desync as a measurable metric (narration contradicts projection,
-projection contradicts log; count per session, show improvement). Ground truth exists
-because the journal is lossless; adversarial input is generated free of charge by
-children. The PhD narrative: external structured memory keeps agents truthful to a
-persistent world, demonstrated on a human life and a fictional one.
+Campaign 2 is a standalone family project, not part of IT 494, the memory-tree
+product, or any academic plan. It freely borrows the architecture ideas (era/topic/leaf
+entity directories, write-at-scene-close discipline, manifest-indexed recall) because
+they are proven at home, but it carries no dependency on the grad project's timeline,
+scope, or deliverables, and the grad project makes no claims about campaign 2. If a
+research angle (fiction-state consistency, autonomous memory-write policy, desync as a
+metric) ever becomes worth formalizing, that is a future decision, not part of this
+design.
 
 ## v0.1: the tavern test
 
