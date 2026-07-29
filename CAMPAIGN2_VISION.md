@@ -169,11 +169,14 @@ fully custom view over a small bespoke engine. Decide at prototype time, not now
 The memory tree IS the consistency engine, so campaign 2 and the IT 494 project are
 one research program, two deployments:
 
-- **Part 1 (IT 494, 2026-2027, unchanged scope):** productize the claude-archive
+- **Part 1 (grad-project timeframe, 2026-2027):** productize the claude-archive
   memory backend into an installable suite for Claude Desktop (memory MCP server,
   journaling, chronicler write policy, review gate, scan-QR setup). Deployment domain:
   a real human life. Deliverables: symposium poster, preprint (the PhD-application
-  publications fix).
+  publications fix). NOTE: whether this IS the IT 494 topic is undecided; it competes
+  with the already-approved LLM/NLP-on-government-documents proposal and would need
+  Dr. Fang's sign-off. The campaign 2 merge is an argument for the memory-tree
+  candidate, not a decision.
 - **Part 2 (late 2027, first PhD year if that lands):** re-root the same servers to a
   fictional world, add the deterministic game engine, view, voice loop, and table
   hardware. Deployment domain: the family campaign.
