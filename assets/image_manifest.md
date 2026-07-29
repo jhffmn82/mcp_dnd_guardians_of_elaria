@@ -97,7 +97,7 @@ Every image's original filename is preserved here. For DALL-E and ChatGPT images
 | `assets/session_07/beat_7/vane_explains_the_situation.png` | `vane explains the situation.png` |  |
 | `assets/world/artifice_academy_symbol.png` | `Artifice Academy Symbol.png` |  |
 | `assets/world/circle_of_the_eternal_stars_symbol.png` | `Circle of the Eternal Stars Symbol.png` |  |
-| `assets/world/elaria_region_map.pdf` | `DALL·E 2024-10-20 21.53.42 - A detailed fantasy map for a DnD campaign, featuring regions with a medieval style design. The map should include five regions_ Eldridge Vale, Oakshad.pdf` | DALL-E prompt preserved as original filename |
+| `_triage/superseded_art/elaria_region_map_dalle.pdf` (retired 2026-07-27) | `DALL·E 2024-10-20 21.53.42 - A detailed fantasy map for a DnD campaign, featuring regions with a medieval style design. The map should include five regions_ Eldridge Vale, Oakshad.pdf` | DALL-E prompt preserved as original filename |
 
 ## Non-image file moves (docs, sheets, PDFs)
 
@@ -221,8 +221,8 @@ Embedded images recovered from the original raw session documents (word/media). 
 | `assets/scenes/s6_tavern_reveal.png` | `assets/gen_prompts/s6_tavern_reveal.txt` | false_hydra.png, REF_ghostbloom |
 | `assets/scenes/s6_hydra_lair.png` | `assets/gen_prompts/s6_hydra_lair.txt` | false_hydra.png |
 | `assets/scenes/s6_chest_opening.png` | `assets/gen_prompts/s6_chest_opening.txt` | REF_lilly_1, REF_stabby_1, REF_ursa_1, REF_ghostbloom |
-| `assets/world/elaria_region_map.png` (v2, landscape 1536x1024, DM-approved 2026-07-06; v1 square retired to `_triage/superseded_art/elaria_region_map_v1_square.png`) | `assets/gen_prompts/elaria_world_map.txt` | none (pure generation; geography from Sessions 1-7 travel canon, sea crossing included) |
-| `assets/world/elaria_region_map.png` (v3, route-free edit of v2, DM-approved 2026-07-06) | `assets/gen_prompts/elaria_world_map.txt` + removal edit | v2 map as edit reference |
+| `_triage/superseded_art/elaria_region_map_dalle.png` (RETIRED 2026-07-27: the DALL-E map, v2 landscape then v3 route-free edit; geography was wrong, it drew Gearhaven as a coastal port across from Havenmoor and had no travel route) | `_triage/superseded_art/elaria_world_map_dalle_prompt.txt` | none / v2 as edit reference |
+| `assets/world/elaria_region_map.png` (v4, 2026-07-27: authored layout + AI repaint + overlaid labels; corrects the geography so Wraithpine is the landfall directly across the sea from Havenmoor and Gearhaven is the inland clockwork mountain-city) | PIPELINE: `templates/build_region_map.py` draws the exact-scale layout reference; `templates/genart.py` repaints it painterly via `assets/gen_prompts/elaria_region_map_repaint.txt` (image ref = the layout) into `assets/world/elaria_region_map_base.png`; `templates/label_region_map.py` overlays crisp serif labels and the dotted route | the authored layout image (positions) |
 | `assets/items/three_relics_display.png` (DM-approved 2026-07-06) | `assets/gen_prompts/three_relics_display.txt` | staff_of_waking_constellations, sash_of_the_swift_current, lilly_with_dynamo |
 | `assets/scenes/s5_vigil_dawn.png` (v2, canon fix DM-approved 2026-07-06: sleeping Floraburst, not Ghostbloom; v1 retired to `_triage/superseded_art/s5_vigil_dawn_v1_ghostbloom_error.png`) | `assets/gen_prompts/s5_vigil_dawn_v2.txt` | REF_floraburst (first), REF_lilly_1, REF_stabby_1, REF_ursa_1 |
 | `assets/scenes/s4_frostpine_glade.png` (DM-approved 2026-07-06) | `assets/gen_prompts/s4_frostpine_glade.txt` | s4_havenmoor_town (palette) |
