@@ -58,7 +58,7 @@ def styles(accent):
     def S(name, **kw):
         return ParagraphStyle(name, **kw)
     return {
-        'title':    S('t',  fontName='Times-Bold',   fontSize=24,  textColor=accent, leading=26),
+        'title':    S('t',  fontName='Times-Bold',   fontSize=24,  textColor=accent, leading=26, spaceAfter=4),
         'sub':      S('s',  fontName='Times-Bold',   fontSize=9.5, textColor=GREY,   leading=12),
         'flav':     S('f',  fontName='Times-Italic', fontSize=9,   textColor=INK,    leading=12),
         'h2':       S('h2', fontName='Times-Bold',   fontSize=12.5, textColor=accent, leading=15,
