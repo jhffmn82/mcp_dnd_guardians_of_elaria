@@ -720,30 +720,27 @@ C = [
     # GLIMMERSTONE ARTIFACTS: full text of glimmerstone_artifacts_v2.pdf
     # ------------------------------------------------------------------
     ("h1", "Glimmerstone Artifacts (Lilly's Path)", {"hardbreak": True}),
-    ("gold", "Three masterworks of deep gnome artifice, forged for Lilly Glimmergear in the year "
-             "apart. Three masterworks, one choice. Each door of Lilly's year apart leads to one "
-             "of these treasures: stay and build the portal (the Sentinel), go home to "
-             "Glimmerspire and Poots (the Storm Cell), or give the year to mote research (the "
-             "Awakened Sphere). And on every road she carries Boomstick, Poots's parting work: "
-             "a Level 7 Artillerist does not walk into the rifts without her sidearm. Boomstick "
-             "takes the dagger's watch on every road, so the Frostbite Shard retires to her "
-             "belt, unattuned, a keepsake and one day a gift. The attunement ledger runs light: "
-             "the Sphere's road holds two of three (Dynamo, Sphere); the Sentinel's road just "
-             "one (the guardian itself, the Dynamo rebuilt inside it); the Storm Cell's road "
-             "two (Dynamo, the Cell). Room to grow on every path."),
+    ("gold", "One weapon and one mastery, forged for Lilly Glimmergear in the year apart. "
+             "Wherever her road leads, Poots's parting work finds her: Boomstick, the sidearm no "
+             "Level 7 Artillerist walks into the rifts without. On top of the gun, the year "
+             "teaches her a single mastery of three: stay and build the portal (Sentinel "
+             "Protocol), go home to Glimmerspire and Poots (Stormgunner), or give the year to "
+             "mote research (Aether Channeler). The mastery is hers, learned into hand and mind, "
+             "not an item on her belt, so her attunements stay free for the Pocket Dynamo and "
+             "whatever the rifts yield. The Frostbite Shard retires to her belt, a keepsake and "
+             "one day a gift."),
 
     ("h2", "Boomstick, Poots's Parting Work"),
     ("imgfloat", "assets/items/boomstick.png", 2.2),
-    ("gold", "*“It doesn't jam. It doesn't misfire. It simply states its opinion, "
-             "loudly.”*"),
+    ("gold", "*“It doesn't jam. It doesn't misfire. It simply states its opinion, loudly.”*"),
     ("body", "Whichever road Lilly walks, a parcel finds her, wrapped in waxed paper and string, "
              "postmarked Glimmerspire. Boomstick becomes her spellcasting focus and her "
              "designated Arcane Firearm (an artificer designates only one). With her shield in "
              "the other hand, her hands are exactly full: pistol, shield, and nothing wasted. "
-             "Its clockwork drum conjures its own rounds, so Lilly will never want for "
-             "ammunition again."),
+             "Its clockwork drum conjures its own rounds, so Lilly will never want for ammunition "
+             "again."),
     ("stat", "Boomstick", [
-        "*Weapon (Repeating Pistol), Rare*",
+        "*Weapon (Repeating Pistol), Very Rare*",
         "**Repeating Pistol, +2.** You gain a +2 bonus to attack rolls and damage rolls made "
         "with this magic weapon, which deals 1d10 Thunder damage on a hit. The weapon requires "
         "no ammunition and never needs reloading.",
@@ -754,118 +751,93 @@ C = [
         "*Forged by the masters of Glimmerstone.*",
     ]),
 
-    ("h2", "Boomstick, Stormcharged (the Storm Cell)"),
+    ("h2", "Stormgunner (the Glimmerspire Road)"),
     ("gold", "*“Gearhaven runs on lightning. So does she, now.”*"),
     ("img", "assets/characters/lilly_stormcharged.png",
      "Poots's brightest student, and the bottled lightning of Glimmerspire.", 5.6,
      {"crop": "3:2", "hmax": 3.8}),
     ("body", "On this road Lilly goes home to Glimmerspire, and the masters open the deep "
-             "workshops for Poots's brightest student. What she brings back is the Storm Cell: "
-             "a humming capacitor drum fitted to Boomstick's frame, charged each night with "
-             "bottled lightning, Gearhaven's own element."),
-    ("stat", "The Storm Cell", [
-        "*Wondrous Item (Boomstick augmentation), Rare (Requires Attunement by Lilly)*",
-        "**Wand of the War Mage.** While holding Boomstick, you gain a +2 bonus to spell attack "
-        "rolls, and you ignore Half Cover when making a spell attack. Your Eldritch Cannon also "
-        "gains a +2 bonus to its attack rolls.",
-        "**Storm-Arc.** The drum never stops humming. Whenever you hit a creature with "
-        "Boomstick, the shot crackles: the target takes an extra 1d6 Lightning damage, and "
-        "lightning arcs from it to up to two other creatures of your choice within 15 feet of "
-        "it. Each arced creature must make a Dexterity saving throw against your spell save "
-        "DC, taking 2d6 Lightning damage on a failed save, or half as much damage on a "
-        "successful one.",
-        "**Charged Rounds.** The Storm Cell holds two Thunder Wave Rounds and two "
-        "Counter-Bolts, and you regain all expended rounds when you finish a Long Rest. If a "
-        "round requires a saving throw, the DC equals your spell save DC.",
-        "**Thunder Wave Round.** When you hit a creature with Boomstick, you can expend one "
-        "Thunder Wave Round to overload the shot: the target takes an extra 1d10 Lightning "
-        "damage and must succeed on a Constitution saving throw or have the Stunned condition "
+             "workshops for Poots's brightest student. What she brings back is not a device but "
+             "a way of shooting: Boomstick becomes an extension of her own hand, stormcharged."),
+    ("stat", "Stormgunner", [
+        "*Path Feat (chosen in the year apart; requires Boomstick)*",
+        "**War-Trained.** You have Advantage on Constitution saving throws you make to maintain "
+        "Concentration, and you can perform the Somatic components of your Artificer spells even "
+        "when you have Boomstick or a Shield in one or both hands.",
+        "**Storm-Arc.** When you hit a creature with Boomstick, that creature takes an extra 1d6 "
+        "Lightning damage, and the lightning arcs from it to up to two other creatures of your "
+        "choice within 15 feet of it. Each arced creature makes a Dexterity saving throw against "
+        "your spell save DC, taking 2d6 Lightning damage on a failed save or half as much damage "
+        "on a successful one.",
+        "**Counter-Bolt (twice per Long Rest).** When a creature you can see within 60 feet of "
+        "you makes an attack roll against one of your allies, you can take a Reaction to fire "
+        "Boomstick into the attack. The triggering attack roll has Disadvantage, and you make "
+        "one attack with Boomstick against the attacker; on a hit, the target takes an extra "
+        "1d10 Lightning damage.",
+        "**Overloaded Shot (twice per Long Rest).** When you hit a creature with Boomstick, you "
+        "can overload the shot to deal an extra 1d10 Lightning damage; the target must succeed "
+        "on a Constitution saving throw against your spell save DC or have the Stunned condition "
         "until the end of your next turn.",
-        "**Counter-Bolt.** When a creature you can see within 60 feet makes an attack roll "
-        "against one of your allies, you can take a Reaction and expend one Counter-Bolt to "
-        "fire into the attack: the triggering attack roll has Disadvantage, and you make one "
-        "Boomstick attack against the creature. On a hit, it takes an extra 1d10 Lightning "
-        "damage.",
-        "**Made to Channel.** When you cast True Strike using Boomstick, the attack uses your "
-        "Intelligence and counts as a spell attack, gaining the Storm Cell's +2 bonus to spell "
-        "attack rolls and ignoring Half Cover. On a hit, the attack deals Boomstick's Thunder "
-        "damage plus the spell's Radiant damage.",
-        "*Fitted by the masters of Glimmerstone, in the workshop where Boomstick was born.*",
+        "*A way of shooting learned in the workshops of Glimmerstone.*",
     ]),
 
-    ("h2", "The Awakened Essence Sphere", {"hardbreak": True}),
+    ("h2", "Aether Channeler (the Mote-Research Road)", {"hardbreak": True}),
     ("imgfloat", "assets/items/awakened_essence_sphere.png", 2.4),
     ("gold", "*“It was never a keepsake. It was a key, and it is finally awake.”*"),
-    ("body", "The Sphere has spent the whole journey quietly pulling loose motes from the air. "
-             "Now awakened, it holds a swirling jumble of collected aether that powers it from "
-             "the start, and as the party clears each elemental rift and installs its pure Mote, "
-             "the Sphere learns that plane's mighty discharge. The Sphere is honest about its "
-             "bargain: at Session 8 it grants Aether Ward alone (twice per Short Rest), and "
-             "every one of its five discharges sleeps behind a rift still to be won. What it "
-             "builds toward is a toolbox of five distinct answers on a strict budget (a "
-             "firestorm, a lull that stills a warband, a wind at every ally's back, the ground "
-             "turned weapon, and a shadow's hungry pull), each the size of a spell Lilly has no "
-             "slot to cast, two of them burning for a full minute while her hands stay free for "
-             "the cannon. The Sphere bridges the gap between an Artificer and a full caster; it "
-             "never erases it."),
-    ("stat", "The Awakened Essence Sphere", [
-        "*Wondrous Item, Rare (Requires Attunement by Lilly)*",
-        "**Mote Channeling.** The Sphere's powers share a pool of 2 uses, and you regain all "
-        "expended uses when you finish a Short Rest. The Sphere starts with the Aether Ward "
-        "power, and it gains one Elemental Discharge each time a rift's Mote is installed in "
-        "it. If one of the Sphere's powers requires a saving throw, the DC equals your spell "
-        "save DC.",
-        "**Aether Ward (Base Power).** As a Magic action, you can expend 1 use "
-        "to release the gathered motes as a protective shell. You and each ally within 15 feet "
-        "of you gain a number of Temporary Hit Points equal to 2d8 plus your Intelligence "
-        "modifier.",
-        "**Lingering Discharges.** A discharge that lasts for 1 minute is sustained by the "
-        "Sphere and doesn't require Concentration. The Sphere can sustain only one lingering "
-        "discharge at a time; if you activate a lingering discharge while another is active, "
-        "the earlier one ends. You can end a lingering discharge early (no action required).",
-        "**Rift Tracker.** When a rift's Mote is installed in the Sphere, record it: Ignis, "
-        "Unda, Aer, Terra, Umbra.",
-    ]),
-    ("stat", "Elemental Discharges", [
-        "*Each unlocks when its rift is cleared and its Mote installed. The menu grows as the "
-        "campaign goes.*",
-        "**Fire / Ignis, Cinderstorm (LOCKED).** As a Magic action, you can expend 1 use to "
-        "unleash a firestorm that fills a 40-foot-radius Sphere centered on a point within 120 "
-        "feet of yourself. Each creature in the Sphere must make a Dexterity saving throw, "
-        "taking 8d6 Fire damage on a failed save or half as much damage on a successful one. "
-        "Until the start of your next turn, the area burns: it is Difficult Terrain, and any "
-        "creature that enters the area or starts its turn there takes 2d6 Fire damage.",
-        "**Water / Unda, the Drowning Lull (LOCKED).** As a Magic action, you can expend 1 use "
-        "to fill a 20-foot-radius Sphere centered on a point within 120 feet of yourself with "
-        "the sound and shimmer of deep water. Each creature in the Sphere must succeed on a "
-        "Wisdom saving throw or have the Incapacitated condition and a Speed of 0 as it stands "
-        "entranced, staring into deep water only it can see. The lull lasts for 1 minute. It "
-        "ends early for a creature that takes damage or if another creature within 5 feet of "
-        "it takes an action to shake it awake.",
-        "**Air / Aer, Tailwind (LOCKED).** As a Magic action, you can expend 1 use to send a "
-        "following wind about your allies. For 1 minute, you and any number of allies within "
-        "30 feet of you gain a +2 bonus to attack rolls and saving throws, and your Speeds "
-        "increase by 10 feet.",
-        "**Earth / Terra, Tectonic Slam (LOCKED).** As a Magic action, you can expend 1 use to "
-        "make the ground erupt in a 20-foot-radius Sphere centered on a point within 120 feet "
-        "of yourself. Each creature in the Sphere must succeed on a Dexterity saving throw or "
-        "take 7d8 Force damage and have the Prone condition. Until the start of your next "
-        "turn, the raised stone makes the area Difficult Terrain, a creature takes 5 Piercing "
-        "damage for every 5 feet it moves in the area, and you and your allies have Half Cover "
-        "while in the area.",
-        "**Shadow / Umbra, Soul Siphon (LOCKED).** As a Magic action, you can expend 1 use to "
-        "target one creature within 60 feet of yourself. The target must make a Constitution "
-        "saving throw, taking 8d6 Necrotic damage on a failed save or half as much damage on a "
-        "successful one. You, or one ally within 30 feet of you, regains a number of Hit "
-        "Points equal to half the Necrotic damage dealt.",
+    ("body", "Lilly gives the year to the Sphere, and the Sphere gives it back. It has spent the "
+             "whole journey quietly pulling loose motes from the air; now she learns to spend "
+             "what it has gathered. It begins with Aether Ward alone, and as the party clears "
+             "each elemental rift and installs its pure Mote, the Sphere learns that plane's "
+             "mighty discharge: five distinct answers on a strict budget, each the size of a "
+             "spell she has no slot to cast, two of them burning for a full minute while her "
+             "hands stay free for the cannon."),
+    ("stat", "Aether Channeler", [
+        "*Path Feat (chosen in the year apart)*",
+        "**Mote Channeling.** You awaken the Essence Sphere you carry. Its powers share a pool "
+        "of 2 uses, and you regain all expended uses when you finish a Short Rest. You start "
+        "with the Aether Ward power, and you gain one Elemental Discharge each time a rift's "
+        "Mote is installed in the Sphere (Ignis, Unda, Aer, Terra, Umbra). If a power requires "
+        "a saving throw, the DC equals your spell save DC.",
+        "**Aether Ward.** As a Magic action, expend 1 use to release the gathered motes as a "
+        "protective shell: you and each ally within 15 feet of you gain Temporary Hit Points "
+        "equal to 2d8 plus your Intelligence modifier.",
+        "**Lingering Discharges.** A discharge that lasts 1 minute is sustained by the Sphere "
+        "and doesn't require Concentration. The Sphere sustains only one lingering discharge at "
+        "a time; activating another ends the first, and you can end one early (no action "
+        "required).",
+        "**Fire / Ignis, Cinderstorm.** As a Magic action, expend 1 use to unleash a firestorm "
+        "in a 40-foot-radius Sphere centered on a point within 120 feet of yourself. Each "
+        "creature there makes a Dexterity saving throw, taking 8d6 Fire damage on a failed save "
+        "or half as much on a success. Until the start of your next turn the area is Difficult "
+        "Terrain, and a creature that enters it for the first time on a turn or starts its turn there takes 2d6 Fire damage.",
+        "**Water / Unda, the Drowning Lull.** As a Magic action, expend 1 use to fill a "
+        "20-foot-radius Sphere within 120 feet with the shimmer of deep water. Each creature "
+        "there must succeed on a Wisdom saving throw or have the Incapacitated condition and a "
+        "Speed of 0 for 1 minute, standing entranced. It ends early for a creature that takes "
+        "damage or is shaken awake by an ally's action within 5 feet.",
+        "**Air / Aer, Tailwind.** As a Magic action, expend 1 use to send a following wind about "
+        "your allies. For 1 minute, you and any number of allies within 30 feet of you gain a "
+        "+2 bonus to attack rolls and saving throws, and your Speeds increase by 10 feet.",
+        "**Earth / Terra, Tectonic Slam.** As a Magic action, expend 1 use to erupt the ground "
+        "in a 20-foot-radius Sphere within 120 feet. Each creature there must succeed on a "
+        "Dexterity saving throw or take 7d8 Force damage and have the Prone condition. Until the "
+        "start of your next turn the raised stone is Difficult Terrain, a creature takes 5 "
+        "Piercing damage for every 5 feet it moves there, and you and your allies have Half "
+        "Cover while in the area.",
+        "**Shadow / Umbra, Soul Siphon.** As a Magic action, expend 1 use to target one creature "
+        "within 60 feet. It makes a Constitution saving throw, taking 8d6 Necrotic damage on a "
+        "failed save or half as much on a success. You, or an ally within 30 feet of you, "
+        "regains Hit Points equal to half the Necrotic damage dealt.",
     ]),
 
-    ("h2", "The Sentinel"),
-    ("gold", "*“An upgraded Eldritch Cannon, rebuilt at the bench into a faithful "
-             "guardian.”*"),
+    ("h2", "Sentinel Protocol (the Portal Road)"),
+    ("gold", "*“An upgraded Eldritch Cannon, rebuilt at the bench into a faithful guardian.”*"),
+    ("body", "On this road Lilly stays in Gearhaven and builds beside Vane, and her Eldritch "
+             "Cannon grows up. It walks on its own, blasts or shields on her command, and never "
+             "makes her choose just one mode again."),
     ("statblock", {
         "name": "The Sentinel",
-        "type": "Medium Construct (the Pocket Dynamo, rebuilt; Requires Attunement by Lilly)",
+        "type": "Medium Construct (your Eldritch Cannon, rebuilt; granted by the Sentinel Protocol feat)",
         "ac": "18",
         "hp": "5 + five times your Artificer level (40 at Level 7); it has a number of d8 Hit "
               "Dice equal to your Artificer level",
@@ -877,43 +849,44 @@ C = [
         "languages": "understands the languages you know",
         "img": "assets/items/upgraded_eldritch_cannon.png",
         "traits": [
-            ("Duration", "None. The Sentinel remains until it drops to 0 Hit Points or until "
-                         "you dismiss it (no action required). As a Bonus Action, you can "
-                         "deploy or recall it."),
+            ("Rebuilt Cannon", "The Sentinel is your Eldritch Cannon in a new form: when you "
+                               "would create your Eldritch Cannon, you can create the Sentinel "
+                               "instead. Anything that improves your cannon still applies to it, "
+                               "the Pocket Dynamo included, so you deploy or recall the Sentinel "
+                               "as a Bonus Action for no spell slot, it has no maximum duration, "
+                               "and its Force Blast and Electric Pulse gain the Dynamo's +2 "
+                               "damage. Casting Mending on the Sentinel restores 2d6 Hit Points; "
+                               "if it drops to 0 Hit Points, you can rebuild it by expending a "
+                               "level 1+ spell slot."),
             ("Bound Construct", "Add your Proficiency Bonus to any ability check or saving throw "
                                 "the Sentinel makes."),
-            ("Rebuilt Dynamo", "The Sentinel replaces your Eldritch Cannon feature: while you "
-                               "are attuned to it, you deploy the Sentinel instead of a cannon, "
-                               "never both at once. Deploying the Sentinel doesn't expend a "
-                               "spell slot, and the Sentinel has no maximum duration. When the "
-                               "Mending spell is cast on the Sentinel, it regains 2d6 Hit "
-                               "Points. If the Sentinel has dropped to 0 Hit Points, you can "
-                               "rebuild it by expending a level 1+ spell slot."),
         ],
         "actions": [
-            ("Activate", "As a Bonus Action, you can activate the Sentinel, and it then takes "
-                         "one of the following actions of your choice."),
-            ("Force Blast", "Ranged Attack Roll: Bonus equals your spell attack modifier, range "
-                            "120 ft. Hit: 2d8 + your Intelligence modifier Force damage."),
-            ("Electric Pulse", "Dexterity Saving Throw: DC equals your spell save DC, each "
-                               "creature of your choice within 15 feet of the Sentinel. "
-                               "Failure: 2d8 + your Intelligence modifier Lightning damage, and "
-                               "the target can't take Reactions until the start of your next "
-                               "turn. Success: Half damage."),
+            ("Activate", "As a Bonus Action, you can activate the Sentinel; it moves up to 30 "
+                         "feet and takes one of the following actions of your choice."),
+            ("Force Blast", "Ranged Attack Roll: your spell attack modifier, range 120 ft. Hit: "
+                            "2d8 + your Intelligence modifier Force damage (+2 from the Pocket "
+                            "Dynamo while attuned)."),
+            ("Electric Pulse", "Dexterity Saving Throw: your spell save DC, each creature of "
+                               "your choice within 15 feet of the Sentinel. Failure: 2d8 + your "
+                               "Intelligence modifier Lightning damage (+2 from the Pocket "
+                               "Dynamo while attuned), and the target can't "
+                               "take Reactions until the start of your next turn. Success: Half "
+                               "damage."),
         ],
         "reactions": [
-            ("Guardian Protocol (1/round)", "Trigger: An ally within 15 feet of the Sentinel "
+            ("Guardian Protocol (1/Round)", "Trigger: An ally within 15 feet of the Sentinel "
                                             "takes damage. Response: The ally gains 1d8 + your "
                                             "Intelligence modifier Temporary Hit Points."),
         ],
     }),
     ("body", "**Why this is an upgrade.** The old cannon made Lilly choose a mode; the Sentinel "
-             "walks on its own 30 feet, then blasts or pulses on her Bonus Action (her pick every "
-             "time), and shields her friends as a Reaction in the same round. Her old kit lives "
-             "on inside it: the Force Ballista became the Force Blast, the Storm mode became the "
-             "Electric Pulse, and the Protector stands watch as Guardian Protocol. The "
-             "Flamethrower was traded for lightning, Gearhaven's own element. Forged by the "
-             "masters of Glimmerstone."),
+             "walks on its own 30 feet, then blasts or pulses on her Bonus Action (her pick "
+             "every time), and shields her friends as a Reaction in the same round. Her old kit "
+             "lives on inside it: the Force Ballista became the Force Blast, the Storm mode "
+             "became the Electric Pulse, and the Protector stands watch as Guardian Protocol. "
+             "The Flamethrower was traded for lightning, Gearhaven's own element. Rebuilt at the "
+             "bench in Gearhaven, from the masters' own designs."),
 
     ("h1", "Marks & Mysteries"),
     ("body", "**Ursa's Mark of Handling.** A dragonmark that woke when he was six: it prickles near "
