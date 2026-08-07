@@ -47,7 +47,12 @@ def build():
     # only, so the players aren't handed the same two pages three times.
     for h1, kicker, sub, out in HANDOUTS:
         body = strip_dm(section(C, h1))
-        blocks = [("titlepage", "THE GUARDIANS OF ELARIA", kicker, sub, NOTE)] + body
+        # No full titlepage cover (keep the handout lean): open straight on the
+        # hero's section, whose own h1 is the title. Strip that h1's page break
+        # so the content starts on page 1 instead of after a blank cover.
+        if body and body[0][0] == "h1":
+            body = [("h1", body[0][1])] + body[1:]
+        blocks = body
         docx = out + ".docx"
         print("built", build_doc(blocks, docx))
         render_check.docx_to_pdf(docx, out + ".pdf")
