@@ -13,18 +13,20 @@ No em dashes (house style). Built 2026-07-25.
 
 Deep Gnome Artificer 7 (Artillerist). A combat sim must consult this before every turn so it forgets nothing. Every number traces to build_compendium.py or the base sheet; derived level-7 numbers show their work.
 
-**Level-7 stat block.** HP 52 | AC 20 (25 under Shield) | Speed 25 ft. | Initiative +2 | Proficiency +3 | INT 20 (+5) | Spell save DC 16 | Spell attack +8 (+10 with the Storm Cell's Wand of the War Mage) | Spell slots 4x 1st, 3x 2nd | Flash of Genius x5 | Cannon 1/long rest free (more cost a slot) | Darkvision 120 ft.
+**Level-7 stat block.** HP 52 | AC 20 (25 under Shield) | Speed 25 ft. | Initiative +2 | Proficiency +3 | INT 20 (+5) | Spell save DC 16 | Spell attack +8 | Spell slots 4x 1st, 3x 2nd | Flash of Genius x5 | Cannon 1/long rest free (more cost a slot) | Darkvision 120 ft.
+
+> **[FEAT CONVERSION 2026-07-31, commits 038b087 + 99ed4b4]** The three doors are now PATH FEATS, not items: Stormgunner (was the Storm Cell), Sentinel Protocol (was the Sentinel construct-item), Aether Channeler (was the Awakened Sphere item). Boomstick stays the base weapon on every road (Very Rare now). Consequences a sim must respect: the Wand of the War Mage +2 spell attack is GONE (spell attack is +8 on every road); Made to Channel is GONE (True Strike is +10 as a weapon-style attack per the base kit, unchanged); Stormgunner instead grants War-Trained (Advantage on Con saves to maintain Concentration, somatic components with Boomstick or Shield in hand); and the Sentinel now STACKS with the Pocket Dynamo instead of replacing it (+2 damage on its blasts, free Bonus-Action deploy/recall, no duration).
 
 **Derivations from the level-5 sheet (build_sheets.py).**
 - **HP 52.** Sheet L5 = 38. Artificer d8, +5 avg (4.5 rounded) +2 CON = 7 per level; levels 6 and 7 add 14. 38 + 14 = 52.
 - **AC 20.** +1 half plate (16) + Dex cap +2 (18) + shield +2 (20). Under the Shield spell: 25.
-- **Spell save DC 16** = 8 + PB 3 + INT 5. Unchanged from L5 (PB is still +3 at levels 5 to 8). The Storm Cell's Wand of the War Mage does NOT raise the save DC.
-- **Spell attack +8** = PB 3 + INT 5. +10 only with the Storm Cell (Door A).
+- **Spell save DC 16** = 8 + PB 3 + INT 5. Unchanged from L5 (PB is still +3 at levels 5 to 8).
+- **Spell attack +8** = PB 3 + INT 5, on every road (the old Storm Cell +2 was removed in the feat conversion).
 - **Spell slots 4/3.** L7 Artillerist table (artificer.md): 4 first-level, 3 second-level (L5 was 4/2).
 - **Flash of Genius x5** = INT mod (5) uses per long rest.
 - **Eldritch Cannon HP 35** = 5 x Artificer level (L5 sheet showed 25 = 5x5). The Sentinel (Door B) instead has HP 40 = 5 + five times level.
 
-**Attunement ledger at L7 (3 slots; Magic Item Adept and a 4th slot come at L10).** Boomstick needs no attunement, so it rides free on every road. Door A: Dynamo + Storm Cell (2 of 3). Door B: the Sentinel only (1 of 3; the Dynamo is rebuilt inside it). Door C: Dynamo + Sphere (2 of 3). The Frostbite Shard Dagger is retired to her belt, unattuned, on every road (Boomstick has taken over its spell-focus and Arcane-Firearm duty).
+**Attunement ledger at L7 (3 slots; Magic Item Adept and a 4th slot come at L10).** The doors are feats, so they cost NO attunement. Every road attunes only the Pocket Dynamo (1 of 3); Boomstick needs no attunement; the awakened Sphere is awakened by the feat, not attuned. Two slots free on every road for whatever the rifts yield. The Frostbite Shard Dagger is retired to her belt, unattuned, on every road (Boomstick has taken over its spell-focus and Arcane-Firearm duty).
 
 ---
 
@@ -52,47 +54,44 @@ These apply on every road. The weapon, focus, and Arcane Firearm on every road i
 
 ---
 
-## Door A: The Storm Cell (Boomstick augmentation)
+## Door A: Stormgunner (path feat; was the Storm Cell)
 
-Attuned: Dynamo + Storm Cell. Boomstick becomes stormcharged. Adds to the always-on kit:
+Feat, no attunement. She keeps the normal Dynamo-enhanced Eldritch Cannon (Always-on section). The feat adds:
 
-- **Wand of the War Mage.** While holding Boomstick, **+2 to spell attack rolls** (spell attack becomes **+10**), and **ignore Half Cover** on spell attacks. Her **Eldritch Cannon also gains +2 to its attack rolls** (Force Ballista becomes +10).
+- **War-Trained.** **Advantage on CON saves to maintain Concentration**, and she can perform **somatic components** with Boomstick or a Shield in one or both hands. (This replaced the old Wand of the War Mage: there is NO +2 to spell attacks and NO ignore-Half-Cover anymore.)
 - **Storm-Arc.** Whenever she **hits a creature with Boomstick**, the target takes an extra **1d6 lightning**, and lightning arcs to up to **two other creatures within 15 ft**: each makes a **DC 16 Dex save**, 2d6 lightning on a fail, half on a success. Triggers on **every** Boomstick hit, including True Strike shots.
-- **Charged Rounds** (2 Thunder Wave Rounds + 2 Counter-Bolts, regain on long rest; DC = spell save DC 16):
-  - **Thunder Wave Round.** On a Boomstick hit, expend 1: extra **1d10 lightning** and a **CON save or Stunned** until the end of her next turn.
-  - **Counter-Bolt.** **Reaction**, expend 1, when a creature within 60 ft attacks **an ally** (NOT Lilly herself, house rule): the triggering attack has **Disadvantage**, and she makes one Boomstick attack, +1d10 lightning on a hit.
-- **Made to Channel.** When she casts **True Strike through Boomstick**, it uses **INT**, **counts as a spell attack** (so it gains the Storm Cell's **+2** spell-attack bonus and ignores Half Cover), and on a hit deals Boomstick's thunder plus the spell's radiant.
-  - [DM RULING 2026-07-25: the two +2 bonuses do NOT stack. Door A True Strike is **+10** (INT 5 + PB 3 + one +2), same as the other roads. The Cell's +2 does not add on top of Boomstick's weapon +2.]
+- **Counter-Bolt (2/long rest).** **Reaction**, when a creature she can see within 60 ft attacks **an ally** (the feat text itself is ally-only): the triggering attack has **Disadvantage**, and she makes one Boomstick attack, +1d10 lightning on a hit.
+- **Overloaded Shot (2/long rest).** On a Boomstick hit: extra **1d10 lightning** and a **CON save (DC 16) or Stunned** until the end of her next turn.
+- (Made to Channel is GONE in the feat version; True Strike is simply the base kit's weapon-style +10 INT attack.)
 
 **Combat loop (Door A).**
-- **Action:** True Strike through Boomstick, to hit **+10** (1d10 + 2 + INT 5 thunder + 1d6 radiant + Arcane Firearm 1d8 + Storm-Arc 1d6 to target + arc 2d6 to two more, DC 16 Dex). Spend a Thunder Wave Round for +1d10 and a Stun save when a stun matters.
-- **Bonus:** Activate cannon, Force Ballista at **+10** (2d8 + 2 force, push 5), or Flamethrower / Protector as the field needs.
+- **Action:** True Strike through Boomstick, to hit **+10** (1d10 + 2 + INT 5 thunder + 1d6 radiant + Arcane Firearm 1d8 + Storm-Arc 1d6 to target + arc 2d6 to two more, DC 16 Dex). Spend an Overloaded Shot for +1d10 and a Stun save when a stun matters.
+- **Bonus:** Activate cannon, Force Ballista at **+8** (2d8 + 2 force, push 5), or Flamethrower / Protector as the field needs.
 - **Reaction:** Counter-Bolt when an **ally** is attacked (Disadvantage + a free Boomstick shot), else Shield (self) or Flash of Genius.
 
 ---
 
-## Door B: The Sentinel (rebuilt cannon)
+## Door B: Sentinel Protocol (path feat; the cannon rebuilt, STACKS with the Dynamo)
 
-Attuned: the Sentinel only (the Dynamo is rebuilt inside it). **Rebuilt Dynamo replaces the Eldritch Cannon feature**: she deploys the Sentinel instead of a cannon, never both.
+Feat, no attunement; she stays attuned to the Dynamo. **The Sentinel IS her Eldritch Cannon in a new form** ("when you would create your Eldritch Cannon, you can create the Sentinel instead"), so **everything that improves her cannon applies to it, the Pocket Dynamo included**.
 
-- **The Sentinel.** Medium construct. **AC 18, HP 40** (5 + five times level), Speed **30 ft.**, STR 14 / CON 16, immune Poison, condition-immune Charmed/Exhaustion/Poisoned. **It moves on its own 30 ft** and acts on her command. Permanent (no duration). **Bound Construct:** add her PB to any check or save it makes. Rebuild for a 1st+ level slot if it hits 0 HP; Mending heals it 2d6.
-- **Deploy / recall:** a **Bonus Action** per the Sentinel's own statblock (rarely needed, it is permanent).
+- **The Sentinel.** Medium construct. **AC 18, HP 40** (5 + five times level), Speed **30 ft.**, STR 14 / CON 16, immune Poison, condition-immune Charmed/Exhaustion/Poisoned. **It moves on its own 30 ft** and acts on her command. **Bound Construct:** add her PB to any check or save it makes. Rebuild for a 1st+ level slot if it hits 0 HP; Mending heals it 2d6.
+- **Dynamo stacking (the 2026-07-31 change):** free **Bonus-Action deploy/recall** (Dynamo), **no maximum duration** (Dynamo), and the Dynamo's **+2 damage applies to Force Blast and Electric Pulse** (printed in the stat lines as "+2 from the Pocket Dynamo while attuned"). It does NOT apply to Guardian Protocol's temp HP.
 - **Activate (Bonus Action), pick one:**
-  - **Force Blast.** Ranged attack, her spell attack mod (**+8**), 120 ft, **2d8 + INT (5) force**.
-  - **Electric Pulse.** Each chosen creature within **15 ft of the Sentinel**, **DC 16 Dex**, **2d8 + INT (5) lightning**; on a fail they **can't take Reactions** until the start of her next turn; half on a save.
-- **Guardian Protocol (Reaction, 1/round).** When an ally **within 15 ft of the Sentinel** takes damage, that ally gains **1d8 + INT (5) temp HP**.
-- Note: the Sentinel does NOT gain the Storm Cell's +2, and its printed damage is 2d8 + INT (the Dynamo's +2 is subsumed into the rebuild, not added on top).
+  - **Force Blast.** Ranged attack, her spell attack mod (**+8**), 120 ft, **2d8 + INT (5) + 2 force** (Dynamo).
+  - **Electric Pulse.** Each chosen creature within **15 ft of the Sentinel**, **DC 16 Dex**, **2d8 + INT (5) + 2 lightning** (Dynamo); on a fail they **can't take Reactions** until the start of her next turn; half on a save.
+- **Guardian Protocol (Reaction, 1/round).** When an ally **within 15 ft of the Sentinel** takes damage, that ally gains **1d8 + INT (5) temp HP** (no Dynamo +2; it is not damage).
 
 **Combat loop (Door B).**
 - **Action:** True Strike through Boomstick, to hit **+10** (1d10 + 2 + INT 5 thunder + 1d6 radiant + Arcane Firearm 1d8), or Fire Bolt (+8, 2d10 + 1d8) at range, or a leveled spell.
-- **Bonus:** Activate the Sentinel: Force Blast (2d8 + 5, 120 ft) at a lone target, or Electric Pulse (2d8 + 5, DC 16, reaction-lock) into a cluster within 15 ft of the Sentinel. The Sentinel also moves 30 ft on its own.
+- **Bonus:** Activate the Sentinel: Force Blast (2d8 + 7, 120 ft) at a lone target, or Electric Pulse (2d8 + 7, DC 16, reaction-lock) into a cluster within 15 ft of the Sentinel. The Sentinel also moves 30 ft on its own.
 - **Reaction:** Guardian Protocol (1d8 + 5 temp HP to an ally within 15 ft of the Sentinel), or Shield / Flash of Genius. Walk the Sentinel with the melee so Guardian Protocol can reach them.
 
 ---
 
-## Door C: The Awakened Essence Sphere
+## Door C: Aether Channeler (path feat; awakens the Sphere, no attunement)
 
-Attuned: Dynamo + Sphere. She keeps the normal Dynamo-enhanced Eldritch Cannon (Always-on section). The Sphere adds a short-rest pool.
+Feat, no attunement (the feat awakens the Sphere she already carries; only the Dynamo is attuned). She keeps the normal Dynamo-enhanced Eldritch Cannon (Always-on section). The feat adds a short-rest pool.
 
 - **Mote Channeling.** The Sphere's powers share **2 uses**, regained on a **Short Rest**. DC = spell save DC 16.
 - **Aether Ward (base power, the ONLY power online at L7).** **Magic action** (costs her Action), 1 use: she and each ally **within 15 ft** gain **2d8 + INT (5) temp HP**.
@@ -112,7 +111,8 @@ Quoted from memory/house_rules.md:
 
 - "The Eldritch Cannon picks its mode on every activation (Forge of the Artificer, 2024-era artificer)." (Applies to her Always-on cannon and, by extension, the Sentinel's per-activation Force Blast / Electric Pulse choice.)
 - "Deep gnome uses the current 2024-era printing (Svirfneblin Camouflage; Disguise Self and Nondetection 1/long rest each)."
-- "Counter-Bolt triggers only on attacks against an ALLY, never Lilly herself" (Door A).
+- Counter-Bolt is ally-only by the printed feat text now ("makes an attack roll against one of your allies"); the old house ruling is baked in.
+- Door B's Sentinel stacks with the Dynamo by printed text ("anything that improves your cannon still applies to it, the Pocket Dynamo included").
 - "Boomstick is a repeating pistol at 30/90, so Fire Bolt is the long-range option" (Boomstick shots and True Strike reach 90 ft max, disadvantage past 30 ft; Fire Bolt reaches 120 ft).
 - "the Sentinel's Guardian Protocol reaches only 15 ft from the Sentinel, so it must walk with the melee" (Door B).
 
@@ -121,7 +121,7 @@ Quoted from memory/house_rules.md:
 ## Easy-to-forget checklist
 
 - **INT (+5) drives True Strike on BOTH the attack roll and the damage.** True Strike substitutes her spellcasting ability for Dex; the +5 to damage is the single most-dropped number.
-- **True Strike to-hit is +10 baseline** (PB 3 + INT 5 + Boomstick +2), on every road including Door A (DM ruling 2026-07-25: the Cell's +2 spell-attack bonus does not stack with Boomstick's weapon +2).
+- **True Strike to-hit is +10 on every road** (PB 3 + INT 5 + Boomstick +2). Nothing raises it further (the old Storm Cell +2 is gone with the feat conversion).
 - **Arcane Firearm adds 1d8 thunder to one spell's damage each turn** (via Boomstick). Add it to True Strike, Fire Bolt, a Scorching Ray, Shatter, or Thunderwave, once per turn.
 - **The Pocket Dynamo gives the cannon +2 damage** on Flamethrower and Force Ballista (not on Protector temp HP).
 - **The cannon fires on a BONUS action**; she still gets her full Action the same turn. Never charge her Action for it.
