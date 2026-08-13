@@ -215,6 +215,7 @@ Embedded images recovered from the original raw session documents (word/media). 
 
 | New path | Prompt file | Refs attached |
 |---|---|---|
+| `assets/session_07/cover_gates.png` (2026-08-13: Session 7 doc cover, replacing the duplicated ridge-reveal image that served as both cover and The Reveal illustration; center-cropped to 16:9 for the cover slot) | `assets/gen_prompts/s7_cover_gates.txt` | REF_lilly_5_later, REF_stabby_3_later, REF_ursa_3_later, REF_ghostbloom |
 | `assets/scenes/s6_pumpkin_row.png` | `assets/gen_prompts/s6_pumpkin_row.txt` | REF_stabby_1, REF_stabby_2, REF_stabby_3_later |
 | `assets/scenes/s6_cellar_rats.png` | `assets/gen_prompts/s6_cellar_rats.txt` | v3 rats-only swarm portrait (no refs); battle-scarred torn-ear leader, storybook tone. Prior character-scene version (off-tone rats) retired to `_triage/superseded_art/s6_cellar_rats_v_offtone.*` |
 | `assets/scenes/s6_graveyard_rite.png` | `assets/gen_prompts/s6_graveyard_rite.txt` | REF_lilly_1, REF_lilly_2 |
