@@ -215,7 +215,11 @@ Embedded images recovered from the original raw session documents (word/media). 
 
 | New path | Prompt file | Refs attached |
 |---|---|---|
-| `assets/session_07/cover_gates.png` (2026-08-13: Session 7 doc cover, replacing the duplicated ridge-reveal image that served as both cover and The Reveal illustration; center-cropped to 16:9 for the cover slot) | `assets/gen_prompts/s7_cover_gates.txt` | REF_lilly_5_later, REF_stabby_3_later, REF_ursa_3_later, REF_ghostbloom |
+| `assets/session_07/cover_last_camp.png` (2026-08-13, DM pick "D" from a four-candidate gallery: the Session 7 doc cover; night camp above the glowing city, one bright constellation; 16:9 crop for the cover slot. Replaces the duplicated ridge-reveal image that had served as both cover and The Reveal illustration) | `assets/gen_prompts/s7_cover_last_camp.txt` | REF_lilly_5_later, REF_stabby_3_later, REF_ursa_3_later, REF_ghostbloom |
+| `assets/session_07/cover_alt_a_clockface.png` (cover runner-up A: aerial clock-face city; usable as a Gearhaven establishing shot elsewhere) | `assets/gen_prompts/s7_cover_alt_a_clockface.txt` | none (pure generation) |
+| `assets/session_07/cover_alt_b_heartbeat.png` (cover runner-up B: the party under the Great Governor) | `assets/gen_prompts/s7_cover_alt_b_heartbeat.txt` | REF_lilly_5_later, REF_stabby_3_later, REF_ursa_3_later, REF_ghostbloom |
+| `assets/session_07/cover_alt_c_sphere.png` (cover runner-up C: Sphere close-up) | `assets/gen_prompts/s7_cover_alt_c_sphere.txt` | REF_lilly_5_later, REF_stabby_3_later, REF_ursa_3_later, REF_ghostbloom |
+| `_triage/superseded_art/s7_cover_gates_superseded.png` (RETIRED 2026-08-13: first cover replacement; visually collided with the page-4 "Through the Gate" illustration, superseded by cover_last_camp) | `assets/gen_prompts/s7_cover_gates.txt` | REF_lilly_5_later, REF_stabby_3_later, REF_ursa_3_later, REF_ghostbloom |
 | `assets/scenes/s6_pumpkin_row.png` | `assets/gen_prompts/s6_pumpkin_row.txt` | REF_stabby_1, REF_stabby_2, REF_stabby_3_later |
 | `assets/scenes/s6_cellar_rats.png` | `assets/gen_prompts/s6_cellar_rats.txt` | v3 rats-only swarm portrait (no refs); battle-scarred torn-ear leader, storybook tone. Prior character-scene version (off-tone rats) retired to `_triage/superseded_art/s6_cellar_rats_v_offtone.*` |
 | `assets/scenes/s6_graveyard_rite.png` | `assets/gen_prompts/s6_graveyard_rite.txt` | REF_lilly_1, REF_lilly_2 |
