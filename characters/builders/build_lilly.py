@@ -162,8 +162,8 @@ def _glance(lbl, boxes, names):
     return [Paragraph(f'<b>{lbl}</b>&nbsp; {box}', gl_st), Paragraph(names, gl_st)]
 glance = [
     _glance('Cantrips', 0, 'True Strike, Fire Bolt, Mending'),
-    _glance('1st', 4, "Absorb Elements, Shield*, Thunderwave*, Catapult, Snare, Faerie Fire, Tasha's Caustic Brew"),
-    _glance('2nd', 2, 'Scorching Ray*, Shatter*, Heat Metal, Web'),
+    _glance('1st', 4, 'Shield*, Thunderwave*, Faerie Fire, Grease, Cure Wounds'),
+    _glance('2nd', 2, "Scorching Ray*, Shatter*, Homunculus Servant, Dragon's Breath, Aid"),
 ]
 gt = Table(glance, colWidths=[2.3*inch, 5.0*inch])
 gt.setStyle(TableStyle([
@@ -246,7 +246,7 @@ story.append(Paragraph('Lilly Glimmergear', S('p3t',fontName='Times-Bold',fontSi
 story.append(Paragraph('Page 3: Spellbook', sub_st))
 story.append(Spacer(1,7))
 story.append(Paragraph('Slots per day: 4 first-level, 2 second-level. Cantrips (★) are free forever. '
-    'She prepares 7 spells; the four marked Always Prepared are free from her Artillerist subclass and '
+    'She prepares 6 spells; the four marked Always Prepared are free from her Artillerist subclass and '
     'don’t count toward that. The +1d8 frost on a spell is her dagger’s arcane firearm: it adds to one '
     'spell she casts each turn (she only casts one anyway). The +2 frost rides along on any spell cast '
     'through the dagger.', small_it))
@@ -272,10 +272,6 @@ spells=[
         'Repair a single break or tear in an object: a snapped chain, a torn cloak, a '
         'cracked gear. No bigger than 1 ft. Free from Tinker’s Magic. Also heals her '
         'cannon 2d6!'),
-    ('Absorb Elements',
-        '1st • Reaction (when hit by the damage) • Self • 1 round',
-        'Trigger when she takes acid/cold/fire/lightning/thunder: take half of it, and her '
-        'next melee hit deals +1d6 of that type. A great defensive reaction.'),
     ('Shield: Always Prepared',
         '1st • Reaction (when hit / by Magic Missile) • Self • 1 round',
         'Snap up a force wall: +5 AC until the start of her next turn (can turn a hit into a '
@@ -284,25 +280,10 @@ spells=[
         '1st • Action • Self (15-ft cube) • Instant',
         'Foes in a 15-ft cube make a Con save DC 16: on a fail, 2d8 thunder + 1d8 + 2 '
         'frost (dagger) and shoved 10 ft away; half and no shove on a success.'),
-    ('Catapult',
-        '1st • Action • 60 ft • Instant',
-        'Fling a loose object (up to 5 lb) at a foe. Dex save DC 16: on a fail, 3d8 '
-        'bludgeoning + 1d8 + 2 frost (dagger); no damage on a success. No attack roll, '
-        'it’s a save.'),
-    ('Snare',
-        '1st • 1 minute to set • Touch • 8 hr trap',
-        'Lay a hidden magic rope-trap on the floor. The first creature to step in makes a '
-        'Dex save DC 16 or is yanked upside-down, restrained in the air. Set it before a '
-        'fight as a surprise.'),
     ('Faerie Fire',
         '1st • Action • 60 ft • Concentration, 1 min',
         'Foes in a 20-ft cube make a Dex save DC 16; on a fail they’re outlined in light. '
         'Attacks vs them have advantage and they can’t be invisible. Strong team setup.'),
-    ("Tasha's Caustic Brew",
-        '1st • Action • 30 ft line • Concentration, 1 min',
-        'Spray acid in a 30-ft line (Dex save to avoid being coated). A coated creature '
-        'takes 2d4 acid + 1d8 + 2 frost (dagger) at the start of each of its turns until it uses '
-        'an action to wash off.'),
     ('Scorching Ray: Always Prepared',
         '2nd • Action • 120 ft • Instant',
         'Fire three rays. Each is a separate ranged spell attack +8 to hit: 2d6 fire each, plus '
@@ -312,16 +293,30 @@ spells=[
         'A loud burst. Creatures in a 10-ft sphere make a Con save DC 16: 3d8 thunder + '
         '1d8 + 2 frost (dagger) on a fail, half on success. Extra effective vs metal/stone '
         'foes.'),
-    ('Heat Metal',
-        '2nd • Action • 60 ft • Concentration, 1 min',
-        'Make a metal object/armor glow red-hot: 2d8 fire + 1d8 + 2 frost (dagger) '
-        'instantly, and bonus action each turn to deal it again. The holder makes a Con '
-        'save or drops the item. Brutal vs armored foes.'),
-    ('Web',
-        '2nd • Action • 60 ft (20-ft cube) • Concentration, 1 hr',
-        'Fill a 20-ft cube with sticky webs (difficult terrain). Creatures there make a Dex '
-        'save DC 16 or are restrained; restrained creatures can retry with a Str check. '
-        'Locks down a crowd.'),
+    ('Grease',
+        '1st • Action • 60 ft (10-ft square) • 1 min',
+        'Slick the floor in a 10-ft square: it becomes difficult terrain, and anyone '
+        'standing there (or entering, or ending a turn there) makes a Dex save DC 16 or '
+        'falls prone. No concentration, so she can keep something else running.'),
+    ('Cure Wounds',
+        '1st • Action • Touch • Instant',
+        'Touch a friend and heal them 2d8 + 5. Her emergency button when someone drops '
+        'and Ursa or Ghostbloom cannot reach them in time.'),
+    ('Homunculus Servant',
+        '2nd • 1 hr 10 min as a RITUAL (no spell slot!) • 10 ft • Permanent',
+        'She builds her little brass companion. Ritual casting costs her NO spell slot and '
+        'it never expires. It flies, obeys her without costing her anything, and acts right '
+        'after her every round. Full stat block below.'),
+    ("Dragon's Breath",
+        '2nd • Bonus Action • Touch • Concentration, 1 min',
+        'Touch a willing friend (her homunculus!) and pick acid, cold, fire, lightning or '
+        'poison. For 1 minute that creature can use its action to breathe a 15-ft cone: '
+        'Dex save DC 16, 3d6 damage, half on a success. Pick the type the enemy is weak to!'),
+    ('Aid',
+        '2nd • Action • 30 ft • 8 hours',
+        'Choose three friends: each one’s hit point maximum AND current hit points go up '
+        'by 5 for eight hours. Cast it at breakfast, not in a fight. Free extra health for '
+        'the whole day.'),
 ]
 # Boxed spell cards in Lilly's blue, matching Ursa's page-3 format.
 def spell_card(name, meta, text):
@@ -358,6 +353,44 @@ grid.setStyle(TableStyle([
     ('TOPPADDING',(0,0),(-1,-1),3),('BOTTOMPADDING',(0,0),(-1,-1),3),
 ]))
 story.append(grid)
+
+# ---- Homunculus Servant stat block (her permanent ritual companion) ----
+story.append(Spacer(1, 8))
+story.append(Paragraph('Pip, Lilly&rsquo;s Homunculus Servant',
+    S('homh', fontName='Times-Bold', fontSize=12, textColor=BLUE, leading=14, spaceAfter=2)))
+story.append(HRFlowable(width='100%', thickness=0.7, color=BLUE, spaceAfter=4))
+
+hom_left = [
+    Paragraph('<b>Tiny construct.</b> Built, not summoned: ritual-cast in 1 hour 10 minutes '
+              'for <b>no spell slot</b>, and it never expires. Fairy-sized, small enough to sit '
+              'in her cupped hands.', cell_st),
+    Spacer(1, 3),
+    Paragraph('<b>AC</b> 13 &nbsp; <b>HP</b> 15 &nbsp; <b>Speed</b> 20 ft, <b>Fly 30 ft</b>', cell_st),
+    Paragraph('<b>Senses</b> darkvision 60 ft &nbsp; <b>Telepathy</b> with Lilly, 1 mile', cell_st),
+    Paragraph('<b>Immune</b> poison; poisoned, exhaustion', cell_st),
+]
+hom_right = [
+    Paragraph('<b>Force Strike.</b> +8 to hit, reach 5 ft or range 30 ft: <b>1d6 + 2 force</b>. '
+              'Force damage punches through the Voltcrawlers&rsquo; blink.', cell_st),
+    Paragraph('<b>Evasion.</b> On a Dex save for half damage it takes <b>none</b> on a success '
+              'and half on a failure.', cell_st),
+    Paragraph('<b>Magic Bond.</b> Add +2 to any check or save it makes.', cell_st),
+    Paragraph('<b>Channel Magic (Reaction).</b> When Lilly casts a touch spell and it is within '
+              '120 ft, it can deliver that spell instead.', cell_st),
+]
+homt = Table([[hom_left, hom_right]], colWidths=[3.55*inch, 3.75*inch])
+homt.setStyle(TableStyle([
+    ('VALIGN',(0,0),(-1,-1),'TOP'),
+    ('BACKGROUND',(0,0),(-1,-1), BLUE_LT),
+    ('BOX',(0,0),(-1,-1),0.8, BLUE_MID),
+    ('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),
+    ('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),
+]))
+story.append(homt)
+story.append(Paragraph('It shares Lilly&rsquo;s initiative and takes its turn right after hers, and '
+    'obeys her commands with <b>no action needed from her</b>. Give it no orders and it Dodges. '
+    'Touch it with <i>Dragon&rsquo;s Breath</i> and it can breathe a 15-ft cone for 3d6, '
+    'choosing acid, cold, fire, lightning or poison to match what the enemy is weak to.', small_it))
 
 doc=SimpleDocTemplate('../lilly_glimmergear_sheet_v3.pdf',pagesize=letter,
     leftMargin=0.55*inch,rightMargin=0.55*inch,topMargin=0.45*inch,bottomMargin=0.5*inch)

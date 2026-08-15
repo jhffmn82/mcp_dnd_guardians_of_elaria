@@ -25,6 +25,7 @@ The canonical look of every significant, recurring character. Whenever art featu
 | The Krampusshade | REF_krampusshade.png | S4 (banished) | Ten-foot goat-horned winter fiend |
 | Faelan | REF_faelan.png | S4 | Ancient half-elf lorekeeper |
 | Ash Catchum | REF_ash_catchum.png | mentioned S1-S7, reveal S12 | Ursa's lost father, wildfire druid |
+| Lilly's Homunculus | REF_homunculus.png | S7 onward, permanent | DM-SUPPLIED design, not generated: a tiny clockwork companion, round polished brass body with engraved filigree and inset gears, two large upright triangular ears lit blue inside, a curled brass forelock, huge round blue clockwork eyes, four small rounded feet. FAIRY-SIZED, fits in a child's two cupped hands; never draw it larger than Lilly's head. Ritual-built in Session 7. |
 | Skitch | REF_skitch.png | S7, recurs S8+ | Young Bloodfang courier |
 | Pikachu (Spark Fox) | REF_pikachu.png | in the Sphere; returns S13 | Golden light fox-spirit (cropped from S7 art). GENERATION NOTE (DM, 2026-08-13): words alone will not produce him, the model returns a generic fox with no lightning tail. Feed the anime/cartoon reference image for the creature; that is what worked. Fallback if no reference is available: describe the silhouette exhaustively (round cheeks, long dark-tipped upright ears, jagged lightning-bolt tail called out as prominent). |
 | Poots Glimmergear | REF_poots_glimmergear.png | recurs if Lilly's Door B | Lilly's mother, Glimmerspire tinkerer |
