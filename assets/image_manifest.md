@@ -215,6 +215,7 @@ Embedded images recovered from the original raw session documents (word/media). 
 
 | New path | Prompt file | Refs attached |
 |---|---|---|
+| `assets/session_07/beat_7/pikachu_returns.png` (v2, DM-approved 2026-08-13: replaces the v1 plate, which drew Ursa with TWO RIGHT HANDS, a right hand on his left arm gripping the staff, plus a raised hand with no connected forearm. Not visible until the plate was enlarged. v1 retired to `_triage/superseded_art/pikachu_returns_v1_two_right_hands.png`) | `assets/gen_prompts/s7_pikachu_returns_v2.txt` | REF_lilly_5_later, REF_ursa_3_later, REF_ghostbloom (NOT the v1 art, see the moderation note in `art_production_guide.md`) |
 | `assets/session_07/cover_last_camp.png` (2026-08-13, DM pick "D" from a four-candidate gallery: the Session 7 doc cover; night camp above the glowing city, one bright constellation; 16:9 crop for the cover slot. Replaces the duplicated ridge-reveal image that had served as both cover and The Reveal illustration) | `assets/gen_prompts/s7_cover_last_camp.txt` | REF_lilly_5_later, REF_stabby_3_later, REF_ursa_3_later, REF_ghostbloom |
 | `assets/session_07/cover_alt_a_clockface.png` (cover runner-up A: aerial clock-face city; usable as a Gearhaven establishing shot elsewhere) | `assets/gen_prompts/s7_cover_alt_a_clockface.txt` | none (pure generation) |
 | `assets/session_07/cover_alt_b_heartbeat.png` (cover runner-up B: the party under the Great Governor) | `assets/gen_prompts/s7_cover_alt_b_heartbeat.txt` | REF_lilly_5_later, REF_stabby_3_later, REF_ursa_3_later, REF_ghostbloom |

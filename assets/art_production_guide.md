@@ -13,6 +13,26 @@ The master list of campaign art: what exists, what is missing, and a ready-to-pa
 3. Save each result into the listed path with the listed filename, then tell Claude: the build scripts get updated and the prompt gets recorded in `image_manifest.md` (prompts are always preserved).
 4. Gear continuity matters: the three relics (Ursa's staff, Stabby's sash, Lilly's Dynamo) appear only from the END of Session 6 (chest epilogue) and Session 7 on; the Candyfang Katana from late Session 4 on; Floraburst (green) before Session 6, Ghostbloom (pale teal) from Session 6 on.
 
+## HARD-WON GENERATION LESSONS (read before a regeneration run)
+
+1. **Pokemon creatures need a real reference image.** Describing Pikachu in words produces a
+   generic fox-spirit with no lightning tail, every time. Attach the anime/cartoon reference for
+   the creature (DM's technique, proven 2026-08-13), or, failing that, describe the silhouette
+   exhaustively: round cheeks, two long upright ears with darker tips, small round cheek-circles,
+   and a long JAGGED LIGHTNING-BOLT tail, called out as prominent.
+2. **Do NOT feed existing campaign art of the kids back in as a reference.** The image API's
+   output-stage safety filter rejects it (`moderation_blocked`, category "other"). This killed
+   4 of 4 attempts on 2026-08-13, including a masked inpaint that would only have repainted one
+   hand. Generations that attach only the `art_refs/` portraits go through normally. Practical
+   consequence: **approved art cannot be locally repaired by AI**, so a flawed plate must either
+   be cropped or regenerated from scratch. `templates/inpaint.py` exists and is correct, but the
+   provider will refuse it on any image containing the heroes.
+3. **Check hands whenever a plate is enlarged.** The v1 Pikachu plate gave Ursa two right hands
+   (a right hand on his left arm) and a raised hand with no forearm; nobody noticed until the
+   image went from 4.1 in to 5.8 in. Chirality test: with the BACK of a hand toward the viewer,
+   a LEFT hand's thumb sits on the viewer's left; a RIGHT hand's thumb sits on the viewer's right.
+   Spell the intended hand out in the prompt, per-hand, when a figure holds something.
+
 ## STYLE BLOCK (paste into every prompt)
 
 > painterly storybook fantasy illustration, lush warm golden palette with teal and brass accents, soft volumetric light, detailed fantasy-anime glow, digital painting, no text or lettering anywhere in the image
