@@ -334,8 +334,8 @@ def spell_card(name, meta, text):
         ('BOX',(0,0),(-1,-1),0.6, BLUE_MID),
         ('LINEBELOW',(0,1),(0,1),0.4, BLUE_MID),
         ('LEFTPADDING',(0,0),(-1,-1),5),('RIGHTPADDING',(0,0),(-1,-1),5),
-        ('TOPPADDING',(0,0),(-1,-1),2),('BOTTOMPADDING',(0,0),(-1,-1),2),
-        ('TOPPADDING',(0,2),(0,2),4),('BOTTOMPADDING',(0,2),(0,2),5),
+        ('TOPPADDING',(0,0),(-1,-1),1.5),('BOTTOMPADDING',(0,0),(-1,-1),1.5),
+        ('TOPPADDING',(0,2),(0,2),3),('BOTTOMPADDING',(0,2),(0,2),3.5),
     ]))
     return t
 
@@ -350,48 +350,53 @@ grid = Table(rows, colWidths=[3.66*inch]*2)
 grid.setStyle(TableStyle([
     ('VALIGN',(0,0),(-1,-1),'TOP'),
     ('LEFTPADDING',(0,0),(-1,-1),2),('RIGHTPADDING',(0,0),(-1,-1),2),
-    ('TOPPADDING',(0,0),(-1,-1),3),('BOTTOMPADDING',(0,0),(-1,-1),3),
+    ('TOPPADDING',(0,0),(-1,-1),1.8),('BOTTOMPADDING',(0,0),(-1,-1),1.8),
 ]))
 story.append(grid)
 
 # ---- Homunculus Servant stat block (her permanent ritual companion) ----
-story.append(Spacer(1, 8))
-story.append(Paragraph('Pip, Lilly&rsquo;s Homunculus Servant',
-    S('homh', fontName='Times-Bold', fontSize=12, textColor=BLUE, leading=14, spaceAfter=2)))
-story.append(HRFlowable(width='100%', thickness=0.7, color=BLUE, spaceAfter=4))
+story.append(Spacer(1, 5))
+story.append(Paragraph('Puff, Lilly&rsquo;s Homunculus Servant',
+    S('homh', fontName='Times-Bold', fontSize=11.5, textColor=BLUE, leading=13, spaceAfter=1)))
+story.append(HRFlowable(width='100%', thickness=0.7, color=BLUE, spaceAfter=3))
 
-hom_left = [
-    Paragraph('<b>Tiny construct.</b> Built, not summoned: ritual-cast in 1 hour 10 minutes '
-              'for <b>no spell slot</b>, and it never expires. Fairy-sized, small enough to sit '
-              'in her cupped hands.', cell_st),
-    Spacer(1, 3),
+hom_stats = [
+    Paragraph('<b>Tiny construct.</b> Built, not summoned: ritual-cast in 1 hour 10 minutes for '
+              '<b>no spell slot</b>, and it never expires. Fairy-sized, small enough to sit in her '
+              'cupped hands.', cell_st),
+    Spacer(1, 2),
     Paragraph('<b>AC</b> 13 &nbsp; <b>HP</b> 15 &nbsp; <b>Speed</b> 20 ft, <b>Fly 30 ft</b>', cell_st),
+    Paragraph('<b>Saves</b> Str &minus;1 &nbsp; <b>Dex +4</b> &nbsp; <b>Con +3</b> &nbsp; '
+              'Int +2 &nbsp; Wis +2 &nbsp; Cha +0 &nbsp; '
+              '<font size=6.5 color="#6F6046">(Magic Bond&rsquo;s +2 already included)</font>', cell_st),
     Paragraph('<b>Senses</b> darkvision 60 ft &nbsp; <b>Telepathy</b> with Lilly, 1 mile', cell_st),
-    Paragraph('<b>Immune</b> poison; poisoned, exhaustion', cell_st),
-]
-hom_right = [
+    Paragraph('<b>Immune</b> poison damage; poisoned, exhaustion', cell_st),
+    Spacer(1, 2),
     Paragraph('<b>Force Strike.</b> +8 to hit, reach 5 ft or range 30 ft: <b>1d6 + 2 force</b>. '
-              'Force damage punches through the Voltcrawlers&rsquo; blink.', cell_st),
-    Paragraph('<b>Evasion.</b> On a Dex save for half damage it takes <b>none</b> on a success '
-              'and half on a failure.', cell_st),
+              'Force punches through the Voltcrawlers&rsquo; blink.', cell_st),
+    Paragraph('<b>Evasion.</b> On a Dex save for half damage it takes <b>none</b> on a success, '
+              'half on a failure.', cell_st),
     Paragraph('<b>Magic Bond.</b> Add +2 to any check or save it makes.', cell_st),
     Paragraph('<b>Channel Magic (Reaction).</b> When Lilly casts a touch spell and it is within '
               '120 ft, it can deliver that spell instead.', cell_st),
+    Spacer(1, 2),
+    Paragraph('It shares Lilly&rsquo;s initiative and acts right after her, obeying with <b>no '
+              'action needed from her</b>; give it no orders and it Dodges. Touch it with '
+              '<i>Dragon&rsquo;s Breath</i> and it breathes a 15-ft cone for 3d6, choosing the '
+              'type the enemy is weak to.', small_it),
 ]
-homt = Table([[hom_left, hom_right]], colWidths=[3.55*inch, 3.75*inch])
+homt = Table([[Image('homunculus_new.png', width=1.3*inch, height=1.3*inch), hom_stats]],
+             colWidths=[1.45*inch, 5.85*inch])
 homt.setStyle(TableStyle([
-    ('VALIGN',(0,0),(-1,-1),'TOP'),
+    ('VALIGN',(0,0),(0,0),'TOP'),
+    ('VALIGN',(1,0),(1,0),'TOP'),
     ('BACKGROUND',(0,0),(-1,-1), BLUE_LT),
     ('BOX',(0,0),(-1,-1),0.8, BLUE_MID),
+    ('LINEAFTER',(0,0),(0,0),0.5, BLUE_MID),
     ('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),
     ('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),
 ]))
 story.append(homt)
-story.append(Paragraph('It shares Lilly&rsquo;s initiative and takes its turn right after hers, and '
-    'obeys her commands with <b>no action needed from her</b>. Give it no orders and it Dodges. '
-    'Touch it with <i>Dragon&rsquo;s Breath</i> and it can breathe a 15-ft cone for 3d6, '
-    'choosing acid, cold, fire, lightning or poison to match what the enemy is weak to.', small_it))
-
 doc=SimpleDocTemplate('../lilly_glimmergear_sheet_v3.pdf',pagesize=letter,
     leftMargin=0.55*inch,rightMargin=0.55*inch,topMargin=0.45*inch,bottomMargin=0.5*inch)
 frame = make_frame('Lilly Glimmergear')
