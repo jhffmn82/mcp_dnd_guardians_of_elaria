@@ -108,7 +108,7 @@ story = []
 hdr = Table([[
     Image('ursa_new.png', width=1.35*inch, height=1.35*inch),
     [Paragraph('Ursa Catchum', title_st),
-     Paragraph('Human (Mark of Handling) &bull; Druid (Circle of Stars) &bull; Level 5', sub_st),
+     Paragraph('Human (Mark of Handling) &bull; Druid (Circle of Stars) &bull; Level 7', sub_st),
      Spacer(1,3),
      Paragraph('The starwatcher. Ursa reads the night sky like a map, calls down '
                'starlight and beast-spirits, and follows the constellations toward his destiny.', flav_st)]
@@ -118,7 +118,7 @@ hdr.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),
 story.append(hdr)
 story.append(Spacer(1,4))
 
-story.append(stat_strip([('ARMOR CLASS',18),('HIT POINTS',38),('SPEED','30 ft'),
+story.append(stat_strip([('ARMOR CLASS',18),('HIT POINTS',52),('SPEED','30 ft'),
                          ('INITIATIVE','+2'),('SAVE DC',16),('SPELL ATK','+8')]))
 story.append(Spacer(1,4))
 story.append(ability_strip([('STR',8,'-1'),('DEX',14,'+2'),('CON',14,'+2'),
@@ -148,10 +148,10 @@ story.append(Paragraph("What Ursa Does in a Fight", h2_st))
 atk = [
     ['Attack','To Hit','Damage'],
     ['Staff of Waking Constellations (+1), unlit','+3','1d6 bludgeoning (1d8 two-handed). See Shillelagh!'],
-    ['Staff + Shillelagh (ignited)','+9','1d10+6 force or bludgeoning; bonus action to light, 1 min'],
+    ['Staff + Shillelagh (ignited)','+9','1d10+6 (+5 Potent, once a turn); bonus action to light, 1 min'],
     ['Guiding Bolt (1st, from Staff or Star Map)','+8','4d6 radiant + 1d4 (Starseed); next hit on it has advantage'],
     ['Star-Arrow (Starry Form: Archer)','+8','1d8+5 radiant, one enemy within 60 ft (bonus action)'],
-    ['Starry Wisp (cantrip)','+8','2d8 radiant + 1d4 (Starseed); lights up the target (60 ft)'],
+    ['Starry Wisp (cantrip)','+8','2d8 + 5 radiant + 1d4 (Starseed); lights up the target (60 ft)'],
 ]
 atk_data = [[Paragraph(c, cellb_st if i==0 else cell_st) for c in row]
             for i,row in enumerate(atk)]
@@ -221,7 +221,8 @@ glance = [
     _glance('Cantrips', 0, 'Shillelagh, Starry Wisp, Guidance, Druidcraft'),
     _glance('1st', 4, 'Guiding Bolt, Healing Word, Goodberry, Faerie Fire, Speak with Animals, Animal Friendship'),
     _glance('2nd', 3, 'Moonbeam, Flaming Sphere, Spike Growth, Summon Beast'),
-    _glance('3rd', 2, 'Call Lightning, Summon Fey'),
+    _glance('3rd', 3, 'Call Lightning, Summon Fey, Aura of Vitality, Conjure Animals, Revivify'),
+    _glance('4th', 1, 'Grasping Vine, Conjure Woodland Beings'),
 ]
 gt = Table(glance, colWidths=[2.3*inch, 5.0*inch])
 gt.setStyle(TableStyle([
@@ -238,19 +239,23 @@ story.append(PageBreak())
 # ============================ PAGE 2 ============================
 story.append(Paragraph('Ursa Catchum', S('p2t', fontName='Times-Bold',
             fontSize=15, textColor=PURPLE, leading=18, spaceAfter=2)))
-story.append(Paragraph('Page 2: Powers, Gear &amp; Story', sub_st))
+story.append(Paragraph('Page 2: Powers &amp; Gear', sub_st))
 story.append(Spacer(1,8))
 
 story.append(Paragraph("Ursa's Special Powers", h2_st))
 powers = [
+    ('★ Reader of Omens<br/><i>(the year on his father&rsquo;s trail)</i>',
+     '<b>Omen Dreams.</b> After a long rest, roll <b>two d20s</b> and write them down: those are the day&rsquo;s omens. When he or anyone he can see is about to roll a d20, he can <b>replace that roll</b> with one of his dreamed numbers (no action, before the roll). Each is used once. <br/><b>Both Omens.</b> He has <b>both Weal and Woe</b> every day now, not one or the other. <br/><b>Read the Moment.</b> He can use his Cosmic Omen reaction <b>after the die is rolled</b>, before anyone knows if it worked, then choose Weal or Woe. <br/><b>Shared Tides.</b> One pool of <b>5 uses</b> per long rest, spent on either.'),
     ('Starry Form (Bonus Action)', 'Spend a Wild Shape use to glow with starlight (10-ft bright light, 10 min). '
         'Pick a constellation each time:'),
     ('&nbsp;&nbsp;&bull; Archer', 'Bonus action: fire a star-arrow at one enemy within 60 ft for <b>1d8+5 radiant</b>.'),
     ('&nbsp;&nbsp;&bull; Chalice', 'When he heals someone with a spell slot, he or a nearby friend also heals <b>1d8+5</b>.'),
     ('&nbsp;&nbsp;&bull; Dragon', 'Treat a roll of 9 or lower as a 10 on Int/Wis checks and concentration saves, super steady.'),
-    ('Wild Shape (2/short rest)', 'Two uses that fuel his Starry Forms (or turn into a beast he has seen). Regain 1 on a short rest, all on a long rest.'),
+    ('Wild Shape (3/long rest)', 'Three uses that fuel his Starry Forms (or turn into a beast he has seen). Regain 1 on a short rest, all on a long rest.'),
     ('Wild Resurgence', 'Once per turn (no action), spend a spell slot to get back one Wild Shape use. Once per long rest, the reverse: spend a Wild Shape use to regain a 1st-level spell slot.'),
     ('Star Map', 'His star chart is a magic focus. Free <b>Guiding Bolt</b> 5×/day even without the Staff. Backup focus he still carries.'),
+    ('Cosmic Omen (new at 6!)', '<b>Reaction.</b> When someone he can see within 30 ft is about to roll a d20, he bends it: <b>Weal +1d6</b> or <b>Woe &minus;1d6</b>. <b>5 uses per long rest</b> (his Wisdom modifier).'),
+    ('Elemental Fury (new at 7!)', '<b>Potent Spellcasting:</b> add <b>+5 (Wis)</b> to the damage of any druid <b>cantrip</b>. <i>(House rule: it can ride the kindled staff once a turn instead, never both in the same turn.)</i>'),
     ('Wild Intuition', 'Add 1d4 to any Animal Handling or Nature check.'),
     ('Primal Connection (1/short rest)', 'Cast Animal Friendship or Speak with Animals for free, no materials.'),
     ('The Bigger They Are', 'Can charm or talk to beasts AND monstrosities (if their Intelligence is 3 or lower).'),
@@ -266,6 +271,9 @@ gear = [
      '<i>Guiding Bolt</i> (1), <i>Faerie Fire</i> (1), <i>Moonbeam</i> (2). '
      '<b>Starseed:</b> once a turn, when a druid spell deals radiant damage, add <b>+1d4 radiant</b>. '
      '<b>Starlight:</b> bonus action to light a soft 10-ft glow and get advantage on night-navigation. <b>Attuned.</b>'),
+    ('Ash&rsquo;s Sigil-Stone<br/><i>(new! found on the trail east)</i>',
+     'A river-smooth stone etched with a half-finished sign of Elaria, <b>in his father&rsquo;s own hand</b>. '
+     '<b>Aura of Vitality</b> free once a day (no slot): a 30-ft aura, and at the start of each of his turns he heals one creature in it for <b>2d6</b>. <br/><b>2 charges</b> (all back at dawn), magic action to spend one: <b>Ask the Day</b> (one truthful yes or no about the day ahead, <i>or silence if it cannot be known</i>), <b>Glimpse the Trail</b>, or <b>Read the Heart</b>. <b>Attuned.</b>'),
     ('Star Map', 'A Tiny star chart that doubles as a spellcasting focus. Free Guiding Bolt 5×/day. (Backup focus.)'),
     ('Amulet of Guiding Light', '<b>Guiding Light:</b> during Starry Form, his <b>allies</b> in the bright light get +1 to attacks and saves (allies only, not Ursa). '
         '<b>Starry Glow (1/day, reaction):</b> when he or a nearby ally is hit, the attacker takes 2d8 radiant and may be blinded (Con save DC 15). '
@@ -277,45 +285,6 @@ gear = [
 g_data = [[Paragraph(n, cell_st), Paragraph(d, cell_st)] for n,d in gear]
 story.append(section_table(g_data, [1.9*inch, 5.4*inch], header=False))
 
-story.append(Paragraph("Ursa's Story", h2_st))
-story.append(Paragraph(
-    "Ursa grew up under the wide, dark skies of a quiet farming village, raised on his father’s tales of the "
-    "stars and the secrets they keep. His father, a wandering sky-reader and beast-friend who carried the "
-    "<b>Mark of Handling</b>, vanished one night chasing a mystery tied to a handful of <b>enchanted potatoes</b>, "
-    "leaving Ursa only a star chart and a promise to follow it. Ursa studied the constellations until he could call "
-    "their light down to earth, becoming a <b>Druid of the Circle of Stars</b>. Determined to find out what happened "
-    "to his father, he set out and crossed paths with <b>Lilly</b> and her Essence Sphere, and the wild goblin "
-    "<b>Stabby</b>. The three became an unlikely family, chasing planar cracks, enchanted potatoes, and the guiding "
-    "hand of the sleeping goddess <b>Elaria</b>.", body_st))
-
-per = [
-    ('Personality', 'Determined and resilient. Quiet and watchful, but never gives up. '
-        '“I won’t stop until I find the answers.”'),
-    ('Ideal: Fate', 'The stars guide every destiny, and his path is part of a greater cosmic plan. '
-        '“The stars have written my path, and I will follow it.”'),
-    ('Bond: His Crew', 'Fiercely loyal to Lilly and Stabby, his new family. '
-        '“Together, we will uncover the truth and face whatever comes.”'),
-    ('Flaw: Fear of Failure', 'He worries he can’t live up to his father’s legacy, which can make him '
-        'hesitate or push too hard. “What if I’m not strong enough?”'),
-]
-per_cells = [Paragraph(f'<b>{t}</b><br/>{d}', S('pc', fontName='Times-Roman', fontSize=8,
-             textColor=INK, leading=10)) for t,d in per]
-pt = Table([[per_cells[0], per_cells[1]],[per_cells[2], per_cells[3]]],
-           colWidths=[3.65*inch,3.65*inch])
-pt.setStyle(TableStyle([
-    ('BOX',(0,0),(-1,-1),0.5, LINE),('INNERGRID',(0,0),(-1,-1),0.5, LINE),
-    ('BACKGROUND',(0,0),(-1,-1), PURPLE_LT),
-    ('VALIGN',(0,0),(-1,-1),'TOP'),
-    ('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),
-    ('LEFTPADDING',(0,0),(-1,-1),6),('RIGHTPADDING',(0,0),(-1,-1),6),
-]))
-story.append(Spacer(1,3))
-story.append(pt)
-story.append(Spacer(1,4))
-story.append(Paragraph('<b>Fun Facts:</b> &nbsp;Ursa is a boy, follows the dragon-god Bahamut, and was a Folk Hero '
-    'before adventuring. &bull; Auburn hair, purple eyes, freckles, and a fur-lined cloak for cold nights. '
-    '&bull; He speaks Common, Sylvan, and Druidic (a secret nature-language for hidden messages).', small_it))
-
 story.append(PageBreak())
 
 # ============================ PAGE 3: SPELLBOOK ============================
@@ -323,7 +292,7 @@ story.append(Paragraph('Ursa Catchum', S('p3t', fontName='Times-Bold',
             fontSize=15, textColor=PURPLE, leading=18, spaceAfter=2)))
 story.append(Paragraph('Page 3: Spellbook', sub_st))
 story.append(Spacer(1,7))
-story.append(Paragraph('Slots per day: 4 first-level, 3 second-level, 2 third-level. '
+story.append(Paragraph('Slots per day: 4 first-level, 3 second-level, 3 third-level, 1 fourth-level. '
     'Cantrips (★) are free forever. He prepares 9 spells and can swap one on a long rest. '
     'Spell save DC 16, spell attack +8.', small_it))
 story.append(Spacer(1,4))
@@ -432,6 +401,54 @@ grid.setStyle(TableStyle([
     ('TOPPADDING',(0,0),(-1,-1),3),('BOTTOMPADDING',(0,0),(-1,-1),3),
 ]))
 story.append(grid)
+
+story.append(PageBreak())
+
+# ============================ PAGE 4: STORY ============================
+story.append(Paragraph('Ursa Catchum', S('p2bt', fontName='Times-Bold',
+            fontSize=15, textColor=PURPLE, leading=18, spaceAfter=2)))
+story.append(Paragraph('Page 4: Story &amp; Personality', sub_st))
+story.append(Spacer(1,8))
+
+story.append(Paragraph("Ursa's Story", h2_st))
+story.append(Paragraph(
+    "Ursa grew up under the wide, dark skies of a quiet farming village, raised on his father’s tales of the "
+    "stars and the secrets they keep. His father, a wandering sky-reader and beast-friend who carried the "
+    "<b>Mark of Handling</b>, vanished one night chasing a mystery tied to a handful of <b>enchanted potatoes</b>, "
+    "leaving Ursa only a star chart and a promise to follow it. Ursa studied the constellations until he could call "
+    "their light down to earth, becoming a <b>Druid of the Circle of Stars</b>. Determined to find out what happened "
+    "to his father, he set out and crossed paths with <b>Lilly</b> and her Essence Sphere, and the wild goblin "
+    "<b>Stabby</b>. The three became an unlikely family, chasing planar cracks, enchanted potatoes, and the guiding "
+    "hand of the sleeping goddess <b>Elaria</b>.", body_st))
+
+per = [
+    ('Personality', 'Determined and resilient. Quiet and watchful, but never gives up. '
+        '“I won’t stop until I find the answers.”'),
+    ('Ideal: Fate', 'The stars guide every destiny, and his path is part of a greater cosmic plan. '
+        '“The stars have written my path, and I will follow it.”'),
+    ('Bond: His Crew', 'Fiercely loyal to Lilly and Stabby, his new family. '
+        '“Together, we will uncover the truth and face whatever comes.”'),
+    ('Flaw: Fear of Failure', 'He worries he can’t live up to his father’s legacy, which can make him '
+        'hesitate or push too hard. “What if I’m not strong enough?”'),
+]
+per_cells = [Paragraph(f'<b>{t}</b><br/>{d}', S('pc', fontName='Times-Roman', fontSize=8,
+             textColor=INK, leading=10)) for t,d in per]
+pt = Table([[per_cells[0], per_cells[1]],[per_cells[2], per_cells[3]]],
+           colWidths=[3.65*inch,3.65*inch])
+pt.setStyle(TableStyle([
+    ('BOX',(0,0),(-1,-1),0.5, LINE),('INNERGRID',(0,0),(-1,-1),0.5, LINE),
+    ('BACKGROUND',(0,0),(-1,-1), PURPLE_LT),
+    ('VALIGN',(0,0),(-1,-1),'TOP'),
+    ('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),
+    ('LEFTPADDING',(0,0),(-1,-1),6),('RIGHTPADDING',(0,0),(-1,-1),6),
+]))
+story.append(Spacer(1,3))
+story.append(pt)
+story.append(Spacer(1,4))
+story.append(Paragraph('<b>Fun Facts:</b> &nbsp;Ursa is a boy, follows the dragon-god Bahamut, and was a Folk Hero '
+    'before adventuring. &bull; Auburn hair, purple eyes, freckles, and a fur-lined cloak for cold nights. '
+    '&bull; He speaks Common, Sylvan, and Druidic (a secret nature-language for hidden messages).', small_it))
+
 
 doc = SimpleDocTemplate('../ursa_catchum_sheet_v3.pdf', pagesize=letter,
                         leftMargin=0.55*inch, rightMargin=0.55*inch,
