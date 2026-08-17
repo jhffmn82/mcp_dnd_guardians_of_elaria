@@ -1559,75 +1559,175 @@ B = [
              "through, breathing once a minute, patient beyond patience, and bleeding from a "
              "wound somebody put there on purpose.*"),
 
-    ("h2", "Rootrot Crawler"),
+    ("h2", 'Rotbloom'),
     ("enemy_cards", [{
-        "name": "Rootrot Crawler",
-        "sub": "Small aberration (corrupted beast), unaligned \u2726 CR 1/2 (100 XP) \u2726 Session 8",
-        "img": "assets/monsters/rootrot_crawler.png", "img_w": 2.6,
+        "name": 'Rotbloom',
+        "sub": 'Small plant (corrupted), unaligned ✦ CR 1/2 (100 XP) ✦ Session 8',
+        "img": 'assets/monsters/rotbloom.png', "img_w": 2.4,
         "stats": [
-            "**AC** 13 (rotted hide)  **HP** 22 (4d6 + 8)  **Speed** 30 ft., burrow 20 ft.",
-            "**STR** 12  **DEX** 14  **CON** 14  **INT** 3  **WIS** 8  **CHA** 3",
-            "**Resist** poison \u2726 **Imm.** (cond) poisoned",
-            "**Senses** blindsight 30 ft., tremorsense 30 ft., passive Perception 9",
-            "**Challenge** 1/2 (100 XP)",
+            '**AC** 12  **HP** 22 (4d6 + 8)  **Speed** 25 ft.',
+            '**STR** 10  **DEX** 12  **CON** 14  **INT** 4  **WIS** 8  **CHA** 6',
+            '**Resist** poison ✦ **Imm.** (cond) blinded, deafened, poisoned',
+            '**Senses** blindsight 30 ft., passive Perception 9',
+            '**Challenge** 1/2 (100 XP)',
         ],
         "traits": [
-            ("Knit", "At the start of its turn, if it took damage since its last turn and is not at 0 HP, it "
-             "regains 5 hit points. It cannot knit if it has taken radiant damage, or been hit by Cleansing "
-             "Edge, since its last turn."),
-            ("Burrow Ambush", "Advantage on attacks against creatures that have not yet acted in this combat."),
+            ('Re-Bloom', 'At the start of its turn, if it took damage since its last turn and is not at 0 HP, it regains 5 hit points. It cannot re-bloom if it has taken radiant damage, or been hit by Cleansing Edge, since its last turn.'),
+            ('Still Smiling', 'It cannot be frightened, and its face never changes, whatever is happening to it.'),
         ],
         "actions": [
-            ("Claw", "*Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 7 (2d4 + 2) slashing."),
-            ("Rot Spray (Recharge 6)", "15-ft cone, DC 12 Constitution save, 10 (3d6) poison, half on a save."),
+            ('Cap Slam', '*Melee Weapon Attack:* +3 to hit, reach 5 ft. *Hit:* 6 (2d4 + 1) bludgeoning.'),
+            ('Spore Puff (Recharge 5-6)', '10-ft cone, DC 12 Constitution save, 7 (2d6) poison and poisoned until the end of its next turn; half and no poisoning on a success.'),
         ],
     }]),
 
-    ("h2", "Chime Warden"),
+    ("h2", 'Mossmite'),
     ("enemy_cards", [{
-        "name": "Chime Warden",
-        "sub": "Medium elemental (Plane of Earth), unaligned \u2726 CR 3 (700 XP) \u2726 Session 8",
-        "img": "assets/monsters/chime_warden.png", "img_w": 2.6,
+        "name": 'Mossmite',
+        "sub": 'Tiny beast (corrupted), unaligned ✦ CR 1/8 (25 XP) ✦ Session 8',
+        "img": 'assets/monsters/mossmite.png', "img_w": 2.2,
         "stats": [
-            "**AC** 16 (crystal)  **HP** 45 (6d8 + 18)  **Speed** 25 ft.",
-            "**STR** 16  **DEX** 10  **CON** 16  **INT** 6  **WIS** 14  **CHA** 8",
-            "**Resist** piercing \u2726 **Vulnerable** thunder",
-            "**Imm.** poison \u2726 (cond) charmed, exhaustion, paralyzed, petrified, poisoned",
-            "**Senses** tremorsense 60 ft., passive Perception 12",
-            "**Challenge** 3 (700 XP)",
+            '**AC** 13  **HP** 7 (2d4 + 2)  **Speed** 40 ft., climb 40 ft.',
+            '**STR** 6  **DEX** 16  **CON** 12  **INT** 2  **WIS** 10  **CHA** 4',
+            '**Senses** blindsight 30 ft., passive Perception 10',
+            '**Challenge** 1/8 (25 XP)',
         ],
         "traits": [
-            ("Resonant", "Whenever it takes thunder damage it is stunned until the end of its next turn."),
-            ("Stillness Ends It", "If no creature within 30 ft. has attacked, shouted, or cast a spell with a "
-             "verbal component since the Warden's last turn, it stands down and stops attacking. It does not "
-             "resume unless attacked. This is the intended solution to the encounter."),
+            ('Skitter', 'It does not provoke opportunity attacks.'),
+            ('Pack Nerve', 'Advantage on attacks against a creature if another Mossmite is within 5 ft. of it.'),
         ],
         "actions": [
-            ("Chime Strike", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 9 (2d6 + 3) bludgeoning "
-             "plus 4 (1d8) thunder."),
-            ("Ringing Note (Recharge 5-6)", "20-ft radius, DC 13 Constitution save, 13 (3d8) thunder and "
-             "deafened for 1 minute; half damage and no deafness on a success."),
+            ('Nip', '*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 5 (1d4 + 3) piercing.'),
         ],
     }]),
 
-    ("h2", "Shardling"),
+    ("h2", 'Chimestone'),
     ("enemy_cards", [{
-        "name": "Shardling",
-        "sub": "Tiny construct (corrupted), unaligned \u2726 CR 1/4 (50 XP) \u2726 Session 8",
-        "img": "assets/monsters/shardling.png", "img_w": 2.4,
+        "name": 'Chimestone',
+        "sub": 'Medium elemental (Plane of Earth), unaligned ✦ CR 3 (700 XP) ✦ Session 8',
+        "img": 'assets/monsters/chimestone.png', "img_w": 2.6,
         "stats": [
-            "**AC** 14  **HP** 13 (3d4 + 6)  **Speed** 30 ft., climb 30 ft.",
-            "**STR** 8  **DEX** 16  **CON** 14  **INT** 2  **WIS** 8  **CHA** 2",
-            "**Imm.** poison, psychic \u2726 (cond) blinded, charmed, deafened, exhaustion, poisoned",
-            "**Senses** blindsight 30 ft., passive Perception 9",
-            "**Challenge** 1/4 (50 XP)",
+            '**AC** 16 (rock plate)  **HP** 52 (7d8 + 21)  **Speed** 25 ft.',
+            '**STR** 18  **DEX** 8  **CON** 16  **INT** 5  **WIS** 12  **CHA** 6',
+            '**Resist** piercing, slashing ✦ **Vulnerable** thunder',
+            '**Imm.** poison ✦ (cond) charmed, exhaustion, frightened, poisoned',
+            '**Senses** tremorsense 60 ft., passive Perception 11',
+            '**Challenge** 3 (700 XP)',
         ],
         "traits": [
-            ("Shatterburst", "When it drops to 0 hit points, each creature within 5 ft. makes a DC 12 "
-             "Dexterity save or takes 5 (2d4) slashing damage."),
+            ('Resonant Body', 'Whenever it takes thunder damage it is **stunned** until the end of its next turn, and it takes **double damage** from every source while stunned. This is how you beat them.'),
+            ('Struck Chord', "A creature can use an action to strike one of the reef's spires (DC 13 Athletics). Every Chimestone within 30 ft. makes a DC 14 Constitution save or is stunned as above. The striker takes 1d6 thunder from standing that close."),
         ],
         "actions": [
-            ("Glass Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 6 (1d6 + 3) slashing."),
+            ('Multiattack', 'Two Crystal Rams.'),
+            ('Crystal Ram', '*Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 11 (2d6 + 4) bludgeoning.'),
+            ('Shard Volley', '*Ranged Weapon Attack:* +6 to hit, range 40 ft. *Hit:* 9 (2d8) piercing.'),
+        ],
+    }]),
+
+    ("h2", 'Shardwing'),
+    ("enemy_cards", [{
+        "name": 'Shardwing',
+        "sub": 'Small elemental (Plane of Earth), unaligned ✦ CR 1 (200 XP) ✦ Session 8',
+        "img": 'assets/monsters/shardwing.png', "img_w": 2.4,
+        "stats": [
+            '**AC** 14  **HP** 22 (5d6 + 5)  **Speed** 10 ft., fly 50 ft.',
+            '**STR** 8  **DEX** 18  **CON** 12  **INT** 4  **WIS** 12  **CHA** 6',
+            '**Vulnerable** thunder ✦ **Imm.** poison ✦ (cond) poisoned, prone',
+            '**Senses** tremorsense 30 ft., passive Perception 11',
+            '**Challenge** 1 (200 XP)',
+        ],
+        "traits": [
+            ('Glide', 'It can fly at full speed without provoking opportunity attacks from creatures it starts its turn adjacent to.'),
+        ],
+        "actions": [
+            ('Dive', '*Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 9 (2d6 + 2) slashing, plus an extra 1d6 if it moved at least 30 ft. straight toward the target first.'),
+            ('Shard Spit', '*Ranged Weapon Attack:* +6 to hit, range 60 ft. *Hit:* 7 (1d10 + 2) piercing.'),
+        ],
+    }]),
+
+    ("h2", 'Cinderoll'),
+    ("enemy_cards", [{
+        "name": 'Cinderoll',
+        "sub": 'Small elemental (corrupted), unaligned ✦ CR 1/2 (100 XP) ✦ Session 8',
+        "img": 'assets/monsters/cinderoll.png', "img_w": 2.2,
+        "stats": [
+            '**AC** 15 (glassy coal)  **HP** 18 (4d6 + 4)  **Speed** 40 ft. (rolling)',
+            '**STR** 12  **DEX** 14  **CON** 12  **INT** 3  **WIS** 8  **CHA** 3',
+            '**Imm.** fire, poison ✦ (cond) blinded, charmed, deafened, poisoned',
+            '**Senses** blindsight 60 ft., passive Perception 9',
+            '**Challenge** 1/2 (100 XP)',
+        ],
+        "traits": [
+            ('Rolling Charge', 'If it moves at least 20 ft. straight toward a target before hitting it, the attack deals an extra 3 (1d6) damage and the target makes a DC 12 Strength save or is knocked prone.'),
+            ('Burst', 'At 0 hit points it cracks open: each creature within 10 ft. makes a DC 12 Dexterity save or takes 7 (2d6) fire. They arrive in packs, so a chain reaction is very much on the table.'),
+        ],
+        "actions": [
+            ('Slam', '*Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 7 (2d4 + 2) bludgeoning plus 3 (1d6) fire.'),
+        ],
+    }]),
+
+    ("h2", 'Glassling'),
+    ("enemy_cards", [{
+        "name": 'Glassling',
+        "sub": 'Tiny construct (spawned by the spike), unaligned ✦ CR 1/4 (50 XP) ✦ Session 8',
+        "img": 'assets/monsters/glassling.png', "img_w": 2.2,
+        "stats": [
+            '**AC** 14  **HP** 10 (3d4 + 3)  **Speed** 30 ft., climb 30 ft.',
+            '**STR** 8  **DEX** 16  **CON** 12  **INT** 1  **WIS** 6  **CHA** 1',
+            '**Imm.** poison, psychic ✦ (cond) blinded, charmed, deafened, frightened, poisoned',
+            '**Senses** blindsight 30 ft., passive Perception 8',
+            '**Challenge** 1/4 (50 XP)',
+        ],
+        "traits": [
+            ('Spike-Born', "The spike in Groudon's back creates one Glassling at the start of each of his turns. **When the spike is destroyed, every Glassling collapses into ordinary sand at once.**"),
+            ('Shatterburst', 'At 0 hit points, each creature within 5 ft. makes a DC 12 Dexterity save or takes 5 (2d4) slashing.'),
+        ],
+        "actions": [
+            ('Glass Bite', '*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 6 (1d6 + 3) slashing.'),
+        ],
+    }]),
+
+    ("h2", 'Thumpaw'),
+    ("enemy_cards", [{
+        "name": 'Thumpaw',
+        "sub": 'Large beast (Plane of Earth), unaligned ✦ CR 3 (700 XP) ✦ random encounters only',
+        "img": 'assets/monsters/thumpaw.png', "img_w": 2.8,
+        "stats": [
+            '**AC** 14 (mossy hide)  **HP** 76 (8d10 + 32)  **Speed** 30 ft., burrow 30 ft.',
+            '**STR** 20  **DEX** 8  **CON** 18  **INT** 3  **WIS** 12  **CHA** 6',
+            '**Senses** tremorsense 60 ft., passive Perception 13',
+            '**Challenge** 3 (700 XP)',
+        ],
+        "traits": [
+            ('Not Actually Angry', 'It never pursues and it never finishes a downed creature. It is in the way, and it was there first.'),
+            ('Immovable', 'Advantage on saves and checks against being moved, and it cannot be knocked prone.'),
+        ],
+        "actions": [
+            ('Multiattack', 'Two Shovel Slams.'),
+            ('Shovel Slam', '*Melee Weapon Attack:* +8 to hit, reach 10 ft. *Hit:* 14 (2d8 + 5) bludgeoning.'),
+        ],
+    }]),
+
+    ("h2", 'Gleamoth Swarm'),
+    ("enemy_cards", [{
+        "name": 'Gleamoth Swarm',
+        "sub": 'Medium swarm of tiny beasts, unaligned ✦ CR 1 (200 XP) ✦ random encounters only',
+        "img": 'assets/monsters/gleamoth_swarm.png', "img_w": 3.0,
+        "stats": [
+            '**AC** 12  **HP** 26 (4d8 + 8)  **Speed** 5 ft., fly 40 ft. (hover)',
+            '**STR** 4  **DEX** 14  **CON** 14  **INT** 1  **WIS** 10  **CHA** 4',
+            '**Resist** bludgeoning, piercing, slashing ✦ **Vulnerable** fire, thunder',
+            '**Imm.** (cond) charmed, frightened, grappled, prone, restrained, stunned',
+            '**Senses** blindsight 20 ft., passive Perception 10',
+            '**Challenge** 1 (200 XP)',
+        ],
+        "traits": [
+            ('Drawn to Warmth', 'It always moves toward the warmest or brightest thing it can sense, which is the Essence Sphere. If Lilly is carrying it, the swarm comes for her every turn.'),
+            ('Swarm', "It can occupy another creature's space and move through any opening large enough for a single moth."),
+        ],
+        "actions": [
+            ('Smother', '*Melee Weapon Attack:* +4 to hit, reach 0 ft., one creature in its space. *Hit:* 10 (4d4) piercing, or 5 (2d4) at half hit points or fewer, and the target is **blinded** until the end of its next turn.'),
         ],
     }]),
 
@@ -1637,7 +1737,7 @@ B = [
         "sub": "Large aberration (corrupted guardian-beast), unaligned \u2726 CR 6 (2,300 XP) \u2726 Session 8",
         "img": "assets/monsters/glass_weeper.png", "img_w": 3.0,
         "stats": [
-            "**AC** 16 (black glass)  **HP** 105 (10d10 + 50)  **Speed** 30 ft.",
+            "**AC** 16 (black glass)  **HP** 115 (11d10 + 55)  **Speed** 20 ft.",
             "**STR** 18  **DEX** 8  **CON** 20  **INT** 4  **WIS** 12  **CHA** 5",
             "**Resist** bludgeoning, piercing, slashing from nonmagical weapons",
             "**Imm.** poison \u2726 (cond) charmed, frightened, poisoned",

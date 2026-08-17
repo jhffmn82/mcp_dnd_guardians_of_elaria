@@ -30,29 +30,52 @@ House style: no em dashes. Content kid-safe, prose at young-adult level.
 
 The party moves as **one token**. On their turn a player rolls **1d6** and moves that many spaces, and whoever is holding the token rotates each roll so every kid gets to move it.
 
-They land on a colour and it resolves:
+They land on a colour and it resolves. **Read the die they just moved with: EVEN or ODD picks which of the two outcomes happens.** No tables to look up, no second roll.
 
-| Dot | Colour | What happens |
-|---|---|---|
-| **Move** | slate blue | Nothing. Keep going. Breathe. |
-| **Encounter** | garnet | Roll on the Encounter table below. |
-| **Boon** | moss | Roll on the Boon table. Underroot gives something back. |
-| **Hazard** | ochre | Roll on the Hazard table. The plane is not attacking, it is simply enormous. |
-| **Wild** | amethyst, marked ! | Roll on the Wild table. Anything can happen and usually does. |
+| Dot | Colour | Even | Odd |
+|---|---|---|---|
+| **Move** | slate blue | Nothing. Keep going. | Nothing. Keep going. |
+| **Encounter** | garnet | **Thumpaw** blocks the path | **Gleamoth swarm** |
+| **Boon** | moss | **The Deepwater Spring** | **The Sandshrew's shortcut** |
+| **Hazard** | ochre | **Sinkloam** | **Rockfall** |
+| **Wild** | amethyst, ! | **The Reef Answers** | **The Guardian's Dream** |
+
+All eight are written out in full below with their art.
 
 **The four numbered locations are not dots.** They are fixed story stops: the token stops at each one regardless of movement remaining, the beat plays, and movement resumes next turn. **The Rift Gate is the arrival and has no fight.**
+
+### Design principle: every encounter is a FIGHT
+
+The kids come to this table to fight things. Objectives, levers and clever plays exist to make the fighting *better*, and they must never be an off-ramp that skips it. Nothing in this session can be talked down, waited out, or avoided. The levers below all do the same thing: they turn a grinding fight into a satisfying one, and finding them is the reward.
+
+### The creature roster
+
+Ten creatures, and **every scripted fight uses two types** so no encounter is a single wall of the same thing.
+
+| Fight | Bruiser | Pressure |
+|---|---|---|
+| 1. Mosslight Landing | **Rotblooms** (re-bloom until burned) | **Mossmites** (fast, weak, swarm) |
+| 2. Chime Reef | **Chimestones** (armoured, stun on thunder) | **Shardwings** (flying, dive, ranged) |
+| 3. Glassed Gallery | **Glass Weeper** (regenerates) | **Cinderolls** (roll in and detonate) |
+| 4. Groudon's Hollow | **GROUDON** (the spike) | **Glasslings** (spawned BY the spike) |
+
+**Random encounters only:** **Thumpaw** and the **Gleamoth swarm**. These two never appear at a scripted fight and are the only creatures the party meets purely by luck, which makes a garnet dot feel different from a story beat instead of feeling like filler.
+
+**Glasslings matter mechanically.** The spike spawns one at the start of each of Groudon's turns. That is the pressure that stops the party from ignoring the spike and plinking Groudon: the longer the spike lives, the more little glass things are chewing on them. Break it and every remaining Glassling collapses instantly, which is a fantastic moment.
 
 ### The run is FOUR SCRIPTED FIGHTS
 
 The shape of the evening is fixed, and the dots are pacing between the fixed points:
 
-| # | Where | Fight | Purpose |
-|---|---|---|---|
-| **1** | Mosslight Landing | Rootrot Crawlers | Teaches the rule: corruption knits back unless Stabby burns it. |
-| **2** | Chime Reef | Chime Wardens | The fight they can end by *not* fighting. |
-| | | **SHORT REST** | Immediately after the reef. Call it out loud: Hit Dice spent, Stabby regains Focus, Ursa regains a Wild Shape, Lilly gets her Aether Ward back. |
-| **3** | The Glassed Gallery | Glass Weeper and Shardlings | Stabby's proving ground. |
-| **4** | Groudon's Hollow | The Guardian | The rescue. |
+| # | Where | Who | Difficulty | Purpose |
+|---|---|---|---|---|
+| **1** | Mosslight Landing | 6 Rotblooms + 6 Mossmites | warm-up, but it runs long | Teaches the rule: corruption re-blooms unless Stabby burns it. |
+| **2** | Chime Reef | 3 Chimestones + 3 Shardwings | **hard**, or easy if they use thunder | The fight with a lever in it. |
+| | | **SHORT REST** | | Immediately after the reef. Call it out loud: Hit Dice spent, Stabby's Focus back, Ursa's Wild Shape back, Lilly's Aether Ward back. |
+| **3** | The Glassed Gallery | Glass Weeper + 4 Cinderolls | **hardest before the boss** | Stabby's proving ground. |
+| **4** | Groudon's Hollow | Groudon + Glasslings | boss, but see The Spike | The rescue. |
+
+> **A note on the numbers.** Fights 2 and 3 are deliberately above a "deadly" budget on paper, and both have a lever that collapses them: **thunder stuns a Chimestone and doubles all damage against it**, and **tending the roots strips the Weeper's regeneration**. A party that finds the lever wins comfortably. A party that ignores it is in a real fight. That gap is the fun, so do not soften either one before the players have had a chance to be clever.
 
 A garnet Encounter dot between these is **small pressure**, two or three weak things that cost a little resource and no more. Do not let a dot roll become a fifth big fight; the four scripted ones are the session.
 
@@ -95,13 +118,18 @@ A garnet Encounter dot between these is **small pressure**, two or three weak th
 
 **Ursa's Mark of Handling works on it** and should be the moment his player realises the plane's wildlife is not the enemy.
 
-### Encounter 1: the Rootrot Crawlers
+### Encounter 1: the Rotblooms
 
-The pretty part of Underroot has a wound in it. As they cross the hollow, the moss on the far mounds is **grey and wet and wrong**, and the things that come out of it are what the corruption makes of small animals.
+The pretty part of Underroot has a wound in it. On the far mounds the moss is **grey and wet and wrong**, and standing in it, swaying, are six little flower-creatures.
 
-**5 Rootrot Crawlers** (statblock below). Badger-sized, hunched, wrong-jointed, made of rot in the shape of something that used to burrow.
+They were lovely a month ago. You can still see it: round soft bodies, stubby arms, big round flower-caps that used to be gold. The caps are grey now, and slack, and they leak. When they notice the party they all turn at once, and their faces are still smiling, because their faces cannot do anything else.
 
-- **Design intent: this fight exists to hand Stabby the session.** The Crawlers knit themselves back together every round and ordinary weapons cannot finish them. **Cleansing Edge is the answer**, and it is the only one the party has. Let them flail for a round, let Lilly and Ursa watch their damage undo itself, then let Stabby ignite and cut one and have it *stay* cut.
+**6 Rotblooms and 6 Mossmites** (statblocks below). The Mossmites boil out of the moss the moment the first Rotbloom is struck: tiny, fast, six-legged, one enormous eye each, individually harmless and collectively a nuisance that keeps everyone honest while the real problem re-blooms behind them.
+
+> **Read aloud.** Ghostbloom makes a sound you have never heard her make. She knows what these are. They are almost the same as her.
+
+- **Design intent: this fight exists to hand Stabby the session.** Rotblooms re-bloom every round and ordinary weapons cannot finish them: cut one down and it swells back up out of its own cap. **Cleansing Edge is the answer** and it is the only one the party has. Let them flail for a round, let Lilly and Ursa watch their damage undo itself, then let Stabby ignite and cut one and have it *stay* cut.
+- **Six of them, and they hit in a cloud.** This is a proper scrap, not a speed bump: Spore Puff means the whole party is making saves, Puff and Ghostbloom are in the mix, and everyone gets three or four rounds of swinging.
 - **Say it out loud when it lands:** he spent a year on a mountain learning to burn corruption out of the ground, and this is the first time anyone else has seen it work. His player has been carrying that backstory alone since the reading. Give him the beat.
 - **The tell:** they do not attack the Sandshrew, and it does not run from them. It hides from the *party*. Corruption does not eat its own.
 
@@ -123,14 +151,18 @@ The pretty part of Underroot has a wound in it. As they cross the hollow, the mo
 - **Lilly can read the growth pattern** with an Arcana check: the crystals are growing *toward* something deeper in, the way plants grow toward light. Whatever is down there, the whole reef is leaning on it. (It is Groudon.)
 - **A quiet gift.** If anyone spends a turn just listening, Elaria's presence is faintly here, in the chord. Ursa's player may notice it is the same seven-note shape as the Havenmoor bells.
 
-### Encounter 2: the Chime Wardens
+### Encounter 2: the Chimestones
 
-Three crystal formations detach from the reef and stand up. They are not corrupted. **They are the reef's immune system and the party is the infection**, because the party is loud and warm and came in through a hole.
+Four boulders in the shallows unfold legs and stand up.
 
-**3 Chime Wardens** (statblock below).
+They are squat and heavy and armoured in deep blue-black rock, with blunt jaws and small bright amber eyes, and jagged orange crystals growing out of their backs and shoulders like a struck chord frozen in place. They are **not corrupted**. They are the reef's immune system, and the party is loud and warm and came in through a hole.
 
-- **They can be talked down.** This is the important one. They stop attacking the moment the party goes still and quiet: no attacks, no shouting, no spells with verbal components, for one full round. Any player who works that out ends the fight, and it is a genuinely better outcome than killing them.
-- If the party fights it out, they win, and the reef is quieter afterward, and Ghostbloom is sad about it. Let that land without a lecture.
+**3 Chimestones and 3 Shardwings** (statblocks below). The Chimestones are the wall. The Shardwings are the reason nobody gets to stand still: pale crystal darts the size of hawks that dive, spit shards from sixty feet, and are almost impossible to pin down. They are also **vulnerable to thunder**, so the same lever works on the whole encounter.
+
+- **This is a real fight and they are tough.** AC 16, they hit hard, and they resonate: every round the whole reef rings louder and everybody's ears hurt.
+- **The clever play does not end the fight, it wins it.** Thunder damage makes a Chimestone ring itself apart: any thunder damage **stuns it until the end of its next turn**, and it takes **double damage** while stunned. Lilly's Thunderwave and Shatter, Stabby's Nichirin against the crystal, and Ursa's Thunderwave all turn one of these from a wall into a free kill.
+- **The reef itself is a weapon.** Anyone can spend an action to strike a big crystal spire (DC 13 Athletics): the note rolls out and **every Chimestone in 30 ft. must save or be stunned**. Reward the player who thinks of it. Let them bring the roof down on the last one if they earn it.
+- **The trade-off that keeps it honest:** the ringing hurts the party too. Anyone who uses the spire trick takes 1d6 thunder themselves. Nobody minds.
 
 ---
 
@@ -152,16 +184,21 @@ Three crystal formations detach from the reef and stand up. They are not corrupt
 - **Lilly's Sphere is drinking.** It is visibly brighter here, and it is gathering fastest where the damage is worst. She can work out that the loose essence bleeding out of this wound is exactly what her Sphere was built to collect.
 - **The dead giveaway:** the cracks all radiate outward from one direction. Deeper in. Toward the Hollow.
 
-### Encounter 3: the Glass Weeper and its shards
+### Encounter 3: the Glass Weeper and the Cinderolls
 
-Something is still standing in the gallery. It was a creature of this plane once, one of the big slow root-tenders, and the corruption caught it mid-stride and turned it to the same black glass. It is still trying to do its job.
+Something is still standing in the gallery.
 
-**1 Glass Weeper + 4 Shardlings** (statblocks below).
+It was one of the big slow root-tenders once: a long-necked creature that anchored itself in the soil and swayed, with a crown of soft fronds it used to comb the roots clean. The corruption caught it mid-stride and turned all of it to black glass, fronds and all, and it is **still trying to do its job**, sweeping shattered glass fronds through glassed roots that cannot feel it.
 
-- **The Weeper is not evil and it is not really fighting.** It is in pain and it lashes at anything warm. Its attacks are wild and grieving. If the party works out that it is trying to *tend* the glassed roots, they can end the fight by helping it (Nature or Medicine, or any character who tries to heal the roots rather than the creature).
+Around its feet, rolling in fast, are lumps of black glassy coal the size of footballs, each with one furious orange eye.
+
+**1 Glass Weeper + 4 Cinderolls** (statblocks below), the Cinderolls arriving **two at a time** so the pressure never stops but never quite swamps them.
+
+- **This is the big fight of the run before the boss, and it should be hard.** The Weeper hits for real, it regenerates 10 a round, and the Cinderolls keep rolling in and detonating.
+- **The clever play strips its armour instead of ending the fight.** The Weeper is bound to the glassed roots it is tending. Any character who spends an action clearing or healing the roots nearby (DC 14 Nature or Medicine, or any healing spell aimed at the roots) makes the Weeper **lose its regeneration for one round** and gives everyone **advantage on attacks against it until the start of their next turn**. Two or three of those and the fight tips hard. It never ends the encounter: it makes the party feel brilliant while they finish it.
 - **This is Stabby's proving ground.** The Weeper regenerates 10 a round and the party cannot out-damage it. Only radiant, force, or **Cleansing Edge** shuts that off, and Stabby is the reliable source. He is the reason this fight is winnable and everyone at the table should be able to see it.
 - **The gallery itself is his too.** After the fight, if he walks the glassed roots with his breath lit, the corruption recoils from the Nichirin exactly as the blight did at home. He cannot heal the gallery, it is far too big, but he can burn a clean path through it, and the party walks out of the wound on a road he made. That image is the whole point of his year.
-- **If they kill it**, it shatters, and under the glass is a small ordinary creature that has been dead for two years. That is the moment the session turns from an adventure into a rescue.
+- **When it falls** it shatters, and inside the glass, curled up where the heart would be, is a small ordinary creature that has been dead for two years. That is the moment the session turns from an adventure into a rescue, and it is the last beat before Groudon.
 
 ---
 
@@ -187,6 +224,12 @@ Something is still standing in the gallery. It was a creature of this plane once
 - **The win condition is the spike.** It is a hard target on his back: reachable by climbing (Athletics/Acrobatics), by flight (Stabby's Sash, Ursa's Starry Form), or by a called shot at range with disadvantage. It has **AC 17 and 60 hit points**, and it is **immune to everything except radiant, force, and Cleansing Edge**.
 - **When the spike breaks, the fight ends instantly.** Not "he has 40 HP left." It ends.
 
+### The Glasslings
+
+**The spike creates one Glassling at the start of each of Groudon's turns**: a cat-sized scuttling thing of black glass that drops off his back and goes for the nearest warm body. They are weak, they explode when killed, and they never stop coming.
+
+They exist to answer the obvious question, which is *why not just ignore the spike and plink the big guy?* Because the longer the spike lives, the more of these are chewing on the party. **When the spike breaks, every Glassling on the field collapses into sand at once**, and that is a genuinely great moment: the whole board clears in a heartbeat.
+
 **This is the shape of the encounter:** survive a very large angry mountain long enough for somebody to get up his back and break the thing hurting him. Every character has a role and each should get their moment:
 
 - **Stabby is the one who ends this, and the whole session has been building to it.** Speed 65 ignited, Step of the Wind to close, and the Nichirin is one of only three things in the world that can touch the spike. He climbs a mountain that is trying to shake him off and he cuts the corruption out of a god. **This is his moment. Do not let anybody else take it unless his player hands it over.** If the dice go badly, let Ursa's summon pin Groudon or Lilly's Flash of Genius rescue the climb check, so the last blow is still his.
@@ -206,121 +249,210 @@ Full statblock below. He is played as **a natural disaster with a wounded animal
 
 ---
 
-# The Dot Tables
+# The Eight Dot Events
 
-Roll **1d6** on the matching table.
-
-## Encounter (garnet)
-
-| d6 | What comes |
-|---|---|
-| 1 | **2 Rootrot Crawlers**, dug out of the wall behind them. |
-| 2 | **1 Chime Warden**, alone and confused, far from the reef. Can be calmed as above. |
-| 3 | **3 Shardlings**, skittering out of a glassed crack. |
-| 4 | **A grubfall.** 6 harmless fat glowing grubs drop on them from the ceiling. No fight, no damage, maximum screaming. Free comedy. |
-| 5 | **2 Rootrot Crawlers and 2 Shardlings**, hunting together, which should not happen and tells them the corruption is organising. |
-| 6 | **A Deep Tremor.** No enemy. The ground bucks: DC 14 Dex save or prone, and everyone loses their next move. Something enormous turned over in its sleep. |
-
-## Boon (moss)
-
-| d6 | What Underroot gives |
-|---|---|
-| 1 | **Mosslight.** A patch of glowing moss they can carry. Bright light 20 ft for the rest of the run, and it never goes out. |
-| 2 | **Deepwater.** A clear spring. Everyone regains 1 Hit Die and clears one level of exhaustion. |
-| 3 | **Rootbread.** Dense, sweet, faintly gold fungus. Three rations that each grant 2d4 temporary hit points when eaten. |
-| 4 | **A mote, loose.** The Sphere catches it. Lilly regains one expended spell slot of her choice. |
-| 5 | **The Sandshrew helps.** It digs open a shortcut. Advance the token **3 spaces** free. (If they were cruel to it earlier, it watches them take the long way instead.) |
-| 6 | **A quiet minute.** Genuinely nothing happens and nothing is hunting them. Everybody catches their breath: the party may take a **short rest** here safely. |
-
-## Hazard (ochre)
-
-| d6 | What the plane does, without malice |
-|---|---|
-| 1 | **Breath.** The floor swells hard. DC 13 Dex save or prone. |
-| 2 | **Sinkloam.** The ground softens. DC 13 Strength save or restrained until they spend an action pulling free. |
-| 3 | **Sporecloud.** DC 13 Constitution save or poisoned for 10 minutes. |
-| 4 | **Rockfall.** DC 14 Dex save, 2d10 bludgeoning on a fail, half on a success. |
-| 5 | **Glassdust.** A drifting haze of powdered black glass. DC 13 Con save or 1d6 slashing per round for 3 rounds unless they cover their faces. Ghostbloom is *vulnerable* to this and the party has to protect her. |
-| 6 | **The long dark.** All light sources gutter for one minute. Nothing attacks. It is simply, completely dark, and they have to decide whether to keep moving. |
-
-## Wild (amethyst)
-
-| d6 | What Underroot does that nobody expected |
-|---|---|
-| 1 | **The reef answers.** A crystal chord rolls through the tunnels. Everyone gains 2d8 temporary hit points and Ghostbloom sings back. |
-| 2 | **A root moves.** The path rearranges itself. Move the token **1d4 spaces backward**; the party is not lost, the plane simply changed its mind. |
-| 3 | **Old bones.** The remains of something that came through a rift a very long time ago, wearing armour nobody recognises. One trinket of the DM's choice, and a very old question. |
-| 4 | **The idol screams.** Only Stabby hears it, and only for a second. He takes no damage. He is deeply unsettled. *(Door C seed. Do not explain.)* |
-| 5 | **Elaria's sign.** A seven-pointed star, grown naturally in the moss, exactly like the cairn stones. Ursa may use one **Omen Dream** and immediately regain it. |
-| 6 | **The Guardian's dream.** Everyone sees the same half-second vision: dry land rising out of an empty sea, made by something walking. They do not know what it means yet. It is Groudon remembering his own job. |
+**Even or odd on the movement die.** Each has a plate; art tags in brackets.
 
 ---
+
+## Encounter, EVEN: Thumpaw blocks the path  *(art: D1)*
+
+> A shape unfolds out of what you took for a boulder. It is the size of a cart horse, round and shaggy with matted brown moss growing over stone-grey hide, and it has hands like shovels. It looks at you with small patient eyes and does not move, because you are standing in the tunnel it was going to use.
+
+**1 Thumpaw.** It will not move and it is directly in the way, and when somebody inevitably prods it, it swings.
+
+- **This is a straight brawl and that is the point.** 76 hit points, two big slams a turn, no gimmick, no puzzle. Sometimes a table just wants to hit something large until it stops, and this is that.
+- It never pursues and it never finishes a downed hero. It is grumpy, not evil.
+- *(If the party genuinely tries to befriend it rather than fight it, DC 15 Animal Handling with advantage from Ursa's Mark will move it aside. Do not offer this. Let them think of it.)*
+
+## Encounter, ODD: the Gleamoth swarm  *(art: D2)*
+
+> The lights come round the corner before the sound does: forty pale green sparks drifting like blown seeds. They are moths, each the size of a hand, and every one of them is glowing, and they want the warmest thing in the tunnel, which is you.
+
+**3 Gleamoth Swarms.** Not corrupted, just hungry for heat.
+
+- They **blind and smother** rather than damage much, and they go for whoever is carrying light.
+- **Fire and thunder scatter them fast**; anything that hits an area is worth double here.
+- **The cost is the Sphere.** They are drawn to it hardest, so Lilly has the swarm on her the whole fight, which makes the party come to her.
+
+---
+
+## Boon, EVEN: the Deepwater Spring  *(art: D3)*
+
+> A crack in the wall, and inside it a still pool of water so clear that you can see forty feet down to the pale stones at the bottom. It is very cold, and it tastes like the air after lightning.
+
+Everyone regains **1 Hit Die** and clears **one level of exhaustion**. Ghostbloom glows brighter for an hour and is insufferable about it.
+
+## Boon, ODD: the Sandshrew's Shortcut  *(art: D4)*
+
+> Something small and yellow-brown is standing on a mound ahead of you, up on its back legs, watching. When it is sure you have seen it, it drops down and starts digging, very fast, and the tunnel it opens goes exactly the way you were trying to go.
+
+**Advance the token 3 spaces free.** If the party was unkind to it at Mosslight Landing, it watches them take the long way round instead, and that should sting.
+
+---
+
+## Hazard, EVEN: Sinkloam  *(art: D5)*
+
+> The floor stops being floor. It happens without a sound: one step is packed earth and the next is warm wet loam that comes up over your boots and keeps coming.
+
+Everyone makes a **DC 13 Strength save** or is **restrained**, spending an action to pull free. Heavy armour has disadvantage, so Lilly is the one in trouble and somebody has to go back for her.
+
+## Hazard, ODD: Rockfall  *(art: D6)*
+
+> Far above you, something enormous rolls over in its sleep, and the ceiling of the world lets go.
+
+**DC 14 Dexterity save**, **2d10 bludgeoning** on a fail, half on a success. The passage behind them is now blocked, which matters if anyone was planning to run.
+
+---
+
+## Wild, EVEN: the Reef Answers  *(art: D7)*
+
+> Somewhere far off, a single crystal note. Then another underneath it, and another, until the whole tunnel is ringing in a slow enormous chord you can feel in your ribs, and the moss on the walls lights up in time with it.
+
+Everyone gains **2d8 temporary hit points** and Ghostbloom sings back, badly, at the top of her voice. **This is a good place for the short rest** if the party has not taken it yet.
+
+## Wild, ODD: the Guardian's Dream  *(art: D8)*
+
+> For half a second all four of you see the same thing, and none of you asked for it.
+>
+> An empty sea under an empty sky, going on forever. And something walking through it, huge and slow and patient, and where it walks the water shoulders aside and dry land comes up behind it, steaming, new.
+>
+> Then it is gone and you are standing in a tunnel again.
+
+No mechanical effect. **They have just seen Groudon remember his own job**, and they will not understand it until they are standing in front of him. Ursa may **regain one spent Omen Dream**, because something just spoke to him and he does not know what.
 
 # New Statblocks
 
 Formatted to match `templates/build_bestiary.py`; add them there when approved.
 
-## Rootrot Crawler
-*Small aberration (corrupted beast), unaligned. CR 1/2 (100 XP)*
+## Rotbloom
+*Small plant (corrupted), unaligned. CR 1/2 (100 XP)*
 
-**AC** 13 (rotted hide) **HP** 22 (4d6 + 8) **Speed** 30 ft., burrow 20 ft.
-**STR** 12 **DEX** 14 **CON** 14 **INT** 3 **WIS** 8 **CHA** 3
-**Resist** poison **Imm.** (cond) poisoned
-**Senses** blindsight 30 ft., tremorsense 30 ft., passive Perception 9
+**AC** 12 **HP** 22 (4d6 + 8) **Speed** 25 ft.
+**STR** 10 **DEX** 12 **CON** 14 **INT** 4 **WIS** 8 **CHA** 6
+**Resist** poison **Imm.** (cond) blinded, deafened, poisoned
+**Senses** blindsight 30 ft., passive Perception 9
 **Challenge** 1/2
 
-***Knit.*** At the start of its turn, if it took damage since its last turn and is not at 0 HP, it regains 5 hit points. It cannot knit if it has taken radiant damage, or been hit by Cleansing Edge, since its last turn.
-***Burrow Ambush.*** Advantage on attacks against creatures that have not acted yet this combat.
+***Re-Bloom.*** At the start of its turn, if it took damage since its last turn and is not at 0 HP, it regains 5 hit points. It cannot re-bloom if it has taken radiant damage, or been hit by Cleansing Edge, since its last turn.
+***Still Smiling.*** It cannot be frightened, and its face never changes, whatever is happening to it.
 
-**Claw.** *Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 7 (2d4 + 2) slashing.
-**Rot Spray (Recharge 6).** 15-ft cone, DC 12 Con save, 10 (3d6) poison damage, half on a success.
+**Cap Slam.** *Melee Weapon Attack:* +3 to hit, reach 5 ft. *Hit:* 6 (2d4 + 1) bludgeoning.
+**Spore Puff (Recharge 5-6).** 10-ft cone, DC 12 Constitution save, 7 (2d6) poison and poisoned until the end of its next turn; half and no poisoning on a success.
 
-## Chime Warden
+## Chimestone
 *Medium elemental (Plane of Earth), unaligned. CR 3 (700 XP)*
 
-**AC** 16 (crystal) **HP** 45 (6d8 + 18) **Speed** 25 ft.
-**STR** 16 **DEX** 10 **CON** 16 **INT** 6 **WIS** 14 **CHA** 8
-**Resist** piercing **Vuln.** thunder
-**Imm.** poison ✦ (cond) charmed, exhaustion, paralyzed, petrified, poisoned
-**Senses** tremorsense 60 ft., passive Perception 12
+**AC** 16 (rock plate) **HP** 52 (7d8 + 21) **Speed** 25 ft.
+**STR** 18 **DEX** 8 **CON** 16 **INT** 5 **WIS** 12 **CHA** 6
+**Resist** piercing, slashing **Vuln.** thunder
+**Imm.** poison ✦ (cond) charmed, exhaustion, frightened, poisoned
+**Senses** tremorsense 60 ft., passive Perception 11
 **Challenge** 3
 
-***Resonant.*** Whenever it takes thunder damage, it is **stunned** until the end of its next turn.
-***Stillness Ends It.*** If no creature within 30 ft. has attacked, shouted, or cast a spell with a verbal component since the Warden's last turn, it stops attacking and stands down. It will not resume unless attacked again. **This is the intended solution.**
+***Resonant Body.*** Whenever it takes **thunder damage** it is **stunned** until the end of its next turn, and it takes **double damage** from every source while stunned. This is the intended way to beat them and it should feel devastating.
+***Struck Chord.*** A creature can use an action to strike one of the reef's large spires (DC 13 Athletics). Every Chimestone within 30 ft. makes a DC 14 Constitution save or is stunned as above. The striker takes 1d6 thunder damage from standing that close.
 
-**Chime Strike.** *Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 9 (2d6 + 3) bludgeoning plus 4 (1d8) thunder.
-**Ringing Note (Recharge 5-6).** 20-ft radius, DC 13 Con save, 13 (3d8) thunder and deafened 1 minute; half and no deafness on a success.
+**Multiattack.** Two Crystal Rams.
+**Crystal Ram.** *Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 11 (2d6 + 4) bludgeoning.
+**Shard Volley.** *Ranged Weapon Attack:* +6 to hit, range 40 ft. *Hit:* 9 (2d8) piercing.
 
-## Shardling
-*Tiny construct (corrupted), unaligned. CR 1/4 (50 XP)*
+## Cinderoll
+*Small elemental (corrupted), unaligned. CR 1/2 (100 XP)*
 
-**AC** 14 **HP** 13 (3d4 + 6) **Speed** 30 ft., climb 30 ft.
-**STR** 8 **DEX** 16 **CON** 14 **INT** 2 **WIS** 8 **CHA** 2
-**Imm.** poison, psychic ✦ (cond) blinded, charmed, deafened, exhaustion, poisoned
-**Senses** blindsight 30 ft., passive Perception 9
-**Challenge** 1/4
+**AC** 15 (glassy coal) **HP** 18 (4d6 + 4) **Speed** 40 ft. (rolling)
+**STR** 12 **DEX** 14 **CON** 12 **INT** 3 **WIS** 8 **CHA** 3
+**Imm.** fire, poison ✦ (cond) blinded, charmed, deafened, poisoned
+**Senses** blindsight 60 ft., passive Perception 9
+**Challenge** 1/2
 
-***Shatterburst.*** When it drops to 0 hit points, each creature within 5 ft. makes a DC 12 Dexterity save or takes 5 (2d4) slashing damage.
+***Rolling Charge.*** If it moves at least 20 ft. straight toward a target before hitting it, the attack deals an extra 3 (1d6) damage and the target makes a DC 12 Strength save or is knocked prone.
+***Burst.*** When it drops to 0 hit points it cracks open: each creature within 10 ft. makes a DC 12 Dexterity save or takes 7 (2d6) fire damage. **They come in packs and this is the point.** Let the party work out that killing one next to three others is a chain reaction, and let them enjoy it.
 
-**Glass Bite.** *Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 6 (1d6 + 3) slashing.
+**Slam.** *Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 7 (2d4 + 2) bludgeoning plus 3 (1d6) fire.
 
 ## Glass Weeper
-*Large aberration (corrupted guardian-beast), unaligned. CR 6 (2,300 XP)*
+*Large plant (corrupted guardian-beast), unaligned. CR 6 (2,300 XP)*
 
-**AC** 16 (black glass) **HP** 105 (10d10 + 50) **Speed** 30 ft.
+**AC** 16 (black glass) **HP** 115 (11d10 + 55) **Speed** 20 ft.
 **STR** 18 **DEX** 8 **CON** 20 **INT** 4 **WIS** 12 **CHA** 5
 **Resist** bludgeoning, piercing, slashing from nonmagical weapons
-**Imm.** poison ✦ (cond) charmed, frightened, poisoned
+**Imm.** poison ✦ (cond) charmed, frightened, poisoned, prone
 **Senses** blindsight 60 ft., passive Perception 11
 **Challenge** 6
 
 ***Glassbound.*** It regains 10 hit points at the start of its turn unless it took radiant or force damage, or was hit by Cleansing Edge, since its last turn.
-***Grieving.*** It has disadvantage on attacks against any creature that has not damaged it since the start of the Weeper's last turn. **It is not hunting them. It is lashing out.**
-***Tending.*** If a creature spends an action helping the glassed roots (DC 14 Nature, Medicine, or any healing magic spent on the roots rather than a creature), the Weeper loses its next turn and its AC drops by 2 permanently as it calms. **Three successes end the fight without a kill.**
+***Rooted.*** It cannot move more than 15 ft. from the glassed roots it is tending, and it never tries to.
+***Tend the Roots (the clever play).*** A creature can use an action to clear or heal the roots near it: DC 14 Nature or Medicine, or any healing spell cast on the roots rather than a creature. On a success the Weeper **loses Glassbound until the end of its next turn** and every attack against it has **advantage** until the start of the helper's next turn. This does not end the fight. It makes the party win it.
 
-**Multiattack.** Two Glass Rakes.
-**Glass Rake.** *Melee Weapon Attack:* +7 to hit, reach 10 ft. *Hit:* 14 (2d8 + 5) slashing.
-**Keening (Recharge 5-6).** 30-ft cone, DC 15 Con save, 21 (6d6) psychic and frightened until the end of its next turn; half and no fear on a success.
+**Multiattack.** Three Frond Lashes.
+**Frond Lash.** *Melee Weapon Attack:* +7 to hit, reach 15 ft. *Hit:* 12 (2d6 + 5) slashing.
+**Keening (Recharge 5-6).** 30-ft cone, DC 15 Constitution save, 21 (6d6) psychic and frightened until the end of its next turn; half and no fear on a success.
+
+## Mossmite
+*Tiny beast (corrupted), unaligned. CR 1/8 (25 XP)*
+
+**AC** 13 **HP** 7 (2d4 + 2) **Speed** 40 ft., climb 40 ft.
+**STR** 6 **DEX** 16 **CON** 12 **INT** 2 **WIS** 10 **CHA** 4
+**Senses** blindsight 30 ft., passive Perception 10 ✦ **Challenge** 1/8
+
+***Skitter.*** It does not provoke opportunity attacks.
+***Pack Nerve.*** It has advantage on attacks against a creature if another Mossmite is within 5 ft. of it.
+
+**Nip.** *Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 5 (1d4 + 3) piercing.
+
+## Shardwing
+*Small elemental, unaligned. CR 1 (200 XP)*
+
+**AC** 14 **HP** 22 (5d6 + 5) **Speed** 10 ft., **fly 50 ft.**
+**STR** 8 **DEX** 18 **CON** 12 **INT** 4 **WIS** 12 **CHA** 6
+**Vuln.** thunder ✦ **Imm.** poison ✦ (cond) poisoned, prone
+**Senses** tremorsense 30 ft., passive Perception 11 ✦ **Challenge** 1
+
+***Glide.*** It can fly at full speed without provoking opportunity attacks from creatures it starts its turn adjacent to.
+
+**Dive.** *Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 9 (2d6 + 2) slashing. If it moved at least 30 ft. straight toward the target first, this deals an extra 1d6.
+**Shard Spit.** *Ranged Weapon Attack:* +6 to hit, range 60 ft. *Hit:* 7 (1d10 + 2) piercing.
+
+## Glassling
+*Tiny construct (spawned by the spike), unaligned. CR 1/4 (50 XP)*
+
+**AC** 14 **HP** 10 (3d4 + 3) **Speed** 30 ft., climb 30 ft.
+**STR** 8 **DEX** 16 **CON** 12 **INT** 1 **WIS** 6 **CHA** 1
+**Imm.** poison, psychic ✦ (cond) blinded, charmed, deafened, frightened, poisoned
+**Senses** blindsight 30 ft., passive Perception 8 ✦ **Challenge** 1/4
+
+***Spike-Born.*** **The spike creates one Glassling at the start of each of Groudon's turns.** When the spike is destroyed, every Glassling collapses into ordinary sand immediately, wherever it is and whatever it was doing.
+***Shatterburst.*** At 0 hit points, each creature within 5 ft. makes a DC 12 Dexterity save or takes 5 (2d4) slashing.
+
+**Glass Bite.** *Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 6 (1d6 + 3) slashing.
+
+## Thumpaw
+*Large beast (Plane of Earth), unaligned. CR 3 (700 XP) ✦ random encounters only*
+
+**AC** 14 (mossy hide) **HP** 76 (8d10 + 32) **Speed** 30 ft., burrow 30 ft.
+**STR** 20 **DEX** 8 **CON** 18 **INT** 3 **WIS** 12 **CHA** 6
+**Senses** tremorsense 60 ft., passive Perception 13 ✦ **Challenge** 3
+
+***Not Actually Angry.*** It does not attack until attacked, and it never pursues. It is in the way and it was there first.
+***Immovable.*** It has advantage on saves and checks against being moved, and it cannot be knocked prone.
+
+**Multiattack.** Two Shovel Slams.
+**Shovel Slam.** *Melee Weapon Attack:* +8 to hit, reach 10 ft. *Hit:* 14 (2d8 + 5) bludgeoning.
+
+## Gleamoth Swarm
+*Medium swarm of tiny beasts, unaligned. CR 1 (200 XP) ✦ random encounters only*
+
+**AC** 12 **HP** 26 (4d8 + 8) **Speed** 5 ft., **fly 40 ft.** (hover)
+**STR** 4 **DEX** 14 **CON** 14 **INT** 1 **WIS** 10 **CHA** 4
+**Resist** bludgeoning, piercing, slashing **Vuln.** fire, thunder
+**Imm.** (cond) charmed, frightened, grappled, prone, restrained, stunned
+**Senses** blindsight 20 ft., passive Perception 10 ✦ **Challenge** 1
+
+***Drawn to Warmth.*** It always moves toward the warmest or brightest thing it can sense, which is the Essence Sphere. If Lilly is carrying it, the swarm goes for her every turn.
+***Swarm.*** It can occupy another creature's space and move through any opening large enough for a single moth.
+
+**Smother.** *Melee Weapon Attack:* +4 to hit, reach 0 ft., one creature in its space. *Hit:* 10 (4d4) piercing, or 5 (2d4) if the swarm is at half hit points or fewer, and the target is **blinded** until the end of its next turn.
 
 ## GROUDON, the Continent-Maker (corrupted)
 *Gargantuan elemental (Plane of Earth, Guardian), unaligned. CR 11 (7,200 XP) as run here*
@@ -440,6 +572,6 @@ Teach this properly. It is the mechanic the rest of the campaign runs on and thi
 
 ## Still to build
 
-- Bestiary entries for the four new creatures in `templates/build_bestiary.py`.
-- Enemy artwork: Rootrot Crawler, Chime Warden, Shardling, Glass Weeper, and corrupted Groudon.
+- Bestiary entries for all ten Underroot creatures in `templates/build_bestiary.py`.
+- Enemy artwork: **done.** Rotbloom, Mossmite, Chimestone, Shardwing, Cinderoll, Glassling, Glass Weeper, Thumpaw, Gleamoth swarm, and corrupted Groudon, plus six dot-event plates.
 - A Tectonic Slam card for Lilly's sheet once the Mote is installed.
