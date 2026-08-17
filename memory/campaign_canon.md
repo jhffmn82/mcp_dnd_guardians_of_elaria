@@ -69,12 +69,55 @@ Planned arc through Session 14 (handoff): S9 Water (7), S10 Fire (7 to 8), S11 A
 
 - Five planes (Fire, Water, Air, Earth, Shadow) spin "like the gears of a great clock", held in alignment by ANCHOR-STARS. A star put out = a plane slips = a crack opens, leaking elemental Motes that madden machines and mutate creatures.
 - Star map: Fire/Ignis = Aldebaran (bright); Water/Unda = Fomalhaut (bright); Air/Aer = Vega (going dark); Earth/Terra = Antares (dimming); Shadow/Umbra = Algol (dark); Betelgeuse = the FIRST star put out, the one Ash chased; Achernar = reserve.
-- NYXTHID, the Harbinger of Decay (he): fallen celestial, herald of Maldrith, is actively PUTTING OUT the stars. Shadow magic, illusions, fear; partially in the Shadowfell. First glimpsed (unnamed) as the Dark Figure at Stormwatch Cliffs (Session 3).
-- MALDRITH, the Weaver of Fractures (she): the true villain; primordial entropy imprisoned eons ago by the gods, Elaria foremost, after the War of Fractures. The "vast hunger pressing on the walls of every world" (Session 7). Names withheld from the kids until the Shadow Rift.
+- **[LOCKED] BETELGEUSE IS THE KEYSTONE: the lock on Maldrith's prison.** It is not one of the five elemental anchors, which is why it stands apart. Nobody snuffed it. It dimmed ON ITS OWN because the Warden sleeps and the lights went untended. Ash went to investigate a failing lock, and a failing lock is exactly where the wall is thinnest. He was ruined by doing his job well.
+- **The star map is a scoreboard, not scenery.** Two anchors are still bright because Ash has not reached them yet. Put them out on screen and the clock becomes real.
+- NYXTHID, the Harbinger of Decay (he): Maldrith's herald, actively PUTTING OUT the stars. Shadow magic, illusions, fear; partially in the Shadowfell. First glimpsed (unnamed) as the Dark Figure at Stormwatch Cliffs (Session 3).
+  - **[DM ONLY, LOCKED 2026-08-17] NYXTHID IS ASH CATCHUM.** Ursa's father, corrupted, in full black, face concealed. He is NOT a fallen celestial; that earlier description is retired. He took the name Maldrith gave him and set down his own. He has known Ursa is his son since Stormwatch Cliffs, which is why the party has survived seven sessions of near-misses. Reveal at Session 12.
+  - **Why Maldrith wanted him.** Only a sky-reader can find and reach an anchor-star. She did not corrupt a passing traveller; she corrupted the best star-reader alive, because he was the only one who could put the lights out. His gift is her weapon.
+- MALDRITH, the Weaver of Fractures (she): the true villain; primordial entropy imprisoned eons ago by the gods, Elaria foremost, after the War of Fractures. The "vast hunger pressing on the walls of every world" (Session 7).
+  - **Her pitch, which is what corrupted Ash:** putting out the stars LIBERATES the planes. Chaos, yes, but beauty and magic pouring into a grey world. The wondrous creatures are her evidence, and the party's own companions prove it: every one of them came through a crack. Corruption is merely the means.
+  - **Why she is wrong:** it is not liberation, it is DECAY. Without the anchors holding order, all of reality collapses, and decay does not stop at the beautiful parts. Ash can no longer see this.
+  - **[LOCKED] Maldrith put Elaria to sleep**, as the last wall closed. She could not stop the sealing, so she cursed the Warden to sleep, knowing an untended sky fails eventually. A revenge that takes eons. This closes open thread 4; the in-world verses saying Elaria slept from exhaustion are what mortals believe, not the truth.
+  - **NAME KNOWLEDGE, corrected 2026-08-17 against the actual session text:** the players HAVE heard "Maldrith" (the Lore of Elaria boxes in Sessions 2, 3 and 4, and the lore primer). They have NEVER heard "Nyxthid": its only appearance is a DM-side parenthetical in Session 7 that explicitly says to keep it out of Pikachu's mouth. The old "both names withheld until the Shadow Rift" note was wrong.
 - ELARIA, the sleeping Warden of Balance, "tended the lights of heaven." She sleeps, which is why stars can be put out; WHO put her to sleep is a deliberate unrevealed mystery (supersedes old lore's self-caused slumber). She guides via visions (Whispering Glade, Session 2) and star-marked gifts (seven-point star sigil, wrapped in a leafed vine, or cupped by wings on the Sash).
 - The Enchanted Potatoes: three, carried by Ursa, left by Ash. Old lore names them Potato of Healing, Potato of Transformation, Potato of Insight; "remnants of a shattered covenant" (Elaria's own essence, bound as safeguards).
 - Rifts cannot be closed from our side; each fraying world has a corrupted GUARDIAN; free the guardian and that world's cracks close (proven on the Grand Custodian, Session 7).
 - The Rift Portal ("Vane's Folly"): ten years of Vane's work, missing an anchor vessel; the Essence Sphere is that anchor (it is a GATHERER, forged at Glimmerspire BEFORE the crisis; how they knew is the "They KNEW" mystery). Ready about one year after Session 7.
+
+## The endgame (LOCKED 2026-08-17; DM decisions)
+
+**The shape of the rest of the campaign.** Every rift session is the same engine, assembled from three canon facts that were never joined up: each fraying world has a corrupted GUARDIAN (its legendary); freeing rather than killing it closes that world's cracks; and the Staff of Waking Constellations relights the anchor-star afterward. One designed companion comes home per rift.
+
+**Why they visit planes whose stars still burn.** A bright anchor means no crack, so there would be nothing to fix. After Session 8, Aelwyn works out that the GUARDIAN is twisted FIRST, before the star fails. So reaching a plane while its star still burns and securing its Guardian DENIES Ash that star entirely. Sessions 9 and 10 are pre-emptive strikes on the two still-bright anchors; 11 and 12 are salvage on the two he already owns. A midpoint gut-punch is available: he works out what they are doing and races them to one.
+
+| S | Plane / Star | Beat |
+|---|---|---|
+| 8 | Earth, Antares (dimming) | Shrine vision: Ash left to SAVE the stars; Maldrith is behind their going out; a herald called NYXTHID walks for her. First time that name is spoken in the campaign. Ursa brings home a name to hunt, not knowing it is his father. Antares relights. |
+| 9 | Water, Fomalhaut (bright) | Pre-emptive strike: secure the Guardian before he can snuff it. |
+| 10 | Fire, Aldebaran (bright) | Second pre-emptive strike. He is now openly hunting the Sphere, and there is a near-miss that later reads as deliberate. |
+| 11 | Air, Vega (going dark) | Salvage. They are losing ground; Ursa's omens intensify. |
+| 12 | Shadow, Algol (dark) | His home ground. THE REVEAL BATTLE. |
+| 13 | Home | Sphere complete. Pikachu returns as the witness. Nyxthid strikes Gearhaven. |
+| 14 | Betelgeuse | The three-phase finale. |
+
+**Session 12, the reveal battle.** He takes the party apart one at a time, NON-LETHALLY, which nobody notices until afterward. Only Ursa is left standing. *"Ursa. I am your father."* Ursa refuses. **Ursa loses a hand.** They escape. His pitch must be genuinely persuasive and is largely TRUE: the world was grey and dying and he has filled it with wonder, and every companion the party loves came through a crack he opened. The kids' favourite thing is the villain's evidence. The counter is the one thing he cannot see: decay does not stop at the beautiful parts.
+
+**Session 13.** Lilly builds Ursa a mechanical hand. NOTE: this is already foreshadowed in her year apart, where she spent six weeks with a woman who built prosthetic hands for miners. The hand is STORY ONLY, no mechanical penalty, full function.
+
+**Session 14, the finale, in three phases.**
+
+1. **The Father.** They wake Elaria first. She is awake but SPENT and cannot fight; she can only witness. Nyxthid comes for them. They win, and in losing, **Ash surfaces**, himself again for about a minute, long enough to say the thing to Ursa he has not been able to say for three years. **Then Maldrith takes the body, and that is what kills him.** His redemption is the moment she gets her way in.
+   - **[DM PROTECTION] She does not wear his face.** At the instant of possession the body is consumed and RESHAPED into her Avatar, something enormous and not remotely human. The kids must never swing weapons at Ash's corpse wearing Ash's face. Ash's death is the last thing that happens to Ash.
+2. **The Unwinnable One.** The Avatar takes the party apart. **The scripted loss is the one real risk in the finale**, so phase 2 gets an objective that is not "win": survive three rounds, or get the Sphere to the anchor point before falling. They fail to beat her and SUCCEED at the thing that matters, so the fall reads as a cost rather than a railroad. Their choices decide who goes down last and what is protected.
+3. **The Circle.** Unconscious and dying, **the Sphere empties itself.** Every companion they ever gathered comes out at once (Ghostbloom, the Earth/Water/Fire/Air four, and Pikachu: six) and forms a ring around three unconscious children. This makes the collecting mechanic the ENGINE of the ending, and it detonates Maldrith's argument: her whole pitch was that the creatures are the good her chaos brings, and in the end the creatures choose the other side on their own. Inside the circle they meet Elaria, who grants each a boon. **These must be the grown-up versions of the Whispering Glade boons from Session 2** (Ursa: Planar Awareness; Lilly: the Sphere's Planar Attunement; Stabby: Glimpse of Possibility, "because the goddess smiled at the goblin"). Same goddess, same three gifts, seven sessions of growth between. Then they get up and seal her.
+
+**The seal.** Relight BETELGEUSE, the keystone, using the three enchanted potatoes: canon already calls them remnants of a shattered covenant and Elaria's own essence bound as safeguards. **Ash left his infant son the three pieces needed to fix what he was walking toward**, without knowing it. The permanent fix is the waking: stars go out because the Warden sleeps, and this time she stays awake.
+
+**The epilogue.** After the sealing, **Ash and Elaria appear together to the party**, Ash as a spirit, whole and himself and no longer in black. They come to thank the three of them, and the thanks is specifically for the redemption: the party did not defeat Ash, they GOT HIM BACK, and the minute of himself he bought at the end is what let Maldrith be beaten rather than merely survived.
+
+Notes for playing it: give **Ursa the last word with his father**, alone if the other two players will allow it. Ash should say the ordinary thing rather than the grand one, because he has already said the grand one in phase 1. Elaria's thanks should land on **Stabby and Lilly** in particular, since they had no blood stake in Ash and fought for their friend's father anyway. And Ash should look at Ursa's mechanical hand and understand exactly what it cost and who made it.
+
+**Deferred (decide after Session 8):** the Guardians of Water, Fire and Air, and the three finale boons.
 
 ## Major items and relics
 
@@ -113,9 +156,9 @@ Eldridge Village and the Gilded Acorn Tavern (Eldridge Vale); Forest of Whispers
 ## Open threads (foreshadowing ledger)
 
 1. Pikachu's return (seeded S7; payoff S13). Pikachu is "a key. To something."
-2. Ash Catchum: logbook trail east to the old shrine; major clue S12; fate DECIDED BEFORE S12 (alive-but-changed/captured, or died completing the covenant).
-3. "They KNEW": how Glimmerspire/Poots built the Sphere before the crisis; ties to Elaria's foresight; reveal late.
-4. Who put Elaria to sleep: unrevealed mystery.
+2. Ash Catchum: **RESOLVED 2026-08-17. He is NYXTHID.** Corrupted by Maldrith at the failing keystone about three years ago, when he crossed to investigate it. Reveal S12, dies S14 when Maldrith takes his body. See the endgame section.
+3. "They KNEW": **narrowed 2026-08-17.** Poots did NOT build the Sphere. She FOUND it, recognised it, and built the brass housing around an ancient core (see reference/campaign/year_apart_lilly.md). The question is no longer how she knew to build it but WHO MADE the thing she found, and how it reached Glimmerspire. Also note Ash and Poots adventured together (the one-shot party), which is how Pikachu's loosed spark came to be in her gatherer.
+4. Who put Elaria to sleep: **RESOLVED 2026-08-17. Maldrith did**, as the last wall closed. Still unrevealed to the players; reveal alongside the finale.
 5. Stabby's idol: unexplained by design (Door C).
 6. The Bloodfang Clan: cracks near Bloodthorn, clan blames artificers; finale allies if Door B.
 7. Something darker than Davy haunted the Dutchman (S5, Ursa); essences were being shipped SOUTH under Artificers' Guild-stamped crates. Never yet reconciled with the friendly Guild of S8. Davy Jones himself is destroyed (C10) and does not return.
