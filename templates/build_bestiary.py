@@ -1554,6 +1554,159 @@ B = [
              "save or takes 2d6 force and is blinded until end of its next turn."),
         ],
     }]),
+    ("h1", "The Earth Rift: Underroot"),
+    ("gold", "*The first plane the Guardians ever walked. A world made of ground all the way "
+             "through, breathing once a minute, patient beyond patience, and bleeding from a "
+             "wound somebody put there on purpose.*"),
+
+    ("h2", "Rootrot Crawler"),
+    ("enemy_cards", [{
+        "name": "Rootrot Crawler",
+        "sub": "Small aberration (corrupted beast), unaligned \u2726 CR 1/2 (100 XP) \u2726 Session 8",
+        "img": "assets/monsters/rootrot_crawler.png", "img_w": 2.6,
+        "stats": [
+            "**AC** 13 (rotted hide)  **HP** 22 (4d6 + 8)  **Speed** 30 ft., burrow 20 ft.",
+            "**STR** 12  **DEX** 14  **CON** 14  **INT** 3  **WIS** 8  **CHA** 3",
+            "**Resist** poison \u2726 **Imm.** (cond) poisoned",
+            "**Senses** blindsight 30 ft., tremorsense 30 ft., passive Perception 9",
+            "**Challenge** 1/2 (100 XP)",
+        ],
+        "traits": [
+            ("Knit", "At the start of its turn, if it took damage since its last turn and is not at 0 HP, it "
+             "regains 5 hit points. It cannot knit if it has taken radiant damage, or been hit by Cleansing "
+             "Edge, since its last turn."),
+            ("Burrow Ambush", "Advantage on attacks against creatures that have not yet acted in this combat."),
+        ],
+        "actions": [
+            ("Claw", "*Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 7 (2d4 + 2) slashing."),
+            ("Rot Spray (Recharge 6)", "15-ft cone, DC 12 Constitution save, 10 (3d6) poison, half on a save."),
+        ],
+    }]),
+
+    ("h2", "Chime Warden"),
+    ("enemy_cards", [{
+        "name": "Chime Warden",
+        "sub": "Medium elemental (Plane of Earth), unaligned \u2726 CR 3 (700 XP) \u2726 Session 8",
+        "img": "assets/monsters/chime_warden.png", "img_w": 2.6,
+        "stats": [
+            "**AC** 16 (crystal)  **HP** 45 (6d8 + 18)  **Speed** 25 ft.",
+            "**STR** 16  **DEX** 10  **CON** 16  **INT** 6  **WIS** 14  **CHA** 8",
+            "**Resist** piercing \u2726 **Vulnerable** thunder",
+            "**Imm.** poison \u2726 (cond) charmed, exhaustion, paralyzed, petrified, poisoned",
+            "**Senses** tremorsense 60 ft., passive Perception 12",
+            "**Challenge** 3 (700 XP)",
+        ],
+        "traits": [
+            ("Resonant", "Whenever it takes thunder damage it is stunned until the end of its next turn."),
+            ("Stillness Ends It", "If no creature within 30 ft. has attacked, shouted, or cast a spell with a "
+             "verbal component since the Warden's last turn, it stands down and stops attacking. It does not "
+             "resume unless attacked. This is the intended solution to the encounter."),
+        ],
+        "actions": [
+            ("Chime Strike", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 9 (2d6 + 3) bludgeoning "
+             "plus 4 (1d8) thunder."),
+            ("Ringing Note (Recharge 5-6)", "20-ft radius, DC 13 Constitution save, 13 (3d8) thunder and "
+             "deafened for 1 minute; half damage and no deafness on a success."),
+        ],
+    }]),
+
+    ("h2", "Shardling"),
+    ("enemy_cards", [{
+        "name": "Shardling",
+        "sub": "Tiny construct (corrupted), unaligned \u2726 CR 1/4 (50 XP) \u2726 Session 8",
+        "img": "assets/monsters/shardling.png", "img_w": 2.4,
+        "stats": [
+            "**AC** 14  **HP** 13 (3d4 + 6)  **Speed** 30 ft., climb 30 ft.",
+            "**STR** 8  **DEX** 16  **CON** 14  **INT** 2  **WIS** 8  **CHA** 2",
+            "**Imm.** poison, psychic \u2726 (cond) blinded, charmed, deafened, exhaustion, poisoned",
+            "**Senses** blindsight 30 ft., passive Perception 9",
+            "**Challenge** 1/4 (50 XP)",
+        ],
+        "traits": [
+            ("Shatterburst", "When it drops to 0 hit points, each creature within 5 ft. makes a DC 12 "
+             "Dexterity save or takes 5 (2d4) slashing damage."),
+        ],
+        "actions": [
+            ("Glass Bite", "*Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 6 (1d6 + 3) slashing."),
+        ],
+    }]),
+
+    ("h2", "Glass Weeper"),
+    ("enemy_cards", [{
+        "name": "Glass Weeper",
+        "sub": "Large aberration (corrupted guardian-beast), unaligned \u2726 CR 6 (2,300 XP) \u2726 Session 8",
+        "img": "assets/monsters/glass_weeper.png", "img_w": 3.0,
+        "stats": [
+            "**AC** 16 (black glass)  **HP** 105 (10d10 + 50)  **Speed** 30 ft.",
+            "**STR** 18  **DEX** 8  **CON** 20  **INT** 4  **WIS** 12  **CHA** 5",
+            "**Resist** bludgeoning, piercing, slashing from nonmagical weapons",
+            "**Imm.** poison \u2726 (cond) charmed, frightened, poisoned",
+            "**Senses** blindsight 60 ft., passive Perception 11",
+            "**Challenge** 6 (2,300 XP)",
+        ],
+        "traits": [
+            ("Glassbound", "It regains 10 hit points at the start of its turn unless it took radiant or force "
+             "damage, or was hit by Cleansing Edge, since its last turn."),
+            ("Grieving", "It has disadvantage on attacks against any creature that has not damaged it since "
+             "the start of its last turn. It is not hunting anyone. It is lashing out."),
+            ("Tending", "If a creature spends an action helping the glassed roots (DC 14 Nature or Medicine, "
+             "or any healing magic spent on the roots rather than a creature), the Weeper loses its next turn "
+             "and its AC drops by 2 permanently as it calms. Three successes end the encounter without a kill."),
+        ],
+        "actions": [
+            ("Multiattack", "Two Glass Rakes."),
+            ("Glass Rake", "*Melee Weapon Attack:* +7 to hit, reach 10 ft. *Hit:* 14 (2d8 + 5) slashing."),
+            ("Keening (Recharge 5-6)", "30-ft cone, DC 15 Constitution save, 21 (6d6) psychic and frightened "
+             "until the end of its next turn; half and no fear on a success."),
+        ],
+    }]),
+
+    ("h2", "Groudon, the Continent-Maker"),
+    ("body", "**The Guardian of Underroot, and not an enemy.** Somebody drove a spike of black glass into "
+             "his back where he could not reach it, and every crack in that plane spreads out from that one "
+             "point. He is the reason there is dry land at all. The encounter is a rescue, and it ends the "
+             "instant the spike breaks, whatever his hit points are. He is not meant to die."),
+    ("enemy_cards", [{
+        "name": "Groudon (corrupted)",
+        "sub": "Gargantuan elemental (Guardian of the Plane of Earth), unaligned \u2726 CR 11 (7,200 XP) "
+               "\u2726 Session 8",
+        "img": "assets/monsters/groudon_corrupted.png", "img_w": 3.4,
+        "stats": [
+            "**AC** 18 (mountain plate)  **HP** 230  **Speed** 40 ft., burrow 40 ft.",
+            "**STR** 26  **DEX** 6  **CON** 24  **INT** 8  **WIS** 14  **CHA** 12",
+            "**Resist** all damage from nonmagical weapons \u2726 **Imm.** fire, poison",
+            "**Senses** tremorsense 120 ft., passive Perception 12",
+            "**Challenge** 11 (7,200 XP)",
+        ],
+        "traits": [
+            ("THE SPIKE (the whole encounter)", "A shard of black glass driven into his shoulder. **AC 17, 60 "
+             "hit points**, immune to all damage except radiant, force, and Cleansing Edge. Reaching it means "
+             "climbing him, flying, or shooting at disadvantage. **When the spike is destroyed the encounter "
+             "ends immediately.** Do not run Groudon to 0 hit points."),
+            ("Unstoppable", "Cannot be frightened, charmed, restrained or knocked prone, and ignores difficult "
+             "terrain."),
+            ("Agony", "While the spike is intact, at the start of each of his turns he takes 10 damage and every "
+             "creature within 20 ft. makes a DC 16 Dexterity save or takes 10 (3d6) bludgeoning."),
+            ("He Does Not Finish Them", "When Groudon reduces a creature to 0 hit points he immediately moves "
+             "away from it. He is swatting at pain, not hunting children."),
+        ],
+        "actions": [
+            ("Continental Step", "He moves up to his speed. Every creature on the ground within 30 ft. of his "
+             "path makes a DC 16 Dexterity save or is knocked prone and takes 11 (2d10) bludgeoning."),
+            ("Magma Vent (Recharge 4-6)", "A 60-ft line, 10 ft. wide. DC 17 Dexterity save, 35 (10d6) fire, "
+             "half on a success."),
+            ("Claw", "*Melee Weapon Attack:* +12 to hit, reach 15 ft. *Hit:* 22 (3d10 + 8) slashing."),
+            ("Thrash (1/round, no action, when the spike takes damage)", "Every creature climbing him makes a "
+             "DC 15 Strength or Acrobatics check or falls, taking 3d6 bludgeoning."),
+        ],
+    }]),
+    ("lore", "What the Guardians Are For",
+     "Every world keeps one. Not a king and not a god: a creature that is somehow the shape of "
+     "that world's health, so that when the world sickens the guardian sickens first and worst. "
+     "The Guardians of Elaria have now freed two, a clockwork giant under a city and a mountain "
+     "with a spine, and both times the cure was the same. Find what is hurting it. Take that out. "
+     "The world does the rest itself."),
+
     ("lore", "The Machines Remember",
      "Machines feel the Darkening before people do. A machine is a promise written in brass, "
      "and promises are exactly what the Weaver of Fractures unpicks first. When the mills and "
