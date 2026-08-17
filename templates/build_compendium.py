@@ -84,8 +84,8 @@ I = [
     ("img", "assets/items/wraithpine_chest.png", "The Wraithpine chest, bound in silver vines.", 3.4),
     ("h2", "Staff of Waking Constellations (Ursa)"),
     ("stat", "Staff of Waking Constellations", [
-        "+1 quarterstaff, druidic focus. 5 charges, regain 1d4 + 1 at dawn: guiding bolt (1), faerie fire (1), moonbeam (2).",
-        "**Starseed.** Once per turn, +1d4 radiant when Ursa deals radiant damage with a druid spell (house rule: druid spells only).",
+        "+1 quarterstaff, druidic focus (a +2 once awakened on the Reader of Omens road). 5 charges, regain 1d4 + 1 at dawn: guiding bolt (1), faerie fire (1), moonbeam (2).",
+        "**Starseed.** Once per turn, +1d4 radiant when Ursa deals radiant damage with a druid spell, rising to +1d8 once the staff is awakened (house rule: druid spells only).",
         "**Starlight.** Bonus action: 10 ft. dim light; advantage on night navigation.",
         "The counter-weapon: after every great victory, one new star brightens on its haft. The enemy puts stars out; the Staff lights them.",
     ]),
@@ -119,7 +119,7 @@ I = [
     ("h2", "Amulet of Guiding Light (Ursa)"),
     ("stat", "Amulet of Guiding Light", [
         "Rare, attunement by a Circle of Stars druid.",
-        "**Guiding Light.** Sheds light; allies gain +1 to attacks and saves while Ursa is in Starry Form.",
+        "**Guiding Light.** Sheds light; allies gain +1 to attacks and saves while Ursa is in Starry Form. Once the amulet is awakened on the Reader of Omens road, this reaches every ally within 30 feet.",
         "**Starry Glow.** Reaction, 1/long rest: 2d8 radiant, DC 15 Con or blinded. **Celestial Resilience.** Reroll natural 1s, 2/long rest.",
     ]),
     ("h2", "Candyfang Katana (Stabby)"),
@@ -680,8 +680,13 @@ C = [
         "Long Rest.",
         "**Read the Moment.** When you take the Reaction granted by your Cosmic Omen feature, "
         "you can wait until after the d20 is rolled but before you know whether the roll "
-        "succeeds or fails. You then choose whether to apply Weal (adding 1d6 to the roll) or "
-        "Woe (subtracting 1d6 from it).",
+        "succeeds or fails. You then choose whether to apply Weal or Woe.",
+        "**The Stronger Tide.** Your omens run deeper than an ordinary star-reader's. Weal now "
+        "adds 1d6 + 2 to the roll, and Woe subtracts 1d6 + 2 from it.",
+        "**Awakened Gifts.** The road east wakes what you already carry. Your Staff of Waking "
+        "Constellations becomes a +2 quarterstaff and its Starseed rises from 1d4 to 1d8; your "
+        "Amulet of Guiding Light sheds its bonus to every ally within 30 feet of you rather than "
+        "only to those standing in its light.",
         "**Shared Tides.** Your uses of Cosmic Omen remain a single pool: you can use the "
         "feature a number of times equal to your Wisdom modifier, expending one use on either "
         "Weal or Woe, and you regain all expended uses when you finish a Long Rest.",

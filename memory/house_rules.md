@@ -4,7 +4,7 @@
 
 ## House rules (adjudications beyond the printed rules)
 
-1. Ursa's Starseed +1d4 applies only to actual druid spells, NOT the Starry Form Archer luminous arrow.
+1. Ursa's Starseed applies only to actual druid spells, NOT the Starry Form Archer luminous arrow. (The die is +1d4 as printed and **+1d8** once the Staff is awakened on the Reader of Omens road, which Ursa took.)
 2. Potent Spellcasting rides the kindled staff once per turn (Ursa, from level 7; no double-dipping with a cantrip in the same turn).
 
 ## 2024 migration notes (these are RAW, recorded so documents never regress to 2014 text)

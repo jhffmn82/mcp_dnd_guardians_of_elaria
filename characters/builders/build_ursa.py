@@ -147,17 +147,17 @@ story.append(Paragraph('Purple = trained. Best: Animal Handling, Perception & Su
 story.append(Paragraph("What Ursa Does in a Fight", h2_st))
 atk = [
     ['Attack','To Hit','Damage'],
-    ['Staff of Waking Constellations (+1), unlit','+3','1d6 bludgeoning (1d8 two-handed). See Shillelagh!'],
-    ['Staff + Shillelagh (ignited)','+9','1d10+6 (+5 Potent, once a turn); bonus action to light, 1 min'],
-    ['Guiding Bolt (1st, from Staff or Star Map)','+8','4d6 radiant + 1d4 (Starseed); next hit on it has advantage'],
+    ['Staff of Waking Constellations (+2), unlit','+4','1d6+1 bludgeoning (1d8+1 two-handed). See Shillelagh!'],
+    ['Staff + Shillelagh (ignited)','+10','1d10+7 (+5 Potent, once a turn); bonus action to light, 1 min'],
+    ['Guiding Bolt (1st, from Staff or Star Map)','+8','4d6 radiant + 1d8 (Starseed); next hit on it has advantage'],
     ['Star-Arrow (Starry Form: Archer)','+8','1d8+5 radiant, one enemy within 60 ft (bonus action)'],
-    ['Starry Wisp (cantrip)','+8','2d8 + 5 radiant + 1d4 (Starseed); lights up the target (60 ft)'],
+    ['Starry Wisp (cantrip)','+8','2d8 + 5 radiant + 1d8 (Starseed); lights up the target (60 ft)'],
 ]
 atk_data = [[Paragraph(c, cellb_st if i==0 else cell_st) for c in row]
             for i,row in enumerate(atk)]
 story.append(section_table(atk_data, [3.0*inch, 0.9*inch, 3.4*inch]))
 story.append(Paragraph('While his Starry Form glows, the Amulet of Guiding Light gives '
-    '+1 to attacks and saves to his nearby FRIENDS (allies only, not Ursa himself): '
+    '+1 to attacks and saves to every FRIEND within 30 ft (allies only, not Ursa himself): '
     'a party buff, so his own to-hit stays +8.', small_it))
 
 story.append(Spacer(1,4))
@@ -246,7 +246,7 @@ story.append(Spacer(1,8))
 story.append(Paragraph("Ursa's Special Powers", h2_st))
 powers = [
     ('★ Reader of Omens<br/><i>(the year on his father&rsquo;s trail)</i>',
-     '<b>Omen Dreams.</b> After a long rest, roll <b>two d20s</b> and write them down: those are the day&rsquo;s omens. When he or anyone he can see is about to roll a d20, he can <b>replace that roll</b> with one of his dreamed numbers (no action, before the roll). Each is used once. <br/><b>Both Omens.</b> He has <b>both Weal and Woe</b> every day now, not one or the other. <br/><b>Read the Moment.</b> He can use his Cosmic Omen reaction <b>after the die is rolled</b>, before anyone knows if it worked, then choose Weal or Woe. <br/><b>Shared Tides.</b> One pool of <b>5 uses</b> per long rest, spent on either.'),
+     '<b>Omen Dreams.</b> After a long rest, roll <b>two d20s</b> and write them down: those are the day&rsquo;s omens. When he or anyone he can see is about to roll a d20, he can <b>replace that roll</b> with one of his dreamed numbers (no action, before the roll). Each is used once. <br/><b>Both Omens.</b> He has <b>both Weal and Woe</b> every day now, not one or the other. <br/><b>Read the Moment.</b> He can use his Cosmic Omen reaction <b>after the die is rolled</b>, before anyone knows if it worked, then choose Weal or Woe. <br/><b>Shared Tides.</b> One pool of <b>5 uses</b> per long rest, spent on either. <br/><b>The Stronger Tide.</b> His omens hit harder than an ordinary star-druid&rsquo;s: Weal adds <b>1d6 + 2</b> and Woe subtracts <b>1d6 + 2</b>. <br/><b>What the shrine awoke.</b> Kneeling at his father&rsquo;s shrine woke the gifts he already carried: the <b>Staff became a +2</b> quarterstaff, <b>Starseed grew from 1d4 to 1d8</b>, and the <b>Amulet&rsquo;s light now reaches 30 ft</b>.'),
     ('Starry Form (Bonus Action)', 'Spend a Wild Shape use to glow with starlight (10-ft bright light, 10 min). '
         'Pick a constellation each time:'),
     ('&nbsp;&nbsp;&bull; Archer', 'Bonus action: fire a star-arrow at one enemy within 60 ft for <b>1d8+5 radiant</b>.'),
@@ -255,7 +255,7 @@ powers = [
     ('Wild Shape (3/long rest)', 'Three uses that fuel his Starry Forms (or turn into a beast he has seen). Regain 1 on a short rest, all on a long rest.'),
     ('Wild Resurgence', 'Once per turn (no action), spend a spell slot to get back one Wild Shape use. Once per long rest, the reverse: spend a Wild Shape use to regain a 1st-level spell slot.'),
     ('Star Map', 'His star chart is a magic focus. Free <b>Guiding Bolt</b> 5×/day even without the Staff. Backup focus he still carries.'),
-    ('Cosmic Omen (new at 6!)', '<b>Reaction.</b> When someone he can see within 30 ft is about to roll a d20, he bends it: <b>Weal +1d6</b> or <b>Woe &minus;1d6</b>. <b>5 uses per long rest</b> (his Wisdom modifier).'),
+    ('Cosmic Omen (new at 6!)', '<b>Reaction.</b> When someone he can see within 30 ft is about to roll a d20, he bends it: <b>Weal +1d6+2</b> or <b>Woe &minus;1d6&minus;2</b> (Reader of Omens makes both stronger). <b>5 uses per long rest</b> (his Wisdom modifier).'),
     ('Elemental Fury (new at 7!)', '<b>Potent Spellcasting:</b> add <b>+5 (Wis)</b> to the damage of any druid <b>cantrip</b>. <i>(House rule: it can ride the kindled staff once a turn instead, never both in the same turn.)</i>'),
     ('Wild Intuition', 'Add 1d4 to any Animal Handling or Nature check.'),
     ('Primal Connection (1/short rest)', 'Cast Animal Friendship or Speak with Animals for free, no materials.'),
@@ -268,15 +268,15 @@ story.append(section_table(pw_data, [2.15*inch, 5.15*inch], header=False))
 story.append(Paragraph("Ursa's Stuff", h2_st))
 gear = [
     ('Staff of Waking Constellations<br/><i>(new! ★ Elaria’s gift)</i>',
-     'His Wraithpine relic. <b>+1 quarterstaff &amp; druidic focus.</b> Holds <b>5 charges</b> (regain 1d4+1 at dawn): '
+     'His Wraithpine relic, <b>awakened at his father&rsquo;s shrine</b>. <b>+2 quarterstaff &amp; druidic focus.</b> Holds <b>5 charges</b> (regain 1d4+1 at dawn): '
      '<i>Guiding Bolt</i> (1), <i>Faerie Fire</i> (1), <i>Moonbeam</i> (2). '
-     '<b>Starseed:</b> once a turn, when a druid spell deals radiant damage, add <b>+1d4 radiant</b>. '
+     '<b>Starseed:</b> once a turn, when a druid spell deals radiant damage, add <b>+1d8 radiant</b> (1d4 before the shrine). '
      '<b>Starlight:</b> bonus action to light a soft 10-ft glow and get advantage on night-navigation. <b>Attuned.</b>'),
     ('Ash&rsquo;s Sigil-Stone<br/><i>(new! found on the trail east)</i>',
      'A river-smooth stone etched with a half-finished sign of Elaria, <b>in his father&rsquo;s own hand</b>. '
      '<b>Aura of Vitality</b> free once a day (no slot): a 30-ft aura, and at the start of each of his turns he heals one creature in it for <b>2d6</b>. <br/><b>2 charges</b> (all back at dawn), magic action to spend one: <b>Ask the Day</b> (one truthful yes or no about the day ahead, <i>or silence if it cannot be known</i>), <b>Glimpse the Trail</b>, or <b>Read the Heart</b>. <b>Attuned.</b>'),
     ('Star Map', 'A Tiny star chart that doubles as a spellcasting focus. Free Guiding Bolt 5×/day. (Backup focus.)'),
-    ('Amulet of Guiding Light', '<b>Guiding Light:</b> during Starry Form, his <b>allies</b> in the bright light get +1 to attacks and saves (allies only, not Ursa). '
+    ('Amulet of Guiding Light', '<b>Guiding Light:</b> during Starry Form, his <b>allies within 30 ft</b> get +1 to attacks and saves (allies only, not Ursa). <i>(The shrine widened this from the old glow.)</i> '
         '<b>Starry Glow (1/day, reaction):</b> when he or a nearby ally is hit, the attacker takes 2d8 radiant and may be blinded (Con save DC 15). '
         '<b>Celestial Resilience (2/day):</b> reroll a natural 1.'),
     ('Spiked Armor &amp; Shield', 'Dwarf-made spiked armor plus a shield, together they make his <b>AC 18</b>.'),
@@ -322,12 +322,12 @@ def spell_card(name, meta, text):
 cards = [
     spell_card('★ Shillelagh',
         'Cantrip • Bonus Action • Self • 1 min',
-        'Starlight sheathes his staff: for 1 minute it swings with <b>WISDOM</b>, <b>+9 to hit</b>, '
-        '<b>1d10+6</b> force or bludgeoning (his choice). Recast any time. His answer when something '
+        'Starlight sheathes his staff: for 1 minute it swings with <b>WISDOM</b>, <b>+10 to hit</b>, '
+        '<b>1d10+7</b> force or bludgeoning (his choice). Recast any time. His answer when something '
         'gets right in his face.'),
     spell_card('★ Starry Wisp',
         'Cantrip • Action • 60 ft • Instant',
-        'Ranged spell attack <b>+8 to hit</b>: <b>2d8 radiant + 1d4</b> (Starseed). The target glows '
+        'Ranged spell attack <b>+8 to hit</b>: <b>2d8 radiant + 1d8</b> (Starseed). The target glows '
         '(dim light) and can’t turn invisible until the end of his next turn.'),
     spell_card('★ Guidance &nbsp;<i>(free: Star Map)</i>',
         'Cantrip • Action • Touch • Concentration, 1 min',
@@ -339,7 +339,7 @@ cards = [
         'sound/smell in a 5-ft cube, or light/snuff a small flame. Pure utility &amp; flavor.'),
     spell_card('Guiding Bolt &nbsp;<i>(free: Star Map, 5&times;/day)</i>',
         '1st • Action • 120 ft • 1 round &nbsp;(Star Map: free 5/day)',
-        'Ranged spell attack <b>+8 to hit</b>. On a hit: <b>4d6 radiant + 1d4</b> (Starseed). '
+        'Ranged spell attack <b>+8 to hit</b>. On a hit: <b>4d6 radiant + 1d8</b> (Starseed). '
         'The <b>next attack</b> against that target before Ursa’s next turn has <b>advantage</b>, set up a teammate.'),
     spell_card('Faerie Fire &nbsp;<i>(free: Staff, 1 charge)</i>',
         '1st • Action • 60 ft • Concentration, 1 min',
@@ -368,7 +368,7 @@ cards = [
     spell_card('Moonbeam &nbsp;<i>(free: Staff, 2 charges)</i>',
         '2nd • Action • 120 ft • Concentration, 1 min',
         'A 5-ft pillar of light. A creature that enters it or starts its turn there makes a <b>Con save DC 16</b>: '
-        '<b>2d10 radiant + 1d4</b> (Starseed) on a fail, half on a success. <b>Move it 60 ft</b> each turn as part of the spell.'),
+        '<b>2d10 radiant + 1d8</b> (Starseed) on a fail, half on a success. <b>Move it 60 ft</b> each turn as part of the spell.'),
     spell_card('Aid',
         '2nd • Action • 30 ft • 8 hours',
         'Pick <b>three</b> friends: each one’s <b>maximum AND current HP go up by 5</b> for eight hours. '

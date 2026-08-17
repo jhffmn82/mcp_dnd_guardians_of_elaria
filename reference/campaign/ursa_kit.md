@@ -23,7 +23,7 @@ Resources: **Wild Shape 3/rest** (1 back on short rest, all on long) | **Spell s
 ### Derivations (base numbers are level-5 on the sheet; level 7 shown here)
 - **HP 52.** Sheet HP is 38 at level 5 (build_sheets.py). Druid d8, +2 levels x (5 avg + 2 Con) = +14. 38 + 14 = **52**.
 - **AC 18.** Spiked armor + shield, unchanged from the sheet.
-- **Prof +3.** Levels 5 through 8 all use +3, so DC and attack are unchanged: DC 16 = 8 + 3 + 5(Wis); spell attack +8 = 3 + 5(Wis). (The Amulet/Warden +1 is allies-only, see the DM CHECK above.) Shillelagh weapon attack = 5(Wis) + 3(PB) + 1(the Staff is a +1 quarterstaff) = +9.
+- **Prof +3.** Levels 5 through 8 all use +3, so DC and attack are unchanged: DC 16 = 8 + 3 + 5(Wis); spell attack +8 = 3 + 5(Wis). (The Amulet/Warden +1 is allies-only, see the DM CHECK above.) Shillelagh weapon attack = 5(Wis) + 3(PB) + 2(the Staff is a **+2** quarterstaff once awakened on Door C, which he took) = **+10**.
 - **Wild Shape 3 uses.** Sheet shows 2 (level 5). Circle-of-Stars RAW: 3 uses at level 7 (druid-circle-of-stars.md). Starry Form spends one of these.
 - **Spell slots 4/3/3/1.** Sheet shows the level-5 line 4/3/2. At druid 7 he gains a **4th-level slot**; this sets Mightier Summons' cap (Door A) at spell level 4.
 - **Cosmic Omen** gained at druid level 6; **Elemental Fury (Potent Spellcasting)** gained at druid level 7.
@@ -38,11 +38,11 @@ Consult every entry below every round.
 ### Base class (Circle of the Stars, level 7)
 
 - **Starry Form** (Bonus Action, spend 1 Wild Shape use; lasts 10 min; ends on Incapacitated / dismissal / reuse). Sheds Bright Light 10 ft + Dim 10 ft. Keep his own stats. Choose ONE constellation on activation:
-  - **Archer.** On activation and **each later turn as a Bonus Action**: ranged spell attack **+8**, one creature within **60 ft**, **1d8 + 5 radiant**. (Still 1d8 + Wis at level 7; becomes 2d8 at level 10.) **House rule 1: Starseed +1d4 does NOT apply to the arrow.**
+  - **Archer.** On activation and **each later turn as a Bonus Action**: ranged spell attack **+8**, one creature within **60 ft**, **1d8 + 5 radiant**. (Still 1d8 + Wis at level 7; becomes 2d8 at level 10.) **House rule 1: Starseed does NOT apply to the arrow.**
   - **Chalice.** When he casts a **slot** spell that restores HP, he or a creature within 30 ft also regains **1d8 + 5**.
   - **Dragon.** Treat a d20 of 9 or lower as a 10 on Int/Wis checks and **Con saves to keep Concentration**.
-- **Star Map** (druidic focus, always in hand as backup). Guidance + Guiding Bolt always prepared. **Free Guiding Bolt 5/long rest** (no slot). Guiding Bolt = Action, 120 ft, **+8** (spell attack): **4d6 radiant + 1d4 Starseed** (once/turn), and the next attack vs that target before Ursa's next turn has **Advantage**. (FORGOTTEN: spend these 5 free bolts before real slots.)
-- **Cosmic Omen** (level 6). **Reaction**, when a creature he can see within 30 ft is about to make a D20 Test: Weal **+1d6** or Woe **-1d6**. **Uses = Wis mod = 5/long rest** (base form: even roll = Weal, odd = Woe for the day; Door C removes that limit). Declare **before** the die is rolled in the base version.
+- **Star Map** (druidic focus, always in hand as backup). Guidance + Guiding Bolt always prepared. **Free Guiding Bolt 5/long rest** (no slot). Guiding Bolt = Action, 120 ft, **+8** (spell attack): **4d6 radiant + 1d8 Starseed** (once/turn), and the next attack vs that target before Ursa's next turn has **Advantage**. (FORGOTTEN: spend these 5 free bolts before real slots.)
+- **Cosmic Omen** (level 6). **Reaction**, when a creature he can see within 30 ft is about to make a D20 Test: Weal **+1d6+2** or Woe **-1d6-2** (the flat +2 comes from Reader of Omens; the base feature is a plain 1d6). **Uses = Wis mod = 5/long rest** (base form: even roll = Weal, odd = Woe for the day; Door C removes that limit). Declare **before** the die is rolled in the base version.
   - [DM CHECK self-target: 2024 wording is ambiguous whether Ursa may target his own D20 Test; safe reading is others-only. See druid-circle-of-stars.md.]
 - **Elemental Fury = Potent Spellcasting** (level 7). **+5 (Wis) to the damage of any Druid cantrip** (Starry Wisp, Shillelagh, Thorn Whip, etc.). House rule 2 also lets it ride the kindled staff once/turn; no double-dip with a cantrip the same turn.
 - **Wild Shape 3 uses.** Fuels Starry Form (or a beast form). Regain 1 on short rest, all on long.
@@ -51,15 +51,15 @@ Consult every entry below every round.
 
 ### Relic: Staff of Waking Constellations (attuned; build_compendium.py lines 85-91)
 
-- **+1 quarterstaff, druidic focus.**
+- **+2 quarterstaff, druidic focus** (printed +1; awakened to +2 at his father's shrine on Door C).
 - **Charges: 5, regain 1d4 + 1 at dawn.** Spend on: **Guiding Bolt (1)**, **Faerie Fire (1)**, **Moonbeam (2)**. (On the Starlit road: **6 charges, regain 1d4 + 2**, see Door B.) (FORGOTTEN: these charges are separate free casts from the Star Map bolts.)
-- **Starseed.** Once per turn, **+1d4 radiant** when Ursa deals radiant damage **with a druid spell** (house rule 1: druid spells only, NOT the Archer arrow). Applies to Guiding Bolt, Moonbeam, Starry Wisp.
+- **Starseed.** Once per turn, **+1d8 radiant** (1d4 before the shrine awakened the staff) when Ursa deals radiant damage **with a druid spell** (house rule 1: druid spells only, NOT the Archer arrow). Applies to Guiding Bolt, Moonbeam, Starry Wisp.
 - **Starlight.** Bonus Action: 10 ft dim light; advantage on night navigation.
-- **Shillelagh** (cantrip, Wis-based; on his sheet). Bonus Action to ignite, 1 min. Ignited staff: **+9 to hit** (Wis 5 + PB 3 + the Staff's +1; the +1 light aura is allies-only, so no self bonus), **1d10 + 6** force/bludgeoning. Potent Spellcasting adds **+5 once/turn** (house rule 2).
+- **Shillelagh** (cantrip, Wis-based; on his sheet). Bonus Action to ignite, 1 min. Ignited staff: **+10 to hit** (Wis 5 + PB 3 + the Staff's +2; the +1 light aura is allies-only, so no self bonus), **1d10 + 7** force/bludgeoning. Potent Spellcasting adds **+5 once/turn** (house rule 2).
 
 ### Gift: Amulet of Guiding Light (attuned; build_compendium.py lines 119-124)
 
-- **Guiding Light (Passive, while in Starry Form).** Sheds light; **allies** in it get **+1 to attack rolls and saving throws** (allies only, not Ursa himself: build_compendium.py line 122 reads "allies gain +1"). This is a party buff, not a self buff.
+- **Guiding Light (Passive, while in Starry Form).** **Every ally within 30 ft** (awakened on Door C; it used to reach only those standing in the light) gets **+1 to attack rolls and saving throws** (allies only, not Ursa himself: build_compendium.py line 122 reads "allies gain +1"). This is a party buff, not a self buff.
 - **Starry Glow (Reaction, 1/long rest).** When he or a nearby ally is hit: attacker takes **2d8 radiant** and must make a **DC 15 Con save or be Blinded**. (FORGOTTEN: this is the single most-dropped item on Ursa's sheet. Check it on every enemy hit that lands.)
 - **Celestial Resilience (2/long rest).** Reroll a natural 1 (on any of his d20 rolls). (FORGOTTEN.)
 
@@ -82,7 +82,7 @@ Added kit if Ursa walked this road.
 - **Keepsake: Wildheart Token.** When a partner Ursa summoned would drop to 0 HP, it drops to **1 HP** instead. **1/dawn.** (FORGOTTEN on the partner's death.)
 
 **Combat loop (Door A):**
-- Action: Guiding Bolt (free, Star Map) or Starry Wisp cantrip (2d8 + 5 Potent + 1d4 Starseed). (Summon Beast pre-cast; keep Concentration.)
+- Action: Guiding Bolt (free, Star Map) or Starry Wisp cantrip (2d8 + 5 Potent + 1d8 Starseed). (Summon Beast pre-cast; keep Concentration.)
 - Bonus Action: Star-Arrow (Archer, 1d8 + 5) or ignite/refresh a Bonus-Action option.
 - Free / Reaction: partner acts on Ursa's initiative (Multiattack or Extreme Speed / Ice Beam / Hypnosis); Reaction held for Cosmic Omen or Amulet Starry Glow; Wildheart Token if the partner drops.
 
@@ -115,16 +115,18 @@ Added kit if Ursa walked this road.
 - **Feat: Reader of Omens** (story feat, no ASI; prereq Cosmic Omen).
   - **Omen Dreams.** After a Long Rest, roll **two d20s** and record them. When he or a creature he can see is about to make a D20 Test, **replace the d20 roll with one omen** (no action, **before** the roll). Each omen used once; unused omens lost at the next Long Rest.
   - **Both Omens.** After a Long Rest he gains access to **both Weal and Woe** until the next Long Rest (not one or the other).
-  - **Read the Moment.** When he takes the Cosmic Omen Reaction, he may wait until **after the d20 is rolled** but before knowing success/failure, then choose Weal (+1d6) or Woe (-1d6).
+  - **Read the Moment.** When he takes the Cosmic Omen Reaction, he may wait until **after the d20 is rolled** but before knowing success/failure, then choose Weal (+1d6+2) or Woe (-1d6-2).
+  - **The Stronger Tide.** Weal adds **1d6 + 2** and Woe subtracts **1d6 + 2** (the base feature is a plain 1d6).
+  - **Awakened Gifts.** The pilgrimage wakes what he already carried: the **Staff becomes a +2** quarterstaff, **Starseed rises from 1d4 to 1d8**, and the **Amulet's Guiding Light reaches every ally within 30 ft**.
   - **Shared Tides.** Cosmic Omen is a **single pool = Wis mod = 5 uses/long rest**, each spent on Weal or Woe; regain all on a Long Rest. [DM CHECK: printed text omits the SRD "(minimum of once)" floor; flagged, not fixed.]
 - **Keepsake: Ash's Sigil-Stone** (attuned; closes his third slot: Staff + Amulet + Stone).
-  - **Aura of Vitality** cast from the stone **without a slot, 1/long rest** (3rd-level, Concentration 1 min, Bonus Action each turn heal 2d6 to a creature within 10 ft).
+  - **Aura of Vitality** cast from the stone **without a slot, 1/long rest** (3rd-level, Concentration 1 min, Bonus Action each turn heal 2d6 to a creature within **30 ft**; the sheet says 30 and is newer, so 30 wins).
   - **2 charges, regain all at dawn.** Magic action, spend 1 charge: **Ask the Day** (one truthful yes/no about the day), **Glimpse the Trail** (reveal one rift-board space within 1 mile), or **Read the Heart** (a visible creature's mood/attitude). Mostly exploration, but Aura of Vitality is the combat piece.
 
 **Combat loop (Door C):**
 - Pre-combat: note the **two Omen Dreams** (bank a high roll to force a hit, or a low roll to sink a boss save); track the **5-use** Weal/Woe pool.
 - Turn: Action Guiding Bolt / cantrip; Bonus Action Star-Arrow, Healing Word, or an Aura of Vitality tick if concentrating on it.
-- Reaction: Cosmic Omen with **Read the Moment** (apply +1d6/-1d6 after seeing the die) is the signature play; still holds Amulet Starry Glow as an alternate.
+- Reaction: Cosmic Omen with **Read the Moment** (apply +1d6+2 / -1d6-2 after seeing the die) is the signature play; still holds Amulet Starry Glow as an alternate.
 
 ---
 
@@ -149,7 +151,7 @@ Relevant 2024 RAW notes (recorded so the sim never regresses):
 - **Amulet Celestial Resilience**: reroll natural 1s, 2/long rest.
 - **Star Map free Guiding Bolts**: 5/long rest (NOT the stale "3" on the level-5 sheet), spent before real slots.
 - **Staff charges**: 5 (or 6 on Door B), regain 1d4+1 (1d4+2 on Door B) at dawn; Guiding Bolt(1) / Faerie Fire(1) / Moonbeam(2). Separate pool from the Star Map bolts.
-- **Starseed +1d4**: once/turn, druid radiant spells only, never the Archer arrow.
+- **Starseed +1d8**: once/turn, druid radiant spells only, never the Archer arrow.
 - **Potent Spellcasting +5**: druid cantrip damage; rides the kindled staff once/turn; no double-dip with a cantrip the same turn.
 - **3 Wild Shape uses** at level 7 (was 2 at level 5); Starry Form spends one; Wild Resurgence converts slot <-> Wild Shape.
 - **Cosmic Omen**: 5 Reaction uses/long rest (Door C: single pool, both Weal and Woe, Read-the-Moment after the die).
