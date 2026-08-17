@@ -204,6 +204,50 @@ In plain words the kids can hold:
 
 **ART I: the briefing.** Aelwyn mid-lecture at a chalkboard or an orrery, three small heroes listening, Vane with his arms folded, Tamsin writing. Warm, crowded, human. The last quiet moment before the campaign changes.
 
+## 7b. The Lesson: Underroot, and the Thing That Lives There
+
+Aelwyn does this properly, with a chalkboard and far too much enthusiasm, because it is the first time in his life anybody has let him teach this to people who are actually going to go and look.
+
+**ART K: the lesson.** Aelwyn at a chalkboard covered in a cross-section diagram of a plane and its anchor-star, one hand raised mid-explanation, the three children in front of him, Ghostbloom drifting at the edge. Warm, crowded, chalk dust in the light.
+
+### What the plane is
+
+> **Read aloud.** "Earth," says the professor, "is not a cave. I want that out of your heads immediately. You are not going underground. You are going to a place that is *made* of ground, all the way through, in every direction, forever."
+>
+> He draws it: a world with no sky and no floor, only stone and soil and root going on and on.
+>
+> "It is called Underroot. There is no sun there and it has never needed one. There are roots down there the size of cathedrals, and they are alive, and they are older than your species. The soil breathes, slowly, about once an hour. And *nothing there is in a hurry*, which will be the strangest part for you three."
+
+Give the table these three practical facts, because they will matter in the second half:
+
+1. **It is slow, not empty.** Things move on a geological schedule. A rockfall there is not an accident, it is a shrug.
+2. **There is no sky, so there are no stars**, which means **Ursa cannot navigate**. Say this to his player directly. He has spent a year learning to read the ground; here that is the only sense that works.
+3. **It is indifferent, not hostile.** Aelwyn's line from the briefing lands twice: the plane does not care whether they can breathe there.
+
+### What a Guardian is
+
+This is the rule the rest of the campaign runs on, so teach it once, clearly, now.
+
+> **Read aloud.** "Every world keeps something. Not a king and not a god. A *guardian*: one creature, very old, that is somehow the shape of that world's health. When Gearhaven was sick, you found the Grand Custodian at the heart of it, twisted almost past recognition, and when you freed it the whole city knitted shut behind you. Do you remember?"
+>
+> He taps the board.
+>
+> "You did not do that by being clever. You did it by being *kind* to something that was hurting. I would like you to notice that, because you are about to do it again, and the thing you do it to this time is roughly the size of a hill."
+
+**The rule, in one line for the players:** *the corruption twists the guardian first, and freeing the guardian closes the cracks.* They proved it on the Custodian in Session 7. This is the same move on a much larger scale.
+
+### The Guardian of Underroot
+
+Aelwyn is honest that he is guessing here, because nobody has been.
+
+> **Read aloud.** "The Circle's oldest verses call it a continent-maker. They say Underroot's guardian is the reason there is dry land at all: that it walked, once, and the ground came up behind it. Whatever it is now, it has been sitting in a leaking wound for a very long time." He hesitates, which he almost never does. "I would prefer you not fight it."
+>
+> "What if it fights us?" says Stabby, delighted.
+>
+> "Then I would prefer you not *lose*."
+
+**DM notes.** The Guardian of Underroot is **Groudon** (canon). Do not name it here; Aelwyn does not know the name. Let the party meet it in the second half as a shape in the dark and a sound in their teeth before it is ever a stat block. And note the deliberate echo: this is the same beat as the Grand Custodian, so the solution should feel available to them if they think back rather than being told again.
+
 ### Ghostbloom
 
 She has spent the year at the Guild with Vane and she has missed them, and she says so, at length, telepathically, to all three of them at once.
