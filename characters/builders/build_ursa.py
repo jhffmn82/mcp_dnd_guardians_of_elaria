@@ -110,8 +110,8 @@ hdr = Table([[
     [Paragraph('Ursa Catchum', title_st),
      Paragraph('Human (Mark of Handling) &bull; Druid (Circle of Stars) &bull; Level 7', sub_st),
      Spacer(1,3),
-     Paragraph('The starwatcher. Ursa reads the night sky like a map, calls down '
-               'starlight and beast-spirits, and follows the constellations toward his destiny.', flav_st)]
+     Paragraph('The starwatcher. Ursa reads the night sky like a map, calls down starlight and beast-spirits, '
+               'and spent a year walking his father’s trail east. Now the omens come to him in dreams.', flav_st)]
 ]], colWidths=[1.5*inch, 5.8*inch])
 hdr.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),
                          ('LEFTPADDING',(1,0),(1,0),10)]))
@@ -219,10 +219,11 @@ def _glance(lbl, boxes, names):
     return [Paragraph(f'<b>{lbl}</b>&nbsp; {box}', gl_st), Paragraph(names, gl_st)]
 glance = [
     _glance('Cantrips', 0, 'Shillelagh, Starry Wisp, Guidance, Druidcraft'),
-    _glance('1st', 4, 'Guiding Bolt, Healing Word, Goodberry, Faerie Fire, Speak with Animals, Animal Friendship'),
-    _glance('2nd', 3, 'Moonbeam, Flaming Sphere, Spike Growth, Summon Beast'),
-    _glance('3rd', 3, 'Call Lightning, Summon Fey, Aura of Vitality, Conjure Animals, Revivify'),
-    _glance('4th', 1, 'Grasping Vine, Conjure Woodland Beings'),
+    _glance('1st', 4, 'Healing Word, Goodberry, Thunderwave'),
+    _glance('2nd', 3, 'Summon Beast, Aid, Hold Person, Lesser Restoration'),
+    _glance('3rd', 3, 'Summon Fey, Revivify, Conjure Animals'),
+    _glance('4th', 1, 'Polymorph'),
+    _glance('free', 0, 'Guiding Bolt &amp; Guidance (Star Map) &bull; Animal Friendship &amp; Speak with Animals (his Mark) &bull; Faerie Fire &amp; Moonbeam (Staff charges)'),
 ]
 gt = Table(glance, colWidths=[2.3*inch, 5.0*inch])
 gt.setStyle(TableStyle([
@@ -293,7 +294,7 @@ story.append(Paragraph('Ursa Catchum', S('p3t', fontName='Times-Bold',
 story.append(Paragraph('Page 3: Spellbook', sub_st))
 story.append(Spacer(1,7))
 story.append(Paragraph('Slots per day: 4 first-level, 3 second-level, 3 third-level, 1 fourth-level. '
-    'Cantrips (★) are free forever. He prepares 9 spells and can swap one on a long rest. '
+    'Cantrips (★) are free forever. He prepares <b>11</b> spells and can swap one on a long rest; the ones marked <i>free</i> come from his Star Map, his Mark or his Staff and do not use up a prepared slot. '
     'Spell save DC 16, spell attack +8.', small_it))
 story.append(Spacer(1,4))
 
@@ -304,8 +305,8 @@ def spell_card(name, meta, text):
                    textColor=PURPLE_DK, leading=11))],
         [Paragraph(meta, S('sct', fontName='Times-Italic', fontSize=6.8,
                    textColor=GREY, leading=8.2))],
-        [Paragraph(text, S('scx', fontName='Times-Roman', fontSize=7.6,
-                   textColor=INK, leading=9.6))],
+        [Paragraph(text, S('scx', fontName='Times-Roman', fontSize=7.5,
+                   textColor=INK, leading=9.0))],
     ]
     t = Table(inner, colWidths=[3.55*inch])
     t.setStyle(TableStyle([
@@ -314,7 +315,7 @@ def spell_card(name, meta, text):
         ('LINEBELOW',(0,1),(0,1),0.4, PURPLE_MID),
         ('LEFTPADDING',(0,0),(-1,-1),5),('RIGHTPADDING',(0,0),(-1,-1),5),
         ('TOPPADDING',(0,0),(-1,-1),2),('BOTTOMPADDING',(0,0),(-1,-1),2),
-        ('TOPPADDING',(0,2),(0,2),4),('BOTTOMPADDING',(0,2),(0,2),5),
+        ('TOPPADDING',(0,2),(0,2),3),('BOTTOMPADDING',(0,2),(0,2),3),
     ]))
     return t
 
@@ -323,12 +324,12 @@ cards = [
         'Cantrip • Bonus Action • Self • 1 min',
         'Starlight sheathes his staff: for 1 minute it swings with <b>WISDOM</b>, <b>+9 to hit</b>, '
         '<b>1d10+6</b> force or bludgeoning (his choice). Recast any time. His answer when something '
-        'gets right in his face. (House rule: replaces Primal Savagery.)'),
+        'gets right in his face.'),
     spell_card('★ Starry Wisp',
         'Cantrip • Action • 60 ft • Instant',
         'Ranged spell attack <b>+8 to hit</b>: <b>2d8 radiant + 1d4</b> (Starseed). The target glows '
         '(dim light) and can’t turn invisible until the end of his next turn.'),
-    spell_card('★ Guidance',
+    spell_card('★ Guidance &nbsp;<i>(free: Star Map)</i>',
         'Cantrip • Action • Touch • Concentration, 1 min',
         'Touch a willing friend. Once before it ends, they add <b>1d4</b> to one ability check '
         '(can roll the d4 after seeing the result). Great before a tricky skill roll.'),
@@ -336,14 +337,18 @@ cards = [
         'Cantrip • Action • 30 ft • Instant',
         'Tiny nature magic: predict the next 24 hr of weather, bloom a flower, make a harmless '
         'sound/smell in a 5-ft cube, or light/snuff a small flame. Pure utility &amp; flavor.'),
-    spell_card('Guiding Bolt',
+    spell_card('Guiding Bolt &nbsp;<i>(free: Star Map, 5&times;/day)</i>',
         '1st • Action • 120 ft • 1 round &nbsp;(Star Map: free 5/day)',
         'Ranged spell attack <b>+8 to hit</b>. On a hit: <b>4d6 radiant + 1d4</b> (Starseed). '
         'The <b>next attack</b> against that target before Ursa’s next turn has <b>advantage</b>, set up a teammate.'),
-    spell_card('Faerie Fire',
+    spell_card('Faerie Fire &nbsp;<i>(free: Staff, 1 charge)</i>',
         '1st • Action • 60 ft • Concentration, 1 min',
         'Foes in a 20-ft cube make a <b>Dex save DC 16</b>; on a fail they’re outlined in light. '
-        'Attacks vs them have <b>advantage</b>, and they <b>can’t hide/be invisible</b>. Team-wide accuracy boost.'),
+        'Attacks vs them have <b>advantage</b>, and they <b>can’t hide/be invisible</b>.'),
+    spell_card('Thunderwave',
+        '1st • Action • Self (15-ft cube) • Instant',
+        'Everything in a 15-ft cube makes a <b>Con save DC 16</b>: <b>2d8 thunder</b> and shoved 10 ft away on a fail, '
+        'half and no shove on a success. His get-off-me button.'),
     spell_card('Healing Word',
         '1st • Bonus Action • 60 ft • Instant',
         'Heal one creature you can see <b>2d4+5</b> HP, as a <b>bonus action</b>, so he can still '
@@ -352,35 +357,47 @@ cards = [
         '1st • Action • Touch • lasts 24 hr',
         'Creates <b>10 berries</b>; eating one (an action) heals <b>1 HP</b> and feeds someone for a day. '
         'Cast before a fight to bank 10 little heals the whole party can use.'),
-    spell_card('Speak with Animals',
+    spell_card('Speak with Animals &nbsp;<i>(free: his Mark)</i>',
         '1st • Ritual • Action • Self • 10 min',
-        'Talk with beasts for 10 min, they can describe nearby places, monsters, and what they’ve '
-        'seen in the last day. Cast as a <b>ritual</b> (no slot) when there’s no rush. Pairs with his animal charm.'),
-    spell_card('Animal Friendship',
+        'Talk with beasts for 10 min: they can describe nearby places, monsters, and what they saw '
+        'in the last day. Cast as a <b>ritual</b> (no slot) when there’s no rush.'),
+    spell_card('Animal Friendship &nbsp;<i>(free: his Mark)</i>',
         '1st • Action • 30 ft • 24 hr',
         'One beast (Int 3 or lower) makes a <b>Wis save DC 16</b>; on a fail it’s <b>charmed</b> '
         'and friendly for 24 hr. With “The Bigger They Are,” he can target dumb monstrosities too.'),
-    spell_card('Moonbeam',
-        '2nd • Action • 120 ft • Concentration, 1 min &nbsp;(Staff: 2 charges)',
+    spell_card('Moonbeam &nbsp;<i>(free: Staff, 2 charges)</i>',
+        '2nd • Action • 120 ft • Concentration, 1 min',
         'A 5-ft pillar of light. A creature that enters it or starts its turn there makes a <b>Con save DC 16</b>: '
         '<b>2d10 radiant + 1d4</b> (Starseed) on a fail, half on a success. <b>Move it 60 ft</b> each turn as part of the spell.'),
-    spell_card('Flaming Sphere',
+    spell_card('Aid',
+        '2nd • Action • 30 ft • 8 hours',
+        'Pick <b>three</b> friends: each one’s <b>maximum AND current HP go up by 5</b> for eight hours. '
+        'No concentration. Cast it at breakfast, not in a fight, and the whole party is tougher all day.'),
+    spell_card('Hold Person',
         '2nd • Action • 60 ft • Concentration, 1 min',
-        'A 5-ft fire ball. A creature ending its turn within 5 ft makes a <b>Dex save DC 16</b>: <b>2d6 fire</b> on a fail, '
-        'half on success. <b>Bonus action to roll it 30 ft</b> (ram a foe to force the save). Lights the area too.'),
-    spell_card('Spike Growth',
-        '2nd • Action • 150 ft • Concentration, 10 min',
-        'A 20-ft circle of ground sprouts hidden thorns: <b>difficult terrain</b>, and <b>2d4 piercing</b> '
-        'for every 5 ft a creature moves through. It looks like normal ground; herd foes across it or '
-        'drop it under a charging monster.'),
+        'One humanoid makes a <b>Wis save DC 16</b> or is <b>paralyzed</b>: it can’t move or act, attacks against it '
+        'have advantage, and hits from within 5 ft are <b>critical</b>. It re-saves at the end of each of its turns.'),
+    spell_card('Lesser Restoration',
+        '2nd • Bonus Action • Touch • Instant',
+        'Touch a friend and end <b>one</b> of these: <b>blinded, deafened, paralyzed, or poisoned</b>. '
+        'The answer to the boss blinding someone or a spider’s venom locking a friend down.'),
     spell_card('Summon Beast',
         '2nd • Action • 90 ft • Concentration, 1 hr',
         'Calls the <b>Bestial Spirit</b> (full stats on page 1). It acts right after Ursa on his initiative and '
         'obeys his commands for free. His go-to summon, a sturdy front-line ally that lasts a whole hour.'),
-    spell_card('Call Lightning',
-        '3rd • Action • 120 ft • Concentration, 10 min',
-        'Make a storm cloud. Each turn, use your <b>action</b> to strike: creatures within 5 ft of the point make a '
-        '<b>Dex save DC 16</b>: <b>3d10 lightning</b> on a fail, half on success. +1d10 if it’s already stormy. Repeatable AoE.'),
+    spell_card('Conjure Animals',
+        '3rd • Action • 60 ft • Concentration, 10 min',
+        'A big spectral pack of animals appears. <b>It moves 30 ft whenever Ursa moves, for free.</b> Anything it comes '
+        'near, or that ends its turn near it, makes a <b>Dex save DC 16</b> or takes <b>3d10 slashing</b> (once a turn each). '
+        'A damage cloud that costs him nothing to keep going.'),
+    spell_card('Revivify',
+        '3rd • Action • Touch • Instant &nbsp;(300 gp diamond)',
+        'Touch a friend who died <b>within the last minute</b> and bring them back with <b>1 HP</b>. '
+        'The single most important spell he owns. Keep the diamond.'),
+    spell_card('Polymorph',
+        '4th • Action • 60 ft • Concentration, 1 hr',
+        'Turn a creature into a <b>beast</b>. <b>On a foe:</b> Wis save DC 16 or it becomes a harmless animal, unable to '
+        'speak or cast. <b>On a friend:</b> they turn huge and gain <b>temp HP equal to the beast’s whole HP</b>.'),
     spell_card('Summon Fey',
         '3rd • Action • 90 ft • Concentration, 1 hr',
         'Calls the <b>Fey Spirit</b> (full stats on page 1). Faster and hits harder than the beast, with a mood power '
@@ -398,7 +415,7 @@ grid = Table(rows, colWidths=[3.66*inch]*2)
 grid.setStyle(TableStyle([
     ('VALIGN',(0,0),(-1,-1),'TOP'),
     ('LEFTPADDING',(0,0),(-1,-1),2),('RIGHTPADDING',(0,0),(-1,-1),2),
-    ('TOPPADDING',(0,0),(-1,-1),3),('BOTTOMPADDING',(0,0),(-1,-1),3),
+    ('TOPPADDING',(0,0),(-1,-1),1.5),('BOTTOMPADDING',(0,0),(-1,-1),1.5),
 ]))
 story.append(grid)
 

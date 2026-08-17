@@ -6,9 +6,9 @@ The canonical look of every significant, recurring character. Whenever art featu
 
 | Character | Refs | Notes |
 |---|---|---|
-| Lilly Glimmergear | REF_lilly_1/2/3 (early), REF_lilly_4/5_later (S4+/S6+) | Deep gnome artificer |
-| Stabby Sharpblade | REF_stabby_1/2 (early), REF_stabby_3_later (S6+ sash) | Goblin monk; Candyfang katana from S4 |
-| Ursa Catchum | REF_ursa_1/2 (early), REF_ursa_3_later (S6+ staff) | Human star-druid |
+| Lilly Glimmergear | REF_lilly_1/2/3 (early), REF_lilly_4/5_later (S4+/S6+), **REF_lilly_6_level7 (S8+)** | Deep gnome artificer. From S8 she carries **Boomstick** (her mother's repeating pistol, brass and steel, glowing amber chamber) and **Puff rides her shoulder**. The frost dagger is retired to her belt. |
+| Stabby Sharpblade | REF_stabby_1/2 (early), REF_stabby_3_later (S6+ sash), **REF_stabby_4_level7 (S8+)** | Goblin monk; Candyfang katana S4-S7. From S8 he wields the **Nichirin katana**, crimson sun-forged steel that glows blood-red, and his ignited breath trails red. |
+| Ursa Catchum | REF_ursa_1/2 (early), REF_ursa_3_later (S6+ staff), **REF_ursa_4_level7 (S8+)** | Human star-druid. From S8 he is a year older and carries **Ash's Sigil-Stone**, a river-smooth grey stone with a half-finished golden spiral, in his off hand. |
 | Ghostbloom | REF_ghostbloom | Ghostly-Bulbasaur of translucent teal light (S6+) |
 | Floraburst | REF_floraburst | Ghostbloom's earlier form (S3-S5) |
 

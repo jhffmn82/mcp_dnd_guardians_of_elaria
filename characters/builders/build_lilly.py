@@ -92,8 +92,8 @@ def h2(text):
 hdr=Table([[Image('lilly_new.png',width=1.35*inch,height=1.35*inch),
     [Paragraph('Lilly Glimmergear',title_st),
      Paragraph('Deep Gnome &bull; Artificer (Artillerist) &bull; Level 7',sub_st),Spacer(1,3),
-     Paragraph('Played by the inventor of the group. Lilly builds a magic cannon, zaps things with '
-               'frost, and carries the Essence Sphere that holds Pikachu’s spark.',flav_st)]]],
+     Paragraph('Played by the inventor of the group. Lilly builds a magic cannon, fires Boomstick, and '
+               'carries the Essence Sphere that holds Pikachu’s spark. Puff rides on her shoulder.',flav_st)]]],
     colWidths=[1.5*inch,5.8*inch])
 hdr.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(1,0),(1,0),10)]))
 story.append(hdr); story.append(Spacer(1,8))
@@ -256,9 +256,9 @@ story.append(Paragraph('Page 3: Spellbook', sub_st))
 story.append(Spacer(1,7))
 story.append(Paragraph('Slots per day: 4 first-level, 3 second-level. Cantrips (★) are free forever. '
     'She prepares 7 spells; the four marked Always Prepared are free from her Artillerist subclass and '
-    'don’t count toward that. The +1d8 frost on a spell is her dagger’s arcane firearm: it adds to one '
-    'spell she casts each turn (she only casts one anyway). The +2 frost rides along on any spell cast '
-    'through the dagger.', small_it))
+    'don’t count toward that. The <b>+1d8 thunder</b> is <b>Boomstick</b>, her arcane firearm: it adds to one '
+    'damage roll of one artificer spell she casts each turn (she only casts one anyway). Her old frost '
+    'dagger is retired, so its cold riders no longer apply.', small_it))
 story.append(Spacer(1,6))
 
 # Open two-column spell list (name / meta / text), per the living sheet
