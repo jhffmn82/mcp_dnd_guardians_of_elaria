@@ -20,7 +20,8 @@ BOOK = [
     ("sessions/session_05_curse_of_davy_jones.docx",   "07_Session_5_The_Curse_of_Davy_Jones.pdf"),
     ("sessions/session_06_wraithpine.docx",            "08_Session_6_Lanterns_in_the_Fog.pdf"),
     ("sessions/session_07_gearhaven.docx",             "09_Session_7_Gearhaven_the_Clockwork_City.pdf"),
-    ("compendium/the_compendium.docx",                 "10_The_Compendium.pdf"),
+    ("sessions/session_08_underroot.docx",             "11_Session_8_Underroot.pdf"),
+    ("compendium/the_compendium.docx",                 "12_The_Compendium.pdf"),
 ]
 
 # Source builders to run first (session 7 has no builder; it is edited in place).
@@ -28,6 +29,7 @@ BUILDERS = [
     "build_foreword.py", "build_lore.py",
     "build_session_01.py", "build_session_02.py", "build_session_03.py",
     "build_session_04.py", "build_session_05.py", "build_session_06.py",
+    "build_session_08.py",
     "build_compendium.py", "build_bestiary.py", "build_compendium_full.py",
 ]
 
