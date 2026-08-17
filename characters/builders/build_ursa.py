@@ -174,7 +174,7 @@ def summon_block(title, lines):
                                 textColor=colors.white, leading=11))]]
     for ln in lines:
         rows.append([Paragraph(ln, S('sl', fontName='Times-Roman', fontSize=7.8,
-                                     textColor=INK, leading=9.5))])
+                                     textColor=INK, leading=9.0))])
     t = Table(rows, colWidths=[3.55*inch])
     t.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(0,0), PURPLE_DK),
@@ -182,30 +182,36 @@ def summon_block(title, lines):
         ('BOX',(0,0),(-1,-1),0.8, PURPLE),
         ('LINEBELOW',(0,0),(0,0),0.8, PURPLE),
         ('LEFTPADDING',(0,0),(-1,-1),6),('RIGHTPADDING',(0,0),(-1,-1),6),
-        ('TOPPADDING',(0,0),(-1,-1),3),('BOTTOMPADDING',(0,0),(-1,-1),3),
+        ('TOPPADDING',(0,0),(-1,-1),1.2),('BOTTOMPADDING',(0,0),(-1,-1),1.2),
     ]))
     return t
 
 beast = summon_block("Bestial Spirit: Summon Beast (2nd)", [
-    "<b>AC</b> 13 &nbsp; <b>HP</b> 30 &nbsp; <b>Speed</b> 40 ft (Land), or fly/swim 30 ft",
-    "Pick Air, Land, or Water when summoned.",
-    "<b>Maul/Rend:</b> +8 to hit, <b>1d8+6</b> damage, 1 attack.",
+    "<b>AC</b> 13 &nbsp; <b>HP</b> 30 <i>(20 if Air)</i> &nbsp; <b>Speed</b> 30 ft",
+    "Pick Air, Land, or Water: Air flies 60, Land climbs 30, Water swims 30.",
+    "<b>Maul/Rend:</b> +8 to hit, <b>1d8+6</b> damage, <b>1 attack</b>.",
     "Flyby (Air): no opportunity attacks. Great scout & striker.",
     "Shares Ursa's turn; obeys his commands for free.",
+    "<b>Cast with a 3rd-level slot:</b> AC 14, HP 35 <i>(25 Air)</i>, 1d8+7, still 1 attack.",
+    "<b>Cast with a 4th-level slot:</b> AC 15, HP 40 <i>(30 Air)</i>, 1d8+8, "
+    "and <b>2 attacks a turn</b>.",
 ])
 fey = summon_block("Fey Spirit: Summon Fey (3rd)", [
-    "<b>AC</b> 15 &nbsp; <b>HP</b> 30 &nbsp; <b>Speed</b> 40 ft, fly 40 ft",
-    "<b>Fey Blade:</b> +8 to hit, <b>2d6+6 force</b>, 1 attack.",
+    "<b>AC</b> 15 &nbsp; <b>HP</b> 30 &nbsp; <b>Speed</b> 30 ft, fly 30 ft",
+    "<b>Fey Blade:</b> +8 to hit, <b>2d6+6 force</b>, <b>1 attack</b>.",
     "<b>Fey Step:</b> teleport up to 30 ft, then its mood triggers:",
     "<i>Fuming:</i> advantage on its next attack this turn.",
     "<i>Mirthful:</i> foe within 10 ft, Wis save DC 16 or Charmed.",
     "<i>Tricksy:</i> fills a 10-ft cube with magical Darkness.",
+    "<b>Cast with a 4th-level slot:</b> AC 16, HP 40, 2d6+7, "
+    "and <b>2 attacks a turn</b>.",
 ])
 both = Table([[beast, fey]], colWidths=[3.65*inch, 3.65*inch])
 both.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),
                           ('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(0,0),10)]))
 story.append(Paragraph("Ursa's Summoned Spirits", h2_st))
 story.append(both)
+story.append(Paragraph('Both grow with the slot he spends, and <b>4th level</b> is the jump worth paying for: that is where either spirit starts making <b>two attacks a turn</b>.', small_it))
 
 # ---- Spells at a Glance (compact quick tracker, bottom of page 1) ----
 story.append(Spacer(1,4))
