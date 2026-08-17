@@ -4,7 +4,8 @@ Ported onto the shared published-book template (sheet_style.py) and content-
 synced to the committed lilly_glimmergear_sheet_v3.pdf, which is newer than
 the original browser-session script (WIS 12, 2024 deep gnome printing, house-
 ruled pick-a-blast cannon, Tinker's Magic with Mending, plain steel shield).
-Page 1: combat dashboard + cannon. Page 2: powers, gear, story. Page 3: spellbook."""
+Page 1: combat dashboard + cannon. Page 2: powers and gear. Page 3: spellbook and
+Puff. Page 4: story and personality."""
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from reportlab.lib import colors
@@ -181,7 +182,7 @@ story.append(PageBreak())
 # ===== PAGE 2 =====
 story.append(Paragraph('Lilly Glimmergear', S('p2t',fontName='Times-Bold',fontSize=15,
             textColor=BLUE, leading=18, spaceAfter=2)))
-story.append(Paragraph('Page 2: Powers, Gear &amp; Story', sub_st))
+story.append(Paragraph('Page 2: Powers &amp; Gear', sub_st))
 story.append(Spacer(1,8))
 
 h2("Lilly's Special Powers")
@@ -191,7 +192,7 @@ powers=[
         '<b>Aether Ward:</b> as her <b>action</b>, she and every friend <b>within 15 ft</b> gain '
         '<b>2d8 + 5 temporary hit points</b>. <b>2 uses, back on a short rest.</b> '
         '<i>(The Sphere’s elemental discharges stay locked until each rift’s Mote is found.)</i>'),
-    ('Replicate Magic Item','Lilly builds magic gear from arcane <b>plans</b>. She knows <b>5 plans</b> and can keep <b>3 creations</b> going at once. Right now: the <b>Wand of Magic Missiles</b> she made for Puff.'),
+    ('Replicate Magic Item','Lilly builds magic gear from arcane <b>plans</b>. She knows <b>5 plans</b> and can keep <b>3 creations</b> going at once. <b>All three slots are full:</b> her <b>+1 Half Plate</b>, the <b>+1 Repeating Longbow</b> she made for Stabby, and <b>Puff&rsquo;s Wand of Magic Missiles</b>. To build something new she has to let one of those go.'),
     ('Magic Item Tinker (new at 6!)','<b>Charge</b> (bonus action, spend a slot to refill a creation&rsquo;s charges), <b>Drain</b> (bonus action, destroy one for a spell slot, 1/long rest), <b>Transmute</b> (reshape one into another plan, 1/long rest).'),
     ('Flash of Genius (new at 7!)','<b>Reaction.</b> When she <i>or any friend within 30 ft</i> fails an ability check or saving throw, add <b>+5 (Int)</b> to the roll and maybe turn it into a success. <b>5 uses per long rest.</b>'),
     ("Tinker's Magic",'Knows the Mending cantrip (fix broken things). Can also conjure handy mundane gear (rope, a torch, ball bearings) that lasts until her next rest. Great for puzzles and traps.'),
@@ -210,12 +211,191 @@ gear=[
     ('Boomstick <i>(new! Poots&rsquo;s parting work)</i>','Her mother&rsquo;s repeating pistol, +2. <b>Range 30/90.</b> It is her <b>weapon, her spell focus, and her Arcane Firearm</b> all at once: any artificer spell she casts through it adds <b>1d8 thunder</b> to one of its damage rolls.'),
     ('Frostbite Shard Dagger +1 <i>(retired to her belt)</i>','Her old frost dagger, kept as a keepsake. Boomstick has taken over as focus and Arcane Firearm, so the dagger&rsquo;s riders no longer apply.'),
     ('Pocket Dynamo (★ Elaria’s gift)','From the Wraithpine chest. Summon/recall her cannon for free, lasts 24 hours, +2 damage. Reformat (1/long rest, action), now mostly spare, since every cannon picks its blast when it fires. Needs attunement.'),
-    ('+1 Half Plate','Her armour, the base of her <b>AC 20</b>. <i>(DM ruling: permanent gear, not an ongoing Replicate creation, so it never vanishes and never eats a slot.)</i>'),
+    ('+1 Half Plate <i>(Replicate creation 1 of 3)</i>','Her armour, the base of her <b>AC 20</b>. She keeps it going with Replicate Magic Item, so it uses one of her three creation slots.'),
     ('Shield','A sturdy steel shield. Adds +2 to her armor.'),
+    ('Wand of Web <i>(new! she made it during the year)</i>','<b>Hers, attuned.</b> 7 charges; spend <b>1 charge</b> to cast <b>Web</b>: a 20-ft cube of sticky webbing, difficult terrain, and anything caught makes a <b>Dex save DC 13</b> or is <b>Restrained</b> (it can break out with a Str check against the same DC). <i>The wand casts at its own DC 13, not her DC 16.</i> Regains 1d6+1 charges at dawn.'),
+    ('Wand of Magic Missiles <i>(new! Puff carries it)</i>','<b>No attunement, so Puff can use it.</b> 7 charges. Spend <b>1 charge</b> for <b>three darts</b> that <b>never miss</b>, <b>1d4+1 force</b> each, range <b>120 ft</b>, split among any targets she can see. She may spend up to <b>3 charges at once</b>: each extra charge adds <b>one more dart</b>, so 3 charges means <b>five darts</b>. Regains 1d6+1 at dawn. <i>(Replicate creation 3 of 3.)</i>'),
+    ('Ring of Spell Storing <i>(new! attuned to Puff)</i>','Holds up to <b>5 levels of spells</b>. Any caster can put a spell of level 1 to 5 into it by touching it while casting, and the slot level used is how much room it takes. Puff can then cast anything stored in it, using <b>the original caster&rsquo;s</b> slot level, save DC and attack bonus, so a spell Lilly stores comes back out at <b>DC 16 and +8</b>. Casting it frees that space again.'),
+    ('Pipes of Haunting <i>(new! Puff carries them)</i>','<b>No attunement.</b> 3 charges, regains 1d3 at dawn. <b>Magic action</b>, spend 1 charge to play an eerie tune: each creature she chooses within <b>30 ft</b> makes a <b>Wis save DC 15</b> or is <b>Frightened for 1 minute</b>, re-saving at the end of each of its turns. Anything that saves is immune to the pipes for 24 hours.'),
+    ('Attunement: 2 of 3 used','Lilly is attuned to the <b>Pocket Dynamo</b> and the <b>Wand of Web</b>, so she has <b>one slot free</b>. Puff attunes separately and holds the <b>Ring of Spell Storing</b>. Boomstick, the Wand of Magic Missiles and the Pipes need no attunement at all.'),
 ]
 story.append(section_table([[Paragraph(LBL%n,cell_st),Paragraph(d,cell_st)] for n,d in gear],
     [1.9*inch,5.4*inch], header=False))
 
+story.append(PageBreak())
+
+# ===== PAGE 3: SPELLBOOK =====
+story.append(Paragraph('Lilly Glimmergear', S('p3t',fontName='Times-Bold',fontSize=15,
+            textColor=BLUE, leading=18, spaceAfter=2)))
+story.append(Paragraph('Page 3: Spellbook', sub_st))
+story.append(Spacer(1,7))
+story.append(Paragraph('Slots per day: 4 first-level, 3 second-level. Cantrips (★) are free forever. '
+    'She prepares 7 spells; the four marked Always Prepared are free from her Artillerist subclass and '
+    'don’t count toward that. The <b>+1d8 thunder</b> is <b>Boomstick</b>, her arcane firearm: it adds to one '
+    'damage roll of one artificer spell she casts each turn (she only casts one anyway). Her old frost '
+    'dagger is retired, so its cold riders no longer apply.', small_it))
+story.append(Spacer(1,6))
+
+# Open two-column spell list (name / meta / text), per the living sheet
+sp_name = S('spn', fontName='Times-Bold', fontSize=9.2, textColor=BLUE, leading=11, spaceBefore=6)
+sp_meta = S('spm', fontName='Times-Italic', fontSize=7.2, textColor=GREY, leading=8.6, spaceAfter=1)
+sp_text = S('spx', fontName='Times-Roman', fontSize=7.9, textColor=INK, leading=9.9)
+
+spells=[
+    ('★ True Strike',
+        'Cantrip • Action • fires Boomstick, 30/90 ft • Instant',
+        'Fire Boomstick using <b>INT for both the attack and the damage</b>. Ranged attack <b>+10</b> to hit. '
+        'On a hit: <b>1d10 + 2 + 5</b> thunder, <b>+1d6 radiant</b> (the cantrip grows with her level), and '
+        '<b>+1d8 thunder</b> from Boomstick as her arcane firearm. She can make the whole hit radiant instead '
+        'when that hurts the target more. Her hardest single shot.'),
+    ('★ Fire Bolt',
+        'Cantrip • Action • 120 ft • Instant',
+        'Hurl fire at one target. Ranged spell attack +8 to hit: <b>2d10 fire + 1d8 thunder</b> '
+        '(Boomstick). Her reliable ranged poke, never runs out, and at 120 ft it outreaches Boomstick.'),
+    ('★ Mending',
+        'Cantrip • 1 minute • Touch • Instant',
+        'Repair a single break or tear in an object: a snapped chain, a torn cloak, a '
+        'cracked gear. No bigger than 1 ft. Free from Tinker’s Magic. Also heals her '
+        'cannon 2d6!'),
+    ('Shield: Always Prepared',
+        '1st • Reaction (when hit / by Magic Missile) • Self • 1 round',
+        'Snap up a force wall: +5 AC until the start of her next turn (can turn a hit into a '
+        'miss) and take no damage from Magic Missile. Cast after seeing the attack roll.'),
+    ('Thunderwave: Always Prepared',
+        '1st • Action • Self (15-ft cube) • Instant',
+        'Foes in a 15-ft cube make a Con save DC 16: on a fail, <b>2d8 + 1d8 thunder</b> (Boomstick) '
+        'and shoved 10 ft away; half and no shove on a success.'),
+    ('Faerie Fire',
+        '1st • Action • 60 ft • Concentration, 1 min',
+        'Foes in a 20-ft cube make a Dex save DC 16; on a fail they’re outlined in light. '
+        'Attacks vs them have advantage and they can’t be invisible. Strong team setup.'),
+    ('Scorching Ray: Always Prepared',
+        '2nd • Action • 120 ft • Instant',
+        'Fire three rays. Each is a separate ranged spell attack +8 to hit: 2d6 fire each, plus '
+        '<b>1d8 thunder on one ray</b> (Boomstick). Aim them all at one foe or split them up.'),
+    ('Shatter: Always Prepared',
+        '2nd • Action • 60 ft (10-ft sphere) • Instant',
+        'A loud burst. Creatures in a 10-ft sphere make a Con save DC 16: <b>3d8 + 1d8 thunder</b> '
+        '(Boomstick) on a fail, half on success. Extra effective against metal and stone foes.'),
+    ('Grease',
+        '1st • Action • 60 ft (10-ft square) • 1 min',
+        'Slick the floor in a 10-ft square: it becomes difficult terrain, and anyone '
+        'standing there (or entering, or ending a turn there) makes a Dex save DC 16 or '
+        'falls prone. No concentration, so she can keep something else running.'),
+    ('Cure Wounds',
+        '1st • Action • Touch • Instant',
+        'Touch a friend and heal them 2d8 + 5. Her emergency button when someone drops '
+        'and Ursa or Ghostbloom cannot reach them in time.'),
+    ('Homunculus Servant',
+        '2nd • 1 hr 10 min as a RITUAL (no spell slot!) • 10 ft • Permanent',
+        'She builds her little brass companion. Ritual casting costs her NO spell slot and '
+        'it never expires. It flies, obeys her without costing her anything, and acts right '
+        'after her every round. Full stat block below.'),
+    ("Dragon's Breath",
+        '2nd • Bonus Action • Touch • Concentration, 1 min',
+        'Touch a willing friend (her homunculus!) and pick acid, cold, fire, lightning or '
+        'poison. For 1 minute that creature can use its action to breathe a 15-ft cone: '
+        'Dex save DC 16, 3d6 damage, half on a success. Pick the type the enemy is weak to!'),
+    ('Web',
+        '2nd • Action • 60 ft • Concentration, 1 hr',
+        'Fill a 20-ft cube with thick sticky webs: <b>difficult terrain</b>, and anything caught in it makes a '
+        '<b>Dex save DC 16</b> or is <b>Restrained</b>, breaking out later with a Str check against the same DC. '
+        'The webs burn easily. <i>(From her own slot it is DC 16; from the Wand of Web it is DC 13.)</i>'),
+    ('Aid',
+        '2nd • Action • 30 ft • 8 hours',
+        'Choose three friends: each one’s hit point maximum AND current hit points go up '
+        'by 5 for eight hours. Cast it at breakfast, not in a fight. Free extra health for '
+        'the whole day.'),
+]
+# Boxed spell cards in Lilly's blue, matching Ursa's page-3 format.
+def spell_card(name, meta, text):
+    inner = [
+        [Paragraph(f'<b>{name}</b>', S('lscn', fontName='Times-Bold', fontSize=9,
+                   textColor=BLUE, leading=11))],
+        [Paragraph(meta, S('lsct', fontName='Times-Italic', fontSize=6.8,
+                   textColor=GREY, leading=8.2))],
+        [Paragraph(text, S('lscx', fontName='Times-Roman', fontSize=7.6,
+                   textColor=INK, leading=9.1))],
+    ]
+    t = Table(inner, colWidths=[3.55*inch])
+    t.setStyle(TableStyle([
+        ('BACKGROUND',(0,0),(0,1), BLUE_LT),
+        ('BOX',(0,0),(-1,-1),0.6, BLUE_MID),
+        ('LINEBELOW',(0,1),(0,1),0.4, BLUE_MID),
+        ('LEFTPADDING',(0,0),(-1,-1),5),('RIGHTPADDING',(0,0),(-1,-1),5),
+        ('TOPPADDING',(0,0),(-1,-1),1.5),('BOTTOMPADDING',(0,0),(-1,-1),1.5),
+        ('TOPPADDING',(0,2),(0,2),3),('BOTTOMPADDING',(0,2),(0,2),3.5),
+    ]))
+    return t
+
+cards = [spell_card(*sp) for sp in spells]
+rows = []
+for i in range(0, len(cards), 2):
+    chunk = cards[i:i+2]
+    while len(chunk) < 2:
+        chunk.append(Paragraph('', body_st))
+    rows.append(chunk)
+grid = Table(rows, colWidths=[3.66*inch]*2)
+grid.setStyle(TableStyle([
+    ('VALIGN',(0,0),(-1,-1),'TOP'),
+    ('LEFTPADDING',(0,0),(-1,-1),2),('RIGHTPADDING',(0,0),(-1,-1),2),
+    ('TOPPADDING',(0,0),(-1,-1),0.4),('BOTTOMPADDING',(0,0),(-1,-1),0.4),
+]))
+story.append(grid)
+
+# ---- Homunculus Servant stat block (her permanent ritual companion) ----
+story.append(Spacer(1, 5))
+story.append(Paragraph('Puff, Lilly&rsquo;s Homunculus Servant',
+    S('homh', fontName='Times-Bold', fontSize=11.5, textColor=BLUE, leading=13, spaceAfter=1)))
+story.append(HRFlowable(width='100%', thickness=0.7, color=BLUE, spaceAfter=3))
+
+hom_stats = [
+    Paragraph('<b>Tiny construct.</b> Built, not summoned: ritual-cast in 1 hour 10 minutes for '
+              '<b>no spell slot</b>, and it never expires. Fairy-sized, small enough to sit in her '
+              'cupped hands.', cell_st),
+    Spacer(1, 2),
+    Paragraph('<b>AC</b> 13 &nbsp; <b>HP</b> 15 &nbsp; <b>Speed</b> 20 ft, <b>Fly 30 ft</b>', cell_st),
+    Paragraph('<b>Saves</b> Str &minus;1 &nbsp; <b>Dex +4</b> &nbsp; <b>Con +3</b> &nbsp; '
+              'Int +2 &nbsp; Wis +2 &nbsp; Cha +0 &nbsp; '
+              '<font size=6.5 color="#6F6046">(Magic Bond&rsquo;s +2 already included)</font>', cell_st),
+    Paragraph('<b>Senses</b> darkvision 60 ft &nbsp; <b>Telepathy</b> with Lilly, 1 mile', cell_st),
+    Paragraph('<b>Immune</b> poison damage; poisoned, exhaustion', cell_st),
+    Spacer(1, 2),
+    Paragraph('<b>Force Strike.</b> +8 to hit, reach 5 ft or range 30 ft: <b>1d6 + 2 force</b>. '
+              'Force punches through the Voltcrawlers&rsquo; blink.', cell_st),
+    Paragraph('<b>Evasion.</b> On a Dex save for half damage it takes <b>none</b> on a success, '
+              'half on a failure.', cell_st),
+    Paragraph('<b>Magic Bond.</b> Add +2 to any check or save it makes.', cell_st),
+    Paragraph('<b>Channel Magic (Reaction).</b> When Lilly casts a touch spell and it is within '
+              '120 ft, it can deliver that spell instead.', cell_st),
+    Spacer(1, 3),
+    Paragraph('<b>What she carries.</b> The <b>Ring of Spell Storing</b> (attuned to her), the <b>Wand of Magic '
+              'Missiles</b> and the <b>Pipes of Haunting</b>. Full rules for all three are on page 2 under '
+              'Lilly&rsquo;s Stuff. Puff has a single action, so she can use only <b>one of them per turn</b>.', cell_st),
+    Spacer(1, 2),
+    Paragraph('It shares Lilly&rsquo;s initiative and acts right after her, obeying with <b>no '
+              'action needed from her</b>; give it no orders and it Dodges. Touch it with '
+              '<i>Dragon&rsquo;s Breath</i> and it breathes a 15-ft cone for 3d6, choosing the '
+              'type the enemy is weak to.', small_it),
+]
+homt = Table([[Image('homunculus_new.png', width=1.3*inch, height=1.3*inch), hom_stats]],
+             colWidths=[1.45*inch, 5.85*inch])
+homt.setStyle(TableStyle([
+    ('VALIGN',(0,0),(0,0),'TOP'),
+    ('VALIGN',(1,0),(1,0),'TOP'),
+    ('BACKGROUND',(0,0),(-1,-1), BLUE_LT),
+    ('BOX',(0,0),(-1,-1),0.8, BLUE_MID),
+    ('LINEAFTER',(0,0),(0,0),0.5, BLUE_MID),
+    ('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),
+    ('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),
+]))
+story.append(homt)
+
+# ===== PAGE 4: STORY & PERSONALITY =====
+story.append(PageBreak())
+story.append(Paragraph('Lilly Glimmergear', S('p4t',fontName='Times-Bold',fontSize=15,
+            textColor=BLUE, leading=18, spaceAfter=2)))
+story.append(Paragraph('Page 4: Story &amp; Personality', sub_st))
 h2("Lilly's Story")
 story.append(Paragraph(
     "Lilly grew up in Deepforge Hollow, a svirfneblin (deep gnome) city deep in the Underdark, surrounded by "
@@ -247,173 +427,6 @@ pt.setStyle(TableStyle([('BOX',(0,0),(-1,-1),0.5,LINE),('INNERGRID',(0,0),(-1,-1
     ('LEFTPADDING',(0,0),(-1,-1),6),('RIGHTPADDING',(0,0),(-1,-1),6)]))
 story.append(Spacer(1,3)); story.append(pt)
 
-story.append(PageBreak())
-
-# ===== PAGE 3: SPELLBOOK =====
-story.append(Paragraph('Lilly Glimmergear', S('p3t',fontName='Times-Bold',fontSize=15,
-            textColor=BLUE, leading=18, spaceAfter=2)))
-story.append(Paragraph('Page 3: Spellbook', sub_st))
-story.append(Spacer(1,7))
-story.append(Paragraph('Slots per day: 4 first-level, 3 second-level. Cantrips (★) are free forever. '
-    'She prepares 7 spells; the four marked Always Prepared are free from her Artillerist subclass and '
-    'don’t count toward that. The <b>+1d8 thunder</b> is <b>Boomstick</b>, her arcane firearm: it adds to one '
-    'damage roll of one artificer spell she casts each turn (she only casts one anyway). Her old frost '
-    'dagger is retired, so its cold riders no longer apply.', small_it))
-story.append(Spacer(1,6))
-
-# Open two-column spell list (name / meta / text), per the living sheet
-sp_name = S('spn', fontName='Times-Bold', fontSize=9.2, textColor=BLUE, leading=11, spaceBefore=6)
-sp_meta = S('spm', fontName='Times-Italic', fontSize=7.2, textColor=GREY, leading=8.6, spaceAfter=1)
-sp_text = S('spx', fontName='Times-Roman', fontSize=7.9, textColor=INK, leading=9.9)
-
-spells=[
-    ('★ True Strike',
-        'Cantrip • Action • Self (5 ft reach) • Instant',
-        'Fire Boomstick using INT. Ranged attack +10 to hit. On a hit: 1d10 + 2 + '
-        '1d4 cold + 6 + 1d6 radiant + 1d8 frost (arcane firearm) + 2 frost (frostbite). Her '
-        'best up-close hit.'),
-    ('★ Fire Bolt',
-        'Cantrip • Action • 120 ft • Instant',
-        'Hurl fire at one target. Ranged spell attack +8 to hit: 2d10 fire + 1d8 + 2 frost '
-        '(dagger). Her reliable ranged poke, never runs out.'),
-    ('★ Mending',
-        'Cantrip • 1 minute • Touch • Instant',
-        'Repair a single break or tear in an object: a snapped chain, a torn cloak, a '
-        'cracked gear. No bigger than 1 ft. Free from Tinker’s Magic. Also heals her '
-        'cannon 2d6!'),
-    ('Shield: Always Prepared',
-        '1st • Reaction (when hit / by Magic Missile) • Self • 1 round',
-        'Snap up a force wall: +5 AC until the start of her next turn (can turn a hit into a '
-        'miss) and take no damage from Magic Missile. Cast after seeing the attack roll.'),
-    ('Thunderwave: Always Prepared',
-        '1st • Action • Self (15-ft cube) • Instant',
-        'Foes in a 15-ft cube make a Con save DC 16: on a fail, 2d8 thunder + 1d8 + 2 '
-        'frost (dagger) and shoved 10 ft away; half and no shove on a success.'),
-    ('Faerie Fire',
-        '1st • Action • 60 ft • Concentration, 1 min',
-        'Foes in a 20-ft cube make a Dex save DC 16; on a fail they’re outlined in light. '
-        'Attacks vs them have advantage and they can’t be invisible. Strong team setup.'),
-    ('Scorching Ray: Always Prepared',
-        '2nd • Action • 120 ft • Instant',
-        'Fire three rays. Each is a separate ranged spell attack +8 to hit: 2d6 fire each, plus '
-        '1d8 + 2 frost (dagger, once). Aim them all at one foe or split them up.'),
-    ('Shatter: Always Prepared',
-        '2nd • Action • 60 ft (10-ft sphere) • Instant',
-        'A loud burst. Creatures in a 10-ft sphere make a Con save DC 16: 3d8 thunder + '
-        '1d8 + 2 frost (dagger) on a fail, half on success. Extra effective vs metal/stone '
-        'foes.'),
-    ('Grease',
-        '1st • Action • 60 ft (10-ft square) • 1 min',
-        'Slick the floor in a 10-ft square: it becomes difficult terrain, and anyone '
-        'standing there (or entering, or ending a turn there) makes a Dex save DC 16 or '
-        'falls prone. No concentration, so she can keep something else running.'),
-    ('Cure Wounds',
-        '1st • Action • Touch • Instant',
-        'Touch a friend and heal them 2d8 + 5. Her emergency button when someone drops '
-        'and Ursa or Ghostbloom cannot reach them in time.'),
-    ('Homunculus Servant',
-        '2nd • 1 hr 10 min as a RITUAL (no spell slot!) • 10 ft • Permanent',
-        'She builds her little brass companion. Ritual casting costs her NO spell slot and '
-        'it never expires. It flies, obeys her without costing her anything, and acts right '
-        'after her every round. Full stat block below.'),
-    ("Dragon's Breath",
-        '2nd • Bonus Action • Touch • Concentration, 1 min',
-        'Touch a willing friend (her homunculus!) and pick acid, cold, fire, lightning or '
-        'poison. For 1 minute that creature can use its action to breathe a 15-ft cone: '
-        'Dex save DC 16, 3d6 damage, half on a success. Pick the type the enemy is weak to!'),
-    ('Aid',
-        '2nd • Action • 30 ft • 8 hours',
-        'Choose three friends: each one’s hit point maximum AND current hit points go up '
-        'by 5 for eight hours. Cast it at breakfast, not in a fight. Free extra health for '
-        'the whole day.'),
-]
-# Boxed spell cards in Lilly's blue, matching Ursa's page-3 format.
-def spell_card(name, meta, text):
-    inner = [
-        [Paragraph(f'<b>{name}</b>', S('lscn', fontName='Times-Bold', fontSize=9,
-                   textColor=BLUE, leading=11))],
-        [Paragraph(meta, S('lsct', fontName='Times-Italic', fontSize=6.8,
-                   textColor=GREY, leading=8.2))],
-        [Paragraph(text, S('lscx', fontName='Times-Roman', fontSize=7.6,
-                   textColor=INK, leading=9.6))],
-    ]
-    t = Table(inner, colWidths=[3.55*inch])
-    t.setStyle(TableStyle([
-        ('BACKGROUND',(0,0),(0,1), BLUE_LT),
-        ('BOX',(0,0),(-1,-1),0.6, BLUE_MID),
-        ('LINEBELOW',(0,1),(0,1),0.4, BLUE_MID),
-        ('LEFTPADDING',(0,0),(-1,-1),5),('RIGHTPADDING',(0,0),(-1,-1),5),
-        ('TOPPADDING',(0,0),(-1,-1),1.5),('BOTTOMPADDING',(0,0),(-1,-1),1.5),
-        ('TOPPADDING',(0,2),(0,2),3),('BOTTOMPADDING',(0,2),(0,2),3.5),
-    ]))
-    return t
-
-cards = [spell_card(*sp) for sp in spells]
-rows = []
-for i in range(0, len(cards), 2):
-    chunk = cards[i:i+2]
-    while len(chunk) < 2:
-        chunk.append(Paragraph('', body_st))
-    rows.append(chunk)
-grid = Table(rows, colWidths=[3.66*inch]*2)
-grid.setStyle(TableStyle([
-    ('VALIGN',(0,0),(-1,-1),'TOP'),
-    ('LEFTPADDING',(0,0),(-1,-1),2),('RIGHTPADDING',(0,0),(-1,-1),2),
-    ('TOPPADDING',(0,0),(-1,-1),1.2),('BOTTOMPADDING',(0,0),(-1,-1),1.2),
-]))
-story.append(grid)
-
-# ---- Homunculus Servant stat block (her permanent ritual companion) ----
-story.append(Spacer(1, 5))
-story.append(Paragraph('Puff, Lilly&rsquo;s Homunculus Servant',
-    S('homh', fontName='Times-Bold', fontSize=11.5, textColor=BLUE, leading=13, spaceAfter=1)))
-story.append(HRFlowable(width='100%', thickness=0.7, color=BLUE, spaceAfter=3))
-
-hom_stats = [
-    Paragraph('<b>Tiny construct.</b> Built, not summoned: ritual-cast in 1 hour 10 minutes for '
-              '<b>no spell slot</b>, and it never expires. Fairy-sized, small enough to sit in her '
-              'cupped hands.', cell_st),
-    Spacer(1, 2),
-    Paragraph('<b>AC</b> 13 &nbsp; <b>HP</b> 15 &nbsp; <b>Speed</b> 20 ft, <b>Fly 30 ft</b>', cell_st),
-    Paragraph('<b>Saves</b> Str &minus;1 &nbsp; <b>Dex +4</b> &nbsp; <b>Con +3</b> &nbsp; '
-              'Int +2 &nbsp; Wis +2 &nbsp; Cha +0 &nbsp; '
-              '<font size=6.5 color="#6F6046">(Magic Bond&rsquo;s +2 already included)</font>', cell_st),
-    Paragraph('<b>Senses</b> darkvision 60 ft &nbsp; <b>Telepathy</b> with Lilly, 1 mile', cell_st),
-    Paragraph('<b>Immune</b> poison damage; poisoned, exhaustion', cell_st),
-    Spacer(1, 2),
-    Paragraph('<b>Force Strike.</b> +8 to hit, reach 5 ft or range 30 ft: <b>1d6 + 2 force</b>. '
-              'Force punches through the Voltcrawlers&rsquo; blink.', cell_st),
-    Paragraph('<b>Evasion.</b> On a Dex save for half damage it takes <b>none</b> on a success, '
-              'half on a failure.', cell_st),
-    Paragraph('<b>Magic Bond.</b> Add +2 to any check or save it makes.', cell_st),
-    Paragraph('<b>Channel Magic (Reaction).</b> When Lilly casts a touch spell and it is within '
-              '120 ft, it can deliver that spell instead.', cell_st),
-    Spacer(1, 3),
-    Paragraph('<b>What Lilly built her during the year.</b> Puff carries all three; she can use only '
-              '<b>one per turn</b>, since she has a single action.', cell_st),
-    Paragraph('&bull; <b>Ring of Spell Storing</b> (attuned to Puff). Holds <b>5 levels of spells</b>; Lilly or '
-              'Ursa casts into it and Puff casts them back out at <b>Lilly&rsquo;s</b> DC 16 and +8. '
-              '&bull; <b>Wand of Magic Missiles</b>, 7 charges, up to 3 at once: darts that <b>always hit</b>. '
-              '&bull; <b>Pipes of Haunting</b>, 3 charges: everyone she chooses within 30 ft makes a DC 15 Wis '
-              'save or is <b>frightened</b> for a minute.', cell_st),
-    Spacer(1, 2),
-    Paragraph('It shares Lilly&rsquo;s initiative and acts right after her, obeying with <b>no '
-              'action needed from her</b>; give it no orders and it Dodges. Touch it with '
-              '<i>Dragon&rsquo;s Breath</i> and it breathes a 15-ft cone for 3d6, choosing the '
-              'type the enemy is weak to.', small_it),
-]
-homt = Table([[Image('homunculus_new.png', width=1.3*inch, height=1.3*inch), hom_stats]],
-             colWidths=[1.45*inch, 5.85*inch])
-homt.setStyle(TableStyle([
-    ('VALIGN',(0,0),(0,0),'TOP'),
-    ('VALIGN',(1,0),(1,0),'TOP'),
-    ('BACKGROUND',(0,0),(-1,-1), BLUE_LT),
-    ('BOX',(0,0),(-1,-1),0.8, BLUE_MID),
-    ('LINEAFTER',(0,0),(0,0),0.5, BLUE_MID),
-    ('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),
-    ('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),
-]))
-story.append(homt)
 doc=SimpleDocTemplate('../lilly_glimmergear_sheet_v3.pdf',pagesize=letter,
     leftMargin=0.55*inch,rightMargin=0.55*inch,topMargin=0.45*inch,bottomMargin=0.5*inch)
 frame = make_frame('Lilly Glimmergear')
