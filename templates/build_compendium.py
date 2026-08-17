@@ -799,7 +799,7 @@ C = [
         "Mote is installed in the Sphere (Ignis, Unda, Aer, Terra, Umbra). If a power requires "
         "a saving throw, the DC equals your spell save DC.",
         "**Aether Ward.** As a Magic action, expend 1 use to release the gathered motes as a "
-        "protective shell: you and each ally within 15 feet of you gain Temporary Hit Points "
+        "protective shell: you and each ally within 30 feet of you gain Temporary Hit Points "
         "equal to 2d8 plus your Intelligence modifier.",
         "**Lingering Discharges.** A discharge that lasts 1 minute is sustained by the Sphere "
         "and doesn't require Concentration. The Sphere sustains only one lingering discharge at "

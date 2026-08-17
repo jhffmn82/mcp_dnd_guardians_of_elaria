@@ -94,7 +94,7 @@ Feat, no attunement; she stays attuned to the Dynamo. **The Sentinel IS her Eldr
 Feat, no attunement (the feat awakens the Sphere she already carries; only the Dynamo is attuned). She keeps the normal Dynamo-enhanced Eldritch Cannon (Always-on section). The feat adds a short-rest pool.
 
 - **Mote Channeling.** The Sphere's powers share **2 uses**, regained on a **Short Rest**. DC = spell save DC 16.
-- **Aether Ward (base power, the ONLY power online at L7).** **Magic action** (costs her Action), 1 use: she and each ally **within 15 ft** gain **2d8 + INT (5) temp HP**.
+- **Aether Ward (base power, the ONLY power online at L7).** **Magic action** (costs her Action), 1 use: she and each ally **within 30 ft** gain **2d8 + INT (5) temp HP**.
 - **Elemental Discharges are ALL LOCKED at level 7.** Cinderstorm (Fire), Drowning Lull (Water), Tailwind (Air), Tectonic Slam (Earth), Soul Siphon (Shadow) each unlock only when that rift's Mote is installed. At Session 8 the Sphere grants **Aether Ward alone** (twice per short rest). A sim must not use any discharge until its rift is cleared.
 - **Lingering Discharges** (future): only one sustained at a time, no Concentration.
 

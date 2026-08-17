@@ -189,7 +189,7 @@ h2("Lilly's Special Powers")
 powers=[
     ('★ Aether Channeler<br/><i>(the year chasing the Sphere)</i>',
         'The year taught her what her mother’s Sphere really is, and how to draw on it. '
-        '<b>Aether Ward:</b> as her <b>action</b>, she and every friend <b>within 15 ft</b> gain '
+        '<b>Aether Ward:</b> as her <b>action</b>, she and every friend <b>within 30 ft</b> gain '
         '<b>2d8 + 5 temporary hit points</b>. <b>2 uses, back on a short rest.</b> '
         '<i>(The Sphere’s elemental discharges stay locked until each rift’s Mote is found.)</i>'),
     ('Replicate Magic Item','Lilly builds magic gear from arcane <b>plans</b>. She knows <b>5 plans</b> and can keep <b>3 creations</b> going at once. <b>All three slots are full:</b> her <b>+1 Half Plate</b>, the <b>+1 Repeating Longbow</b> she made for Stabby, and <b>Puff&rsquo;s Wand of Magic Missiles</b>. To build something new she has to let one of those go.'),
