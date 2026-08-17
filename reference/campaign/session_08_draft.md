@@ -112,6 +112,78 @@ So she stopped building at it and started listening to it.
 
 ---
 
+## Part 2b: The Handover
+
+Run this the morning before they step through, on the long bench in the Underworks. Lilly has laid everything out and sorted it by who it belongs to. See the plate: `assets/session_08/lilly_gifts_laid_out.png`.
+
+**Why this scene exists.** Three players are about to receive seven magic items between them, and none of those items work the way a sword works. Charges run out. One of them casts at a save DC that is not Lilly's. One of them has to be *loaded* by somebody else before it does anything at all. If the table does not learn this here, in a quiet room with no monsters, they will learn it at the worst possible moment on the other side of the ring. Let Lilly's player do the explaining wherever possible: it is her year's work and she has earned the moment.
+
+> **Read aloud.** Lilly has been awake since four. There is a cloth on the bench for each of you, which is a very Lilly way of doing things, and she has clearly rehearsed this speech, and she gets about six words into it before she gives up and just starts handing things over.
+
+### For Stabby: Wraps of Unarmed Power +2
+
+> "Give me your hands. No, the fists. *Both* of them."
+
+**How they work, in kid words:** wind them on and forget them. There is nothing to activate, nothing to spend, and nothing to run out. Every punch and kick is now **+2 to hit and +2 damage**, and he may choose to make any of those hits deal **Force** instead of bludgeoning, which almost nothing in the world resists.
+
+**What to say out loud at the table:** *your fists were the only weapon you owned with no magic in them, and now they are not.* His bonus-action punch happens nearly every turn, so this is not a small gift.
+
+**The one thing he will get wrong:** they do nothing for the katana. Nothing at all. The Nichirin is already +2 on its own and the wraps never stack with it.
+
+### For Ursa: Wand of the War Mage +2
+
+> "You have to be *holding* it. Not in your pack. Not on your belt. In your hand, the one without the staff."
+
+**How it works:** while he holds it, every **spell attack** he makes gets **+2 to hit**, and he ignores **Half Cover**. That is Starry Wisp, his Guiding Bolts, and his star-arrow, all to **+10**.
+
+**The one thing he will get wrong:** it does *not* raise his save DC. Spells where the enemy rolls a save (Spike Growth, Ice Storm, Polymorph) are unaffected. It only helps when *he* rolls to hit.
+
+**Table note:** the star-arrow counts, because Starry Form's arrow is a ranged spell attack. That means the wand improves two attacks a turn, not one. Make sure his player knows.
+
+### For Lilly: Wand of Web
+
+> "This one is mine. I have earned exactly one selfish thing."
+
+**How it works:** **7 charges.** Spend 1 as an action to cast **Web**: a 20-foot cube of sticky webbing that is difficult terrain, and anything caught in it makes a **Dexterity save or is Restrained**, escaping later with a Strength check. It regains **1d6+1 charges at dawn.**
+
+**The one thing everyone will get wrong:** the wand casts at **DC 13**, its own number, *not* Lilly's DC 16. Items cast at their own difficulty. Say this once at the table and write it on her sheet, which is already done.
+
+### For Puff: the three small things
+
+Puff gets a set of her own, and this needs the most explaining, because a homunculus has **one action on her turn** and three items to choose between. She cannot use two in a round.
+
+**Ring of Spell Storing** (worn, attuned to Puff). This one is a *shared* item and the party will miss it if nobody explains it.
+
+- It is **empty when you get it.** It does nothing until somebody loads it.
+- **Any caster** can load it: touch the ring while casting a spell of level 1 to 5, and the spell goes in instead of going off. It holds **5 levels of spells** in total.
+- Puff can then cast anything stored inside, using **the original caster's** slot level, save DC, and attack bonus. A spell Lilly puts in comes back out at **DC 16 and +8**, even though Puff herself is a little brass construct with no magic of her own.
+- **The tactical point:** this is how the party gets a second Revivify, or a second Healing Word, or a big spell on a turn when the caster is busy or unconscious. Encourage them to load it every morning and to think hard about what goes in.
+
+**Wand of Magic Missiles** (no attunement, so Puff can use it). **7 charges.** Spend **1 charge** for **three darts that never miss**, 1d4+1 Force each, at up to 120 feet, split between any targets she can see. She may spend up to **3 charges at once**, and each extra charge adds one more dart, so three charges means **five darts**. Regains 1d6+1 at dawn.
+
+- **Why it matters:** Puff's own attack is unreliable. Darts that cannot miss are perfect for finishing something on 3 hit points, or for hitting a target nobody else can reach.
+
+**Pipes of Haunting** (no attunement). **3 charges,** regaining 1d3 at dawn. A **Magic action** to play: every creature Puff chooses within **30 feet** makes a **Wisdom save DC 15** or is **Frightened for a minute**, re-saving at the end of each of its turns. Anything that saves is immune to the pipes for a day.
+
+- **Why it matters:** it is the party's only crowd control that costs no spell slot, and Frightened enemies cannot approach the source of their fear.
+
+### The handout table
+
+Give the players this. It is the whole handover on one page.
+
+| Item | Whose | Cost to use | What it does | The trap |
+|---|---|---|---|---|
+| Wraps of Unarmed Power +2 | Stabby | none, always on | +2 to hit and damage on fists and feet; may deal Force | Does nothing for the katana |
+| Wand of the War Mage +2 | Ursa | none, but must be **held** | +2 on every spell attack; ignore Half Cover | Does **not** raise his save DC |
+| Wand of Web | Lilly | 1 charge of 7, action | Web: 20-ft cube, Restrained on a failed save | Casts at **DC 13**, not her 16 |
+| Ring of Spell Storing | Puff | free to use, but must be **loaded first** | Holds 5 levels; casts at the loader's DC and slot | Empty until somebody casts into it |
+| Wand of Magic Missiles | Puff | 1 to 3 charges of 7, action | 3 darts that never miss (5 darts for 3 charges) | Puff gets one action, so one item per turn |
+| Pipes of Haunting | Puff | 1 charge of 3, Magic action | 30 ft, Wis DC 15 or Frightened 1 minute | A creature that saves is immune for 24 hours |
+
+**Recharging, once, for all of it:** wands regain **1d6+1** charges at dawn, the pipes regain **1d3**. Not on a rest. At dawn. On a long rift run they may not see a dawn when they expect one, and Aelwyn does not know how time runs on the other side. Let that worry them a little.
+
+---
+
 ## Part 3: The Ring, and What Is On The Other Side
 
 ### Aelwyn's briefing
