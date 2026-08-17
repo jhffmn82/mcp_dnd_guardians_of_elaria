@@ -220,9 +220,9 @@ def _glance(lbl, boxes, names):
 glance = [
     _glance('Cantrips', 0, 'Shillelagh, Starry Wisp, Guidance, Druidcraft'),
     _glance('1st', 4, 'Healing Word, Goodberry, Thunderwave'),
-    _glance('2nd', 3, 'Summon Beast, Aid, Hold Person, Lesser Restoration'),
-    _glance('3rd', 3, 'Summon Fey, Revivify, Conjure Animals'),
-    _glance('4th', 1, 'Polymorph'),
+    _glance('2nd', 3, 'Summon Beast, Spike Growth, Aid, Lesser Restoration'),
+    _glance('3rd', 3, 'Summon Fey, Revivify'),
+    _glance('4th', 1, 'Polymorph, Ice Storm'),
     _glance('free', 0, 'Guiding Bolt &amp; Guidance (Star Map) &bull; Animal Friendship &amp; Speak with Animals (his Mark) &bull; Faerie Fire &amp; Moonbeam (Staff charges)'),
 ]
 gt = Table(glance, colWidths=[2.3*inch, 5.0*inch])
@@ -373,10 +373,11 @@ cards = [
         '2nd • Action • 30 ft • 8 hours',
         'Pick <b>three</b> friends: each one’s <b>maximum AND current HP go up by 5</b> for eight hours. '
         'No concentration. Cast it at breakfast, not in a fight, and the whole party is tougher all day.'),
-    spell_card('Hold Person',
-        '2nd • Action • 60 ft • Concentration, 1 min',
-        'One humanoid makes a <b>Wis save DC 16</b> or is <b>paralyzed</b>: it can’t move or act, attacks against it '
-        'have advantage, and hits from within 5 ft are <b>critical</b>. It re-saves at the end of each of its turns.'),
+    spell_card('Spike Growth',
+        '2nd • Action • 150 ft • Concentration, 10 min',
+        'A 20-ft circle of ground sprouts hidden thorns: <b>difficult terrain</b>, and <b>2d4 piercing for every 5 ft</b> '
+        'a creature moves through it. It looks like ordinary ground until someone is bleeding. Drop it between himself '
+        'and whatever is charging: they either wade through it or go the long way round.'),
     spell_card('Lesser Restoration',
         '2nd • Bonus Action • Touch • Instant',
         'Touch a friend and end <b>one</b> of these: <b>blinded, deafened, paralyzed, or poisoned</b>. '
@@ -385,11 +386,12 @@ cards = [
         '2nd • Action • 90 ft • Concentration, 1 hr',
         'Calls the <b>Bestial Spirit</b> (full stats on page 1). It acts right after Ursa on his initiative and '
         'obeys his commands for free. His go-to summon, a sturdy front-line ally that lasts a whole hour.'),
-    spell_card('Conjure Animals',
-        '3rd • Action • 60 ft • Concentration, 10 min',
-        'A big spectral pack of animals appears. <b>It moves 30 ft whenever Ursa moves, for free.</b> Anything it comes '
-        'near, or that ends its turn near it, makes a <b>Dex save DC 16</b> or takes <b>3d10 slashing</b> (once a turn each). '
-        'A damage cloud that costs him nothing to keep going.'),
+    spell_card('Ice Storm',
+        '4th • Action • 300 ft • Instant &nbsp;<b>(no concentration!)</b>',
+        'Hail hammers a <b>20-ft-wide</b> patch of ground from far away. Everything caught in it makes a '
+        '<b>Dex save DC 16</b>: <b>2d10 bludgeoning + 4d6 cold</b> on a fail, half on a success. The ground stays '
+        '<b>difficult terrain</b> until the end of his next turn. <b>His big blast that does not touch his '
+        'concentration</b>, so he can throw it while a summon is still out.'),
     spell_card('Revivify',
         '3rd • Action • Touch • Instant &nbsp;(300 gp diamond)',
         'Touch a friend who died <b>within the last minute</b> and bring them back with <b>1 HP</b>. '
