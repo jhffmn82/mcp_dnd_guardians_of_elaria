@@ -303,6 +303,13 @@ The old verses go further still: each world keeps one guardian, very old, that i
 somehow the shape of that world's health, and to free a guardian is to heal the
 country it carries.
 
+**D13. The Second List** (relit star/Antares/session-ending pages)
+The Circle has kept its list of stars for forty generations, and in all that time
+the scribes have only ever done one thing to it: cross names out. There is no mark
+in their book for a name coming back, because nobody ever needed one. The eldest
+sky-reader alive was asked, once, what the Circle would do if a dark star ever
+relit. She thought about it for a long while. Then she said: begin a second list.
+
 **D12. The Two Lists** (rift bestiary/corrupted-creature pages)
 The Circle's bestiary of the Darkening keeps two lists. The frightening one is
 long: the twisted, the glassed, the re-blooming, every creature the leaking dark
