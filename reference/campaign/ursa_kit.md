@@ -23,7 +23,7 @@ Resources: **Wild Shape 3/rest** (1 back on short rest, all on long) | **Spell s
 ### Derivations (base numbers are level-5 on the sheet; level 7 shown here)
 - **HP 52.** Sheet HP is 38 at level 5 (build_sheets.py). Druid d8, +2 levels x (5 avg + 2 Con) = +14. 38 + 14 = **52**.
 - **AC 18.** Spiked armor + shield, unchanged from the sheet.
-- **Prof +3.** Levels 5 through 8 all use +3, so DC and attack are unchanged: DC 16 = 8 + 3 + 5(Wis); spell attack +8 = 3 + 5(Wis). (The Amulet/Warden +1 is allies-only, see the DM CHECK above.) Shillelagh weapon attack = 5(Wis) + 3(PB) + 2(the Staff is a **+2** quarterstaff once awakened on Door C, which he took) = **+10**.
+- **Prof +3.** Levels 5 through 8 all use +3, so DC and attack are unchanged: DC 16 = 8 + 3 + 5(Wis); spell attack +8 = 3 + 5(Wis), and **+10 while he holds the Wand of the War Mage +2** that Lilly built him. (The Amulet/Warden +1 is allies-only, see the DM CHECK above.) Shillelagh weapon attack = 5(Wis) + 3(PB) + 2(the Staff is a **+2** quarterstaff once awakened on Door C, which he took) = **+10**.
 - **Wild Shape 3 uses.** Sheet shows 2 (level 5). Circle-of-Stars RAW: 3 uses at level 7 (druid-circle-of-stars.md). Starry Form spends one of these.
 - **Spell slots 4/3/3/1.** Sheet shows the level-5 line 4/3/2. At druid 7 he gains a **4th-level slot**; this sets Mightier Summons' cap (Door A) at spell level 4.
 - **Cosmic Omen** gained at druid level 6; **Elemental Fury (Potent Spellcasting)** gained at druid level 7.
@@ -119,7 +119,7 @@ Added kit if Ursa walked this road.
   - **The Stronger Tide.** Weal adds **1d6 + 2** and Woe subtracts **1d6 + 2** (the base feature is a plain 1d6).
   - **Awakened Gifts.** The pilgrimage wakes what he already carried: the **Staff becomes a +2** quarterstaff, **Starseed rises from 1d4 to 1d8**, and the **Amulet's Guiding Light reaches every ally within 30 ft**.
   - **Shared Tides.** Cosmic Omen is a **single pool = Wis mod = 5 uses/long rest**, each spent on Weal or Woe; regain all on a Long Rest. [DM CHECK: printed text omits the SRD "(minimum of once)" floor; flagged, not fixed.]
-- **Keepsake: Ash's Sigil-Stone** (attuned; closes his third slot: Staff + Amulet + Stone).
+- **Keepsake: Ash's Sigil-Stone** (**no attunement**: DM ruling 2026-08-17, a keepsake rather than a bonded relic, which frees the third slot for Lilly's wand).
   - **Aura of Vitality** cast from the stone **without a slot, 1/long rest** (3rd-level, Concentration 1 min, Bonus Action each turn heal 2d6 to a creature within **30 ft**; the sheet says 30 and is newer, so 30 wins).
   - **2 charges, regain all at dawn.** Magic action, spend 1 charge: **Ask the Day** (one truthful yes/no about the day), **Glimpse the Trail** (reveal one rift-board space within 1 mile), or **Read the Heart** (a visible creature's mood/attitude). Mostly exploration, but Aura of Vitality is the combat piece.
 

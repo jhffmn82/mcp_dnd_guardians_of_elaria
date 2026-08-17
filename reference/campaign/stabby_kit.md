@@ -53,6 +53,11 @@ Signature weapon, the Nichirin Katana (attuned, replaces Kensei loadout):
 - **Cleansing Edge (Free rider, once per turn). EASY TO FORGET.** Once per turn when he hits a Fiend, Undead, shadow creature, or planar-corrupted creature, until the start of his next turn that target can't regain Hit Points and can't benefit from magical Darkness or shadowy concealment against him. Pure upside against the campaign's rift enemies.
 - **Breath-Kindled Steel (Passive).** The blade takes the color of the ignited form and sheds Dim Light.
 
+Gift from Lilly, the Wraps of Unarmed Power +2 (Rare, **NO attunement**, so they cost him nothing):
+- **+2 to attack and damage on Unarmed Strikes**, and those strikes may deal **Force** instead of Bludgeoning. Unarmed Strike is therefore **+10 to hit, 1d8+7**, and Force is the least-resisted type in the game.
+- They do **nothing** for the katana or the bow: this only touches fists and feet, which matters because his bonus-action Martial Arts punch happens nearly every turn.
+- Attunement after the gift: still **2 of 3** (Nichirin, Sash). One slot free.
+
 Retired at level 7 (do NOT use): Agile Parry (no more +2 AC after punch-and-swing), Kensei's Shot (+1d4 on longbow), Kensei weapon tricks. The Repeating Longbow +1 is now just a good +1 bow: +9 to hit, 1d8+6, no Kensei rider.
 
 ## Door A: Beast Breathing (the Bloodfang Form)

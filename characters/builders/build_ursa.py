@@ -119,7 +119,7 @@ story.append(hdr)
 story.append(Spacer(1,4))
 
 story.append(stat_strip([('ARMOR CLASS',18),('HIT POINTS',52),('SPEED','30 ft'),
-                         ('INITIATIVE','+2'),('SAVE DC',16),('SPELL ATK','+8')]))
+                         ('INITIATIVE','+2'),('SAVE DC',16),('SPELL ATK','+10')]))
 story.append(Spacer(1,4))
 story.append(ability_strip([('STR',8,'-1'),('DEX',14,'+2'),('CON',14,'+2'),
                             ('INT',12,'+1'),('WIS',20,'+5'),('CHA',8,'-1')]))
@@ -149,16 +149,16 @@ atk = [
     ['Attack','To Hit','Damage'],
     ['Staff of Waking Constellations (+2), unlit','+4','1d6+1 bludgeoning (1d8+1 two-handed). See Shillelagh!'],
     ['Staff + Shillelagh (ignited)','+10','1d10+7 (+5 Potent, once a turn); bonus action to light, 1 min'],
-    ['Guiding Bolt (1st, from Staff or Star Map)','+8','4d6 radiant + 1d8 (Starseed); next hit on it has advantage'],
-    ['Star-Arrow (Starry Form: Archer)','+8','1d8+5 radiant, one enemy within 60 ft (bonus action)'],
-    ['Starry Wisp (cantrip)','+8','2d8 + 5 radiant + 1d8 (Starseed); lights up the target (60 ft)'],
+    ['Guiding Bolt (1st, from Staff or Star Map)','+10','4d6 radiant + 1d8 (Starseed); next hit on it has advantage'],
+    ['Star-Arrow (Starry Form: Archer)','+10','1d8+5 radiant, one enemy within 60 ft (bonus action)'],
+    ['Starry Wisp (cantrip)','+10','2d8 + 5 radiant + 1d8 (Starseed); lights up the target (60 ft)'],
 ]
 atk_data = [[Paragraph(c, cellb_st if i==0 else cell_st) for c in row]
             for i,row in enumerate(atk)]
 story.append(section_table(atk_data, [3.0*inch, 0.9*inch, 3.4*inch]))
 story.append(Paragraph('While his Starry Form glows, the Amulet of Guiding Light gives '
     '+1 to attacks and saves to every FRIEND within 30 ft (allies only, not Ursa himself): '
-    'a party buff, so his own to-hit stays +8.', small_it))
+    'a party buff on top of his own +10.', small_it))
 
 story.append(Spacer(1,4))
 story.append(callout(
@@ -280,7 +280,8 @@ gear = [
      '<b>Starlight:</b> bonus action to light a soft 10-ft glow and get advantage on night-navigation. <b>Attuned.</b>'),
     ('Ash&rsquo;s Sigil-Stone<br/><i>(new! found on the trail east)</i>',
      'A river-smooth stone etched with a half-finished sign of Elaria, <b>in his father&rsquo;s own hand</b>. '
-     '<b>Aura of Vitality</b> free once a day (no slot): a 30-ft aura, and at the start of each of his turns he heals one creature in it for <b>2d6</b>. <br/><b>2 charges</b> (all back at dawn), magic action to spend one: <b>Ask the Day</b> (one truthful yes or no about the day ahead, <i>or silence if it cannot be known</i>), <b>Glimpse the Trail</b>, or <b>Read the Heart</b>. <b>Attuned.</b>'),
+     '<b>Aura of Vitality</b> free once a day (no slot): a 30-ft aura, and at the start of each of his turns he heals one creature in it for <b>2d6</b>. <br/><b>2 charges</b> (all back at dawn), magic action to spend one: <b>Ask the Day</b> (one truthful yes or no about the day ahead, <i>or silence if it cannot be known</i>), <b>Glimpse the Trail</b>, or <b>Read the Heart</b>. <i>(A keepsake, not a bonded relic: it needs <b>no attunement</b>.)</i>'),
+    ('Wand of the War Mage +2<br/><i>(new! Lilly made this for him)</i>','A slim rune-cut wand she spent the year building. <b>While he is holding it</b>, every <b>spell attack</b> he makes gets <b>+2 to hit</b> (his Starry Wisp, his Guiding Bolts, and his star-arrow all go to <b>+10</b>), and he <b>ignores Half Cover</b>. <b>Attuned.</b> <i>(He holds the staff in one hand and the wand in the other.)</i>'),
     ('Star Map', 'A Tiny star chart that doubles as a spellcasting focus. Free Guiding Bolt 5×/day. (Backup focus.)'),
     ('Amulet of Guiding Light', '<b>Guiding Light:</b> during Starry Form, his <b>allies within 30 ft</b> get +1 to attacks and saves (allies only, not Ursa). <i>(The shrine widened this from the old glow.)</i> '
         '<b>Starry Glow (1/day, reaction):</b> when he or a nearby ally is hit, the attacker takes 2d8 radiant and may be blinded (Con save DC 15). '
@@ -301,7 +302,7 @@ story.append(Paragraph('Page 3: Spellbook', sub_st))
 story.append(Spacer(1,7))
 story.append(Paragraph('Slots per day: 4 first-level, 3 second-level, 3 third-level, 1 fourth-level. '
     'Cantrips (★) are free forever. He prepares <b>11</b> spells and can swap one on a long rest; the ones marked <i>free</i> come from his Star Map, his Mark or his Staff and do not use up a prepared slot. '
-    'Spell save DC 16, spell attack +8.', small_it))
+    'Spell save DC 16 (the wand does not change it), spell attack <b>+10</b> holding the wand, +8 without.', small_it))
 story.append(Spacer(1,4))
 
 # Spell cards, richer format: name, meta line (action/range/duration), then full mechanics
@@ -312,7 +313,7 @@ def spell_card(name, meta, text):
         [Paragraph(meta, S('sct', fontName='Times-Italic', fontSize=6.8,
                    textColor=GREY, leading=8.2))],
         [Paragraph(text, S('scx', fontName='Times-Roman', fontSize=7.5,
-                   textColor=INK, leading=9.0))],
+                   textColor=INK, leading=8.7))],
     ]
     t = Table(inner, colWidths=[3.55*inch])
     t.setStyle(TableStyle([
@@ -333,7 +334,7 @@ cards = [
         'gets right in his face.'),
     spell_card('★ Starry Wisp',
         'Cantrip • Action • 60 ft • Instant',
-        'Ranged spell attack <b>+8 to hit</b>: <b>2d8 radiant + 1d8</b> (Starseed). The target glows '
+        'Ranged spell attack <b>+10 to hit</b>: <b>2d8 radiant + 1d8</b> (Starseed). The target glows '
         '(dim light) and can’t turn invisible until the end of his next turn.'),
     spell_card('★ Guidance &nbsp;<i>(free: Star Map)</i>',
         'Cantrip • Action • Touch • Concentration, 1 min',
@@ -345,7 +346,7 @@ cards = [
         'sound/smell in a 5-ft cube, or light/snuff a small flame. Pure utility &amp; flavor.'),
     spell_card('Guiding Bolt &nbsp;<i>(free: Star Map, 5&times;/day)</i>',
         '1st • Action • 120 ft • 1 round &nbsp;(Star Map: free 5/day)',
-        'Ranged spell attack <b>+8 to hit</b>. On a hit: <b>4d6 radiant + 1d8</b> (Starseed). '
+        'Ranged spell attack <b>+10 to hit</b>. On a hit: <b>4d6 radiant + 1d8</b> (Starseed). '
         'The <b>next attack</b> against that target before Ursa’s next turn has <b>advantage</b>, set up a teammate.'),
     spell_card('Faerie Fire &nbsp;<i>(free: Staff, 1 charge)</i>',
         '1st • Action • 60 ft • Concentration, 1 min',
@@ -423,7 +424,7 @@ grid = Table(rows, colWidths=[3.66*inch]*2)
 grid.setStyle(TableStyle([
     ('VALIGN',(0,0),(-1,-1),'TOP'),
     ('LEFTPADDING',(0,0),(-1,-1),2),('RIGHTPADDING',(0,0),(-1,-1),2),
-    ('TOPPADDING',(0,0),(-1,-1),1.5),('BOTTOMPADDING',(0,0),(-1,-1),1.5),
+    ('TOPPADDING',(0,0),(-1,-1),0.8),('BOTTOMPADDING',(0,0),(-1,-1),0.8),
 ]))
 story.append(grid)
 
