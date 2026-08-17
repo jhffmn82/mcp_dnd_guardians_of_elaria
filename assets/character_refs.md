@@ -10,6 +10,7 @@ These must be stated in every prompt as explicit negatives. Reference images alo
 - **Boomstick is brass and ELECTRIC BLUE.** Its chamber is a glass cylinder holding caged blue-white lightning, never orange or amber. Always attach `assets/items/boomstick.png`.
 - **Puff's ears are upright triangles** with blue inner faces, not cat ears and not tufted. Always attach `assets/art_refs/REF_homunculus.png`.
 - **Lilly does not WEAR a glowing sphere.** She had drifted into wearing a large glowing orb on her chest in every generation. She does not wear one: her chest and harness front stay clear of any big round glowing object. State this as a negative, because the older refs all show one and the generator will copy it.
+- **Stabby holds the katana two-handed, edge out.** Both hands on the hilt, dominant hand under the guard, the other near the pommel, tip up. A katana is sharp on ONE side: the cutting edge is the OUTER convex side of the curve, and that is the side that glows. Generations kept giving him a one-handed grip with the glow on the inner concave side, which reads as holding the sword upside down. Say it explicitly every time.
 - **Ursa does not carry the Sigil-Stone in every shot.** It belongs in his portrait, where his father's stone is the subject, and in scenes that actually turn on it. Everywhere else his off hand is empty. A keepsake he is permanently clutching stops reading as a keepsake.
 
 This governs all NEW art immediately.
