@@ -1,124 +1,124 @@
 <!--
-WORKING DRAFT for Session 8. Prose only, not yet built to docx. Session 7
-(sessions/session_07_gearhaven.docx) is the format this becomes.
+WORKING DRAFT, Session 8, PART ONE ONLY: the story half, ending the moment they
+step through the ring. The combat half (Underroot, the rift run, the Guardian,
+the homecoming) is a separate document and a separate half of the evening.
 
-Structure per the DM's brief 2026-08-17:
-  Part 1  the three arrivals at the Artificer's Guild
-  Part 2  the year apart, one telling each
-  Part 3  the portal and the plane they open onto
+DM's plan for the evening (2026-08-17):
+  1. Read this aloud as a chapter. Highly illustrated.
+  2. Hand out the new level-7 character sheets.
+  3. Break, then run the portal/combat half on the Underroot board.
 
-Canon obligations carried here (memory/campaign_canon.md line 125, SESSION 8
-MUST-DOS): Stabby's idol is mentioned. The Sandshrew manifestation and
-Ghostbloom entering the Sphere as tether belong to the HOMECOMING scene at the
-end of the session, after the rift run, and are not in this draft yet.
+The three year-apart chapters are NOT duplicated here. They live in:
+  reference/campaign/year_apart_lilly.md
+  reference/campaign/year_apart_stabby.md
+  reference/campaign/year_apart_ursa.md
+Read each in full at the marked point. This spine carries everything else.
 
-Aelwyn is the Session 3 professor: Professor Aelwyn Ravenstone, tall
-silver-haired high elf, planar researcher of Ravenstone Laboratory. His
-assistant is Tamsin, a half-elf. Lickgloom stayed with him (DM ruling C4).
-
-Lilly's long-form year is reference/campaign/year_apart_lilly.md; the version
-in Part 2 here is the table-length telling.
+CANON OBLIGATIONS met here: Stabby's idol is mentioned and behaves oddly near
+the ring. Aelwyn is the Session 3 professor. The name NYXTHID is spoken for the
+first time in the campaign (inside Ursa's chapter). The Sandshrew manifestation
+and Ghostbloom entering the Sphere belong to the HOMECOMING at the end of the
+combat half, not here.
 
 House style: no em dashes. Prose at young-adult level, content kid-safe.
 -->
 
-# Session 8: Underroot
+# Session 8, Part One: The Year Apart
 
-*The Guardians of Elaria. Working title.*
+*The Guardians of Elaria*
 
 ---
 
-## Part 1: The Three Arrivals
+## 1. Seven Days Early
 
-### Lilly, seven days early
-
-> **Read aloud.** The Artificer's Guild never really sleeps, but at this hour it comes close. Down in the Underworks the furnaces are banked to a low orange mutter, and the great ring of the portal stands in the middle of the Rift Hall like something dreaming. It is finished. After ten years of Guildmaster Vane's life, it is finished, and it has been finished for eleven days, and nobody has dared to switch it on.
+> **Read aloud.** The Artificer's Guild never really sleeps, but at this hour it comes close. Down in the Underworks the furnaces are banked to a low orange mutter, and the great ring of the portal stands in the middle of the Rift Hall like something dreaming.
+>
+> It is finished. After ten years of Guildmaster Vane's life, it is finished, and it has been finished for eleven days, and nobody has dared to switch it on.
 >
 > You have been here a week. You told yourself it was to check the anchor housing. It was really because you could not stand another night of waiting somewhere else.
 
-Lilly arrives a full week before the appointed day and goes straight to work. Vane puts her on the anchor cradle, the empty brass socket at the ring's heart that has been waiting a decade for the Essence Sphere, and the two of them argue happily for six days about tolerances.
+**ART A: the finished ring.** The Rift Hall at low light, the completed portal standing dark and enormous, one small gnome girl alone at its foot with a lantern. Establishing shot; this is the first image of the session.
 
-**Things for the DM to land in this week:**
+Lilly arrives a full week before the appointed day. Vane puts her on the anchor cradle, the empty brass socket at the ring's heart that has waited a decade for the Essence Sphere, and the two of them argue happily for six days about tolerances.
+
+**Three things to land during this week:**
 
 - **Vane has aged.** Ten years of work ended eleven days ago and he does not know what to do with his hands. He is louder than usual and sleeping less. He will not say he is frightened.
-- **Lilly is the expert now.** This is the payoff of her year. The guild artificers ask her opinion and mean it. Let her player feel the difference from Session 7, when she was the clever kid in a city of masters.
-- **The cradle does not fit.** Not quite. It was built from Vane's drawings of a sphere he had only been described. When Lilly finally sets the real thing in, on the sixth night, the brass closes around it like it was cut for it, because the ancient thing inside has a shape Vane's guesses kept circling. This is the first hint of what she learned. Play it quiet.
+- **Lilly is the expert now.** The guild artificers ask her opinion and mean it. Let her player feel the difference from Session 7, when she was the clever kid in a city of masters.
+- **The cradle does not quite fit.** It was built from Vane's drawings of a sphere he had only ever had described to him. When Lilly finally sets the real thing in on the sixth night, the brass closes around it as though it were cut for it, because the ancient thing inside has a shape his guesses kept circling. Play this quiet. It is the first hint of what she learned.
 
-### Professor Aelwyn Ravenstone
+## 2. The Professor
 
 He arrives on the fifth day with three trunks, a half-elf assistant named Tamsin, and Lickgloom riding on top of the luggage looking enormously pleased with itself.
 
-The party last saw Aelwyn at Ravenstone Laboratory in Session 3, when he examined the Essence Sphere, told them it needed Gearhaven, and gave Ursa a companion. He has spent the years since on the planar problem. He is here because Vane wrote to him, and because a portal without a planar theorist is a very expensive hole.
+The party last saw **Professor Aelwyn Ravenstone** at Ravenstone Laboratory in Session 3, when he examined the Essence Sphere, told them it needed Gearhaven, and gave Ursa a companion. He has spent the years since on the planar problem. He is here because Vane wrote to him, and because a portal without a planar theorist is a very expensive hole in the air.
 
-> **Read aloud.** He is exactly as you remember him and slightly worse: tall, silver haired, entirely certain, and delighted to be proven wrong about anything as long as he is the one who proves it. He looks at the ring for a long moment, and then at the Sphere in its cradle, and then he says, to nobody: "Oh, that is much older than you think it is."
+> **Read aloud.** He is exactly as you remember him and slightly worse: tall, silver haired, entirely certain, and delighted to be proven wrong about anything as long as he is the one doing the proving. He looks at the ring for a long moment, and then at the Sphere in its cradle, and then he says, to nobody in particular:
+>
+> "Oh. That is much older than you think it is."
 >
 > He says it the way other people say good morning.
 
-**Aelwyn's function this session** is to be the one adult who can explain the rules of what is about to happen, and the one adult honest enough to say which parts he is guessing at. He is not a rescuer. He does not come through the portal.
+**ART B: Aelwyn's arrival.** The professor in the Rift Hall doorway with trunks and Tamsin behind him, Lickgloom perched on the luggage, the ring huge and out of focus beyond.
 
-### Ursa, in the morning
+**His function this session** is to be the one adult who can explain the rules, and the one adult honest enough to say which parts he is guessing at. He is not a rescuer and he does not come through the portal.
 
-He comes in with the dawn traffic through the eastern gate, on foot, with road dust to his knees.
+## 3. Dawn, and the Eastern Gate
 
-> **Read aloud.** He is taller. That is the first thing. The second thing is that he is quiet in a way he never used to be, and he waits a beat before he answers you, as though he is listening to something a half second behind your voice. There is a stone in his left hand that he turns over and over without seeming to know he is doing it.
+> **Read aloud.** He comes in with the dawn traffic, on foot, with road dust to his knees.
+>
+> He is taller. That is the first thing. The second thing is that he is quiet in a way he never used to be, and he waits half a beat before he answers you, as though he is listening to something a half second behind your voice. There is a stone in his left hand that he turns over and over without seeming to know that he is doing it.
 >
 > He has been walking east for a year. He does not look like someone who found what he was looking for. He does not look like someone who failed, either.
 
-Let Ursa's player set the tone of the reunion. Ursa went looking for his father and this is the first time the others have heard anything about it.
+**ART C: Ursa at the gate.** Dawn, the eastern gate of Gearhaven, a small road-worn figure with a staff coming in against the traffic. Warm light, long shadow.
 
-### Stabby, at eleven fifty at night
+Let Ursa's player set the tone of the reunion. He went looking for his father and this is the first the others have heard of any of it.
 
-> **Read aloud.** The bell over the Rift Hall doors has not rung all evening. It does not ring now, either, because the goblin who comes through them does not touch them.
+## 4. Ten to Midnight
+
+> **Read aloud.** The bell over the Rift Hall doors has not rung all evening. It does not ring now either, because the goblin coming through them does not touch them.
 >
-> He is on the rail above you before anyone thinks to look up. He is leaner and there is a new sword across his back, dark and quiet, and when he drops down into the lamplight he lands without a sound, which he absolutely never used to do.
+> He is on the rail above you before anybody thinks to look up. He is leaner, and there is a new sword across his back, dark and quiet, and when he drops down into the lamplight he lands without a sound, which he absolutely never used to do.
 >
 > "I'm not late," says Stabby Sharpblade. "It's still today."
 
 He is right. He has ten minutes in hand. He has almost certainly been in Gearhaven since the afternoon.
 
-**The idol.** When Stabby swings his pack down, something in it knocks against the flagstones with a dull, wrong sound. It is the small carved idol that appeared in his bag after Wraithpine, which nobody has ever explained and which no one saw put there. Here in the Rift Hall, forty feet from a portal that is not even lit, **it is cold enough to burn.** He has carried it for a year and it has never done that before.
+**ART D: the arrival from above.** Low angle, the goblin dropping from the rafter rail into lamplight, new blade on his back, the ring's shoulder visible behind.
 
-Do not explain it. Let it sit there. (Canon: this is the seed of the Shadow Breathing road he did not take, and it is on the must-mention list for this session.)
+### The idol
 
----
+When Stabby swings his pack down, something inside it knocks against the flagstones with a dull, wrong sound.
 
-## Part 2: The Year Apart
+It is the small carved idol that appeared in his bag after Wraithpine, which nobody has ever explained and which no one saw put there. Here in the Rift Hall, forty feet from a portal that is not even lit, **it is cold enough to burn.** He has carried it for a year and it has never once done that before.
 
-Give each player the floor. The order below builds well: Lilly's is the most hopeful, Ursa's is the heaviest, and Stabby's sends everyone into the portal grinning.
+Do not explain it. Let it sit there. *(Canon must-mention for this session. It is the seed of the Shadow road he did not take.)*
 
-### Lilly: the year of questions
+## 5. The Year Apart
 
-She went home first, which surprised everyone including her. She put the Sphere on her mother's kitchen table and asked for the truth, and got a craftsman's answer with a hole in the middle of it: Poots described fitting the brass, the sigil work, the eleven attempts to get the equator right, and never once said where the thing *inside* the brass had come from.
+Give each player the floor. Read their chapter in full. The order below builds best: Lilly's is the most hopeful, Stabby's is the loudest, and Ursa's changes the shape of the campaign, so it goes last.
 
-So Lilly went looking. She earned answers out of Master Droven Sparkwick at Glimmerspire, who studied the Sphere a long time and told her: *I taught your mother. I did not teach her this.* She followed the trade roads after that and paid a dozen artificers in the only currency she had, which was work. A season with a clockmaker who could not cast a single spell and whose escapements humbled her. Six weeks with a woman who built hands for injured miners. Two more passes through Gearhaven with Vane shouting about tolerances. Her craft went from clever to formidable.
+> **READ IN FULL: `year_apart_lilly.md`.**
+> Her mother did not make the Essence Sphere. She found it. The thing inside the brass is ancient, it is a **gatherer**, and you cannot pick a gatherer's lock, you can only give it something to gather.
 
-Then she took it to wizards, who ask what a thing *is*, and one of them fainted, and another wrote her four increasingly frantic letters, and none of them knew.
+> **READ IN FULL: `year_apart_stabby.md`.**
+> His father was the Fourth. The night Stabby was born, the Fourth sealed the **Red Fang** into his newborn son and died doing it, which is why no clan art ever took with him. He went to a mountain of bullywugs, learned to be still for one second, came home and burned the blight out of the ground, and is now the hero of the Hollow.
 
-The answer was in the brass. On the forty first time she opened the housing, she stopped admiring her mother's sigils and looked underneath them, and found older marks on a surface that should have been the inside of her mother's shell and was instead the outside of something else.
+> **READ IN FULL: `year_apart_ursa.md`.**
+> He walked east alone for eleven months and did not find his father. He found the camp, three years cold instead of fifteen, and a half-carved stone, and at the shrine **Elaria showed him three things**: that Ash went east to *save the stars*, that **Maldrith** is behind their going out, and that a shadow walks for her called **Nyxthid**.
 
-**Her mother did not make the Essence Sphere.** Poots Glimmergear found it, understood it was worth protecting, and spent a year of her own life building it a house. The core is older than the Academy. Older, probably, than the mountain the Academy is cut into.
+**This is the most important moment of the evening.** Ursa comes home from that shrine with a name to hunt, and swears out loud to hunt it, and the name belongs to his own father. Nobody at the table knows that except you. Let the other two players get excited about having an enemy at last.
 
-And the thing she worked out sitting on a workshop floor a long way from home: **it is a gatherer.** It was built to pull in loose planar essence and hold it. It held Pikachu because Pikachu's spark was loose and the Sphere does not know the difference between a scrap of stray fire and somebody's friend. You cannot pick a gatherer's lock. You can only give it something to gather.
+**ART E, F, G, H:** one plate per chapter, plus one extra for Ursa. Detail below in the art list; the individual chapters carry their own illustration slots.
 
-So she stopped building at it and started listening to it.
+## 6. The Handover
 
-### Ursa: the road east
-
-*(Draft to be written. Beats: he follows Ash's trail east past the edge of the maps to the old shrine; he does not find his father; he finds his father's handwriting, and the half-finished sigil-stone; the omens begin coming to him in dreams. Ends with him knowing Ash was alive far more recently than anyone believed.)*
-
-### Stabby: the Bloodfang year
-
-*(Draft to be written. Beats: he goes back to his own clan; Beast Breathing and the Nichirin katana; he does not conquer the Bloodfang so much as refuse to leave until they listen. Ends with a clan that will answer if he calls, which pays off in the finale.)*
-
----
-
-## Part 2b: The Handover
-
-Run this the morning before they step through, on the long bench in the Underworks. Lilly has laid everything out and sorted it by who it belongs to. See the plate: `assets/session_08/lilly_gifts_laid_out.png`.
-
-**Why this scene exists.** Three players are about to receive seven magic items between them, and none of those items work the way a sword works. Charges run out. One of them casts at a save DC that is not Lilly's. One of them has to be *loaded* by somebody else before it does anything at all. If the table does not learn this here, in a quiet room with no monsters, they will learn it at the worst possible moment on the other side of the ring. Let Lilly's player do the explaining wherever possible: it is her year's work and she has earned the moment.
+The morning before they step through, on the long bench in the Underworks.
 
 > **Read aloud.** Lilly has been awake since four. There is a cloth on the bench for each of you, which is a very Lilly way of doing things, and she has clearly rehearsed this speech, and she gets about six words into it before she gives up and just starts handing things over.
+
+**ART: already made.** `assets/session_08/lilly_gifts_laid_out.png`
 
 ### For Stabby: Wraps of Unarmed Power +2
 
@@ -182,45 +182,67 @@ Give the players this. It is the whole handover on one page.
 
 **Recharging, once, for all of it:** wands regain **1d6+1** charges at dawn, the pipes regain **1d3**. Not on a rest. At dawn. On a long rift run they may not see a dawn when they expect one, and Aelwyn does not know how time runs on the other side. Let that worry them a little.
 
----
+**This is where you hand out the new character sheets.** The fiction and the paperwork happen in the same beat: Lilly gives them their gear, you give them their level 7.
 
-## Part 3: The Ring, and What Is On The Other Side
-
-### Aelwyn's briefing
+## 7. The Briefing
 
 Gather them at the ring. Aelwyn talks, Vane interrupts, Tamsin takes notes.
 
-The shape of it, in plain words the kids can hold:
+In plain words the kids can hold:
 
-1. **The rifts are not doors that someone opened.** They are tears, and they are spreading, and every one of them leaks a little of another world into this one. Everything strange the party has fought for two years has come through one.
-2. **You cannot sew a tear from this side.** You have to go to the other side and take back what is bleeding out: the plane's **Mote**, its heart, the piece of it that is caught here.
-3. **The Sphere is the anchor and the way home.** It gathers. Set it in the cradle and the ring opens; carry it through and it keeps the way open behind them. If the Sphere is lost on the other side, they do not come back. Say that once, plainly, and do not repeat it.
-4. **Bring the Mote back and two things happen.** The tear closes. And the Sphere, which has been gathering essence quietly since before any of them were born, gets a little more of itself back. (**Lilly's tie-in:** each Mote she brings home wakes one of the Sphere's sleeping discharges. Right now all she can draw out is the Aether Ward. This is the mechanism by which her power grows.)
-5. **Something living may come back with them.** Aelwyn is careful here, because he is guessing. Essence gathers toward warmth and company. He has a theory about what will happen when they come home carrying a plane's heart, and he would rather show them than explain it. (**This is the Sandshrew setup; the payoff is the homecoming scene.**)
+1. **The rifts are not doors somebody opened.** They are tears. Every strange thing they have fought for two years came through one.
+2. **You cannot sew a tear from this side.** You go to the other side and take back what is bleeding out: the plane's **Mote**, the piece of its heart that is caught here.
+3. **The Sphere is the anchor and the way home.** It gathers. Set it in the cradle and the ring opens; carry it through and it holds the way open behind them. **If the Sphere is lost over there, they do not come back.** Say that once, plainly, and never repeat it.
+4. **Bring the Mote back and two things happen.** The tear closes, and the Sphere gets a little more of itself back. *(Lilly's tie-in: each Mote wakes one of the Sphere's sleeping discharges. Today all she can draw is the Aether Ward.)*
+5. **Something living may come back with them.** Aelwyn is careful here, because he is guessing. Essence gathers toward warmth and company. *(Sandshrew setup; the payoff is the homecoming.)*
 
-> **Read aloud.** "I want you to understand that I am not sending you somewhere dangerous," Aelwyn says. "I am sending you somewhere *indifferent.* A plane is not hostile to you any more than a mountain is hostile to you. It simply does not care whether you can breathe there. Everything that hurts you on the other side will hurt you the way weather does."
+> **Read aloud.** "I want you to understand that I am not sending you somewhere dangerous," Aelwyn says. "I am sending you somewhere *indifferent*. A plane is not hostile to you any more than a mountain is hostile to you. It simply does not care whether you can breathe there. Everything that hurts you on the other side will hurt you the way weather does."
 >
 > Vane snorts. "That is a terrible speech."
 >
 > "It is an honest one."
 
-### The first plane: Underroot
+**ART I: the briefing.** Aelwyn mid-lecture at a chalkboard or an orrery, three small heroes listening, Vane with his arms folded, Tamsin writing. Warm, crowded, human. The last quiet moment before the campaign changes.
 
-The Earth rift. Use `assets/session_08/underroot_board.png` as the play board; `templates/build_rift_board.py` regenerates it with the tile overlay, and the CONFIG in that script is how you reskin it for later planes.
+### Ghostbloom
 
-Pitch it to the table as: **stone that is alive and slow.** Not caves. Roots the size of cathedrals, soil that breathes, a sky that is more ceiling than sky, everything unhurried and enormous and utterly uninterested in three children with weapons. The danger of Underroot is not that it hates them. It is that it moves on a timescale where a rockfall is a shrug.
+She has spent the year at the Guild with Vane and she has missed them, and she says so, at length, telepathically, to all three of them at once.
 
-**Its legendary is Groudon** (canon, planned for this session), and **Antares relights** here.
+## 8. The Threshold
 
-> **Read aloud, at the threshold.** The ring does not roar. That is the surprising part. The Sphere settles into the cradle with a small brass click, and the air inside the circle simply stops being air. What is on the other side is a red-brown dark, and warmth, and a smell like a garden turned over after rain, and a sound so low that you feel it in your teeth rather than hear it.
+Last beats before the ring opens, in this order:
+
+1. **Ursa looks up.** He has been reading the sky since he got back and he knows Antares is dimming. He does not say anything about it. *(He will be the only person at the table who understands what he is seeing when it relights at the end of the night. Do not spend that early.)*
+2. **The idol goes cold again** in Stabby's pack, hard enough that he notices.
+3. **Lilly sets the Sphere in the cradle.** It fits like it was cut for it.
+4. **Vane does not make a speech.** He was going to. He has had ten years to write one. What he actually does is put a hand on Lilly's shoulder for a second and then go and stand at the lever, because he cannot manage anything else.
+
+> **Read aloud.** The ring does not roar. That is the surprising part.
+>
+> The Sphere settles into the cradle with a small brass click, and the air inside the circle simply stops being air. What is on the other side is a red-brown dark, and warmth, and a smell like a garden turned over after rain, and a sound so low that you feel it in your teeth rather than hear it.
 >
 > Somewhere on the far side of that opening, something the size of a hill breathes in.
+>
+> Ghostbloom goes first, because of course she does.
+
+**ART J: the threshold.** The opened ring seen from behind the party, three small silhouettes against a red-brown light, the dark beyond suggesting something enormous. This is the last image of Part One and it should make everyone want to come back from the break.
+
+**END OF PART ONE.** Hand out sheets if you have not already. Break. Set up the Underroot board.
 
 ---
 
-## Still to draft
+## Art list for Part One
 
-- Ursa's and Stabby's year-apart tellings (Part 2).
-- The rift run itself: encounters, the Mote, Groudon, Antares.
-- The homecoming scene: **Sandshrew manifests, Ghostbloom steps into the Sphere as tether** (canon must-do).
-- Stat blocks and the encounter table, matching the Session 7 layout.
+| Tag | Scene | Status |
+|---|---|---|
+| A | The finished ring, Lilly alone at its foot | **needed** |
+| B | Aelwyn arrives with Tamsin and Lickgloom | **needed** |
+| C | Ursa at the eastern gate at dawn | **needed** |
+| D | Stabby dropping from the rafters | **needed** |
+| E | Lilly's year: the marks under the brass | **needed** |
+| F | Stabby's year: the stillness test | done: `stabby_the_stillness_test.png` |
+| G | Ursa's year: the empty camp at the shrine | **needed** |
+| H | Ursa's year: the vision in the standing stones | **needed** |
+| I | Aelwyn's briefing at the ring | **needed** |
+| J | The threshold, the ring open onto Underroot | **needed** |
+| - | The handover, gifts laid out | done: `lilly_gifts_laid_out.png` |

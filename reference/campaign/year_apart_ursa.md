@@ -180,6 +180,38 @@ He had grown up hearing that the stars were going out. He had heard it the way c
 
 That is the night the staff woke up.
 
+### The vision
+
+He did not fall asleep so much as get taken.
+
+The standing stones lit from the inside, all of them at once, the seven-pointed star burning in the rock like a coal under ash. And a voice that Ursa had heard exactly once before, at a glade a very long way west when he was six years old and the whole world was still simple, said his name.
+
+**Elaria showed him three things.**
+
+**The first was his father, walking.** Not fleeing, not falling: *walking*, deliberately, toward a light that was going out. The vision would not show his face and Ursa understood without being told that this was on purpose. What it showed him instead was the intent, and the intent was this: **Ash Catchum went east to save the stars.** Not for glory and not for a discovery. He went because the lights were failing and somebody had to go and see why, and he was the best sky-reader alive, and so it fell to him.
+
+Ursa has carried, since he was old enough to understand the word *disappeared*, a small ugly question he never once said out loud: *did my father choose to leave me?*
+
+The answer is yes. And the reason is the best reason there has ever been.
+
+**The second was the thing behind it.** A wall at the bottom of everything, and behind the wall a hunger with patience, pressing. He knew the name before the vision gave it to him, because he has been hearing it in the Circle's old verses since he was small.
+
+**Maldrith.** The Weaver of Fractures. Sealed beyond the last wall when Elaria spent herself, and pressing on it ever since, and the stars are going out because she is winning.
+
+**The third was a shadow that walks for her.** A figure in black on a high place with the sky dying behind it, putting out a light with its hand as calmly as a person pinching a candle. And the vision gave that one a name too, the way you hand somebody a weapon.
+
+**Nyxthid.** The Harbinger of Decay.
+
+Ursa came off that shrine floor with his heart going like a bird and one clean thought in his head, and it was not grief and it was not fear. It was a *task*. His father went to save the stars. Something is putting them out. It has a name, and now he has the name.
+
+He said it out loud, alone, in a ring of standing stones, eight years old, and swore at the top of his lungs that he was going to find it.
+
+> **DM notes, critical.** This is the FIRST time the name Nyxthid is spoken in the campaign; verified against every session document. Maldrith the players already know, from the Lore of Elaria boxes in Sessions 2, 3 and 4, so that name lands as a connection snapping shut rather than as exposition.
+>
+> **Nyxthid is Ash.** Ursa has just sworn to hunt his own father and will spend four sessions doing it. Elaria did not lie to him: every single thing she showed him is true. She simply did not show him that the man walking east and the shadow in black are the same person, because he was eight years old and alone and about to walk home across a country with no sky, and she needed him to survive the trip.
+>
+> **Keep the figure featureless.** No face, no height, no build, nothing Ursa could match later. If a player asks what it looked like, it looked like a hole in the shape of a person.
+
 ## What He Learned
 
 That his father was not lost. His father was **interrupted**.
@@ -206,7 +238,7 @@ Three years. Not fifteen.
 
 Somewhere between this shrine and now, three years ago, a wildfire druid stood up from a flat rock in a ring of standing stones, put down a half-finished carving, and went to do something he expected to come back from.
 
-Ursa is going to find out what.
+Ursa is going to find out what. He has a name for the thing that took his father from him, and he has said out loud that he is going to find it, and he does not go back on a thing he has said out loud either. That runs in the family.
 
 > **DM notes, do not read aloud.**
 >
