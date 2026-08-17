@@ -35,16 +35,16 @@ They land on a colour and it resolves. **Read the die they just moved with: EVEN
 | Dot | Colour | Even | Odd |
 |---|---|---|---|
 | **Move** | slate blue | Nothing. Keep going. | Nothing. Keep going. |
-| **Encounter** | garnet | **Thumpaw** blocks the path | **Gleamoth swarm** |
-| **Boon** | moss | **The Deepwater Spring** | **The Sandshrew's shortcut** |
-| **Hazard** | ochre | **Sinkloam** | **Rockfall** |
+| **Encounter** | garnet | **Thumpaw** | **The Gleamoth** |
+| **Boon** | moss | **The Deepwater Spring** | **The Shortcut** |
+| **Hazard** | ochre | **Sinkloam** | **The Ceiling Lets Go** |
 | **Wild** | amethyst, ! | **The Reef Answers** | **The Guardian's Dream** |
 
-All eight are written out in full below with their art.
+All eight are written out in *The Road Between*, below.
 
 **The four numbered locations are not dots.** They are fixed story stops: the token stops at each one regardless of movement remaining, the beat plays, and movement resumes next turn. **The Rift Gate is the arrival and has no fight.**
 
-### Design principle: every encounter is a FIGHT
+### One rule above all the others: they came here to fight
 
 The kids come to this table to fight things. Objectives, levers and clever plays exist to make the fighting *better*, and they must never be an off-ramp that skips it. Nothing in this session can be talked down, waited out, or avoided. The levers below all do the same thing: they turn a grinding fight into a satisfying one, and finding them is the reward.
 
@@ -63,7 +63,7 @@ Ten creatures, and **every scripted fight uses two types** so no encounter is a 
 
 **Glasslings matter mechanically.** The spike spawns one at the start of each of Groudon's turns. That is the pressure that stops the party from ignoring the spike and plinking Groudon: the longer the spike lives, the more little glass things are chewing on them. Break it and every remaining Glassling collapses instantly, which is a fantastic moment.
 
-### The run is FOUR SCRIPTED FIGHTS
+### Four fights, and where they fall
 
 The shape of the evening is fixed, and the dots are pacing between the fixed points:
 
@@ -83,9 +83,9 @@ A garnet Encounter dot between these is **small pressure**, two or three weak th
 
 ---
 
-# The Five Areas
+# The Descent
 
-## 1. The Rift Gate: arrival, no fight
+## 1. The Rift Gate: the first breath
 
 > **Read aloud.** You expected a cave.
 >
@@ -249,13 +249,15 @@ Full statblock below. He is played as **a natural disaster with a wounded animal
 
 ---
 
-# The Eight Dot Events
+# The Road Between
 
-**Even or odd on the movement die.** Each has a plate; art tags in brackets.
+Underroot is not empty between the landings. Eight things can happen out there, and which one you get is simply **whether the movement die came up even or odd**. No table to look up, no second roll, no pause.
 
 ---
 
-## Encounter, EVEN: Thumpaw blocks the path  *(art: D1)*
+## Thumpaw
+
+*Garnet dot, even. Plate D1.*
 
 > A shape unfolds out of what you took for a boulder. It is the size of a cart horse, round and shaggy with matted brown moss growing over stone-grey hide, and it has hands like shovels. It looks at you with small patient eyes and does not move, because you are standing in the tunnel it was going to use.
 
@@ -265,7 +267,9 @@ Full statblock below. He is played as **a natural disaster with a wounded animal
 - It never pursues and it never finishes a downed hero. It is grumpy, not evil.
 - *(If the party genuinely tries to befriend it rather than fight it, DC 15 Animal Handling with advantage from Ursa's Mark will move it aside. Do not offer this. Let them think of it.)*
 
-## Encounter, ODD: the Gleamoth swarm  *(art: D2)*
+## The Gleamoth
+
+*Garnet dot, odd. Plate D2.*
 
 > The lights come round the corner before the sound does: forty pale green sparks drifting like blown seeds. They are moths, each the size of a hand, and every one of them is glowing, and they want the warmest thing in the tunnel, which is you.
 
@@ -277,13 +281,17 @@ Full statblock below. He is played as **a natural disaster with a wounded animal
 
 ---
 
-## Boon, EVEN: the Deepwater Spring  *(art: D3)*
+## The Deepwater Spring
+
+*Moss dot, even. Plate D3.*
 
 > A crack in the wall, and inside it a still pool of water so clear that you can see forty feet down to the pale stones at the bottom. It is very cold, and it tastes like the air after lightning.
 
 Everyone regains **1 Hit Die** and clears **one level of exhaustion**. Ghostbloom glows brighter for an hour and is insufferable about it.
 
-## Boon, ODD: the Sandshrew's Shortcut  *(art: D4)*
+## The Shortcut
+
+*Moss dot, odd. Plate D4.*
 
 > Something small and yellow-brown is standing on a mound ahead of you, up on its back legs, watching. When it is sure you have seen it, it drops down and starts digging, very fast, and the tunnel it opens goes exactly the way you were trying to go.
 
@@ -291,13 +299,17 @@ Everyone regains **1 Hit Die** and clears **one level of exhaustion**. Ghostbloo
 
 ---
 
-## Hazard, EVEN: Sinkloam  *(art: D5)*
+## Sinkloam
+
+*Ochre dot, even. Plate D5.*
 
 > The floor stops being floor. It happens without a sound: one step is packed earth and the next is warm wet loam that comes up over your boots and keeps coming.
 
 Everyone makes a **DC 13 Strength save** or is **restrained**, spending an action to pull free. Heavy armour has disadvantage, so Lilly is the one in trouble and somebody has to go back for her.
 
-## Hazard, ODD: Rockfall  *(art: D6)*
+## The Ceiling Lets Go
+
+*Ochre dot, odd. Plate D6.*
 
 > Far above you, something enormous rolls over in its sleep, and the ceiling of the world lets go.
 
@@ -305,13 +317,17 @@ Everyone makes a **DC 13 Strength save** or is **restrained**, spending an actio
 
 ---
 
-## Wild, EVEN: the Reef Answers  *(art: D7)*
+## The Reef Answers
+
+*Amethyst dot, even. Plate D7.*
 
 > Somewhere far off, a single crystal note. Then another underneath it, and another, until the whole tunnel is ringing in a slow enormous chord you can feel in your ribs, and the moss on the walls lights up in time with it.
 
 Everyone gains **2d8 temporary hit points** and Ghostbloom sings back, badly, at the top of her voice. **This is a good place for the short rest** if the party has not taken it yet.
 
-## Wild, ODD: the Guardian's Dream  *(art: D8)*
+## The Guardian's Dream
+
+*Amethyst dot, odd. Plate D8.*
 
 > For half a second all four of you see the same thing, and none of you asked for it.
 >
@@ -321,11 +337,13 @@ Everyone gains **2d8 temporary hit points** and Ghostbloom sings back, badly, at
 
 No mechanical effect. **They have just seen Groudon remember his own job**, and they will not understand it until they are standing in front of him. Ursa may **regain one spent Omen Dream**, because something just spoke to him and he does not know what.
 
-# New Statblocks
+# The Creatures
 
 Formatted to match `templates/build_bestiary.py`; add them there when approved.
 
-## Rotbloom
+## At Mosslight Landing
+
+### Rotbloom
 *Small plant (corrupted), unaligned. CR 1/2 (100 XP)*
 
 **AC** 12 **HP** 22 (4d6 + 8) **Speed** 25 ft.
@@ -340,7 +358,21 @@ Formatted to match `templates/build_bestiary.py`; add them there when approved.
 **Cap Slam.** *Melee Weapon Attack:* +3 to hit, reach 5 ft. *Hit:* 6 (2d4 + 1) bludgeoning.
 **Spore Puff (Recharge 5-6).** 10-ft cone, DC 12 Constitution save, 7 (2d6) poison and poisoned until the end of its next turn; half and no poisoning on a success.
 
-## Chimestone
+### Mossmite
+*Tiny beast (corrupted), unaligned. CR 1/8 (25 XP)*
+
+**AC** 13 **HP** 7 (2d4 + 2) **Speed** 40 ft., climb 40 ft.
+**STR** 6 **DEX** 16 **CON** 12 **INT** 2 **WIS** 10 **CHA** 4
+**Senses** blindsight 30 ft., passive Perception 10 ✦ **Challenge** 1/8
+
+***Skitter.*** It does not provoke opportunity attacks.
+***Pack Nerve.*** It has advantage on attacks against a creature if another Mossmite is within 5 ft. of it.
+
+**Nip.** *Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 5 (1d4 + 3) piercing.
+
+## At the Chime Reef
+
+### Chimestone
 *Medium elemental (Plane of Earth), unaligned. CR 3 (700 XP)*
 
 **AC** 16 (rock plate) **HP** 52 (7d8 + 21) **Speed** 25 ft.
@@ -357,21 +389,22 @@ Formatted to match `templates/build_bestiary.py`; add them there when approved.
 **Crystal Ram.** *Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 11 (2d6 + 4) bludgeoning.
 **Shard Volley.** *Ranged Weapon Attack:* +6 to hit, range 40 ft. *Hit:* 9 (2d8) piercing.
 
-## Cinderoll
-*Small elemental (corrupted), unaligned. CR 1/2 (100 XP)*
+### Shardwing
+*Small elemental, unaligned. CR 1 (200 XP)*
 
-**AC** 15 (glassy coal) **HP** 18 (4d6 + 4) **Speed** 40 ft. (rolling)
-**STR** 12 **DEX** 14 **CON** 12 **INT** 3 **WIS** 8 **CHA** 3
-**Imm.** fire, poison ✦ (cond) blinded, charmed, deafened, poisoned
-**Senses** blindsight 60 ft., passive Perception 9
-**Challenge** 1/2
+**AC** 14 **HP** 22 (5d6 + 5) **Speed** 10 ft., **fly 50 ft.**
+**STR** 8 **DEX** 18 **CON** 12 **INT** 4 **WIS** 12 **CHA** 6
+**Vuln.** thunder ✦ **Imm.** poison ✦ (cond) poisoned, prone
+**Senses** tremorsense 30 ft., passive Perception 11 ✦ **Challenge** 1
 
-***Rolling Charge.*** If it moves at least 20 ft. straight toward a target before hitting it, the attack deals an extra 3 (1d6) damage and the target makes a DC 12 Strength save or is knocked prone.
-***Burst.*** When it drops to 0 hit points it cracks open: each creature within 10 ft. makes a DC 12 Dexterity save or takes 7 (2d6) fire damage. **They come in packs and this is the point.** Let the party work out that killing one next to three others is a chain reaction, and let them enjoy it.
+***Glide.*** It can fly at full speed without provoking opportunity attacks from creatures it starts its turn adjacent to.
 
-**Slam.** *Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 7 (2d4 + 2) bludgeoning plus 3 (1d6) fire.
+**Dive.** *Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 9 (2d6 + 2) slashing. If it moved at least 30 ft. straight toward the target first, this deals an extra 1d6.
+**Shard Spit.** *Ranged Weapon Attack:* +6 to hit, range 60 ft. *Hit:* 7 (1d10 + 2) piercing.
 
-## Glass Weeper
+## In the Glassed Gallery
+
+### Glass Weeper
 *Large plant (corrupted guardian-beast), unaligned. CR 6 (2,300 XP)*
 
 **AC** 16 (black glass) **HP** 115 (11d10 + 55) **Speed** 20 ft.
@@ -389,72 +422,23 @@ Formatted to match `templates/build_bestiary.py`; add them there when approved.
 **Frond Lash.** *Melee Weapon Attack:* +7 to hit, reach 15 ft. *Hit:* 12 (2d6 + 5) slashing.
 **Keening (Recharge 5-6).** 30-ft cone, DC 15 Constitution save, 21 (6d6) psychic and frightened until the end of its next turn; half and no fear on a success.
 
-## Mossmite
-*Tiny beast (corrupted), unaligned. CR 1/8 (25 XP)*
+### Cinderoll
+*Small elemental (corrupted), unaligned. CR 1/2 (100 XP)*
 
-**AC** 13 **HP** 7 (2d4 + 2) **Speed** 40 ft., climb 40 ft.
-**STR** 6 **DEX** 16 **CON** 12 **INT** 2 **WIS** 10 **CHA** 4
-**Senses** blindsight 30 ft., passive Perception 10 ✦ **Challenge** 1/8
+**AC** 15 (glassy coal) **HP** 18 (4d6 + 4) **Speed** 40 ft. (rolling)
+**STR** 12 **DEX** 14 **CON** 12 **INT** 3 **WIS** 8 **CHA** 3
+**Imm.** fire, poison ✦ (cond) blinded, charmed, deafened, poisoned
+**Senses** blindsight 60 ft., passive Perception 9
+**Challenge** 1/2
 
-***Skitter.*** It does not provoke opportunity attacks.
-***Pack Nerve.*** It has advantage on attacks against a creature if another Mossmite is within 5 ft. of it.
+***Rolling Charge.*** If it moves at least 20 ft. straight toward a target before hitting it, the attack deals an extra 3 (1d6) damage and the target makes a DC 12 Strength save or is knocked prone.
+***Burst.*** When it drops to 0 hit points it cracks open: each creature within 10 ft. makes a DC 12 Dexterity save or takes 7 (2d6) fire damage. **They come in packs and this is the point.** Let the party work out that killing one next to three others is a chain reaction, and let them enjoy it.
 
-**Nip.** *Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 5 (1d4 + 3) piercing.
+**Slam.** *Melee Weapon Attack:* +4 to hit, reach 5 ft. *Hit:* 7 (2d4 + 2) bludgeoning plus 3 (1d6) fire.
 
-## Shardwing
-*Small elemental, unaligned. CR 1 (200 XP)*
+## In Groudon's Hollow
 
-**AC** 14 **HP** 22 (5d6 + 5) **Speed** 10 ft., **fly 50 ft.**
-**STR** 8 **DEX** 18 **CON** 12 **INT** 4 **WIS** 12 **CHA** 6
-**Vuln.** thunder ✦ **Imm.** poison ✦ (cond) poisoned, prone
-**Senses** tremorsense 30 ft., passive Perception 11 ✦ **Challenge** 1
-
-***Glide.*** It can fly at full speed without provoking opportunity attacks from creatures it starts its turn adjacent to.
-
-**Dive.** *Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 9 (2d6 + 2) slashing. If it moved at least 30 ft. straight toward the target first, this deals an extra 1d6.
-**Shard Spit.** *Ranged Weapon Attack:* +6 to hit, range 60 ft. *Hit:* 7 (1d10 + 2) piercing.
-
-## Glassling
-*Tiny construct (spawned by the spike), unaligned. CR 1/4 (50 XP)*
-
-**AC** 14 **HP** 10 (3d4 + 3) **Speed** 30 ft., climb 30 ft.
-**STR** 8 **DEX** 16 **CON** 12 **INT** 1 **WIS** 6 **CHA** 1
-**Imm.** poison, psychic ✦ (cond) blinded, charmed, deafened, frightened, poisoned
-**Senses** blindsight 30 ft., passive Perception 8 ✦ **Challenge** 1/4
-
-***Spike-Born.*** **The spike creates one Glassling at the start of each of Groudon's turns.** When the spike is destroyed, every Glassling collapses into ordinary sand immediately, wherever it is and whatever it was doing.
-***Shatterburst.*** At 0 hit points, each creature within 5 ft. makes a DC 12 Dexterity save or takes 5 (2d4) slashing.
-
-**Glass Bite.** *Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 6 (1d6 + 3) slashing.
-
-## Thumpaw
-*Large beast (Plane of Earth), unaligned. CR 3 (700 XP) ✦ random encounters only*
-
-**AC** 14 (mossy hide) **HP** 76 (8d10 + 32) **Speed** 30 ft., burrow 30 ft.
-**STR** 20 **DEX** 8 **CON** 18 **INT** 3 **WIS** 12 **CHA** 6
-**Senses** tremorsense 60 ft., passive Perception 13 ✦ **Challenge** 3
-
-***Not Actually Angry.*** It does not attack until attacked, and it never pursues. It is in the way and it was there first.
-***Immovable.*** It has advantage on saves and checks against being moved, and it cannot be knocked prone.
-
-**Multiattack.** Two Shovel Slams.
-**Shovel Slam.** *Melee Weapon Attack:* +8 to hit, reach 10 ft. *Hit:* 14 (2d8 + 5) bludgeoning.
-
-## Gleamoth Swarm
-*Medium swarm of tiny beasts, unaligned. CR 1 (200 XP) ✦ random encounters only*
-
-**AC** 12 **HP** 26 (4d8 + 8) **Speed** 5 ft., **fly 40 ft.** (hover)
-**STR** 4 **DEX** 14 **CON** 14 **INT** 1 **WIS** 10 **CHA** 4
-**Resist** bludgeoning, piercing, slashing **Vuln.** fire, thunder
-**Imm.** (cond) charmed, frightened, grappled, prone, restrained, stunned
-**Senses** blindsight 20 ft., passive Perception 10 ✦ **Challenge** 1
-
-***Drawn to Warmth.*** It always moves toward the warmest or brightest thing it can sense, which is the Essence Sphere. If Lilly is carrying it, the swarm goes for her every turn.
-***Swarm.*** It can occupy another creature's space and move through any opening large enough for a single moth.
-
-**Smother.** *Melee Weapon Attack:* +4 to hit, reach 0 ft., one creature in its space. *Hit:* 10 (4d4) piercing, or 5 (2d4) if the swarm is at half hit points or fewer, and the target is **blinded** until the end of its next turn.
-
-## GROUDON, the Continent-Maker (corrupted)
+### Groudon, the Continent-Maker
 *Gargantuan elemental (Plane of Earth, Guardian), unaligned. CR 11 (7,200 XP) as run here*
 
 **AC** 18 (mountain plate) **HP** 230 (but see The Spike) **Speed** 40 ft., burrow 40 ft.
@@ -475,6 +459,48 @@ Formatted to match `templates/build_bestiary.py`; add them there when approved.
 **Thrash (when the spike takes damage, 1/round, no action).** Every creature climbing him makes a DC 15 Strength or Acrobatics check or falls, taking 3d6 bludgeoning.
 
 ---
+
+### Glassling
+*Tiny construct (spawned by the spike), unaligned. CR 1/4 (50 XP)*
+
+**AC** 14 **HP** 10 (3d4 + 3) **Speed** 30 ft., climb 30 ft.
+**STR** 8 **DEX** 16 **CON** 12 **INT** 1 **WIS** 6 **CHA** 1
+**Imm.** poison, psychic ✦ (cond) blinded, charmed, deafened, frightened, poisoned
+**Senses** blindsight 30 ft., passive Perception 8 ✦ **Challenge** 1/4
+
+***Spike-Born.*** **The spike creates one Glassling at the start of each of Groudon's turns.** When the spike is destroyed, every Glassling collapses into ordinary sand immediately, wherever it is and whatever it was doing.
+***Shatterburst.*** At 0 hit points, each creature within 5 ft. makes a DC 12 Dexterity save or takes 5 (2d4) slashing.
+
+**Glass Bite.** *Melee Weapon Attack:* +5 to hit, reach 5 ft. *Hit:* 6 (1d6 + 3) slashing.
+
+## On the road between
+
+### Thumpaw
+*Large beast (Plane of Earth), unaligned. CR 3 (700 XP) ✦ random encounters only*
+
+**AC** 14 (mossy hide) **HP** 76 (8d10 + 32) **Speed** 30 ft., burrow 30 ft.
+**STR** 20 **DEX** 8 **CON** 18 **INT** 3 **WIS** 12 **CHA** 6
+**Senses** tremorsense 60 ft., passive Perception 13 ✦ **Challenge** 3
+
+***Not Actually Angry.*** It does not attack until attacked, and it never pursues. It is in the way and it was there first.
+***Immovable.*** It has advantage on saves and checks against being moved, and it cannot be knocked prone.
+
+**Multiattack.** Two Shovel Slams.
+**Shovel Slam.** *Melee Weapon Attack:* +8 to hit, reach 10 ft. *Hit:* 14 (2d8 + 5) bludgeoning.
+
+### Gleamoth Swarm
+*Medium swarm of tiny beasts, unaligned. CR 1 (200 XP) ✦ random encounters only*
+
+**AC** 12 **HP** 26 (4d8 + 8) **Speed** 5 ft., **fly 40 ft.** (hover)
+**STR** 4 **DEX** 14 **CON** 14 **INT** 1 **WIS** 10 **CHA** 4
+**Resist** bludgeoning, piercing, slashing **Vuln.** fire, thunder
+**Imm.** (cond) charmed, frightened, grappled, prone, restrained, stunned
+**Senses** blindsight 20 ft., passive Perception 10 ✦ **Challenge** 1
+
+***Drawn to Warmth.*** It always moves toward the warmest or brightest thing it can sense, which is the Essence Sphere. If Lilly is carrying it, the swarm goes for her every turn.
+***Swarm.*** It can occupy another creature's space and move through any opening large enough for a single moth.
+
+**Smother.** *Melee Weapon Attack:* +4 to hit, reach 0 ft., one creature in its space. *Hit:* 10 (4d4) piercing, or 5 (2d4) if the swarm is at half hit points or fewer, and the target is **blinded** until the end of its next turn.
 
 # The Resolution
 
