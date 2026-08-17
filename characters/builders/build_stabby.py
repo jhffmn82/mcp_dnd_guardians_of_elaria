@@ -97,20 +97,20 @@ def h2(text):
 # ===== PAGE 1 =====
 hdr=Table([[Image('stabby_new.png',width=1.35*inch,height=1.35*inch),
     [Paragraph('Stabby Sharpblade',title_st),
-     Paragraph('Goblin &bull; Monk (Way of the Kensei) &bull; Level 5',sub_st),Spacer(1,3),
+     Paragraph('Goblin &bull; Monk (Warrior of Beast Breathing) &bull; Level 7',sub_st),Spacer(1,3),
      Paragraph('The wild one. Stabby is a tiny, lightning-fast goblin who fights with a '
-               'candy-striped katana and his own two fists. Chaos with a smile.',flav_st)]]],
+               'sun-forged katana and his own two fists. Chaos with a smile, and a breath that burns.',flav_st)]]],
     colWidths=[1.5*inch,5.8*inch])
 hdr.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(1,0),(1,0),10)]))
 story.append(hdr); story.append(Spacer(1,8))
 
-story.append(stat_strip([('ARMOR CLASS',18),('HIT POINTS',43),('SPEED','50 ft'),
-                         ('INITIATIVE','+5'),('FOCUS DC',13),('FOCUS PTS',5)]))
+story.append(stat_strip([('ARMOR CLASS',18),('HIT POINTS',59),('SPEED','55 ft'),
+                         ('INITIATIVE','+5'),('FOCUS DC',13),('FOCUS PTS',7)]))
 story.append(Spacer(1,4))
 story.append(ability_strip([('STR',8,'-1'),('DEX',20,'+5'),('CON',16,'+3'),
                             ('INT',8,'-1'),('WIS',14,'+2'),('CHA',8,'-1')]))
-story.append(Paragraph('AC 18 normally, jumps to AC 20 right after Stabby punches and swings his '
-    'katana the same turn (Agile Parry). Speed &amp; AC include his Sash. Best saves: Dex +8, Str +2.',small_it))
+story.append(Paragraph('AC 18. '
+    'Speed 45 on his own feet, <b>55</b> with the Sash, <b>65</b> while his breath is ignited. AC includes the Sash. Best saves: Dex +8, Str +2.',small_it))
 
 h2("All of Stabby's Skills")
 TR='<b><font color="#7A1F1F">%s</font></b>'   # trained: red, per the caption
@@ -128,33 +128,37 @@ story.append(Paragraph('Red = trained. Best: Acrobatics &amp; Stealth +8 (sneaky
 
 h2("What Stabby Does in a Fight")
 atk=[['Attack','To Hit','Damage'],
-    ['Candyfang Katana +1','+9','1d10+6 slashing + 2 cold'],
+    ['Nichirin Katana +2 <i>(new!)</i>','+10','1d10+7 slashing, +2 Force while ignited'],
     ['Unarmed Strike (fist/foot)','+8','1d8+5 bludgeoning'],
-    ['Repeating Longbow +1','+9',"1d8+6 piercing; +1d4 via Kensei's Shot"]]
+    ['Repeating Longbow +1','+9','1d8+6 piercing (just a very good bow now)'],
+    ['First Form: Devour <i>(bonus action, 1 Focus)</i>','+10','3d8+9 <b>Force</b>, move 15 ft free first']]
 story.append(section_table([atk[0]] + [[Paragraph(c,cell_st) for c in r] for r in atk[1:]],
     [3.0*inch,0.9*inch,3.4*inch]))
 story.append(Spacer(1,4))
 story.append(callout("<b>How Stabby's turn works:</b> He gets <b>2 attacks</b> with his Attack action, PLUS "
-    "<b>1 extra punch</b> as a bonus action (Martial Arts). Spend Focus on <b>Flurry of Blows</b> for even "
-    "more, up to <b>3–4 hits a turn!</b>"))
+    "<b>1 extra punch</b> as a bonus action (Martial Arts), <i>or</i> spend 1 Focus on <b>First Form: Devour</b> "
+    "for a big 3d8+9 Force strike. That is <b>3 hits a turn</b>, and Devour gives the Focus back if it drops "
+    "the target."))
 
 # Special moves in two columns
 h2("Stabby's Special Moves")
 moves=[
-    ('Flurry of Blows','Spend 1 Focus as a bonus action to make two extra punches. His big damage button.'),
+    ('★ Igniting the Breath','<b>When he rolls initiative</b>, spend 1 Focus to light his breath. It burns until the fight ends. Every hit with the katana deals <b>+2 Force</b>, his Speed goes up <b>10 ft</b>, and he gets <b>advantage on Dexterity saves</b>.'),
+    ('★ First Form: Devour','<b>Bonus action, 1 Focus.</b> Move up to 15 ft without provoking, then one katana strike for <b>3d8+9 Force</b> instead of normal damage. <b>If it drops the target, he gets the Focus back.</b> <i>(This replaces Flurry of Blows.)</i>'),
+    ('★ Beast Sense','Advantage on Survival to track, on Perception using smell or hearing, and on <b>Intimidation</b>.'),
     ('Stunning Strike','When he hits, spend 1 Focus to try to stun the enemy (Con save vs DC 13). '
         '<b>Fail:</b> stunned until his next turn, huge in a boss fight! <b>Success:</b> the enemy is '
         'still slowed (speed halved) and the next attack against it has advantage.'),
     ('Patient Defense','Bonus action to <b>Disengage for free.</b> Spend 1 Focus to also <b>Dodge</b> '
         '(enemies hit him with disadvantage).'),
     ('Step of the Wind','Bonus action to Dash for free. Spend 1 Focus to also Disengage and double his jump. Super zoomy.'),
-    ('Deflect Attack','Reaction: when hit by a punch/arrow/blade, lower the damage by 1d10+10. If it hits 0, '
+    ('Deflect Attack','Reaction: when hit by a punch/arrow/blade, lower the damage by <b>1d10+12</b>. If it hits 0, '
         'spend 1 Focus to fling it back at another enemy within 5 ft (DC 13 Dex save, 2d8+5).'),
-    ('Agile Parry','After he punches + swings his katana the same turn, he gets +2 AC until his next turn. '
-        '<i>(House rule: his bonus-action punch counts.)</i>'),
-    ("Kensei's Shot",'Bonus action: his next longbow hit this turn deals an extra 1d4 damage.'),
-    ('Slow Fall / Metabolism','Slow Fall: reaction to take 25 less falling damage. Uncanny Metabolism: '
-        'once a day, when he rolls initiative, regain all Focus + heal 5 + 1d8 HP.'),
+    ('Evasion <i>(new at 7!)</i>','When something lets him make a Dex save for half damage, he takes '
+        '<b>no damage</b> if he saves and only half if he fails.'),
+    ('Slow Fall / Metabolism','Slow Fall: reaction to take <b>35</b> less falling damage. Uncanny Metabolism: '
+        'once a day, when he rolls initiative, regain <b>all 7 Focus</b> + heal <b>7 + 1d8</b> HP. '
+        '<i>(So turn one he can ignite for free.)</i>'),
     ('Fury of the Small','When he hits a creature bigger than him (almost everyone!), deal +3 extra damage. '
         'He can do this 3 times per long rest, once per turn.'),
     ('Nimble Escape','He can Disengage or Hide as a bonus action every turn. Slippery little goblin.'),
@@ -189,7 +193,8 @@ story.append(Spacer(1,8))
 h2("Stabby's Stuff")
 GN='<b><font color="%s">%%s</font></b>' % RED_HEX   # gear names: accent bold
 gear=[
-    ('Candyfang Katana +1','His prized candy-striped katana. +1 to hit and damage, +2 cold. Has Sugar Rush: once a day, lick the blade (bonus action) for 2d8 + 3 temp HP and a jolt of chaos energy.'),
+    ('Nichirin Katana <i>(new! the demon-slayer&rsquo;s blade)</i>','Sun-forged crimson steel, <b>+2</b> to hit and damage, and it counts as a Monk weapon. <b>Breath-Kindled Steel:</b> it glows blood-red when he ignites. <b>Cleansing Edge:</b> once a turn, when he hits a fiend, undead, shadow thing or anything twisted by planar corruption, that creature <b>cannot heal</b> and cannot hide from him in darkness until his next turn. <b>Attuned.</b>'),
+    ('Candyfang Katana +1 <i>(kept, not carried)</i>','His old candy-striped blade, an heirloom on his belt now that the Nichirin has the job. Not attuned, so no cold rider and no Sugar Rush.'),
     ('Repeating Longbow +1','A magic bow that makes its own arrows, never runs out. +1 to hit and damage.'),
     ('Sash of the Swift Current (★ Elaria’s gift)','Scarlet stage-silk from the Wraithpine chest. +1 AC, +10 speed, plus Air Dance (fly for 1 minute, 1/day) and Feather Fall (1/day). Attuned.'),
     ('Explorer’s Pack','Backpack, bedroll, rope, torches, rations (the usual adventuring kit).'),
