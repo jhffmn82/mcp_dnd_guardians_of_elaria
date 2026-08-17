@@ -9,20 +9,25 @@ These must be stated in every prompt as explicit negatives. Reference images alo
 - **Earrings.** Lilly wears exactly ONE small earring, on one ear only, and her other ear is bare. Stabby and Ursa wear NONE: both ears completely bare, no rings, hoops, studs, cuffs, or dangling charms. Every hero ref generated before 2026-08-17 has extra earrings and is wrong on this point.
 - **Boomstick is brass and ELECTRIC BLUE.** Its chamber is a glass cylinder holding caged blue-white lightning, never orange or amber. Always attach `assets/items/boomstick.png`.
 - **Puff's ears are upright triangles** with blue inner faces, not cat ears and not tufted. Always attach `assets/art_refs/REF_homunculus.png`.
+- **Lilly does not WEAR a glowing sphere.** She had drifted into wearing a large glowing orb on her chest in every generation. She does not wear one: her chest and harness front stay clear of any big round glowing object. State this as a negative, because the older refs all show one and the generator will copy it.
+- **Ursa does not carry the Sigil-Stone in every shot.** It belongs in his portrait, where his father's stone is the subject, and in scenes that actually turn on it. Everywhere else his off hand is empty. A keepsake he is permanently clutching stops reading as a keepsake.
 
 This governs all NEW art immediately.
 
 **Backlog (DM asked for this 2026-08-17): strip the extra earrings from the existing plates too.** The heroes' jewelry drifted upward generation by generation until all three were wearing several rings apiece, and it reads as strange once noticed. The fix is per-image and mechanical: pass the finished plate to the image edits endpoint with a tight instruction to remove ear jewelry and change nothing else, then perceptually diff the result against the original to confirm only the ears moved. Do NOT regenerate these plates from scratch: they are DM-approved compositions and a re-roll loses them. Work session by session, newest first, and re-run `templates/audit_embedded_art.py` after each batch so nothing lands in the wrong slot. Expect some images to refuse the edit (the provider has blocked hero-art edits before); leave those and log them rather than forcing it.
 
-## Pending: the three-ref set per hero (blocked 2026-08-17 on API credits)
+## The level-7 reference set: four per hero (built 2026-08-17)
 
-Each hero is getting three level-7 references instead of one, so scene art has the right source for whatever it needs: a **portrait** (done, locked), a **full body** turnaround for outfit and gear continuity, and a **painted** version in traditional media for when a plate should read hand-made rather than rendered. The six remaining prompts are written and staged in `assets/gen_prompts/` as `<hero>_level7_fullbody.txt` and `<hero>_level7_painted.txt`; each generation stalled on `credit_balance_exhausted`. To finish, add API credits and run, from the repo root:
+Each hero now has four references instead of one, so a prompt can attach the one that actually fits the job. Attach the hero's signature item alongside whichever you pick (Lilly: `items/boomstick.png`, plus `REF_homunculus.png` whenever Puff is in frame; Stabby: `items/nichirin_katana.png`; Ursa: `items/staff_of_waking_constellations.png`).
 
-```
-GENART_SIZE=1024x1024 python templates/genart.py assets/art_refs/REF_<hero>_<n>_fullbody.png assets/gen_prompts/<hero>_level7_fullbody.txt <that hero's level-7 portrait ref> <their signature item>
-```
+| Suffix | What it is | Reach for it when |
+|---|---|---|
+| `_level7` | Head-and-shoulders portrait, full render | The default. Faces, expressions, close scenes. |
+| `_level7_fullbody` | Whole figure in a lit setting | Action and scene plates where the whole body shows. |
+| `_level7_painted` | Traditional media: gouache, ink, paper grain | A plate that should read hand-made rather than rendered. |
+| `_level7_model` | Flat costume sheet, plain ground, weapon quiet | Settling what the outfit or gear actually looks like. The clearest source, least noise. |
 
-Attach the same refs used for the portraits: Lilly gets `REF_lilly_6_level7.png` + `items/boomstick.png` + `REF_homunculus.png`; Stabby `REF_stabby_4_level7.png` + `items/nichirin_katana.png`; Ursa `REF_ursa_4_level7.png` + `items/staff_of_waking_constellations.png`.
+Prompts for all twelve live in `assets/gen_prompts/<hero>_level7_{portrait,fullbody,painted,model}.txt`.
 
 ## Heroes and companions (era-split; see art guide)
 
