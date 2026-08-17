@@ -20,8 +20,8 @@ BOOK = [
     ("sessions/session_05_curse_of_davy_jones.docx",   "07_Session_5_The_Curse_of_Davy_Jones.pdf"),
     ("sessions/session_06_wraithpine.docx",            "08_Session_6_Lanterns_in_the_Fog.pdf"),
     ("sessions/session_07_gearhaven.docx",             "09_Session_7_Gearhaven_the_Clockwork_City.pdf"),
-    ("sessions/session_08_underroot.docx",             "11_Session_8_Underroot.pdf"),
-    ("compendium/the_compendium.docx",                 "12_The_Compendium.pdf"),
+    ("sessions/session_08_underroot.docx",             "10_Session_8_Underroot.pdf"),
+    ("compendium/the_compendium.docx",                 "11_The_Compendium.pdf"),
 ]
 
 # Source builders to run first (session 7 has no builder; it is edited in place).
@@ -65,7 +65,7 @@ CHAR_SHEETS = [
 
 def merge_char_sheets():
     from pypdf import PdfWriter
-    comp = os.path.join(ROOT, "10_The_Compendium.pdf")
+    comp = os.path.join(ROOT, "11_The_Compendium.pdf")
     if not os.path.exists(comp):
         print("  skip char-sheet merge: compendium PDF missing"); return
     w = PdfWriter(); w.append(comp)
@@ -77,7 +77,7 @@ def merge_char_sheets():
             print(f"  MISSING char sheet {rel}")
     with open(comp, "wb") as f:
         w.write(f)
-    print("  char sheets merged into 10_The_Compendium.pdf")
+    print("  char sheets merged into 11_The_Compendium.pdf")
 
 if __name__ == "__main__":
     if "--pdf-only" not in sys.argv:

@@ -19,7 +19,8 @@ Read it in order. Each PDF is a chapter of the book.
 | 07 | [Session 5: The Curse of Davy Jones](07_Session_5_The_Curse_of_Davy_Jones.pdf) | A storm, a ghost ship, and a companion who begins to change |
 | 08 | [Session 6: Lanterns in the Fog](08_Session_6_Lanterns_in_the_Fog.pdf) | The village of Wraithpine, the singing monster, and the three relics of Elaria |
 | 09 | [Session 7: Gearhaven, the Clockwork City](09_Session_7_Gearhaven_the_Clockwork_City.pdf) | The Sphere's true purpose, the darkening stars, and a year's parting |
-| 10 | [The Compendium](10_The_Compendium.pdf) | Every creature, treasure, relic, house rule, and hero-path of the chronicle |
+| 10 | [Session 8: Underroot](10_Session_8_Underroot.pdf) | The reunion after the year apart, the first rift run, and the freeing of Groudon |
+| 11 | [The Compendium](11_The_Compendium.pdf) | Every creature, treasure, relic, house rule, and hero-path of the chronicle |
 
 ## About this repository
 

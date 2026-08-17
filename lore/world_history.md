@@ -293,6 +293,24 @@ F2 The Warden's Price, D2 Motes) were placed on Compendium pages in this pass, s
 a single closing sentence adapted to the page's subject; the adapted sentences hedge as
 legend and add no new facts.
 
+## Fragments: Added for Session 8, Underroot (2026-08)
+
+**D11. The Living Country** (Underroot/plane/rift-run pages)
+The sky-readers teach that a plane is not a place but a creature: one living thing
+wearing a country for a body, with weather for moods and seasons for a pulse. Walk
+gently, the Circle says, for every step in another world is a step on somebody.
+The old verses go further still: each world keeps one guardian, very old, that is
+somehow the shape of that world's health, and to free a guardian is to heal the
+country it carries.
+
+**D12. The Two Lists** (rift bestiary/corrupted-creature pages)
+The Circle's bestiary of the Darkening keeps two lists. The frightening one is
+long: the twisted, the glassed, the re-blooming, every creature the leaking dark
+has worn like a glove. The kind one is longer, and it is the same list, written
+again after somebody set them free. Corruption, the sky-readers say, is a thing
+that happens to a creature, never a thing that it is. Strike to free, not to
+punish, and a world will hand you back more friends than enemies.
+
 ## Usage rules
 
 - Fragments are placed in "Lore of Elaria" boxes (the ("lore", title, text) engine
