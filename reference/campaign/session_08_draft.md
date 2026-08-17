@@ -49,7 +49,7 @@ Lilly arrives a full week before the appointed day. Vane puts her on the anchor 
 
 ## 2. The Professor
 
-He arrives on the fifth day with three trunks, a half-elf assistant named Tamsin, and Lickgloom riding on top of the luggage looking enormously pleased with itself.
+He arrives on the fifth day with three trunks and no help whatsoever, which is very much his own choice, and with Lickgloom riding on top of the luggage looking enormously pleased with itself.
 
 The party last saw **Professor Aelwyn Ravenstone** at Ravenstone Laboratory in Session 3, when he examined the Essence Sphere, told them it needed Gearhaven, and gave Ursa a companion. He has spent the years since on the planar problem. He is here because Vane wrote to him, and because a portal without a planar theorist is a very expensive hole in the air.
 
@@ -59,7 +59,9 @@ The party last saw **Professor Aelwyn Ravenstone** at Ravenstone Laboratory in S
 >
 > He says it the way other people say good morning.
 
-**ART B: Aelwyn's arrival.** The professor in the Rift Hall doorway with trunks and Tamsin behind him, Lickgloom perched on the luggage, the ring huge and out of focus beyond.
+**ART B: Aelwyn's arrival.** The professor in the Rift Hall doorway with his trunks, Lickgloom perched on top of the luggage mid-tongue-flick, the ring huge and out of focus beyond. No assistant.
+
+**Lickgloom remembers them.** He stayed behind at Ravenstone Laboratory in Session 3 and has spent two years licking a professor's equipment. He recognises the party instantly and is beside himself about it. Give this a beat: it is the only uncomplicated happy reunion in the whole session.
 
 **His function this session** is to be the one adult who can explain the rules, and the one adult honest enough to say which parts he is guessing at. He is not a rescuer and he does not come through the portal.
 
@@ -186,7 +188,7 @@ Give the players this. It is the whole handover on one page.
 
 ## 7. The Briefing
 
-Gather them at the ring. Aelwyn talks, Vane interrupts, Tamsin takes notes.
+Gather them at the ring. Aelwyn talks, Vane interrupts, and Lickgloom licks something it should not.
 
 In plain words the kids can hold:
 
@@ -202,7 +204,7 @@ In plain words the kids can hold:
 >
 > "It is an honest one."
 
-**ART I: the briefing.** Aelwyn mid-lecture at a chalkboard or an orrery, three small heroes listening, Vane with his arms folded, Tamsin writing. Warm, crowded, human. The last quiet moment before the campaign changes.
+**ART I: the briefing.** Aelwyn mid-lecture at a chalkboard or an orrery, three small heroes listening, Vane with his arms folded, Ghostbloom at the edge and Puff on Lilly's shoulder. No assistant. Warm, crowded, human. The last quiet moment before the campaign changes.
 
 ## 7b. The Lesson: Underroot, and the Thing That Lives There
 
@@ -280,7 +282,7 @@ Last beats before the ring opens, in this order:
 | Tag | Scene | Status |
 |---|---|---|
 | A | The finished ring, Lilly alone at its foot | **needed** |
-| B | Aelwyn arrives with Tamsin and Lickgloom | **needed** |
+| B | Aelwyn arrives with Lickgloom | **needed** |
 | C | Ursa at the eastern gate at dawn | **needed** |
 | D | Stabby dropping from the rafters | **needed** |
 | E | Lilly's year: the marks under the brass | **needed** |
