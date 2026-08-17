@@ -42,8 +42,11 @@ CANON USED (memory/campaign_canon.md):
     sheathed, burns the colour of the ignited form.
   - He is NINE years old at Session 8.
 
-INVENTED: the Sunward Vigil and Kettlecrown; Nokk; the blight and its
-strongest-first order. No table events are touched.
+INVENTED: the Sunward Vigil (a sect of ancient BULLYWUGS, the D&D frog-folk,
+played against type: normally swamp nuisances, here mountain sages) and their
+mountain
+Kettlecrown; Nokk; the blight and its strongest-first order. No table events
+are touched.
 
 House style: no em dashes. Prose at young-adult level, content kid-safe.
 -->
@@ -130,17 +133,31 @@ They are supposed to be a story.
 
 Everyone has heard some version. A sect past the treeline on a mountain called Kettlecrown, where the sun arrives before it arrives anywhere else in the world. They forge swords from ore that drinks dawnlight. They spend their lives hunting what crawls in from outside the world, the corrupted and the rotted and the wrong. They do not take students, they do not come when called, and most sensible people file them somewhere between the tooth fairy and the goddess.
 
-It took him two months to find the road and another nine days to climb it.
+It took him two months to find the road and another nine days to climb it. And when he finally hauled himself over the last ledge, filthy and triumphant and ready to meet the greatest swordsmen in the world, what he found was bullywugs.
+
+### The Vigil
+
+Frog-folk. The same wide-mouthed, damp, croaking people that every traveller's tale puts knee-deep in a swamp stealing boots. Except these ones were sitting on stone spires above the cloud line in the thin gold light, motionless, eyes half closed, doing absolutely nothing at all with tremendous authority.
+
+And they were **enormous**. That is the thing nobody tells you about bullywugs, because almost nobody meets an old one: they never stop growing. A swamp bullywug dies young and stays the size of a person. Give one four hundred years of sitting still on a mountain and it ends up the size of a farm cart.
+
+Stabby said a word here that has been left out of the record.
+
+But think about it for one second longer than he did, because he came around to it eventually and so will the table. If you were going to build a school of **breathing** anywhere in the world, you would build it out of frog-folk. A bullywug is a bellows with legs. The whole body is a lung and a throat and a patient working set of muscles built for one long pull of air, and it can hold perfectly still for six hours on a warm rock and consider that time well spent.
+
+The oldest of them is called **Grandmother Ottick**. She is roughly the size of a hay wagon, which tells you exactly how old she is, and she has been sitting on the same spire since before Bloodthorn Hollow had a name. The swords come off their forge lower down the mountain, where the young ones work the crimson ore, and the young ones are two hundred years old.
 
 ### The Test Is Stillness
 
-They did not care that he was a goblin. That surprised him, and it is worth landing at the table, because he had a whole speech ready. The Sunward Vigil is old enough to have stopped caring what shape a person is.
+They did not care that he was a goblin. That surprised him, and it is worth landing at the table, because he had a whole speech ready. When you are four centuries old and the size of a hay wagon, a goblin and a human and an elf are all much the same thing: small, brief, and in a hurry.
 
 They cared about one thing, and they knew it about him before he opened his mouth. The oldest of them looked at him for rather a long time and said, mildly, *you are carrying something,* and Stabby discovered that he had been braced his entire life for someone to say that and had no idea what to do when they finally did.
 
 Then they tested him, and he failed badly.
 
-They asked him to be still. Not to sit quietly, which he could have faked. To be *still*, entirely, from the inside, in the moment before violence. Every one of them could do it. The oldest could do it while a blade was already falling.
+They asked him to be still. Not to sit quietly, which he could have faked. To be *still*, entirely, from the inside, in the moment before violence. Every one of them could do it in their sleep, which is the entire problem with learning anything from a bullywug: they cannot explain how, because they have never once had to try. Grandmother Ottick's complete instruction, delivered over three months, was **stop wriggling**.
+
+They put him on top of a spire to do it, on a flat stone no wider than a door, with a very long way down on every side and nothing to hold on to. Not as a punishment. Bullywugs consider this restful.
 
 He could not do it for a breath. Not one. And this time he knew why, because he could feel the thing behind his ribs shift every time he tried to go quiet, the way a sleeping animal shifts when the room goes silent. Stillness is the one condition under which you can hear what is inside you, and Stabby had spent nine years being the loudest goblin alive precisely so that he would never have to.
 
@@ -160,9 +177,11 @@ And in that one second, for the first time in his life, he got a good look at wh
 
 *The breath is not a cage. Your father built the cage. The breath is a door, and you are the only one who gets to decide which way it opens.*
 
+Grandmother Ottick blinked at him once, slowly, which from a bullywug is a standing ovation.
+
 ### The Blade
 
-The Vigil forge their own steel and will not forge for anyone who has not lit their breath, which is why a Nichirin sword is a graduation and not a gift.
+The Vigil forge their own steel and will not forge for anyone who has not lit their breath, which is why a Nichirin sword is a graduation and not a gift. Bullywugs, it turns out, are magnificent smiths. They are unhurried, the old ones are enormously strong, and damp skin does not flinch at a forge.
 
 The ore came out of Kettlecrown's deep cut, crimson and strange, drinking the dawn the way dry ground drinks rain. He worked the bellows for eight days of it. What came off the anvil looked disappointing, and that is the point: sheathed and cold, a Nichirin blade is dark and plain and could be any sword in any village.
 
@@ -226,7 +245,7 @@ He is not calmer. Do not let anyone at the table think he came back calmer. He i
 
 ---
 
-> **A note for the DM.** Stabby's player loves Naruto, so this is built on that shape on purpose: the overlooked class clown nobody will teach; a beast sealed inside him as a newborn by his own father, the clan's Fourth, who died doing it; the sealed power being the actual reason he could never learn what the other children learned; a public promise he refuses to break; training with a sect out of legend on a sacred mountain where the entire test is holding perfectly still and he is spectacularly bad at it; learning to channel the beast's strength rather than suppress it; coming home as the hero of the people who dismissed him; and being offered his father's seat and answering *not yet, hold it for me.* None of it is labelled and none of it needs to be. If he sees it he will grin. If he does not, it still reads as his own story.
+> **A note for the DM.** Stabby's player loves Naruto, so this is built on that shape on purpose: the overlooked class clown nobody will teach; a beast sealed inside him as a newborn by his own father, the clan's Fourth, who died doing it; the sealed power being the actual reason he could never learn what the other children learned; a public promise he refuses to break; training with a sect out of legend on a sacred mountain, who turn out to be enormous ancient bullywugs (played hard against type: the D&D frog-folk are usually swamp nuisances, and these are the world's foremost corruption-hunters), where the entire test is holding perfectly still on top of a rock spire and he is spectacularly bad at it; learning to channel the beast's strength rather than suppress it; coming home as the hero of the people who dismissed him; and being offered his father's seat and answering *not yet, hold it for me.* None of it is labelled and none of it needs to be. If he sees it he will grin. If he does not, it still reads as his own story.
 >
 > **Reveal pacing.** The Fourth and the Red Fang are told to him by Nokk before he leaves, so his year has a reason. How much of it he has told **Lilly and Ursa** is the player's call, and "none of it yet" is a perfectly good answer that pays off later.
 
@@ -269,7 +288,7 @@ The katana counts as a Monk weapon for him, so his Martial Arts die applies and 
 
 **Cleansing Edge.** Once a turn, when he hits a fiend, an undead, a shadow creature, or anything empowered by planar corruption, that creature **cannot regain hit points** and **cannot hide from him in darkness** until his next turn.
 
-Everything that comes through a rift is on that list. He did not pick the subclass that hits hardest. He picked the one built for the specific enemy this campaign has been pointing at since Session 1, and he picked it because a sect that has spent centuries cleaning up planar corruption looked at a nine year old goblin and recognised what he was carrying.
+Everything that comes through a rift is on that list. He did not pick the subclass that hits hardest. He picked the one built for the specific enemy this campaign has been pointing at since Session 1, and he picked it because a mountain full of very old frog-folk who have spent centuries cleaning up planar corruption looked at a nine year old goblin and recognised what he was carrying.
 
 ---
 
