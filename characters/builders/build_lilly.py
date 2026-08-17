@@ -91,14 +91,14 @@ def h2(text):
 # ===== PAGE 1 =====
 hdr=Table([[Image('lilly_new.png',width=1.35*inch,height=1.35*inch),
     [Paragraph('Lilly Glimmergear',title_st),
-     Paragraph('Deep Gnome &bull; Artificer (Artillerist) &bull; Level 5',sub_st),Spacer(1,3),
+     Paragraph('Deep Gnome &bull; Artificer (Artillerist) &bull; Level 7',sub_st),Spacer(1,3),
      Paragraph('Played by the inventor of the group. Lilly builds a magic cannon, zaps things with '
                'frost, and carries the Essence Sphere that holds Pikachu’s spark.',flav_st)]]],
     colWidths=[1.5*inch,5.8*inch])
 hdr.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(1,0),(1,0),10)]))
 story.append(hdr); story.append(Spacer(1,8))
 
-story.append(stat_strip([('ARMOR CLASS',20),('HIT POINTS',38),('SPEED','25 ft'),
+story.append(stat_strip([('ARMOR CLASS',20),('HIT POINTS',52),('SPEED','25 ft'),
                          ('INITIATIVE','+2'),('SAVE DC',16),('SPELL ATK','+8')]))
 story.append(Spacer(1,4))
 story.append(ability_strip([('STR',8,'-1'),('DEX',14,'+2'),('CON',14,'+2'),
@@ -121,20 +121,21 @@ story.append(Paragraph('Blue = trained. Best: Arcana &amp; Investigation +8.',sm
 
 h2("What Lilly Does in a Fight")
 atk=[['Attack','To Hit','Damage'],
-    ['True Strike (frost dagger)','+9','1d4 + 1d4 cold + 6 + 1d6 radiant + 1d8 + 2 frost'],
+    ['True Strike (Boomstick)','+10','1d10 + 2 + 5 thunder + 1d6 radiant + 1d8 (30/90 ft)'],
     ['Cannon: Flamethrower','DC 16 Dex','2d8+2 fire in a 15-ft cone'],
     ['Cannon: Force Ballista','+8','2d8+2 force, push 5 ft (120 ft away)'],
-    ['Fire Bolt (cantrip)','+8','2d10 fire + 1d8 + 2 frost (120 ft)']]
+    ['Fire Bolt (cantrip)','+8','2d10 fire + 1d8 thunder (120 ft, her long shot)'],
+    ['Scorching Ray (2nd)','+8','three rays, 2d6 fire each, +1d8 on one']]
 story.append(section_table([atk[0]] + [[Paragraph(c,cell_st) for c in r] for r in atk[1:]],
     [3.0*inch,1.0*inch,3.3*inch]))
 story.append(Spacer(1,4))
 story.append(callout("<b>How Lilly's turn works:</b> She fires her cannon as a <b>BONUS action</b> AND does "
-    "something else with her main action (cast a spell, stab with True Strike, or Fire Bolt). She gets to do "
+    "something else with her main action (cast a spell, fire Boomstick with True Strike, or Fire Bolt). She gets to do "
     "<b>both every turn!</b>"))
 
 h2("Lilly's Eldritch Cannon")
 story.append(Paragraph('The Cannon can be attacked and broken. Mending repairs it 2d6.', small_it))
-cannon = stat_strip([('AC',18),('HIT POINTS',25),('SIZE','Small/Tiny'),('SPEED','15 ft (legs)')])
+cannon = stat_strip([('AC',18),('HIT POINTS',35),('SIZE','Small/Tiny'),('SPEED','15 ft (legs)')])
 story.append(cannon)
 story.append(Spacer(1,3))
 LBL='<b><font color="%s">%%s</font></b>' % BLUE_HEX   # row labels: accent bold
@@ -163,7 +164,7 @@ def _glance(lbl, boxes, names):
 glance = [
     _glance('Cantrips', 0, 'True Strike, Fire Bolt, Mending'),
     _glance('1st', 4, 'Shield*, Thunderwave*, Faerie Fire, Grease, Cure Wounds'),
-    _glance('2nd', 2, "Scorching Ray*, Shatter*, Homunculus Servant, Dragon's Breath, Aid"),
+    _glance('2nd', 3, "Scorching Ray*, Shatter*, Homunculus Servant, Dragon's Breath, Aid, Web"),
 ]
 gt = Table(glance, colWidths=[2.3*inch, 5.0*inch])
 gt.setStyle(TableStyle([
@@ -185,7 +186,14 @@ story.append(Spacer(1,8))
 
 h2("Lilly's Special Powers")
 powers=[
-    ('Replicate Magic Item','Lilly builds magic gear for the team! Her two creations are in use now: her own +1 Half Plate and the +1 Repeating Longbow she made for Stabby.'),
+    ('★ Aether Channeler<br/><i>(the year chasing the Sphere)</i>',
+        'The year taught her what her mother’s Sphere really is, and how to draw on it. '
+        '<b>Aether Ward:</b> as her <b>action</b>, she and every friend <b>within 15 ft</b> gain '
+        '<b>2d8 + 5 temporary hit points</b>. <b>2 uses, back on a short rest.</b> '
+        '<i>(The Sphere’s elemental discharges stay locked until each rift’s Mote is found.)</i>'),
+    ('Replicate Magic Item','Lilly builds magic gear from arcane <b>plans</b>. She knows <b>5 plans</b> and can keep <b>3 creations</b> going at once. Right now: the <b>Wand of Magic Missiles</b> she made for Puff.'),
+    ('Magic Item Tinker (new at 6!)','<b>Charge</b> (bonus action, spend a slot to refill a creation&rsquo;s charges), <b>Drain</b> (bonus action, destroy one for a spell slot, 1/long rest), <b>Transmute</b> (reshape one into another plan, 1/long rest).'),
+    ('Flash of Genius (new at 7!)','<b>Reaction.</b> When she <i>or any friend within 30 ft</i> fails an ability check or saving throw, add <b>+5 (Int)</b> to the roll and maybe turn it into a success. <b>5 uses per long rest.</b>'),
     ("Tinker's Magic",'Knows the Mending cantrip (fix broken things). Can also conjure handy mundane gear (rope, a torch, ball bearings) that lasts until her next rest. Great for puzzles and traps.'),
     ('The Right Tool','With her tools, Lilly can magically make any set of artisan tools she needs (1 hour).'),
     ('Deep Gnome Gifts','<b>Gnomish Magic Resistance:</b> advantage on Int, Wis &amp; Cha saves vs spells. '
@@ -199,9 +207,10 @@ story.append(section_table([[Paragraph(LBL%n,cell_st),Paragraph(d,cell_st)] for 
 h2("Lilly's Stuff")
 gear=[
     ('Essence Sphere','A steampunk orb holding Pikachu’s spark. Lilly’s big quest item: she wants to give Pikachu a body again.'),
-    ('Frostbite Shard Dagger +1','Her magic frost dagger (1d4 piercing + 1d4 cold). Spell focus AND ‘arcane firearm’: adds 1d8 frost to one spell she casts through it, plus +2 frost on any spell. +1 to hit.'),
+    ('Boomstick <i>(new! Poots&rsquo;s parting work)</i>','Her mother&rsquo;s repeating pistol, +2. <b>Range 30/90.</b> It is her <b>weapon, her spell focus, and her Arcane Firearm</b> all at once: any artificer spell she casts through it adds <b>1d8 thunder</b> to one of its damage rolls.'),
+    ('Frostbite Shard Dagger +1 <i>(retired to her belt)</i>','Her old frost dagger, kept as a keepsake. Boomstick has taken over as focus and Arcane Firearm, so the dagger&rsquo;s riders no longer apply.'),
     ('Pocket Dynamo (★ Elaria’s gift)','From the Wraithpine chest. Summon/recall her cannon for free, lasts 24 hours, +2 damage. Reformat (1/long rest, action), now mostly spare, since every cannon picks its blast when it fires. Needs attunement.'),
-    ('+1 Half Plate (her creation)','Half plate she replicated with Replicate Magic Item. Base of her AC 20.'),
+    ('+1 Half Plate','Her armour, the base of her <b>AC 20</b>. <i>(DM ruling: permanent gear, not an ongoing Replicate creation, so it never vanishes and never eats a slot.)</i>'),
     ('Shield','A sturdy steel shield. Adds +2 to her armor.'),
 ]
 story.append(section_table([[Paragraph(LBL%n,cell_st),Paragraph(d,cell_st)] for n,d in gear],
@@ -245,8 +254,8 @@ story.append(Paragraph('Lilly Glimmergear', S('p3t',fontName='Times-Bold',fontSi
             textColor=BLUE, leading=18, spaceAfter=2)))
 story.append(Paragraph('Page 3: Spellbook', sub_st))
 story.append(Spacer(1,7))
-story.append(Paragraph('Slots per day: 4 first-level, 2 second-level. Cantrips (★) are free forever. '
-    'She prepares 6 spells; the four marked Always Prepared are free from her Artillerist subclass and '
+story.append(Paragraph('Slots per day: 4 first-level, 3 second-level. Cantrips (★) are free forever. '
+    'She prepares 7 spells; the four marked Always Prepared are free from her Artillerist subclass and '
     'don’t count toward that. The +1d8 frost on a spell is her dagger’s arcane firearm: it adds to one '
     'spell she casts each turn (she only casts one anyway). The +2 frost rides along on any spell cast '
     'through the dagger.', small_it))
@@ -260,7 +269,7 @@ sp_text = S('spx', fontName='Times-Roman', fontSize=7.9, textColor=INK, leading=
 spells=[
     ('★ True Strike',
         'Cantrip • Action • Self (5 ft reach) • Instant',
-        'Stab with the Frostbite dagger using INT. Melee attack +9 to hit. On a hit: 1d4 + '
+        'Fire Boomstick using INT. Ranged attack +10 to hit. On a hit: 1d10 + 2 + '
         '1d4 cold + 6 + 1d6 radiant + 1d8 frost (arcane firearm) + 2 frost (frostbite). Her '
         'best up-close hit.'),
     ('★ Fire Bolt',
@@ -350,7 +359,7 @@ grid = Table(rows, colWidths=[3.66*inch]*2)
 grid.setStyle(TableStyle([
     ('VALIGN',(0,0),(-1,-1),'TOP'),
     ('LEFTPADDING',(0,0),(-1,-1),2),('RIGHTPADDING',(0,0),(-1,-1),2),
-    ('TOPPADDING',(0,0),(-1,-1),1.8),('BOTTOMPADDING',(0,0),(-1,-1),1.8),
+    ('TOPPADDING',(0,0),(-1,-1),1.2),('BOTTOMPADDING',(0,0),(-1,-1),1.2),
 ]))
 story.append(grid)
 
@@ -379,6 +388,14 @@ hom_stats = [
     Paragraph('<b>Magic Bond.</b> Add +2 to any check or save it makes.', cell_st),
     Paragraph('<b>Channel Magic (Reaction).</b> When Lilly casts a touch spell and it is within '
               '120 ft, it can deliver that spell instead.', cell_st),
+    Spacer(1, 3),
+    Paragraph('<b>What Lilly built her during the year.</b> Puff carries all three; she can use only '
+              '<b>one per turn</b>, since she has a single action.', cell_st),
+    Paragraph('&bull; <b>Ring of Spell Storing</b> (attuned to Puff). Holds <b>5 levels of spells</b>; Lilly or '
+              'Ursa casts into it and Puff casts them back out at <b>Lilly&rsquo;s</b> DC 16 and +8. '
+              '&bull; <b>Wand of Magic Missiles</b>, 7 charges, up to 3 at once: darts that <b>always hit</b>. '
+              '&bull; <b>Pipes of Haunting</b>, 3 charges: everyone she chooses within 30 ft makes a DC 15 Wis '
+              'save or is <b>frightened</b> for a minute.', cell_st),
     Spacer(1, 2),
     Paragraph('It shares Lilly&rsquo;s initiative and acts right after her, obeying with <b>no '
               'action needed from her</b>; give it no orders and it Dodges. Touch it with '
