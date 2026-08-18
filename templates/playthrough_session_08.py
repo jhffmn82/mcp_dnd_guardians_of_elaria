@@ -911,17 +911,47 @@ def fight1(st):
                 live_r = sorted([r for r in rots if r.hp > 0],
                                 key=lambda r: st.ursa.dist_ft(r))
                 live_m = [m for m in mites if m.hp > 0 and not m.hidden]
-                if rnd == 1:
-                    st.u_slots[3] -= 1
-                    st.fey = Actor('Fey spirit', 'f', 'pc', 15, 30, (9, 15), 30,
-                                   saves=dict(dex=3, con=2, wis=2), fly=True)
-                    log(f"    Ursa: SUMMON FEY (3rd), a silver-antlered spirit steps "
-                        f"out of the mosslight. [3rd slots left {st.u_slots[3]}]")
+                if rnd == 1 and st.u_slots[4] > 0:
+                    # the big clump exists exactly once all day: round 1, before
+                    # the party is mixed into it. Ice Storm, no concentration.
+                    clump = [r for r in live_r
+                             if sum(1 for o in live_r if cheb(o.pos, r.pos) <= 4) >= 4
+                             and all(not h.alive or cheb(h.pos, r.pos) > 5
+                                     for h in st.pcs)]
+                    if len(clump) >= 4:
+                        st.u_slots[4] -= 1
+                        log("    Ursa: ICE STORM! Hail hammers the grey moss. "
+                            f"[4th slots left {st.u_slots[4]}]")
+                        for r in clump[:6]:
+                            roll = d(2, 10) + d(4, 6)
+                            if foe_save(r, r.saves.get('dex', 0), 16):
+                                dmg = deal(st, r, [(roll // 2, 'cold')], credit='Ursa')
+                                log(f"      {r.name} weathers it: {dmg}.")
+                            else:
+                                dmg = deal(st, r, [(roll, 'cold')], credit='Ursa')
+                                log(f"      {r.name} is hammered flat for {dmg}!")
+                            if r.hp <= 0:
+                                log(f"      {r.name} is destroyed.")
+                            else:
+                                r.slowed = True
+                        log("      The ground is ice-sheeted: the survivors slog.")
+                    else:
+                        if live_r:
+                            starry_wisp(st, live_r[0])
                     if not bonus_used and st.u_wild > 0:
                         st.u_wild -= 1
                         st.u_starry = True
                         log(f"    Ursa: bonus action STARRY FORM (Archer); the Amulet "
                             f"wakes, +1 to allies' attacks and saves. [Wild Shape {st.u_wild}]")
+                elif rnd == 2 and st.fey is None and st.u_slots[3] > 0:
+                    st.u_slots[3] -= 1
+                    st.fey = Actor('Fey spirit', 'f', 'pc', 15, 30, (9, 15), 30,
+                                   saves=dict(dex=3, con=2, wis=2), fly=True)
+                    log(f"    Ursa: SUMMON FEY (3rd), a silver-antlered spirit steps "
+                        f"out of the mosslight. [3rd slots left {st.u_slots[3]}]")
+                    if not bonus_used and st.u_starry:
+                        star_arrow(st, live_r[0] if live_r else
+                                   (live_m[0] if live_m else None))
                 else:
                     tgt = live_r[0] if live_r else (live_m[0] if live_m else None)
                     if tgt is not None:
@@ -988,7 +1018,8 @@ def fight1(st):
                               key=lambda h: r.dist_ft(h), default=None)
                     if tgt is None:
                         break
-                    r.approach(tgt, 5, 25)
+                    r.approach(tgt, 5, 10 if getattr(r, 'slowed', False) else 25)
+                    r.slowed = False
                     close = [h for h in st.pcs + ([st.fey] if st.fey else [])
                              if h is not None and h.alive and r.dist_ft(h) <= 10]
                     if len(close) >= 2 and rng.randint(1, 6) >= 4:
@@ -1358,6 +1389,7 @@ def fight3(st):
     order = initiative(st, [('Cinderolls', rolls, 2), ('Glass Weeper', [weeper], -1)])
     burst_done = set()
     tended = False
+    moonbeam_on = False
     rnd = 0
 
     def burst(c):
@@ -1440,7 +1472,14 @@ def fight3(st):
                     if not bonus_used:
                         bonus_used = True
                         log(f"    Ursa: STARRY FORM (Archer). [Wild Shape {st.u_wild}]")
-                if rnd >= 2 and weeper.hp > 0:
+                if rnd == 1 and st.u_staff >= 2 and weeper.hp > 0:
+                    st.u_staff -= 2
+                    moonbeam_on = True
+                    ursa_close(st, weeper, want_ft=115)
+                    log("    Ursa: MOONBEAM from the staff (2 charges), a cold pillar "
+                        "of light drops onto the Weeper. It is Rooted; it cannot "
+                        f"leave the beam. [{st.u_staff} charges left]")
+                elif rnd >= 2 and weeper.hp > 0:
                     roll = d20() + 5
                     if roll >= 14:
                         tended = True
@@ -1530,6 +1569,19 @@ def fight3(st):
             elif name == 'Glass Weeper':
                 if weeper.hp <= 0:
                     continue
+                if moonbeam_on:
+                    roll = d(2, 10) + d(1, 8)
+                    if foe_save(weeper, weeper.saves.get('con', 0), 16):
+                        dmg = deal(st, weeper, [(roll // 2, 'radiant')],
+                                   credit='Ursa')
+                        log(f"    The Moonbeam sears the Weeper for {dmg} radiant "
+                            "(it braces).")
+                    else:
+                        dmg = deal(st, weeper, [(roll, 'radiant')], credit='Ursa')
+                        log(f"    The Moonbeam sears the Weeper for {dmg} radiant.")
+                    if weeper.hp <= 0:
+                        log("      Glass Weeper is destroyed.")
+                        continue
                 if weeper.damaged_since and not weeper.cleansed:
                     weeper.hp = min(weeper.hp_max, weeper.hp + 10)
                     log(f"    Glass Weeper: glass knits closed, REGENERATES 10 (now {weeper.hp}).")
