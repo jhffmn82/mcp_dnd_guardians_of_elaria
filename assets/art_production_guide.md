@@ -21,13 +21,16 @@ The master list of campaign art: what exists, what is missing, and a ready-to-pa
    the creature (DM's technique, proven 2026-08-13), or, failing that, describe the silhouette
    exhaustively: round cheeks, two long upright ears with darker tips, small round cheek-circles,
    and a long JAGGED LIGHTNING-BOLT tail, called out as prominent.
-2. **Do NOT feed existing campaign art of the kids back in as a reference.** The image API's
-   output-stage safety filter rejects it (`moderation_blocked`, category "other"). This killed
-   4 of 4 attempts on 2026-08-13, including a masked inpaint that would only have repainted one
-   hand. Generations that attach only the `art_refs/` portraits go through normally. Practical
-   consequence: **approved art cannot be locally repaired by AI**, so a flawed plate must either
-   be cropped or regenerated from scratch. `templates/inpaint.py` exists and is correct, but the
-   provider will refuse it on any image containing the heroes.
+2. **Do NOT feed existing campaign art of the kids back in as a REFERENCE for a fresh
+   generation.** The image API's output-stage safety filter rejects that (`moderation_blocked`,
+   category "other"), 4 of 4 attempts on 2026-08-13. Generations that attach only the
+   `art_refs/` portraits go through normally. **But an IN-PLACE EDIT of an approved plate DOES
+   work, and it is the preferred repair** (proven 2026-08-17 on the earring pass, and 2026-08-18
+   on all four Session 8 battle plates, where edits fixed off-model characters and then reframed
+   the whole composition wider). Editing preserves the approved composition; a re-roll throws it
+   away. Cautions: the provider has refused edits on some hero images before, so log holdouts
+   rather than forcing them; never run two edits on the same file concurrently; and run
+   `templates/audit_embedded_art.py` after any batch.
 3. **Check hands whenever a plate is enlarged.** The v1 Pikachu plate gave Ursa two right hands
    (a right hand on his left arm) and a raised hand with no forearm; nobody noticed until the
    image went from 4.1 in to 5.8 in. Chirality test: with the BACK of a hand toward the viewer,

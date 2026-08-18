@@ -11,17 +11,17 @@ The `memory/` folder is live and must be maintained:
 - `memory/session_log.md` — one short entry per session (5-10 lines), newest last
 - `memory/house_rules.md` — house rules plus standing DM document rulings
 
-## The party (all level 5 as of Session 8)
+## The party (level 7 as of Session 8, after the year-apart timeskip)
 
 - **Lilly Glimmergear** — deep gnome Artificer (Artillerist), accent color frost-blue, relic: Pocket Dynamo
 - **Stabby Sharpblade** — goblin Monk (Kensei), accent color candy-red, relic: Sash of the Swift Current
 - **Ursa Catchum** — human Druid (Circle of Stars), accent color starlight-purple, relic: Staff of Waking Constellations
 
-All three relics came from a single Wraithpine chest as Elaria's gift (one chest, three relics; Session 6 text is explicit). A year-apart timeskip to level 7 is planned after Session 7 (Gearhaven), with individual path reward documents (Ursa's includes a custom "Warden" constellation for Starlit Channeler).
+All three relics came from a single Wraithpine chest as Elaria's gift (one chest, three relics; Session 6 text is explicit). The year-apart timeskip to level 7 after Session 7 (Gearhaven) has happened, with individual path reward documents. The chosen doors are locked: Lilly took Aether Channeler, Stabby took Warrior of Beast Breathing, and Ursa took Reader of Omens (the custom "Warden" constellation was built for Starlit Channeler, which Ursa did NOT choose; that material is staged but unused).
 
 **Session numbering (DM-adjudicated 2026-07-06, supersedes the 07-05 call):** Gearhaven is now **Session 7**. The chronicle reads as a continuous 1, 2, 3, 4, 5, 6, 7 with no gap. (The Wraithpine arc remains Session 6.) Future planned sessions shift down by one: the reunion + Earth rift is Session 8, and the finale is Session 14. Do not reintroduce a "Session 8 = Gearhaven" label or the old 6-to-8 gap.
 
-**Level timeline (DM-confirmed points; refine during Phase 3):** the party started at level 3 in Session 1. They are level 5 as of Session 7 (Gearhaven), and the planned timeskip takes them to 7. The "pre 4 / post 4" sheets in Old blocks are pre- and post-SESSION-4 snapshots (DM confirmed), bracketing the Session 4 item rewards and any level-up that came with it. Pin the exact 3-to-4 and 4-to-5 level-up moments from session text during canon extraction, and flag with [DM CHECK] if the docs do not settle them.
+**Level timeline (DM-confirmed points; refine during Phase 3):** the party started at level 3 in Session 1. They are level 5 as of Session 7 (Gearhaven), and the timeskip after it took them to 7 (Session 8 onward is played at level 7). The "pre 4 / post 4" sheets in Old blocks are pre- and post-SESSION-4 snapshots (DM confirmed), bracketing the Session 4 item rewards and any level-up that came with it. Pin the exact 3-to-4 and 4-to-5 level-up moments from session text during canon extraction, and flag with [DM CHECK] if the docs do not settle them.
 
 ## House rules and standing rulings (the live list is memory/house_rules.md)
 
