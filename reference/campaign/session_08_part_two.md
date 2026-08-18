@@ -124,7 +124,7 @@ The pretty part of Underroot has a wound in it. On the far mounds the moss is **
 
 They were lovely a month ago. You can still see it: round soft bodies, stubby arms, big round flower-caps that used to be gold. The caps are grey now, and slack, and they leak. When they notice the party they all turn at once, and their faces are still smiling, because their faces cannot do anything else.
 
-**6 Rotblooms and 6 Mossmites** (statblocks below). The Mossmites boil out of the moss the moment the first Rotbloom is struck: tiny, fast, six-legged, one enormous eye each, individually harmless and collectively a nuisance that keeps everyone honest while the real problem re-blooms behind them.
+**5 Rotblooms and 5 Mossmites** (statblocks below). The Mossmites boil out of the moss the moment the first Rotbloom is struck: tiny, fast, six-legged, one enormous eye each, individually harmless and collectively a nuisance that keeps everyone honest while the real problem re-blooms behind them.
 
 > **Read aloud.** Ghostbloom makes a sound you have never heard her make. She knows what these are. They are almost the same as her.
 
@@ -192,7 +192,7 @@ It was one of the big slow root-tenders once: a long-necked creature that anchor
 
 Around its feet, rolling in fast, are lumps of black glassy coal the size of footballs, each with one furious orange eye.
 
-**1 Glass Weeper + 4 Cinderolls** (statblocks below), the Cinderolls arriving **two at a time** so the pressure never stops but never quite swamps them.
+**1 Glass Weeper and 5 Cinderolls** (statblocks below), the Cinderolls arriving **two at a time** so the pressure never stops but never quite swamps them.
 
 - **This is the big fight of the run before the boss, and it should be hard.** The Weeper hits for real, it regenerates 10 a round, and the Cinderolls keep rolling in and detonating.
 - **The clever play strips its armour instead of ending the fight.** The Weeper is bound to the glassed roots it is tending. Any character who spends an action clearing or healing the roots nearby (DC 14 Nature or Medicine, or any healing spell aimed at the roots) makes the Weeper **lose its regeneration for one round** and gives everyone **advantage on attacks against it until the start of their next turn**. Two or three of those and the fight tips hard. It never ends the encounter: it makes the party feel brilliant while they finish it.
@@ -346,7 +346,7 @@ Formatted to match `templates/build_bestiary.py`; add them there when approved.
 ### Rotbloom
 *Small plant (corrupted), unaligned. CR 1/2 (100 XP)*
 
-**AC** 12 **HP** 22 (4d6 + 8) **Speed** 25 ft.
+**AC** 13 **HP** 28 (5d6 + 10) **Speed** 25 ft.
 **STR** 10 **DEX** 12 **CON** 14 **INT** 4 **WIS** 8 **CHA** 6
 **Resist** poison **Imm.** (cond) blinded, deafened, poisoned
 **Senses** blindsight 30 ft., passive Perception 9
@@ -375,7 +375,7 @@ Formatted to match `templates/build_bestiary.py`; add them there when approved.
 ### Chimestone
 *Medium elemental (Plane of Earth), unaligned. CR 3 (700 XP)*
 
-**AC** 16 (rock plate) **HP** 52 (7d8 + 21) **Speed** 25 ft.
+**AC** 17 (rock plate) **HP** 68 (8d8 + 32) **Speed** 25 ft.
 **STR** 18 **DEX** 8 **CON** 16 **INT** 5 **WIS** 12 **CHA** 6
 **Resist** piercing, slashing **Vuln.** thunder
 **Imm.** poison ✦ (cond) charmed, exhaustion, frightened, poisoned
@@ -386,13 +386,13 @@ Formatted to match `templates/build_bestiary.py`; add them there when approved.
 ***Struck Chord.*** A creature can use an action to strike one of the reef's large spires (DC 13 Athletics). Every Chimestone within 30 ft. makes a DC 14 Constitution save or is stunned as above. The striker takes 1d6 thunder damage from standing that close.
 
 **Multiattack.** Two Crystal Rams.
-**Crystal Ram.** *Melee Weapon Attack:* +6 to hit, reach 5 ft. *Hit:* 11 (2d6 + 4) bludgeoning.
+**Crystal Ram.** *Melee Weapon Attack:* +7 to hit, reach 5 ft. *Hit:* 13 (2d8 + 4) bludgeoning.
 **Shard Volley.** *Ranged Weapon Attack:* +6 to hit, range 40 ft. *Hit:* 9 (2d8) piercing.
 
 ### Shardwing
 *Small elemental, unaligned. CR 1 (200 XP)*
 
-**AC** 14 **HP** 22 (5d6 + 5) **Speed** 10 ft., **fly 50 ft.**
+**AC** 15 **HP** 28 (6d6 + 6) **Speed** 10 ft., **fly 50 ft.**
 **STR** 8 **DEX** 18 **CON** 12 **INT** 4 **WIS** 12 **CHA** 6
 **Vuln.** thunder ✦ **Imm.** poison ✦ (cond) poisoned, prone
 **Senses** tremorsense 30 ft., passive Perception 11 ✦ **Challenge** 1
@@ -407,7 +407,7 @@ Formatted to match `templates/build_bestiary.py`; add them there when approved.
 ### Glass Weeper
 *Large plant (corrupted guardian-beast), unaligned. CR 6 (2,300 XP)*
 
-**AC** 16 (black glass) **HP** 115 (11d10 + 55) **Speed** 20 ft.
+**AC** 17 (black glass) **HP** 140 (13d10 + 65) **Speed** 20 ft.
 **STR** 18 **DEX** 8 **CON** 20 **INT** 4 **WIS** 12 **CHA** 5
 **Resist** bludgeoning, piercing, slashing from nonmagical weapons
 **Imm.** poison ✦ (cond) charmed, frightened, poisoned, prone
@@ -419,13 +419,13 @@ Formatted to match `templates/build_bestiary.py`; add them there when approved.
 ***Tend the Roots (the clever play).*** A creature can use an action to clear or heal the roots near it: DC 14 Nature or Medicine, or any healing spell cast on the roots rather than a creature. On a success the Weeper **loses Glassbound until the end of its next turn** and every attack against it has **advantage** until the start of the helper's next turn. This does not end the fight. It makes the party win it.
 
 **Multiattack.** Three Frond Lashes.
-**Frond Lash.** *Melee Weapon Attack:* +7 to hit, reach 15 ft. *Hit:* 12 (2d6 + 5) slashing.
+**Frond Lash.** *Melee Weapon Attack:* +8 to hit, reach 15 ft. *Hit:* 14 (2d8 + 5) slashing.
 **Keening (Recharge 5-6).** 30-ft cone, DC 15 Constitution save, 21 (6d6) psychic and frightened until the end of its next turn; half and no fear on a success.
 
 ### Cinderoll
 *Small elemental (corrupted), unaligned. CR 1/2 (100 XP)*
 
-**AC** 15 (glassy coal) **HP** 18 (4d6 + 4) **Speed** 40 ft. (rolling)
+**AC** 15 (glassy coal) **HP** 22 (5d6 + 5) **Speed** 40 ft. (rolling)
 **STR** 12 **DEX** 14 **CON** 12 **INT** 3 **WIS** 8 **CHA** 3
 **Imm.** fire, poison ✦ (cond) blinded, charmed, deafened, poisoned
 **Senses** blindsight 60 ft., passive Perception 9
@@ -447,7 +447,7 @@ Formatted to match `templates/build_bestiary.py`; add them there when approved.
 **Senses** tremorsense 120 ft., passive Perception 12
 **Challenge** 11
 
-> ***THE SPIKE. This is the encounter.*** A shard of black glass is driven into his back at the shoulder. **AC 17, 60 hit points**, immune to all damage except **radiant, force, and Cleansing Edge**. Reaching it requires climbing him, flying, or a ranged attack at disadvantage. **When the spike is destroyed the encounter ends immediately**, whatever Groudon's hit points are. Do not run him to 0. He is not supposed to die.
+> ***THE SPIKE. This is the encounter.*** A shard of black glass is driven into his back at the shoulder. **AC 18, 110 hit points**, immune to all damage except **radiant, force, and Cleansing Edge**. Reaching it requires climbing him, flying, or a ranged attack at disadvantage. **When the spike is destroyed the encounter ends immediately**, whatever Groudon's hit points are. Do not run him to 0. He is not supposed to die.
 
 ***Unstoppable.*** He cannot be frightened, charmed, restrained, or knocked prone, and he ignores difficult terrain.
 ***Agony.*** While the spike is intact, at the start of each of his turns he takes 10 damage and everything within 20 ft. makes a DC 16 Dexterity save or takes 10 (3d6) bludgeoning from the shockwave.
