@@ -47,6 +47,11 @@ BODIES = os.environ.get('S8_BODIES', '0') == '1'
 GHOST_SUPPORT = os.environ.get('S8_GHOST_SUPPORT', '0') == '1'
 #   Ghostbloom runs triage-only: Guardian's Light and guarding, no attacks.
 NICHIRIN_RING = os.environ.get('S8_NICHIRIN_RING', '0') == '1'
+SHINE = os.environ.get('S8_SHINE', '0') == '1'
+#   The suck-or-save shine pack: Groudon opens with Magma Vent, the drop
+#   into the Hollow is a real DC 15 descent check, and heat-shear at the
+#   spike makes the flyer check DC 15 Acrobatics each round (the climb
+#   checks the doc wrote, restored against Air Dance).
 #   DM-ruled a doc error 2026-08-18 (now fixed in the doc): Resonant Body
 #   triggers on THUNDER damage and the Nichirin deals slashing/force.
 
@@ -211,6 +216,8 @@ class State:
         self.g_wail = True
         # bookkeeping
         self.gb_adv_target = None
+        self.omens_spent = 0
+        self.cosmic_spent = 0
         self.tally = {'dealt': Counter(), 'taken': Counter(),
                       'healed': Counter(), 'kills': Counter(),
                       'prevented': Counter()}  # Guiding Bolt: next attack vs this has adv
@@ -233,6 +240,7 @@ class State:
             best = self.u_omens[0]
             if best + mod >= dc:
                 self.u_omens.pop(0)
+                self.omens_spent += 1
                 log(f"      * Ursa spends a dreamed omen ({best}) on {hero.name}'s save.")
                 roll = best
         total = roll + mod
@@ -247,6 +255,7 @@ class State:
                 and total + 3 >= dc:
             bump = d(1, 6) + 2
             self.u_cosmic -= 1
+            self.cosmic_spent += 1
             if total + bump >= dc:
                 log(f"      * Cosmic Omen (Weal +{bump}): {hero.name}'s save "
                     f"{total}->{total + bump} vs DC {dc}: success. ({self.u_cosmic} left)")
@@ -255,6 +264,37 @@ class State:
                 f"({total}->{total + bump} vs DC {dc}). ({self.u_cosmic} left)")
             total += bump
         return total >= dc
+
+
+def hero_check(st, hero, mod, dc, label):
+    roll = d20()
+    if dc >= 15 and roll + mod < dc and st.u_omens and not st.ursa.down:
+        best = st.u_omens[0]
+        if best + mod >= dc:
+            st.u_omens.pop(0)
+            st.omens_spent += 1
+            log(f"      * Ursa saw this moment in a dream ({best}): he calls it "
+                f"before {hero.name}'s {label} lands.")
+            roll = best
+    total = roll + mod
+    if total < dc and st.l_fog > 0 and not st.lilly.down \
+            and st.lilly.dist_ft(hero) <= 30 and total + 5 >= dc:
+        st.l_fog -= 1
+        log(f"      * FLASH OF GENIUS! Lilly shouts the trick: {hero.name}'s "
+            f"{label} {total}->{total + 5} vs DC {dc}: success. [{st.l_fog} left]")
+        return True
+    if total < dc and st.u_cosmic > 0 and not st.ursa.down and total + 3 >= dc:
+        bump = d(1, 6) + 2
+        st.u_cosmic -= 1
+        st.cosmic_spent += 1
+        if total + bump >= dc:
+            log(f"      * Cosmic Omen (Weal +{bump}): {hero.name}'s {label} "
+                f"{total}->{total + bump} vs DC {dc}: success. [{st.u_cosmic} left]")
+            return True
+        log(f"      * Cosmic Omen (Weal +{bump}) is not enough on {hero.name}'s "
+            f"{label}. [{st.u_cosmic} left]")
+        total += bump
+    return total >= dc
 
 
 def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
@@ -1690,6 +1730,17 @@ def boss(st):
                 h.temp = max(h.temp, t)
         log(f"  Lilly spends her last AETHER WARD as they drop into the hollow: "
             f"{t} temp HP to everyone. [{st.l_ward} left]")
+    if SHINE:
+        log("  THE DROP. The tunnel ends and there is no floor: forty feet of "
+            "broken shelf down into the hollow (DC 15 to descend well).")
+        for h, mod, lbl in ((st.stabby, 8, 'Acrobatics'), (st.lilly, 2, 'Acrobatics'),
+                            (st.ursa, 2, 'Acrobatics')):
+            if hero_check(st, h, mod, 15, f'{lbl} descent'):
+                log(f"    {h.name} picks a clean line down.")
+            else:
+                dmg = deal(st, h, [(d(2, 6), 'bludgeoning')], magical=False)
+                log(f"    {h.name} loses the shelf and clatters down for {dmg}.")
+        log("    Ghostbloom and Puff drift down; the cannon walks the wall.")
     order = initiative(st, [('Groudon', [groudon], -2)])
     vent_ready = True
     stabby_at_spike = False
@@ -1720,6 +1771,14 @@ def boss(st):
                     if st.stabby.dist_ft(spike) <= 5:
                         stabby_at_spike = True
                         log("    Stabby reaches the SPIKE at Groudon's shoulder.")
+                if stabby_at_spike and SHINE and st.stabby.aloft and rnd > 1:
+                    if not hero_check(st, st.stabby, 8, 15, 'Acrobatics vs the '
+                                      'heat-shear'):
+                        st.stabby.pos[1] += 3
+                        stabby_at_spike = False
+                        log("    The updraft off the magma seams SLAMS Stabby off "
+                            "the shoulder; the Sash catches him below. He spends "
+                            "the round fighting back up.")
                 if stabby_at_spike:
                     pre = spike.hp
                     # Step of the Wind used his bonus action: no Devour and no
@@ -1827,7 +1886,22 @@ def boss(st):
                         else:
                             log(f"      {h.name} keeps their feet.")
                 # Action
-                if rnd == 1:
+                if rnd == 1 and SHINE and vent_ready:
+                    vent_ready = False
+                    ground = [h for h in st.pcs if h.alive and not h.aloft]
+                    ground.sort(key=lambda h: groudon.dist_ft(h))
+                    in_line = ground[:2] if len(ground) >= 2 else ground
+                    log("    Groudon: his first act is MAGMA VENT, a white-orange "
+                        f"line under {' and '.join(h.name for h in in_line)}!")
+                    for h in in_line:
+                        roll = d(10, 6)
+                        if st.hero_save(h, 'dex', 17):
+                            dmg = deal(st, h, [(roll // 2, 'fire')])
+                            log(f"      {h.name} dives aside: {dmg} fire.")
+                        else:
+                            dmg = deal(st, h, [(roll, 'fire')])
+                            log(f"      {h.name} is caught in it for {dmg} fire!")
+                elif rnd == 1:
                     log("    Groudon: CONTINENTAL STEP. The floor of the world moves.")
                     groudon.pos[1] += 2
                     spike.pos[1] += 2
@@ -2285,6 +2359,9 @@ def run_day(seed):
     stats['spike_ok'] = getattr(st, 'spike_ok', False)
     stats['breaker'] = spike_breaker()
     stats['drops'] = sum(h.drops for h in [st.lilly, st.stabby, st.ursa, st.ghost])
+    stats['fog'] = 5 - st.l_fog
+    stats['omen'] = st.omens_spent
+    stats['cosmic'] = st.cosmic_spent
     stats['tally'] = st.tally
     return st, stats
 
@@ -2308,8 +2385,8 @@ def print_tally(tally, runs=1, header='CHARACTER CONTRIBUTIONS'):
 
 
 def sweep(seeds=range(1, 21)):
-    global HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING
-    base = (HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING)
+    global HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING, SHINE
+    base = (HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING, SHINE)
     configs = [
         ('baseline (retuned doc: 8/8, 4/4, W170, re-knit)', {}),
         ('no re-knit (what the rule buys)', {'SPIKE_REKNIT': False}),
@@ -2317,12 +2394,13 @@ def sweep(seeds=range(1, 21)):
         ('Ghostbloom support-only (no attacks)', {'GHOST_SUPPORT': True}),
         ('enemy HP x1.25 on top', {'HPX': 1.25}),
         ('spike 110 for reference', {'SPIKE_HP': 110}),
+        ('FoG + omen shine pack', {'SHINE': True}),
     ]
     hdr = f"{'config':46s} {'F1':>4} {'F2':>4} {'F3':>4} {'Boss':>4} {'drops':>5} {'wipe':>4} {'no-brk':>6}  spike broken by"
     print(hdr)
     print('-' * len(hdr))
     for label, kv in configs:
-        HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING = base
+        HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING, SHINE = base
         for k, v in kv.items():
             globals()[k] = v
         rows = []
@@ -2352,6 +2430,8 @@ def sweep(seeds=range(1, 21)):
         tally = ', '.join(f"{evname[k]} {v}" for k, v in ev.most_common())
         print(f"{'':46s} road: {n_ev / max(1, len(rows)):.1f} events/run, "
               f"{m('road_rounds'):.1f} extra rounds/run ({tally})")
+        print(f"{'':46s} shine: Flash of Genius {m('fog'):.1f}/day, dreamed "
+              f"omens {m('omen'):.1f}/day, Cosmic Omens {m('cosmic'):.1f}/day")
         if label.startswith('baseline'):
             agg = {'dealt': Counter(), 'taken': Counter(), 'healed': Counter(),
                    'kills': Counter(), 'prevented': Counter()}
@@ -2361,7 +2441,7 @@ def sweep(seeds=range(1, 21)):
             print()
             print_tally(agg, runs=len(rows))
             print()
-    HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING = base
+    HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING, SHINE = base
 
 
 if __name__ == '__main__':
@@ -2372,3 +2452,5 @@ if __name__ == '__main__':
         print('\n'.join(LOG))
         print()
         print_tally(stats['tally'])
+        print(f"  shine: Flash of Genius {stats['fog']}, dreamed omens "
+              f"{stats['omen']}, Cosmic Omens {stats['cosmic']}")
