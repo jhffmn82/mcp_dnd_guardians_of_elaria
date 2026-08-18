@@ -90,7 +90,16 @@ BLOCKS = [
              "planes, or the creatures that fall out of them, the way Aelwyn Ravenstone does. He "
              "has spent thirty years studying the far sides of doors that were never supposed to "
              "open, and now one is about to open on purpose, and he intends to be standing at it "
-             "when it does. The trunks are full of field guides, and he wrote most of them himself."),
+             "when it does. The trunks are full of field guides, and he wrote most of them "
+             "himself.\n"
+             "By noon he has claimed the gallery above the ring and turned it into a field camp: "
+             "four brass instruments nobody can name, a folding desk, and a kettle he will defend "
+             "with his life. He asks every artificer who passes what the ring sounds like at "
+             "night, writes down all nine answers, and underlines two of them. When Vane finally "
+             "climbs up to object, the two of them argue happily for an hour about anchor "
+             "harmonics, and the objection is never mentioned again.\n"
+             "He is here for the week. Everyone understands that without being told, the same "
+             "way everyone has quietly stopped scheduling anything for the day the ring opens."),
     ("img", f"{S8}/B_aelwyn_arrives.png",
      "Three trunks, no porters, and one small green passenger who did not pay a fare.",
      6.2, {"hmax": 4.2}),
@@ -318,15 +327,15 @@ BLOCKS = [
              "There is not a goblin in the Hollow who will hear a word against him now."),
 
     ("h2", "Teaching the Count"),
-    ("img", f"{S8}/R_teaching_the_count.png",
-     "The first class in Bloodfang history where nobody is measured against anybody.",
-     6.2, {"hmax": 4.2}),
     ("gold", "Before he "
              "left, he lined up the smallest goblins in the Hollow, the overlooked ones, "
              "the ones he used to be, and taught them the count: one second of stillness, at the "
              "one moment that matters. It had taken the masters of Kettlecrown a year to get it "
              "into him, and he turned out, to everyone's surprise including his own, to be a "
              "wonderful teacher."),
+    ("img", f"{S8}/R_teaching_the_count.png",
+     "The first class in Bloodfang history where nobody is measured against anybody.",
+     6.2, {"hmax": 4.2}),
     ("dm", "They offered him his father's seat and **he said not yet**, and Nokk was the only one "
            "who noticed he did not say never. He gave them Candyfang as the clan's heirloom, and "
            "by their new law the heirloom is carried by whoever the clan would follow, which is "
@@ -411,9 +420,6 @@ BLOCKS = [
     ]),
 
     ("h2", "The Eighth Night"),
-    ("img", f"{S8}/H_the_vision_in_the_stones.png",
-     "The old shrine has been waiting a long time for somebody to keep an eighth night.",
-     5.9, {"hmax": 6.3}),
     ("gold", "He stayed at the old shrine eight nights. On the eighth, the cloud broke, the "
              "standing stones lit from the inside, and **Elaria showed him three things.**\n"
              "The first was his father, **walking**, deliberately, toward a light that was going "
@@ -428,6 +434,9 @@ BLOCKS = [
              "behind it, putting out a light as calmly as a person pinching a candle. And the "
              "vision gave that one a name too.\n"
              "**Nyxthid.**"),
+    ("img", f"{S8}/H_the_vision_in_the_stones.png",
+     "The old shrine has been waiting a long time for somebody to keep an eighth night.",
+     5.9, {"hmax": 6.3}),
     ("dm", "**This is the first time the name Nyxthid is spoken in this campaign.** Ursa has just "
            "sworn to hunt his own father and will spend four sessions doing it. Elaria did not "
            "lie to him: every single thing she showed him is true. She simply did not show him "
@@ -545,16 +554,6 @@ BLOCKS = [
            "**Vane does not make a speech**: he had ten years to write one, and what he actually "
            "does is put a hand on Lilly's shoulder for a second and then go and stand at the "
            "lever."),
-    ("gold", "The ring does not roar.\n"
-             "The Sphere settles into its cradle with one small brass click, and the air inside "
-             "the circle simply stops being air. On the other side there is a red-brown dark, and "
-             "warmth, and a smell like a garden turned over after rain, and a sound so low you "
-             "feel it in your teeth instead of hearing it.\n"
-             "Somewhere out in that dark, something the size of a hill breathes in.\n"
-             "Ghostbloom goes first, because of course she does."),
-    ("img", f"{S8}/J_the_threshold.png",
-     "The first doorway between worlds ever opened on purpose.",
-     6.2, {"hmax": 4.2}),
     ("dm", "**The rules of the road, before anyone crosses.** Four things shape everything on "
            "the far side, and the players should feel all four without being lectured. **There "
            "are no long rests in Underroot**: the run is one push, and the only real breather is "
@@ -567,11 +566,21 @@ BLOCKS = [
            "gathers comes home with them at the end of the night."),
 
 
+    ("gold", "The ring does not roar.\n"
+             "The Sphere settles into its cradle with one small brass click, and the air inside "
+             "the circle simply stops being air. On the other side there is a red-brown dark, and "
+             "warmth, and a smell like a garden turned over after rain, and a sound so low you "
+             "feel it in your teeth instead of hearing it.\n"
+             "Somewhere out in that dark, something the size of a hill breathes in.\n"
+             "Ghostbloom goes first, because of course she does."),
 ("h1", "Part Two: Underroot", {"hardbreak": True}),
 ("bridge", "They stepped through a brass ring in a workshop in Gearhaven and came out the other "
            "side standing on something warm that was breathing. Four stops lie between the ring "
            "and the Guardian: a doorway, a village of moss, a reef that sings, and a wound that "
            "will not stop spreading."),
+    ("img", f"{S8}/J_the_threshold.png",
+     "The first doorway between worlds ever opened on purpose.",
+     6.2, {"hmax": 4.2}),
 ("dm", "**The rift run is played on the Underroot board.** The board rules, the eight wandering "
        "encounters of the road between, and a printable two-page board all live in the appendix: "
        "read them once before tonight. In the chapter itself, the story pauses wherever the "
@@ -1787,12 +1796,10 @@ BLOCKS = [
      "guardian is to heal the country it carries."),
 
 
-    ("img", f"{S8}/underroot_board_page1_left.png",
-     "Left half: the gate through the reef.",
-     6.2, {"hmax": 8.32}),
-    ("img", f"{S8}/underroot_board_page2_right.png",
-     "Right half: the gallery to the Hollow.",
-     6.2, {"hmax": 8.32}),
+    ("img", f"{S8}/underroot_board_page1_left.png", "",
+     6.5, {"hmax": 8.7}),
+    ("img", f"{S8}/underroot_board_page2_right.png", "",
+     6.5, {"hmax": 8.7}),
 
 
     ("appendix_title", "APPENDIX", "Bestiary: Enemy Stat Blocks",
