@@ -27,6 +27,7 @@ cases the statblocks call out (Skitter/Glide exist to dodge them).
 import os
 import random
 import sys
+from collections import Counter
 
 SEED = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1] != '--sweep' else 20260818
 
@@ -209,7 +210,10 @@ class State:
         self.g_feystep = True
         self.g_wail = True
         # bookkeeping
-        self.gb_adv_target = None  # Guiding Bolt: next attack vs this has adv
+        self.gb_adv_target = None
+        self.tally = {'dealt': Counter(), 'taken': Counter(),
+                      'healed': Counter(), 'kills': Counter(),
+                      'prevented': Counter()}  # Guiding Bolt: next attack vs this has adv
 
     def spend_focus(self, n=1):
         if self.s_focus >= n:
@@ -253,12 +257,14 @@ class State:
         return total >= dc
 
 
-def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False):
+def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
     """parts: list of (amount, dtype). Returns damage actually dealt."""
     if is_ce and getattr(tgt, 'is_spike', False):
         # Cleansing Edge is one of the three things that can touch the spike.
         parts = [(amt, 'force') for amt, _ in parts]
         tgt.ce_touched = True
+    if credit is None and attacker is not None:
+        credit = attacker.name
     total = 0
     for amt, dtype in parts:
         if dtype in tgt.immune:
@@ -279,8 +285,14 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False):
         tgt.reaction = False
         cut = min(total, red)
         total -= cut
+        st.tally['prevented']['Stabby (Deflect Attack)'] += cut
         log(f"      * Deflect Attack: Stabby swats {cut} off the hit"
             + (" (to 0!)" if total == 0 else f" ({total} gets through)"))
+    if tgt.side == 'pc':
+        st.tally['taken'][tgt.name] += total
+    pre_kill = tgt.hp
+    if tgt.side == 'foe' and credit:
+        st.tally['dealt'][credit] += min(total, max(0, tgt.hp))
     if tgt.temp and total > 0:
         ab = min(tgt.temp, total)
         tgt.temp -= ab
@@ -292,6 +304,8 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False):
     tgt.damaged_since = True
     if any(t in ('radiant', 'force') for _, t in parts) or is_ce:
         tgt.cleansed = True
+    if tgt.side == 'foe' and credit and pre_kill > 0 and tgt.hp <= 0:
+        st.tally['kills'][credit] += 1
     if tgt.hp <= 0:
         tgt.hp = 0
         if tgt.side == 'pc':
@@ -307,6 +321,7 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False):
         st.g_light -= 1
         st.ghost.reaction = False
         h = d(2, 8) + 3
+        st.tally['healed']['Ghostbloom'] += h
         was_down = tgt.down
         tgt.hp = min(tgt.hp_max, tgt.hp + h)
         if tgt.hp > 0:
@@ -380,6 +395,7 @@ def ursa_triage(st):
     if downed and st.u_slots[1] > 0:
         st.u_slots[1] -= 1
         h = d(2, 4) + 5
+        st.tally['healed']['Ursa'] += h
         t = downed[0]
         t.hp = min(t.hp_max, t.hp + h)
         t.down = False
@@ -391,6 +407,7 @@ def ursa_triage(st):
         st.aura_rounds = 10
         t = downed[0]
         h = d(2, 6)
+        st.tally['healed']['Ursa'] += h
         t.hp = min(t.hp_max, t.hp + h)
         t.down = False
         log(f"    Ursa: lights ASH'S SIGIL-STONE, Aura of Vitality washes over "
@@ -406,6 +423,7 @@ def aura_tick(st):
         if pool:
             t = min(pool, key=lambda h: h.hp / h.hp_max)
             h = d(2, 6)
+            st.tally['healed']['Ursa'] += h
             t.hp = min(t.hp_max, t.hp + h)
             if t.down and t.hp > 0:
                 t.down = False
@@ -524,7 +542,7 @@ def puff_turn(st, target, use_mm):
         return
     if use_mm and st.mm_charges > 0 and target is not None and target.hp > 0:
         st.mm_charges -= 1
-        dmg = deal(st, target, [(d(3, 4) + 3, 'force')])
+        dmg = deal(st, target, [(d(3, 4) + 3, 'force')], credit='Puff')
         log(f"    Puff: Wand of Magic Missiles, three darts never miss "
             f"{target.name}: {dmg} force. [{st.mm_charges} charges left]")
         if target.hp <= 0 and target.side == 'foe':
@@ -532,7 +550,8 @@ def puff_turn(st, target, use_mm):
     elif target is not None and target.hp > 0 and st.puff.dist_ft(target) <= 30:
         hit, crit, _ = attack_roll(st, 8, target, attacker=st.puff)
         if hit:
-            dmg = deal(st, target, [(d(2 if crit else 1, 6) + 2, 'force')])
+            dmg = deal(st, target, [(d(2 if crit else 1, 6) + 2, 'force')],
+                       credit='Puff')
             log(f"    Puff: Force Strike hits {target.name} for {dmg}.")
         else:
             log(f"    Puff: Force Strike misses {target.name}.")
@@ -544,7 +563,8 @@ def cannon_fire(st, mode, targets=None, center=None, dis=False):
         t = targets[0]
         hit, crit, _ = attack_roll(st, 8, t, dis=dis, attacker=c)
         if hit:
-            dmg = deal(st, t, [(d(4 if crit else 2, 8) + 2, 'force')])
+            dmg = deal(st, t, [(d(4 if crit else 2, 8) + 2, 'force')],
+                       credit='Cannon')
             log(f"    Cannon (Force Ballista): slams {t.name} for {dmg} force.")
             if t.hp <= 0 and t.side == 'foe':
                 log(f"      {t.name} is destroyed.")
@@ -555,10 +575,10 @@ def cannon_fire(st, mode, targets=None, center=None, dis=False):
         for t in hits:
             dmg_roll = d(2, 8) + 2
             if foe_save(t, t.saves.get('dex', 0), 16):
-                dmg = deal(st, t, [(dmg_roll // 2, 'fire')])
+                dmg = deal(st, t, [(dmg_roll // 2, 'fire')], credit='Cannon')
                 log(f"    Cannon (Flamethrower): {t.name} ducks, {dmg} fire.")
             else:
-                dmg = deal(st, t, [(dmg_roll, 'fire')])
+                dmg = deal(st, t, [(dmg_roll, 'fire')], credit='Cannon')
                 log(f"    Cannon (Flamethrower): scorches {t.name} for {dmg} fire.")
     elif mode == 'protector':
         t_hp = d(1, 8) + 5
@@ -588,7 +608,7 @@ def ghost_lash(st, targets):
         hit, crit, _ = attack_roll(st, 8, t, attacker=g)
         if hit:
             parts = [(d(2 if crit else 1, 8) + 6, 'slashing'), (d(1, 6), 'necrotic')]
-            dmg = deal(st, t, parts, magical=False, attacker=g)
+            dmg = deal(st, t, parts, magical=False, attacker=g, credit='Ghostbloom')
             note = ''
             if 'frightened' not in t.cond_imm and not foe_save(t, t.saves.get('wis', 0), 16):
                 t.fright = 2
@@ -615,7 +635,8 @@ def fey_turn(st, targets):
         return
     hit, crit, _ = attack_roll(st, 8, t, attacker=f)
     if hit:
-        dmg = deal(st, t, [(d(4 if crit else 2, 6) + 6, 'force')])
+        dmg = deal(st, t, [(d(4 if crit else 2, 6) + 6, 'force')],
+                   credit='Fey spirit')
         log(f"    Fey spirit: fey blade hits {t.name} for {dmg} force.")
         if t.hp <= 0:
             log(f"      {t.name} is destroyed.")
@@ -650,7 +671,8 @@ def star_arrow(st, target, dis=False):
         return
     hit, crit, _ = attack_roll(st, 10, target, dis=dis, attacker=st.ursa)
     if hit:
-        dmg = deal(st, target, [(d(2 if crit else 1, 8) + 5, 'radiant')])
+        dmg = deal(st, target, [(d(2 if crit else 1, 8) + 5, 'radiant')],
+                   credit='Ursa')
         log(f"    Ursa: star-arrow streaks into {target.name} for {dmg} radiant.")
         if target.hp <= 0:
             log(f"      {target.name} is destroyed.")
@@ -672,7 +694,8 @@ def guiding_bolt(st, target, dis=False):
     hit, crit, _ = attack_roll(st, 10, target, adv=adv, dis=dis, attacker=st.ursa)
     if hit:
         dmg = deal(st, target, [(d(8 if crit else 4, 6), 'radiant'),
-                                (d(2 if crit else 1, 8), 'radiant')])
+                                (d(2 if crit else 1, 8), 'radiant')],
+                   credit='Ursa')
         st.gb_adv_target = target
         log(f"    Ursa: GUIDING BOLT ({src}) blazes into {target.name} for {dmg} "
             f"radiant; it glows, next attack has advantage.")
@@ -689,7 +712,8 @@ def starry_wisp(st, target):
     hit, crit, _ = attack_roll(st, 10, target, attacker=st.ursa)
     if hit:
         dmg = deal(st, target, [(d(4 if crit else 2, 8) + 5, 'radiant'),
-                                (d(2 if crit else 1, 8), 'radiant')])
+                                (d(2 if crit else 1, 8), 'radiant')],
+                   credit='Ursa')
         log(f"    Ursa: Starry Wisp burns {target.name} for {dmg} radiant.")
         if target.hp <= 0:
             log(f"      {target.name} is destroyed.")
@@ -708,7 +732,7 @@ def true_strike(st, target, dis=False, radiant=False, adv=False):
             parts = [(d(m, 10) + 7, 'radiant'), (d(m, 6), 'radiant'), (d(m, 8), 'radiant')]
         else:
             parts = [(d(m, 10) + 7, 'thunder'), (d(m, 6), 'radiant'), (d(m, 8), 'thunder')]
-        dmg = deal(st, target, parts)
+        dmg = deal(st, target, parts, credit='Lilly')
         note = ''
         if not radiant and target.ch == 'C' and not target.stunned and target.hp > 0:
             target.stunned = True
@@ -736,10 +760,10 @@ def shatter(st, targets, label='Shatter'):
         roll = base + (rider if first else 0)
         first = False
         if foe_save(t, t.saves.get('con', 0), 16):
-            dmg = deal(st, t, [(roll // 2, 'thunder')])
+            dmg = deal(st, t, [(roll // 2, 'thunder')], credit='Lilly')
             log(f"      {t.name} braces: {dmg} thunder.")
         else:
-            dmg = deal(st, t, [(roll, 'thunder')])
+            dmg = deal(st, t, [(roll, 'thunder')], credit='Lilly')
             log(f"      {t.name} takes {dmg} thunder.")
         if t.ch == 'C' and t.hp > 0 and not t.stunned:
             t.stunned = True
@@ -803,6 +827,8 @@ def fight1(st):
     if st.l_ward > 0:
         st.l_ward -= 1
         t = d(2, 8) + 5
+        st.tally['prevented']['Lilly (Aether Ward temp)'] += t * sum(
+            1 for h in st.pcs if not h.down)
         for h in st.pcs:
             if not h.down:
                 h.temp = max(h.temp, t)
@@ -1060,6 +1086,8 @@ def fight2(st):
     if st.l_ward > 0:
         st.l_ward -= 1
         t = d(2, 8) + 5
+        st.tally['prevented']['Lilly (Aether Ward temp)'] += t * sum(
+            1 for h in st.pcs if not h.down)
         for h in st.pcs:
             if not h.down:
                 h.temp = max(h.temp, t)
@@ -1141,10 +1169,10 @@ def fight2(st):
                     roll = d(2, 8)
                     for c in adj:
                         if foe_save(c, c.saves.get('con', 0), 16):
-                            dmg = deal(st, c, [(roll // 2, 'thunder')])
+                            dmg = deal(st, c, [(roll // 2, 'thunder')], credit='Ursa')
                             log(f"      {c.name} holds: {dmg} thunder.")
                         else:
-                            dmg = deal(st, c, [(roll, 'thunder')])
+                            dmg = deal(st, c, [(roll, 'thunder')], credit='Ursa')
                             log(f"      {c.name} is blasted for {dmg} thunder!")
                         if c.hp > 0 and not c.stunned:
                             c.stunned = True
@@ -1320,6 +1348,8 @@ def fight3(st):
     if st.l_ward > 0:
         st.l_ward -= 1
         t = d(2, 8) + 5
+        st.tally['prevented']['Lilly (Aether Ward temp)'] += t * sum(
+            1 for h in st.pcs if not h.down)
         for h in st.pcs:
             if not h.down:
                 h.temp = max(h.temp, t)
@@ -1449,10 +1479,10 @@ def fight3(st):
                     for c in pack[:3]:
                         roll = d(5, 6)
                         if foe_save(c, c.saves.get('wis', 0), 16):
-                            dmg = deal(st, c, [(roll // 2, 'necrotic')])
+                            dmg = deal(st, c, [(roll // 2, 'necrotic')], credit='Ghostbloom')
                             log(f"      {c.name} takes {dmg} necrotic.")
                         else:
-                            dmg = deal(st, c, [(roll, 'necrotic')])
+                            dmg = deal(st, c, [(roll, 'necrotic')], credit='Ghostbloom')
                             c.fright = 2
                             log(f"      {c.name} takes {dmg} necrotic and quails!")
                         if c.hp <= 0:
@@ -1601,6 +1631,8 @@ def boss(st):
     if st.l_ward > 0:
         st.l_ward -= 1
         t = d(2, 8) + 5
+        st.tally['prevented']['Lilly (Aether Ward temp)'] += t * sum(
+            1 for h in st.pcs if not h.down)
         for h in st.pcs:
             if not h.down:
                 h.temp = max(h.temp, t)
@@ -1675,6 +1707,9 @@ def boss(st):
                     roll = d(2, 8)
                     for g in lings:
                         dmg = roll if not foe_save(g, 1, 16) else roll // 2
+                        st.tally['dealt']['Ursa'] += min(dmg, max(0, g.hp))
+                        if g.hp > 0 and g.hp - dmg <= 0:
+                            st.tally['kills']['Ursa'] += 1
                         g.hp -= dmg
                         if g.hp <= 0:
                             log(f"      {g.name} shatters.")
@@ -1991,10 +2026,10 @@ def gleamoth_fight(st):
                         r2 = base + (rider if first else 0)
                         first = False
                         if foe_save(s, s.saves.get('con', 0), 16):
-                            dmg = deal(st, s, [(max(1, r2) // 2, 'thunder')])
+                            dmg = deal(st, s, [(max(1, r2) // 2, 'thunder')], credit='Lilly')
                             log(f"      {s.name} holds together: {dmg} thunder.")
                         else:
-                            dmg = deal(st, s, [(max(1, r2), 'thunder')])
+                            dmg = deal(st, s, [(max(1, r2), 'thunder')], credit='Lilly')
                             log(f"      {s.name} is blasted apart for {dmg} thunder!")
                         if s.hp <= 0:
                             log(f"      {s.name} disperses in a drift of lights.")
@@ -2198,11 +2233,29 @@ def run_day(seed):
     stats['spike_ok'] = getattr(st, 'spike_ok', False)
     stats['breaker'] = spike_breaker()
     stats['drops'] = sum(h.drops for h in [st.lilly, st.stabby, st.ursa, st.ghost])
+    stats['tally'] = st.tally
     return st, stats
 
 
+def print_tally(tally, runs=1, header='CHARACTER CONTRIBUTIONS'):
+    dealt = tally['dealt']
+    total = sum(dealt.values()) or 1
+    print(header + (f' (mean per run over {runs} runs)' if runs > 1 else ''))
+    order = ['Stabby', 'Lilly', 'Cannon', 'Puff', 'Ursa', 'Fey spirit', 'Ghostbloom']
+    for k in order + [k for k in dealt if k not in order]:
+        if k not in dealt:
+            continue
+        print(f"  {k:12s} dealt {dealt[k] / runs:6.1f}  ({100 * dealt[k] / total:4.1f}%)"
+              f"   kills {tally['kills'].get(k, 0) / runs:4.1f}")
+    print("  damage taken: " + ', '.join(
+        f"{k} {v / runs:.1f}" for k, v in tally['taken'].most_common()))
+    print("  healing given: " + (', '.join(
+        f"{k} {v / runs:.1f}" for k, v in tally['healed'].most_common()) or 'none'))
+    print("  prevented: " + (', '.join(
+        f"{k} {v / runs:.1f}" for k, v in tally['prevented'].most_common()) or 'none'))
+
+
 def sweep(seeds=range(1, 21)):
-    from collections import Counter
     global HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING
     base = (HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING)
     configs = [
@@ -2247,6 +2300,15 @@ def sweep(seeds=range(1, 21)):
         tally = ', '.join(f"{evname[k]} {v}" for k, v in ev.most_common())
         print(f"{'':46s} road: {n_ev / max(1, len(rows)):.1f} events/run, "
               f"{m('road_rounds'):.1f} extra rounds/run ({tally})")
+        if label.startswith('baseline'):
+            agg = {'dealt': Counter(), 'taken': Counter(), 'healed': Counter(),
+                   'kills': Counter(), 'prevented': Counter()}
+            for r in rows:
+                for key in agg:
+                    agg[key].update(r['tally'][key])
+            print()
+            print_tally(agg, runs=len(rows))
+            print()
     HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING = base
 
 
@@ -2254,5 +2316,7 @@ if __name__ == '__main__':
     if '--sweep' in sys.argv:
         sweep()
     else:
-        run_day(SEED)
+        _, stats = run_day(SEED)
         print('\n'.join(LOG))
+        print()
+        print_tally(stats['tally'])
