@@ -104,7 +104,12 @@ story.append(stat_strip([('ARMOR CLASS',20),('HIT POINTS',52),('SPEED','25 ft'),
 story.append(Spacer(1,4))
 story.append(ability_strip([('STR',8,'-1'),('DEX',14,'+2'),('CON',14,'+2'),
                             ('INT',20,'+5'),('WIS',12,'+1'),('CHA',8,'-1')]))
-story.append(Paragraph('Best saves: Con +5, Int +8. INT powers all her magic.',small_it))
+story.append(Paragraph('INT powers all her magic.',small_it))
+sv=Table([[Paragraph(c,cell_st) for c in ['Str save -1', 'Dex save +2', '<b><font color="#134A7A">Con save +5</font></b>', '<b><font color="#134A7A">Int save +8</font></b>', 'Wis save +1', 'Cha save -1']]], colWidths=[(7.3/6)*inch]*6)
+sv.setStyle(TableStyle([('BOX',(0,0),(-1,-1),0.5,LINE),('INNERGRID',(0,0),(-1,-1),0.3,BLUE_LT),
+    ('TOPPADDING',(0,0),(-1,-1),2.5),('BOTTOMPADDING',(0,0),(-1,-1),2.5),
+    ('LEFTPADDING',(0,0),(-1,-1),4),('RIGHTPADDING',(0,0),(-1,-1),3)]))
+story.append(sv)
 
 h2("All of Lilly's Skills")
 TR='<b><font color="#134A7A">%s</font></b>'   # trained: blue, per the caption

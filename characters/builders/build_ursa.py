@@ -123,7 +123,12 @@ story.append(stat_strip([('ARMOR CLASS',18),('HIT POINTS',52),('SPEED','30 ft'),
 story.append(Spacer(1,4))
 story.append(ability_strip([('STR',8,'-1'),('DEX',14,'+2'),('CON',14,'+2'),
                             ('INT',12,'+1'),('WIS',20,'+5'),('CHA',8,'-1')]))
-story.append(Paragraph('Best saves: Wis +8, Int +4. WIS powers all his magic.', small_it))
+story.append(Paragraph('WIS powers all his magic.', small_it))
+sv=Table([[Paragraph(c,cell_st) for c in ['Str save -1', 'Dex save +2', 'Con save +2', '<b><font color="#4A357A">Int save +4</font></b>', '<b><font color="#4A357A">Wis save +8</font></b>', 'Cha save -1']]], colWidths=[(7.3/6)*inch]*6)
+sv.setStyle(TableStyle([('BOX',(0,0),(-1,-1),0.5,LINE),('INNERGRID',(0,0),(-1,-1),0.3,PURPLE_LT),
+    ('TOPPADDING',(0,0),(-1,-1),2.5),('BOTTOMPADDING',(0,0),(-1,-1),2.5),
+    ('LEFTPADDING',(0,0),(-1,-1),4),('RIGHTPADDING',(0,0),(-1,-1),3)]))
+story.append(sv)
 
 story.append(Paragraph("All of Ursa's Skills", h2_st))
 TR = '<b><font color="#4A357A">%s</font></b>'   # trained: purple, per the caption
@@ -214,12 +219,12 @@ story.append(both)
 story.append(Paragraph('Both grow with the slot he spends, and <b>4th level</b> is the jump worth paying for: that is where either spirit starts making <b>two attacks a turn</b>.', small_it))
 
 # ---- Spells at a Glance (compact quick tracker, bottom of page 1) ----
-story.append(Spacer(1,4))
+story.append(Spacer(1,1))
 story.append(Paragraph("Spells at a Glance &nbsp;"
     "<font size=7 color='#555555'>([ ] = one slot, check it when spent; full rules on page 3)</font>",
     S('sgh', fontName='Times-Bold', fontSize=11, textColor=PURPLE, leading=13,
       spaceBefore=3, spaceAfter=2)))
-gl_st = S('gl', fontName='Times-Roman', fontSize=7.6, textColor=INK, leading=9.2)
+gl_st = S('gl', fontName='Times-Roman', fontSize=7.6, textColor=INK, leading=8.8)
 def _glance(lbl, boxes, names):
     box = ('[ ]&nbsp;' * boxes) if boxes else '<i>at will</i>'
     return [Paragraph(f'<b>{lbl}</b>&nbsp; {box}', gl_st), Paragraph(names, gl_st)]
@@ -237,7 +242,7 @@ gt.setStyle(TableStyle([
     ('GRID',(0,0),(-1,-1),0.5, LINE),
     ('ROWBACKGROUNDS',(0,0),(-1,-1),[colors.white, PURPLE_LT]),
     ('LEFTPADDING',(0,0),(-1,-1),5),('RIGHTPADDING',(0,0),(-1,-1),5),
-    ('TOPPADDING',(0,0),(-1,-1),1.8),('BOTTOMPADDING',(0,0),(-1,-1),1.8),
+    ('TOPPADDING',(0,0),(-1,-1),1.1),('BOTTOMPADDING',(0,0),(-1,-1),1.1),
 ]))
 story.append(gt)
 

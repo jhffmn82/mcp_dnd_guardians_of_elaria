@@ -110,7 +110,12 @@ story.append(Spacer(1,4))
 story.append(ability_strip([('STR',8,'-1'),('DEX',20,'+5'),('CON',16,'+3'),
                             ('INT',8,'-1'),('WIS',14,'+2'),('CHA',8,'-1')]))
 story.append(Paragraph('AC 18. '
-    'Speed 45 on his own feet, <b>55</b> with the Sash, <b>65</b> while his breath is ignited. AC includes the Sash. Best saves: Dex +8, Str +2.',small_it))
+    'Speed 45 on his own feet, <b>55</b> with the Sash, <b>65</b> while his breath is ignited. AC includes the Sash.',small_it))
+sv=Table([[Paragraph(c,cell_st) for c in ['<b><font color="#7A1F1F">Str save +2</font></b>', '<b><font color="#7A1F1F">Dex save +8</font></b>', 'Con save +3', 'Int save -1', 'Wis save +2', 'Cha save -1']]], colWidths=[(7.3/6)*inch]*6)
+sv.setStyle(TableStyle([('BOX',(0,0),(-1,-1),0.5,LINE),('INNERGRID',(0,0),(-1,-1),0.3,RED_LT),
+    ('TOPPADDING',(0,0),(-1,-1),2.5),('BOTTOMPADDING',(0,0),(-1,-1),2.5),
+    ('LEFTPADDING',(0,0),(-1,-1),4),('RIGHTPADDING',(0,0),(-1,-1),3)]))
+story.append(sv)
 
 h2("All of Stabby's Skills")
 TR='<b><font color="#7A1F1F">%s</font></b>'   # trained: red, per the caption
@@ -162,8 +167,7 @@ moves=[
     ('Fury of the Small','When he hits a creature bigger than him (almost everyone!), deal +3 extra damage. '
         'He can do this 3 times per long rest, once per turn.'),
     ('Nimble Escape','He can Disengage or Hide as a bonus action every turn. Slippery little goblin.'),
-    ('Goblin Senses','Sees in the dark 60 ft. Speaks Common, Goblin &amp; Orc.'),
-    ('Fey Ancestry','Goblins have a touch of fey blood: advantage on saves to avoid or shake off the charmed condition.'),
+    ('Goblin Gifts','Sees in the dark 60 ft; fey blood gives advantage on saves against being charmed. Speaks Common, Goblin &amp; Orc.'),
 ]
 def move_cell(n,d):
     return Paragraph(f'<b><font color="{RED_HEX}">{n}.</font></b> {d}', move_st)
