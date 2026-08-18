@@ -187,6 +187,51 @@ B = [
         ],
     }]),
 
+    ("body", "*The Undersea's gift, promised for the Water rift: a very small, very proud "
+             "field medic. Piplup holds the backline, mends whoever is bleeding, shields "
+             "whoever is next, and slows whatever comes wading in after them.*"),
+    # Water-rift companion (DM 2026-08-18): the HEALER of the roster. Fragile on
+    # purpose: AC 13 and 45 HP are the price of the kit. Healing lane outclasses
+    # Ghostbloom by design (roster rule: each specialist beats her in one lane).
+    # Sim-validate against the S9 encounters when they exist.
+    ("enemy_cards", [{
+        "name": "Piplup",
+        "sub": "Small beast (Water), unaligned \u2726 Water-rift companion (joins in Session 9)",
+        "banner": TEAL,
+        "stats": [
+            "**AC** 13  **HP** 45 (10d6 + 10)  **Speed** 25 ft., swim 50 ft.",
+            "**STR** 6  **DEX** 16  **CON** 12  **INT** 10  **WIS** 16  **CHA** 14",
+            "**Saves** Dex +6, Wis +6  **Skills** Medicine +6, Performance +5",
+            "**Resist** cold",
+            "**Senses** darkvision 60 ft., passive Perception 13",
+            "**Languages** understands its handler; says only his own name, with total clarity",
+        ],
+        "traits": [
+            ("Proud Heart", "Piplup has Advantage on saving throws against being Frightened, "
+             "and nothing can make him retreat while a friend is down."),
+            ("Slipstream", "While swimming, Piplup doesn't provoke Opportunity Attacks."),
+        ],
+        "actions": [
+            ("Multiattack", "Piplup makes two Ice Beam attacks."),
+            ("Ice Beam", "*Ranged Attack:* +6 to hit, range 60/120 ft., one target. *Hit:* 10 "
+             "(2d6 + 3) Cold damage, and the target's Speed drops by 20 feet until the end "
+             "of its next turn (the slow doesn't stack)."),
+            ("Heal Bubble (Bonus Action, 3/Short Rest)", "A shimmering bubble drifts to one "
+             "creature Piplup can see within 30 feet and pops into cool silver mist: it "
+             "regains 14 (2d8 + 5) hit points and is cured of the Poisoned condition."),
+            ("Sea Mist (1/Day)", "Piplup breathes out a rolling bank of cool silver fog: a "
+             "20-foot-radius Sphere centered on a point he can see within 60 feet, Heavily "
+             "Obscured for 1 minute or until a strong wind clears it. Piplup and his friends "
+             "always know where each other are inside it; enemies do not."),
+        ],
+        "reactions": [
+            ("Water Jet", "*Reaction.* When a creature Piplup can see within 30 feet attacks "
+             "one of his allies, a needle of high-pressure water snaps out: the attacker "
+             "takes 7 (2d6) Bludgeoning damage and the triggering attack is made with "
+             "Disadvantage."),
+        ],
+    }]),
+
     ("lore", "The Kept Company",
      "The sky-readers keep a gentler list beside their catalogue of frights: the wonders "
      "that chose to stay. A creature woken by the Darkening can turn wild or turn kind, and "
