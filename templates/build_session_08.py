@@ -27,6 +27,9 @@ M = f"{A}/monsters"
 BLOCKS = [
     ("titlepage", "THE GUARDIANS OF ELARIA", "SESSION 8", "Underroot",
      "An illustrated adventure. Read the gold boxes aloud; the purple boxes are for the DM."),
+    ("img", f"{S8}/frontispiece.png",
+     "One door, one world, and something on the far side that has been waiting two years "
+     "for help.", 6.2, {"crop": "3:2", "hmax": 4.4}),
 
     ("h1", "Previously, on The Guardians of Elaria...", {"hardbreak": True}),
     ("gold", "In the clockwork city of **Gearhaven** the heroes found the **Grand Custodian**, the "
@@ -82,10 +85,15 @@ BLOCKS = [
              "He looks at the ring for a long moment. Then at the Sphere in its cradle. Then he "
              "says, to nobody in particular:\n"
              "\"Oh. That is much older than you think it is.\"\n"
-             "He says it the way other people say good morning."),
+             "He says it the way other people say good morning.\n"
+             "Nobody sent for him, and nobody needed to. There is no one alive who knows the "
+             "planes, or the creatures that fall out of them, the way Aelwyn Ravenstone does. He "
+             "has spent thirty years studying the far sides of doors that were never supposed to "
+             "open, and now one is about to open on purpose, and he intends to be standing at it "
+             "when it does. The trunks are full of field guides. Most of them he wrote."),
     ("img", f"{S8}/B_aelwyn_arrives.png",
      "Three trunks, no porters, and one small green passenger who did not pay a fare.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("body", "**Lickgloom remembers them.** He stayed behind at Ravenstone Laboratory two years ago "
              "and has spent the time since licking a professor's equipment. He rode the luggage the "
              "whole way here. He recognises each hero on sight as they arrive through the week, and "
@@ -99,10 +107,15 @@ BLOCKS = [
              "though he is listening to something a half second behind the voice. In his left hand "
              "is a stone that he turns over and over without seeming to know he is doing it.\n"
              "He has been walking east for a year. He does not look like someone who found what he "
-             "was looking for. He does not look like someone who failed, either."),
+             "was looking for. He does not look like someone who failed, either.\n"
+             "The first thing he does inside the gate is stop, and look up, and stand there long "
+             "enough that the morning crowd has to part around him: checking the eastern sky "
+             "against something he carries in his head. Whatever he finds there, he keeps to "
+             "himself. Then he shoulders his pack and walks down into the waking city, toward "
+             "the Guild, without needing to ask the way."),
     ("img", f"{S8}/C_ursa_at_the_eastern_gate.png",
      "First light on the Eastern Gate, and the guards wave through a traveler they do not "
-     "recognize until he has already passed.", 6.2, {"crop": "3:2", "hmax": 4.3}),
+     "recognize until he has already passed.", 6.2, {"crop": "16:9", "hmax": 3.6}),
 
     ("h2", "Ten to Midnight"),
     ("gold", "On the last night of the year apart, the bell over the Rift Hall doors has not rung "
@@ -114,7 +127,7 @@ BLOCKS = [
              "\"I'm not late,\" says Stabby Sharpblade. \"It's still today.\""),
     ("img", f"{S8}/D_stabby_drops_from_the_rafters.png",
      "Ten minutes in hand, and he has almost certainly been in Gearhaven since the afternoon.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "**The idol, lightly.** When Stabby swings his pack down, something inside knocks "
            "against the flagstones with a dull, wrong sound. It is the small carved idol that "
            "appeared in his bag after Wraithpine, which nobody has ever explained and no one saw "
@@ -148,7 +161,7 @@ BLOCKS = [
     ("dm", "**Hand Lilly's player the floor.** Everything below happened during her year, and she "
            "was there for all of it; invite her to tell parts of it in her own words."),
     ("img", f"{S8}/L_poots_at_the_door.png",
-     "Deepforge Hollow, and a mother with flour on her hands.", 6.2, {"crop": "3:2", "hmax": 4.3}),
+     "Deepforge Hollow, and a mother with flour on her hands.", 6.2, {"crop": "16:9", "hmax": 3.6}),
     ("gold", "She went home first. That surprised everyone, Lilly included. She set the Essence "
              "Sphere on her mother's kitchen table and said: tell me everything.\n"
              "It was the least satisfying conversation of her life. Poots told her about the day "
@@ -160,10 +173,9 @@ BLOCKS = [
              "from.**"),
 
     ("h2", "The Trade Roads"),
-    ("img", f"{S8}/M_sparkwicks_verdict.png",
-     "The verdict at Glimmerspire took him most of a morning to say out loud.",
-     6.2, {"crop": "4:3", "hmax": 4.4}),
-    ("gold", "So she went looking.\n"
+    ("railrow", f"{S8}/lilly_rail.png", 2.5, [
+
+        ("gold", "So she went looking.\n"
              "She earned her answers out of Master Sparkwick at Glimmerspire, one stubborn "
              "question at a time, and his verdict sent her down the trade roads. She paid a dozen "
              "artificers in the only currency she had, which was work.\n"
@@ -175,9 +187,6 @@ BLOCKS = [
              "have her answer."),
 
     ("h2", "The Hands Workshop"),
-    ("img", f"{S8}/N_the_hands_workshop.png",
-     "Every joint on the bench is for somebody waiting to go back to work.",
-     6.2, {"crop": "4:3", "hmax": 4.4}),
     ("gold", "The best six weeks were with a woman who built hands for injured miners. Brass "
              "fingers, clever joints, work that had to be right because somebody's whole life "
              "would hang on it. Lilly learned more about listening to a mechanism in that "
@@ -185,6 +194,7 @@ BLOCKS = [
              "She took the Sphere to wizards too, because wizards ask what a thing *is*. One of "
              "them fainted. Another wrote her four increasingly frantic letters. None of them "
              "knew."),
+    ]),
 
     ("h2", "The Forty-First Opening"),
     ("gold", "The answer was in the brass the whole time.\n"
@@ -194,7 +204,7 @@ BLOCKS = [
              "instead the outside of something else."),
     ("img", f"{S8}/E_the_marks_under_the_brass.png",
      "Lantern light and a loupe: forty openings were one too few.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("gold", "Lilly looks around the dinner table and says it plainly, because she has checked it "
              "forty-one times and it is proof, not theory.\n"
              "**Her mother did not make the Essence Sphere.** Poots Glimmergear found it, "
@@ -249,9 +259,6 @@ BLOCKS = [
              "corrupted things the way a knife goes through smoke."),
 
     ("h2", "The Fourth"),
-    ("img", f"{S8}/O_nokk_and_the_fourth.png",
-     "Nokk waited nine years for somebody to ask the right question.",
-     6.2, {"crop": "4:3", "hmax": 4.4}),
     ("gold", "It was old Nokk who finally told him why, by a banked fire, in the voice goblins "
              "save for things that must only be said once.\n"
              "**His father was the Fourth.** The fourth leader the Bloodfang ever named, and by "
@@ -264,13 +271,14 @@ BLOCKS = [
              "And that is why the arts never took. There was something enormous asleep behind "
              "Stabby's ribs, pushing back against every form they poured into him. **He was "
              "never unteachable. He was occupied.**"),
+    ("img", f"{S8}/O_nokk_and_the_fourth.png",
+     "Nokk waited nine years for somebody to ask the right question.",
+     6.2, {"crop": "4:3", "hmax": 4.4}),
 
     ("h2", "The Vigil on Kettlecrown"),
-    ("imgrow", [(f"{S8}/stabby_the_stillness_test.png",
-                 "The entire test is holding still."),
-                (f"{S8}/P_the_bullywug_forge.png",
-                 "A Nichirin blade is a graduation, not a gift.")], 3.1),
-    ("gold", "Nokk knew one more thing: where the Fourth had learned to seal what cannot be "
+    ("railrow", f"{S8}/stillness_rail.png", 2.5, [
+
+        ("gold", "Nokk knew one more thing: where the Fourth had learned to seal what cannot be "
              "killed. A mountain called Kettlecrown, and a sect on it called the Vigil.\n"
              "The Vigil are frog-folk, bullywugs grown enormous with age, and they cared about "
              "exactly one thing, and they tested it on his first morning. They asked him to be "
@@ -282,8 +290,10 @@ BLOCKS = [
              "He had always heard it as an order to calm down. It was not. It was smaller and far "
              "more useful. **Be still for one second, at the one moment that matters.** One "
              "second, Stabby could do."),
+    ]),
 
-    ("h2", "The Forge"),
+    ("railrow", f"{S8}/forge_rail.png", 2.5, [
+        ("h2", "The Forge"),
     ("gold", "The sword came last, because among the Vigil a **Nichirin blade** is a graduation, "
              "not a gift. He worked the bellows for eight days of its making, and when it was "
              "done the masters put it in his hands and did not say congratulations, because the "
@@ -291,11 +301,9 @@ BLOCKS = [
              "It is the dark, quiet sword on his back right now. It cuts corruption out of a "
              "living thing without cutting the living thing. That is the whole art, and it took "
              "him a year."),
+    ]),
 
     ("h2", "Home in Winter"),
-    ("img", f"{S8}/Q_the_purge.png",
-     "The woods the Bloodfang stopped walking in two years ago.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "He came home in deep winter and did what he had promised: he went into the twisted "
              "woods and burned the blight out of the ground, root and all.\n"
              "The Bloodfang had watched their biggest and best taken one after another for two "
@@ -303,15 +311,18 @@ BLOCKS = [
              "behind it was **the runt**. The clan joke. The one they had all quietly agreed was "
              "not worth teaching.\n"
              "There is not a goblin in the Hollow who will hear a word against him now."),
+    ("img", f"{S8}/Q_the_purge.png",
+     "The woods the Bloodfang stopped walking in two years ago.",
+     6.2, {"crop": "16:9", "hmax": 3.6}),
 
     ("h2", "Teaching the Count"),
-    ("img", f"{S8}/R_teaching_the_count.png",
-     "The first class in Bloodfang history where nobody is measured against anybody.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "The Vigil made him a monk. What made him something else was teaching it. Before he "
              "left, he lined up the smallest goblins in the Hollow, the overlooked ones, the ones "
              "he used to be, and taught them the count: one second of stillness, at the one "
              "moment that matters. The Vigil gave him the basics. His clan gave him the rest."),
+    ("img", f"{S8}/R_teaching_the_count.png",
+     "The first class in Bloodfang history where nobody is measured against anybody.",
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "They offered him his father's seat and **he said not yet**, and Nokk was the only one "
            "who noticed he did not say never. He gave them Candyfang as the clan's heirloom, and "
            "by their new law the heirloom is carried by whoever the clan would follow, which is "
@@ -321,16 +332,15 @@ BLOCKS = [
              "\"Anyway,\" he says. \"I got a sword.\""),
 
     ("h2", "Ursa Tells It: The Road East"),
-    ("gold", "The fire has burned low by the time it is Ursa's turn, and he does not stand up. He "
+    ("railrow", f"{S8}/ursa_rail.png", 2.35, [
+
+        ("gold", "The fire has burned low by the time it is Ursa's turn, and he does not stand up. He "
              "sets both hands flat on the table, with the stone he carries between them, and for "
              "a moment he just looks at it.\n"
              "\"The two of you went home,\" he says. \"I went the other way.\""),
     ("dm", "**Hand Ursa's player the floor, and slow the room down.** This is the chapter that "
            "changes the shape of the campaign. Read it last, read it quietly, and do not rush "
            "the ending."),
-    ("img", f"{S8}/T_selarin_and_the_cabinet.png",
-     "Selarin knew from the first hour that he would unlock it.",
-     6.2, {"crop": "4:3", "hmax": 4.4}),
     ("gold", "He went first to the Circle, to old Selarin, and asked for his father's papers.\n"
              "\"You are eight,\" Selarin said.\n"
              "\"I know how old I am,\" said Ursa.\n"
@@ -347,9 +357,6 @@ BLOCKS = [
              "of one."),
 
     ("h2", "The Skyless Country"),
-    ("img", f"{S8}/U_the_cairn.png",
-     "The Skyless Country has no horizon; it has the next cairn instead.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "He went east on foot and **alone**, because Ghostbloom stayed at the Guild and "
              "where he was going had no roads. Eleven months of walking.\n"
              "When the maps ran out he came into a country where the cloud never breaks. No sun, "
@@ -361,12 +368,12 @@ BLOCKS = [
              "blind land one stone at a time. Ash built it going out. Ursa walked it going in, "
              "and **repaired eleven of them on the way**, because there was no reason to assume "
              "he would be the last person to need the road."),
+    ]),
 
     ("h2", "The Camp"),
-    ("img", f"{S8}/G_the_empty_camp.png",
-     "The tin cup is still where a hand last set it down.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
-    ("gold", "He did not find his father. He found the camp his father made.\n"
+    ("railrow", f"{S8}/camp_rail.png", 2.5, [
+
+        ("gold", "He did not find his father. He found the camp his father made.\n"
              "A firepit long cold. A shelter of bent living branches, still holding. Split wood "
              "stacked ready under cover. Nothing packed. Nothing buried. **Nobody had said "
              "goodbye to this place.**\n"
@@ -376,9 +383,6 @@ BLOCKS = [
              "Not fifteen years. **Three.**"),
 
     ("h2", "The Half-Carved Stone"),
-    ("img", f"{S8}/V_the_half_carved_stone.png",
-     "The one thing in the whole camp his father thought to protect.",
-     6.2, {"crop": "4:3", "hmax": 4.4}),
     ("gold", "Under the flat rock by the firepit, wrapped in oilcloth, was a river stone carved "
              "with Elaria's seven-pointed star. **Half of it.** The line stops mid-stroke, the "
              "way a pen stops when somebody says your name. It is his father's hand.\n"
@@ -386,11 +390,9 @@ BLOCKS = [
              "since.\n"
              "He sets it on the dinner table now, and everyone understands at once that this is "
              "the stone he has been turning over since the Eastern Gate."),
+    ]),
 
     ("h2", "The Eighth Night"),
-    ("img", f"{S8}/H_the_vision_in_the_stones.png",
-     "The old shrine has been waiting a long time for somebody to keep an eighth night.",
-     6.2, {"crop": "4:3", "hmax": 4.4}),
     ("gold", "He stayed at the old shrine eight nights. On the eighth, the cloud broke, the "
              "standing stones lit from the inside, and **Elaria showed him three things.**\n"
              "The first was his father, **walking**, deliberately, toward a light that was going "
@@ -405,6 +407,9 @@ BLOCKS = [
              "behind it, putting out a light as calmly as a person pinching a candle. And the "
              "vision gave that one a name too, the way you hand somebody a weapon.\n"
              "**Nyxthid.**"),
+    ("img", f"{S8}/H_the_vision_in_the_stones.png",
+     "The old shrine has been waiting a long time for somebody to keep an eighth night.",
+     6.2, {"crop": "4:3", "hmax": 4.4}),
     ("dm", "**This is the first time the name Nyxthid is spoken in this campaign.** Ursa has just "
            "sworn to hunt his own father and will spend four sessions doing it. Elaria did not "
            "lie to him: every single thing she showed him is true. She simply did not show him "
@@ -421,7 +426,7 @@ BLOCKS = [
     ("bridge", "Three stories told, and one day left before the door opens."),
     ("img", f"{S8}/lilly_gifts_laid_out.png",
      "Puff supervised the polishing, and she will tell you so.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("gold", "Lilly has been awake since four in the morning. When the rest of you come down to "
              "the workshop the lamps are already lit, and there are four cloths laid out along "
              "the bench: one for each of you, and a fourth at the end for **Puff**, the small "
@@ -461,7 +466,7 @@ BLOCKS = [
     ("h1", "The Briefing"),
     ("img", f"{S8}/I_aelwyns_briefing.png",
      "The professor brought diagrams. Vane brought objections. Lickgloom found something to chew.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("gold", "After supper Aelwyn clears the long table, pins up a map of nothing anyone has ever "
              "mapped, and gives you the truth in his lecture voice, which is the kindest voice he "
              "owns."),
@@ -482,9 +487,6 @@ BLOCKS = [
              "\"It is an honest one.\""),
 
     ("h2", "The Lesson: Underroot, and the Thing That Lives There"),
-    ("img", f"{S8}/K_the_lesson.png",
-     "He has waited his whole career to give this lecture, and it shows.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "\"Earth,\" says Aelwyn, \"is not a cave. Get that out of your heads right now. You "
              "are not going underground. You are going to a place that is *made* of ground, all "
              "the way through, in every direction, forever.\n"
@@ -493,6 +495,9 @@ BLOCKS = [
              "are older than your species. The soil breathes, slowly, about once a minute, "
              "everywhere at once. And nothing down there is in a hurry, which will be the "
              "strangest part for you three.\""),
+    ("img", f"{S8}/K_the_lesson.png",
+     "He has waited his whole career to give this lecture, and it shows.",
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "**Three facts the players need for Part Two.** It is **slow, not empty**: a rockfall "
            "there is a shrug. There is **no sky, so Ursa cannot navigate**, and his year of "
            "star-reading buys him nothing; what works down there is reading the ground, exactly "
@@ -531,209 +536,30 @@ BLOCKS = [
              "Ghostbloom goes first, because of course she does."),
     ("img", f"{S8}/J_the_threshold.png",
      "The first doorway between worlds ever opened on purpose.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"crop": "16:9", "hmax": 3.6}),
+    ("dm", "**The rules of the road, before anyone crosses.** Four things shape everything on "
+           "the far side, and the players should feel all four without being lectured. **There "
+           "are no long rests in Underroot**: the run is one push, and the only real breather is "
+           "the short rest after the Chime Reef, so spend accordingly. **Time is not free**: the "
+           "ring holds, but every hour over there is an hour Vane stands at the lever holding his "
+           "breath, so keep the token moving and let the pace be felt. **The goal is the "
+           "guardian**: free it from its corruption and this world's cracks close on their own; "
+           "nothing in Underroot needs to die for the party to win. And **the Sphere gathers the "
+           "whole way**: loose planar essence flows into it wherever they walk, and everything it "
+           "gathers comes home with them at the end of the night."),
 
-    ("h1", "Part Two: Underroot", {"hardbreak": True}),
-    ("bridge", "They stepped through a brass ring in a workshop in Gearhaven and came out "
-               "the other side standing on something warm that was breathing."),
 
-    ("h2", "How the Board Works"),
-    ("img", f"{S8}/underroot_board.png",
-     "The whole country between the ring and the Guardian, laid out one landing at a time.",
-     6.4, {"hmax": 4.4}),
-    ("dm", "**One token, everybody's hands.** The party moves as a single token. On their "
-           "turn a player rolls **1d6** and moves that many spaces, and whoever holds the "
-           "token rotates on every roll, so every player gets to move it. They land on a "
-           "colour and it resolves at once."),
-    ("dm", "**The die they moved with resolves the dot.** Each colour has two outcomes, and "
-           "even or odd picks which one happens: no table to look up, no second roll, no "
-           "pause. Slate blue is plain movement and does nothing on either result. All "
-           "eight outcomes are written out in full in *The Road Between*."),
-    ("dm", "**The four numbered locations are not dots.** They are fixed story stops. The "
-           "token halts at each one no matter how much movement is left, the beat plays "
-           "out, and movement resumes on the next turn. **The Rift Gate is the arrival and "
-           "has no fight.**"),
-    ("dm", "**They came here to fight.** Nothing in this session can be talked down, waited "
-           "out, or avoided. Levers and objectives exist to turn a grinding fight into a "
-           "satisfying one, never to skip it, and finding one is the reward."),
-    ("dm", "**SHORT REST, immediately after the reef.** Call it out loud so nobody misses "
-           "it: Hit Dice spent, Stabby's Focus back, Ursa's Wild Shape back, Lilly's "
-           "Aether Ward back. Fight 3 assumes they took it."),
-    ("dm", "**A note on the numbers.** Fights 2 and 3 sit deliberately above a \"deadly\" "
-           "budget on paper, and both have a lever that collapses them: **thunder stuns a "
-           "Chimestone and doubles all damage against it**, and **tending the roots strips "
-           "the Weeper's regeneration**. A party that finds the lever wins comfortably. A "
-           "party that ignores it is in a real fight. That gap is the fun, so do not "
-           "soften either one before the players have had their chance to be clever."),
-
-    ("h1", "The Road Between"),
-    ("bridge", "Underroot is not empty between the landings, and the dark between them has "
-               "its own weather."),
-    ("gold", "The ground stays warm the whole way, and it goes on breathing under your "
-             "boots, slow as something enormous asleep. There is no sky to measure your "
-             "progress against, so the only way to know you are moving is the moss light "
-             "going out behind you, patch by patch, as you leave it.\n"
-             "Twice, something out in the dark keeps pace with you for a while. It is big "
-             "enough to hear. It never arrives."),
-    ("dm", "**How a dot resolves.** Read the die they moved with. **Garnet** is an "
-           "Encounter (even: Thumpaw; odd: the Gleamoth). **Moss** is a Boon (even: the "
-           "Deepwater Spring; odd: the Shortcut). **Ochre** is a Hazard (even: Sinkloam; "
-           "odd: the Ceiling Lets Go). **Amethyst** is Wild (even: the Reef Answers; odd: "
-           "the Guardian's Dream). Slate blue is simply movement: nothing happens, keep "
-           "going."),
-    ("imgrow", [(f"{A}/monsters/thumpaw.png",
-                 "Thumpaw, the boulder that minds being prodded."),
-                (f"{A}/monsters/gleamoth_swarm.png",
-                 "The Gleamoth, hungry for the warmest thing in the tunnel.")], 3.1),
-    ("dm", "**Garnet dots are small pressure, and that is all they are.** Two or three "
-           "weak things that cost a little resource and no more. Never let a dot roll "
-           "swell into a fifth big fight: the four scripted encounters are the session, "
-           "and the dots are texture between them. Thumpaw and the Gleamoth appear "
-           "nowhere else in Underroot, which is exactly what makes a garnet dot feel like "
-           "luck instead of filler. Pace check: there are 22 dots between the gate and "
-           "the Hollow, so if the evening is running long, hand-wave the dots between "
-           "locations 3 and 4 and go straight to Groudon."),
-
-    ("h2", "Thumpaw"),
-    ("gold", "A shape unfolds out of what you took for a boulder. It is the size of a cart "
-             "horse, round and shaggy with matted brown moss growing over stone-grey "
-             "hide, and it has hands like shovels. It looks at you with small patient "
-             "eyes and does not move, because you are standing in the tunnel it was going "
-             "to use."),
-    ("dm", "**Garnet dot, even. One Thumpaw.** It will not move, it is directly in the "
-           "way, and when somebody inevitably prods it, it swings. This is a straight "
-           "brawl and that is the point: **76 hit points**, two big slams a turn, no "
-           "gimmick and no puzzle. Sometimes a table simply wants to hit something large "
-           "until it stops, and this is that. It never pursues and it never finishes a "
-           "downed hero; it is grumpy, not evil. If the party genuinely tries to befriend "
-           "it rather than fight it, **DC 15 Animal Handling**, with advantage from "
-           "Ursa's Mark of Handling, will move it aside. Do not offer that. Let them "
-           "think of it."),
-
-    ("h2", "The Gleamoth"),
-    ("gold", "The lights come round the corner before the sound does: forty pale green "
-             "sparks drifting like blown seeds. They are moths, each the size of a hand, "
-             "and every one of them is glowing, and they want the warmest thing in the "
-             "tunnel, which is you."),
-    ("dm", "**Garnet dot, odd. Three Gleamoth Swarms**, not corrupted, just hungry for "
-           "heat. They **blind and smother** rather than deal much damage, and they go "
-           "for whoever is carrying light. **Fire and thunder scatter them fast**, so "
-           "anything that hits an area is worth double here. The real cost is the Sphere: "
-           "they are drawn to it hardest, which puts the swarm on Lilly for the whole "
-           "fight and makes the rest of the party come to her."),
-
-    ("h2", "The Deepwater Spring"),
-    ("img", f"{S8}/events/D3_deepwater_spring.png",
-     "The pool keeps its own light, a long way from any moss.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
-    ("gold", "A crack in the wall, and inside it a pool so still and so clear that the "
-             "pale stones forty feet down look close enough to lift out. Nothing feeds "
-             "it. Nothing drains it. And yet the surface keeps turning over, slow and "
-             "patient, the way water moves when something a long way underneath it is "
-             "still working. It is very cold, and it tastes like the air after "
-             "lightning, and by the time you have all drunk, the ache has gone out of "
-             "your legs and none of you can say when it left."),
-    ("dm", "**Moss dot, even.** Everyone regains **1 Hit Die** and clears **one level of "
-           "exhaustion**. Ghostbloom glows brighter for an hour and is insufferable "
-           "about it."),
-
-    ("h2", "The Shortcut"),
-    ("img", f"{S8}/events/D4_sandshrew_shortcut.png",
-     "A door where a minute ago there was wall.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
-    ("gold", "Something small and yellow-brown is waiting for you on a mound in the "
-             "middle of the path, up on its back legs, and it does not run when your "
-             "light finds it. It looks at you. Then it looks, very deliberately, at the "
-             "blank wall on its left. Then back at you, and it keeps doing that until "
-             "somebody understands. Then it drops and digs, and the packed earth goes "
-             "soft in front of its claws like water, and the tunnel it opens runs "
-             "straight and level and exactly the way you were trying to go. It is gone "
-             "before any of you reach the far end. All it leaves behind is a scuffed "
-             "patch of loose soil where it stood, and the distinct feeling of having "
-             "been done a favour."),
-    ("dm", "**Moss dot, odd. Advance the token 3 spaces free.** If the party was unkind "
-           "to the Sandshrew at Mosslight Landing, it watches them take the long way "
-           "round instead, and that should sting."),
-
-    ("h2", "Sinkloam"),
-    ("img", f"{S8}/events/D5_sinkloam.png",
-     "Warm, wet, patient, and wearing the exact colour of the safe ground beside it.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
-    ("gold", "The floor stops being floor. There is no sound and no warning: one step is "
-             "packed earth and the next is warm wet loam that takes your boot, then your "
-             "shin, then your knee, and goes on politely taking. It is worst for the "
-             "smallest of you: the loam does not care how clever anyone is, and whoever "
-             "goes in deepest is suddenly fighting to keep their arms above the surface "
-             "while the ground drinks the rest of them with terrible, unhurried "
-             "patience."),
-    ("dm", "**Ochre dot, even.** Everyone makes a **DC 13 Strength save** or is "
-           "**restrained**, spending an action to pull free. Heavy armour has "
-           "disadvantage on the save. If Lilly goes under, she holds the Sphere over "
-           "her head with both hands the entire time, and somebody has to go back for "
-           "her."),
-
-    ("h2", "The Ceiling Lets Go"),
-    ("img", f"{S8}/events/D6_rockfall.png",
-     "You cannot outrun it. You can only be lucky.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
-    ("gold", "You feel it before you hear it: a low grinding roll somewhere far above, "
-             "the sound a mountain would make turning over in its sleep. Then dust "
-             "comes down in fine threads. Then the threads become gravel. You have "
-             "exactly long enough to look up and understand what is about to happen, "
-             "and nowhere near long enough to be somewhere else, and then the ceiling "
-             "of the world lets go.\n"
-             "When the roar stops and the air clears enough to breathe, the passage you "
-             "came in by is not there. In its place is a wall of new stone, still warm, "
-             "still shifting and settling against itself, and above you Underroot has "
-             "already gone quiet again, as though it had shrugged in its sleep and "
-             "thought nothing of it."),
-    ("dm", "**Ochre dot, odd. DC 14 Dexterity save**, **2d10 bludgeoning** on a failure "
-           "and half as much on a success. The passage behind them is now blocked, "
-           "which matters a great deal if anyone was planning to run."),
-
-    ("h2", "The Reef Answers"),
-    ("img", f"{S8}/events/D7_the_reef_answers.png",
-     "An invitation, sent through a mile of stone.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
-    ("gold", "Somewhere far off, a single crystal note. Then another underneath it, and "
-             "another, until the whole tunnel is ringing in a slow enormous chord you "
-             "can feel in your ribs, and the moss on the walls lights up in time with "
-             "it."),
-    ("dm", "**Amethyst dot, even.** Everyone gains **2d8 temporary hit points**, and "
-           "Ghostbloom sings back, badly, at the top of her voice. **This is a good "
-           "place for the short rest** if the party has not taken it yet."),
-
-    ("h2", "The Guardian's Dream"),
-    ("img", f"{S8}/events/D8_the_guardians_dream.png",
-     "A memory that does not belong to any of them.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
-    ("gold", "For half a second the three of you see the same thing, and Ghostbloom sees "
-             "it too, and none of you asked for it.\n"
-             "An empty sea under an empty sky, going on forever. And something walking "
-             "through it, huge and slow and patient, and where it walks the water "
-             "shoulders aside and dry land comes up behind it, steaming, new.\n"
-             "Then it is gone and you are standing in a tunnel again."),
-    ("dm", "**Amethyst dot, odd. No mechanical effect.** They have just watched Groudon "
-           "remember his own job, and they will not understand what they saw until they "
-           "are standing in front of him. Ursa may **regain one spent Omen Dream**, "
-           "because something has just spoken to him and he does not know what."),
-
-    ("lore", "The Living Country",
-     "The sky-readers teach that a plane is not a place but a creature: one living "
-     "thing wearing a country for a body, with weather for moods and seasons for a "
-     "pulse. Walk gently, the Circle says, for every step in another world is a step "
-     "on somebody. The old verses go further still: each world keeps one guardian, "
-     "very old, that is somehow the shape of that world's health, and to free a "
-     "guardian is to heal the country it carries."),
-
-    ("h1", "The Descent"),
-    ("bridge", "Four stops between the ring and the Guardian: a doorway, a village of "
-               "moss, a reef that sings, and a wound that will not stop spreading."),
+("h1", "Part Two: Underroot", {"hardbreak": True}),
+("bridge", "They stepped through a brass ring in a workshop in Gearhaven and came out the other "
+           "side standing on something warm that was breathing. Four stops lie between the ring "
+           "and the Guardian: a doorway, a village of moss, a reef that sings, and a wound that "
+           "will not stop spreading."),
+("dm", "**The rift run is played on the Underroot board.** The board rules, the eight wandering "
+       "encounters of the road between, and a printable two-page board all live in the appendix: "
+       "read them once before tonight. In the chapter itself, the story pauses wherever the "
+       "token lands."),
 
     ("h2", "The Rift Gate: The First Breath"),
-    ("img", f"{S8}/loc_rift_gate.png",
-     "The first footprints anyone from Gearhaven has ever left in another world.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "You expected a cave.\n"
              "You are standing inside a root. One root, arched over you like the "
              "ceiling of a great hall, running away into the dark in both directions "
@@ -746,6 +572,9 @@ BLOCKS = [
              "with no other air behind it.\n"
              "Behind you the ring hangs open, a bright coin of Gearhaven lamplight. "
              "Vane's shape is standing in it with his arms folded, getting smaller."),
+    ("img", f"{S8}/loc_rift_gate.png",
+     "The first footprints anyone from Gearhaven has ever left in another world.",
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "**Four beats to land here, one per hero and one for Ghostbloom.** **The "
            "Sphere is warm** in Lilly's hands, and it is *pulling*: she can feel it "
            "gathering, it has never done that before, and it does not stop for the rest "
@@ -762,9 +591,6 @@ BLOCKS = [
            "spend it."),
 
     ("h2", "1. Mosslight Landing: The Friendly Face"),
-    ("img", f"{S8}/loc_mosslight_landing.png",
-     "The only place in Underroot that will seem glad to see them.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "The walk from the ring is the first walking any of you have done in "
              "another world. The ground gives a little under every step, warm as the "
              "flank of something asleep. The moss brightens ahead of you and dims "
@@ -773,6 +599,9 @@ BLOCKS = [
              "height with every petal spread, chiming to herself. Nothing hurries you. "
              "Nothing follows. After an hour, that stops feeling like mercy and starts "
              "feeling like being noticed by something too big to be interested yet."),
+    ("img", f"{S8}/loc_mosslight_landing.png",
+     "The only place in Underroot that will seem glad to see them.",
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("gold", "Then the root opens into a hollow the size of a village, and it is "
              "beautiful. Round mossy mounds rise out of the floor, each with a little "
              "round door of packed earth, though nobody built them and nobody lives in "
@@ -833,7 +662,7 @@ BLOCKS = [
              "what these are. They are almost the same as her."),
     ("img", f"{S8}/fight1_the_landing.png",
      "Six that spread the grey, and a whole floor that rises to defend them.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"crop": "16:9", "hmax": 3.6}),
 
     # ENEMY_CARDS_FIGHT_1
     ("dm", "**This fight exists to hand Stabby the session.** Rotblooms re-bloom every "
@@ -881,9 +710,6 @@ BLOCKS = [
              "very faintly, something rings."),
 
     ("h2", "2. Chime Reef: The Beautiful Trap"),
-    ("img", f"{S8}/loc_chime_reef.png",
-     "A thousand years of patient growing, and none of it for visitors.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "The road out of the Landing runs uphill, and Underroot changes as you "
              "climb. The moss thins first, its glow guttering out until your own "
              "lamps are doing most of the work. Then the soil changes under it: "
@@ -895,6 +721,9 @@ BLOCKS = [
              "low and sweet, somewhere underneath hearing, rising through the soles "
              "of your boots, and it grows with every step until you are leaning into "
              "it the way you lean into warmth."),
+    ("img", f"{S8}/loc_chime_reef.png",
+     "A thousand years of patient growing, and none of it for visitors.",
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("gold", "The tunnel opens and you all stop at once, because the sound arrives "
              "before the sight does.\n"
              "Crystals. Thousands of them, growing up out of a shallow black pool in "
@@ -942,7 +771,7 @@ BLOCKS = [
            "weather with legs."),
     ("img", f"{S8}/fight2_the_reef.png",
      "Every note in the cavern is now about you.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"crop": "16:9", "hmax": 3.6}),
 
     # ENEMY_CARDS_FIGHT_2
     ("dm", "**This is a real fight and they are tough.** AC 16, they hit hard, and "
@@ -1028,9 +857,6 @@ BLOCKS = [
            "they do not."),
 
     ("h2", "3. The Glassed Gallery: The Wound"),
-    ("img", f"{S8}/loc_glassed_gallery.png",
-     "Black glass from wall to wall, and the shine of it is the worst part.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "You know something is wrong a hundred feet before you reach it, "
              "because the ground stops breathing.\n"
              "Ahead of you the roots are **black glass**. Not burned: glassed, "
@@ -1040,6 +866,9 @@ BLOCKS = [
              "lamps look small.\n"
              "And every surface, when you get close, is covered in fine cracks "
              "that are very slowly, very quietly, spreading."),
+    ("img", f"{S8}/loc_glassed_gallery.png",
+     "Black glass from wall to wall, and the shine of it is the worst part.",
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "**Let them feel the size of it.** This is not a monster's lair; it is "
            "a burn scar going outward at the speed of grass growing, and it has "
            "been going for two years. Nothing here needs a check to understand. "
@@ -1075,9 +904,6 @@ BLOCKS = [
            "below before anything moves."),
 
     ("h2", "Fight 3: The Glass Weeper"),
-    ("img", f"{S8}/mon_glass_weeper.png",
-     "The Gallery's keeper, as the corruption remembers it.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "Something is still standing in the gallery.\n"
              "It has the shape of one of the big slow root-tenders: a long neck, "
              "a crown of fronds for combing the roots clean. It is far too tall "
@@ -1089,6 +915,9 @@ BLOCKS = [
              "over, patiently, forever.\n"
              "Around its feet, rolling in fast, are lumps of black glassy coal "
              "the size of ripe pumpkins, each with one furious orange eye."),
+    ("img", f"{S8}/mon_glass_weeper.png",
+     "The Gallery's keeper, as the corruption remembers it.",
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("gold", "It does not notice you until your light touches it. Then the "
              "sweeping stops.\n"
              "The long neck comes around. The crown of broken fronds opens like "
@@ -1100,7 +929,7 @@ BLOCKS = [
              "you."),
     ("img", f"{S8}/fight3_the_gallery.png",
      "Rolling coal, keening glass, and the hardest fight on the road down.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "**The Cinderolls arrive two at a time**, so the pressure never stops "
            "and never quite swamps the party. Do not open with all four. The "
            "Weeper does not chase and never leaves its roots; it does not have "
@@ -1186,9 +1015,6 @@ BLOCKS = [
                "they have felt underfoot all day turns out to have had a source."),
 
     ("h2", "4. Groudon's Hollow: The Guardian"),
-    ("img", f"{S8}/loc_groudons_hollow.png",
-     "The bottom of the world, where every road in Underroot has been leading.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "The tunnel ends at a ledge, and past the ledge there is no floor. Your light goes "
              "out into the dark and does not come back with a far side.\n"
              "Something down there is breathing.\n"
@@ -1198,6 +1024,9 @@ BLOCKS = [
              "gate.\n"
              "It was never the plane breathing.\n"
              "It was **him**."),
+    ("img", f"{S8}/loc_groudons_hollow.png",
+     "The bottom of the world, where every road in Underroot has been leading.",
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("img", f"{S8}/mon_groudon_corrupted.png",
      "The Continent-Maker. The glowing seams are his own. The black glass is not.",
      6.2, {"crop": "3:2", "hmax": 4.3}),
@@ -1213,7 +1042,7 @@ BLOCKS = [
     ("h2", "The Fight, and What It Is Actually About"),
     ("img", f"{S8}/boss_groudon_spike.png",
      "Everything in this room is enormous except the thing that matters.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "**Groudon is not the villain. The spike is.** This is the Grand Custodian rule from "
            "Gearhaven at ten times the scale: *free the guardian and the cracks close.* Say the "
            "rule out loud at the table if the players do not reach for it themselves, because the "
@@ -1311,9 +1140,6 @@ BLOCKS = [
     ("h1", "The Way Home"),
 
     ("h2", "When the Spike Breaks"),
-    ("img", f"{S8}/the_spike_breaks.png",
-     "The first thing he has felt in two years that is not pain.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "The black glass does not shatter.\n"
              "It comes apart all at once and quietly, like a held breath let go, into a spray of "
              "dark motes that hang in the air for a single heartbeat and then rush, every one of "
@@ -1326,6 +1152,9 @@ BLOCKS = [
              "Then he turns his head, slowly, and looks at the three of you properly for the "
              "first time.\n"
              "He is not angry. He is so tired."),
+    ("img", f"{S8}/the_spike_breaks.png",
+     "The first thing he has felt in two years that is not pain.",
+     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("dm", "Everything after the spike is the part they will remember. Slow down. This is not the "
            "end of a fight; it is the end of two years of somebody's pain, and the whole session "
            "has been walking toward it."),
@@ -1355,9 +1184,6 @@ BLOCKS = [
            "everybody's memory, and it should come out of a player's mouth, not yours."),
 
     ("h2", "Antares"),
-    ("img", f"{S8}/antares_relights.png",
-     "The eastern sky over Gearhaven, carrying news only one person in the city can read.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "You come out of the ring into lamplight and noise, with Vane shouting three "
              "questions at once, and it is a long few minutes before anybody thinks to look up.\n"
              "**Ursa does.**\n"
@@ -1369,6 +1195,9 @@ BLOCKS = [
              "do something about it. In all the watching since, nobody has ever seen a star come "
              "back.\n"
              "This one has."),
+    ("img", f"{S8}/antares_relights.png",
+     "The eastern sky over Gearhaven, carrying news only one person in the city can read.",
+     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "**Only Ursa understands what he is looking at, and that is the point.** He watched "
            "Antares dim on the night they left and said nothing to anybody; he has spent a year "
            "with those charts. Let his player be the one to explain it to the others, in his own "
@@ -1379,9 +1208,6 @@ BLOCKS = [
            "seen it work."),
 
     ("h2", "The Sphere Will Not Settle"),
-    ("img", f"{S8}/homecoming_sandshrew.png",
-     "The brightest thing Vane's workshop has ever held, about to introduce itself.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "The Sphere has been getting brighter since Underroot, and now it is too bright to "
              "look at straight. It is warm as a stove top. It hums against Lilly's palms hard "
              "enough to make her teeth ache.\n"
@@ -1391,6 +1217,9 @@ BLOCKS = [
              "time.\"\n"
              "\"So what happens?\" says Lilly.\n"
              "\"It is going to have to choose.\""),
+    ("img", f"{S8}/homecoming_sandshrew.png",
+     "The brightest thing Vane's workshop has ever held, about to introduce itself.",
+     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "**Ghostbloom chooses first.**\n"
              "Nobody asks her to. Nobody gets the chance. She drifts around in front of Lilly so "
              "the two of them are eye to eye, and she chimes once, the small clear note she has "
@@ -1756,6 +1585,204 @@ BLOCKS = [
            "the dishes are done, and they will be right to. Then hand Sandshrew over and **let "
            "them run the first swap themselves**, right there in the workshop, just to prove it "
            "works and get Ghostbloom back out where they can see her."),
+
+
+    ("appendix_title", "APPENDIX", "The Underroot Board",
+     "The board, its rules, the road between the landings, and a printable two-page map."),
+
+    ("h2", "How the Board Works"),
+    ("img", f"{S8}/underroot_board.png",
+     "The whole country between the ring and the Guardian, laid out one landing at a time.",
+     6.4, {"hmax": 4.4}),
+    ("dm", "**One token, everybody's hands.** The party moves as a single token. On their "
+           "turn a player rolls **1d6** and moves that many spaces, and whoever holds the "
+           "token rotates on every roll, so every player gets to move it. They land on a "
+           "colour and it resolves at once."),
+    ("dm", "**The die they moved with resolves the dot.** Each colour has two outcomes, and "
+           "even or odd picks which one happens: no table to look up, no second roll, no "
+           "pause. Slate blue is plain movement and does nothing on either result. All "
+           "eight outcomes are written out in full in *The Road Between*."),
+    ("dm", "**The four numbered locations are not dots.** They are fixed story stops. The "
+           "token halts at each one no matter how much movement is left, the beat plays "
+           "out, and movement resumes on the next turn. **The Rift Gate is the arrival and "
+           "has no fight.**"),
+    ("dm", "**They came here to fight.** Nothing in this session can be talked down, waited "
+           "out, or avoided. Levers and objectives exist to turn a grinding fight into a "
+           "satisfying one, never to skip it, and finding one is the reward."),
+    ("dm", "**SHORT REST, immediately after the reef.** Call it out loud so nobody misses "
+           "it: Hit Dice spent, Stabby's Focus back, Ursa's Wild Shape back, Lilly's "
+           "Aether Ward back. Fight 3 assumes they took it."),
+    ("dm", "**A note on the numbers.** Fights 2 and 3 sit deliberately above a \"deadly\" "
+           "budget on paper, and both have a lever that collapses them: **thunder stuns a "
+           "Chimestone and doubles all damage against it**, and **tending the roots strips "
+           "the Weeper's regeneration**. A party that finds the lever wins comfortably. A "
+           "party that ignores it is in a real fight. That gap is the fun, so do not "
+           "soften either one before the players have had their chance to be clever."),
+
+    ("h1", "The Road Between"),
+    ("bridge", "Underroot is not empty between the landings, and the dark between them has "
+               "its own weather."),
+    ("gold", "The ground stays warm the whole way, and it goes on breathing under your "
+             "boots, slow as something enormous asleep. There is no sky to measure your "
+             "progress against, so the only way to know you are moving is the moss light "
+             "going out behind you, patch by patch, as you leave it.\n"
+             "Twice, something out in the dark keeps pace with you for a while. It is big "
+             "enough to hear. It never arrives."),
+    ("dm", "**How a dot resolves.** Read the die they moved with. **Garnet** is an "
+           "Encounter (even: Thumpaw; odd: the Gleamoth). **Moss** is a Boon (even: the "
+           "Deepwater Spring; odd: the Shortcut). **Ochre** is a Hazard (even: Sinkloam; "
+           "odd: the Ceiling Lets Go). **Amethyst** is Wild (even: the Reef Answers; odd: "
+           "the Guardian's Dream). Slate blue is simply movement: nothing happens, keep "
+           "going."),
+    ("dm", "**Garnet dots are small pressure, and that is all they are.** Two or three "
+           "weak things that cost a little resource and no more. Never let a dot roll "
+           "swell into a fifth big fight: the four scripted encounters are the session, "
+           "and the dots are texture between them. Thumpaw and the Gleamoth appear "
+           "nowhere else in Underroot, which is exactly what makes a garnet dot feel like "
+           "luck instead of filler. Pace check: there are 22 dots between the gate and "
+           "the Hollow, so if the evening is running long, hand-wave the dots between "
+           "locations 3 and 4 and go straight to Groudon."),
+
+
+    ("railrow", f"{S8}/road_rail.png", 2.5, [
+    ("h2", "Thumpaw"),
+
+    ("gold", "A shape unfolds out of what you took for a boulder. It is the size of a cart "
+             "horse, round and shaggy with matted brown moss growing over stone-grey "
+             "hide, and it has hands like shovels. It looks at you with small patient "
+             "eyes and does not move, because you are standing in the tunnel it was going "
+             "to use."),
+    ("dm", "**Garnet dot, even. One Thumpaw.** It will not move, it is directly in the "
+           "way, and when somebody inevitably prods it, it swings. This is a straight "
+           "brawl and that is the point: **76 hit points**, two big slams a turn, no "
+           "gimmick and no puzzle. Sometimes a table simply wants to hit something large "
+           "until it stops, and this is that. It never pursues and it never finishes a "
+           "downed hero; it is grumpy, not evil. If the party genuinely tries to befriend "
+           "it rather than fight it, **DC 15 Animal Handling**, with advantage from "
+           "Ursa's Mark of Handling, will move it aside. Do not offer that. Let them "
+           "think of it."),
+
+    ("h2", "The Gleamoth"),
+    ("gold", "The lights come round the corner before the sound does: forty pale green "
+             "sparks drifting like blown seeds. They are moths, each the size of a hand, "
+             "and every one of them is glowing, and they want the warmest thing in the "
+             "tunnel, which is you."),
+    ("dm", "**Garnet dot, odd. Three Gleamoth Swarms**, not corrupted, just hungry for "
+           "heat. They **blind and smother** rather than deal much damage, and they go "
+           "for whoever is carrying light. **Fire and thunder scatter them fast**, so "
+           "anything that hits an area is worth double here. The real cost is the Sphere: "
+           "they are drawn to it hardest, which puts the swarm on Lilly for the whole "
+           "fight and makes the rest of the party come to her."),
+    ]),
+
+    ("h2", "The Deepwater Spring"),
+    ("gold", "A crack in the wall, and inside it a pool so still and so clear that the "
+             "pale stones forty feet down look close enough to lift out. Nothing feeds "
+             "it. Nothing drains it. And yet the surface keeps turning over, slow and "
+             "patient, the way water moves when something a long way underneath it is "
+             "still working. It is very cold, and it tastes like the air after "
+             "lightning, and by the time you have all drunk, the ache has gone out of "
+             "your legs and none of you can say when it left."),
+    ("dm", "**Moss dot, even.** Everyone regains **1 Hit Die** and clears **one level of "
+           "exhaustion**. Ghostbloom glows brighter for an hour and is insufferable "
+           "about it."),
+
+    ("h2", "The Shortcut"),
+    ("gold", "Something small and yellow-brown is waiting for you on a mound in the "
+             "middle of the path, up on its back legs, and it does not run when your "
+             "light finds it. It looks at you. Then it looks, very deliberately, at the "
+             "blank wall on its left. Then back at you, and it keeps doing that until "
+             "somebody understands. Then it drops and digs, and the packed earth goes "
+             "soft in front of its claws like water, and the tunnel it opens runs "
+             "straight and level and exactly the way you were trying to go. It is gone "
+             "before any of you reach the far end. All it leaves behind is a scuffed "
+             "patch of loose soil where it stood, and the distinct feeling of having "
+             "been done a favour."),
+    ("dm", "**Moss dot, odd. Advance the token 3 spaces free.** If the party was unkind "
+           "to the Sandshrew at Mosslight Landing, it watches them take the long way "
+           "round instead, and that should sting."),
+
+    ("imgrow", [(f"{A}/session_08/events/D3_deepwater_spring.png",
+                 "The Deepwater Spring: the pool keeps its own light."),
+                (f"{A}/session_08/events/D4_sandshrew_shortcut.png",
+                 "The Shortcut: a door where there was wall.")], 3.1),
+    ("h2", "Sinkloam"),
+    ("gold", "The floor stops being floor. There is no sound and no warning: one step is "
+             "packed earth and the next is warm wet loam that takes your boot, then your "
+             "shin, then your knee, and goes on politely taking. It is worst for the "
+             "smallest of you: the loam does not care how clever anyone is, and whoever "
+             "goes in deepest is suddenly fighting to keep their arms above the surface "
+             "while the ground drinks the rest of them with terrible, unhurried "
+             "patience."),
+    ("dm", "**Ochre dot, even.** Everyone makes a **DC 13 Strength save** or is "
+           "**restrained**, spending an action to pull free. Heavy armour has "
+           "disadvantage on the save. If Lilly goes under, she holds the Sphere over "
+           "her head with both hands the entire time, and somebody has to go back for "
+           "her."),
+
+    ("h2", "The Ceiling Lets Go"),
+    ("gold", "You feel it before you hear it: a low grinding roll somewhere far above, "
+             "the sound a mountain would make turning over in its sleep. Then dust "
+             "comes down in fine threads. Then the threads become gravel. You have "
+             "exactly long enough to look up and understand what is about to happen, "
+             "and nowhere near long enough to be somewhere else, and then the ceiling "
+             "of the world lets go.\n"
+             "When the roar stops and the air clears enough to breathe, the passage you "
+             "came in by is not there. In its place is a wall of new stone, still warm, "
+             "still shifting and settling against itself, and above you Underroot has "
+             "already gone quiet again, as though it had shrugged in its sleep and "
+             "thought nothing of it."),
+    ("dm", "**Ochre dot, odd. DC 14 Dexterity save**, **2d10 bludgeoning** on a failure "
+           "and half as much on a success. The passage behind them is now blocked, "
+           "which matters a great deal if anyone was planning to run."),
+
+    ("imgrow", [(f"{A}/session_08/events/D5_sinkloam.png",
+                 "Sinkloam: patient, and wearing the colour of safe ground."),
+                (f"{A}/session_08/events/D6_rockfall.png",
+                 "The Ceiling Lets Go: you can only be lucky.")], 3.1),
+    ("h2", "The Reef Answers"),
+    ("gold", "Somewhere far off, a single crystal note. Then another underneath it, and "
+             "another, until the whole tunnel is ringing in a slow enormous chord you "
+             "can feel in your ribs, and the moss on the walls lights up in time with "
+             "it."),
+    ("dm", "**Amethyst dot, even.** Everyone gains **2d8 temporary hit points**, and "
+           "Ghostbloom sings back, badly, at the top of her voice. **This is a good "
+           "place for the short rest** if the party has not taken it yet."),
+
+    ("h2", "The Guardian's Dream"),
+    ("gold", "For half a second the three of you see the same thing, and Ghostbloom sees "
+             "it too, and none of you asked for it.\n"
+             "An empty sea under an empty sky, going on forever. And something walking "
+             "through it, huge and slow and patient, and where it walks the water "
+             "shoulders aside and dry land comes up behind it, steaming, new.\n"
+             "Then it is gone and you are standing in a tunnel again."),
+    ("dm", "**Amethyst dot, odd. No mechanical effect.** They have just watched Groudon "
+           "remember his own job, and they will not understand what they saw until they "
+           "are standing in front of him. Ursa may **regain one spent Omen Dream**, "
+           "because something has just spoken to him and he does not know what."),
+
+    ("lore", "The Living Country",
+     "The sky-readers teach that a plane is not a place but a creature: one living "
+     "thing wearing a country for a body, with weather for moods and seasons for a "
+     "pulse. Walk gently, the Circle says, for every step in another world is a step "
+     "on somebody. The old verses go further still: each world keeps one guardian, "
+     "very old, that is somehow the shape of that world's health, and to free a "
+     "guardian is to heal the country it carries."),
+
+
+    ("h2", "The Board, Ready to Print", {"hardbreak": True}),
+    ("dm", "**Two Letter pages, taped at the seam.** The full board is split below for home "
+           "printing; the original one-piece file and a print-ready PDF live in the repo at "
+           "assets/session_08/."),
+    ("imgrow", [(f"{S8}/underroot_board_page1_left.png",
+                 "Left half: the gate through the reef."),
+                (f"{S8}/underroot_board_page2_right.png",
+                 "Right half: the gallery to the Hollow.")], 3.15),
+
+    ("imgrow", [(f"{A}/session_08/events/D7_the_reef_answers.png",
+                 "The Reef Answers: an invitation through a mile of stone."),
+                (f"{A}/session_08/events/D8_the_guardians_dream.png",
+                 "The Guardian's Dream: a memory that is not theirs.")], 3.1),
 
     ("appendix_title", "APPENDIX", "Bestiary: Enemy Stat Blocks",
      "Every creature of Underroot, in the order the party meets them."),

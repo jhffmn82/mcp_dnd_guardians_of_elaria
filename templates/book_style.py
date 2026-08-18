@@ -569,6 +569,52 @@ def build_doc(blocks, out_path):
                 _set_font(r, Pt(9), italic=True, color=CAPTION_GRAY)
             doc.add_paragraph().paragraph_format.space_after = Pt(4)
 
+        elif kind == "railrow":
+            # (railrow, rail_path, rail_w_in, [inner blocks]) - a text column
+            # beside a stacked image rail, rendered as ONE table row. This is
+            # the engine-safe replacement for anchored floats: it flows with
+            # the page, splits across pages, and can never overlap a margin
+            # or shred a wrap. Inner blocks support h2 / gold / dm / body.
+            # Rail images carry their own baked-in captions.
+            _, rpath, rw, inner = blk
+            tbl = doc.add_table(rows=1, cols=2)
+            tbl.autofit = False
+            tbl.alignment = 1
+            tpr = tbl._tbl.tblPr
+            mar = OxmlElement('w:tblCellMar')
+            for side in ('left', 'right'):
+                el = OxmlElement('w:' + side)
+                el.set(qn('w:w'), '0'); el.set(qn('w:type'), 'dxa')
+                mar.append(el)
+            tpr.append(mar)
+            text_w = 6.5 - rw - 0.22
+            ct, cimg = tbl.cell(0, 0), tbl.cell(0, 1)
+            ct.width = Inches(text_w); cimg.width = Inches(rw + 0.22)
+            first = True
+            for ib in inner:
+                ikind = ib[0]
+                if first:
+                    p = ct.paragraphs[0]; first = False
+                else:
+                    p = ct.add_paragraph()
+                p.paragraph_format.right_indent = Pt(10)
+                if ikind == "h2":
+                    p.paragraph_format.space_before = Pt(9)
+                    p.paragraph_format.space_after = Pt(3)
+                    p.paragraph_format.keep_with_next = True
+                    r = p.add_run(ib[1]); _set_font(r, Pt(13), True, color=H2_COLOR)
+                elif ikind == "gold":
+                    _shade(p, GOLD_FILL, GOLD_EDGE); _rich(p, ib[1])
+                elif ikind == "dm":
+                    _shade(p, PURPLE_FILL, PURPLE_EDGE)
+                    _rich(p, "▶ " + ib[1], base_size=Pt(9.5))
+                else:
+                    _rich(p, ib[1])
+            data, pw, ph = _image_png_bytes(rpath)
+            cimg.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+            cimg.paragraphs[0].add_run().add_picture(io.BytesIO(data), width=Inches(rw))
+            doc.add_paragraph().paragraph_format.space_after = Pt(4)
+
         elif kind == "melody":
             # (melody, text) a sung verse or carol, set like sheet-music epigraph
             for i, line in enumerate(blk[1].split("|")):
