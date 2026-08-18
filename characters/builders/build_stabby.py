@@ -220,6 +220,17 @@ story.append(Paragraph(
     "became calm and disciplined, but he blended those moves into his own wild style: grace plus chaos. Then he "
     "left the Hollow looking for adventure… and found Lilly and Ursa, who were chasing magical "
     "creatures and enchanted potatoes. Stabby didn’t need any convincing, he jumped right in for the fun.", body_st))
+story.append(Spacer(1,4))
+story.append(Paragraph(
+    "Two years of adventuring later, Stabby has fought shadow beasts, swum away from the sinking "
+    "<b>Stormwind</b>, walked haunted <b>Wraithpine</b> (where Elaria's chest gave him the <b>Sash of the "
+    "Swift Current</b>), and helped free the clockwork city of <b>Gearhaven</b>. When the heroes parted "
+    "for a year, he went home. He walked into the twisted woods of Bloodthorn Hollow and <b>burned the "
+    "blight out of them</b>, root and all, then climbed the mountain called Kettlecrown, where the "
+    "<b>Sunward Vigil</b> taught him stillness and forged him the <b>Nichirin</b>, a blade that burns "
+    "corruption. He came down a <b>Warrior of Beast Breathing</b>, taught the smallest goblins of the "
+    "Hollow his one-second count, and was offered his father's seat; he said <b>not yet</b>. Nobody in "
+    "the Hollow calls him the runt anymore.", body_st))
 
 h2("Personality")
 per=[

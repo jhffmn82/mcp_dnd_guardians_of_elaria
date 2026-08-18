@@ -415,6 +415,17 @@ story.append(Paragraph(
     "give Pikachu a body again. That mission led her out of the Underdark to find Ursa, and along the way she "
     "met Stabby. The three became an unlikely team, chasing the mystery of the Essence Sphere, and the "
     "planar cracks tied to the sleeping goddess Elaria.", body_st))
+story.append(Spacer(1,4))
+story.append(Paragraph(
+    "Two years of adventuring later, Lilly has zapped shadow beasts, survived the sinking of the "
+    "<b>Stormwind</b>, walked the haunted lanes of <b>Wraithpine</b> (where Elaria's chest gave her the "
+    "<b>Pocket Dynamo</b>), and helped free the clockwork city of <b>Gearhaven</b>, where she built "
+    "<b>Puff</b> with her own hands. When Vane's great ring needed a year to finish, she went home first: "
+    "she set the Sphere on her mother's kitchen table and said <i>tell me everything</i>. The answer was "
+    "not in the stories, so she earned it on the trade roads, one workshop at a time, until the "
+    "forty-first time she opened the housing she found <b>older marks under her mother's sigils</b>: the "
+    "Sphere is not a machine holding a spark, it is a <b>seed that grows</b>. She came back to Gearhaven "
+    "with her craft gone from clever to formidable, and with proof.", body_st))
 
 h2("Personality")
 per=[

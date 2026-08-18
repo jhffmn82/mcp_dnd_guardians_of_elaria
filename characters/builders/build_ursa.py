@@ -451,6 +451,17 @@ story.append(Paragraph(
     "to his father, he set out and crossed paths with <b>Lilly</b> and her Essence Sphere, and the wild goblin "
     "<b>Stabby</b>. The three became an unlikely family, chasing planar cracks, enchanted potatoes, and the guiding "
     "hand of the sleeping goddess <b>Elaria</b>.", body_st))
+story.append(Spacer(1,4))
+story.append(Paragraph(
+    "Two years on, Ursa has read the sky over half of Elaria: haunted forests, a drowned ship, the "
+    "bell-towers of Wraithpine where the chest gave him his <b>Staff of Waking Constellations</b>, and "
+    "the Rift Hall of Gearhaven, with gentle <b>Floraburst</b> becoming <b>Ghostbloom</b> along the way. In "
+    "the year apart he went east, alone, carrying his father's field notes: eleven months of walking, a "
+    "country with no sky crossed cairn to cairn, and at the end of the road his father's camp, empty "
+    "for only <b>three years, not nine</b>. Under a flat rock he found a river stone carved with half of "
+    "Elaria's star, and it has been warm ever since. On his eighth night at the old shrine the clouds "
+    "broke, <b>Elaria showed him three things</b>, and he walked home a <b>Reader of Omens</b> carrying a "
+    "word from his father's notes: <b>Betelgeuse</b>, the first star to go out.", body_st))
 
 per = [
     ('Personality', 'Determined and resilient. Quiet and watchful, but never gives up. '
