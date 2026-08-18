@@ -66,3 +66,11 @@ commit-generated-artifacts rule (session scripts age out). No em dashes.
 - Sandshrew's Challenge + Curl Up + nonmagical resist is near-immunity vs
   nonmagical melee packs; blind effects are the honest counter, and magical
   or cold attackers flip the matchup.
+- **The Nichirin does not stun Chimestones** (DM ruling 2026-08-18): Resonant
+  Body keys on thunder damage, and the katana is slashing and force. Lilly's
+  Boomstick is the martial thunder source, one stun per turn.
+- **S8 roster retune adopted from the 20-run sweep**: 8x Rotbloom 33 / 8x
+  Mossmite, 4x Chimestone 78 / 4x Shardwing 33, Weeper 170; spike stays 60 HP
+  but re-knits 20 at the start of Groudon's turn unless Cleansing Edge touched
+  it since his last turn (raising spike HP just lets the ranged battery steal
+  Stabby's finish).

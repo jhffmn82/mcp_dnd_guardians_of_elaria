@@ -90,7 +90,7 @@ BLOCKS = [
              "planes, or the creatures that fall out of them, the way Aelwyn Ravenstone does. He "
              "has spent thirty years studying the far sides of doors that were never supposed to "
              "open, and now one is about to open on purpose, and he intends to be standing at it "
-             "when it does. The trunks are full of field guides. Most of them he wrote."),
+             "when it does. The trunks are full of field guides, and he wrote most of them himself."),
     ("img", f"{S8}/B_aelwyn_arrives.png",
      "Three trunks, no porters, and one small green passenger who did not pay a fare.",
      6.2, {"crop": "16:9", "hmax": 3.6}),
@@ -107,7 +107,7 @@ BLOCKS = [
              "though he is listening to something a half second behind the voice. In his left hand "
              "is a stone that he turns over and over without seeming to know he is doing it.\n"
              "He has been walking east for a year. He does not look like someone who found what he "
-             "was looking for. He does not look like someone who failed, either.\n"
+             "was looking for, but he does not look like someone who failed, either.\n"
              "The first thing he does inside the gate is stop, and look up, and stand there long "
              "enough that the morning crowd has to part around him: checking the eastern sky "
              "against something he carries in his head. Whatever he finds there, he keeps to "
@@ -132,8 +132,8 @@ BLOCKS = [
            "against the flagstones with a dull, wrong sound. It is the small carved idol that "
            "appeared in his bag after Wraithpine, which nobody has ever explained and no one saw "
            "put there. Tonight, forty feet from a portal that is not even lit, **it is cold enough "
-           "to burn**. He has carried it a year and it has never done that. Do not explain it. Do "
-           "not promise anything about it. Let it sit."),
+           "to burn**. He has carried it a year and it has never done that. Do not explain it "
+           "tonight, and do not promise anything; just let it sit."),
     ("gold", "And then, for the first time in a year, all of you are standing in the same room.\n"
              "Nobody makes a speech. Stabby hugs Lilly hard enough to lift her off the floor, and "
              "Ursa puts a hand on each of their shoulders, and Lickgloom licks everyone whether "
@@ -178,11 +178,11 @@ BLOCKS = [
         ("gold", "So she went looking.\n"
              "She earned her answers out of Master Sparkwick at Glimmerspire, one stubborn "
              "question at a time, and his verdict sent her down the trade roads. She paid a dozen "
-             "artificers in the only currency she had, which was work.\n"
-             "A season with a clockmaker who could not cast a single spell and whose escapements "
-             "humbled her anyway. Weeks on the road between one workshop and the next, the Sphere "
-             "wrapped in wool at the bottom of her pack. Two more passes through Gearhaven with "
-             "Vane shouting about tolerances.\n"
+             "artificers the only way she could, with work.\n"
+             "She spent a season with a clockmaker who could not cast a single spell and whose "
+             "escapements humbled her anyway, then weeks on the road between one workshop and "
+             "the next with the Sphere wrapped in wool at the bottom of her pack, then two more "
+             "passes through Gearhaven with Vane shouting about tolerances.\n"
              "By midwinter her craft had gone from clever to formidable, and she still did not "
              "have her answer."),
     ]),
@@ -216,7 +216,7 @@ BLOCKS = [
              "gatherer.** It was built to pull in loose planar essence and hold it. It held "
              "Pikachu because Pikachu's spark was loose, and the Sphere does not know the "
              "difference between a scrap of stray fire and somebody's friend. You cannot pick a "
-             "gatherer's lock. You can only give it something to gather.\n"
+             "gatherer's lock; all you can do is give it something to gather.\n"
              "So she stopped building at it, and started listening to it."),
     ("dm", "**What she brings back.** *Aether Channeler*: she can draw the **Aether Ward** out of "
            "the Sphere, **2d8 + 5 temporary hit points** to herself and every friend within 30 "
@@ -234,12 +234,12 @@ BLOCKS = [
            "he came back; let him act out as much of it as he wants."),
     ("gold", "Every clan has one child who is a problem, and the Bloodfang had Stabby.\n"
              "Goblin children learn the clan's arts from the time they can stand, and the arts "
-             "simply did not take with him. Every stance slid off. He was not lazy and he was not "
-             "stupid. He was *unteachable*, in a clan with exactly one measure of a person's "
-             "worth, and by the time he was five everyone had quietly agreed what he was going to "
-             "be.\n"
-             "So he became the joke on purpose. If they were going to laugh anyway, he would "
-             "decide what they laughed at."),
+             "simply did not take with him. Every stance slid right off, and not because he was "
+             "lazy or stupid. The word the clan used was *unteachable*, and in a clan with "
+             "exactly one measure of a person's worth, everyone had quietly agreed by the time "
+             "he was five what he was going to be.\n"
+             "So he became the joke on purpose. If they were going to laugh anyway, he wanted "
+             "to be the one who decided what they laughed at."),
     ("body", "Then **Skitch** came. The young Bloodfang courier the party pulled half-dead out of "
              "the machinery under Gearhaven had been sent a very long way to find the only "
              "Bloodfang anyone could name who had gone out into the world and come back alive "
@@ -250,15 +250,15 @@ BLOCKS = [
              "biggest hunter, then the second biggest, then on down the list. The Bloodfang had "
              "one law, which was that the biggest goblin wins, and something in the woods was "
              "eating them in order.\n"
-             "By the time Stabby walked back in, the clan was mostly the small ones. The "
-             "overlooked ones. He knew every single one of them. He had been the smallest of them "
-             "once.\n"
+             "By the time Stabby walked back in, the clan was mostly the small ones, the "
+             "overlooked ones, and he knew every single one of them, because he had been the "
+             "smallest of them once.\n"
              "He saved them the way he does everything, fast and loud and extremely well: eleven "
              "weeks of hunting, the whole Hollow moved twice over furious objection, traps a "
              "cleverer person would not have thought of. By the end of summer the Bloodfang were "
              "not dying anymore.\n"
-             "But he had not fixed it. He had only outrun it. Candyfang went through the "
-             "corrupted things the way a knife goes through smoke."),
+             "But he knew he had not fixed it, only outrun it, because Candyfang went through "
+             "the corrupted things the way a knife goes through smoke."),
 
     ("h2", "The Fourth"),
     ("gold", "It was old Nokk who finally told him why, by a banked fire, in the voice goblins "
@@ -268,8 +268,8 @@ BLOCKS = [
              "woods, and the Fourth went to meet it alone, and he did not kill it, because it was "
              "not the kind of thing that can be killed. **He sealed it.** The only vessel to hand "
              "that night was his newborn son, and it cost him his life to do it.\n"
-             "The clan is named Bloodfang for that thing. Not for their own teeth. **The Red "
-             "Fang** is older than the Hollow.\n"
+             "The clan is not named Bloodfang for their own teeth; they are named for that "
+             "thing. **The Red Fang** is older than the Hollow.\n"
              "And that is why the arts never took. There was something enormous asleep behind "
              "Stabby's ribs, pushing back against every form they poured into him. **He was "
              "never unteachable. He was occupied.**"),
@@ -284,14 +284,14 @@ BLOCKS = [
              "killed. A mountain called Kettlecrown, and a sect on it called the Vigil.\n"
              "The Vigil are frog-folk, bullywugs grown enormous with age, and they cared about "
              "exactly one thing, and they tested it on his first morning. They asked him to be "
-             "**still**. Not to sit quietly, which he could have faked. Still, entirely, from the "
-             "inside, in the moment before violence.\n"
+             "**still**: not sitting quietly, which he could have faked, but still all the way "
+             "through, from the inside, in the moment before violence.\n"
              "He failed for eleven weeks. He nearly left twice. And then in the third month, in "
              "the dark, he finally heard the thing Master Kaelon Windstep had said to him years "
              "ago: *when the whole world is screaming, little storm, get still.*\n"
-             "He had always heard it as an order to calm down. It was not. It was smaller and far "
-             "more useful. **Be still for one second, at the one moment that matters.** One "
-             "second, Stabby could do."),
+             "He had always heard it as an order to calm down, but it was something smaller and "
+             "far more useful: **be still for one second, at the one moment that matters.** "
+             "And one second was a thing Stabby could do."),
     ]),
 
     ("railrow", f"{S8}/forge_rail.png", 2.5, [
@@ -301,8 +301,8 @@ BLOCKS = [
              "done the masters put it in his hands and did not say congratulations, because the "
              "blade was the congratulations.\n"
              "It is the dark, quiet sword on his back right now. It cuts corruption out of a "
-             "living thing without cutting the living thing. That is the whole art, and it took "
-             "him a year."),
+             "living thing without cutting the living thing itself, and learning to do that one "
+             "thing is what took him the year."),
     ]),
 
     ("h2", "Home in Winter"),
@@ -310,7 +310,7 @@ BLOCKS = [
              "woods and burned the blight out of the ground, root and all.\n"
              "The Bloodfang had watched their biggest and best taken one after another for two "
              "years, and the thing that finally walked out of those woods with the blight dead "
-             "behind it was **the runt**. The clan joke. The one they had all quietly agreed was "
+             "behind it was **the runt**: the clan joke, the one they had all quietly agreed was "
              "not worth teaching.\n"
              "There is not a goblin in the Hollow who will hear a word against him now."),
     ("img", f"{S8}/Q_the_purge.png",
@@ -318,17 +318,19 @@ BLOCKS = [
      6.2, {"crop": "16:9", "hmax": 3.6}),
 
     ("h2", "Teaching the Count"),
-    ("gold", "The Vigil made him a monk. What made him something else was teaching it. Before he "
-             "left, he lined up the smallest goblins in the Hollow, the overlooked ones, the ones "
-             "he used to be, and taught them the count: one second of stillness, at the one "
-             "moment that matters. The Vigil gave him the basics. His clan gave him the rest."),
+    ("gold", "Before he "
+             "left, he lined up the smallest goblins in the Hollow, the overlooked ones, "
+             "the ones he used to be, and taught them the count: one second of stillness, at the "
+             "one moment that matters. It had taken the masters of Kettlecrown a year to get it "
+             "into him, and he turned out, to everyone's surprise including his own, to be a "
+             "wonderful teacher."),
     ("img", f"{S8}/R_teaching_the_count.png",
      "The first class in Bloodfang history where nobody is measured against anybody.",
      6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "They offered him his father's seat and **he said not yet**, and Nokk was the only one "
            "who noticed he did not say never. He gave them Candyfang as the clan's heirloom, and "
            "by their new law the heirloom is carried by whoever the clan would follow, which is "
-           "why it is still on his belt. It is not his anymore. It is theirs, and he is only "
+           "why it is still on his belt: it is theirs now, and he is only "
            "wearing it."),
     ("gold", "Stabby sits back down, upside-down grin firmly in place.\n"
              "\"Anyway,\" he says. \"I got a sword.\""),
@@ -355,8 +357,8 @@ BLOCKS = [
              "with dates. The same constellation drawn eleven times over eleven months, one point "
              "of light fainter in each drawing. And one word, underlined twice and never "
              "explained: **Betelgeuse.** The first star to go out.\n"
-             "The notes stop in the middle of a page. Not at the end of a thought. In the middle "
-             "of one."),
+             "The notes stop in the middle of a page, partway through "
+             "a sentence."),
     ]),
 
     ("h2", "The Skyless Country"),
@@ -364,8 +366,8 @@ BLOCKS = [
              "where he was going had no roads. Eleven months of walking.\n"
              "When the maps ran out he came into a country where the cloud never breaks. No sun, "
              "no stars, no shadows to steer by. For a druid who navigates by constellations it "
-             "was a blindfold, and he lost eleven days in there, and he will not talk about the "
-             "eleven days.\n"
+             "was a blindfold, and he lost eleven days in there, and he still will not talk "
+             "about them.\n"
              "What saved him was that his father had been there first. **A road of cairns**, "
              "each placed exactly at the edge of sight of the last, so a person could cross the "
              "blind land one stone at a time. Ash built it going out. Ursa walked it going in, "
@@ -380,7 +382,7 @@ BLOCKS = [
         ("gold", "He did not find his father. He found the camp his father made.\n"
              "A firepit long cold. A shelter of bent living branches, still holding. Split wood "
              "stacked ready under cover, and a kettle still hanging from its tripod with "
-             "rain in it. Nothing packed. Nothing buried. **Nobody had said "
+             "rain in it. Nothing was packed and nothing was buried. **Nobody had said "
              "goodbye to this place.**\n"
              "He stayed the first night without touching any of it, because moving so much "
              "as the cup felt like interrupting somebody. The shelter's doorway faced back "
@@ -392,7 +394,7 @@ BLOCKS = [
              "told it plainest: moss takes a stone slowly, at a pace the Circle teaches "
              "you to count, and the moss on those stones had three years' reach and not "
              "one season more.\n"
-             "Not fifteen years. **Three.**"),
+             "The camp had not stood empty for fifteen years. It had stood empty for **three**."),
     ("img", f"{S8}/G_the_empty_camp.png",
      "The tin cup is still where a hand last set it down.",
      6.2, {"crop": "3:2", "hmax": 4.3}),
@@ -416,12 +418,12 @@ BLOCKS = [
              "the word *disappeared*: did my father choose to leave me? The answer is yes, and "
              "the reason is the best reason there has ever been. **Ash Catchum went east to save "
              "the stars.**\n"
-             "The second was a wall at the bottom of everything, and behind it a hunger with "
-             "patience, pressing. He knew the name from the Circle's old verses before the "
+             "The second was a wall at the bottom of everything, with something hungry and "
+             "patient pressing against the far side of it. He knew the name from the Circle's old verses before the "
              "vision finished giving it to him. **Maldrith.**\n"
              "The third was a shadow that walks for her, on a high place with the sky dying "
              "behind it, putting out a light as calmly as a person pinching a candle. And the "
-             "vision gave that one a name too, the way you hand somebody a weapon.\n"
+             "vision gave that one a name too.\n"
              "**Nyxthid.**"),
     ("img", f"{S8}/H_the_vision_in_the_stones.png",
      "The old shrine has been waiting a long time for somebody to keep an eighth night.",
@@ -582,7 +584,7 @@ BLOCKS = [
              "farther than your light can follow. The ground is warm under your boots, "
              "and soft, and it is breathing: a slow rise and settle, about once every "
              "minute, so gentle you have to stand still to be sure of it.\n"
-             "There is no sky. There is no sun. There is light anyway, a low green-gold "
+             "There is no sky down here, and no sun, but there is light anyway, a low green-gold "
              "glow coming off the moss in patches, enough to see by, and the smell that "
              "came through the ring is everywhere now: turned earth after rain, warm, "
              "with no other air behind it.\n"
@@ -603,127 +605,131 @@ BLOCKS = [
            "because she is a plant-spirit standing inside a plane made of growing "
            "things, and she has never been so happy. Let her chime read as joy all "
            "session, right up until the Hollow."),
-    ("dm", "**No encounter here.** They get exactly one safe scene to be amazed. Do not "
-           "spend it."),
+    ("dm", "**No encounter here.** This is the one safe scene where they simply get to be "
+           "amazed, so give it all the room it wants."),
 
     ("h2", "1. Mosslight Landing: The Friendly Face"),
     ("gold", "The walk from the ring is the first walking any of you have done in "
              "another world. The ground gives a little under every step, warm as the "
              "flank of something asleep. The moss brightens ahead of you and dims "
-             "behind, so the country opens the road one patch at a time and quietly "
-             "puts it away again once you have used it. Ghostbloom rides at head "
-             "height with every petal spread, chiming to herself. Nothing hurries you. "
-             "Nothing follows. After an hour, that stops feeling like mercy and starts "
-             "feeling like being noticed by something too big to be interested yet."),
+             "behind, so the road opens one patch at a time and is quietly put away "
+             "again once you have used it. Ghostbloom rides at head height with every "
+             "petal spread, chiming to herself. Nothing hurries you, nothing follows, "
+             "and after an hour that stops feeling like luck and starts feeling like "
+             "being noticed by something too big to be interested yet."),
     ("img", f"{S8}/loc_mosslight_landing.png",
      "The only place in Underroot that will seem glad to see them.",
      6.2, {"crop": "16:9", "hmax": 3.6}),
     ("gold", "Then the root opens into a hollow the size of a village, and it is "
              "beautiful. Round mossy mounds rise out of the floor, each with a little "
-             "round door of packed earth, though nobody built them and nobody lives in "
-             "them; that is simply the shape moss grows in here. Threads of pale gold "
-             "light drift up from the ground like slow sparks going the wrong way.\n"
-             "Something is watching you from the top of the nearest mound. It is about "
-             "the size of a badger, armoured in overlapping plates of yellow-brown "
-             "hide, with small dark eyes and two enormous digging claws. It is holding "
-             "absolutely still."),
-    ("gold", "It is very bad at holding still. It is trembling slightly with the "
-             "effort. One claw is still buried in the mound mid-dig, at an angle "
-             "nothing would choose to stand at, and when Stabby waves at it, it does "
-             "not wave back, because rocks do not wave. It has decided that it is a "
-             "rock. It is going to be a rock until this crisis passes, and it commits "
-             "to the performance with a dignity that would break your heart if it were "
-             "not so funny.\n"
+             "round door of packed earth, though nobody built them and nobody lives "
+             "in them; that is simply the shape moss grows in here. Threads of pale "
+             "gold light drift up from the ground like slow sparks going the wrong "
+             "way.\n"
+             "Something is watching you from the top of the nearest mound. It is "
+             "about the size of a badger, armoured in overlapping plates of "
+             "yellow-brown hide, with small dark eyes and two enormous digging claws, "
+             "and it is holding as still as it can manage, which is not very still at "
+             "all. It is trembling with the effort. One claw is still buried in the "
+             "mound mid-dig, at an angle nothing would choose to stand at, and when "
+             "Stabby waves at it, it does not wave back, because rocks do not wave. "
+             "It has decided to be a rock until this crisis passes.\n"
              "Here is the strange part: none of you reach for a weapon. It is not "
-             "corrupted. You are all certain of that at once, without knowing why. It "
+             "corrupted; you are all certain of that at once, without knowing why. It "
              "is just small, and you are new, and it got here first."),
-    ("dm", "**This is the Sandshrew**, and unless a moss dot sends it back to dig them "
-           "a shortcut, this is the only time they meet it in the flesh before the "
-           "homecoming. **It cannot be caught, tamed, or bagged.** It watches them. If "
-           "they are kind to it or feed it, it follows at a distance for the rest of "
-           "the run and is present at the end. If they are aggressive, it vanishes and "
-           "joins them at the homecoming anyway, which will feel like a gift they did "
-           "not earn. **Ursa's Mark of Handling works on it**, and that should be the "
-           "moment his player realises the plane's wildlife is not the enemy."),
-    ("gold", "You could stay an hour in this place, and you nearly do. The mounds are "
-             "warm to lean against. The gold threads rise slowly enough to pick one "
-             "and follow it all the way up into the dark.\n"
-             "It is Ghostbloom who notices. Her chime changes in the middle of a note, "
-             "the way a voice changes when it sees something over your shoulder, and "
-             "she goes very still in the air, pointing with her whole body at the far "
-             "side of the hollow.\n"
+    ("dm", "**The Sandshrew.** Unless a moss dot sends it back to dig them a "
+           "shortcut, this is the only time they meet it in the flesh before the "
+           "homecoming. It cannot be caught, tamed, or bagged. If they are kind to it "
+           "or feed it, it follows at a distance for the rest of the run and is "
+           "present at the end; if they are aggressive, it vanishes and joins them at "
+           "the homecoming anyway. Ursa's Mark of Handling works on it, and that "
+           "should be the moment his player realises the plane's wildlife is not the "
+           "enemy."),
+    ("gold", "You could stay an hour in this place, and you nearly do. The mounds "
+             "are warm to lean against, and the gold threads rise slowly enough to "
+             "pick one and follow it all the way up into the dark.\n"
+             "It is Ghostbloom who notices. Her chime changes in the middle of a "
+             "note, the way a voice changes when it sees something over your "
+             "shoulder, and she goes very still in the air, pointing with her whole "
+             "body at the far side of the hollow.\n"
              "The pretty part of Underroot has a wound in it. On the far mounds the "
              "moss is grey and wet and wrong, and standing in the grey, swaying, are "
-             "six little flower-creatures.\n"
-             "They were lovely a month ago. You can still see it: round soft bodies, "
-             "stubby arms, big round flower-caps that used to be gold. The caps are "
-             "grey now, and slack, and they leak. When they notice you they all turn "
-             "at once, and their faces are still smiling, because their faces cannot "
-             "do anything else."),
-    ("dm", "**Let the players choose the moment.** The Rotblooms do not charge. They "
-           "come on at a sway, slow as weather, leaking as they walk, and the grey "
-           "spreads a hand's width behind them wherever they linger. Give the table a "
-           "round of looking: some heroes will strike at once, some will try to talk "
-           "to the smiling faces, and somebody may work out before a single swing "
-           "that the flowers are not attacking, they are *spreading*. None of it "
-           "changes what has to happen; this cannot be talked down, and left alone "
-           "the grey takes the whole landing. But the party should walk into their "
-           "first fight in Underroot knowing the enemy is the grey, never the flower "
-           "wearing it. **The moment anyone engages, the instant the first cap is "
-           "struck, read:**"),
-    ("gold", "Then the moss itself comes apart. The instant the first cap is struck, "
-             "the ground boils: tiny six-legged things, one enormous eye apiece, "
-             "pouring out of the mounds in a wave and swarming up your boots.\n"
-             "And Ghostbloom makes a sound you have never heard her make. She knows "
-             "what these are. They are almost the same as her."),
+             "eight little flower-creatures. They were lovely a month ago. You can "
+             "still see it: round soft bodies, stubby arms, big round flower-caps "
+             "that used to be gold. The caps are grey now, and slack, and they leak. "
+             "When they notice you they all turn at once, and their faces are still "
+             "smiling, because their faces cannot do anything else."),
+    ("dm", "**Offer these if the table wants lines:**\n"
+           "Ursa: \"Look at the ground behind them. The flowers aren't the enemy. "
+           "The grey is.\"\n"
+           "Stabby: \"They're still smiling. Why are they still smiling?\"\n"
+           "Lilly: \"Cannon out. If we can't cure it, we can stop it walking.\""),
+    ("dm", "**Before initiative.** The Rotblooms do not charge; they come on at a "
+           "sway, slow as weather, leaking as they walk, and the grey spreads a "
+           "hand's width behind them wherever they linger. Give the table a round of "
+           "looking: some heroes will strike at once, some will try to talk to the "
+           "smiling faces, and somebody may work out that the flowers are not "
+           "attacking, they are spreading. This cannot be talked down, and left "
+           "alone the grey takes the whole landing, but the party should walk into "
+           "their first fight in Underroot knowing the enemy is the grey, never the "
+           "flower wearing it. The moment the first cap is struck, the ground "
+           "boils: Mossmites pour out of the mounds in a wave, and Ghostbloom makes "
+           "a sound nobody has ever heard her make, because they are almost the "
+           "same as her. Roll initiative."),
     ("img", f"{S8}/fight1_the_landing.png",
-     "Six that spread the grey, and a whole floor that rises to defend them.",
+     "Eight that spread the grey, and a whole floor that rises to defend them.",
      6.2, {"crop": "16:9", "hmax": 3.6}),
 
     # ENEMY_CARDS_FIGHT_1
-    ("dm", "**This fight exists to hand Stabby the session.** Rotblooms re-bloom every "
-           "round, and ordinary steel keeps handing back ground it already won: leave "
-           "one standing and part of that cap has swelled shut again before its next "
-           "turn, so a good round of hits can end with the same six flowers swaying "
-           "at them. **Cleansing Edge is the answer, and it is the only one the party "
-           "has.** Let them flail for a round, let Lilly and Ursa watch pieces of "
-           "their damage close up again, then let Stabby ignite, cut one, and have it "
-           "*stay* cut. Say the reason out loud when it lands: he spent a year on a "
-           "mountain learning to burn corruption out of the ground, and this is the "
-           "first time anyone else has seen it work. His player has been carrying "
-           "that backstory alone since the telling, so give him the beat."),
-    ("dm", "**The Mossmites keep everyone honest.** Six of them, fast and cheap, "
-           "swarming boots and climbing packs while the real problem re-blooms behind "
-           "them. Spore Puff means the whole party is rolling saves, Puff and "
-           "Ghostbloom are in the mix, and everybody gets three or four rounds of "
-           "swinging. Nobody stands still and nobody is bored while they wait for the "
-           "lever to reveal itself."),
-    ("dm", "**The tell, for anyone watching closely:** the Rotblooms do not attack the "
-           "Sandshrew and it does not run from them. It is hiding from the *party*. "
+    ("dm", "**Battlefield.** A village-sized hollow of warm mounds and rising gold "
+           "threads, with the grey holding the far rim. The mounds are cover and "
+           "high ground; the grey creeps a hand's width wherever a Rotbloom "
+           "lingers, so the longer this runs, the more of the map is theirs."),
+    ("dm", "**The pressure.** Eight Mossmites, fast and cheap, swarming boots and "
+           "climbing packs while the real problem re-blooms behind them. Spore Puff "
+           "keeps the whole party rolling saves, so nobody stands still and "
+           "everybody gets three or four rounds of swinging."),
+    ("dm", "**The lever.** Rotblooms re-bloom every round, and ordinary steel keeps "
+           "handing back ground it already won: leave one standing and part of that "
+           "cap swells shut before its next turn. Only radiant damage or Cleansing "
+           "Edge makes a cut stay, and Cleansing Edge is the only answer this party "
+           "has. Let them flail for a round, let Lilly and Ursa watch pieces of "
+           "their damage close up again, then let Stabby ignite, cut one, and have "
+           "it stay cut. Hand him the first clean kill, and say the reason out loud "
+           "when it lands: he spent a year on a mountain learning to burn "
+           "corruption out of the ground, and this is the first time anyone else "
+           "has seen it work. His player has carried that backstory alone since "
+           "the telling."),
+    ("dm", "**Companions.** Puff and Ghostbloom are in the mix; Ghostbloom fights "
+           "like it hurts, because these are almost her. The Sandshrew hides, and "
+           "there is a tell for anyone watching closely: the Rotblooms do not "
+           "attack it and it does not run from them. It is hiding from the party. "
            "Corruption does not eat its own."),
-    ("dm", "**The first time a Rotbloom goes down and stays down, read:**"),
-    ("gold", "The grey goes first. It drains out of the cap the way muddy water wrings "
-             "out of cloth, down and away into the soil, and the soil takes it and "
-             "holds it, because that is what soil is for. And for one held breath the "
-             "little creature is the colour it used to be: round and soft and gold, "
-             "the loveliest thing on the landing, smiling because it wants to.\n"
-             "Then it sighs, one long easy breath like a child finally put to bed, and "
-             "folds down into the moss, and where it lay the grey does not come back."),
+    ("dm", "**Describe cues.** First clean kill: the grey wrings out of the cap "
+           "like muddy water from cloth, one breath of gold, a sigh like a child "
+           "finally put to bed, and where it lay the grey does not come back. The "
+           "mite wave: the whole floor boils up to defend its flowers. A re-bloom: "
+           "a wound in a cap swells shut while they watch. The Sandshrew: still "
+           "being a rock, but a rock that is watching everything."),
+    ("dm", "**Scaling dials.** Too easy: the mounds keep spending Mossmites, a "
+           "fresh handful each round until the last cap falls. Too hard: a struck "
+           "Rotbloom spends its next turn re-blooming instead of walking, and the "
+           "mites go for boots, not skin."),
     ("gold", "It is over faster than it felt. The last of the mites pour back into "
-             "their mounds like water finding its level, and the landing goes quiet, "
-             "and then, patch by patch, the ground where the grey was cut away begins "
-             "to light again: one faint thread of gold, then a slow scatter of them, "
-             "rising past your faces the wrong way, exactly as before.\n"
+             "their mounds like water finding its level, and the landing goes "
+             "quiet, and then, patch by patch, the ground where the grey was cut "
+             "away begins to light again: one faint thread of gold, then a slow "
+             "scatter of them, rising past your faces the wrong way, exactly as "
+             "before.\n"
              "The Sandshrew is back on its mound, at a careful distance, up on its "
-             "hind legs. It is not pretending to be a rock anymore. It watched all of "
-             "it, and it is watching you now the way you would watch somebody who "
-             "just did a thing you did not know could be done.\n"
-             "Ghostbloom says nothing at all, which from Ghostbloom is a great deal. "
-             "She settles on Ursa's shoulder and stays there, ringing very softly, "
-             "the same note the little flower sighed on.\n"
-             "The road out of the hollow runs deeper and downward. The air coming up "
-             "it is warmer than the air behind you, and somewhere a long way down, "
-             "very faintly, something rings."),
+             "hind legs. It is not pretending to be a rock anymore. It watched all "
+             "of it, and it is watching you now the way you would watch somebody "
+             "who just did a thing you did not know could be done.\n"
+             "Ghostbloom settles on Ursa's shoulder and stays there, ringing very "
+             "softly, the same note the little flower sighed on.\n"
+             "The road out of the hollow runs deeper and downward. The air coming "
+             "up it is warmer than the air behind you, and somewhere a long way "
+             "down, very faintly, something rings."),
 
     ("h2", "2. Chime Reef: The Beautiful Trap"),
     ("gold", "The road out of the Landing runs uphill, and Underroot changes as you "
@@ -772,7 +778,7 @@ BLOCKS = [
              "been ringing its doorbell with every single step.\n"
              "The chord drops. It goes low, and flat, and wide awake. The moss light "
              "dims in one slow pulse, and out in the pool the ripples stop."),
-    ("gold", "Three boulders in the shallows unfold legs and stand up.\n"
+    ("gold", "Four boulders in the shallows unfold legs and stand up.\n"
              "They are squat and heavy and armoured in deep blue-black rock, with "
              "blunt jaws and small bright amber eyes, and jagged orange crystals "
              "grow out of their backs and shoulders like a struck chord frozen in "
@@ -782,71 +788,73 @@ BLOCKS = [
              "dropping out of the spires, banking once, and coming down at you fast "
              "enough to whistle."),
     ("dm", "**These are not corrupted.** The Chimestones are the reef's immune "
-           "system, and the party is loud and warm and came in through a hole. That "
-           "does not make them talkable: the reef has already decided. Play them as "
-           "weather with legs."),
+           "system, and the party is loud and warm and came in through a hole. They "
+           "cannot be talked down: the reef has already decided. Play them as "
+           "weather with legs; nothing in this fight is sick and nothing is cruel, "
+           "and that matters at the end."),
     ("img", f"{S8}/fight2_the_reef.png",
      "Every note in the cavern is now about you.",
      6.2, {"crop": "16:9", "hmax": 3.6}),
 
     # ENEMY_CARDS_FIGHT_2
-    ("dm", "**This is a real fight and they are tough.** AC 16, they hit hard, and "
-           "they resonate: every round the whole reef rings louder and everybody's "
-           "ears hurt. The Shardwings are the reason nobody gets to stand still, "
-           "diving in, spitting shards from sixty feet, and refusing to be pinned "
-           "down."),
-    ("dm", "**The clever play does not end the fight, it wins it.** Thunder damage "
-           "makes a Chimestone ring itself apart: any thunder damage **stuns it "
-           "until the end of its next turn**, and it takes **double damage** from "
-           "every source while stunned. Lilly's Thunderwave and Shatter, Stabby's "
-           "Nichirin against the crystal, and Ursa's Thunderwave all turn one of "
-           "these from a wall into a free kill, and the Shardwings are **vulnerable "
-           "to thunder** as well, so the same lever works on the whole encounter."),
-    ("dm", "**The first time thunder damage lands on a Chimestone, read the "
-           "following.** It is the turning point of the fight, and the whole table "
-           "should hear it arrive."),
-    ("gold", "The boom goes into the creature and does not come back out.\n"
-             "For one heartbeat the Chimestone stands perfectly still. Then it "
-             "begins to ring itself apart from the inside: the orange crystals "
-             "along its back shiver into a blur, its own deep note climbing, "
-             "cracking, splintering into wild harmonics, and the creature locks up "
-             "mid-stride, stunned rigid by the one sound its armour cannot keep "
-             "out, which is its own.\n"
-             "And the reef takes up the note. Every spire, every fan, every thicket "
-             "from the shallows to the dark edge of your light picks up the same "
-             "stunned chord and sings it, the whole cavern ringing with the sound "
-             "of the fight turning, and every one of you can hear that it has."),
-    ("dm", "**The reef itself is a weapon too.** Anyone can spend an action to "
-           "strike a big spire (**DC 13 Athletics**): the note rolls out and every "
-           "Chimestone within **30 ft.** must make a **DC 14 Constitution save** or "
-           "be stunned as above. Let them bring the roof down on the last one if "
-           "they earn it. **The trade-off that keeps it honest:** the ringing hurts "
-           "the party too, so anyone who uses the spire trick takes **1d6 thunder** "
-           "themselves. Nobody minds."),
-    ("dm", "**If a player strikes a spire and brings it down, read the following**, "
-           "because they have just turned the terrain into a bell and they should "
-           "feel it."),
-    ("gold", "The spire goes over like a felled tree made of glass, and it does not "
-             "crash. It **tolls**.\n"
-             "One impossible note rolls out across the pool in a ring you can "
-             "watch, bending the black water flat as it goes, and where it passes "
-             "the Chimestones shudder and stagger and the slow heavy certainty "
-             "goes out of them. It costs you a jolt of it yourselves, a boom "
-             "straight through the breastbone, and not one of you would take it "
-             "back."),
-    ("dm", "**The fight can end without the last kill, and it is better if it "
-           "does.** When the last Chimestone is stunned, or the win is no longer "
-           "in doubt, put one beat of quiet on the table before anybody rolls "
-           "again. If the party lowers their weapons and backs out of the "
+    ("dm", "**Roll initiative. Offer these if the table wants lines:**\n"
+           "Lilly (eyes on the crystal): \"They ring when we're loud. Fine. Let's "
+           "find out what a *real* noise does.\"\n"
+           "Stabby (blade low): \"Nothing's wrong with these ones. They're just "
+           "big, and we're the strangers.\"\n"
+           "Ursa (steady): \"The reef is guarding something. Break only what we "
+           "have to.\""),
+    ("dm", "**Battlefield.** A shallow black pool ringed with crystal spires, fans, "
+           "and thickets: the spires are cover, and they are also bells. Four "
+           "Chimestones stand between the party and the tunnel to the deep, slow "
+           "and heavy and hard to move; four Shardwings dive from the high spires "
+           "and spit shards from sixty feet, so nobody gets to stand still."),
+    ("dm", "**The pressure.** This is a real fight. AC 16, heavy hits, and the reef "
+           "rings a little louder every round; keep describing the sound climbing "
+           "until everybody's ears hurt. The Chimestones come on like a slow wall, "
+           "and the Shardwings punish anyone who stands still or bunches up."),
+    ("dm", "**The lever.** Thunder. Any thunder damage **stuns a Chimestone until "
+           "the end of its next turn**, and it takes **double damage** from every "
+           "source while stunned. Lilly's Boomstick blast is thunder, and so are "
+           "her Thunderwave and Shatter and Ursa's Thunderwave; the Shardwings are "
+           "**vulnerable to thunder** as well, so one discovery wins the whole "
+           "encounter. (Stabby's Nichirin is steel and force, not thunder: the "
+           "reef does not ring for him, and this one belongs to the casters.)"),
+    ("dm", "**The spire.** Anyone can spend an action to strike a big spire "
+           "(**DC 13 Athletics**): the note rolls out and every Chimestone within "
+           "**30 ft.** makes a **DC 14 Constitution save** or is stunned as above. "
+           "The striker is standing inside the bell and takes **1d6 thunder** for "
+           "it, which keeps the trick honest. Let them bring the roof down on the "
+           "last one if they earn it."),
+    ("dm", "**Companions.** Ghostbloom is torn, and it shows: she hangs high over "
+           "the pool through the whole fight, ringing with the reef even while it "
+           "fights her friends. Puff's magic missiles do not care how fast a "
+           "Shardwing dives."),
+    ("dm", "**Describe cues.** First thunder hit: the boom goes into the Chimestone "
+           "and does not come back out; it locks mid-stride, ringing itself apart, "
+           "and every spire in the cavern takes up the note. A felled spire: it "
+           "goes over like a tree made of glass and does not crash, it tolls, one "
+           "ring you can watch cross the black water and feel through the "
+           "breastbone. A Shardwing dive: fast enough to whistle, shards chiming "
+           "where they hit stone. A stunned Chimestone destroyed: it comes apart "
+           "all at once, like a chord ending."),
+    ("dm", "**The stand-down.** The fight can end without the last kill, and it is "
+           "better if it does. When the last Chimestone is stunned, or the win is "
+           "no longer in doubt, put one beat of quiet on the table before anybody "
+           "rolls again. If the party lowers their weapons and backs out of the "
            "shallows, the reef stands down: no check, no cost, it simply works, "
            "because an immune system does not chase what is already leaving. Do "
            "not offer this. Let a player think of it, exactly as with Thumpaw, and "
-           "pay the idea in full when they do. In the Landing the kindness was the "
-           "cut that set something free; here nothing is sick and nothing is "
-           "bound, so the kindness is the strike withheld. If they finish the last "
-           "one anyway, the fight was honest and nobody gets scolded; the chord is "
-           "simply one note smaller on the way out, and Ghostbloom hears it."),
-    ("gold", "You step back, and the reef notices that too.\n"
+           "pay the idea in full when they do. If they finish the last one anyway, "
+           "the fight was honest and nobody gets scolded; the chord is simply one "
+           "note smaller on the way out, and Ghostbloom hears it. Read the exit "
+           "below only if they step back; if they cleared the shallows, let the "
+           "ringing come down slowly on its own and go straight to the rest."),
+    ("dm", "**Scaling dials.** Too easy: two more Shardwings drop out of the high "
+           "spires on round 3. Too hard: one Chimestone breaks off to plant itself "
+           "in the tunnel mouth, guarding instead of fighting, and the party faces "
+           "three."),
+    ("gold", "You step back, and the reef notices.\n"
              "The last Chimestone stands in the shallows with its amber eyes on "
              "you, ringing softly, and does not follow. Then, joint by heavy "
              "joint, it folds its legs back under itself and settles into the "
@@ -854,18 +862,16 @@ BLOCKS = [
              "been anything else. Around you the ringing comes down slowly, wild "
              "harmonics settling back into the old patient chord, the moss light "
              "steadying, the pool remembering how to ripple.\n"
-             "The reef has decided you are weather. Loud weather, strange weather, "
-             "but the kind that passes, and it has stood through worse."),
+             "The reef has decided you are weather: loud, strange, but the kind "
+             "that passes."),
     ("gold", "You take your rest inside a chord.\n"
-             "There has never been a stranger campsite and there may never be a "
+             "There has never been a stranger campsite, and there may never be a "
              "better one. You eat sitting on warm stone with music coming up "
              "through it, the reef's slow ringing folded around you like a roof, "
              "and the notes change when the ground breathes, so the whole meal "
              "happens inside something enormous and calm that is almost a song. "
-             "Ghostbloom hums along, quietly, the entire time, and nobody asks her "
-             "to stop.\n"
-             "Years from now, when all of this is a story you tell, this is the "
-             "note you will remember."),
+             "Ghostbloom hums along, quietly, the entire time, and nobody asks "
+             "her to stop."),
     ("dm", "**SHORT REST, right here.** Take it the moment the last Chimestone "
            "goes quiet, and say so at the table: Hit Dice spent, Stabby's Focus "
            "back, Ursa's Wild Shape back, Lilly's Aether Ward back. The Glassed "
@@ -876,29 +882,29 @@ BLOCKS = [
     ("gold", "You know something is wrong a hundred feet before you reach it, "
              "because the ground stops breathing.\n"
              "Ahead of you the roots are **black glass**. Not burned: glassed, "
-             "smooth and shining and hard, frozen mid-growth in the middle of "
-             "reaching for something. The whole gallery is silent in a way "
-             "nothing else down here has been. There is no moss light. Your own "
-             "lamps look small.\n"
+             "smooth and shining and hard, frozen in the middle of reaching for "
+             "something. The whole gallery is silent in a way nothing else down "
+             "here has been; there is no moss light, and your own lamps look "
+             "small in it.\n"
              "And every surface, when you get close, is covered in fine cracks "
              "that are very slowly, very quietly, spreading."),
     ("img", f"{S8}/loc_glassed_gallery.png",
      "Black glass from wall to wall, and the shine of it is the worst part.",
      6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "**Let them feel the size of it.** This is not a monster's lair; it is "
-           "a burn scar going outward at the speed of grass growing, and it has "
-           "been going for two years. Nothing here needs a check to understand. "
-           "The cracks all radiate from one direction, deeper in, toward the "
-           "Hollow, and any hero who looks at them for ten seconds can say so "
-           "out loud."),
+           "a burn scar spreading outward at the speed of grass growing, and it "
+           "has been at it for two years. Nothing here needs a check to "
+           "understand. The cracks all radiate from one direction, deeper in, "
+           "toward the Hollow, and any hero who looks at them for ten seconds "
+           "can say so out loud."),
     ("gold", "Stabby's idol has stopped being merely cold. It aches in the palm "
              "now, cold the way a nail left out in winter is cold, and after a "
              "minute of carrying it he has to wrap it in a fold of cloth and put "
              "it away. It has never once behaved like this."),
     ("dm", "**Explain nothing.** No check identifies it, no NPC has a theory, and "
-           "nobody down here reacts to it. It got colder near the ring, it is "
-           "colder here, and that is the entire beat. Let his player sit with "
-           "it."),
+           "nothing down here reacts to it. It got colder near the ring and it "
+           "is colder still here; that is the entire beat. Let his player sit "
+           "with it."),
     ("gold", "The Sphere is brighter here than it has been anywhere in Underroot, "
              "bright enough that Lilly is holding it a little away from her "
              "body, and it is drinking hardest exactly where the glass is "
@@ -906,14 +912,14 @@ BLOCKS = [
              "built to gather it."),
     ("dm", "**Give Lilly that deduction free**, no roll. It is the first hard "
            "evidence for the theory she spent her year building: the Sphere "
-           "grows by going out, and a wound this size is a feast."),
+           "grows by going out into the world, and a wound this size is a "
+           "feast."),
     ("gold", "And then, from deeper in, past where the moss light died, you hear "
-             "it: a sound of glass on glass, soft and patient and perfectly "
-             "regular, like somebody sweeping a floor that will never come "
-             "clean.\n"
-             "It has been going a long time. It does not stop when you come "
+             "it: glass on glass, soft and patient and perfectly regular, like "
+             "somebody sweeping a floor that will never come clean.\n"
+             "It has been going a long time, and it does not stop when you come "
              "closer."),
-    ("dm", "**Let them approach that sound as slowly as they like.** It is the "
+    ("dm", "**Let them approach the sound as slowly as they like.** It is the "
            "Weeper, still at its work, and it pays them no attention at all "
            "until light finds it. There is no ambush waiting in this gallery, "
            "only a job that never ends, so heroes who scout get the full reveal "
@@ -921,14 +927,14 @@ BLOCKS = [
 
     ("h2", "Fight 3: The Glass Weeper"),
     ("gold", "Something is still standing in the gallery.\n"
-             "It has the shape of one of the big slow root-tenders: a long neck, "
-             "a crown of fronds for combing the roots clean. It is far too tall "
-             "to be one. It is black glass grown into the memory of a tender, a "
-             "mimicry the corruption built up around something at its centre you "
-             "cannot see, and the glass moves the way a hand moves a puppet. And "
-             "the puppet is **still trying to do the job**, sweeping shattered "
-             "glass fronds through glassed roots that cannot feel it, over and "
-             "over, patiently, forever.\n"
+             "It has the shape of one of the big slow root-tenders, a long neck, "
+             "a crown of fronds for combing the roots clean, but it is far too "
+             "tall to be one. It is black glass grown into the memory of a "
+             "tender, built up around something at its centre you cannot see, "
+             "and the glass moves the way a hand moves a puppet. And the puppet "
+             "is **still trying to do the job**: sweeping shattered glass fronds "
+             "through glassed roots that cannot feel it, over and over, "
+             "patiently, forever.\n"
              "Around its feet, rolling in fast, are lumps of black glassy coal "
              "the size of ripe pumpkins, each with one furious orange eye."),
     ("img", f"{S8}/mon_glass_weeper.png",
@@ -940,62 +946,69 @@ BLOCKS = [
              "a black glass fan, and from somewhere deep inside the mimicry a "
              "thin note begins to rise, and every crack in the gallery sings "
              "along with it. The tenders of Underroot were made to clean their "
-             "roots of anything that does not belong, and the puppet wearing "
+             "roots of anything that does not belong, and the thing wearing "
              "this one's shape has just decided that what does not belong is "
              "you."),
     ("img", f"{S8}/fight3_the_gallery.png",
      "Rolling coal, keening glass, and the hardest fight on the road down.",
      6.2, {"crop": "16:9", "hmax": 3.6}),
-    ("dm", "**The Cinderolls arrive two at a time**, so the pressure never stops "
-           "and never quite swamps the party. Do not open with all four. The "
-           "Weeper does not chase and never leaves its roots; it does not have "
-           "to, because it reaches fifteen feet and hits three times a turn."),
+    ("dm", "**Roll initiative the moment the light touches it.** Offer these if "
+           "the table wants lines:\n"
+           "Stabby: \"It's still trying to do its chores. Then I'll finish them "
+           "for it.\"\n"
+           "Lilly: \"Watch the cracks, they're closing! Plain hits are going to "
+           "pour right back out of that thing.\"\n"
+           "Ursa: \"The roots under the glass aren't dead. Something in there "
+           "is still holding on.\""),
 
     # ENEMY_CARDS_FIGHT_3
-    ("dm", "This one is meant to be hard, and it has a lever. The Weeper regains "
-           "**10 hit points at the start of its turn** unless it took radiant or "
-           "force damage, or was hit by **Cleansing Edge**, since its last turn, "
-           "so with ordinary steel every wound they open is part closed again "
-           "before their next turn and the fight reads as if it is going "
-           "backwards. **Stabby is the answer, and everyone at the table should "
-           "be able to see it.** The second lever is kindness: any hero can "
-           "spend an action tending the glassed roots the Weeper is bound to "
-           "(**DC 14 Nature or Medicine**, or any healing spell cast on the "
-           "roots instead of a creature). On a success the Weeper **loses its "
-           "regeneration until the end of its next turn** and every attack "
-           "against it has **advantage** until the start of the helper's next "
-           "turn. Two or three of those and the fight tips hard. It never ends "
-           "the encounter; it makes the party feel brilliant while they finish "
-           "it. Meanwhile the Cinderolls roll twenty feet and detonate: let the "
-           "players work out that popping one next to three others is a chain "
-           "reaction, and let them enjoy it. Watch the Weeper's **Keening** (its "
-           "wail: a 30-ft cone, DC 15 Constitution, 21 psychic and frightened) "
-           "landing on the same turn the roll-in pair arrives, and pull the "
-           "fourth Cinderoll if the table is on the ropes."),
-    ("dm", "**The first time a hero tends the glassed roots, read the "
-           "following.** This is the session's thesis at its saddest, and it "
-           "must not be missed at the table: the lever is mechanical, but what "
-           "it shows them is not. Wait for the room to go quiet before you "
-           "start."),
-    ("gold", "Warmth. That is the first surprise: the glassed root under your "
-             "hands is not cold at all, and where you tend it the black glass "
-             "clouds over, greys, and lets go. For the width of one finger "
-             "there is green underneath. Living green, soft and damp and "
-             "stubborn, the first colour this gallery has held in two years.\n"
-             "And across the gallery, the Weeper stops.\n"
-             "Its frond hangs in the air, mid-sweep. Slowly, by inches, the "
-             "whole tall broken shape of it leans toward what you are doing, "
-             "the way a tired thing leans toward a fire. For one long breath it "
-             "only watches the green, because somewhere inside the puppet, "
-             "underneath the glass and the wrongness, something remembers this "
-             "exact work, and remembers that it was worth doing."),
-    ("dm", "**And when somebody pops a Cinderoll next to its friends, read this "
-           "one with a grin.** The fight has earned exactly one laugh, and this "
-           "is where it lives."),
-    ("gold", "One furious orange eye goes very wide, and then the whole cluster "
-             "goes up together, pop, pop, POP, a string of festival crackers in "
-             "the dark, and for one glorious second the Glassed Gallery is lit "
-             "up gold, as if it remembers what light is."),
+    ("dm", "**Battlefield.** The Weeper is rooted at the heart of the gallery "
+           "and never leaves its roots; it does not chase, and it does not have "
+           "to, because it reaches fifteen feet and hits three times a turn. "
+           "That gives the fight its shape: step into its reach and take the "
+           "frond hits, or hang back and deal with what comes rolling out of "
+           "the dark."),
+    ("dm", "**The pressure.** This one is meant to be hard. The Cinderolls "
+           "arrive two at a time, never all four at once, rolling twenty feet "
+           "and detonating, so the pressure never stops and never quite swamps "
+           "the party. Popping one next to its friends is a chain reaction; let "
+           "the players work that out themselves and enjoy it. The Keening is "
+           "the scary button (30-ft cone, DC 15 Constitution, 21 psychic and "
+           "frightened), and it is at its meanest landing on the same turn a "
+           "fresh pair rolls in."),
+    ("dm", "**The lever.** Two of them, and the table should find both. Steel: "
+           "the Weeper regains **10 hit points at the start of its turn** "
+           "unless it took radiant or force damage, or was hit by **Cleansing "
+           "Edge**, since its last turn, so with ordinary weapons every wound "
+           "they open is part closed again before their next turn and the fight "
+           "reads as if it is going backwards. **Stabby is the answer, and "
+           "everyone at the table should be able to see it.** Kindness: any "
+           "hero can spend an action tending the glassed roots the Weeper is "
+           "bound to (**DC 14 Nature or Medicine**, or any healing spell cast "
+           "on the roots instead of a creature). On a success the Weeper "
+           "**loses its regeneration until the end of its next turn** and every "
+           "attack against it has **advantage** until the start of the helper's "
+           "next turn. Two or three of those and the fight tips hard; it never "
+           "ends the encounter, it makes the party feel brilliant while they "
+           "finish it. The first tend is the heart of the whole session, so let "
+           "the room go quiet before you describe what it does."),
+    ("dm", "**Companions.** Puff's Wand of Magic Missiles is force damage and "
+           "never misses, so on a turn when Stabby cannot reach the Weeper, her "
+           "missiles are the other way to hold its wounds open. Ghostbloom "
+           "wants nothing to do with this creature; keep her at the edge of the "
+           "light unless a hero calls her in."),
+    ("dm", "**Describe cues.** The first hit that sticks: where the burning edge "
+           "or the missile lands, the glass greys and the wound stays open. The "
+           "Keening: when it wails, every crack in the gallery sings along. The "
+           "tend: warmth under the hands, the glass clouding over and letting "
+           "go, one finger's width of living green, and across the gallery the "
+           "Weeper stops mid-sweep and leans toward it the way a tired thing "
+           "leans toward a fire. The chain pop: pop, pop, POP, festival "
+           "crackers in the dark, and for one second the gallery is lit gold; "
+           "the fight has earned exactly one laugh, and it lives here."),
+    ("dm", "**Scaling dials.** Too easy: the second pair of Cinderolls arrives a "
+           "round early. Too hard: pull the fourth Cinderoll if the table is on "
+           "the ropes."),
     ("gold", "When it finally falls it does not crumple. It **shatters**, all at "
              "once, a whole creature's worth of black glass coming apart across "
              "the floor with a noise like a window breaking in another room. "
@@ -1004,22 +1017,21 @@ BLOCKS = [
              "Four paws. It has been dead for two years, and something built a "
              "statue around it and kept it working."),
     ("dm", "**This is where the session stops being an adventure and becomes a "
-           "rescue**, and it is the last beat before Groudon. Do not narrate it "
-           "gruesomely and do not linger: one quiet image, then silence at the "
-           "table, then let a player be the one to speak first."),
+           "rescue**, and it is the last beat before Groudon. One quiet image, "
+           "nothing gruesome and no lingering, then silence at the table, and "
+           "let a player be the one who speaks first."),
     ("gold", "Afterward, Stabby walks out into the gallery alone. He lights his "
              "breath, and sets the burning edge against the black glass."),
     ("dm", "**Stop there and hand the narration to Stabby's player.** This image "
            "is the whole point of his year, so let him be the one who says what "
            "the glass does. No check, no cost, no roll. If he stalls, offer him "
            "the picture and let him carry it from there: where the Nichirin "
-           "passes, the black glass **flinches**, it greys, it dulls, it "
-           "crumbles back into ordinary soil, exactly the way the blight "
-           "recoiled from him on the mountain at home. The path stays clean "
-           "behind them."),
-    ("gold", "He cannot heal this place. It is a mile wide and he is very "
-             "small. What he can do is burn a clean path straight through the "
-             "middle of it, and that is the road you walk out on."),
+           "passes, the black glass **flinches**, greys, dulls, and crumbles "
+           "back into ordinary soil, exactly the way the blight recoiled from "
+           "him on the mountain at home. The path stays clean behind them."),
+    ("gold", "He cannot heal a place a mile wide, not alone and not tonight. "
+             "What he can do is burn one clean path straight through the middle "
+             "of it, and that is the road you walk out on."),
     ("gold", "You are not fifty steps along that road when Ursa stops walking, "
              "and then all of you hear it. Behind you, faint as a sleeper "
              "turning over, at the very edge of feeling, the ground along the "
@@ -1035,9 +1047,9 @@ BLOCKS = [
              "out into the dark and does not come back with a far side.\n"
              "Something down there is breathing.\n"
              "You have felt it all day, the slow rise and fall of the ground under your boots, "
-             "once a minute, everywhere you went. You thought that was the plane. Standing on "
-             "this ledge, you finally understand what you have been walking on top of since the "
-             "gate.\n"
+             "once a minute, everywhere you went. You thought that was just how this plane was. "
+             "Standing on this ledge, you finally understand what you have been walking on top of "
+             "since the gate.\n"
              "It was never the plane breathing.\n"
              "It was **him**."),
     ("img", f"{S8}/loc_groudons_hollow.png",
@@ -1046,112 +1058,95 @@ BLOCKS = [
     ("img", f"{S8}/mon_groudon_corrupted.png",
      "The Continent-Maker. The glowing seams are his own. The black glass is not.",
      6.2, {"crop": "3:2", "hmax": 4.3}),
-    ("gold", "He fills the hollow the way a mountain fills a valley. Red-brown plates the size of "
-             "barn doors. Claws sunk deep into stone he has not moved from in a very long time. "
-             "Seams of magma glow along his flanks like banked coals.\n"
-             "And driven into his back, up near the shoulder where no claw of his can reach, is a "
+    ("gold", "He fills the hollow the way a mountain fills a valley. His plates are red-brown and "
+             "bigger than barn doors, his claws are sunk deep into stone he has not moved from in "
+             "a very long time, and seams of magma glow along his flanks like banked coals.\n"
+             "Driven into his back, up near the shoulder where no claw of his can reach, is a "
              "**spike of black glass**. Every crack in this world runs outward from that one "
              "point.\n"
-             "He is the reason there is dry land anywhere. He has been in pain for two years. "
-             "And in all that time, he has not been able to tell a single living soul."),
-
-    ("h2", "The Fight, and What It Is Actually About"),
+             "He is the reason there is dry land anywhere. He has been in pain for two years, and "
+             "in all that time he has not been able to tell a single living soul."),
     ("img", f"{S8}/boss_groudon_spike.png",
      "Everything in this room is enormous except the thing that matters.",
      6.2, {"crop": "16:9", "hmax": 3.6}),
-    ("dm", "**Groudon is not the villain. The spike is.** This is the Grand Custodian rule from "
-           "Gearhaven at ten times the scale: *free the guardian and the cracks close.* Say the "
-           "rule out loud at the table if the players do not reach for it themselves, because the "
+
+    ("dm", "**The frame.** Groudon is not the villain; the spike is. This is Gearhaven's Grand "
+           "Custodian rule at ten times the scale: free the guardian and the cracks close. If the "
+           "players do not reach for that on their own, say it out loud at the table, because the "
            "whole encounter is built on it. Nobody is killing a god tonight."),
-    ("dm", "**Do not let the party win by damage.** Groudon has **AC 18 and 230 hit points** and "
-           "hits hard enough to drop a level-7 hero in two turns. A straight brawl is a loss, and "
-           "it is supposed to be. **The win condition is the spike**: a hard target on his back "
-           "with **AC 17 and 60 hit points**, **immune to everything except radiant, force, and "
-           "Cleansing Edge**. Reaching it means climbing him (Athletics or Acrobatics), flying "
-           "(Stabby's Sash, Ursa's Starry Form), or a called shot at range with disadvantage. "
-           "**When the spike breaks, the encounter ends instantly.** Not \"he has forty hit points "
-           "left.\" It ends, whatever his total is. Do not run him to 0. He is not supposed to "
-           "die, and nothing in this room is an execution."),
-    ("dm", "**When someone first lays a hand on Groudon to climb**, read the following."),
-    ("gold", "Your hand finds the edge of a plate the size of a barn door, and the first surprise "
-             "is the heat. Not burning. Deep, like a hearth stone hours after the fire has died, "
-             "warmth that comes from a very long way inside.\n"
-             "The second surprise is the heartbeat. It rolls up through your palms, slow and "
-             "enormous, and you feel it in your teeth and in the soles of your boots.\n"
-             "You are climbing something alive. He is older than the land you were born on. He "
-             "is in more pain than anything you have ever touched. And he does not know, he "
-             "cannot know, that the small warm thing clinging to his shoulder is trying to help.\n"
-             "Hold on. Keep climbing."),
-    ("dm", "**The moment Ursa reaches out with the Mark**, the way Selarin taught him, read the "
-           "following. He goes in expecting rage."),
-    ("gold", "There is no rage in there at all.\n"
-             "There is pain. It is old, and it is patient, and it goes on farther than the Mark "
-             "can reach. And underneath it, very faint, is something that has been trying to say "
-             "one word for two years, with no mouth to say it with.\n"
-             "*Help.*"),
-    ("dm", "**Only Ursa can feel this, and telling the others is the moment the fight becomes a "
-           "rescue.** Give his player the line and let him deliver it in his own words. If nobody "
-           "reaches for the Mark, let the Agony shockwave do the job instead: he screams when it "
-           "hits him, and it hits him every single turn."),
+    ("dm", "**Offer these if the table wants lines:**\n"
+           "Ursa (after touching the Mark): \"He's not angry. He's hurting. He's been trying to "
+           "say one word for two years.\"\n"
+           "Stabby: \"Hold on, big guy. This is going to feel a lot better in a minute.\"\n"
+           "Lilly: \"Puff, the wand! Glass can't dodge magic missiles. Nothing can!\""),
 
-    ("h2", "The Glasslings"),
-    ("dm", "**The spike creates one Glassling at the start of each of Groudon's turns**: a "
-           "cat-sized scuttling thing of black glass that drops off his back and goes straight for "
-           "the nearest warm body. They are weak, they burst when killed (**DC 12 Dexterity, 5 "
-           "slashing, 5 ft**), and they never stop coming. They exist to answer the obvious "
-           "question, which is why not ignore the spike and whittle Groudon from range: because the "
-           "longer the spike lives, the more little glass things are chewing on the party."),
-    ("dm", "**When the spike breaks, every Glassling on the board collapses into ordinary sand at "
-           "once**, wherever it is and whatever it was doing. Clear them off the map in one sweep "
-           "of your hand and say nothing while you do it."),
-
-    ("h2", "Groudon's Turns"),
-    ("dm", "**Play him as a natural disaster with a wounded animal inside it**, never as a "
-           "tactician. He does not aim, he does not focus fire, he does not plan. Alternate: "
-           "**Continental Step** (he moves, the floor changes, DC 16 Dexterity within 30 ft of his "
-           "path or knocked prone for 11 bludgeoning), **Magma Vent** (recharge 4-6, a 60-ft line "
-           "10 ft wide, DC 17 Dexterity, 35 fire, half on a success), **Claw** (+12 to hit, reach "
-           "15 ft, 24 slashing) if anything is in reach, and **Thrash** whenever the spike takes "
-           "damage (once a round, no action: every creature climbing him makes a DC 15 Strength or "
-           "Acrobatics check or falls for 3d6). Remember **Agony**: while the spike is intact, at "
-           "the start of each of his turns he takes 10 damage himself and everything within 20 ft "
+    ("h2", "Running the Fight"),
+    ("dm", "**Battlefield.** The hollow floor, lit by his own magma seams. Groudon barely moves "
+           "from his spot; he is the terrain. The spike rides his back near the shoulder, and "
+           "reaching it means climbing him (Athletics or Acrobatics), flying (Stabby's Sash, "
+           "Ursa's Starry Form), or a called shot at range with disadvantage."),
+    ("dm", "**The pressure.** Groudon has **AC 18 and 230 hit points** and hits hard enough to "
+           "drop a level-7 hero in two turns; a straight brawl is a loss, and it is supposed to "
+           "be. Play him as a natural disaster with a wounded animal inside it, never a "
+           "tactician: he does not aim, focus fire, or plan. Alternate **Continental Step** (he "
+           "moves, the floor changes, DC 16 Dexterity within 30 ft of his path or knocked prone "
+           "for 11 bludgeoning), **Magma Vent** (recharge 4-6, a 60-ft line 10 ft wide, DC 17 "
+           "Dexterity, 35 fire, half on a success), and **Claw** (+12 to hit, reach 15 ft, 24 "
+           "slashing) if anything is in reach. **Thrash** whenever the spike takes damage (once "
+           "a round, no action): every creature climbing him makes a DC 15 Strength or "
+           "Acrobatics check or falls for 3d6. And **Agony**, while the spike is intact: at the "
+           "start of each of his turns he takes 10 damage himself, and everything within 20 ft "
            "makes a DC 16 Dexterity save or takes 10 bludgeoning from the shockwave. He is being "
            "hurt in front of them, every round, and they can see it."),
-    ("dm", "**Mercy rule, and it is not optional.** If a hero drops, Groudon immediately moves away "
-           "from them. He does not finish anyone, ever. He does not know they are there in any "
-           "meaningful way; he is swatting at pain, not hunting children. Tell the table that out "
-           "loud the first time it happens."),
+    ("dm", "**The lever.** The win condition is the spike, never his hit points: **AC 17, 60 hit "
+           "points, immune to everything except radiant, force, and Cleansing Edge**. At the "
+           "start of each of Groudon's turns it **re-knits 20 hit points** unless Cleansing Edge "
+           "has touched it since his last turn; range can wound the glass, but only Stabby makes "
+           "the wound stick, on the same rule the Rotblooms taught at the landing. **When the "
+           "spike breaks, the encounter ends instantly**, whatever Groudon's total is. Never run "
+           "him to 0. He is not supposed to die, and nothing in this room is an execution."),
+    ("dm", "**Glasslings.** The spike drops one at the start of each of Groudon's turns: a "
+           "cat-sized scuttler of black glass that goes straight for the nearest warm body and "
+           "bursts when killed (**DC 12 Dexterity, 5 slashing, 5 ft**). They answer the obvious "
+           "question, why not whittle him down from range: the longer the spike lives, the more "
+           "little glass things are chewing on the party."),
+    ("dm", "**The rescue.** If Ursa reaches out with the Mark the way Selarin taught him, he "
+           "finds no rage in there at all: only pain, old and patient, and underneath it "
+           "something that has been trying to say *help* for two years with no mouth to say it "
+           "with. Only Ursa can feel this, and telling the others is the moment the fight "
+           "becomes a rescue; hand his player the discovery and let him be the one who tells "
+           "the table. If nobody reaches for the Mark, the Agony scream carries the same news."),
+    ("dm", "**He does not finish them.** If a hero drops, Groudon immediately moves away. He "
+           "never finishes anyone; he does not really know they are there. He is swatting at "
+           "pain, not hunting children. Say that out loud the first time it happens."),
 
     # ENEMY_CARDS_BOSS
-    ("dm", "The shape of this encounter is simple to say and hard to do: survive a very large "
-           "angry mountain long enough for somebody to climb his back and cut the thing that "
-           "is hurting him out of it. Every hero has a job. **Stabby is the one who ends "
-           "this, and the entire session has been building to it**: speed 65 with his breath "
-           "lit, Step of the Wind to close, and a Nichirin that is one of only three things "
-           "in this world that can touch the spike at all. He climbs a mountain that is "
-           "trying to shake him off and he cuts the corruption out of a god. **Do not let "
-           "anybody else take that blow unless his player hands it over**; if the dice go "
-           "badly, let Ursa's summon pin Groudon in place or Lilly's Flash of Genius rescue "
-           "the climb check, so the last strike is still his. **Ursa** keeps everyone "
-           "standing, drops a summon between Groudon and whoever is climbing, and is the only "
-           "one who can feel that the creature is in pain. **Lilly** shoots the spike from "
-           "range and holds the party together with Aether Ward; force damage from Puff's "
-           "Wand of Magic Missiles hits the spike and never misses. When the sixty hit points "
-           "are gone, stop rolling. Put the dice down, let the Glasslings fall to sand, and "
-           "play what follows as a rescue landing rather than a victory lap: the party did "
-           "not kill anything in this room, they took a splinter out of a mountain's "
-           "shoulder, and the mountain is going to look at them."),
-    ("dm", "**When the last hit is about to land on the spike**, pause the table before the roll, "
-           "and read:"),
-    ("gold", "The crack in the black glass widens. One bright hairline runs through the dark of "
-             "it.\n"
-             "The sick light inside the spike stutters. And for one breath, one single breath, "
-             "the whole hollow goes quiet: the magma seams dim to embers, the Glasslings stop "
-             "where they stand, and the mountain beneath you holds himself still, as if something "
-             "in him, deeper down than two years of pain, knows what is coming and is waiting for "
-             "it.\n"
-             "One more hit. That is all it needs.\n"
-             "Swing."),
+    ("dm", "**Jobs.** Stabby ends this, and the whole session has been building to it: speed 65 "
+           "with his breath lit, Step of the Wind to close, and a Nichirin that is one of only "
+           "three things in this world that can touch the spike at all. Do not let anybody else "
+           "take the last blow unless his player hands it over; if the dice go badly, Ursa's "
+           "summon can pin Groudon in place or Lilly's Flash of Genius can rescue the climb "
+           "check so the strike is still his. Ursa keeps everyone standing, drops a summon "
+           "between Groudon and whoever is climbing, and is the only one who can feel that the "
+           "creature is in pain. Lilly shoots the spike from range and holds the party together "
+           "with Aether Ward."),
+    ("dm", "**Companions.** Puff's Wand of Magic Missiles is force damage and never misses; it "
+           "hits the spike, and all of it sticks as long as Stabby keeps the burn on the glass."),
+    ("dm", "**Describe cues.** The first hand on his hide: heat like a hearthstone hours after "
+           "the fire, and a heartbeat rolling up through the palms. The first Agony shockwave: "
+           "he screams, and it is his own spike doing it to him. The first Glassling: it drops "
+           "off his back already running. A climb through Thrash: plates shifting underfoot like "
+           "a hillside deciding to move."),
+    ("dm", "**The pause.** When the last hit is about to land on the spike, stop the table "
+           "before the roll and give it one breath: a bright hairline through the black glass, "
+           "the magma seams dimming to embers, the Glasslings freezing where they stand, the "
+           "mountain holding himself still as if something in him, deeper down than two years of "
+           "pain, knows what is coming. Then let them swing. When it breaks, every Glassling on "
+           "the board collapses into ordinary sand at once; clear them off the map in one sweep "
+           "of your hand and say nothing while you do it."),
+    ("dm", "**Scaling dials.** Too easy: the spike drops two Glasslings a round instead of one. "
+           "Too hard: Magma Vent stops recharging while anyone is on his back, and Thrash "
+           "telegraphs (his plates bunch a beat before he shakes, advantage on the check)."),
 
     ("h1", "The Way Home"),
 
@@ -1160,26 +1155,25 @@ BLOCKS = [
              "It comes apart all at once and quietly, like a held breath let go, into a spray of "
              "dark motes that hang in the air for a single heartbeat and then rush, every one of "
              "them together, into the Sphere in Lilly's hands.\n"
-             "And the mountain stops.\n"
-             "**Groudon goes absolutely still.** Then he lowers himself onto his belly on the "
+             "**And Groudon goes absolutely still.** Then he lowers himself onto his belly on the "
              "stone with a sound like a hillside settling, and he breathes out, and the breath "
              "goes on so long that somebody laughs once out of pure nerves, and every root in the "
              "hollow shivers along its whole enormous length.\n"
              "Then he turns his head, slowly, and looks at the three of you properly for the "
              "first time.\n"
-             "He is not angry. He is so tired."),
+             "There is no anger left in him at all, only a tiredness so deep you can feel "
+             "it from where you stand."),
     ("img", f"{S8}/the_spike_breaks.png",
      "The first thing he has felt in two years that is not pain.",
      6.2, {"crop": "3:2", "hmax": 4.3}),
-    ("dm", "Everything after the spike is the part they will remember. Slow down. This is not the "
-           "end of a fight; it is the end of two years of somebody's pain, and the whole session "
-           "has been walking toward it."),
+    ("dm", "**Slow down.** Everything after the spike is the part they will remember: not the "
+           "end of a fight, but the end of two years of somebody's pain."),
     ("dm", "**The encounter ends the instant the spike drops, whatever his hit points are.** Do "
            "not roll another attack, do not finish the round, do not let anybody get one more hit "
            "in. And **every Glassling on the board collapses into ordinary sand where it "
            "stands**, mid-lunge, mid-bite, all of them at once. Clear the miniatures off the "
-           "table with your hands while the players are still watching. That clatter is the "
-           "applause line of the whole session."),
+           "table with your hands while the players are still watching; the sound of them "
+           "coming off the board will say more than any description could."),
     ("gold", "As the last of the glass leaves him, something else comes loose from the wound in "
              "his shoulder. It is a fist-sized ember of packed red-brown light, dense as a river "
              "stone and warm as fresh bread, and it does not fall. It drifts across the hollow, "
@@ -1190,22 +1184,22 @@ BLOCKS = [
     ("gold", "Groudon gathers himself, and the floor of the world moves with him. He reaches out "
              "one claw, a claw that has moved continents, and sets the very tip of it on the "
              "ground in front of **Ursa**, with a care that would not crack an egg.\n"
-             "Nobody needs a Mark to understand that.\n"
+             "You do not need any magic to understand what he means by it.\n"
              "Then he begins to walk. Where he walks, the cracks close behind him like a seam "
              "pulled shut, and far off in the dark you can hear the glassed gallery crumbling "
              "back into plain, ordinary, breathing soil."),
     ("dm", "**Give Ursa the line if his player wants it.** He is the only one who can feel what "
            "the creature is feeling, and what it is feeling is *relief*. Let him say it out loud "
-           "to the other two. That sentence is what turns the boss fight into a rescue in "
-           "everybody's memory, and it should come out of a player's mouth, not yours."),
+           "to the other two, in his own words. Coming from a player instead of from you, "
+           "that sentence will land twice as hard."),
 
     ("h2", "Antares"),
     ("gold", "You come out of the ring into lamplight and noise, with Vane shouting three "
              "questions at once, and it is a long few minutes before anybody thinks to look up.\n"
              "**Ursa does.**\n"
              "Through the clerestory windows of the Rift Hall, over the wet slate roofs of "
-             "Gearhaven, there is a star in the east that was dying.\n"
-             "It is not dying now. It is the deep, steady red it is supposed to be, the red it is "
+             "Gearhaven, there is the star he watched go dim on the night they all left, and "
+             "tonight it is the deep, steady red it is supposed to be, the red it is "
              "in every one of his father's charts. His father spent a year drawing that star "
              "getting fainter, month after month, and then he put the pen down and walked east to "
              "do something about it. In all the watching since, nobody has ever seen a star come "
@@ -1214,14 +1208,14 @@ BLOCKS = [
     ("img", f"{S8}/antares_relights.png",
      "The eastern sky over Gearhaven, carrying news only one person in the city can read.",
      6.2, {"crop": "16:9", "hmax": 3.6}),
-    ("dm", "**Only Ursa understands what he is looking at, and that is the point.** He watched "
+    ("dm", "**Only Ursa understands what he is looking at.** He watched "
            "Antares dim on the night they left and said nothing to anybody; he has spent a year "
            "with those charts. Let his player be the one to explain it to the others, in his own "
            "words, at his own speed. Then let **Aelwyn** go very quiet, because a man who has "
            "been arguing a theory for thirty years has just watched it become a fact."),
     ("dm", "**The Staff of Waking Constellations answers.** One new star kindles on the haft and "
-           "stays lit. That is what the staff was made for, and this is the first time anyone has "
-           "seen it work."),
+           "stays lit. This is the job the staff was built to do, and tonight is the first time "
+           "anyone has seen it work."),
 
     ("h2", "The Sphere Will Not Settle"),
     ("gold", "The Sphere has been getting brighter since Underroot, and now it is too bright to "
@@ -1237,7 +1231,7 @@ BLOCKS = [
      "The brightest thing Vane's workshop has ever held, about to introduce itself.",
      6.2, {"crop": "3:2", "hmax": 4.3}),
     ("gold", "**Ghostbloom chooses first.**\n"
-             "Nobody asks her to. Nobody gets the chance. She drifts around in front of Lilly so "
+             "Nobody asks her to; nobody even gets the chance. She drifts around in front of Lilly so "
              "the two of them are eye to eye, and she chimes once, the small clear note she has "
              "been making since a foggy path above the sea two years ago.\n"
              "Then she steps into the light and is gone.\n"
@@ -1256,10 +1250,9 @@ BLOCKS = [
     ("dm", "**Where he goes matters.** If the party was kind to him at Mosslight Landing, or fed "
            "him, he walks straight to whoever did it. If they were unkind, he crosses the room to "
            "**Ursa** and settles against his boot, and on the way he goes right past the hero who "
-           "chased him off without once looking up. **Then say nothing.** Do not explain it, do "
-           "not soften it, do not offer that player a consolation line, and do not let Aelwyn "
-           "talk over the silence. The table will work out what just happened on its own, and it "
-           "should."),
+           "chased him off without once looking up. **Then say nothing.** No explanation, no "
+           "consolation line, and do not let Aelwyn talk over the silence; the table will "
+           "work out what just happened on its own."),
     ("gold", "\"The Sphere gathers,\" Aelwyn says, crouching down to be polite about it. \"That "
              "is all it has ever done. Today it gathered an entire world's worth of loose "
              "essence, and essence gathers toward warmth, and toward company. So it brought "
@@ -1282,14 +1275,14 @@ BLOCKS = [
          "Action."),
         ("The Mote of Terra",
          "The piece of Underroot's heart that was caught in this world, socketed into the "
-         "Sphere. **The rift is closed.** Not patched, not held: closed, by a guardian walking "
-         "home."),
+         "Sphere. **The rift is closed**, properly and for good, sealed by a guardian "
+         "walking home."),
         ("Tectonic Slam",
          "Lilly's **first Elemental Discharge**, woken by the Mote of Terra. Four sockets in the "
          "Sphere stay dark, and she can feel every one of them."),
         ("A New Star on the Staff",
          "**Antares is lit.** One new star kindles on the haft of the Staff of Waking "
-         "Constellations and stays lit, which is precisely what the staff was made to do."),
+         "Constellations and stays lit."),
     ]),
 
     ("h2", "What Each of Them Carries Home"),
@@ -1309,23 +1302,23 @@ BLOCKS = [
              "\"I don't think it's a battery. I think it's an instrument. And I've only ever "
              "played one note on it.\""),
     ("dm", "**What that plants:** her ceiling is very high and entirely gated on rifts cleared. "
-           "She has gone from one discharge to a promise of five in a single night, and she is "
-           "the only person at this table who can feel the shape of the thing she is going to "
-           "become. Let her player sit with that."),
+           "She has gone from one discharge to a promise of five in a single night, and she "
+           "is the only one who can feel how much bigger this gets. Give her player a quiet "
+           "moment with it."),
     ("body", "**Ursa** carries home a relit star and the first hard evidence anybody has ever had "
              "that the damage can be *undone*. He also carries the beginning of a private worry, "
-             "and he does not share it: the spike did not grow in Groudon's back. Somebody drove "
-             "it in, on purpose, by hand. And he brought a name back from a shrine on a "
+             "and he does not share it: the spike did not grow in Groudon's back. Somebody made "
+             "it and drove it in deliberately. And he brought a name back from a shrine on a "
              "mountain."),
     ("body", "**Stabby** carries a katana that did something no other blade in the world could "
-             "do, and one small fact he has told nobody. The idol went cold when they stepped "
-             "through the ring, colder in the glassed gallery, and it warmed the instant they "
-             "came back. He noticed exactly when. He has not mentioned it."),
+             "do, and one small fact he is keeping to himself: the idol went cold when they "
+             "stepped through the ring, colder still in the glassed gallery, and it warmed the "
+             "instant they came back through. He noticed exactly when it happened."),
 
     ("h2", "Threads to Leave Hanging"),
     ("dm", "**One: who drove the spike in?** Nobody says a name at the table tonight, and neither "
            "do you. But the party has now seen with their own eyes that the rifts are not "
-           "weather. Somebody is doing this, by hand, one world at a time.\n"
+           "weather: somebody is causing them.\n"
            "**Two: the idol.** Cold at the threshold, colder at the gallery, warm at home. Where "
            "that thread finally goes is still yours to decide; until you decide it, explain "
            "nothing and promise nothing.\n"
@@ -1401,9 +1394,9 @@ BLOCKS = [
 
     ("h1", "Fights at a Glance"),
     ("body", "**FIGHT 1: Mosslight Landing** (warm-up, but it runs long; it teaches the session's "
-             "rule). 6x Rotbloom (AC 12, HP 22; **Re-Bloom**: it regains 5 HP at the start of its "
+             "rule). 8x Rotbloom (AC 12, HP 33; **Re-Bloom**: it regains 5 HP at the start of its "
              "turn if it took damage and is not at 0; Cap Slam +3 for 2d4+1; Spore Puff, recharge "
-             "5-6, a 10-ft cone, DC 12 Constitution or 2d6 poison and poisoned) + 6x Mossmite (AC "
+             "5-6, a 10-ft cone, DC 12 Constitution or 2d6 poison and poisoned) + 8x Mossmite (AC "
              "13, HP 7, Speed 40 ft and climb 40 ft; Skitter, no opportunity attacks; Pack Nerve; "
              "Nip +5 for 1d4+3), boiling out of the moss the moment the first Rotbloom is struck. "
              "**THE LEVER: Cleansing Edge.** A Rotbloom cannot re-bloom if it has taken radiant "
@@ -1413,9 +1406,9 @@ BLOCKS = [
              "**The tell:** the Rotblooms do not attack the Sandshrew and it does not run from "
              "them. Corruption does not eat its own."),
     ("body", "**FIGHT 2: Chime Reef** (hard on paper, easy the moment somebody thinks of thunder). "
-             "3x Chimestone (AC 16, HP 52, **VULNERABLE THUNDER**, tremorsense 60 ft; Multiattack "
-             "two Crystal Rams at +6 for 2d6+4; Shard Volley +6 for 2d8 at 40 ft) + 3x Shardwing "
-             "(AC 14, HP 22, fly 50 ft, **VULNERABLE THUNDER**; Dive +6 for 2d6+2, plus 1d6 more "
+             "4x Chimestone (AC 16, HP 78, **VULNERABLE THUNDER**, tremorsense 60 ft; Multiattack "
+             "two Crystal Rams at +6 for 2d6+4; Shard Volley +6 for 2d8 at 40 ft) + 4x Shardwing "
+             "(AC 14, HP 33, fly 50 ft, **VULNERABLE THUNDER**; Dive +6 for 2d6+2, plus 1d6 more "
              "if it came 30 ft straight in; Shard Spit +6 for 1d10+2 at 60 ft). **THE LEVER: "
              "Resonant Body.** Any thunder damage **stuns a Chimestone until the end of its next "
              "turn, and it takes DOUBLE damage from every source while stunned.** Thunderwave and "
@@ -1425,7 +1418,7 @@ BLOCKS = [
              "for standing that close. Nobody minds. Lilly's Arcana read: the crystals are growing "
              "toward something deeper in. It is Groudon."),
     ("body", "**FIGHT 3: The Glassed Gallery** (the hardest thing before the boss, and Stabby's "
-             "proving ground). 1x Glass Weeper (AC 16, HP 115; **Glassbound**: regains 10 HP at the "
+             "proving ground). 1x Glass Weeper (AC 16, HP 170; **Glassbound**: regains 10 HP at the "
              "start of its turn unless it took radiant or force damage, or was hit by Cleansing "
              "Edge, since its last turn; Rooted, it never leaves its glassed roots by more than 15 "
              "ft; Multiattack three Frond Lashes at +7 for 2d6+5 with 15 ft of reach; Keening, "
@@ -1450,7 +1443,9 @@ BLOCKS = [
              "HP, DC 12 Dexterity within 5 ft for 2d4), **one spawned at the start of each of "
              "Groudon's turns**. **THE LEVER IS THE ONLY WIN CONDITION: THE SPIKE.** AC 17, 60 hit "
              "points, immune to everything except **radiant, force, and Cleansing Edge**, reached "
-             "by climbing, by flight, or by a ranged attack at disadvantage. Damaging it triggers "
+             "by climbing, by flight, or by a ranged attack at disadvantage, and it **re-knits "
+             "20 HP at the start of each of Groudon's turns unless Cleansing Edge touched it "
+             "since his last turn**. Damaging it triggers "
              "**Thrash** (once a round, no action): every climber makes a **DC 15 Strength or "
              "Acrobatics check** or falls for 3d6. **When the spike breaks the fight ends "
              "instantly**, whatever his hit points are, and every Glassling on the board collapses "
@@ -1494,7 +1489,9 @@ BLOCKS = [
              "**Ghostbloom's Guardian's Light** (a reaction within 30 ft, 2d8 + 3 and it ends "
              "charmed or frightened, three times a short rest), which is the safety net for the "
              "whole run. She carries it all night and only steps into the Sphere at the very end, "
-             "so nothing about it changes until the homecoming. Lilly's **Flash of Genius** (+5 to "
+             "so nothing about it changes until the homecoming. **Run her triage-first**: "
+             "Guardian's Light and guarding before the lash, damage only when nobody "
+             "needs saving. Lilly's **Flash of Genius** (+5 to "
              "a failed check or save for her or a friend within 30 ft, five times a day) is the "
              "spare: hold at least one for the climb up Groudon's back."),
 
@@ -1642,15 +1639,15 @@ BLOCKS = [
              "boots, slow as something enormous asleep. There is no sky to measure your "
              "progress against, so the only way to know you are moving is the moss light "
              "going out behind you, patch by patch, as you leave it.\n"
-             "Twice, something out in the dark keeps pace with you for a while. It is big "
-             "enough to hear. It never arrives."),
+             "Twice, something big enough to hear keeps pace with you out in the dark for a "
+             "while, and both times it falls behind without ever showing itself."),
     ("dm", "**How a dot resolves.** Read the die they moved with. **Garnet** is an "
            "Encounter (even: Thumpaw; odd: the Gleamoth). **Moss** is a Boon (even: the "
            "Deepwater Spring; odd: the Shortcut). **Ochre** is a Hazard (even: Sinkloam; "
            "odd: the Ceiling Lets Go). **Amethyst** is Wild (even: the Reef Answers; odd: "
            "the Guardian's Dream). Slate blue is simply movement: nothing happens, keep "
            "going."),
-    ("dm", "**Garnet dots are small pressure, and that is all they are.** Two or three "
+    ("dm", "**Garnet dots are small pressure, nothing more.** Two or three "
            "weak things that cost a little resource and no more. Never let a dot roll "
            "swell into a fifth big fight: the four scripted encounters are the session, "
            "and the dots are texture between them. Thumpaw and the Gleamoth appear "
@@ -1669,10 +1666,10 @@ BLOCKS = [
              "eyes and does not move, because you are standing in the tunnel it was going "
              "to use."),
     ("dm", "**Garnet dot, even. One Thumpaw.** It will not move, it is directly in the "
-           "way, and when somebody inevitably prods it, it swings. This is a straight "
-           "brawl and that is the point: **76 hit points**, two big slams a turn, no "
-           "gimmick and no puzzle. Sometimes a table simply wants to hit something large "
-           "until it stops, and this is that. It never pursues and it never finishes a "
+           "way, and when somebody inevitably prods it, it swings. This is a plain "
+           "brawl on purpose: **76 hit points**, two big slams a turn, no gimmick and "
+           "no puzzle, for the nights when a table just wants to hit something large "
+           "until it stops. It never pursues and it never finishes a "
            "downed hero; it is grumpy, not evil. If the party genuinely tries to befriend "
            "it rather than fight it, **DC 15 Animal Handling**, with advantage from "
            "Ursa's Mark of Handling, will move it aside. Do not offer that. Let them "
@@ -1693,8 +1690,8 @@ BLOCKS = [
 
     ("h2", "The Deepwater Spring"),
     ("gold", "A crack in the wall, and inside it a pool so still and so clear that the "
-             "pale stones forty feet down look close enough to lift out. Nothing feeds "
-             "it. Nothing drains it. And yet the surface keeps turning over, slow and "
+             "pale stones forty feet down look close enough to lift out. Nothing feeds it, "
+             "and nothing drains it, yet the surface keeps turning over, slow and "
              "patient, the way water moves when something a long way underneath it is "
              "still working. It is very cold, and it tastes like the air after "
              "lightning, and by the time you have all drunk, the ache has gone out of "
@@ -1790,10 +1787,6 @@ BLOCKS = [
      "guardian is to heal the country it carries."),
 
 
-    ("h2", "The Board, Ready to Print", {"hardbreak": True}),
-    ("dm", "**Two Letter pages, taped at the seam.** The full board is split below for home "
-           "printing; the original one-piece file and a print-ready PDF live in the repo at "
-           "assets/session_08/."),
     ("img", f"{S8}/underroot_board_page1_left.png",
      "Left half: the gate through the reef.",
      6.2, {"hmax": 8.32}),
@@ -1806,14 +1799,14 @@ BLOCKS = [
      "Every creature of Underroot, in the order the party meets them."),
 
 ("fight_header", "ENEMIES, Fight 1: Mosslight Landing",
-     "Mosslight Landing ✦ Difficulty: Warm-up ✦ 6x Rotbloom + 6x Mossmite"),
+     "Mosslight Landing ✦ Difficulty: Warm-up ✦ 8x Rotbloom + 8x Mossmite"),
     ("enemy_cards", [
         {
             "name": "Rotbloom",
-            "sub": "Small plant (corrupted), unaligned ✦ CR 1/2 (100 XP) ✦ 6 in the grey moss",
+            "sub": "Small plant (corrupted), unaligned ✦ CR 1/2 (100 XP) ✦ 8 in the grey moss",
             "img": "assets/monsters/rotbloom.png", "img_w": 2.4,
             "stats": [
-                "**AC** 12  **HP** 22 (4d6 + 8)  **Speed** 25 ft",
+                "**AC** 12  **HP** 33 (6d6 + 12)  **Speed** 25 ft",
                 "**STR** 10  **DEX** 12  **CON** 14  **INT** 4  **WIS** 8  **CHA** 6",
                 "**Resist** poison  **Imm.** (cond) blinded, deafened, poisoned",
                 "**Senses** blindsight 30 ft, passive Perception 9",
@@ -1836,7 +1829,7 @@ BLOCKS = [
         },
         {
             "name": "Mossmite",
-            "sub": "Tiny beast (corrupted), unaligned ✦ CR 1/8 (25 XP) ✦ 6 boiling out of the moss",
+            "sub": "Tiny beast (corrupted), unaligned ✦ CR 1/8 (25 XP) ✦ 8 boiling out of the moss",
             "img": "assets/monsters/mossmite.png", "img_w": 2.4,
             "stats": [
                 "**AC** 13  **HP** 7 (2d4 + 2)  **Speed** 40 ft, climb 40 ft",
@@ -1870,16 +1863,16 @@ BLOCKS = [
                 "Corruption does not eat its own."),
 
     ("fight_header", "ENEMIES, Fight 2: Chime Reef",
-     "The Chime Reef ✦ Difficulty: Hard, or easy the moment they use thunder ✦ 3x Chimestone + "
-     "3x Shardwing"),
+     "The Chime Reef ✦ Difficulty: Hard, or easy the moment they use thunder ✦ 4x Chimestone + "
+     "4x Shardwing"),
     ("enemy_cards", [
         {
             "name": "Chimestone",
-            "sub": "Medium elemental (Plane of Earth), unaligned ✦ CR 3 (700 XP) ✦ 3 standing up "
+            "sub": "Medium elemental (Plane of Earth), unaligned ✦ CR 3 (700 XP) ✦ 4 standing up "
                    "out of the shallows",
             "img": "assets/monsters/chimestone.png", "img_w": 2.4,
             "stats": [
-                "**AC** 16 (rock plate)  **HP** 52 (7d8 + 21)  **Speed** 25 ft",
+                "**AC** 16 (rock plate)  **HP** 78 (12d8 + 24)  **Speed** 25 ft",
                 "**STR** 18  **DEX** 8  **CON** 16  **INT** 5  **WIS** 12  **CHA** 6",
                 "**Resist** piercing, slashing  **Vuln.** thunder",
                 "**Imm.** poison ✦ (cond) charmed, exhaustion, frightened, poisoned",
@@ -1905,10 +1898,10 @@ BLOCKS = [
         },
         {
             "name": "Shardwing",
-            "sub": "Small elemental, unaligned ✦ CR 1 (200 XP) ✦ 3 in the air above the reef",
+            "sub": "Small elemental, unaligned ✦ CR 1 (200 XP) ✦ 4 in the air above the reef",
             "img": "assets/monsters/shardwing.png", "img_w": 2.4,
             "stats": [
-                "**AC** 14  **HP** 22 (5d6 + 5)  **Speed** 10 ft, **fly 50 ft**",
+                "**AC** 14  **HP** 33 (8d6 + 5)  **Speed** 10 ft, **fly 50 ft**",
                 "**STR** 8  **DEX** 18  **CON** 12  **INT** 4  **WIS** 12  **CHA** 6",
                 "**Vuln.** thunder ✦ **Imm.** poison ✦ (cond) poisoned, prone",
                 "**Senses** tremorsense 30 ft, passive Perception 11",
@@ -1954,7 +1947,7 @@ BLOCKS = [
                    "trying to do its job",
             "img": "assets/session_08/mon_glass_weeper.png", "img_w": 2.6,
             "stats": [
-                "**AC** 16 (black glass)  **HP** 115 (11d10 + 55)  **Speed** 20 ft",
+                "**AC** 16 (black glass)  **HP** 170 (20d10 + 60)  **Speed** 20 ft",
                 "**STR** 18  **DEX** 8  **CON** 20  **INT** 4  **WIS** 12  **CHA** 5",
                 "**Resist** bludgeoning, piercing, slashing from nonmagical weapons",
                 "**Imm.** poison ✦ (cond) charmed, frightened, poisoned, prone",
@@ -2048,7 +2041,9 @@ BLOCKS = [
                 ("THE SPIKE (this is the encounter)", "A shard of black glass is driven into his "
                  "back at the shoulder. **AC 17, 60 hit points**, immune to all damage except "
                  "**radiant, force, and Cleansing Edge**. Reaching it requires climbing him, "
-                 "flying, or a ranged attack at disadvantage. **When the spike is destroyed the "
+                 "flying, or a ranged attack at disadvantage. At the start of each of Groudon's "
+                 "turns the spike **re-knits 20 hit points** unless it took Cleansing Edge "
+                 "damage since his last turn. **When the spike is destroyed the "
                  "encounter ends immediately**, whatever Groudon's hit points are. Do not run "
                  "him to 0. He is not supposed to die."),
                 ("Unstoppable", "He cannot be frightened, charmed, restrained, or knocked prone, "
