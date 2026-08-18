@@ -42,13 +42,19 @@ BLOCKS = [
 
     ("h2", "The Star Map"),
     ("body", "As the Orrery of Planes shows it, plane by plane, anchor by anchor:"),
-    ("body", "**Fire, the plane Ignis:** anchored to **Aldebaran**, still burning bright."),
-    ("body", "**Water, the plane Unda:** anchored to **Fomalhaut**, still burning bright."),
+    ("body", "**Fire, the plane Ignis:** anchored to **Aldebaran**, flickering, and under attack."),
+    ("body", "**Water, the plane Unda:** anchored to **Fomalhaut**, flickering, and under attack."),
     ("body", "**Air, the plane Aer:** anchored to **Vega**, going dark."),
-    ("body", "**Earth, the plane Terra:** anchored to **Antares**, dimming."),
+    ("body", "**Earth, the plane Terra:** anchored to **Antares**, two years dimming, and the "
+     "first name in forty generations ever written back onto the list."),
     ("body", "**Shadow, the plane Umbra:** anchored to **Algol**, dark."),
     ("body", "**Betelgeuse:** the first star put out, the one Ash Catchum chased into the east."),
-    ("body", "**Achernar:** a reserve anchor, held back against the worst."),
+    ("body", "**Achernar:** the reserve anchor, held back against the worst, anchoring nothing. "
+     "The Circle keeps it lit and does not say why."),
+    ("body", "**And one more, with no label.** A dark star hangs on the Orrery that the Circle "
+     "does not name, because nobody remembers its name, or the world it held. It was crossed "
+     "off the list before the oldest living sky-reader was born. It is the reason the reserve "
+     "exists."),
     ("lore", "The Sky-Readers",
      "The Circle of the Eternal Stars was founded by druids who noticed the stars did not "
      "wander like the wild things do. Somebody, they reasoned, must be holding them still. "

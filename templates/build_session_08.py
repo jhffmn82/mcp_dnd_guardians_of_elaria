@@ -1347,10 +1347,10 @@ BLOCKS = [
            "**Two: the idol.** Cold at the threshold, colder at the gallery, warm at home. Where "
            "that thread finally goes is still yours to decide; until you decide it, explain "
            "nothing and promise nothing.\n"
-           "**Three: four stars to go**, and two of them are still bright. Aelwyn will work out "
-           "what that means before the next session is over: if the lights are being put out one "
-           "by one, then somewhere out there is a star nobody has reached yet, and the party can "
-           "get there **first**."),
+           "**Three: four stars to go**, and the two still lit have begun to **flicker**, both at "
+           "once, which is not how stars die on their own. Aelwyn will work out what that means "
+           "before the next session is over: somebody is already at work on both, and somewhere "
+           "out there is a star the party can still reach **first**."),
 
     ("gold", "It is very late. Vane has finally stopped talking. Sandshrew has fallen asleep in a "
              "crate of brass fittings, and nobody has the heart to move him.\n"
