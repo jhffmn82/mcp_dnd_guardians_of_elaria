@@ -25,8 +25,10 @@ cones/lines resolved as nearest-N-in-arc, opportunity attacks only for the
 cases the statblocks call out (Skitter/Glide exist to dodge them).
 """
 import random
+import sys
 
-rng = random.Random(20260818)
+SEED = int(sys.argv[1]) if len(sys.argv) > 1 else 20260818
+rng = random.Random(SEED)
 LOG = []
 
 
@@ -397,7 +399,7 @@ def katana_hit_dmg(st, crit=False):
 
 
 def stabby_attack_routine(st, targets, rnd, fury_ok=True, devour=True,
-                          chime_ring=False):
+                          chime_ring=False, no_bonus=False):
     """Two katana swings + Devour (or MA punch). targets = ordered kill list."""
     s = st.stabby
     live = lambda: [t for t in targets if t.hp > 0]
@@ -417,7 +419,7 @@ def stabby_attack_routine(st, targets, rnd, fury_ok=True, devour=True,
                 fury_ok = False
             dmg = deal(st, t, parts, magical=True, attacker=s, is_ce=True)
             extra = ''
-            if chime_ring and not t.stunned and t.hp > 0:
+            if chime_ring and t.ch == 'C' and not t.stunned and t.hp > 0:
                 t.stunned = True
                 extra = ' The crystal RINGS: stunned!'
             log(f"    Stabby: katana {'CRIT ' if crit else ''}hits {t.name} for {dmg}."
@@ -427,7 +429,7 @@ def stabby_attack_routine(st, targets, rnd, fury_ok=True, devour=True,
         else:
             log(f"    Stabby: katana misses {t.name}.")
     ts = live()
-    if not ts:
+    if not ts or no_bonus:
         return
     t = ts[0]
     if devour and st.s_focus > 0:
@@ -475,11 +477,11 @@ def puff_turn(st, target, use_mm):
             log(f"    Puff: Force Strike misses {target.name}.")
 
 
-def cannon_fire(st, mode, targets=None, center=None):
+def cannon_fire(st, mode, targets=None, center=None, dis=False):
     c = st.cannon
     if mode == 'ballista' and targets:
         t = targets[0]
-        hit, crit, _ = attack_roll(st, 8, t, attacker=c)
+        hit, crit, _ = attack_roll(st, 8, t, dis=dis, attacker=c)
         if hit:
             dmg = deal(st, t, [(d(4 if crit else 2, 8) + 2, 'force')])
             log(f"    Cannon (Force Ballista): slams {t.name} for {dmg} force.")
@@ -571,10 +573,21 @@ def ursa_conc_check(st, dmg):
             st.fey = None
 
 
-def star_arrow(st, target):
+def ursa_close(st, target, want_ft=55):
+    """Ursa spends movement to get his 60-ft powers in range."""
+    if target is not None and st.ursa.dist_ft(target) > want_ft:
+        old, moved = st.ursa.approach(target, want_ft, 30)
+        if moved:
+            log(f"    Ursa: steps up {old}->{tuple(st.ursa.pos)}.")
+    return target is not None and st.ursa.dist_ft(target) <= 60
+
+
+def star_arrow(st, target, dis=False):
     if target is None or target.hp <= 0:
         return
-    hit, crit, _ = attack_roll(st, 10, target, attacker=st.ursa)
+    if not ursa_close(st, target):
+        return
+    hit, crit, _ = attack_roll(st, 10, target, dis=dis, attacker=st.ursa)
     if hit:
         dmg = deal(st, target, [(d(2 if crit else 1, 8) + 5, 'radiant')])
         log(f"    Ursa: star-arrow streaks into {target.name} for {dmg} radiant.")
@@ -610,6 +623,8 @@ def guiding_bolt(st, target, dis=False):
 
 
 def starry_wisp(st, target):
+    if not ursa_close(st, target):
+        return guiding_bolt(st, target)     # 120-ft fallback when out of range
     hit, crit, _ = attack_roll(st, 10, target, attacker=st.ursa)
     if hit:
         dmg = deal(st, target, [(d(4 if crit else 2, 8) + 5, 'radiant'),
@@ -754,6 +769,10 @@ def fight1(st):
                                     key=lambda m: st.lilly.dist_ft(m))
                 clump = [m for m in near_mites
                          if near_mites and cheb(m.pos, near_mites[0].pos) <= 4]
+                # no Shatter centered on a friend: the sphere is 10 ft around
+                if any(h.alive and any(cheb(h.pos, m.pos) <= 2 for m in clump)
+                       for h in st.pcs):
+                    clump = []
                 live_r = sorted([r for r in rots if r.hp > 0],
                                 key=lambda r: st.lilly.dist_ft(r))
                 if rnd >= 2 and len(clump) >= 3 and st.l_slot2 > 0:
@@ -978,6 +997,9 @@ def fight2(st):
                     if f.hp <= 0:
                         continue
                     near = [g for g in foes if g.hp > 0 and cheb(g.pos, f.pos) <= 2]
+                    if any(h.alive and any(cheb(h.pos, g.pos) <= 2 for g in near)
+                           for h in st.pcs + ([st.fey] if st.fey else [])):
+                        continue          # would catch a friend in the sphere
                     if len(near) > len(clump):
                         clump = near
                 if rnd >= 2 and len(clump) >= 2 and st.l_slot2 > 0:
@@ -1491,9 +1513,10 @@ def boss(st):
                         log("    Stabby reaches the SPIKE at Groudon's shoulder.")
                 if stabby_at_spike:
                     pre = spike.hp
-                    # Step of the Wind used his bonus action, so no Devour then.
+                    # Step of the Wind used his bonus action: no Devour and no
+                    # Martial Arts punch on that turn.
                     stabby_attack_routine(st, [spike], rnd, fury_ok=False,
-                                          devour=(not sotw))
+                                          devour=(not sotw), no_bonus=sotw)
                     if spike.hp < pre and spike.hp > 0:
                         log("      Groudon THRASHES; Stabby is flying, and the Sash "
                             "holds him just off the plates.")
@@ -1506,7 +1529,7 @@ def boss(st):
                         "Puff and the cannon trundling with her.")
                 if st.lilly.dist_ft(spike) <= 90:
                     true_strike(st, spike, dis=True, radiant=True)
-                cannon_fire(st, 'ballista', [spike])   # force; dis folded into roll
+                cannon_fire(st, 'ballista', [spike], dis=True)  # called shot
                 puff_turn(st, spike, use_mm=True)
                 if spike.hp <= 0:
                     break
@@ -1533,7 +1556,7 @@ def boss(st):
                 else:
                     guiding_bolt(st, spike, dis=True)
                 if not bonus_used and st.u_starry:
-                    star_arrow(st, spike)
+                    star_arrow(st, spike, dis=True)
                 if spike.hp <= 0:
                     break
             elif name == 'Ghostbloom' and st.ghost.alive:
