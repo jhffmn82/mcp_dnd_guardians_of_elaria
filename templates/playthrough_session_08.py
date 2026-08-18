@@ -416,6 +416,7 @@ def start_round(st, rnd):
     log(f"  --- Round {rnd} ---")
     for a in st.pcs + [st.cannon]:
         a.reaction = True
+        a.fright = max(0, a.fright - 1)
     aura_tick(st)
 
 
@@ -590,7 +591,7 @@ def ghost_lash(st, targets):
             dmg = deal(st, t, parts, magical=False, attacker=g)
             note = ''
             if 'frightened' not in t.cond_imm and not foe_save(t, t.saves.get('wis', 0), 16):
-                t.fright = 1
+                t.fright = 2
                 note = ' It recoils, frightened!'
             log(f"    Ghostbloom: spectral lash hits {t.name} for {dmg}.{note}")
             if t.hp <= 0:
@@ -1452,7 +1453,7 @@ def fight3(st):
                             log(f"      {c.name} takes {dmg} necrotic.")
                         else:
                             dmg = deal(st, c, [(roll, 'necrotic')])
-                            c.fright = 1
+                            c.fright = 2
                             log(f"      {c.name} takes {dmg} necrotic and quails!")
                         if c.hp <= 0:
                             log(f"      {c.name} cracks apart.")
@@ -1518,7 +1519,7 @@ def fight3(st):
                             log(f"      {h.name} grits through it: {dmg} psychic.")
                         else:
                             dmg = deal(st, h, [(roll, 'psychic')])
-                            h.fright = 1
+                            h.fright = 2
                             log(f"      {h.name} takes {dmg} psychic and is frightened!")
                             if h is st.ursa:
                                 ursa_conc_check(st, dmg)
@@ -1844,6 +1845,292 @@ def boss(st):
     return rnd
 
 
+# --------------------------------------------------------------------------
+# THE ROAD BETWEEN: the board walk. Sequence extracted from build_rift_board's
+# actual geometry (19 spaces; even/odd of the movement die picks the outcome).
+# --------------------------------------------------------------------------
+ROAD = [
+    ('the Gate to Mosslight Landing', ['trav', 'enc', 'trav', 'boon', 'wild']),
+    ('Mosslight to the Chime Reef', ['haz', 'trav', 'enc', 'trav']),
+    ('the Reef to the Glassed Gallery', ['enc', 'trav', 'enc', 'wild', 'haz']),
+    ("the Gallery to Groudon's Hollow", ['trav', 'enc', 'trav', 'boon', 'trav']),
+]
+
+
+def thumpaw_fight(st):
+    log("  " + "-" * 60)
+    log("  ROAD FIGHT: THUMPAW (garnet, even). A boulder unfolds in the way.")
+    st.lilly.pos = [14, 21]
+    st.stabby.pos = [15, 20]
+    st.ursa.pos = [16, 21]
+    st.ghost.pos = [15, 22]
+    st.puff.pos = [13, 21]
+    st.cannon.pos = [13, 22]
+    tp = Actor('Thumpaw', 'T', 'foe', 14, ehp(76), (15, 12), 30,
+               saves=dict(str=5, dex=-1, con=4, wis=1), reach=10)
+    log("  (If Ursa thinks of his Mark, DC 15 Animal Handling at +8 with "
+        "advantage moves it aside. This table came here to fight.)")
+    st.spend_focus()
+    st.s_ignited = True
+    log(f"  Stabby ignites (1 Focus). [Focus {st.s_focus}]")
+    order = initiative(st, [('Thumpaw', [tp], -1)])
+    rnd = 0
+    poked = False
+    while tp.hp > 0 and any(h.alive for h in st.heroes) and rnd < 8:
+        rnd += 1
+        start_round(st, rnd)
+        for _, name, actors in order:
+            if tp.hp <= 0:
+                break
+            if name == 'Stabby' and st.stabby.alive:
+                st.s_speed_left = 65
+                st.stabby.dodging = False
+                if st.stabby.hp < 25:
+                    stabby_defensive(st, [tp])
+                else:
+                    stabby_attack_routine(st, [tp], rnd, fury_ok=True)
+                    poked = True
+            elif name == 'Lilly' and st.lilly.alive:
+                true_strike(st, tp)
+                poked = True
+                cannon_fire(st, 'ballista', [tp])
+                puff_turn(st, tp, use_mm=False)
+            elif name == 'Ursa' and st.ursa.alive:
+                ursa_triage(st)
+                starry_wisp(st, tp)
+                poked = True
+            elif name == 'Ghostbloom' and st.ghost.alive:
+                if GHOST_SUPPORT:
+                    log("    Ghostbloom: hangs back on triage, petals ready.")
+                else:
+                    ghost_lash(st, [tp])
+            elif name == 'Thumpaw':
+                if tp.hp <= 0:
+                    continue
+                if not poked:
+                    log("    Thumpaw: stands in the tunnel, patient, in the way.")
+                    continue
+                tgt = min([h for h in st.pcs if h.alive and not h.aloft],
+                          key=lambda h: tp.dist_ft(h), default=None)
+                if tgt is None or tp.dist_ft(tgt) > 10:
+                    log("    Thumpaw: plants itself and waits. It never pursues.")
+                    continue
+                for _ in range(2):
+                    if not tgt.alive:
+                        break
+                    hit, crit, _ = attack_roll(st, 8, tgt, attacker=tp)
+                    if hit:
+                        dmg = deal(st, tgt, [(d(4 if crit else 2, 8) + 5,
+                                              'bludgeoning')],
+                                   magical=False, attacker=tp)
+                        log(f"    Thumpaw: shovel slam flattens {tgt.name} for {dmg}.")
+                        if tgt is st.ursa:
+                            ursa_conc_check(st, dmg)
+                    else:
+                        log(f"    Thumpaw: shovel slam misses {tgt.name}.")
+    log(f"  Thumpaw goes down after {rnd} rounds, grumbling to the last.")
+    st.s_ignited = False
+    return rnd
+
+
+def gleamoth_fight(st):
+    log("  " + "-" * 60)
+    log("  ROAD FIGHT: THE GLEAMOTH (garnet, odd). Forty pale sparks round the "
+        "corner, and they want the Sphere.")
+    st.lilly.pos = [15, 21]
+    st.stabby.pos = [14, 20]
+    st.ursa.pos = [16, 21]
+    st.ghost.pos = [15, 22]
+    st.puff.pos = [14, 22]
+    st.cannon.pos = [16, 22]
+    swarms = [Actor(f'Gleamoth swarm-{i+1}', 'g', 'foe', 12, ehp(26), p, 40,
+                    saves=dict(str=-3, dex=2, con=2, wis=0),
+                    resist={'bludgeoning', 'piercing', 'slashing'},
+                    vuln={'fire', 'thunder'},
+                    cond_imm={'charmed', 'frightened', 'grappled', 'prone',
+                              'restrained', 'stunned'}, fly=True)
+              for i, p in enumerate([(14, 10), (15, 9), (16, 10)])]
+    order = initiative(st, [('Gleamoths', swarms, 2)])
+    rnd = 0
+    while any(s.hp > 0 for s in swarms) and any(h.alive for h in st.heroes) and rnd < 8:
+        rnd += 1
+        start_round(st, rnd)
+        for _, name, actors in order:
+            live = [s for s in swarms if s.hp > 0]
+            if not live:
+                break
+            if name == 'Stabby' and st.stabby.alive:
+                st.stabby.dodging = False
+                for _ in range(2):
+                    live = [s for s in swarms if s.hp > 0]
+                    if not live:
+                        break
+                    t = min(live, key=lambda s: st.stabby.dist_ft(s))
+                    if st.stabby.dist_ft(t) > 5:
+                        st.stabby.approach(t, 5, 55)
+                    hit, crit, _ = attack_roll(st, 10, t, attacker=st.stabby)
+                    if hit:
+                        dmg = deal(st, t, [(d(2 if crit else 1, 8) + 7, 'force')],
+                                   attacker=st.stabby)
+                        log(f"    Stabby: force-wrapped fist scatters "
+                            f"{t.name} for {dmg}.")
+                        if t.hp <= 0:
+                            log(f"      {t.name} disperses in a drift of lights.")
+                    else:
+                        log(f"    Stabby: swats through {t.name}, moths part around it.")
+            elif name == 'Lilly' and st.lilly.alive:
+                on_her = [s for s in swarms if s.hp > 0
+                          and s.dist_ft(st.lilly) <= 5]
+                if len(on_her) >= 2 and st.l_slot1 > 0:
+                    st.l_slot1 -= 1
+                    log(f"    Lilly: THUNDERWAVE, the boom rolls through the cloud! "
+                        f"[{st.l_slot1} 1st slots left]")
+                    base, rider = d(2, 8), d(1, 8)
+                    first = True
+                    for s in on_her:
+                        r2 = base + (rider if first else 0)
+                        first = False
+                        if foe_save(s, s.saves.get('con', 0), 16):
+                            dmg = deal(st, s, [(max(1, r2) // 2, 'thunder')])
+                            log(f"      {s.name} holds together: {dmg} thunder.")
+                        else:
+                            dmg = deal(st, s, [(max(1, r2), 'thunder')])
+                            log(f"      {s.name} is blasted apart for {dmg} thunder!")
+                        if s.hp <= 0:
+                            log(f"      {s.name} disperses in a drift of lights.")
+                else:
+                    t = min([s for s in swarms if s.hp > 0],
+                            key=lambda s: st.lilly.dist_ft(s))
+                    true_strike(st, t)
+                pool = [s for s in swarms if s.hp > 0]
+                if pool:
+                    cannon_fire(st, 'ballista', pool)
+                puff_turn(st, next((s for s in swarms if s.hp > 0), None),
+                          use_mm=False)
+            elif name == 'Ursa' and st.ursa.alive:
+                ursa_triage(st)
+                t = next((s for s in swarms if s.hp > 0), None)
+                if t is not None:
+                    starry_wisp(st, t)
+            elif name == 'Ghostbloom' and st.ghost.alive:
+                if GHOST_SUPPORT:
+                    log("    Ghostbloom: hangs back on triage, petals ready.")
+                else:
+                    ghost_lash(st, [s for s in swarms if s.hp > 0])
+            elif name == 'Gleamoths':
+                for s in swarms:
+                    if s.hp <= 0:
+                        continue
+                    s.approach(st.lilly, 0, 40)
+                    if s.dist_ft(st.lilly) > 0:
+                        log(f"    {s.name}: drifts toward the Sphere's light.")
+                        continue
+                    hit, crit, _ = attack_roll(st, 4, st.lilly, attacker=s)
+                    if hit:
+                        n = 2 if s.hp <= s.hp_max // 2 else 4
+                        dmg = deal(st, st.lilly, [(d(n * (2 if crit else 1), 4),
+                                                   'piercing')],
+                                   magical=False, attacker=s)
+                        st.lilly.fright = 2
+                        log(f"    {s.name}: smothers Lilly for {dmg}; she is "
+                            "BLINDED by wings until her next turn.")
+                    else:
+                        log(f"    {s.name}: swirls over Lilly, wings everywhere, "
+                            "and cannot get through her armor.")
+    log(f"  The last lights scatter after {rnd} rounds.")
+    return rnd
+
+
+def road_walk(st, seg, stats):
+    label, seq = ROAD[seg]
+    log("=" * 72)
+    log(f"THE ROAD: {label} ({len(seq)} spaces)")
+    log("=" * 72)
+    pos = -1
+    while True:
+        roll = d(1, 6)
+        pos += roll
+        if pos >= len(seq):
+            log(f"  Move {roll}: the token reaches the stop; the beat plays.")
+            break
+        dot = seq[pos]
+        even = (roll % 2 == 0)
+        if dot == 'trav':
+            log(f"  Move {roll}: a slate-blue space. Nothing; keep going.")
+            continue
+        stats.setdefault('events', []).append((dot, even))
+        if dot == 'enc' and even:
+            log(f"  Move {roll}: GARNET, even.")
+            stats['road_rounds'] = stats.get('road_rounds', 0) + thumpaw_fight(st)
+            revive_between(st)
+        elif dot == 'enc':
+            log(f"  Move {roll}: GARNET, odd.")
+            stats['road_rounds'] = stats.get('road_rounds', 0) + gleamoth_fight(st)
+            revive_between(st)
+        elif dot == 'boon' and even:
+            log(f"  Move {roll}: MOSS, even. THE DEEPWATER SPRING, forty feet of "
+                "impossible clarity.")
+            for h, die, cm in ((st.lilly, 8, 2), (st.stabby, 8, 3), (st.ursa, 8, 2)):
+                if h.alive and h.hp < h.hp_max:
+                    heal = d(1, die) + cm
+                    h.hp = min(h.hp_max, h.hp + heal)
+                    log(f"    {h.name} drinks a Hit Die back: +{heal}, now {h.hp}.")
+            log("    Ghostbloom glows brighter for an hour and is insufferable.")
+        elif dot == 'boon':
+            log(f"  Move {roll}: MOSS, odd. THE SHORTCUT: something small and "
+                "yellow-brown digs a tunnel exactly the right way. Advance 3.")
+            pos += 3
+            if pos >= len(seq):
+                log("    The shortcut opens right onto the stop ahead.")
+                break
+        elif dot == 'haz' and even:
+            log(f"  Move {roll}: OCHRE, even. SINKLOAM, the floor stops being floor.")
+            for h in (st.lilly, st.stabby, st.ursa):
+                if not h.alive:
+                    continue
+                dis = (h is st.lilly)
+                r = d20(dis=dis) + h.saves['str']
+                if r < 13:
+                    log(f"    {h.name} sinks to the waist ({r} vs DC 13) and has "
+                        "to be hauled out.")
+                else:
+                    log(f"    {h.name} keeps to the firm ground ({r} vs DC 13).")
+        elif dot == 'haz':
+            log(f"  Move {roll}: OCHRE, odd. THE CEILING LETS GO.")
+            for h in (st.lilly, st.stabby, st.ursa, st.ghost):
+                if not h.alive:
+                    continue
+                roll_d = d(2, 10)
+                ok = st.hero_save(h, 'dex', 14)
+                if h in (st.stabby, st.puff) and ok:
+                    log(f"    {h.name} flows between the falling stones (Evasion).")
+                    continue
+                dmg = deal(st, h, [((roll_d // 2) if ok else roll_d, 'bludgeoning')],
+                           magical=False)
+                log(f"    {h.name} takes {dmg} under the rockfall.")
+            log("    The way back is shut. Nobody was going back anyway.")
+        elif dot == 'wild' and even:
+            log(f"  Move {roll}: AMETHYST, even. THE REEF ANSWERS: the whole "
+                "tunnel rings one enormous chord.")
+            t = d(2, 8)
+            for h in st.pcs:
+                if not h.down:
+                    h.temp = max(h.temp, t)
+            log(f"    Everyone gains {t} temporary hit points. Ghostbloom sings "
+                "back, badly, at the top of her voice.")
+        else:
+            log(f"  Move {roll}: AMETHYST, odd. THE GUARDIAN'S DREAM: an empty "
+                "sea, and something patient walking through it, making land.")
+            if len(st.u_omens) < 2:
+                new = d20()
+                st.u_omens.append(new)
+                st.u_omens.sort(reverse=True)
+                log(f"    Something spoke to Ursa: he regains a spent omen ({new}).")
+            else:
+                log("    Ursa holds both his omens already; the dream just stays "
+                    "with him.")
+
+
 def revive_between(st):
     """Post-fight triage on the road: nobody walks on at 0."""
     for h in [st.lilly, st.stabby, st.ursa, st.ghost]:
@@ -1878,6 +2165,8 @@ def run_day(seed):
 
     def dcount():
         return sum(h.drops for h in [st.lilly, st.stabby, st.ursa, st.ghost])
+    stats['road_rounds'] = 0
+    road_walk(st, 0, stats)
     stats['f1'] = fight1(st)
     stats['drops_f1'] = dcount()
     if not any(h.alive for h in st.heroes):
@@ -1885,6 +2174,7 @@ def run_day(seed):
         return st, stats
     revive_between(st)
     # walk to the reef: fey persists (< 1 hr)
+    road_walk(st, 1, stats)
     stats['f2'] = fight2(st)
     stats['drops_f2'] = dcount() - stats['drops_f1']
     if not any(h.alive for h in st.heroes):
@@ -1892,12 +2182,14 @@ def run_day(seed):
         return st, stats
     revive_between(st)
     short_rest(st)
+    road_walk(st, 2, stats)
     stats['f3'] = fight3(st)
     stats['drops_f3'] = dcount() - stats['drops_f1'] - stats['drops_f2']
     if not any(h.alive for h in st.heroes):
         stats['wipe'] = 'f3'
         return st, stats
     revive_between(st)
+    road_walk(st, 3, stats)
     stats['boss'] = boss(st)
     stats['drops_boss'] = dcount() - stats['drops_f1'] - stats['drops_f2'] \
         - stats['drops_f3']
@@ -1944,6 +2236,17 @@ def sweep(seeds=range(1, 21)):
               f"{m('drops_f3'):.1f}/{m('drops_boss'):.1f}]")
         print(f"{label:46s} {m('f1'):4.1f} {m('f2'):4.1f} {m('f3'):4.1f} "
               f"{m('boss'):4.1f} {m('drops'):5.2f} {dd} {wipes:4d} {nobrk:6d}  {who}")
+        ev = Counter()
+        for r in rows:
+            ev.update(r.get('events', []))
+        evname = {('enc', True): 'Thumpaw', ('enc', False): 'Gleamoth',
+                  ('boon', True): 'Spring', ('boon', False): 'Shortcut',
+                  ('haz', True): 'Sinkloam', ('haz', False): 'Ceiling',
+                  ('wild', True): 'ReefAnswers', ('wild', False): 'Dream'}
+        n_ev = sum(ev.values())
+        tally = ', '.join(f"{evname[k]} {v}" for k, v in ev.most_common())
+        print(f"{'':46s} road: {n_ev / max(1, len(rows)):.1f} events/run, "
+              f"{m('road_rounds'):.1f} extra rounds/run ({tally})")
     HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING = base
 
 
