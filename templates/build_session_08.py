@@ -361,14 +361,14 @@ BLOCKS = [
              "silence. On the ninth day the old man unlocked the cabinet and handed over Ash "
              "Catchum's field notes without a word. Then he said one thing, which Ursa has "
              "repeated to nobody until tonight: *your father read the sky better than any of us. "
-             "It did not save him. Read the ground too.*\n"
-             "The notes are the working papers of a man in the middle of a thought. Sky charts "
+             "It did not save him. Read the ground too.*"),
+    ]),
+    ("gold", "The notes are the working papers of a man in the middle of a thought. Sky charts "
              "with dates. The same constellation drawn eleven times over eleven months, one point "
              "of light fainter in each drawing. And one word, underlined twice and never "
              "explained: **Betelgeuse.** The first star to go out.\n"
              "The notes stop in the middle of a page, partway through "
              "a sentence."),
-    ]),
 
     ("h2", "The Skyless Country"),
     ("gold", "He went east on foot and **alone**, because Ghostbloom stayed at the Guild and "
