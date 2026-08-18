@@ -34,3 +34,20 @@ Every revised session document follows this structure and the house style implem
 - Added lore is welcome where it enriches (per DM 2026-07-06) but never changes table events.
 - Kids-safe: adventurous, real stakes, never gruesome.
 - Images come from assets/; every image used should exist in the manifest.
+
+## Combat sections (DM-adjudicated 2026-08-18, from the Session 8 rework)
+
+The DM runs combat live; the page supports him, it does not script him. Model
+is Session 7's running block, proven again in Session 8:
+
+1. Ambiance read-alouds going INTO the fight (vivid, natural voice).
+2. Optionally one dm block offering 2-4 short character lines the kids can grab.
+3. ONE "Running the Fight" sequence of terse dm pointers: **Battlefield** /
+   **The pressure** / **The lever** / **Companions** / **Describe cues** (one
+   line per big sensory beat, for the DM to improvise from) / **Scaling dials**
+   (too easy / too hard).
+4. A SHORT exit read-aloud at the pivot out of combat.
+
+Never place a "when X happens, read the following" script inside combat; fold
+that imagery into a describe cue. Prose everywhere: natural storytelling voice,
+no aphorism chains, no trailer fragments; at most one turned phrase per section.
