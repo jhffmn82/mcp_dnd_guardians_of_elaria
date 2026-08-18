@@ -76,7 +76,7 @@ BLOCKS = [
     ("h2", "The Professor"),
     ("img", f"{S8}/B_aelwyn_arrives.png",
      "Professor Aelwyn Ravenstone arrives with three trunks and no help whatsoever, and Lickgloom "
-     "rides the luggage.", 5.8, {"crop": "3:2", "hmax": 3.9}),
+     "rides the luggage.", 6.2, {"crop": "3:2", "hmax": 4.2}),
     ("gold", "He is exactly as you remember him and slightly worse: tall, silver haired, entirely "
              "certain, and delighted to be proven wrong about anything as long as he is the one "
              "doing the proving. He looks at the ring for a long moment, and then at the Sphere in "
@@ -89,7 +89,9 @@ BLOCKS = [
              "uncomplicated happy reunion in the whole session."),
 
     ("h2", "Dawn, and the Eastern Gate"),
-    ("imgfloat", f"{S8}/C_ursa_at_the_eastern_gate.png", 2.9, {"hmax": 3.6}),
+    ("img", f"{S8}/C_ursa_at_the_eastern_gate.png",
+     "He comes in with the dawn traffic, on foot, taller and quieter than he left.",
+     6.2, {"crop": "3:2", "hmax": 4.2}),
     ("gold", "He comes in with the dawn traffic, on foot, with road dust to his knees.\n"
              "He is taller. That is the first thing. The second is that he is quiet in a way he "
              "never used to be, and he waits half a beat before he answers you, as though he is "
@@ -107,7 +109,7 @@ BLOCKS = [
              "\"I'm not late,\" says Stabby Sharpblade. \"It's still today.\""),
     ("img", f"{S8}/D_stabby_drops_from_the_rafters.png",
      "He has ten minutes in hand, and he has almost certainly been in Gearhaven since the afternoon.",
-     4.6, {"crop": "1:1", "hmax": 3.6}),
+     6.2, {"crop": "3:2", "hmax": 4.2}),
     ("dm", "**The idol.** When Stabby swings his pack down, something inside knocks against the "
            "flagstones with a dull, wrong sound. It is the small carved idol that appeared in his "
            "bag after Wraithpine, which nobody has ever explained and no one saw put there. Here, "
@@ -122,7 +124,7 @@ BLOCKS = [
 
     ("h2", "Lilly: The Year of Questions"),
     ("img", f"{S8}/L_poots_at_the_door.png",
-     "Deepforge Hollow, and a mother with flour on her hands.", 5.6, {"crop": "3:2", "hmax": 3.6}),
+     "Deepforge Hollow, and a mother with flour on her hands.", 6.2, {"crop": "3:2", "hmax": 4.2}),
     ("gold", "She went home first. That surprised everyone, including Lilly. She put the Essence "
              "Sphere on her mother's kitchen table and said: tell me everything.\n"
              "What followed was the least satisfying conversation of her life. Poots told her about "
@@ -131,9 +133,7 @@ BLOCKS = [
              "a craftsman describing a commission. And Lilly, who had grown up on her mother's "
              "stories, noticed the shape of the hole in this one: **Poots never once said where the "
              "thing inside the brass had come from.**"),
-    ("img", f"{S8}/M_sparkwicks_verdict.png",
-     "Master Droven Sparkwick studies it a long time. \"I taught your mother. I did not teach her this.\"",
-     4.6, {"crop": "1:1", "hmax": 3.4}),
+    ("imgfloat", f"{S8}/M_sparkwicks_verdict.png", 3.0, {"hmax": 3.4}),
     ("gold", "So she went looking. She earned her answers out of Master Sparkwick at Glimmerspire, "
              "and then she followed the trade roads and paid a dozen artificers in the only "
              "currency she had, which was work. A season with a clockmaker who could not cast a "
@@ -149,7 +149,7 @@ BLOCKS = [
              "instead the outside of something else."),
     ("img", f"{S8}/E_the_marks_under_the_brass.png",
      "The brass was Glimmerspire. The brass was her mother, eleven tries and all. The thing inside "
-     "the brass was old.", 5.6, {"crop": "1:1", "hmax": 3.8}),
+     "the brass was old.", 6.2, {"crop": "3:2", "hmax": 4.2}),
     ("gold", "**Her mother did not make the Essence Sphere.** Poots Glimmergear found it, "
              "understood it was worth protecting, and spent a year of her own life building it a "
              "house.\n"
@@ -192,9 +192,7 @@ BLOCKS = [
              "cleverer person would not have thought of. By the end of summer the Bloodfang were "
              "not dying anymore. **But he had not fixed it. He had only outrun it.** Candyfang went "
              "through the corrupted things the way a knife goes through smoke."),
-    ("img", f"{S8}/O_nokk_and_the_fourth.png",
-     "Nokk tells him the truth nobody told him, because the ones who knew agreed it was kinder not to.",
-     4.6, {"crop": "1:1", "hmax": 3.4}),
+    ("imgfloat", f"{S8}/O_nokk_and_the_fourth.png", 3.0, {"hmax": 3.4}),
     ("gold", "**His father was the Fourth.** The fourth leader the Bloodfang ever named, and by "
              "every account the best of them. Nine years ago something came out of the deep woods, "
              "and the Fourth went to meet it alone, and he did not kill it, because it was not the "
@@ -205,9 +203,7 @@ BLOCKS = [
              "And that is why the arts never took. There was something enormous asleep behind "
              "Stabby's ribs, pushing back against every form they poured into him. **He was never "
              "unteachable. He was occupied.**"),
-    ("img", f"{S8}/stabby_the_stillness_test.png",
-     "Kettlecrown, above the cloud line: the Sunward Vigil turn out to be bullywugs, and the entire "
-     "test is holding still.", 4.0, {"hmax": 4.6}),
+    ("imgfloat", f"{S8}/stabby_the_stillness_test.png", 2.9, {"hmax": 4.0}),
     ("gold", "The sect on the mountain are frog-folk, enormous with age, and they cared about "
              "exactly one thing and tested it on the first morning. They asked him to be **still**. "
              "Not to sit quietly, which he could have faked: still, entirely, from the inside, in "
@@ -221,7 +217,7 @@ BLOCKS = [
              "second, Stabby could do."),
     ("img", f"{S8}/P_the_bullywug_forge.png",
      "A Nichirin blade is a graduation, not a gift. He worked the bellows for eight days of it.",
-     5.8, {"crop": "3:2", "hmax": 3.8}),
+     6.2, {"crop": "3:2", "hmax": 4.2}),
     ("img", f"{S8}/Q_the_purge.png",
      "He came home in deep winter and burned the thing out of the ground, root and all, exactly as "
      "he had promised.", 6.0, {"crop": "3:2", "hmax": 3.9}),
@@ -232,16 +228,14 @@ BLOCKS = [
              "There is not a goblin in the Hollow who will hear a word against him now."),
     ("img", f"{S8}/R_teaching_the_count.png",
      "What made him something else was teaching it. The Vigil gave him the basics; his clan gave "
-     "him the rest.", 5.8, {"crop": "3:2", "hmax": 3.6}),
+     "him the rest.", 6.2, {"crop": "3:2", "hmax": 4.2}),
     ("dm", "They offered him his father's seat and **he said not yet**, and Nokk was the only one "
            "who noticed he did not say never. He gave them Candyfang as the clan's heirloom, and by "
            "their new law the heirloom is carried by whoever the clan would follow, which is why it "
            "is still on his belt. It is not his anymore. It is theirs, and he is only wearing it."),
 
     ("h2", "Ursa: The Road East"),
-    ("img", f"{S8}/T_selarin_and_the_cabinet.png",
-     "Nine days of arguing, and then Elder Selarin unlocks the cabinet, because he knew from the "
-     "first hour that he would.", 4.6, {"crop": "1:1", "hmax": 3.4}),
+    ("imgfloat", f"{S8}/T_selarin_and_the_cabinet.png", 3.0, {"hmax": 3.4}),
     ("gold", "The other two went home. Ursa went the other way.\n"
              "\"You are eight,\" Selarin said. \"I know how old I am,\" said Ursa. On the ninth day "
              "the old man handed over his father's field notes without a word, and then said one "
@@ -281,7 +275,7 @@ BLOCKS = [
              "closed his fingers around it the stone was warm, and it has been warm ever since."),
     ("img", f"{S8}/H_the_vision_in_the_stones.png",
      "On the eighth night the cloud broke, and the standing stones lit from the inside.",
-     5.4, {"crop": "1:1", "hmax": 4.0}),
+     6.2, {"crop": "4:3", "hmax": 4.3}),
     ("gold", "**Elaria showed him three things.**\n"
              "The first was his father **walking**, deliberately, toward a light that was going "
              "out. Ursa has carried a small ugly question since he was old enough to understand the "
@@ -437,6 +431,10 @@ BLOCKS = [
            "odd: the Shortcut). **Ochre** is a Hazard (even: Sinkloam; odd: the Ceiling Lets Go). "
            "**Amethyst** is Wild (even: the Reef Answers; odd: the Guardian's Dream). Slate blue "
            "is simply movement: nothing happens, keep going."),
+    ("imgrow", [(f"{A}/monsters/thumpaw.png",
+                 "Thumpaw, the boulder that minds being prodded."),
+                (f"{A}/monsters/gleamoth_swarm.png",
+                 "The Gleamoth, hungry for the warmest thing in the tunnel.")], 3.1),
     ("dm", "**Garnet dots are small pressure, and that is all they are.** Two or three weak "
            "things that cost a little resource and no more. Never let a dot roll swell into a "
            "fifth big fight: the four scripted encounters are the session, and the dots are "
@@ -446,7 +444,6 @@ BLOCKS = [
            "running long, hand-wave the dots between locations 3 and 4 and go straight to Groudon."),
 
     ("h2", "Thumpaw"),
-    ("imgfloat", f"{A}/monsters/thumpaw.png", 2.6),
     ("gold", "A shape unfolds out of what you took for a boulder. It is the size of a cart horse, "
              "round and shaggy with matted brown moss growing over stone-grey hide, and it has "
              "hands like shovels. It looks at you with small patient eyes and does not move, "
@@ -461,7 +458,6 @@ BLOCKS = [
            "offer that. Let them think of it."),
 
     ("h2", "The Gleamoth"),
-    ("imgfloat", f"{A}/monsters/gleamoth_swarm.png", 2.6),
     ("gold", "The lights come round the corner before the sound does: forty pale green sparks "
              "drifting like blown seeds. They are moths, each the size of a hand, and every one "
              "of them is glowing, and they want the warmest thing in the tunnel, which is you."),
@@ -543,7 +539,7 @@ BLOCKS = [
              "Then it is gone and you are standing in a tunnel again."),
     ("img", f"{A}/session_08/events/D8_the_guardians_dream.png",
      "The Guardian's Dream: an empty sea, and the thing that walked through it making land.",
-     4.6, {"crop": "3:2", "hmax": 3.0}),
+     6.2, {"crop": "3:2", "hmax": 4.2}),
     ("dm", "**Amethyst dot, odd. No mechanical effect.** They have just watched Groudon remember "
            "his own job, and they will not understand what they saw until they are standing in "
            "front of him. Ursa may **regain one spent Omen Dream**, because something has just "
@@ -1004,7 +1000,7 @@ BLOCKS = [
            "hits him, and it hits him every single turn."),
 
     ("h2", "The Glasslings"),
-    ("imgfloat", f"{M}/glassling.png", 3.0),
+    ("imgfloat", f"{M}/glassling.png", 2.5, {"hmax": 2.5}),
     ("dm", "**The spike creates one Glassling at the start of each of Groudon's turns**: a "
            "cat-sized scuttling thing of black glass that drops off his back and goes straight for "
            "the nearest warm body. They are weak, they burst when killed (**DC 12 Dexterity, 5 "
@@ -1183,7 +1179,7 @@ BLOCKS = [
 
 ("img", f"{A}/characters/sandshrew.png",
  "Sandshrew, come home out of the light with somebody else's dirt still on his claws.",
- 5.4, {"crop": "1:1", "hmax": 4.0}),
+ 6.2, {"crop": "3:2", "hmax": 4.2}),
 
 ("dm", "**Where he goes matters.** If the party was kind to him at Mosslight Landing, or fed him, "
        "he walks straight to whoever did it. If they were unkind, he crosses the room to **Ursa** "
