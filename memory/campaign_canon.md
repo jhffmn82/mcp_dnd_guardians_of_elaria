@@ -63,7 +63,7 @@ All three began at level 3 (Session 1, DM confirmed), reached level 4 after Sess
 - **Pikachu (Spark Fox)**: essence trapped in the Essence Sphere since before Session 1; Ash's own companion (revealed Session 12); projected as golden energy in Session 7; communicates through Ursa's Mark; "a key". Full return and roster joining: Session 13.
 - **Lickgloom**: Feywild-touched creature befriended in Session 1 (Whispering Pond); stayed at Ravenstone Laboratory with Aelwyn from Session 3 (DM ruling C4, written into the published Session 3); rode Aelwyn's luggage to Gearhaven at the S8 reunion and now haunts the Guild.
 - **Floraburst**: original companion, chosen from Aelwyn's three (Floraburst, Aqualump, Emberpaws) in Session 3. Became Ghostbloom. Blossomflare was an unused example design, never canon.
-- **COMPANION ROSTER (DM, 2026-07-18; supersedes the 07-06 choose-1-of-3):** nothing is caught. Each elemental rift grants ONE designed companion; the gathered essence takes form back home, with Ghostbloom stepping into the Sphere as tether (one companion out in the world at a time; the swap is Lilly's Action; 0-HP companions faint and are recalled; the rule is printed in the Compendium). Aelwyn briefs the party on each plane's wildlife beforehand. **Final roster of 6 = Ghostbloom + Earth tank (Sandshrew) + Water healer + Fire striker + Air controller + Pikachu; the Shadow rift grants no new companion, Pikachu (already in the Sphere) is the sixth.** Companions are real Pokemon given 5e statblocks; art is realistic-fantasy reinterpretation via the genart.py reference workflow, never pasted official art.
+- **COMPANION ROSTER (DM, 2026-07-18; supersedes the 07-06 choose-1-of-3):** nothing is caught. Each elemental rift grants ONE designed companion; the gathered essence takes form back home, with Ghostbloom stepping into the Sphere as tether (one companion out in the world at a time; the swap is Lilly's Action; 0-HP companions faint and are recalled; the rule is printed in the Compendium). Aelwyn briefs the party on each plane's wildlife beforehand. **Final roster of 6 = Ghostbloom + Earth tank (Sandshrew) + **Water healer (PIPLUP, DM 2026-08-18: fragile backline ranged support; healing mist, bubble shield, Icy Wind slow)** + Fire striker + Air controller + Pikachu; the Shadow rift grants no new companion, Pikachu (already in the Sphere) is the sixth.** Companions are real Pokemon given 5e statblocks; art is realistic-fantasy reinterpretation via the genart.py reference workflow, never pasted official art.
 
 ## Session and level timeline
 
@@ -208,7 +208,7 @@ Eldridge Village and the Gilded Acorn Tavern (Eldridge Vale); Forest of Whispers
 1. **The idol's payoff: RETARGETED to Session 12** (DM 2026-08-18); the exact mechanism is in design (current proposal: Ash's tracker-ward, and the warm-tell that he is still inside Nyxthid).
 2. **The one-shot "Ash Catchum" sheet vs Ursa's origin**: settle the history line.
 3. **The map's compass truth** (vol 02 map vs S4's "west" mentions).
-4. **Guardians of Fire and Air; Water/Fire/Air companion designs; finale boon mechanics** (decide as sessions approach).
+4. **Guardians of Fire and Air; Fire/Air companion designs; finale boon mechanics** (decide as sessions approach). Water is settled: Kyogre confirmed and Piplup chosen (2026-08-18).
 5. **The S6 grave name** (open since the narrative review; never invent).
 
 ## Superseded lore (recorded so it is not re-canonized)
