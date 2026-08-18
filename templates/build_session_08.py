@@ -29,7 +29,7 @@ BLOCKS = [
      "An illustrated adventure. Read the gold boxes aloud; the purple boxes are for the DM."),
     ("img", f"{S8}/frontispiece.png",
      "One door, one world, and something on the far side that has been waiting two years "
-     "for help.", 6.2, {"crop": "3:2", "hmax": 4.4}),
+     "for help.", 6.2, {"hmax": 4.2}),
 
     ("h1", "Previously, on The Guardians of Elaria...", {"hardbreak": True}),
     ("gold", "In the clockwork city of **Gearhaven** the heroes found the **Grand Custodian**, the "
@@ -52,6 +52,9 @@ BLOCKS = [
 
     ("h1", "Part One: The Year Apart"),
     ("bridge", "Four arrivals, one long dinner, and a door that has never been opened."),
+    ("img", f"{S8}/A_the_finished_ring.png",
+     "The lamp at the foot of the ring has been burning all week.",
+     6.2, {"hmax": 4.2}),
 
     ("h2", "Seven Days Early"),
     ("gold", "The Artificer's Guild never quite sleeps, but at midnight it comes close. Down in the "
@@ -65,9 +68,6 @@ BLOCKS = [
              "else.\n"
              "The ring is finished. Ten years of Guildmaster Vane's life, finished for eleven days "
              "now, and nobody has dared to switch it on."),
-    ("img", f"{S8}/A_the_finished_ring.png",
-     "The lamp at the foot of the ring has been burning all week.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
     ("dm", "**Three things to land during Lilly's week.** **Vane has aged**: ten years of work "
            "ended eleven days ago and he does not know what to do with his hands, so he is louder "
            "than usual, sleeping less, and will not say he is frightened. **Lilly is the expert "
@@ -93,7 +93,7 @@ BLOCKS = [
              "when it does. The trunks are full of field guides, and he wrote most of them himself."),
     ("img", f"{S8}/B_aelwyn_arrives.png",
      "Three trunks, no porters, and one small green passenger who did not pay a fare.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("body", "**Lickgloom remembers them.** He stayed behind at Ravenstone Laboratory two years ago "
              "and has spent the time since licking a professor's equipment. He rode the luggage the "
              "whole way here. He recognises each hero on sight as they arrive through the week, and "
@@ -113,9 +113,6 @@ BLOCKS = [
              "against something he carries in his head. Whatever he finds there, he keeps to "
              "himself. Then he shoulders his pack and walks down into the waking city, toward "
              "the Guild, without needing to ask the way."),
-    ("img", f"{S8}/C_ursa_at_the_eastern_gate.png",
-     "First light on the Eastern Gate, and the guards wave through a traveler they do not "
-     "recognize until he has already passed.", 6.2, {"crop": "16:9", "hmax": 3.6}),
 
     ("h2", "Ten to Midnight"),
     ("gold", "On the last night of the year apart, the bell over the Rift Hall doors has not rung "
@@ -125,9 +122,12 @@ BLOCKS = [
              "there is a new sword across his back, dark and quiet, and when he drops down into the "
              "lamplight he lands without a sound, which he absolutely never used to do.\n"
              "\"I'm not late,\" says Stabby Sharpblade. \"It's still today.\""),
-    ("img", f"{S8}/D_stabby_drops_from_the_rafters.png",
-     "Ten minutes in hand, and he has almost certainly been in Gearhaven since the afternoon.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+    ("imgrow", [(f"{S8}/C_ursa_at_the_eastern_gate.png",
+                 "First light on the Eastern Gate, and nobody recognizes the traveler until he "
+                 "has already passed."),
+                (f"{S8}/D_stabby_drops_from_the_rafters.png",
+                 "Ten minutes in hand, and he has almost certainly been in Gearhaven since "
+                 "the afternoon.")], 3.05),
     ("dm", "**The idol, lightly.** When Stabby swings his pack down, something inside knocks "
            "against the flagstones with a dull, wrong sound. It is the small carved idol that "
            "appeared in his bag after Wraithpine, which nobody has ever explained and no one saw "
@@ -161,7 +161,7 @@ BLOCKS = [
     ("dm", "**Hand Lilly's player the floor.** Everything below happened during her year, and she "
            "was there for all of it; invite her to tell parts of it in her own words."),
     ("img", f"{S8}/L_poots_at_the_door.png",
-     "Deepforge Hollow, and a mother with flour on her hands.", 6.2, {"crop": "16:9", "hmax": 3.6}),
+     "Deepforge Hollow, and a mother with flour on her hands.", 6.2, {"hmax": 4.2}),
     ("gold", "She went home first. That surprised everyone, Lilly included. She set the Essence "
              "Sphere on her mother's kitchen table and said: tell me everything.\n"
              "It was the least satisfying conversation of her life. Poots told her about the day "
@@ -206,7 +206,7 @@ BLOCKS = [
              "instead the outside of something else."),
     ("img", f"{S8}/E_the_marks_under_the_brass.png",
      "Lantern light and a loupe: forty openings were one too few.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 6.3}),
     ("gold", "Lilly looks around the dinner table and says it plainly, because she has checked it "
              "forty-one times and it is proof, not theory.\n"
              "**Her mother did not make the Essence Sphere.** Poots Glimmergear found it, "
@@ -261,6 +261,9 @@ BLOCKS = [
              "the corrupted things the way a knife goes through smoke."),
 
     ("h2", "The Fourth"),
+    ("img", f"{S8}/O_nokk_and_the_fourth.png",
+     "Nokk waited nine years for somebody to ask the right question.",
+     6.2, {"hmax": 6.3}),
     ("gold", "It was old Nokk who finally told him why, by a banked fire, in the voice goblins "
              "save for things that must only be said once.\n"
              "**His father was the Fourth.** The fourth leader the Bloodfang ever named, and by "
@@ -273,9 +276,6 @@ BLOCKS = [
              "And that is why the arts never took. There was something enormous asleep behind "
              "Stabby's ribs, pushing back against every form they poured into him. **He was "
              "never unteachable. He was occupied.**"),
-    ("img", f"{S8}/O_nokk_and_the_fourth.png",
-     "Nokk waited nine years for somebody to ask the right question.",
-     6.2, {"crop": "4:3", "hmax": 4.4}),
 
     ("h2", "The Vigil on Kettlecrown"),
     ("railrow", f"{S8}/stillness_rail.png", 2.5, [
@@ -306,6 +306,9 @@ BLOCKS = [
     ]),
 
     ("h2", "Home in Winter"),
+    ("img", f"{S8}/Q_the_purge.png",
+     "The woods the Bloodfang stopped walking in two years ago.",
+     6.2, {"hmax": 4.2}),
     ("gold", "He came home in deep winter and did what he had promised: he went into the twisted "
              "woods and burned the blight out of the ground, root and all.\n"
              "The Bloodfang had watched their biggest and best taken one after another for two "
@@ -313,20 +316,17 @@ BLOCKS = [
              "behind it was **the runt**: the clan joke, the one they had all quietly agreed was "
              "not worth teaching.\n"
              "There is not a goblin in the Hollow who will hear a word against him now."),
-    ("img", f"{S8}/Q_the_purge.png",
-     "The woods the Bloodfang stopped walking in two years ago.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
 
     ("h2", "Teaching the Count"),
+    ("img", f"{S8}/R_teaching_the_count.png",
+     "The first class in Bloodfang history where nobody is measured against anybody.",
+     6.2, {"hmax": 4.2}),
     ("gold", "Before he "
              "left, he lined up the smallest goblins in the Hollow, the overlooked ones, "
              "the ones he used to be, and taught them the count: one second of stillness, at the "
              "one moment that matters. It had taken the masters of Kettlecrown a year to get it "
              "into him, and he turned out, to everyone's surprise including his own, to be a "
              "wonderful teacher."),
-    ("img", f"{S8}/R_teaching_the_count.png",
-     "The first class in Bloodfang history where nobody is measured against anybody.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "They offered him his father's seat and **he said not yet**, and Nokk was the only one "
            "who noticed he did not say never. He gave them Candyfang as the clan's heirloom, and "
            "by their new law the heirloom is carried by whoever the clan would follow, which is "
@@ -375,7 +375,7 @@ BLOCKS = [
              "he would be the last person to need the road."),
     ("img", f"{S8}/U_the_cairn.png",
      "The Skyless Country has no horizon; it has the next cairn instead.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"hmax": 4.2}),
 
     ("h2", "The Camp"),
     
@@ -397,7 +397,7 @@ BLOCKS = [
              "The camp had not stood empty for fifteen years. It had stood empty for **three**."),
     ("img", f"{S8}/G_the_empty_camp.png",
      "The tin cup is still where a hand last set it down.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"hmax": 4.2}),
 
     ("h2", "The Half-Carved Stone"),
     ("railrow", f"{S8}/stone_rail.png", 2.5, [
@@ -411,6 +411,9 @@ BLOCKS = [
     ]),
 
     ("h2", "The Eighth Night"),
+    ("img", f"{S8}/H_the_vision_in_the_stones.png",
+     "The old shrine has been waiting a long time for somebody to keep an eighth night.",
+     5.9, {"hmax": 6.3}),
     ("gold", "He stayed at the old shrine eight nights. On the eighth, the cloud broke, the "
              "standing stones lit from the inside, and **Elaria showed him three things.**\n"
              "The first was his father, **walking**, deliberately, toward a light that was going "
@@ -425,9 +428,6 @@ BLOCKS = [
              "behind it, putting out a light as calmly as a person pinching a candle. And the "
              "vision gave that one a name too.\n"
              "**Nyxthid.**"),
-    ("img", f"{S8}/H_the_vision_in_the_stones.png",
-     "The old shrine has been waiting a long time for somebody to keep an eighth night.",
-     6.2, {"crop": "4:3", "hmax": 4.4}),
     ("dm", "**This is the first time the name Nyxthid is spoken in this campaign.** Ursa has just "
            "sworn to hunt his own father and will spend four sessions doing it. Elaria did not "
            "lie to him: every single thing she showed him is true. She simply did not show him "
@@ -444,7 +444,7 @@ BLOCKS = [
     ("bridge", "Three stories told, and one day left before the door opens."),
     ("img", f"{S8}/lilly_gifts_laid_out.png",
      "Puff supervised the polishing, and she will tell you so.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("gold", "Lilly has been awake since four in the morning. When the rest of you come down to "
              "the workshop the lamps are already lit, and there are four cloths laid out along "
              "the bench: one for each of you, and a fourth at the end for **Puff**, the small "
@@ -484,7 +484,7 @@ BLOCKS = [
     ("h1", "The Briefing"),
     ("img", f"{S8}/I_aelwyns_briefing.png",
      "The professor brought diagrams. Vane brought objections. Lickgloom found something to chew.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("gold", "After supper Aelwyn clears the long table, pins up a map of nothing anyone has ever "
              "mapped, and gives you the truth in his lecture voice, which is the kindest voice he "
              "owns."),
@@ -515,7 +515,7 @@ BLOCKS = [
              "strangest part for you three.\""),
     ("img", f"{S8}/K_the_lesson.png",
      "He has waited his whole career to give this lecture, and it shows.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("dm", "**Three facts the players need for Part Two.** It is **slow, not empty**: a rockfall "
            "there is a shrug. There is **no sky, so Ursa cannot navigate**, and his year of "
            "star-reading buys him nothing; what works down there is reading the ground, exactly "
@@ -554,7 +554,7 @@ BLOCKS = [
              "Ghostbloom goes first, because of course she does."),
     ("img", f"{S8}/J_the_threshold.png",
      "The first doorway between worlds ever opened on purpose.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("dm", "**The rules of the road, before anyone crosses.** Four things shape everything on "
            "the far side, and the players should feel all four without being lectured. **There "
            "are no long rests in Underroot**: the run is one push, and the only real breather is "
@@ -592,7 +592,7 @@ BLOCKS = [
              "Vane's shape is standing in it with his arms folded, getting smaller."),
     ("img", f"{S8}/loc_rift_gate.png",
      "The first footprints anyone from Gearhaven has ever left in another world.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("dm", "**Four beats to land here, one per hero and one for Ghostbloom.** **The "
            "Sphere is warm** in Lilly's hands, and it is *pulling*: she can feel it "
            "gathering, it has never done that before, and it does not stop for the rest "
@@ -619,7 +619,7 @@ BLOCKS = [
              "being noticed by something too big to be interested yet."),
     ("img", f"{S8}/loc_mosslight_landing.png",
      "The only place in Underroot that will seem glad to see them.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("gold", "Then the root opens into a hollow the size of a village, and it is "
              "beautiful. Round mossy mounds rise out of the floor, each with a little "
              "round door of packed earth, though nobody built them and nobody lives "
@@ -678,7 +678,7 @@ BLOCKS = [
            "same as her. Roll initiative."),
     ("img", f"{S8}/fight1_the_landing.png",
      "Eight that spread the grey, and a whole floor that rises to defend them.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
 
     # ENEMY_CARDS_FIGHT_1
     ("dm", "**Battlefield.** A village-sized hollow of warm mounds and rising gold "
@@ -745,7 +745,7 @@ BLOCKS = [
              "it the way you lean into warmth."),
     ("img", f"{S8}/loc_chime_reef.png",
      "A thousand years of patient growing, and none of it for visitors.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("gold", "The tunnel opens and you all stop at once, because the sound arrives "
              "before the sight does.\n"
              "Crystals. Thousands of them, growing up out of a shallow black pool in "
@@ -792,11 +792,6 @@ BLOCKS = [
            "cannot be talked down: the reef has already decided. Play them as "
            "weather with legs; nothing in this fight is sick and nothing is cruel, "
            "and that matters at the end."),
-    ("img", f"{S8}/fight2_the_reef.png",
-     "Every note in the cavern is now about you.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
-
-    # ENEMY_CARDS_FIGHT_2
     ("dm", "**Roll initiative. Offer these if the table wants lines:**\n"
            "Lilly (eyes on the crystal): \"They ring when we're loud. Fine. Let's "
            "find out what a *real* noise does.\"\n"
@@ -804,6 +799,11 @@ BLOCKS = [
            "big, and we're the strangers.\"\n"
            "Ursa (steady): \"The reef is guarding something. Break only what we "
            "have to.\""),
+    ("img", f"{S8}/fight2_the_reef.png",
+     "Every note in the cavern is now about you.",
+     6.2, {"hmax": 4.2}),
+
+    # ENEMY_CARDS_FIGHT_2
     ("dm", "**Battlefield.** A shallow black pool ringed with crystal spires, fans, "
            "and thickets: the spires are cover, and they are also bells. Four "
            "Chimestones stand between the party and the tunnel to the deep, slow "
@@ -890,7 +890,7 @@ BLOCKS = [
              "that are very slowly, very quietly, spreading."),
     ("img", f"{S8}/loc_glassed_gallery.png",
      "Black glass from wall to wall, and the shine of it is the worst part.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("dm", "**Let them feel the size of it.** This is not a monster's lair; it is "
            "a burn scar spreading outward at the speed of grass growing, and it "
            "has been at it for two years. Nothing here needs a check to "
@@ -939,7 +939,7 @@ BLOCKS = [
              "the size of ripe pumpkins, each with one furious orange eye."),
     ("img", f"{S8}/mon_glass_weeper.png",
      "The Gallery's keeper, as the corruption remembers it.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("gold", "It does not notice you until your light touches it. Then the "
              "sweeping stops.\n"
              "The long neck comes around. The crown of broken fronds opens like "
@@ -949,9 +949,6 @@ BLOCKS = [
              "roots of anything that does not belong, and the thing wearing "
              "this one's shape has just decided that what does not belong is "
              "you."),
-    ("img", f"{S8}/fight3_the_gallery.png",
-     "Rolling coal, keening glass, and the hardest fight on the road down.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
     ("dm", "**Roll initiative the moment the light touches it.** Offer these if "
            "the table wants lines:\n"
            "Stabby: \"It's still trying to do its chores. Then I'll finish them "
@@ -960,6 +957,9 @@ BLOCKS = [
            "pour right back out of that thing.\"\n"
            "Ursa: \"The roots under the glass aren't dead. Something in there "
            "is still holding on.\""),
+    ("img", f"{S8}/fight3_the_gallery.png",
+     "Rolling coal, keening glass, and the hardest fight on the road down.",
+     6.2, {"hmax": 4.2}),
 
     # ENEMY_CARDS_FIGHT_3
     ("dm", "**Battlefield.** The Weeper is rooted at the heart of the gallery "
@@ -1054,10 +1054,10 @@ BLOCKS = [
              "It was **him**."),
     ("img", f"{S8}/loc_groudons_hollow.png",
      "The bottom of the world, where every road in Underroot has been leading.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("img", f"{S8}/mon_groudon_corrupted.png",
      "The Continent-Maker. The glowing seams are his own. The black glass is not.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"hmax": 4.2}),
     ("gold", "He fills the hollow the way a mountain fills a valley. His plates are red-brown and "
              "bigger than barn doors, his claws are sunk deep into stone he has not moved from in "
              "a very long time, and seams of magma glow along his flanks like banked coals.\n"
@@ -1068,7 +1068,7 @@ BLOCKS = [
              "in all that time he has not been able to tell a single living soul."),
     ("img", f"{S8}/boss_groudon_spike.png",
      "Everything in this room is enormous except the thing that matters.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
 
     ("dm", "**The frame.** Groudon is not the villain; the spike is. This is Gearhaven's Grand "
            "Custodian rule at ten times the scale: free the guardian and the cracks close. If the "
@@ -1165,7 +1165,7 @@ BLOCKS = [
              "it from where you stand."),
     ("img", f"{S8}/the_spike_breaks.png",
      "The first thing he has felt in two years that is not pain.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"hmax": 4.2}),
     ("dm", "**Slow down.** Everything after the spike is the part they will remember: not the "
            "end of a fight, but the end of two years of somebody's pain."),
     ("dm", "**The encounter ends the instant the spike drops, whatever his hit points are.** Do "
@@ -1207,7 +1207,7 @@ BLOCKS = [
              "This one has."),
     ("img", f"{S8}/antares_relights.png",
      "The eastern sky over Gearhaven, carrying news only one person in the city can read.",
-     6.2, {"crop": "16:9", "hmax": 3.6}),
+     6.2, {"hmax": 4.2}),
     ("dm", "**Only Ursa understands what he is looking at.** He watched "
            "Antares dim on the night they left and said nothing to anybody; he has spent a year "
            "with those charts. Let his player be the one to explain it to the others, in his own "
@@ -1229,7 +1229,7 @@ BLOCKS = [
              "\"It is going to have to choose.\""),
     ("img", f"{S8}/homecoming_sandshrew.png",
      "The brightest thing Vane's workshop has ever held, about to introduce itself.",
-     6.2, {"crop": "3:2", "hmax": 4.3}),
+     6.2, {"hmax": 4.2}),
     ("gold", "**Ghostbloom chooses first.**\n"
              "Nobody asks her to; nobody even gets the chance. She drifts around in front of Lilly so "
              "the two of them are eye to eye, and she chimes once, the small clear note she has "
@@ -1286,13 +1286,13 @@ BLOCKS = [
     ]),
 
     ("h2", "What Each of Them Carries Home"),
-    ("img", f"{A}/characters/sandshrew.png",
-     "Sandshrew, with somebody else's dirt still on his claws.",
-     6.2, {"crop": "4:3", "hmax": 4.4}),
     ("body", "**Lilly** gets the thing she spent a year arguing for: proof. Her power grows by "
              "going out, exactly as she worked it out alone at a bench in Gearhaven, and now "
              "there is a Mote in a socket and a discharge in her hands that nobody built for "
              "her."),
+    ("img", f"{A}/characters/sandshrew.png",
+     "Sandshrew, with somebody else's dirt still on his claws.",
+     6.2, {"hmax": 6.3}),
     ("gold", "Late that night Lilly has the Sphere open on the workbench, the Mote sitting in its "
              "new socket, and she is not looking at anybody.\n"
              "\"It isn't full. That's the thing. There's a whole *plane* in there and it barely "
