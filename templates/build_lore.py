@@ -77,14 +77,14 @@ BLOCKS = [
     # with a single line; page 2 ends about 80 percent full without it.
     ("h1", "The Shadow: Nyxthid and Maldrith"),
     ("body", "Two threats stand behind the failing world, one seen and one still hidden."),
-    ("gold", "**Nyxthid, the Harbinger of Decay**, is the one the Guardians have glimpsed: a fallen "
-             "celestial who once guarded the planes and now, twisted by despair, works to snuff the "
-             "anchor-stars out. He deals in shadow, illusion, and fear, and he believes the kindest "
+    ("gold", "**Nyxthid, the Harbinger of Decay**, is the one the Guardians have glimpsed, and this is "
+             "what they believe of him: a fallen celestial who once guarded the planes and now, "
+             "twisted by despair, works to snuff the anchor-stars out. Nobody has seen his face. He deals in shadow, illusion, and fear, and he believes the kindest "
              "thing left is to let the whole clock wind down into dark."),
     ("gold", "**Maldrith, the Weaver of Fractures**, is the darkness Elaria sealed: an ancient, "
              "patient hunger from beyond the planes, pressing on the walls of every world, waiting "
-             "for the last star to go dark. Nyxthid is only her herald. The heroes do not yet know "
-             "her name, and should not, until the road grows much darker."),
+             "for the last star to go dark. Nyxthid is only her herald. The old verses carry her name, "
+             "and the heroes have heard it; what stays hidden is her nature, and how near she is."),
 
     ("h1", "The Covenant and the Relics"),
     ("body", "When Elaria spent her power, she bound what was left into safeguards and gifts, and "
@@ -212,7 +212,7 @@ BLOCKS = [
              "Dutchman**, the ghost ship of **Davy Jones** himself."),
     ("body", "Below its decks they found something worse than ghosts: a harvest operation, spectral "
              "essences packed in crates stamped with an Artificers' Guild seal, bound south for "
-             "buyers unknown. Davy Jones was destroyed at his own dice table, his crew freed, and "
+             "buyers unknown. Davy Jones was beaten at his own dice table and destroyed in his cabin, his crew freed, and "
              "the Dutchman finally allowed to sink. The Ghost essence Lilly drew from its hold "
              "began Floraburst's slow change into Ghostbloom. The sea is quiet now. The question of "
              "those crates is not."),
@@ -312,8 +312,8 @@ BLOCKS = [
      "Guildmaster Vane built in Gearhaven is not a new idea. It is a very old door, rebuilt "
      "from memory, waiting for a key shaped like a heart."),
 
-    ("gold", "Why the gazetteer matters: the sky is going out, one anchor-star at a time, and in "
-             "one year the Rift Portal opens. Every road on these pages leads, in the end, to a "
+    ("gold", "Why the gazetteer matters: the sky is going out, one anchor-star at a time, and the "
+             "Rift Portal stands open at last. Every road on these pages leads, in the end, to a "
              "star: one to relight, one to guard, or one to follow east into the dark. Wherever "
              "the Guardians go next, they have already walked the first half of the map."),
 ]

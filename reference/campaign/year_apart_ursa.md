@@ -92,7 +92,7 @@ He lost eleven days in there. He will not talk about the eleven days.
 
 What saved him was that his father had been there first.
 
-Six days after he stopped being able to navigate, wet through and rationing badly and frightened in a way he had not admitted to himself yet, Ursa came over a rise and found a pile of stones. Just a cairn, waist high, the kind any traveller might leave. Except the top stone had a mark scratched on it, and the mark was a seven-pointed star wrapped in a leafed vine, and Ursa had been looking at that sigil on Elaria's gifts since he was six years old.
+Six days after he stopped being able to navigate, wet through and rationing badly and frightened in a way he had not admitted to himself yet, Ursa came over a rise and found a pile of stones. Just a cairn, waist high, the kind any traveller might leave. Except the top stone had a mark scratched on it, and the mark was a seven-pointed star wrapped in a leafed vine, and Ursa had been looking at that sigil on Elaria's gifts since he was seven years old.
 
 His father had built a road of them. Not a path on the ground. A line of cairns across a country where you cannot see the sky, each one placed exactly at the edge of sight of the last, so that a person could cross the blind land one stone at a time.
 
@@ -176,7 +176,7 @@ There was a hole in the sky. Not a rift: a **gap**, a place in a constellation h
 
 Betelgeuse. The one in his father's notes, underlined twice.
 
-He had grown up hearing that the stars were going out. He had heard it the way children hear that a war happened somewhere before they were born. Lying on his back at the shrine, eight years old, a very long way from anyone who loved him, he *looked at the missing one*, and it stopped being a story.
+He had grown up hearing that the stars were going out. He had heard it the way children hear that a war happened somewhere before they were born. Lying on his back at the shrine, nine years old by now, a very long way from anyone who loved him, he *looked at the missing one*, and it stopped being a story.
 
 That is the night the staff woke up.
 
@@ -184,7 +184,7 @@ That is the night the staff woke up.
 
 He did not fall asleep so much as get taken.
 
-The standing stones lit from the inside, all of them at once, the seven-pointed star burning in the rock like a coal under ash. And a voice that Ursa had heard exactly once before, at a glade a very long way west when he was six years old and the whole world was still simple, said his name.
+The standing stones lit from the inside, all of them at once, the seven-pointed star burning in the rock like a coal under ash. And a voice that Ursa had heard exactly once before, at a glade a very long way west when he was seven years old and the whole world was still simple, said his name.
 
 **Elaria showed him three things.**
 
@@ -204,7 +204,7 @@ The answer is yes. And the reason is the best reason there has ever been.
 
 Ursa came off that shrine floor with his heart going like a bird and one clean thought in his head, and it was not grief and it was not fear. It was a *task*. His father went to save the stars. Something is putting them out. It has a name, and now he has the name.
 
-He said it out loud, alone, in a ring of standing stones, eight years old, and swore at the top of his lungs that he was going to find it.
+He said it out loud, alone, in a ring of standing stones, nine years old, and swore at the top of his lungs that he was going to find it.
 
 > **DM notes, critical.** This is the FIRST time the name Nyxthid is spoken in the campaign; verified against every session document. Maldrith the players already know, from the Lore of Elaria boxes in Sessions 2, 3 and 4, so that name lands as a connection snapping shut rather than as exposition.
 >
@@ -244,6 +244,6 @@ Ursa is going to find out what. He has a name for the thing that took his father
 >
 > **The Session 12 clue is planted twice and Ursa notices neither.** There is a small worn hollow in the stone shelf where something round used to sit and is now gone. And Ash's field notes are full of sketches of a small creature that Ursa, who has never seen it, cannot identify. Both are Pikachu. Ash had him. Do not let anyone roll to work this out, and do not have Lilly's player recognise the sketches: the payoff is Session 12, when Pikachu is revealed as Ash's.
 >
-> **Antares.** Ursa saw the gap where Betelgeuse used to be. He has not yet noticed that Antares, the Earth star, is dimming. When it relights at the end of this session, he will be the only person at the table who understands what he is looking at, and that is his moment. Save it.
+> **Antares.** Ursa saw the gap where Betelgeuse used to be. He has known Antares is dimming all year and says nothing (per the built session). The saved beat is the RELIGHT, not the discovery: when it relights he is the only person at the table who understands what he is looking at.
 >
 > **The cairns are reusable.** Ash built a road of marked stones across a country where you cannot navigate. If the campaign ever needs Ursa to find something unfindable again, the road is already in the fiction, and he repaired eleven of them on his way in.

@@ -461,7 +461,7 @@ BLOCKS = [
     ("gold", "Lilly has been awake since four in the morning. When the rest of you come down to "
              "the workshop the lamps are already lit, and there are four cloths laid out along "
              "the bench: one for each of you, and a fourth at the end for **Puff**, the small "
-             "clay homunculus Lilly built and woke up herself. Puff is sitting beside her own "
+             "brass-and-porcelain homunculus Lilly built and woke up herself. Puff is sitting beside her own "
              "cloth with her hands folded, plainly very proud, and she has been sitting that way "
              "for some time.\n"
              "Lilly has a speech prepared. You can tell, because she gets about six words into "

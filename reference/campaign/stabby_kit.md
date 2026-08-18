@@ -60,7 +60,7 @@ Gift from Lilly, the Wraps of Unarmed Power +2 (Rare, **NO attunement**, so they
 
 Retired at level 7 (do NOT use): Agile Parry (no more +2 AC after punch-and-swing), Kensei's Shot (+1d4 on longbow), Kensei weapon tricks. The Repeating Longbow +1 is now just a good +1 bow: +9 to hit, 1d8+6, no Kensei rider.
 
-## Door A: Beast Breathing (the Bloodfang Form)
+## Door B: Beast Breathing (the Bloodfang Form)
 
 Granted at monk levels he has (3 and 6). Grants the Nichirin Katana. First Form replaces Flurry of Blows.
 
@@ -79,7 +79,7 @@ Beast combat loop:
 - Bonus Action: First Form: Devour (1 Focus), a third strike for 3d8+9 Force with 15 ft of free repositioning; Focus refunds if it kills.
 - Reaction: Deflect Attacks (reduce 1d10+12; redirect 2d8+5 DEX DC 13 if reduced to 0).
 
-## Door B: Water Breathing (the Monastery Form)
+## Door A: Water Breathing (the Monastery Form)
 
 Grants the Nichirin Katana. First Form replaces Flurry of Blows.
 

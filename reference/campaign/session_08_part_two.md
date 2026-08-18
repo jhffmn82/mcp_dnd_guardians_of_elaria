@@ -1,3 +1,5 @@
+> **SUPERSEDED (2026-08-18): design notes only.** Every number, count, script and rule in this file is superseded by `templates/build_session_08.py` (the published volume 10) and the 2026-08-18 retune: 8x Rotbloom 33 / 8x Mossmite, 4x Chimestone 78 / 4x Shardwing 33, Weeper 170, spike AC 17 / 60 / re-knits 20 / climb DC 14, 19 board dots, radiant works on Re-Bloom, the Nichirin is not thunder, and the swap is Lilly's Action. Do not cite this file for play.
+
 <!--
 WORKING DRAFT, Session 8, PART TWO: the rift run. Begins the instant they step
 through the ring and ends with the homecoming.

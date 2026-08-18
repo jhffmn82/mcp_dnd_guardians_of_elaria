@@ -100,7 +100,7 @@ BLOCKS = [
     ("h2", "Stabby's Grand Entrance"),
     ("gold", "**BANG.** The tavern door slams open hard enough to rattle the trophies on the walls. "
              "In struts a goblin boy with green skin, light green hair, sharp little teeth, and red "
-             "eyes lit with pure mischief. **Stabby Sharpblade**, eight years old and afraid of "
+             "eyes lit with pure mischief. **Stabby Sharpblade**, seven years old and afraid of "
              "absolutely nothing, surveys the room like a king inspecting his castle."),
     ("gold", "Stabby was born to the **Bloodfang Clan** in far off **Bloodthorn Hollow**, where "
              "goblin children learn to be quick or learn to be sorry. A wandering monk, **Master "
