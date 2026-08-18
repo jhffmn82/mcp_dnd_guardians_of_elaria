@@ -24,12 +24,32 @@ Declared simplifications: flying altitude abstracted to reach ("aloft" flag),
 cones/lines resolved as nearest-N-in-arc, opportunity attacks only for the
 cases the statblocks call out (Skitter/Glide exist to dodge them).
 """
+import os
 import random
 import sys
 
-SEED = int(sys.argv[1]) if len(sys.argv) > 1 else 20260818
+SEED = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1] != '--sweep' else 20260818
+
+# ---- pacing knobs (DM experiments; env vars, or exercised by --sweep) ----
+HPX = float(os.environ.get('S8_HPX', '1'))              # enemy HP multiplier
+SPIKE_HP = int(os.environ.get('S8_SPIKE_HP', '60'))     # doc final: 60
+SPIKE_REKNIT = os.environ.get('S8_SPIKE_REKNIT', '0') == '1'
+#   re-knit: the spike regains 20 at the start of Groudon's turn unless the
+#   Nichirin (Cleansing Edge) touched it since his last turn. Ranged force and
+#   radiant still damage it, but only Stabby makes the damage STICK.
+BODIES = os.environ.get('S8_BODIES', '0') == '1'        # +2/+2, +1/+1, +2, x2
+GHOST_SUPPORT = os.environ.get('S8_GHOST_SUPPORT', '0') == '1'
+#   Ghostbloom runs triage-only: Guardian's Light and guarding, no attacks.
+NICHIRIN_RING = os.environ.get('S8_NICHIRIN_RING', '0') == '1'
+#   DM-ruled a doc error 2026-08-18: Resonant Body triggers on THUNDER damage
+#   and the Nichirin deals slashing/force, so it does not stun. Default off.
+
 rng = random.Random(SEED)
 LOG = []
+
+
+def ehp(n):
+    return max(1, int(n * HPX))
 
 
 def log(s):
@@ -232,6 +252,7 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False):
     if is_ce and getattr(tgt, 'is_spike', False):
         # Cleansing Edge is one of the three things that can touch the spike.
         parts = [(amt, 'force') for amt, _ in parts]
+        tgt.ce_touched = True
     total = 0
     for amt, dtype in parts:
         if dtype in tgt.immune:
@@ -701,14 +722,19 @@ def fight1(st):
     st.ghost.pos = [6, 16]
     st.puff.pos = [4, 14]
     st.cannon.pos = [4, 15]
+    rot_spots = [(23, 12), (24, 14), (25, 16), (23, 17), (24, 18), (25, 13)]
+    mite_spots = [(15, 13), (16, 15), (15, 17), (17, 14), (16, 18), (17, 16)]
+    if BODIES:
+        rot_spots += [(26, 15), (26, 12)]
+        mite_spots += [(16, 12), (16, 19)]
     rots = []
-    for i, p in enumerate([(23, 12), (24, 14), (25, 16), (23, 17), (24, 18), (25, 13)]):
-        rots.append(Actor(f'Rotbloom-{i+1}', 'R', 'foe', 12, 22, p, 25,
+    for i, p in enumerate(rot_spots):
+        rots.append(Actor(f'Rotbloom-{i+1}', 'R', 'foe', 12, ehp(22), p, 25,
                           saves=dict(str=0, dex=1, con=2, wis=-1),
                           resist={'poison'}, cond_imm={'frightened'}))
     mites = []
-    for i, p in enumerate([(15, 13), (16, 15), (15, 17), (17, 14), (16, 18), (17, 16)]):
-        m = Actor(f'Mossmite-{i+1}', 'm', 'foe', 13, 7, p, 40,
+    for i, p in enumerate(mite_spots):
+        m = Actor(f'Mossmite-{i+1}', 'm', 'foe', 13, ehp(7), p, 40,
                   saves=dict(dex=3, con=1, wis=0))
         m.hidden = True
         mites.append(m)
@@ -733,6 +759,14 @@ def fight1(st):
     st.s_ignited = True
     log("  Stabby rolls initiative: UNCANNY METABOLISM (Focus to 7, heals to full)")
     log("  and IGNITES THE BREATH (1 Focus): katana +2 force, speed 65, adv on Dex saves. [Focus 6]")
+    if st.l_ward > 0:
+        st.l_ward -= 1
+        t = d(2, 8) + 5
+        for h in st.pcs:
+            if not h.down:
+                h.temp = max(h.temp, t)
+        log(f"  Lilly pops an AETHER WARD before they close: {t} temp HP to "
+            f"everyone. [{st.l_ward} left]")
 
     order = initiative(st, [('Mossmites', mites, 3), ('Rotblooms', rots, 1)])
     mites_out = False
@@ -830,10 +864,13 @@ def fight1(st):
                                                     st.fey.dist_ft(f) if st.fey else 0))
                 fey_turn(st, fey_targets)
             elif name == 'Ghostbloom' and st.ghost.alive:
-                gts = sorted([f for f in foes if f.hp > 0
-                              and not getattr(f, 'hidden', False)],
-                             key=lambda f: st.ghost.dist_ft(f))
-                ghost_lash(st, gts)
+                if GHOST_SUPPORT:
+                    log("    Ghostbloom: hangs back on triage, petals ready.")
+                else:
+                    gts = sorted([f for f in foes if f.hp > 0
+                                  and not getattr(f, 'hidden', False)],
+                                 key=lambda f: st.ghost.dist_ft(f))
+                    ghost_lash(st, gts)
             elif name == 'Mossmites':
                 if not mites_out:
                     continue
@@ -945,16 +982,21 @@ def fight2(st):
     st.cannon.pos = [13, 27]
     if st.fey:
         st.fey.pos = [16, 24]
+    chime_spots = [(12, 20), (15, 19), (18, 21)]
+    wing_spots = [(9, 14), (15, 11), (21, 13)]
+    if BODIES:
+        chime_spots.append((21, 20))
+        wing_spots.append((12, 10))
     chimes = []
-    for i, p in enumerate([(12, 20), (15, 19), (18, 21)]):
-        chimes.append(Actor(f'Chimestone-{i+1}', 'C', 'foe', 16, 52, p, 25,
+    for i, p in enumerate(chime_spots):
+        chimes.append(Actor(f'Chimestone-{i+1}', 'C', 'foe', 16, ehp(52), p, 25,
                             saves=dict(str=4, dex=-1, con=3, wis=1),
                             resist={'piercing', 'slashing'}, vuln={'thunder'},
                             immune={'poison'},
                             cond_imm={'charmed', 'frightened', 'poisoned'}))
     wings = []
-    for i, p in enumerate([(9, 14), (15, 11), (21, 13)]):
-        w = Actor(f'Shardwing-{i+1}', 'w', 'foe', 14, 22, p, 50,
+    for i, p in enumerate(wing_spots):
+        w = Actor(f'Shardwing-{i+1}', 'w', 'foe', 14, ehp(22), p, 50,
                   saves=dict(str=-1, dex=4, con=1, wis=1),
                   vuln={'thunder'}, immune={'poison'},
                   cond_imm={'poisoned', 'prone'}, fly=True)
@@ -971,6 +1013,14 @@ def fight2(st):
     st.s_ignited = True
     log("  Stabby ignites again at initiative (1 Focus). [Focus "
         f"{st.s_focus}]")
+    if st.l_ward > 0:
+        st.l_ward -= 1
+        t = d(2, 8) + 5
+        for h in st.pcs:
+            if not h.down:
+                h.temp = max(h.temp, t)
+        log(f"  Lilly spends her second AETHER WARD at the water's edge: {t} temp "
+            f"HP to everyone. [{st.l_ward} left]")
     order = initiative(st, [('Shardwings', wings, 4), ('Chimestones', chimes, -1)])
     rnd = 0
     while any(f.hp > 0 for f in foes) and any(h.alive for h in st.heroes) and rnd < 12:
@@ -987,7 +1037,7 @@ def fight2(st):
                     key=lambda w: st.stabby.dist_ft(w))
                 if pool:
                     stabby_attack_routine(st, pool, rnd, fury_ok=True,
-                                          chime_ring=st.s_ignited)
+                                          chime_ring=NICHIRIN_RING)
             elif name == 'Lilly' and st.lilly.alive:
                 live_c = sorted([c for c in chimes if c.hp > 0],
                                 key=lambda c: (c.stunned, st.lilly.dist_ft(c)))
@@ -1052,10 +1102,13 @@ def fight2(st):
                 fey_turn(st, sorted([f for f in foes if f.hp > 0],
                                     key=lambda f: (not f.stunned, f.aloft)))
             elif name == 'Ghostbloom' and st.ghost.alive:
-                gts = sorted([f for f in foes if f.hp > 0],
-                             key=lambda f: (f.aloft, not f.stunned,
-                                            st.ghost.dist_ft(f)))
-                ghost_lash(st, gts)
+                if GHOST_SUPPORT:
+                    log("    Ghostbloom: hangs back on triage, petals ready.")
+                else:
+                    gts = sorted([f for f in foes if f.hp > 0],
+                                 key=lambda f: (f.aloft, not f.stunned,
+                                                st.ghost.dist_ft(f)))
+                    ghost_lash(st, gts)
             elif name == 'Shardwings':
                 for w in wings:
                     if w.hp <= 0:
@@ -1180,17 +1233,20 @@ def fight3(st):
     st.ghost.pos = [15, 25]
     st.puff.pos = [13, 24]
     st.cannon.pos = [13, 25]
-    weeper = Actor('Glass Weeper', 'W', 'foe', 16, 115, (15, 11), 20,
+    weeper = Actor('Glass Weeper', 'W', 'foe', 16, ehp(115), (15, 11), 20,
                    saves=dict(str=4, dex=-1, con=5, wis=1),
                    resist={'nm-bludgeoning', 'nm-piercing', 'nm-slashing'},
                    immune={'poison'},
                    cond_imm={'charmed', 'frightened', 'poisoned', 'prone'},
                    reach=15)
-    rolls = [Actor(f'Cinderoll-{i+1}', 'o', 'foe', 15, 18, p, 40,
+    roll_spots = [(27, 12), (27, 16), (28, 10), (28, 18)]
+    if BODIES:
+        roll_spots += [(28, 13), (28, 15)]
+    rolls = [Actor(f'Cinderoll-{i+1}', 'o', 'foe', 15, ehp(18), p, 40,
                    saves=dict(str=1, dex=2, con=1, wis=-1),
                    immune={'fire', 'poison'},
                    cond_imm={'blinded', 'charmed', 'deafened', 'poisoned'})
-             for i, p in enumerate([(27, 12), (27, 16), (28, 10), (28, 18)])]
+             for i, p in enumerate(roll_spots)]
     arrived = rolls[:2]
     terrain = {}
     for x in range(12, 19):
@@ -1246,8 +1302,11 @@ def fight3(st):
         rnd += 1
         start_round(st, rnd)
         if rnd == 3 and len(arrived) < 4:
-            arrived.extend(rolls[2:])
+            arrived.extend(rolls[2:4])
             log("    Two more Cinderolls come rolling out of the dark, eyes furious.")
+        if rnd == 5 and len(rolls) > 4 and len(arrived) < 6:
+            arrived.extend(rolls[4:6])
+            log("    A third pair of Cinderolls rolls in.")
         for _, name, actors in order:
             live_rolls_now = [c for c in arrived if c.hp > 0]
             if name == 'Stabby' and st.stabby.alive:
@@ -1319,7 +1378,9 @@ def fight3(st):
             elif name == 'Ghostbloom' and st.ghost.alive:
                 live_rolls = [c for c in arrived if c.hp > 0]
                 pack = [c for c in live_rolls if st.ghost.dist_ft(c) <= 15]
-                if st.g_wail and len(pack) >= 2:
+                if GHOST_SUPPORT:
+                    log("    Ghostbloom: hangs back on triage, petals ready.")
+                elif st.g_wail and len(pack) >= 2:
                     st.g_wail = False
                     log("    Ghostbloom: GHOSTLY WAIL, a cry that cracks the glass!")
                     for c in pack[:3]:
@@ -1455,11 +1516,12 @@ def boss(st):
                     immune={'fire', 'poison'},
                     cond_imm={'charmed', 'frightened', 'prone', 'restrained'},
                     reach=15)
-    spike = Actor('The Spike', 'x', 'foe', 17, 60, (14, 6), 0)
+    spike = Actor('The Spike', 'x', 'foe', 17, SPIKE_HP, (14, 6), 0)
     spike.immune = {'slashing', 'bludgeoning', 'piercing', 'fire', 'cold',
                     'thunder', 'lightning', 'poison', 'necrotic', 'psychic',
                     'acid'}
     spike.is_spike = True
+    spike.ce_touched = False
     glasslings = []
     terrain = {}
     for x in range(12, 18):
@@ -1562,7 +1624,9 @@ def boss(st):
             elif name == 'Ghostbloom' and st.ghost.alive:
                 lings = sorted([g for g in glasslings if g.hp > 0],
                                key=lambda g: st.ghost.dist_ft(g))
-                if lings:
+                if GHOST_SUPPORT:
+                    log("    Ghostbloom: shields the casters, petals ready.")
+                elif lings:
                     ghost_lash(st, lings)
                     for g in lings:
                         if g.hp <= 0 and not getattr(g, 'burst', False):
@@ -1576,18 +1640,32 @@ def boss(st):
                 else:
                     log("    Ghostbloom: hovers guard over Lilly and Ursa.")
             elif name == 'Groudon':
+                # Re-knit (knob): the corruption closes unless the Nichirin
+                # touched it since Groudon's last turn.
+                if SPIKE_REKNIT and spike.hp > 0:
+                    if spike.ce_touched:
+                        log("    The spike stays CRACKED where the Nichirin burned it.")
+                    elif spike.hp < SPIKE_HP:
+                        spike.hp = min(SPIKE_HP, spike.hp + 20)
+                        log(f"    The spike RE-KNITS, black glass flowing closed "
+                            f"(back to {spike.hp}).")
+                    spike.ce_touched = False
                 # Agony
                 groudon.hp -= 10
-                n_spawned += 1
-                g = Actor(f'Glassling-{n_spawned}', 'g', 'foe', 14, 10,
-                          (groudon.pos[0] + rng.randint(-2, 3), groudon.pos[1] + 4),
-                          30, saves=dict(dex=3, con=1, wis=-2),
-                          immune={'poison', 'psychic'},
-                          cond_imm={'blinded', 'charmed', 'deafened',
-                                    'frightened', 'poisoned'})
-                glasslings.append(g)
+                new_lings = []
+                for _ in range(2 if BODIES else 1):
+                    n_spawned += 1
+                    g = Actor(f'Glassling-{n_spawned}', 'g', 'foe', 14, ehp(10),
+                              (groudon.pos[0] + rng.randint(-2, 3), groudon.pos[1] + 4),
+                              30, saves=dict(dex=3, con=1, wis=-2),
+                              immune={'poison', 'psychic'},
+                              cond_imm={'blinded', 'charmed', 'deafened',
+                                        'frightened', 'poisoned'})
+                    glasslings.append(g)
+                    new_lings.append(g.name)
                 log(f"    The spike pulses (Groudon takes 10 Agony, {groudon.hp} HP); "
-                    f"{g.name} drops off his back and scuttles.")
+                    f"{' and '.join(new_lings)} drop{'s' if len(new_lings) == 1 else ''} "
+                    "off his back and scuttles.")
                 for h in st.pcs:
                     if h.alive and groudon.dist_ft(h) <= 20:
                         if not st.hero_save(h, 'dex', 16,
@@ -1700,16 +1778,109 @@ def boss(st):
             "through him. The Mote of Terra drifts to the Sphere.")
     log(f"  BOSS ENDS after round {rnd}.")
     party_state(st, "after the Hollow")
+    st.spike_ok = spike.hp <= 0
     return rnd
 
 
-if __name__ == '__main__':
+def revive_between(st):
+    """Post-fight triage on the road: nobody walks on at 0."""
+    for h in [st.lilly, st.stabby, st.ursa, st.ghost]:
+        if h.down:
+            amt = d(2, 4) + 5
+            if st.u_slots[1] > 0 and not st.ursa.down:
+                st.u_slots[1] -= 1
+            h.hp = min(h.hp_max, max(h.hp + amt, 8))
+            h.down = False
+            log(f"  (Between fights, {h.name} is patched back up to {h.hp} HP.)")
+
+
+def spike_breaker():
+    try:
+        i = LOG.index("      The Spike is destroyed.")
+    except ValueError:
+        return None
+    for j in range(i - 1, -1, -1):
+        ln = LOG[j]
+        if ln.startswith('    ') and not ln.startswith('      ') and ':' in ln:
+            return ln.strip().split(':')[0].split(' (')[0]
+    return None
+
+
+def run_day(seed):
+    global rng
+    rng = random.Random(seed)
+    LOG.clear()
     st = State()
     log(f"Ursa's Omen Dreams for the day: {st.u_omens}")
-    fight1(st)
-    # walk to the reef: nothing to heal but time passes; fey persists (< 1 hr).
-    fight2(st)
+    stats = {}
+    stats['f1'] = fight1(st)
+    if not any(h.alive for h in st.heroes):
+        stats['wipe'] = 'f1'
+        return st, stats
+    revive_between(st)
+    # walk to the reef: fey persists (< 1 hr)
+    stats['f2'] = fight2(st)
+    if not any(h.alive for h in st.heroes):
+        stats['wipe'] = 'f2'
+        return st, stats
+    revive_between(st)
     short_rest(st)
-    fight3(st)
-    boss(st)
-    print('\n'.join(LOG))
+    stats['f3'] = fight3(st)
+    if not any(h.alive for h in st.heroes):
+        stats['wipe'] = 'f3'
+        return st, stats
+    revive_between(st)
+    stats['boss'] = boss(st)
+    if not any(h.alive for h in st.heroes):
+        stats['wipe'] = 'boss'
+    stats['spike_ok'] = getattr(st, 'spike_ok', False)
+    stats['breaker'] = spike_breaker()
+    stats['drops'] = sum(h.drops for h in [st.lilly, st.stabby, st.ursa, st.ghost])
+    return st, stats
+
+
+def sweep(seeds=range(1, 21)):
+    from collections import Counter
+    global HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING
+    base = (HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING)
+    configs = [
+        ('baseline (ward every fight, no Nichirin ring)', {}),
+        ('old doc read: Nichirin rings Chimestones', {'NICHIRIN_RING': True}),
+        ('enemy HP x1.5', {'HPX': 1.5}),
+        ('enemy HP x2.0', {'HPX': 2.0}),
+        ('more bodies (+2R+2m, +1C+1w, +2o, 2 lings)', {'BODIES': True}),
+        ('Ghostbloom support-only (no attacks)', {'GHOST_SUPPORT': True}),
+        ('spike back to 110 HP', {'SPIKE_HP': 110}),
+        ('spike 60 but RE-KNITS 20 unless Nichirin', {'SPIKE_REKNIT': True}),
+        ('bodies + HP x1.5 together', {'BODIES': True, 'HPX': 1.5}),
+    ]
+    hdr = f"{'config':46s} {'F1':>4} {'F2':>4} {'F3':>4} {'Boss':>4} {'drops':>5} {'wipe':>4} {'no-brk':>6}  spike broken by"
+    print(hdr)
+    print('-' * len(hdr))
+    for label, kv in configs:
+        HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING = base
+        for k, v in kv.items():
+            globals()[k] = v
+        rows = []
+        for s in seeds:
+            _, stats = run_day(s)
+            rows.append(stats)
+
+        def m(key):
+            vals = [r[key] for r in rows if key in r]
+            return sum(vals) / len(vals) if vals else 0.0
+        wipes = sum(1 for r in rows if r.get('wipe'))
+        nobrk = sum(1 for r in rows if r.get('spike_ok') is False)
+        brk = Counter(r['breaker'] for r in rows if r.get('breaker'))
+        who = ', '.join(f"{k} {v}" for k, v in brk.most_common())
+        print(f"{label:46s} {m('f1'):4.1f} {m('f2'):4.1f} {m('f3'):4.1f} "
+              f"{m('boss'):4.1f} {m('drops'):5.2f} {wipes:4d} {nobrk:6d}  {who}")
+    HPX, SPIKE_HP, SPIKE_REKNIT, BODIES, GHOST_SUPPORT, NICHIRIN_RING = base
+
+
+if __name__ == '__main__':
+    if '--sweep' in sys.argv:
+        sweep()
+    else:
+        run_day(SEED)
+        print('\n'.join(LOG))
