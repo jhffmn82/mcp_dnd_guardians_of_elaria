@@ -538,7 +538,8 @@ def build_doc(blocks, out_path):
             run.add_picture(io.BytesIO(data), width=Inches(w))
             if caption:
                 cp = doc.add_paragraph(); cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                cp.paragraph_format.space_after = Pt(7)
+                # enough air that a following plate never crowds the caption
+                cp.paragraph_format.space_after = Pt(12)
                 r = cp.add_run(caption); _set_font(r, Pt(9), italic=True, color=CAPTION_GRAY)
 
         elif kind == "imgrow":
@@ -567,6 +568,10 @@ def build_doc(blocks, out_path):
                 c0.paragraphs[0].paragraph_format.keep_with_next = True
                 c0.paragraphs[0].add_run().add_picture(io.BytesIO(data), width=Inches(ww))
                 c1.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+                # a gutter between side-by-side captions so the lines cannot
+                # read straight across as one sentence
+                c1.paragraphs[0].paragraph_format.left_indent = Pt(8)
+                c1.paragraphs[0].paragraph_format.right_indent = Pt(8)
                 r = c1.paragraphs[0].add_run(label)
                 _set_font(r, Pt(9), italic=True, color=CAPTION_GRAY)
             doc.add_paragraph().paragraph_format.space_after = Pt(4)
@@ -582,6 +587,9 @@ def build_doc(blocks, out_path):
             tbl = doc.add_table(rows=1, cols=2)
             tbl.autofit = False
             tbl.alignment = 1
+            # the row moves to the next page whole; a split row strands narrow
+            # text beside a dead column where the rail should be
+            tbl.rows[0]._tr.get_or_add_trPr().append(OxmlElement('w:cantSplit'))
             tpr = tbl._tbl.tblPr
             mar = OxmlElement('w:tblCellMar')
             for side in ('left', 'right'):
@@ -718,6 +726,8 @@ def build_doc(blocks, out_path):
             fopts = blk[3] if len(blk) > 3 and isinstance(blk[3], dict) else {}
             compact = fopts.get("compact", False)
             p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            if fopts.get("hardbreak"):
+                p.paragraph_format.page_break_before = True
             p.paragraph_format.space_before = Pt(10 if compact else 16)
             p.paragraph_format.space_after = Pt(1)
             p.paragraph_format.keep_with_next = True

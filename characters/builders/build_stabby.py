@@ -232,7 +232,7 @@ pt.setStyle(TableStyle([('BOX',(0,0),(-1,-1),0.5,LINE),('INNERGRID',(0,0),(-1,-1
     ('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),
     ('LEFTPADDING',(0,0),(-1,-1),6),('RIGHTPADDING',(0,0),(-1,-1),6),]))
 story.append(Spacer(1,3)); story.append(pt); story.append(Spacer(1,8))
-story.append(callout('<b>Fun Facts:</b> &nbsp;Stabby is a boy goblin, age 8, just 2 feet 4 inches tall and 30 pounds, '
+story.append(callout('<b>Fun Facts:</b> &nbsp;Stabby is a boy goblin, age 9, just 2 feet 4 inches tall and 30 pounds, '
     'small but mighty! &bull; Green skin, red eyes, green hair. &bull; He carries a creepy little idol that gives '
     'him strange dreams. &bull; His old clan, the Bloodfang, are part of his past, and maybe future allies.', fill=None))
 

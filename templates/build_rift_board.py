@@ -209,7 +209,7 @@ def build_board(cfg):
     d.text((q(54), q(92)), cfg["subtitle"], font=_font(18 * S, False), fill=(212, 206, 226, 255))
     lx, ly = 1300, 44
     d.rounded_rectangle([q(lx - 16), q(ly - 14), q(W - 28), q(ly + 14 + 5 * 32)], radius=int(12 * S), fill=(16, 14, 22, 215))
-    for i, (k, name) in enumerate([("trav", "Move"), ("enc", "Encounter"), ("boon", "Boon"), ("haz", "Hazard"), ("wild", "Wild")]):
+    for i, (k, name) in enumerate([("trav", "Move"), ("enc", "Encounter"), ("boon", "Boon"), ("haz", "Hazard"), ("wild", "Wild !")]):
         yy = ly + i * 32
         d.ellipse([q(lx), q(yy), q(lx + 24), q(yy + 24)], fill=PALETTE[k], outline=(244, 238, 224, 235), width=int(2 * S))
         d.text((q(lx + 34), q(yy + 2)), name, font=_font(19 * S, False), fill=(242, 238, 230, 255))
@@ -224,7 +224,7 @@ UNDERROOT = {
     "backdrop": "assets/world/s8_underroot_board.png",
     "out": "assets/session_08/underroot_board.png",
     "title": "The Underroot",
-    "subtitle": "Earth Rift  .  Session 8  .  reach Groudon",
+    "subtitle": "Earth Rift  .  Session 8  .  reach the Guardian",
     "scale": 3,
     "space_r": 31, "loc_r": 112, "boss_r": 126, "ribbon_w": 92, "step": 68, "dim": 0.56,
     "wild_fracs": (0.30, 0.72),
@@ -239,7 +239,7 @@ UNDERROOT = {
         {"pos": (300, 600), "r": 112, "ring": (214, 170, 72),  "label": "Mosslight Landing", "num": "1",  "src": (300, 560)},
         {"pos": (560, 262), "r": 112, "ring": (214, 170, 72),  "label": "Chime Reef",        "num": "2",  "src": (520, 300)},
         {"pos": (1185, 352), "r": 112, "ring": (214, 170, 72), "label": "Glassed Gallery",   "num": "3",  "src": (1050, 360)},
-        {"pos": (1402, 858), "r": 126, "ring": (214, 66, 74),  "label": "Groudon's Hollow",  "num": "4",  "src": (1370, 430)},
+        {"pos": (1402, 858), "r": 126, "ring": (214, 66, 74),  "label": "The Guardian's Hollow",  "num": "4",  "src": (1370, 430)},
     ],
 }
 
