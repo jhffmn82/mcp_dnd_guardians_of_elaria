@@ -563,6 +563,8 @@ def build_doc(blocks, out_path):
                     ww = 3.6 / (ph / pw)
                 c0 = tbl.cell(0, ci); c1 = tbl.cell(1, ci)
                 c0.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+                # keep the image row on the same page as its caption row
+                c0.paragraphs[0].paragraph_format.keep_with_next = True
                 c0.paragraphs[0].add_run().add_picture(io.BytesIO(data), width=Inches(ww))
                 c1.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
                 r = c1.paragraphs[0].add_run(label)

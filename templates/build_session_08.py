@@ -173,7 +173,7 @@ BLOCKS = [
              "from.**"),
 
     ("h2", "The Trade Roads"),
-    ("railrow", f"{S8}/lilly_rail.png", 2.5, [
+    ("railrow", f"{S8}/sparkwick_rail.png", 2.5, [
 
         ("gold", "So she went looking.\n"
              "She earned her answers out of Master Sparkwick at Glimmerspire, one stubborn "
@@ -185,8 +185,10 @@ BLOCKS = [
              "Vane shouting about tolerances.\n"
              "By midwinter her craft had gone from clever to formidable, and she still did not "
              "have her answer."),
+    ]),
 
     ("h2", "The Hands Workshop"),
+    ("railrow", f"{S8}/hands_rail.png", 2.5, [
     ("gold", "The best six weeks were with a woman who built hands for injured miners. Brass "
              "fingers, clever joints, work that had to be right because somebody's whole life "
              "would hang on it. Lilly learned more about listening to a mechanism in that "
@@ -332,7 +334,7 @@ BLOCKS = [
              "\"Anyway,\" he says. \"I got a sword.\""),
 
     ("h2", "Ursa Tells It: The Road East"),
-    ("railrow", f"{S8}/ursa_rail.png", 2.35, [
+    ("railrow", f"{S8}/selarin_rail.png", 2.5, [
 
         ("gold", "The fire has burned low by the time it is Ursa's turn, and he does not stand up. He "
              "sets both hands flat on the table, with the stone he carries between them, and for "
@@ -355,6 +357,7 @@ BLOCKS = [
              "explained: **Betelgeuse.** The first star to go out.\n"
              "The notes stop in the middle of a page. Not at the end of a thought. In the middle "
              "of one."),
+    ]),
 
     ("h2", "The Skyless Country"),
     ("gold", "He went east on foot and **alone**, because Ghostbloom stayed at the Guild and "
@@ -368,21 +371,34 @@ BLOCKS = [
              "blind land one stone at a time. Ash built it going out. Ursa walked it going in, "
              "and **repaired eleven of them on the way**, because there was no reason to assume "
              "he would be the last person to need the road."),
-    ]),
+    ("img", f"{S8}/U_the_cairn.png",
+     "The Skyless Country has no horizon; it has the next cairn instead.",
+     6.2, {"crop": "3:2", "hmax": 4.3}),
 
     ("h2", "The Camp"),
-    ("railrow", f"{S8}/camp_rail.png", 2.5, [
-
+    
         ("gold", "He did not find his father. He found the camp his father made.\n"
              "A firepit long cold. A shelter of bent living branches, still holding. Split wood "
-             "stacked ready under cover. Nothing packed. Nothing buried. **Nobody had said "
+             "stacked ready under cover, and a kettle still hanging from its tripod with "
+             "rain in it. Nothing packed. Nothing buried. **Nobody had said "
              "goodbye to this place.**\n"
-             "And he found out how long ago by doing exactly what Selarin told him: he read the "
+             "He stayed the first night without touching any of it, because moving so much "
+             "as the cup felt like interrupting somebody. The shelter's doorway faced back "
+             "along the cairn road, the way you face a door when you are expecting company.\n"
+             "And he found out how long the camp had stood empty by doing exactly what "
+             "Selarin told him: he read the "
              "ground. The shelter was still alive and still growing, and the wood had closed "
-             "over the bindings by an amount a druid can read like a page.\n"
+             "over its bindings by an amount a druid can read like a page. The fire ring "
+             "told it plainest: moss takes a stone slowly, at a pace the Circle teaches "
+             "you to count, and the moss on those stones had three years' reach and not "
+             "one season more.\n"
              "Not fifteen years. **Three.**"),
+    ("img", f"{S8}/G_the_empty_camp.png",
+     "The tin cup is still where a hand last set it down.",
+     6.2, {"crop": "3:2", "hmax": 4.3}),
 
     ("h2", "The Half-Carved Stone"),
+    ("railrow", f"{S8}/stone_rail.png", 2.5, [
     ("gold", "Under the flat rock by the firepit, wrapped in oilcloth, was a river stone carved "
              "with Elaria's seven-pointed star. **Half of it.** The line stops mid-stroke, the "
              "way a pen stops when somebody says your name. It is his father's hand.\n"
@@ -1760,6 +1776,10 @@ BLOCKS = [
            "remember his own job, and they will not understand what they saw until they "
            "are standing in front of him. Ursa may **regain one spent Omen Dream**, "
            "because something has just spoken to him and he does not know what."),
+    ("imgrow", [(f"{A}/session_08/events/D7_the_reef_answers.png",
+                 "The Reef Answers: an invitation through a mile of stone."),
+                (f"{A}/session_08/events/D8_the_guardians_dream.png",
+                 "The Guardian's Dream: a memory that is not theirs.")], 3.1),
 
     ("lore", "The Living Country",
      "The sky-readers teach that a plane is not a place but a creature: one living "
@@ -1774,15 +1794,13 @@ BLOCKS = [
     ("dm", "**Two Letter pages, taped at the seam.** The full board is split below for home "
            "printing; the original one-piece file and a print-ready PDF live in the repo at "
            "assets/session_08/."),
-    ("imgrow", [(f"{S8}/underroot_board_page1_left.png",
-                 "Left half: the gate through the reef."),
-                (f"{S8}/underroot_board_page2_right.png",
-                 "Right half: the gallery to the Hollow.")], 3.15),
+    ("img", f"{S8}/underroot_board_page1_left.png",
+     "Left half: the gate through the reef.",
+     6.2, {"hmax": 8.32}),
+    ("img", f"{S8}/underroot_board_page2_right.png",
+     "Right half: the gallery to the Hollow.",
+     6.2, {"hmax": 8.32}),
 
-    ("imgrow", [(f"{A}/session_08/events/D7_the_reef_answers.png",
-                 "The Reef Answers: an invitation through a mile of stone."),
-                (f"{A}/session_08/events/D8_the_guardians_dream.png",
-                 "The Guardian's Dream: a memory that is not theirs.")], 3.1),
 
     ("appendix_title", "APPENDIX", "Bestiary: Enemy Stat Blocks",
      "Every creature of Underroot, in the order the party meets them."),
