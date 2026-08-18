@@ -135,6 +135,17 @@ B = [
         ],
     }]),
 
+    ("h2", "The Companion Swap (from Session 8 on)"),
+    ("body", "The Essence Sphere is the roster. **One companion walks in the world at a "
+             "time**; everybody else rides inside the Sphere, safe and awake and perfectly "
+             "fine. **Swapping is Lilly's Action**: she calls the name, the one outside "
+             "steps into the light, and the one she called steps out. \"Sandshrew, I choose "
+             "you!\" **Nobody ever dies in there**: a companion knocked to 0 hit points "
+             "faints and the Sphere recalls it on the spot, not lost, not hurt for keeps, "
+             "not gone. Choose before you go, not in the middle: picking wrong for a plane "
+             "is a real mistake and an entirely survivable one. **The roster grows by one "
+             "per rift.**"),
+
     ("body", "*The Underroot's own answer to a charge. Sandshrew plants itself between the party "
              "and whatever is coming, dares the whole pack to come through him, and makes the "
              "ground they would have to cross buck and split beneath them.*"),
