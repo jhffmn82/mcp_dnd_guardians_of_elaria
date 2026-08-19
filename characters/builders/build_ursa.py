@@ -230,9 +230,9 @@ def _glance(lbl, boxes, names):
     return [Paragraph(f'<b>{lbl}</b>&nbsp; {box}', gl_st), Paragraph(names, gl_st)]
 glance = [
     _glance('Cantrips', 0, 'Shillelagh, Starry Wisp, Guidance, Druidcraft'),
-    _glance('1st', 4, 'Healing Word, Goodberry, Thunderwave'),
-    _glance('2nd', 3, 'Summon Beast, Spike Growth, Aid, Lesser Restoration'),
-    _glance('3rd', 3, 'Summon Fey, Revivify'),
+    _glance('1st', 4, 'Healing Word, Entangle, Thunderwave'),
+    _glance('2nd', 3, 'Summon Beast, Spike Growth, Lesser Restoration'),
+    _glance('3rd', 3, 'Summon Fey, Plant Growth, Revivify'),
     _glance('4th', 1, 'Polymorph, Ice Storm'),
     _glance('free', 0, 'Guiding Bolt &amp; Guidance (Star Map) &bull; Animal Friendship &amp; Speak with Animals (his Mark) &bull; Faerie Fire &amp; Moonbeam (Staff charges)'),
 ]
@@ -365,10 +365,9 @@ cards = [
         '1st • Bonus Action • 60 ft • Instant',
         'Heal one creature you can see <b>2d4+5</b> HP, as a <b>bonus action</b>, so he can still '
         'cast or attack the same turn. Best for popping a downed friend back up from range.'),
-    spell_card('Goodberry',
-        '1st • Action • Touch • lasts 24 hr',
-        'Creates <b>10 berries</b>; eating one (an action) heals <b>1 HP</b> and feeds someone for a day. '
-        'Cast before a fight to bank 10 little heals the whole party can use.'),
+    spell_card('Entangle',
+        '1st • Action • 90 ft • Concentration, 1 min',
+        'Grasping plants fill a <b>20-ft square</b>: <b>difficult terrain</b>, and everyone caught inside makes a <b>Str save DC 16</b> or is <b>restrained</b>. A restrained creature can spend its whole action on a <b>Str (Athletics) check DC 16</b> to tear free. Cheap, and it stops a charge cold.'),
     spell_card('Speak with Animals &nbsp;<i>(free: his Mark)</i>',
         '1st • Ritual • Action • Self • 10 min',
         'Talk with beasts for 10 min: they can describe nearby places, monsters, and what they saw '
@@ -381,10 +380,9 @@ cards = [
         '2nd • Action • 120 ft • Concentration, 1 min',
         'A 5-ft pillar of light. A creature that enters it or starts its turn there makes a <b>Con save DC 16</b>: '
         '<b>2d10 radiant + 1d8</b> (Starseed) on a fail, half on a success. <b>Move it 60 ft</b> each turn as part of the spell.'),
-    spell_card('Aid',
-        '2nd • Action • 30 ft • 8 hours',
-        'Pick <b>three</b> friends: each one’s <b>maximum AND current HP go up by 5</b> for eight hours. '
-        'No concentration. Cast it at breakfast, not in a fight, and the whole party is tougher all day.'),
+    spell_card('Plant Growth',
+        '3rd • Action • 150 ft • Instant',
+        'Every plant in a <b>100-ft radius</b> erupts into thick overgrowth: any creature moving through it spends <b>4 ft of movement for every 1 ft</b> it travels. <b>No save, no concentration</b>, and he can <b>leave clear lanes</b> anywhere he likes, so his friends walk while everything else wades. Needs real plants to work on.'),
     spell_card('Spike Growth',
         '2nd • Action • 150 ft • Concentration, 10 min',
         'A 20-ft circle of ground sprouts hidden thorns: <b>difficult terrain</b>, and <b>2d4 piercing for every 5 ft</b> '
