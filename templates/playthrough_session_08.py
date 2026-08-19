@@ -47,6 +47,11 @@ BODIES = os.environ.get('S8_BODIES', '0') == '1'
 GHOST_SUPPORT = os.environ.get('S8_GHOST_SUPPORT', '0') == '1'
 #   Ghostbloom runs triage-only: Guardian's Light and guarding, no attacks.
 NICHIRIN_RING = os.environ.get('S8_NICHIRIN_RING', '0') == '1'
+FEY_HOUR = os.environ.get('S8_FEY_HOUR', 'carry')
+#   Summon Fey runs ONE HOUR. 'carry' lets a spirit summoned at Mosslight
+#   still be up at the Chime Reef (generous about the travel between
+#   locations); 'onefight' expires it on the road, which is the honest
+#   reading of a dungeon crawl with dot events between the landings.
 URSA_LINE = os.environ.get('S8_URSA_LINE', 'control')
 #   'control' = the tuned line (Plant Growth, Entangle, Moonbeam, Ice Storm).
 #   'summon3' / 'summon4' = summon the Fey Spirit on turn 1 and then do
@@ -218,6 +223,8 @@ class State:
         self.aura_rounds = 0
         self.u_starry = False     # Starry Form up this fight
         self.resurgences = 0      # Wild Resurgence slot->Wild Shape swaps
+        self.conc_lost = 0        # summons dropped by failed con saves
+        self.fey_killed = 0       # summons beaten to 0 HP
         self.fey = None
         self.conc = None          # non-summon concentration (Moonbeam, Entangle)
         # Ghostbloom
@@ -363,6 +370,8 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
         st.tally['kills'][credit] += 1
     if tgt.hp <= 0:
         tgt.hp = 0
+        if tgt is st.fey:
+            st.fey_killed += 1
         if tgt.side == 'pc':
             if not tgt.down:
                 tgt.down = True
@@ -837,6 +846,7 @@ def ursa_conc_check(st, dmg):
     elif st.fey is not None:
         log(f"      * Ursa loses concentration ({roll} vs DC {dc}): "
             f"the fey spirit fades!")
+        st.conc_lost += 1
         st.fey.hp = 0
         st.fey = None
 
@@ -2525,6 +2535,9 @@ def revive_between(st):
     """Post-fight triage on the road: nobody walks on at 0."""
     st.conc = None      # a 1-minute spell does not survive the walk
     st.u_starry = False  # Starry Form runs 10 minutes, not all day
+    if FEY_HOUR == 'onefight' and st.fey is not None:
+        log("  (The hour runs out on the road: the fey spirit bows and goes.)")
+        st.fey = None
     for h in [st.lilly, st.stabby, st.ursa, st.ghost]:
         if h.down:
             amt = d(2, 4) + 5
