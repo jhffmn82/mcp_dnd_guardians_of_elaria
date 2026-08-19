@@ -35,7 +35,7 @@ SEED = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1] != '--sweep' else 2
 # Baseline now matches the 2026-08-18 retuned doc: 8x Rotbloom 33 / 8x Mossmite,
 # 4x Chimestone 78 / 4x Shardwing 33, Weeper 170, spike 60 WITH re-knit.
 HPX = float(os.environ.get('S8_HPX', '1'))              # enemy HP multiplier
-SPIKE_HP = int(os.environ.get('S8_SPIKE_HP', '60'))
+SPIKE_HP = int(os.environ.get('S8_SPIKE_HP', '160'))  # 80e0efd: 60 -> 160
 SPIKE_REKNIT = os.environ.get('S8_SPIKE_REKNIT', '1') == '1'
 #   Doc rule (2026-08-18): the spike regains 20 at the start of Groudon's turn
 #   unless Cleansing Edge touched it since his last turn. Only Stabby makes
@@ -134,6 +134,7 @@ class Actor:
         self.dodging = False      # Patient Defense: attackers at disadvantage
         self.entangled = 0        # restrained (Entangle) for N of its turns
         self.cleanse_types = {'radiant', 'force'}   # per its own statblock
+        self.restrained = False   # Roots Erupt / Entangle
 
     @property
     def alive(self):
@@ -408,9 +409,10 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         st.gb_adv_target = None
     if tgt.dodging:
         dis = True
-    if getattr(tgt, 'entangled', 0) > 0:
+    if getattr(tgt, 'entangled', 0) > 0 or getattr(tgt, 'restrained', False):
         adv = True
-    if attacker is not None and getattr(attacker, 'entangled', 0) > 0:
+    if attacker is not None and (getattr(attacker, 'entangled', 0) > 0
+                                 or getattr(attacker, 'restrained', False)):
         dis = True
     if tgt.prone and attacker is not None and attacker.dist_ft(tgt) <= 5:
         adv = True
@@ -484,6 +486,19 @@ def ursa_starry(st, again=False):
     st.u_starry = True
     log(f"    Ursa: STARRY FORM (Archer){' again' if again else ''}; the Amulet "
         f"wakes, +1 to allies' attacks and saves. [Wild Shape {st.u_wild}]")
+    return True
+
+
+def break_free(st, h, athletics):
+    """Restrained by the glassed roots: an ACTION for a DC 14 Str (Athletics)
+    check, per The Roots Erupt in build_session_08.py."""
+    if not h.restrained:
+        return False
+    if hero_check(st, h, athletics, 14, 'Athletics to tear free'):
+        h.restrained = False
+        log(f"    {h.name}: rips free of the roots, and that was the whole turn.")
+    else:
+        log(f"    {h.name}: heaves against the glassed roots and stays caught.")
     return True
 
 
@@ -1043,7 +1058,7 @@ def fight1(st):
         r = Actor(f'Rotbloom-{i+1}', 'R', 'foe', 12, ehp(33), p, 25,
                   saves=dict(str=0, dex=1, con=2, wis=-1),
                   resist={'poison'}, cond_imm={'frightened'})
-        r.cleanse_types = {'radiant'}   # its clause names radiant only, no force
+        r.cleanse_types = set()   # 80e0efd: Cleansing Edge alone stops Re-Bloom
         rots.append(r)
     mites = []
     for i, p in enumerate(mite_spots):
@@ -1650,12 +1665,13 @@ def fight3(st):
     st.ghost.pos = [15, 25]
     st.puff.pos = [13, 24]
     st.cannon.pos = [13, 25]
-    weeper = Actor('Glass Weeper', 'W', 'foe', 16, ehp(170), (15, 11), 20,
+    weeper = Actor('Glass Weeper', 'W', 'foe', 16, ehp(340), (15, 11), 20,
                    saves=dict(str=4, dex=-1, con=5, wis=1),
                    resist={'nm-bludgeoning', 'nm-piercing', 'nm-slashing'},
                    immune={'poison'},
                    cond_imm={'charmed', 'frightened', 'poisoned', 'prone'},
                    reach=15)
+    weeper.cleanse_types = set()   # 80e0efd: Glassbound yields to Cleansing Edge only
     roll_spots = [(27, 12), (27, 16), (28, 10), (28, 18)]
     rolls = [Actor(f'Cinderoll-{i+1}', 'o', 'foe', 15, ehp(18), p, 40,
                    saves=dict(str=1, dex=2, con=1, wis=-1),
@@ -1706,7 +1722,7 @@ def fight3(st):
             # Cinderolls are fire-immune; the chain is narrative only.
 
     while (weeper.hp > 0 or any(c.hp > 0 for c in arrived)) \
-            and any(h.alive for h in st.heroes) and rnd < 14:
+            and any(h.alive for h in st.heroes) and rnd < 20:
         rnd += 1
         start_round(st, rnd)
         if rnd == (2 if BODIES else 3) and len(arrived) < 4:
@@ -1717,6 +1733,8 @@ def fight3(st):
             if name == 'Stabby' and st.stabby.alive:
                 st.s_speed_left = 65
                 st.stabby.dodging = False
+                if break_free(st, st.stabby, 2):
+                    continue
                 pool = [weeper] if weeper.hp > 0 else sorted(
                     live_rolls_now, key=lambda c: st.stabby.dist_ft(c))
                 if st.stabby.hp < 25:
@@ -1727,6 +1745,15 @@ def fight3(st):
                         if c.hp <= 0:
                             burst(c)
             elif name == 'Lilly' and st.lilly.alive:
+                if break_free(st, st.lilly, -1):
+                    continue
+                if weeper.hp > 0 and st.lilly.dist_ft(weeper) > 30:
+                    old, moved = st.lilly.approach(weeper, 30, 25)
+                    if moved:
+                        st.cannon.approach(weeper, 40, 15)
+                        st.puff.approach(weeper, 35, 30)
+                        log(f"    Lilly: walks it in {old}->{tuple(st.lilly.pos)}, "
+                            "inside Boomstick's short range and outside the fronds.")
                 if weeper.hp > 0:
                     true_strike(st, weeper, adv=tended)
                 elif live_rolls_now:
@@ -1757,6 +1784,8 @@ def fight3(st):
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used and ursa_starry(st):
                     bonus_used = True
+                if break_free(st, st.ursa, -1):
+                    continue
                 if URSA_LINE != 'control':
                     pool = ([weeper] if weeper.hp > 0 else []) + [
                         c for c in arrived if c.hp > 0]
@@ -1861,6 +1890,33 @@ def fight3(st):
             elif name == 'Glass Weeper':
                 if weeper.hp <= 0:
                     continue
+                # THE ROOTS ERUPT (80e0efd): start of its turn, one creature it
+                # can see within 60 ft, DC 15 Dex, 3d8 piercing + Restrained.
+                # Suppressed on a turn when Tend the Roots stripped Glassbound.
+                if not tended:
+                    pool = [h for h in st.pcs if h.alive and not h.restrained
+                            and weeper.dist_ft(h) <= 60]
+                    if pool:
+                        soft = [h for h in pool if not (h is st.stabby
+                                or getattr(h, 'evasion', False))]
+                        v = max(soft or pool, key=lambda h: h.hp)
+                        roll = d(3, 8)
+                        if st.hero_save(v, 'dex', 15):
+                            if v is st.stabby or getattr(v, 'evasion', False):
+                                log("    THE ROOTS ERUPT under "
+                                    f"{v.name}, who is already gone (Evasion).")
+                            else:
+                                dmg = deal(st, v, [(roll // 2, 'piercing')],
+                                           magical=False)
+                                log(f"    THE ROOTS ERUPT under {v.name}: {dmg}, "
+                                    "and they cannot hold on.")
+                        else:
+                            dmg = deal(st, v, [(roll, 'piercing')], magical=False)
+                            v.restrained = True
+                            log(f"    THE ROOTS ERUPT under {v.name} for {dmg} "
+                                "and close around them: RESTRAINED.")
+                            if v is st.ursa:
+                                ursa_conc_check(st, dmg)
                 if st.conc == 'the Moonbeam':
                     roll = d(2, 10) + d(1, 8)
                     if foe_save(weeper, weeper.saves.get('con', 0), 16):
@@ -1878,8 +1934,8 @@ def fight3(st):
                     weeper.hp = min(weeper.hp_max, weeper.hp + 10)
                     log(f"    Glass Weeper: glass knits closed, REGENERATES 10 (now {weeper.hp}).")
                 elif weeper.damaged_since:
-                    log("    Glass Weeper: the wounds stay OPEN (force, radiant and "
-                        "the Nichirin have burned the glass).")
+                    log("    Glass Weeper: the wounds stay OPEN, because the "
+                        "Nichirin burned the glass. Nothing else would have.")
                 weeper.damaged_since = False
                 weeper.cleansed = False
                 in_reach = [h for h in st.pcs if h.alive and weeper.dist_ft(h) <= 15]
@@ -1953,7 +2009,7 @@ def boss(st):
                     immune={'fire', 'poison'},
                     cond_imm={'charmed', 'frightened', 'prone', 'restrained'},
                     reach=15)
-    spike = Actor('The Spike', 'x', 'foe', 17, SPIKE_HP, (14, 6), 0)
+    spike = Actor('The Spike', 'x', 'foe', 17, ehp(SPIKE_HP), (14, 6), 0)
     spike.immune = {'slashing', 'bludgeoning', 'piercing', 'fire', 'cold',
                     'thunder', 'lightning', 'poison', 'necrotic', 'psychic',
                     'acid'}
@@ -1988,6 +2044,15 @@ def boss(st):
     vent_ready = True
     stabby_at_spike = False
     n_spawned = 0
+    for _i in range(4):
+        n_spawned += 1
+        glasslings.append(Actor(f'Glassling-{n_spawned}', 'g', 'foe', 14, ehp(10),
+                                (12 + _i, 13), 30, saves=dict(dex=3, con=1, wis=-2),
+                                immune={'poison', 'psychic'},
+                                cond_imm={'blinded', 'charmed', 'deafened',
+                                          'frightened', 'poisoned'}))
+    log("  Four Glasslings are ALREADY LOOSE on the hollow floor, picking over the "
+        "stone, and they look up all at once.")
     rnd = 0
     while spike.hp > 0 and any(h.alive for h in st.heroes) and rnd < 14:
         rnd += 1
@@ -2568,6 +2633,8 @@ def road_walk(st, seg, stats):
 def revive_between(st):
     """Post-fight triage on the road: nobody walks on at 0."""
     st.conc = None      # a 1-minute spell does not survive the walk
+    for _h in st.pcs:
+        _h.restrained = False
     st.u_starry = False  # Starry Form runs 10 minutes, not all day
     if FEY_HOUR == 'onefight' and st.fey is not None:
         log("  (The hour runs out on the road: the fey spirit bows and goes.)")
