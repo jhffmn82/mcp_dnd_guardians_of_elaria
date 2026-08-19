@@ -215,7 +215,7 @@ story.append(section_table([[Paragraph(LBL%n,cell_st),Paragraph(d,cell_st)] for 
 h2("Lilly's Stuff")
 gear=[
     ('Essence Sphere','A steampunk orb holding Pikachu’s spark. Lilly’s big quest item: she wants to give Pikachu a body again.'),
-    ('Boomstick <i>(new! Poots&rsquo;s parting work)</i>','Her mother&rsquo;s repeating pistol, +2. <b>Range 30/90.</b> It is her <b>weapon, her spell focus, and her Arcane Firearm</b> all at once: any artificer spell she casts through it adds <b>1d8 thunder</b> to one of its damage rolls.'),
+    ('Boomstick <i>(new! built with her mother)</i>','The repeating pistol she and Poots built together at the kitchen-table forge, +2. <b>Range 30/90.</b> It is her <b>weapon, her spell focus, and her Arcane Firearm</b> all at once: any artificer spell she casts through it adds <b>1d8 thunder</b> to one of its damage rolls.'),
     ('Frostbite Shard Dagger +1 <i>(retired to her belt)</i>','Her old frost dagger, kept as a keepsake. Boomstick has taken over as focus and Arcane Firearm, so the dagger&rsquo;s riders no longer apply.'),
     ('Pocket Dynamo (★ Elaria’s gift)','From the Wraithpine chest. Summon/recall her cannon for free, lasts 24 hours, +2 damage. Reformat (1/long rest, action), now mostly spare, since every cannon picks its blast when it fires. Needs attunement.'),
     ('+1 Half Plate <i>(Replicate creation 1 of 3)</i>','Her armour, the base of her <b>AC 20</b>. She keeps it going with Replicate Magic Item, so it uses one of her three creation slots.'),

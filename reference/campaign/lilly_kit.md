@@ -32,7 +32,7 @@ Deep Gnome Artificer 7 (Artillerist). A combat sim must consult this before ever
 
 ## Always on (base class L7 + relic + gift)
 
-These apply on every road. The weapon, focus, and Arcane Firearm on every road is **Boomstick** (Poots's parting work); the Frostbite Shard Dagger is retired, so the dagger's old "+2 frost on any spell" rider is GONE and spells no longer get it.
+These apply on every road. The weapon, focus, and Arcane Firearm on every road is **Boomstick** (built by Lilly and Poots together during her year at home); the Frostbite Shard Dagger is retired, so the dagger's old "+2 frost on any spell" rider is GONE and spells no longer get it.
 
 | Feature | Action type | Cost | Exact mechanics / dice / DC / range | Rider to not forget |
 |---|---|---|---|---|

@@ -181,6 +181,18 @@ BLOCKS = [
              "never touched. **Poots never once said where the thing inside the brass had come "
              "from.**"),
 
+    ("gold", "What the two of them did instead was build something.\n"
+             "Eleven evenings at the kitchen-table forge, her mother teaching and correcting "
+             "and finally just watching, and one entire week lost to an argument about the "
+             "drum spring that both of them enjoyed enormously. When it was finished it did "
+             "not jam and it did not misfire, and Poots put her hands flat on the table and "
+             "said the only thing that ever made Lilly cry that year, which was: **\"Now you "
+             "do not need me to make you anything, ever again.\"**\n"
+             "That is Boomstick. It was not a gift. It has her hands on every part of it."),
+    ("dm", "**Worth saying out loud when the gun first comes out tonight.** Nobody handed "
+           "Lilly that pistol; she and her mother built it. Every road she could have taken "
+           "would still have ended with the two of them at that bench."),
+
     ("h2", "The Trade Roads"),
     ("railrow", f"{S8}/sparkwick_rail.png", 2.5, [
 

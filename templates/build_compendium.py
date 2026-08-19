@@ -17,7 +17,8 @@ def title(kicker, sub):
 # ----------------------------------------------------------------------
 I = [
     title("TREASURES & RELICS", "The Magic of the Chronicle"),
-    ("gold", "Every treasure of the Guardians' road, from a mother's parting gift to the relics of "
+    ("gold", "Every treasure of the Guardians' road, from a pistol a girl built beside her mother "
+             "to the relics of "
              "a sleeping goddess. Items marked with the seven-point star are Elaria's own."),
 
     ("h1", "The Great Mysteries"),
@@ -726,8 +727,9 @@ C = [
     # ------------------------------------------------------------------
     ("h1", "Glimmerstone Artifacts (Lilly's Path)", {"hardbreak": True}),
     ("gold", "One weapon and one mastery, forged for Lilly Glimmergear in the year apart. "
-             "Wherever her road leads, Poots's parting work finds her: Boomstick, the sidearm no "
-             "Level 7 Artillerist walks into the rifts without. On top of the gun, the year "
+             "Wherever her road leads she carries the work of her own hands: Boomstick, built at "
+             "her mother's bench, the sidearm no Level 7 Artillerist walks into the rifts "
+             "without. On top of the gun, the year "
              "teaches her a single mastery of three: stay and build the portal (Sentinel "
              "Protocol), go home to Glimmerspire and Poots (Stormgunner), or give the year to "
              "mote research (Aether Channeler). The mastery is hers, learned into hand and mind, "
@@ -735,11 +737,13 @@ C = [
              "whatever the rifts yield. The Frostbite Shard retires to her belt, a keepsake and "
              "one day a gift."),
 
-    ("h2", "Boomstick, Poots's Parting Work"),
+    ("h2", "Boomstick, Built at Her Mother's Bench"),
     ("imgfloat", "assets/items/boomstick.png", 2.2),
     ("gold", "*“It doesn't jam. It doesn't misfire. It simply states its opinion, loudly.”*"),
-    ("body", "Whichever road Lilly walks, a parcel finds her, wrapped in waxed paper and string, "
-             "postmarked Glimmerspire. Boomstick becomes her spellcasting focus and her "
+    ("body", "Nobody gave Lilly this gun. She built it in Deepforge Hollow over eleven evenings "
+             "at her mother's kitchen-table forge, with Poots teaching and correcting and "
+             "finally just watching, and the two of them argued about the drum spring for a "
+             "week. Her hands are on every part of it. Boomstick becomes her spellcasting focus and her "
              "designated Arcane Firearm (an artificer designates only one). With her shield in "
              "the other hand, her hands are exactly full: pistol, shield, and nothing wasted. "
              "Its clockwork drum conjures its own rounds, so Lilly will never want for ammunition "
