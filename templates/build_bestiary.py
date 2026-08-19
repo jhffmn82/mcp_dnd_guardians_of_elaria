@@ -217,7 +217,7 @@ B = [
             ("Ice Beam", "*Ranged Attack:* +6 to hit, range 60/120 ft., one target. *Hit:* 10 "
              "(2d6 + 3) Cold damage, and the target's Speed drops by 20 feet until the end "
              "of its next turn (the slow doesn't stack)."),
-            ("Heal Bubble (Bonus Action, 3/Short Rest)", "A shimmering bubble drifts to one "
+            ("Heal Bubble (Bonus Action, 5/Short Rest)", "A shimmering bubble drifts to one "
              "creature Piplup can see within 30 feet and pops into cool silver mist: it "
              "regains 14 (2d8 + 5) hit points and is cured of the Poisoned condition."),
             ("Sea Mist (1/Day)", "Piplup breathes out a rolling bank of cool silver fog: a "
