@@ -1287,6 +1287,33 @@ BLOCKS = [
            "themselves, right there in the workshop, so Ghostbloom steps back out where they can "
            "all see her."),
 
+    ("h2", "One Socket Lit"),
+    ("dm", "**Then give Lilly her turn, because the Sphere is not finished talking.** She has "
+           "spent the whole run feeling it fill, and she is the only one who can feel what the "
+           "Mote did when it went in. Let her be the one to say it out loud; her player has "
+           "been waiting a year of game-time for the Aether Channeler road to do something "
+           "nobody else could do."),
+    ("gold", "\"It is not just carrying it,\" Lilly says. \"It is *offering* it.\"\n"
+             "She has the housing open on her knees. One of the five dark sockets around the "
+             "Sphere's equator is dark no longer: there is a deep steady brown-gold light in "
+             "it now, the colour of the light under Groudon's plates, and it is warm the way a "
+             "stone is warm at the end of a long day.\n"
+             "She puts two fingers against it, and everyone in the workshop feels the floor "
+             "answer. Not a shake. A **readiness**, as though the ground under Gearhaven has "
+             "just been asked a polite question and is waiting to be asked the real one."),
+    ("dm", "**Tectonic Slam is hers from now on, and it is worth reading off her sheet at the "
+           "table**: a Magic action to erupt the ground in a 20-foot-radius Sphere within 120 "
+           "feet, Dexterity save or **7d8 force damage and knocked prone**, and the raised "
+           "stone stays: difficult terrain, 5 piercing for every 5 feet a creature moves "
+           "through it, and half cover for her and her friends until the start of her next "
+           "turn. She has **one use**, and it comes back on a long rest. **Four sockets are "
+           "still dark**, and she will work out what that means before you say it: one per "
+           "plane, one per guardian freed. Say the quiet part only if the table does not: "
+           "every world they help gives her something no artificer has ever carried."),
+    ("gold", "Vane looks at the lit socket for a long moment.\n"
+             "\"Ten years,\" he says, \"I built a door. And the key learned a new trick on its "
+             "first day out.\""),
+
     ("reward_card", "Rewards: What Underroot Gave Them",
      "The concrete gains, once the shouting in the Rift Hall dies down", [
         ("Sandshrew",
