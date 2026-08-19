@@ -47,6 +47,11 @@ BODIES = os.environ.get('S8_BODIES', '0') == '1'
 GHOST_SUPPORT = os.environ.get('S8_GHOST_SUPPORT', '0') == '1'
 #   Ghostbloom runs triage-only: Guardian's Light and guarding, no attacks.
 NICHIRIN_RING = os.environ.get('S8_NICHIRIN_RING', '0') == '1'
+URSA_LINE = os.environ.get('S8_URSA_LINE', 'control')
+#   'control' = the tuned line (Plant Growth, Entangle, Moonbeam, Ice Storm).
+#   'summon3' / 'summon4' = summon the Fey Spirit on turn 1 and then do
+#   nothing but damage: Guiding Bolts while the free ones last, then
+#   Starry Wisp. summon4 upgrades the spirit once (he has one 4th slot).
 SHINE = os.environ.get('S8_SHINE', '0') == '1'
 #   The suck-or-save shine pack: Groudon opens with Magma Vent, the drop
 #   into the Hollow is a real DC 15 descent check, and heat-shear at the
@@ -768,28 +773,51 @@ def ghost_lash(st, targets):
             log(f"    Ghostbloom: lash misses {t.name}.")
 
 
+def summon_fey(st, pos=(9, 15)):
+    """Summon Fey. 3rd: AC 15, HP 30, 2d6+6, one attack. Cast with a 4th-level
+    slot (build_ursa.py:211-212): AC 16, HP 40, 2d6+7, and TWO attacks a turn."""
+    lvl = 4 if (URSA_LINE == 'summon4' and st.u_slots[4] > 0) else 3
+    if st.u_slots[lvl] <= 0:
+        lvl = 3
+        if st.u_slots[3] <= 0:
+            return False
+    st.u_slots[lvl] -= 1
+    ac, hp = (16, 40) if lvl == 4 else (15, 30)
+    st.fey = Actor('Fey spirit', 'f', 'pc', ac, hp, pos, 30,
+                   saves=dict(dex=3, con=2, wis=2), fly=True)
+    st.fey.lvl = lvl
+    log(f"    Ursa: SUMMON FEY at {'4th' if lvl == 4 else '3rd'} level, a silver-antlered spirit steps "
+        f"out of the light (AC {ac}, HP {hp}"
+        f"{', TWO attacks a turn' if lvl == 4 else ''}). "
+        f"[slots {st.u_slots[1]}/{st.u_slots[2]}/{st.u_slots[3]}/{st.u_slots[4]}]")
+    return True
+
+
 def fey_turn(st, targets):
     if st.fey is None or st.fey.hp <= 0:
         return
     f = st.fey
-    ts = [t for t in targets if t.hp > 0]
-    if not ts:
-        return
-    t = ts[0]
-    if f.dist_ft(t) > 5:
-        f.approach(t, 5, 30)
-    if f.dist_ft(t) > 5:
-        log(f"    Fey spirit: closes on {t.name}.")
-        return
-    hit, crit, _ = attack_roll(st, 8, t, attacker=f)
-    if hit:
-        dmg = deal(st, t, [(d(4 if crit else 2, 6) + 6, 'force')],
-                   credit='Fey spirit')
-        log(f"    Fey spirit: fey blade hits {t.name} for {dmg} force.")
-        if t.hp <= 0:
-            log(f"      {t.name} is destroyed.")
-    else:
-        log(f"    Fey spirit: fey blade misses {t.name}.")
+    lvl = getattr(f, 'lvl', 3)
+    bonus_dmg = 7 if lvl == 4 else 6
+    for _ in range(2 if lvl == 4 else 1):
+        ts = [t for t in targets if t.hp > 0]
+        if not ts:
+            return
+        t = ts[0]
+        if f.dist_ft(t) > 5:
+            f.approach(t, 5, 30)
+        if f.dist_ft(t) > 5:
+            log(f"    Fey spirit: closes on {t.name}.")
+            return
+        hit, crit, _ = attack_roll(st, 8, t, attacker=f)
+        if hit:
+            dmg = deal(st, t, [(d(4 if crit else 2, 6) + bonus_dmg, 'force')],
+                       credit='Fey spirit')
+            log(f"    Fey spirit: fey blade hits {t.name} for {dmg} force.")
+            if t.hp <= 0:
+                log(f"      {t.name} is destroyed.")
+        else:
+            log(f"    Fey spirit: fey blade misses {t.name}.")
 
 
 def ursa_conc_check(st, dmg):
@@ -811,6 +839,23 @@ def ursa_conc_check(st, dmg):
             f"the fey spirit fades!")
         st.fey.hp = 0
         st.fey = None
+
+
+def ursa_damage_line(st, targets, bonus_used):
+    """The simple line: keep the summon up, then Guiding Bolt while the free
+    Star Map casts last, then Starry Wisp forever."""
+    live = [t for t in targets if t.hp > 0]
+    if (st.fey is None or st.fey.hp <= 0) and st.u_slots[3] > 0:
+        summon_fey(st, pos=tuple(st.ursa.pos))
+    elif live:
+        if st.u_gbolt > 0 or st.u_staff > 0:
+            guiding_bolt(st, live[0])
+        else:
+            starry_wisp(st, live[0])
+    if not bonus_used and st.u_starry and live:
+        star_arrow(st, live[0])
+        bonus_used = True
+    return bonus_used
 
 
 def ursa_close(st, target, want_ft=55):
@@ -1073,7 +1118,22 @@ def fight1(st):
                 live_r = sorted([r for r in rots if r.hp > 0],
                                 key=lambda r: st.ursa.dist_ft(r))
                 live_m = [m for m in mites if m.hp > 0 and not m.hidden]
-                if rnd == 1 and st.u_slots[3] > 0:
+                if rnd == 1 and URSA_LINE != 'control':
+                    if st.fey is None or st.fey.hp <= 0:
+                        summon_fey(st)
+                    if not bonus_used and ursa_starry(st):
+                        bonus_used = True
+                elif URSA_LINE != 'control':
+                    tgt = live_r[0] if live_r else (live_m[0] if live_m else None)
+                    if tgt is not None:
+                        if st.u_gbolt > 0:
+                            guiding_bolt(st, tgt)
+                        else:
+                            starry_wisp(st, tgt)
+                    if not bonus_used and st.u_starry:
+                        star_arrow(st, live_r[0] if live_r else
+                                   (live_m[0] if live_m else None))
+                elif rnd == 1 and st.u_slots[3] > 0:
                     # Underroot is made of growing things: Plant Growth always
                     # has something to work on, needs no concentration, and he
                     # can leave his own friends clear lanes.
@@ -1118,11 +1178,7 @@ def fight1(st):
                         star_arrow(st, live_r[0] if live_r else
                                    (live_m[0] if live_m else None))
                 elif st.fey is None and st.u_slots[3] > 0 and rnd <= 3:
-                    st.u_slots[3] -= 1
-                    st.fey = Actor('Fey spirit', 'f', 'pc', 15, 30, (9, 15), 30,
-                                   saves=dict(dex=3, con=2, wis=2), fly=True)
-                    log(f"    Ursa: SUMMON FEY (3rd), a silver-antlered spirit steps "
-                        f"out of the mosslight. [3rd slots left {st.u_slots[3]}]")
+                    summon_fey(st)
                     if not bonus_used and st.u_starry:
                         star_arrow(st, live_r[0] if live_r else
                                    (live_m[0] if live_m else None))
@@ -1352,6 +1408,14 @@ def fight2(st):
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used and ursa_starry(st, again=True):
                     bonus_used = True
+                if URSA_LINE != 'control':
+                    ursa_damage_line(st, sorted(
+                        [f for f in foes if f.hp > 0],
+                        key=lambda f: (not f.stunned, st.ursa.dist_ft(f))),
+                        bonus_used)
+                    fey_turn(st, sorted([f for f in foes if f.hp > 0],
+                                        key=lambda f: (not f.stunned, f.aloft)))
+                    continue
                 adj = [c for c in chimes if c.hp > 0 and st.ursa.dist_ft(c) <= 10]
                 live = sorted([f for f in foes if f.hp > 0],
                               key=lambda f: (not f.stunned, st.ursa.dist_ft(f)))
@@ -1649,6 +1713,12 @@ def fight3(st):
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used and ursa_starry(st):
                     bonus_used = True
+                if URSA_LINE != 'control':
+                    pool = ([weeper] if weeper.hp > 0 else []) + [
+                        c for c in arrived if c.hp > 0]
+                    ursa_damage_line(st, pool, bonus_used)
+                    fey_turn(st, pool)
+                    continue
                 if rnd == 1 and st.u_staff >= 2 and weeper.hp > 0:
                     st.u_staff -= 2
                     st.conc = 'the Moonbeam'
@@ -1934,6 +2004,19 @@ def boss(st):
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used and ursa_starry(st):
                     bonus_used = True
+                if URSA_LINE != 'control':
+                    if (st.fey is None or st.fey.hp <= 0) and st.u_slots[3] > 0:
+                        summon_fey(st, pos=tuple(st.ursa.pos))
+                    else:
+                        guiding_bolt(st, spike, dis=True)
+                    if not bonus_used and st.u_starry:
+                        star_arrow(st, spike, dis=True)
+                    if st.fey is not None and st.fey.hp > 0:
+                        st.fey.aloft = True
+                        fey_turn(st, [spike])
+                    if spike.hp <= 0:
+                        break
+                    continue
                 lings = [g for g in glasslings if g.hp > 0
                          and st.ursa.dist_ft(g) <= 10]
                 if len(lings) >= 3 and st.u_slots[1] > 0:
