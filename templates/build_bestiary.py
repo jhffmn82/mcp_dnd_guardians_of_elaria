@@ -197,6 +197,7 @@ B = [
     ("enemy_cards", [{
         "name": "Piplup",
         "sub": "Small beast (Water), unaligned \u2726 Water-rift companion (joins in Session 9)",
+        "img": "assets/companions/piplup.png", "img_w": 2.6,
         "banner": TEAL,
         "stats": [
             "**AC** 13  **HP** 45 (10d6 + 10)  **Speed** 25 ft., swim 50 ft.",
