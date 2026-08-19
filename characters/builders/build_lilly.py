@@ -194,9 +194,11 @@ h2("Lilly's Special Powers")
 powers=[
     ('★ Aether Channeler<br/><i>(the year chasing the Sphere)</i>',
         'The year taught her what her mother’s Sphere really is, and how to draw on it. '
-        '<b>Aether Ward:</b> as her <b>action</b>, she and every friend <b>within 30 ft</b> gain '
-        '<b>2d8 + 5 temporary hit points</b>. <b>2 uses, back on a short rest.</b> '
-        '<i>(The Sphere’s elemental discharges stay locked until each rift’s Mote is found.)</i>'),
+        'Every Sphere power costs her <b>action</b>, and they all share the same pool: '
+        '<b>2 uses, back on a short rest.</b> She gains one more power for every rift’s Mote '
+        'she brings home and sockets into the Sphere.<br/>'
+        '&bull;&nbsp;<b>Aether Ward.</b> She and every friend <b>within 30 ft</b> gain '
+        '<b>2d8 + 5 temporary hit points</b>.'),
     ('Replicate Magic Item','Lilly builds magic gear from arcane <b>plans</b>. She knows <b>5 plans</b> and can keep <b>3 creations</b> going at once. <b>All three slots are full:</b> her <b>+1 Half Plate</b>, the <b>+1 Repeating Longbow</b> she made for Stabby, and <b>Puff&rsquo;s Wand of Magic Missiles</b>. To build something new she has to let one of those go.'),
     ('Magic Item Tinker (new at 6!)','<b>Charge</b> (bonus action, spend a slot to refill a creation&rsquo;s charges), <b>Drain</b> (bonus action, destroy one for a spell slot, 1/long rest), <b>Transmute</b> (reshape one into another plan, 1/long rest).'),
     ('Flash of Genius (new at 7!)','<b>Reaction.</b> When she <i>or any friend within 30 ft</i> fails an ability check or saving throw, add <b>+5 (Int)</b> to the roll and maybe turn it into a success. <b>5 uses per long rest.</b>'),
