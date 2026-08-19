@@ -241,8 +241,8 @@ UNDA = {
     "slots": [
         {"pos": (260, 214), "r": 64,  "ring": (70, 120, 170),  "label": "The Rift Gate",       "num": None, "src": (150, 140)},
         {"pos": (592, 160), "r": 112, "ring": (214, 170, 72),  "label": "The Brightshoal",     "num": "1",  "src": (420, 200)},
-        {"pos": (1265, 500), "r": 112, "ring": (214, 170, 72), "label": "The Kelp Cathedral",  "num": "2",  "src": (1180, 180)},
-        {"pos": (1060, 715), "r": 112, "ring": (214, 170, 72), "label": "The Blackwater Seam", "num": "3",  "src": (1040, 700)},
+        {"pos": (1247, 405), "r": 112, "ring": (214, 170, 72), "label": "The Kelp Cathedral",  "num": "2",  "src": (1180, 180)},
+        {"pos": (900, 745), "r": 112, "ring": (214, 170, 72), "label": "The Blackwater Seam", "num": "3",  "src": (1040, 700)},
         {"pos": (940, 470), "r": 126, "ring": (214, 66, 74),   "label": "The Guardian's Trench", "num": "4", "src": (870, 480)},
     ],
 }
