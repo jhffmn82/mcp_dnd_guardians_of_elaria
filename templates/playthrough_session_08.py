@@ -133,6 +133,7 @@ class Actor:
         self.reaction = True
         self.dodging = False      # Patient Defense: attackers at disadvantage
         self.entangled = 0        # restrained (Entangle) for N of its turns
+        self.cleanse_types = {'radiant', 'force'}   # per its own statblock
 
     @property
     def alive(self):
@@ -366,7 +367,7 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
     pre = tgt.hp
     tgt.hp -= total
     tgt.damaged_since = True
-    if any(t in ('radiant', 'force') for _, t in parts) or is_ce:
+    if any(t in tgt.cleanse_types for _, t in parts) or is_ce:
         tgt.cleansed = True
     if tgt.side == 'foe' and credit and pre_kill > 0 and tgt.hp <= 0:
         st.tally['kills'][credit] += 1
@@ -1039,9 +1040,11 @@ def fight1(st):
         mite_spots += [(15, 14), (17, 18)]
     rots = []
     for i, p in enumerate(rot_spots):
-        rots.append(Actor(f'Rotbloom-{i+1}', 'R', 'foe', 12, ehp(33), p, 25,
-                          saves=dict(str=0, dex=1, con=2, wis=-1),
-                          resist={'poison'}, cond_imm={'frightened'}))
+        r = Actor(f'Rotbloom-{i+1}', 'R', 'foe', 12, ehp(33), p, 25,
+                  saves=dict(str=0, dex=1, con=2, wis=-1),
+                  resist={'poison'}, cond_imm={'frightened'})
+        r.cleanse_types = {'radiant'}   # its clause names radiant only, no force
+        rots.append(r)
     mites = []
     for i, p in enumerate(mite_spots):
         m = Actor(f'Mossmite-{i+1}', 'm', 'foe', 13, ehp(7), p, 40,
