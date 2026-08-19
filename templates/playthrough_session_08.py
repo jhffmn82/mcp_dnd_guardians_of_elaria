@@ -2541,6 +2541,20 @@ def print_tally(tally, runs=1, header='CHARACTER CONTRIBUTIONS'):
         f"{k} {v / runs:.1f}" for k, v in tally['healed'].most_common()) or 'none'))
     print("  prevented: " + (', '.join(
         f"{k} {v / runs:.1f}" for k, v in tally['prevented'].most_common()) or 'none'))
+    print()
+    print('  BY PLAYER SEAT (a summon or construct counts for whoever fields it)')
+    seats = [
+        ('Stabby', ['Stabby']),
+        ('Lilly + cannon + Puff', ['Lilly', 'Cannon', 'Puff']),
+        ('Ursa + fey spirit', ['Ursa', 'Fey spirit']),
+        ('Ghostbloom (DM companion)', ['Ghostbloom']),
+    ]
+    for label, members in seats:
+        dd = sum(dealt.get(mname, 0) for mname in members)
+        kk = sum(tally['kills'].get(mname, 0) for mname in members)
+        tk = sum(tally['taken'].get(mname, 0) for mname in members)
+        print(f"  {label:30s} dealt {dd / runs:6.1f} ({100 * dd / total:4.1f}%)"
+              f"  kills {kk / runs:5.1f}  taken {tk / runs:5.1f}")
 
 
 def sweep(seeds=range(1, 21)):
