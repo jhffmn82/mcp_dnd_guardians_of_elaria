@@ -468,10 +468,17 @@ def ursa_starry(st, again=False):
     return True
 
 
-def cast_ward(st):
-    """Aether Ward: her Magic ACTION, one use of the Sphere's shared pool."""
+def cast_ward(st, where='before they close'):
+    """Aether Ward: a Magic action with NO duration, so she spends it out of
+    initiative and the action costs her nothing. One use of the Sphere's pool.
+    Temp HP do not stack, so she holds the use if the shell is still good."""
     st.ward_pending = False
     if st.l_ward <= 0 or st.lilly.down:
+        return False
+    live = [h for h in st.pcs if not h.down]
+    if live and min(h.temp for h in live) >= 9:
+        log(f"    Lilly checks the Sphere and holds the use: the shell from "
+            f"last time is still up. [{st.l_ward} left]")
         return False
     st.l_ward -= 1
     t = d(2, 8) + 5
@@ -481,8 +488,8 @@ def cast_ward(st):
             h.temp = max(h.temp, t)
             n += 1
     st.tally['prevented']['Lilly (Aether Ward temp)'] += t * n
-    log(f"    Lilly: AETHER WARD (her Action). The Sphere flares and {t} temp HP "
-        f"settles over {n} of them within 30 ft. [{st.l_ward} left]")
+    log(f"  Lilly: AETHER WARD {where}, out of initiative. The Sphere flares and "
+        f"{t} temp HP settles over {n} of them within 30 ft. [{st.l_ward} left]")
     return True
 
 
@@ -988,7 +995,7 @@ def fight1(st):
     st.s_ignited = True
     log("  Stabby rolls initiative: UNCANNY METABOLISM (Focus to 7, heals to full)")
     log("  and IGNITES THE BREATH (1 Focus): katana +2 force, speed 65, adv on Dex saves. [Focus 6]")
-    st.ward_pending = True
+    cast_ward(st, 'while they are still counting the grey caps')
 
     order = initiative(st, [('Mossmites', mites, 3), ('Rotblooms', rots, 1)])
     mites_out = False
@@ -1026,7 +1033,6 @@ def fight1(st):
                         m.hidden = False
                     log("      The moss BOILS: Mossmites pour out of the mounds in a wave!")
             elif name == 'Lilly' and st.lilly.alive:
-                warded = st.ward_pending and cast_ward(st)
                 near_mites = sorted([m for m in mites if m.hp > 0 and not m.hidden],
                                     key=lambda m: st.lilly.dist_ft(m))
                 clump = [m for m in near_mites
@@ -1037,9 +1043,7 @@ def fight1(st):
                     clump = []
                 live_r = sorted([r for r in rots if r.hp > 0],
                                 key=lambda r: st.lilly.dist_ft(r))
-                if warded:
-                    pass
-                elif rnd >= 2 and len(clump) >= 3 and st.l_slot2 > 0:
+                if rnd >= 2 and len(clump) >= 3 and st.l_slot2 > 0:
                     shatter(st, clump[:4])
                 elif live_r and st.lilly.dist_ft(live_r[0]) <= 90:
                     true_strike(st, live_r[0])
@@ -1284,7 +1288,7 @@ def fight2(st):
     st.s_ignited = True
     log("  Stabby ignites again at initiative (1 Focus). [Focus "
         f"{st.s_focus}]")
-    st.ward_pending = True
+    cast_ward(st, 'at the edge of the black water')
     order = initiative(st, [('Shardwings', wings, 4), ('Chimestones', chimes, -1)])
     rnd = 0
     while any(f.hp > 0 for f in foes) and any(h.alive for h in st.heroes) and rnd < 12:
@@ -1312,7 +1316,6 @@ def fight2(st):
                     stabby_attack_routine(st, pool, rnd, fury_ok=True,
                                           chime_ring=NICHIRIN_RING)
             elif name == 'Lilly' and st.lilly.alive:
-                warded = st.ward_pending and cast_ward(st)
                 live_c = sorted([c for c in chimes if c.hp > 0],
                                 key=lambda c: (c.stunned, st.lilly.dist_ft(c)))
                 live_w = [w for w in wings if w.hp > 0]
@@ -1326,9 +1329,7 @@ def fight2(st):
                         continue          # would catch a friend in the sphere
                     if len(near) > len(clump):
                         clump = near
-                if warded:
-                    pass
-                elif rnd >= 2 and len(clump) >= 2 and st.l_slot2 > 0:
+                if rnd >= 2 and len(clump) >= 2 and st.l_slot2 > 0:
                     shatter(st, clump)
                 elif live_c:
                     tgt = next((c for c in live_c if not c.stunned), live_c[0])
@@ -1566,7 +1567,7 @@ def fight3(st):
     st.spend_focus()
     st.s_ignited = True
     log(f"  Stabby ignites at initiative (1 Focus). [Focus {st.s_focus}]")
-    st.ward_pending = True
+    cast_ward(st, 'reading the gallery before they step into it')
     order = initiative(st, [('Cinderolls', rolls, 2), ('Glass Weeper', [weeper], -1)])
     burst_done = set()
     tended = False
@@ -1619,10 +1620,7 @@ def fight3(st):
                         if c.hp <= 0:
                             burst(c)
             elif name == 'Lilly' and st.lilly.alive:
-                warded = st.ward_pending and cast_ward(st)
-                if warded:
-                    pass
-                elif weeper.hp > 0:
+                if weeper.hp > 0:
                     true_strike(st, weeper, adv=tended)
                 elif live_rolls_now:
                     true_strike(st, live_rolls_now[0])
@@ -1860,7 +1858,7 @@ def boss(st):
     st.spend_focus()
     st.s_ignited = True
     log(f"  Stabby ignites at initiative (1 Focus). [Focus {st.s_focus}]")
-    st.ward_pending = True
+    cast_ward(st, 'on the lip of the hollow')
     if SHINE:
         log("  THE DROP. The tunnel ends and there is no floor: forty feet of "
             "broken shelf down into the hollow (DC 15 to descend well).")
@@ -1920,16 +1918,13 @@ def boss(st):
                         log("      Groudon THRASHES; Stabby is flying, and the Sash "
                             "holds him just off the plates.")
             elif name == 'Lilly' and st.lilly.alive:
-                warded = st.ward_pending and cast_ward(st)
                 if st.lilly.dist_ft(spike) > 90:
                     old, _ = st.lilly.approach(spike, 90, 25)
                     st.cannon.approach(spike, 100, 15)
                     st.puff.approach(spike, 100, 30)
                     log(f"    Lilly: hustles forward {old}->{tuple(st.lilly.pos)}, "
                         "Puff and the cannon trundling with her.")
-                if warded:
-                    pass
-                elif st.lilly.dist_ft(spike) <= 90:
+                if st.lilly.dist_ft(spike) <= 90:
                     true_strike(st, spike, dis=True, radiant=True)
                 cannon_fire(st, 'ballista', [spike], dis=True)  # called shot
                 puff_turn(st, spike, use_mm=True, overload=True)
