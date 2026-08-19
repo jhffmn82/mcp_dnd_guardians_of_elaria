@@ -122,6 +122,7 @@ class Actor:
         self.cleansed = False     # radiant/CE since its last turn
         self.reaction = True
         self.dodging = False      # Patient Defense: attackers at disadvantage
+        self.entangled = 0        # restrained (Entangle) for N of its turns
 
     @property
     def alive(self):
@@ -183,7 +184,9 @@ class State:
                            cond_imm={'charmed', 'frightened'}, reach=15, fly=True)
         self.puff = Actor('Puff', 'p', 'pc', 13, 15, (0, 0), 30, init_mod=4,
                           saves=dict(str=-1, dex=4, con=3, int=2, wis=2, cha=0),
-                          immune={'poison'}, fly=True)
+                          immune={'poison'},
+                          cond_imm={'poisoned', 'exhaustion'}, fly=True)
+        self.puff.evasion = True
         self.cannon = Actor('Cannon', 'c', 'pc', 18, 35, (0, 0), 15)
         self.heroes = [self.lilly, self.stabby, self.ursa]
         self.pcs = [self.lilly, self.stabby, self.ursa, self.ghost, self.puff]
@@ -210,12 +213,14 @@ class State:
         self.aura_rounds = 0
         self.u_starry = False     # Starry Form up this fight
         self.fey = None
+        self.conc = None          # non-summon concentration (Moonbeam, Entangle)
         # Ghostbloom
         self.g_light = 3
         self.g_feystep = True
         self.g_wail = True
         # bookkeeping
         self.gb_adv_target = None
+        self.ward_pending = False
         self.omens_spent = 0
         self.cosmic_spent = 0
         self.tally = {'dealt': Counter(), 'taken': Counter(),
@@ -246,8 +251,10 @@ class State:
         total = roll + mod
         ok = total >= dc
         if not ok and self.l_fog > 0 and not self.lilly.down \
-                and self.lilly.dist_ft(hero) <= 30 and total + 5 >= dc:
+                and self.lilly.reaction and self.lilly.dist_ft(hero) <= 30 \
+                and total + 5 >= dc:
             self.l_fog -= 1
+            self.lilly.reaction = False
             log(f"      * Flash of Genius! Lilly adds +5, {hero.name}'s "
                 f"{stat.upper()} save {total}->{total + 5} vs DC {dc}: success. ({self.l_fog} left)")
             return True
@@ -278,8 +285,10 @@ def hero_check(st, hero, mod, dc, label):
             roll = best
     total = roll + mod
     if total < dc and st.l_fog > 0 and not st.lilly.down \
-            and st.lilly.dist_ft(hero) <= 30 and total + 5 >= dc:
+            and st.lilly.reaction and st.lilly.dist_ft(hero) <= 30 \
+            and total + 5 >= dc:
         st.l_fog -= 1
+        st.lilly.reaction = False
         log(f"      * FLASH OF GENIUS! Lilly shouts the trick: {hero.name}'s "
             f"{label} {total}->{total + 5} vs DC {dc}: success. [{st.l_fog} left]")
         return True
@@ -375,17 +384,46 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
 def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
     if tgt.stunned:
         adv = True
+    if (st.gb_adv_target is tgt and attacker is not None
+            and attacker.side == 'pc'):
+        adv = True
+        st.gb_adv_target = None
     if tgt.dodging:
+        dis = True
+    if getattr(tgt, 'entangled', 0) > 0:
+        adv = True
+    if attacker is not None and getattr(attacker, 'entangled', 0) > 0:
         dis = True
     if tgt.prone and attacker is not None and attacker.dist_ft(tgt) <= 5:
         adv = True
     if attacker is not None and attacker.fright > 0:
         dis = True
+    if (st.u_starry and attacker is not None and attacker.side == 'pc'
+            and attacker is not st.ursa and not st.ursa.down
+            and attacker.dist_ft(st.ursa) <= 30):
+        bonus += 1              # Amulet of Guiding Light, allies only
     r = d20(adv=adv, dis=dis)
     crit = (r == 20)
     if r == 1:
         return False, False, r
     total = r + bonus
+    # Reader of Omens, Woe: he reads the moment AFTER the die is rolled and
+    # pulls an enemy's swing off line. Held for the swings that would hurt.
+    if (attacker is not None and attacker.side == 'foe' and tgt.side == 'pc'
+            and not crit and total >= tgt.ac and st.u_cosmic > 0
+            and not st.ursa.down and st.ursa.dist_ft(tgt) <= 30
+            and (tgt.hp <= tgt.hp_max * 0.5 or tgt.hp_max >= 200)):
+        bump = d(1, 6) + 2
+        st.u_cosmic -= 1
+        st.cosmic_spent += 1
+        if total - bump < tgt.ac:
+            log(f"      * COSMIC OMEN (Woe -{bump}): Ursa reads the swing and "
+                f"{attacker.name}'s attack on {tgt.name} slides wide "
+                f"({total}->{total - bump} vs AC {tgt.ac}). [{st.u_cosmic} left]")
+            return False, False, r
+        log(f"      * Cosmic Omen (Woe -{bump}) is not enough: it lands anyway. "
+            f"[{st.u_cosmic} left]")
+        total -= bump
     # Lilly's Shield reaction
     if tgt is st.lilly and tgt.reaction and st.l_slot1 > 0 and not crit \
             and tgt.ac <= total < tgt.ac + 5:
@@ -395,6 +433,24 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
             f"[{st.l_slot1} first-level slots left]")
         return False, False, r
     return (total >= tgt.ac or crit), crit, r
+
+
+def cast_ward(st):
+    """Aether Ward: her Magic ACTION, one use of the Sphere's shared pool."""
+    st.ward_pending = False
+    if st.l_ward <= 0 or st.lilly.down:
+        return False
+    st.l_ward -= 1
+    t = d(2, 8) + 5
+    n = 0
+    for h in st.pcs:
+        if not h.down and h.dist_ft(st.lilly) <= 30:
+            h.temp = max(h.temp, t)
+            n += 1
+    st.tally['prevented']['Lilly (Aether Ward temp)'] += t * n
+    log(f"    Lilly: AETHER WARD (her Action). The Sphere flares and {t} temp HP "
+        f"settles over {n} of them within 30 ft. [{st.l_ward} left]")
+    return True
 
 
 def foe_save(foe, stat_mod, dc, adv=False):
@@ -432,6 +488,14 @@ def initiative(st, groups):
 def ursa_triage(st):
     """Healing Word (bonus) on a downed friend; returns True if bonus used."""
     downed = [h for h in [st.lilly, st.stabby, st.ursa, st.ghost] if h.down]
+    if not downed and st.u_slots[2] > 0:
+        sick = [h for h in [st.stabby, st.lilly, st.ursa] if h.poisoned > 0]
+        if sick:
+            st.u_slots[2] -= 1
+            sick[0].poisoned = 0
+            log(f"    Ursa: LESSER RESTORATION (2nd, bonus action) scrubs the "
+                f"spores out of {sick[0].name}. [{st.u_slots[2]} 2nd slots left]")
+            return True
     if downed and st.u_slots[1] > 0:
         st.u_slots[1] -= 1
         h = d(2, 4) + 5
@@ -577,13 +641,17 @@ def stabby_defensive(st, pool):
             f"{old}->{tuple(s.pos)}.")
 
 
-def puff_turn(st, target, use_mm):
+def puff_turn(st, target, use_mm, overload=False):
     if st.puff.down:
         return
     if use_mm and st.mm_charges > 0 and target is not None and target.hp > 0:
-        st.mm_charges -= 1
-        dmg = deal(st, target, [(d(3, 4) + 3, 'force')], credit='Puff')
-        log(f"    Puff: Wand of Magic Missiles, three darts never miss "
+        # 1 charge = 3 darts; each extra charge adds one dart, up to 3/5 darts.
+        n_ch = 3 if (overload and st.mm_charges >= 3) else 1
+        darts = 3 + (n_ch - 1)
+        st.mm_charges -= n_ch
+        dmg = deal(st, target, [(d(darts, 4) + darts, 'force')], credit='Puff')
+        log(f"    Puff: Wand of Magic Missiles at {n_ch} charge"
+            f"{'s' if n_ch > 1 else ''}, {darts} darts that never miss "
             f"{target.name}: {dmg} force. [{st.mm_charges} charges left]")
         if target.hp <= 0 and target.side == 'foe':
             log(f"      {target.name} is destroyed.")
@@ -685,14 +753,24 @@ def fey_turn(st, targets):
 
 
 def ursa_conc_check(st, dmg):
-    if st.fey is not None and st.fey.hp > 0:
-        dc = max(10, dmg // 2)
-        roll = d20() + st.ursa.saves['con']
-        if roll < dc:
-            log(f"      * Ursa loses concentration ({roll} vs DC {dc}): "
-                f"the fey spirit fades!")
-            st.fey.hp = 0
-            st.fey = None
+    """One concentration slot, shared by the summon, Moonbeam and Entangle."""
+    holding = (st.fey is not None and st.fey.hp > 0) or st.conc
+    if not holding or dmg <= 0:
+        return
+    dc = max(10, dmg // 2)
+    roll = d20() + st.ursa.saves['con']
+    # Dragon constellation would floor this at 10; he is in Archer form, so no.
+    if roll >= dc:
+        return
+    if st.conc:
+        log(f"      * Ursa loses concentration ({roll} vs DC {dc}): "
+            f"{st.conc} winks out!")
+        st.conc = None
+    elif st.fey is not None:
+        log(f"      * Ursa loses concentration ({roll} vs DC {dc}): "
+            f"the fey spirit fades!")
+        st.fey.hp = 0
+        st.fey = None
 
 
 def ursa_close(st, target, want_ft=55):
@@ -765,6 +843,10 @@ def true_strike(st, target, dis=False, radiant=False, adv=False):
     if st.gb_adv_target is target:
         adv = True
         st.gb_adv_target = None
+    # Boomstick is a pistol: 30/90, disadvantage past its short range.
+    long_shot = st.lilly.dist_ft(target) > 30
+    if long_shot:
+        dis = True
     hit, crit, _ = attack_roll(st, 10, target, adv=adv, dis=dis, attacker=st.lilly)
     if hit:
         m = 2 if crit else 1
@@ -778,11 +860,13 @@ def true_strike(st, target, dis=False, radiant=False, adv=False):
             target.stunned = True
             note = ' The thunder makes it RING: stunned, everything hits double!'
         log(f"    Lilly: True Strike (Boomstick) {'CRIT ' if crit else ''}hits "
-            f"{target.name} for {dmg}{' radiant' if radiant else ''}.{note}")
+            f"{target.name} for {dmg}{' radiant' if radiant else ''}"
+            f"{' (long shot)' if long_shot else ''}.{note}")
         if target.hp <= 0:
             log(f"      {target.name} is destroyed.")
     else:
-        log(f"    Lilly: Boomstick misses {target.name}.")
+        log(f"    Lilly: Boomstick misses {target.name}"
+            f"{' (long shot, disadvantage)' if long_shot else ''}.")
 
 
 def shatter(st, targets, label='Shatter'):
@@ -845,6 +929,13 @@ def fight1(st):
         mites.append(m)
     foes = rots + mites
 
+    plant_growth = [False]     # Ursa's 3rd-level slot, no concentration
+
+    def mv(base):
+        """Plant Growth: 4 ft of movement per 1 ft travelled, and he leaves
+        clear lanes for his friends, so only the enemies wade."""
+        return max(5, base // 4) if plant_growth[0] else base
+
     terrain = {}
     for x in range(21, 28):
         for y in range(10, 20):
@@ -864,16 +955,7 @@ def fight1(st):
     st.s_ignited = True
     log("  Stabby rolls initiative: UNCANNY METABOLISM (Focus to 7, heals to full)")
     log("  and IGNITES THE BREATH (1 Focus): katana +2 force, speed 65, adv on Dex saves. [Focus 6]")
-    if st.l_ward > 0:
-        st.l_ward -= 1
-        t = d(2, 8) + 5
-        st.tally['prevented']['Lilly (Aether Ward temp)'] += t * sum(
-            1 for h in st.pcs if not h.down)
-        for h in st.pcs:
-            if not h.down:
-                h.temp = max(h.temp, t)
-        log(f"  Lilly pops an AETHER WARD before they close: {t} temp HP to "
-            f"everyone. [{st.l_ward} left]")
+    st.ward_pending = True
 
     order = initiative(st, [('Mossmites', mites, 3), ('Rotblooms', rots, 1)])
     mites_out = False
@@ -911,6 +993,7 @@ def fight1(st):
                         m.hidden = False
                     log("      The moss BOILS: Mossmites pour out of the mounds in a wave!")
             elif name == 'Lilly' and st.lilly.alive:
+                warded = st.ward_pending and cast_ward(st)
                 near_mites = sorted([m for m in mites if m.hp > 0 and not m.hidden],
                                     key=lambda m: st.lilly.dist_ft(m))
                 clump = [m for m in near_mites
@@ -921,7 +1004,9 @@ def fight1(st):
                     clump = []
                 live_r = sorted([r for r in rots if r.hp > 0],
                                 key=lambda r: st.lilly.dist_ft(r))
-                if rnd >= 2 and len(clump) >= 3 and st.l_slot2 > 0:
+                if warded:
+                    pass
+                elif rnd >= 2 and len(clump) >= 3 and st.l_slot2 > 0:
                     shatter(st, clump[:4])
                 elif live_r and st.lilly.dist_ft(live_r[0]) <= 90:
                     true_strike(st, live_r[0])
@@ -951,39 +1036,55 @@ def fight1(st):
                 live_r = sorted([r for r in rots if r.hp > 0],
                                 key=lambda r: st.ursa.dist_ft(r))
                 live_m = [m for m in mites if m.hp > 0 and not m.hidden]
-                if rnd == 1 and st.u_slots[4] > 0:
-                    # the big clump exists exactly once all day: round 1, before
-                    # the party is mixed into it. Ice Storm, no concentration.
+                if rnd == 1 and st.u_slots[3] > 0:
+                    # Underroot is made of growing things: Plant Growth always
+                    # has something to work on, needs no concentration, and he
+                    # can leave his own friends clear lanes.
+                    st.u_slots[3] -= 1
+                    plant_growth[0] = True
+                    log("    Ursa: PLANT GROWTH. He puts one hand flat on the "
+                        "warm ground and the whole landing ANSWERS: moss ropes "
+                        "up into waist-high thickets for a hundred feet, with "
+                        "clean lanes left open where his friends are standing. "
+                        f"[3rd slots left {st.u_slots[3]}]")
+                    log("      Everything that wants to reach them now wades at "
+                        "a quarter speed. No save, no concentration.")
+                    if not bonus_used and st.u_wild > 0:
+                        st.u_wild -= 1
+                        st.u_starry = True
+                        bonus_used = True
+                        log(f"    Ursa: bonus action STARRY FORM (Archer); the Amulet "
+                            f"wakes, +1 to allies' attacks and saves. [Wild Shape {st.u_wild}]")
+                elif rnd == 2 and st.u_slots[4] > 0 and len(
+                        [r for r in live_r
+                         if sum(1 for o in live_r if cheb(o.pos, r.pos) <= 4) >= 4
+                         and all(not h.alive or cheb(h.pos, r.pos) > 5
+                                 for h in st.pcs)]) >= 4:
+                    # they are strung out in the open and WADING. Hail them.
                     clump = [r for r in live_r
                              if sum(1 for o in live_r if cheb(o.pos, r.pos) <= 4) >= 4
                              and all(not h.alive or cheb(h.pos, r.pos) > 5
                                      for h in st.pcs)]
-                    if len(clump) >= 4:
-                        st.u_slots[4] -= 1
-                        log("    Ursa: ICE STORM! Hail hammers the grey moss. "
-                            f"[4th slots left {st.u_slots[4]}]")
-                        for r in clump[:6]:
-                            roll = d(2, 10) + d(4, 6)
-                            if foe_save(r, r.saves.get('dex', 0), 16):
-                                dmg = deal(st, r, [(roll // 2, 'cold')], credit='Ursa')
-                                log(f"      {r.name} weathers it: {dmg}.")
-                            else:
-                                dmg = deal(st, r, [(roll, 'cold')], credit='Ursa')
-                                log(f"      {r.name} is hammered flat for {dmg}!")
-                            if r.hp <= 0:
-                                log(f"      {r.name} is destroyed.")
-                            else:
-                                r.slowed = True
-                        log("      The ground is ice-sheeted: the survivors slog.")
-                    else:
-                        if live_r:
-                            starry_wisp(st, live_r[0])
-                    if not bonus_used and st.u_wild > 0:
-                        st.u_wild -= 1
-                        st.u_starry = True
-                        log(f"    Ursa: bonus action STARRY FORM (Archer); the Amulet "
-                            f"wakes, +1 to allies' attacks and saves. [Wild Shape {st.u_wild}]")
-                elif rnd == 2 and st.fey is None and st.u_slots[3] > 0:
+                    st.u_slots[4] -= 1
+                    log("    Ursa: ICE STORM into the thicket, while they are "
+                        f"still stuck in the open. [4th slots left {st.u_slots[4]}]")
+                    for r in clump[:6]:
+                        bl, cd = d(2, 10), d(4, 6)
+                        if foe_save(r, r.saves.get('dex', 0), 16):
+                            dmg = deal(st, r, [(bl // 2, 'bludgeoning'),
+                                               (cd // 2, 'cold')], credit='Ursa')
+                            log(f"      {r.name} weathers it: {dmg}.")
+                        else:
+                            dmg = deal(st, r, [(bl, 'bludgeoning'), (cd, 'cold')],
+                                       credit='Ursa')
+                            log(f"      {r.name} is hammered flat for {dmg}!")
+                        if r.hp <= 0:
+                            log(f"      {r.name} is destroyed.")
+                    log("      Ice over thorns: the survivors slog worse than before.")
+                    if not bonus_used and st.u_starry:
+                        star_arrow(st, live_r[0] if live_r else
+                                   (live_m[0] if live_m else None))
+                elif st.fey is None and st.u_slots[3] > 0 and rnd <= 3:
                     st.u_slots[3] -= 1
                     st.fey = Actor('Fey spirit', 'f', 'pc', 15, 30, (9, 15), 30,
                                    saves=dict(dex=3, con=2, wis=2), fly=True)
@@ -1029,7 +1130,8 @@ def fight1(st):
                               key=lambda h: m.dist_ft(h), default=None)
                     if tgt is None:
                         break
-                    m.approach(tgt, 5, m.speed * (2 if m.dist_ft(tgt) > m.speed + 5 else 1))
+                    m.approach(tgt, 5,
+                               mv(m.speed * (2 if m.dist_ft(tgt) > m.speed + 5 else 1)))
                     if m.dist_ft(tgt) <= 5:
                         hit, crit, _ = attack_roll(st, 5, tgt, adv=bool(packs), attacker=m)
                         if hit:
@@ -1058,8 +1160,7 @@ def fight1(st):
                               key=lambda h: r.dist_ft(h), default=None)
                     if tgt is None:
                         break
-                    r.approach(tgt, 5, 10 if getattr(r, 'slowed', False) else 25)
-                    r.slowed = False
+                    r.approach(tgt, 5, mv(25))
                     close = [h for h in st.pcs + ([st.fey] if st.fey else [])
                              if h is not None and h.alive and r.dist_ft(h) <= 10]
                     if len(close) >= 2 and rng.randint(1, 6) >= 4:
@@ -1154,16 +1255,7 @@ def fight2(st):
     st.s_ignited = True
     log("  Stabby ignites again at initiative (1 Focus). [Focus "
         f"{st.s_focus}]")
-    if st.l_ward > 0:
-        st.l_ward -= 1
-        t = d(2, 8) + 5
-        st.tally['prevented']['Lilly (Aether Ward temp)'] += t * sum(
-            1 for h in st.pcs if not h.down)
-        for h in st.pcs:
-            if not h.down:
-                h.temp = max(h.temp, t)
-        log(f"  Lilly spends her second AETHER WARD at the water's edge: {t} temp "
-            f"HP to everyone. [{st.l_ward} left]")
+    st.ward_pending = True
     order = initiative(st, [('Shardwings', wings, 4), ('Chimestones', chimes, -1)])
     rnd = 0
     while any(f.hp > 0 for f in foes) and any(h.alive for h in st.heroes) and rnd < 12:
@@ -1191,6 +1283,7 @@ def fight2(st):
                     stabby_attack_routine(st, pool, rnd, fury_ok=True,
                                           chime_ring=NICHIRIN_RING)
             elif name == 'Lilly' and st.lilly.alive:
+                warded = st.ward_pending and cast_ward(st)
                 live_c = sorted([c for c in chimes if c.hp > 0],
                                 key=lambda c: (c.stunned, st.lilly.dist_ft(c)))
                 live_w = [w for w in wings if w.hp > 0]
@@ -1204,7 +1297,9 @@ def fight2(st):
                         continue          # would catch a friend in the sphere
                     if len(near) > len(clump):
                         clump = near
-                if rnd >= 2 and len(clump) >= 2 and st.l_slot2 > 0:
+                if warded:
+                    pass
+                elif rnd >= 2 and len(clump) >= 2 and st.l_slot2 > 0:
                     shatter(st, clump)
                 elif live_c:
                     tgt = next((c for c in live_c if not c.stunned), live_c[0])
@@ -1234,7 +1329,26 @@ def fight2(st):
                 adj = [c for c in chimes if c.hp > 0 and st.ursa.dist_ft(c) <= 10]
                 live = sorted([f for f in foes if f.hp > 0],
                               key=lambda f: (not f.stunned, st.ursa.dist_ft(f)))
-                if len(adj) >= 2 and st.u_slots[1] > 0:
+                # Entangle: worth a 1st slot only when he is not already holding
+                # something and the wall is still bunched at a distance.
+                ent_pack = []
+                for c in [x for x in chimes if x.hp > 0]:
+                    near = [o for o in chimes if o.hp > 0 and cheb(o.pos, c.pos) <= 3]
+                    if len(near) > len(ent_pack):
+                        ent_pack = near
+                if (len(ent_pack) >= 3 and st.u_slots[1] > 0 and st.conc is None
+                        and (st.fey is None or st.fey.hp <= 0) and not adj):
+                    st.u_slots[1] -= 1
+                    st.conc = 'the Entangle'
+                    log(f"    Ursa: ENTANGLE, weed-ropes burst out of the shallows "
+                        f"under the wall. [{st.u_slots[1]} 1st slots left]")
+                    for c in ent_pack:
+                        if d20() + c.saves.get('str', 0) >= 16:
+                            log(f"      {c.name} tears straight through it.")
+                        else:
+                            c.entangled = 2
+                            log(f"      {c.name} is RESTRAINED, held fast in the weed.")
+                elif len(adj) >= 2 and st.u_slots[1] > 0:
                     st.u_slots[1] -= 1
                     log(f"    Ursa: THUNDERWAVE! [{st.u_slots[1]} 1st slots left]")
                     roll = d(2, 8)
@@ -1320,6 +1434,16 @@ def fight2(st):
                               key=lambda h: c.dist_ft(h), default=None)
                     if tgt is None:
                         break
+                    if c.entangled > 0:
+                        c.entangled -= 1
+                        if d20() + 4 >= 16:
+                            c.entangled = 0
+                            log(f"    {c.name}: spends its whole turn tearing free "
+                                "of the weed.")
+                        else:
+                            log(f"    {c.name}: heaves against the weed-ropes and "
+                                "stays stuck, and it cannot reach anybody.")
+                        continue
                     c.approach(tgt, 5, 25)
                     if c.dist_ft(tgt) <= 5:
                         for _ in range(2):
@@ -1373,6 +1497,7 @@ def short_rest(st):
     st.g_light = 3
     st.g_feystep = True
     st.u_starry = False
+    st.conc = None
     if st.fey is not None:
         log("  The fey spirit bows and fades; the hour is long past.")
         st.fey = None
@@ -1416,20 +1541,10 @@ def fight3(st):
     st.spend_focus()
     st.s_ignited = True
     log(f"  Stabby ignites at initiative (1 Focus). [Focus {st.s_focus}]")
-    if st.l_ward > 0:
-        st.l_ward -= 1
-        t = d(2, 8) + 5
-        st.tally['prevented']['Lilly (Aether Ward temp)'] += t * sum(
-            1 for h in st.pcs if not h.down)
-        for h in st.pcs:
-            if not h.down:
-                h.temp = max(h.temp, t)
-        log(f"  Lilly reads the gallery and spends AETHER WARD before they step in: "
-            f"{t} temp HP to everyone. [{st.l_ward} left]")
+    st.ward_pending = True
     order = initiative(st, [('Cinderolls', rolls, 2), ('Glass Weeper', [weeper], -1)])
     burst_done = set()
     tended = False
-    moonbeam_on = False
     rnd = 0
 
     def burst(c):
@@ -1479,7 +1594,10 @@ def fight3(st):
                         if c.hp <= 0:
                             burst(c)
             elif name == 'Lilly' and st.lilly.alive:
-                if weeper.hp > 0:
+                warded = st.ward_pending and cast_ward(st)
+                if warded:
+                    pass
+                elif weeper.hp > 0:
                     true_strike(st, weeper, adv=tended)
                 elif live_rolls_now:
                     true_strike(st, live_rolls_now[0])
@@ -1514,11 +1632,12 @@ def fight3(st):
                         log(f"    Ursa: STARRY FORM (Archer). [Wild Shape {st.u_wild}]")
                 if rnd == 1 and st.u_staff >= 2 and weeper.hp > 0:
                     st.u_staff -= 2
-                    moonbeam_on = True
+                    st.conc = 'the Moonbeam'
                     ursa_close(st, weeper, want_ft=115)
                     log("    Ursa: MOONBEAM from the staff (2 charges), a cold pillar "
                         "of light drops onto the Weeper. It is Rooted; it cannot "
                         f"leave the beam. [{st.u_staff} charges left]")
+                    log("      (Concentration: a hard enough hit on Ursa puts it out.)")
                 elif rnd >= 2 and weeper.hp > 0:
                     roll = d20() + 5
                     if roll >= 14:
@@ -1609,7 +1728,7 @@ def fight3(st):
             elif name == 'Glass Weeper':
                 if weeper.hp <= 0:
                     continue
-                if moonbeam_on:
+                if st.conc == 'the Moonbeam':
                     roll = d(2, 10) + d(1, 8)
                     if foe_save(weeper, weeper.saves.get('con', 0), 16):
                         dmg = deal(st, weeper, [(roll // 2, 'radiant')],
@@ -1720,16 +1839,7 @@ def boss(st):
     st.spend_focus()
     st.s_ignited = True
     log(f"  Stabby ignites at initiative (1 Focus). [Focus {st.s_focus}]")
-    if st.l_ward > 0:
-        st.l_ward -= 1
-        t = d(2, 8) + 5
-        st.tally['prevented']['Lilly (Aether Ward temp)'] += t * sum(
-            1 for h in st.pcs if not h.down)
-        for h in st.pcs:
-            if not h.down:
-                h.temp = max(h.temp, t)
-        log(f"  Lilly spends her last AETHER WARD as they drop into the hollow: "
-            f"{t} temp HP to everyone. [{st.l_ward} left]")
+    st.ward_pending = True
     if SHINE:
         log("  THE DROP. The tunnel ends and there is no floor: forty feet of "
             "broken shelf down into the hollow (DC 15 to descend well).")
@@ -1789,16 +1899,19 @@ def boss(st):
                         log("      Groudon THRASHES; Stabby is flying, and the Sash "
                             "holds him just off the plates.")
             elif name == 'Lilly' and st.lilly.alive:
+                warded = st.ward_pending and cast_ward(st)
                 if st.lilly.dist_ft(spike) > 90:
                     old, _ = st.lilly.approach(spike, 90, 25)
                     st.cannon.approach(spike, 100, 15)
                     st.puff.approach(spike, 100, 30)
                     log(f"    Lilly: hustles forward {old}->{tuple(st.lilly.pos)}, "
                         "Puff and the cannon trundling with her.")
-                if st.lilly.dist_ft(spike) <= 90:
+                if warded:
+                    pass
+                elif st.lilly.dist_ft(spike) <= 90:
                     true_strike(st, spike, dis=True, radiant=True)
                 cannon_fire(st, 'ballista', [spike], dis=True)  # called shot
-                puff_turn(st, spike, use_mm=True)
+                puff_turn(st, spike, use_mm=True, overload=True)
                 if spike.hp <= 0:
                     break
             elif name == 'Ursa' and st.ursa.alive:
@@ -1881,8 +1994,9 @@ def boss(st):
                                             adv=(h is st.stabby and st.s_ignited)):
                             dmg = deal(st, h, [(d(3, 6), 'bludgeoning')])
                             log(f"      Agony shockwave hits {h.name} for {dmg}.")
-                        elif h is st.stabby:
-                            log("      Stabby rides the shockwave (Evasion: nothing).")
+                        elif h is st.stabby or getattr(h, 'evasion', False):
+                            log(f"      {h.name} rides the shockwave "
+                                "(Evasion: nothing).")
                         else:
                             log(f"      {h.name} keeps their feet.")
                 # Action
@@ -1896,9 +2010,15 @@ def boss(st):
                     for h in in_line:
                         roll = d(10, 6)
                         if st.hero_save(h, 'dex', 17):
+                            if h is st.stabby or getattr(h, 'evasion', False):
+                                log(f"      {h.name} is simply not there when it "
+                                    "lands (Evasion).")
+                                continue
                             dmg = deal(st, h, [(roll // 2, 'fire')])
                             log(f"      {h.name} dives aside: {dmg} fire.")
                         else:
+                            if h is st.stabby or getattr(h, 'evasion', False):
+                                roll //= 2
                             dmg = deal(st, h, [(roll, 'fire')])
                             log(f"      {h.name} is caught in it for {dmg} fire!")
                 elif rnd == 1:
@@ -1923,9 +2043,15 @@ def boss(st):
                     for h in in_line:
                         roll = d(10, 6)
                         if st.hero_save(h, 'dex', 17):
+                            if h is st.stabby or getattr(h, 'evasion', False):
+                                log(f"      {h.name} is simply not there when it "
+                                    "lands (Evasion).")
+                                continue
                             dmg = deal(st, h, [(roll // 2, 'fire')])
                             log(f"      {h.name} dives aside: {dmg} fire.")
                         else:
+                            if h is st.stabby or getattr(h, 'evasion', False):
+                                roll //= 2
                             dmg = deal(st, h, [(roll, 'fire')])
                             log(f"      {h.name} is caught in it for {dmg} fire!")
                 else:
@@ -2079,7 +2205,7 @@ def thumpaw_fight(st):
                 for _ in range(2):
                     if not tgt.alive:
                         break
-                    hit, crit, _ = attack_roll(st, 8, tgt, attacker=tp)
+                    hit, crit, _ = attack_roll(st, 7, tgt, attacker=tp)
                     if hit:
                         dmg = deal(st, tgt, [(d(4 if crit else 2, 8) + 5,
                                               'bludgeoning')],
@@ -2294,6 +2420,8 @@ def road_walk(st, seg, stats):
 
 def revive_between(st):
     """Post-fight triage on the road: nobody walks on at 0."""
+    st.conc = None      # a 1-minute spell does not survive the walk
+    st.u_starry = False  # Starry Form runs 10 minutes, not all day
     for h in [st.lilly, st.stabby, st.ursa, st.ghost]:
         if h.down:
             amt = d(2, 4) + 5
@@ -2326,10 +2454,15 @@ def run_day(seed):
 
     def dcount():
         return sum(h.drops for h in [st.lilly, st.stabby, st.ursa, st.ghost])
+
+    def hp_pct():
+        return 100.0 * sum(h.hp for h in st.heroes) / sum(
+            h.hp_max for h in st.heroes)
     stats['road_rounds'] = 0
     road_walk(st, 0, stats)
     stats['f1'] = fight1(st)
     stats['drops_f1'] = dcount()
+    stats['hp_f1'] = hp_pct()
     if not any(h.alive for h in st.heroes):
         stats['wipe'] = 'f1'
         return st, stats
@@ -2338,6 +2471,7 @@ def run_day(seed):
     road_walk(st, 1, stats)
     stats['f2'] = fight2(st)
     stats['drops_f2'] = dcount() - stats['drops_f1']
+    stats['hp_f2'] = hp_pct()
     if not any(h.alive for h in st.heroes):
         stats['wipe'] = 'f2'
         return st, stats
@@ -2346,6 +2480,7 @@ def run_day(seed):
     road_walk(st, 2, stats)
     stats['f3'] = fight3(st)
     stats['drops_f3'] = dcount() - stats['drops_f1'] - stats['drops_f2']
+    stats['hp_f3'] = hp_pct()
     if not any(h.alive for h in st.heroes):
         stats['wipe'] = 'f3'
         return st, stats
@@ -2354,6 +2489,7 @@ def run_day(seed):
     stats['boss'] = boss(st)
     stats['drops_boss'] = dcount() - stats['drops_f1'] - stats['drops_f2'] \
         - stats['drops_f3']
+    stats['hp_boss'] = hp_pct()
     if not any(h.alive for h in st.heroes):
         stats['wipe'] = 'boss'
     stats['spike_ok'] = getattr(st, 'spike_ok', False)
@@ -2432,6 +2568,9 @@ def sweep(seeds=range(1, 21)):
               f"{m('road_rounds'):.1f} extra rounds/run ({tally})")
         print(f"{'':46s} shine: Flash of Genius {m('fog'):.1f}/day, dreamed "
               f"omens {m('omen'):.1f}/day, Cosmic Omens {m('cosmic'):.1f}/day")
+        print(f"{'':46s} hero HP pool left after each fight: "
+              f"{m('hp_f1'):.0f}% / {m('hp_f2'):.0f}% / {m('hp_f3'):.0f}% / "
+              f"{m('hp_boss'):.0f}%")
         if label.startswith('baseline'):
             agg = {'dealt': Counter(), 'taken': Counter(), 'healed': Counter(),
                    'kills': Counter(), 'prevented': Counter()}
