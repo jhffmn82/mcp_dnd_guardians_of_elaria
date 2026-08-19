@@ -73,3 +73,8 @@ Generate a clean portrait for these when convenient, then add to the table and `
 1. Composing a prompt with a listed character? Attach their ref file(s) and describe them tersely; the ref carries the likeness.
 2. Approving new art of a character who has NO ref yet? That approved image becomes their canonical ref: copy it to `art_refs/REF_<name>` and add a row here.
 3. Keep this registry and `art_production_guide.md` in sync.
+
+## Piplup (Water-rift companion, joins Session 9)
+- **Canonical ref:** `assets/art_refs/REF_piplup.png` (official anime art, DM-supplied 2026-08-18; saved from clipboard).
+- **Card portrait:** `assets/companions/piplup.png` (realistic-fantasy reinterpretation, generated with the ref attached per the Pokemon-ref rule).
+- Design notes: two-lobed blue cap, white face, dark-blue eyes, short golden beak, deep-blue back and flippers, pale belly with two white spots, yellow feet. Fragile, proud, chin always up.
