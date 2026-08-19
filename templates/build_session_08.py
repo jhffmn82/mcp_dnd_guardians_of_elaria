@@ -1304,7 +1304,8 @@ BLOCKS = [
              "just been asked a polite question and is waiting to be asked the real one."),
     ("dm", "**Tectonic Slam is hers from now on, and it is worth reading off her sheet at the "
            "table**: a Magic action to erupt the ground in a 20-foot-radius Sphere within 120 "
-           "feet, Dexterity save or **7d8 force damage and knocked prone**, and the raised "
+           "feet, Dexterity save for **6d8 force damage and knocked prone**, half damage and "
+           "no prone if they save, and the raised "
            "stone stays: difficult terrain, 5 piercing for every 5 feet a creature moves "
            "through it, and half cover for her and her friends until the start of her next "
            "turn. **It draws on the same pool as her Aether Ward**: two uses between them, "

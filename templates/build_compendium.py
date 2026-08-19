@@ -811,7 +811,7 @@ C = [
         "a time; activating another ends the first, and you can end one early (no action "
         "required).",
         "**Fire / Ignis, Cinderstorm.** As a Magic action, expend 1 use to unleash a firestorm "
-        "in a 40-foot-radius Sphere centered on a point within 120 feet of yourself. Each "
+        "in a 20-foot-radius Sphere centered on a point within 120 feet of yourself. Each "
         "creature there makes a Dexterity saving throw, taking 8d6 Fire damage on a failed save "
         "or half as much on a success. Until the start of your next turn the area is Difficult "
         "Terrain, and a creature that enters it for the first time on a turn or starts its turn there takes 2d6 Fire damage.",
@@ -821,11 +821,13 @@ C = [
         "Speed of 0 for 1 minute, standing entranced. It ends early for a creature that takes "
         "damage or is shaken awake by an ally's action within 5 feet.",
         "**Air / Aer, Tailwind.** As a Magic action, expend 1 use to send a following wind about "
-        "your allies. For 1 minute, you and any number of allies within 30 feet of you gain a "
-        "+2 bonus to attack rolls and saving throws, and your Speeds increase by 10 feet.",
+        "your allies. For 1 minute, you and each ally within 30 feet of you have their Speed "
+        "increased by 10 feet, can take the Dash action as a Bonus Action, and don't provoke "
+        "Opportunity Attacks.",
         "**Earth / Terra, Tectonic Slam.** As a Magic action, expend 1 use to erupt the ground "
-        "in a 20-foot-radius Sphere within 120 feet. Each creature there must succeed on a "
-        "Dexterity saving throw or take 7d8 Force damage and have the Prone condition. Until the "
+        "in a 20-foot-radius Sphere within 120 feet. Each creature there makes a Dexterity "
+        "saving throw, taking 27 (6d8) Force damage and gaining the Prone condition on a "
+        "failed save, or half as much damage and no Prone on a successful one. Until the "
         "start of your next turn the raised stone is Difficult Terrain, a creature takes 5 "
         "Piercing damage for every 5 feet it moves there, and you and your allies have Half "
         "Cover while in the area.",
