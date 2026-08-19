@@ -212,6 +212,7 @@ class State:
         self.u_aura = True        # Sigil-Stone Aura of Vitality 1/day
         self.aura_rounds = 0
         self.u_starry = False     # Starry Form up this fight
+        self.resurgences = 0      # Wild Resurgence slot->Wild Shape swaps
         self.fey = None
         self.conc = None          # non-summon concentration (Moonbeam, Entangle)
         # Ghostbloom
@@ -433,6 +434,38 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
             f"[{st.l_slot1} first-level slots left]")
         return False, False, r
     return (total >= tgt.ac or crit), crit, r
+
+
+def ursa_starry(st, again=False):
+    """Starry Form (Archer), a Bonus Action costing one Wild Shape use.
+
+    WILD RESURGENCE (SRD 04_classes_druid_fighter_monk.md:148): once on each of
+    his turns, and ONLY if he has no uses of Wild Shape left, he can spend a
+    spell slot (no action) to give himself one. His 2nd-level slots are the
+    natural fuel: Summon Beast and Spike Growth both want the concentration
+    his summon is already holding, so they would otherwise go unspent.
+    """
+    if st.u_starry or st.ursa.down:
+        return False
+    if st.u_wild <= 0:
+        for lvl, ordinal in ((2, '2nd'), (1, '1st'), (3, '3rd')):
+            if st.u_slots[lvl] > 0:
+                st.u_slots[lvl] -= 1
+                st.u_wild += 1
+                st.resurgences += 1
+                log(f"    Ursa: WILD RESURGENCE, no action, no uses left: he "
+                    f"spends a {ordinal}-level slot and the starlight comes "
+                    f"back to him. [slots {st.u_slots[1]}/{st.u_slots[2]}/"
+                    f"{st.u_slots[3]}/{st.u_slots[4]}]")
+                break
+    if st.u_wild <= 0:
+        log("    Ursa: no Wild Shape and no slot to burn; he fights unlit.")
+        return False
+    st.u_wild -= 1
+    st.u_starry = True
+    log(f"    Ursa: STARRY FORM (Archer){' again' if again else ''}; the Amulet "
+        f"wakes, +1 to allies' attacks and saves. [Wild Shape {st.u_wild}]")
+    return True
 
 
 def cast_ward(st):
@@ -1049,12 +1082,8 @@ def fight1(st):
                         f"[3rd slots left {st.u_slots[3]}]")
                     log("      Everything that wants to reach them now wades at "
                         "a quarter speed. No save, no concentration.")
-                    if not bonus_used and st.u_wild > 0:
-                        st.u_wild -= 1
-                        st.u_starry = True
+                    if not bonus_used and ursa_starry(st):
                         bonus_used = True
-                        log(f"    Ursa: bonus action STARRY FORM (Archer); the Amulet "
-                            f"wakes, +1 to allies' attacks and saves. [Wild Shape {st.u_wild}]")
                 elif rnd == 2 and st.u_slots[4] > 0 and len(
                         [r for r in live_r
                          if sum(1 for o in live_r if cheb(o.pos, r.pos) <= 4) >= 4
@@ -1320,12 +1349,8 @@ def fight2(st):
                           use_mm=(mm_t is not None))
             elif name == 'Ursa' and st.ursa.alive:
                 bonus_used = ursa_triage(st)
-                if rnd == 1 and st.u_wild > 0 and not st.u_starry:
-                    st.u_wild -= 1
-                    st.u_starry = True
+                if rnd == 1 and not bonus_used and ursa_starry(st, again=True):
                     bonus_used = True
-                    log(f"    Ursa: STARRY FORM (Archer) again; the Amulet glows. "
-                        f"[Wild Shape {st.u_wild}]")
                 adj = [c for c in chimes if c.hp > 0 and st.ursa.dist_ft(c) <= 10]
                 live = sorted([f for f in foes if f.hp > 0],
                               key=lambda f: (not f.stunned, st.ursa.dist_ft(f)))
@@ -1624,12 +1649,8 @@ def fight3(st):
                               use_mm=False)
             elif name == 'Ursa' and st.ursa.alive:
                 bonus_used = ursa_triage(st)
-                if rnd == 1 and st.u_wild > 0:
-                    st.u_wild -= 1
-                    st.u_starry = True
-                    if not bonus_used:
-                        bonus_used = True
-                        log(f"    Ursa: STARRY FORM (Archer). [Wild Shape {st.u_wild}]")
+                if rnd == 1 and not bonus_used and ursa_starry(st):
+                    bonus_used = True
                 if rnd == 1 and st.u_staff >= 2 and weeper.hp > 0:
                     st.u_staff -= 2
                     st.conc = 'the Moonbeam'
@@ -1916,12 +1937,8 @@ def boss(st):
                     break
             elif name == 'Ursa' and st.ursa.alive:
                 bonus_used = ursa_triage(st)
-                if rnd == 1 and st.u_wild > 0:
-                    st.u_wild -= 1
-                    st.u_starry = True
-                    if not bonus_used:
-                        bonus_used = True
-                        log(f"    Ursa: STARRY FORM (Archer). [Wild Shape {st.u_wild}]")
+                if rnd == 1 and not bonus_used and ursa_starry(st):
+                    bonus_used = True
                 lings = [g for g in glasslings if g.hp > 0
                          and st.ursa.dist_ft(g) <= 10]
                 if len(lings) >= 3 and st.u_slots[1] > 0:
@@ -2183,9 +2200,13 @@ def thumpaw_fight(st):
                 cannon_fire(st, 'ballista', [tp])
                 puff_turn(st, tp, use_mm=False)
             elif name == 'Ursa' and st.ursa.alive:
-                ursa_triage(st)
+                bonus_used = ursa_triage(st)
+                if rnd == 1 and not bonus_used:
+                    bonus_used = ursa_starry(st)
                 starry_wisp(st, tp)
                 poked = True
+                if not bonus_used and st.u_starry:
+                    star_arrow(st, tp)
             elif name == 'Ghostbloom' and st.ghost.alive:
                 if GHOST_SUPPORT:
                     log("    Ghostbloom: hangs back on triage, petals ready.")
@@ -2295,10 +2316,14 @@ def gleamoth_fight(st):
                 puff_turn(st, next((s for s in swarms if s.hp > 0), None),
                           use_mm=False)
             elif name == 'Ursa' and st.ursa.alive:
-                ursa_triage(st)
-                t = next((s for s in swarms if s.hp > 0), None)
+                bonus_used = ursa_triage(st)
+                if rnd == 1 and not bonus_used:
+                    bonus_used = ursa_starry(st)
+                t = next((sw for sw in swarms if sw.hp > 0), None)
                 if t is not None:
                     starry_wisp(st, t)
+                if not bonus_used and st.u_starry:
+                    star_arrow(st, next((sw for sw in swarms if sw.hp > 0), None))
             elif name == 'Ghostbloom' and st.ghost.alive:
                 if GHOST_SUPPORT:
                     log("    Ghostbloom: hangs back on triage, petals ready.")
@@ -2498,6 +2523,9 @@ def run_day(seed):
     stats['fog'] = 5 - st.l_fog
     stats['omen'] = st.omens_spent
     stats['cosmic'] = st.cosmic_spent
+    stats['resurge'] = st.resurgences
+    stats['wild_left'] = st.u_wild
+    stats['slot2_left'] = st.u_slots[2]
     stats['tally'] = st.tally
     return st, stats
 
@@ -2568,6 +2596,9 @@ def sweep(seeds=range(1, 21)):
               f"{m('road_rounds'):.1f} extra rounds/run ({tally})")
         print(f"{'':46s} shine: Flash of Genius {m('fog'):.1f}/day, dreamed "
               f"omens {m('omen'):.1f}/day, Cosmic Omens {m('cosmic'):.1f}/day")
+        print(f"{'':46s} Ursa: Wild Resurgence {m('resurge'):.1f} swaps/day, "
+              f"ends on {m('wild_left'):.1f} Wild Shape and "
+              f"{m('slot2_left'):.1f}/3 second-level slots")
         print(f"{'':46s} hero HP pool left after each fight: "
               f"{m('hp_f1'):.0f}% / {m('hp_f2'):.0f}% / {m('hp_f3'):.0f}% / "
               f"{m('hp_boss'):.0f}%")
