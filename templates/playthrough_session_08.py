@@ -52,6 +52,12 @@ FEY_HOUR = os.environ.get('S8_FEY_HOUR', 'carry')
 #   still be up at the Chime Reef (generous about the travel between
 #   locations); 'onefight' expires it on the road, which is the honest
 #   reading of a dungeon crawl with dot events between the landings.
+POLYMORPH = os.environ.get('S8_POLYMORPH', '0') == '1'
+#   Ursa's 4th-level slot on POLYMORPH, cast on a badly hurt ALLY, turning
+#   them into a Giant Ape (SRD_CC_v5.2.1 p.348: CR 7, HP 168, AC 12, two
+#   Fists at +9 for 3d10+6). The target gains Temporary Hit Points equal to
+#   the beast's hit points, its stat block REPLACES theirs, and it cannot
+#   speak or cast spells (SRD 12_spells_i-p.md:995-1020). Concentration.
 URSA_LINE = os.environ.get('S8_URSA_LINE', 'control')
 #   'control' = the tuned line (Plant Growth, Entangle, Moonbeam, Ice Storm).
 #   'summon3' / 'summon4' = summon the Fey Spirit on turn 1 and then do
@@ -135,6 +141,7 @@ class Actor:
         self.entangled = 0        # restrained (Entangle) for N of its turns
         self.cleanse_types = {'radiant', 'force'}   # per its own statblock
         self.restrained = False   # Roots Erupt / Entangle
+        self.ape = False          # Polymorphed into a Giant Ape
 
     @property
     def alive(self):
@@ -384,7 +391,7 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
         # foes handle death in caller
     # Guardian's Light: reaction heal when a hero is hurt
     if tgt.side == 'pc' and total > 0 and tgt is not st.ghost and st.g_light > 0 \
-            and st.ghost.alive and st.ghost.dist_ft(tgt) <= 30 \
+            and st.ghost.alive and not st.ghost.ape and st.ghost.dist_ft(tgt) <= 30 \
             and (tgt.down or tgt.hp < tgt.hp_max * 0.4) and st.ghost.reaction:
         st.g_light -= 1
         st.ghost.reaction = False
@@ -487,6 +494,67 @@ def ursa_starry(st, again=False):
     log(f"    Ursa: STARRY FORM (Archer){' again' if again else ''}; the Amulet "
         f"wakes, +1 to allies' attacks and saves. [Wild Shape {st.u_wild}]")
     return True
+
+
+def cast_polymorph(st):
+    """Polymorph a hurt ally into a Giant Ape. Costs his only 4th-level slot
+    AND his concentration, so the summon has to go."""
+    if not POLYMORPH or st.u_slots[4] <= 0 or st.ursa.down:
+        return False
+    # Stabby is excluded on purpose: as an ape he loses Cleansing Edge, which is
+    # the only thing that stops Re-Bloom, Glassbound and the spike re-knitting.
+    cands = [h for h in (st.ghost, st.lilly) if h.alive and not h.ape
+             and h.hp < h.hp_max * 0.45 and st.ursa.dist_ft(h) <= 60]
+    if not cands:
+        return False
+    t = min(cands, key=lambda h: h.hp / h.hp_max)
+    st.u_slots[4] -= 1
+    if st.fey is not None:
+        log("    (The fey spirit fades: he cannot hold both.)")
+        st.fey = None
+    st.conc = 'the Polymorph'
+    t.ape = True
+    t.temp = max(t.temp, 168)          # temp HP equal to the beast's hit points
+    t.ape_ac, t.ac = t.ac, 12
+    log(f"    Ursa: POLYMORPH. {t.name} comes apart and reassembles as a GIANT "
+        f"APE: 168 temporary hit points, AC 12, two fists at +9 for 3d10+6. "
+        f"[4th slots left {st.u_slots[4]}]")
+    log("      (No speech, no spells, and it ends the moment those 168 run out.)")
+    return True
+
+
+def ape_turn(st, h, targets):
+    """Two Fist attacks, +9 for 3d10+6 bludgeoning."""
+    live = [t for t in targets if t.hp > 0]
+    if not live:
+        return
+    for _ in range(2):
+        live = [t for t in targets if t.hp > 0]
+        if not live:
+            return
+        t = live[0]
+        if h.dist_ft(t) > 10:
+            h.approach(t, 10, 40)
+        if h.dist_ft(t) > 10:
+            log(f"    {h.name} (ape): lopes toward {t.name}.")
+            return
+        hit, crit, _ = attack_roll(st, 9, t, attacker=h)
+        if hit:
+            dmg = deal(st, t, [(d(6 if crit else 3, 10) + 6, 'bludgeoning')],
+                       magical=False, attacker=h, credit='Ursa')
+            log(f"    {h.name} (ape): FIST on {t.name} for {dmg}.")
+            if t.hp <= 0:
+                log(f"      {t.name} is destroyed.")
+        else:
+            log(f"    {h.name} (ape): fist crashes down beside {t.name}.")
+
+
+def end_polymorph(st, h):
+    if h.ape and h.temp <= 0:
+        h.ape = False
+        h.ac = getattr(h, 'ape_ac', h.ac)
+        st.conc = None
+        log(f"    The ape shape comes apart: {h.name} is themself again.")
 
 
 def break_free(st, h, athletics):
@@ -1786,6 +1854,8 @@ def fight3(st):
                     bonus_used = True
                 if break_free(st, st.ursa, -1):
                     continue
+                if cast_polymorph(st):
+                    continue
                 if URSA_LINE != 'control':
                     pool = ([weeper] if weeper.hp > 0 else []) + [
                         c for c in arrived if c.hp > 0]
@@ -1829,6 +1899,11 @@ def fight3(st):
                         if t2 is not weeper and t2.hp <= 0:
                             burst(t2)
             elif name == 'Ghostbloom' and st.ghost.alive:
+                end_polymorph(st, st.ghost)
+                if st.ghost.ape:
+                    ape_turn(st, st.ghost, ([weeper] if weeper.hp > 0 else [])
+                             + [c for c in arrived if c.hp > 0])
+                    continue
                 live_rolls = [c for c in arrived if c.hp > 0]
                 pack = [c for c in live_rolls if st.ghost.dist_ft(c) <= 15]
                 if GHOST_SUPPORT:
@@ -2113,6 +2188,8 @@ def boss(st):
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used and ursa_starry(st):
                     bonus_used = True
+                if cast_polymorph(st):
+                    continue
                 if URSA_LINE != 'control':
                     if (st.fey is None or st.fey.hp <= 0) and st.u_slots[3] > 0:
                         summon_fey(st, pos=tuple(st.ursa.pos))
@@ -2148,6 +2225,12 @@ def boss(st):
                 if spike.hp <= 0:
                     break
             elif name == 'Ghostbloom' and st.ghost.alive:
+                end_polymorph(st, st.ghost)
+                if st.ghost.ape:
+                    ape_turn(st, st.ghost,
+                             sorted([g for g in glasslings if g.hp > 0],
+                                    key=lambda g: st.ghost.dist_ft(g)))
+                    continue
                 lings = sorted([g for g in glasslings if g.hp > 0],
                                key=lambda g: st.ghost.dist_ft(g))
                 if GHOST_SUPPORT:
@@ -2630,6 +2713,34 @@ def road_walk(st, seg, stats):
                     "with him.")
 
 
+def aura_of_vitality_walk(st, last_chance=False):
+    """Ursa burns the free Aura of Vitality on the road: ten ticks of 2d6.
+    He holds it until the party is actually hurt, because it is 1/long rest."""
+    if not st.u_aura or st.ursa.down:
+        return
+    pool = [h for h in (st.lilly, st.stabby, st.ursa, st.ghost) if h.alive]
+    if not pool:
+        return
+    frac = sum(h.hp for h in pool) / sum(h.hp_max for h in pool)
+    # It is free and it does not carry to tomorrow, so the only real question is
+    # whether a better moment is still coming. Before the Hollow, there is not.
+    if frac > (0.95 if last_chance else 0.72):
+        return
+    st.u_aura = False
+    total = 0
+    for _ in range(10):             # 1 minute of concentration on the walk
+        hurt = [h for h in pool if h.hp < h.hp_max]
+        if not hurt:
+            break
+        t = min(hurt, key=lambda h: h.hp / h.hp_max)
+        heal = d(2, 6)
+        before = t.hp
+        t.hp = min(t.hp_max, t.hp + heal)
+        total += t.hp - before
+    log(f"  Ursa spends the walk on AURA OF VITALITY from Ash's Sigil-Stone "
+        f"(free, 1/long rest): {total} hit points back across the party.")
+
+
 def revive_between(st):
     """Post-fight triage on the road: nobody walks on at 0."""
     st.conc = None      # a 1-minute spell does not survive the walk
@@ -2647,6 +2758,7 @@ def revive_between(st):
             h.hp = min(h.hp_max, max(h.hp + amt, 8))
             h.down = False
             log(f"  (Between fights, {h.name} is patched back up to {h.hp} HP.)")
+    aura_of_vitality_walk(st)
 
 
 def spike_breaker():
@@ -2702,6 +2814,7 @@ def run_day(seed):
         stats['wipe'] = 'f3'
         return st, stats
     revive_between(st)
+    aura_of_vitality_walk(st, last_chance=True)
     road_walk(st, 3, stats)
     stats['boss'] = boss(st)
     stats['drops_boss'] = dcount() - stats['drops_f1'] - stats['drops_f2'] \
