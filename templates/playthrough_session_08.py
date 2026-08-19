@@ -53,6 +53,10 @@ FEY_HOUR = os.environ.get('S8_FEY_HOUR', 'carry')
 #   locations); 'onefight' expires it on the road, which is the honest
 #   reading of a dungeon crawl with dot events between the landings.
 POLYMORPH = os.environ.get('S8_POLYMORPH', '0') == '1'
+#   Cast EARLY (below 60%), not at the brink: it is an Action on his own turn,
+#   not a Reaction, and temp HP do not revive a hero already at 0 (SRD
+#   01_playing_the_game.md:831). Waiting for the brink measured no better than
+#   never casting it at all.
 #   Ursa's 4th-level slot on POLYMORPH, cast on a badly hurt ALLY, turning
 #   them into a Giant Ape (SRD_CC_v5.2.1 p.348: CR 7, HP 168, AC 12, two
 #   Fists at +9 for 3d10+6). The target gains Temporary Hit Points equal to
@@ -504,7 +508,7 @@ def cast_polymorph(st):
     # Stabby is excluded on purpose: as an ape he loses Cleansing Edge, which is
     # the only thing that stops Re-Bloom, Glassbound and the spike re-knitting.
     cands = [h for h in (st.ghost, st.lilly) if h.alive and not h.ape
-             and h.hp < h.hp_max * 0.45 and st.ursa.dist_ft(h) <= 60]
+             and h.hp < h.hp_max * 0.60 and st.ursa.dist_ft(h) <= 60]
     if not cands:
         return False
     t = min(cands, key=lambda h: h.hp / h.hp_max)
@@ -1518,7 +1522,7 @@ def fight2(st):
                 elif live_w:
                     true_strike(st, live_w[0])
                 hurt_near = [h for h in st.pcs if h.alive
-                             and h.hp < h.hp_max * 0.45
+                             and h.hp < h.hp_max * 0.60
                              and h.dist_ft(st.cannon) <= 10]
                 pool = sorted([f for f in foes if f.hp > 0],
                               key=lambda f: (not f.stunned, st.cannon.dist_ft(f)))
@@ -1829,7 +1833,7 @@ def fight3(st):
                     if live_rolls_now[0].hp <= 0:
                         burst(live_rolls_now[0])
                 hurt_near = [h for h in st.pcs if h.alive
-                             and h.hp < h.hp_max * 0.45
+                             and h.hp < h.hp_max * 0.60
                              and h.dist_ft(st.cannon) <= 10]
                 pool = [c for c in arrived if c.hp > 0 and st.cannon.dist_ft(c) <= 120]
                 if hurt_near:
