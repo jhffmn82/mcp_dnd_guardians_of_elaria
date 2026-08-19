@@ -63,9 +63,11 @@ def build_board(cfg):
     TITLE = (34, 30, 500, 120)
 
     # --- title clearance check (base coords) ---
+    ttx, tty = cfg.get("title_pos", (34, 30))
+    TBOX = (ttx, tty, ttx + 466, tty + 90)
     for s in slots:
         cx, cy = s["pos"]; r = s["r"]
-        if cx - r < TITLE[2] and cy - r - 22 < TITLE[3] and cx + r > TITLE[0] and cy + r > TITLE[1]:
+        if cx - r < TBOX[2] and cy - r - 22 < TBOX[3] and cx + r > TBOX[0] and cy + r > TBOX[1]:
             raise SystemExit(f"location '{s['label']}' overlaps the title box; move it")
 
     # --- geometry in base space ---
@@ -204,9 +206,10 @@ def build_board(cfg):
         d.rounded_rectangle([q(bx), q(by), q(bx2), q(by2)], radius=int(9 * S), fill=(16, 14, 22, 220))
         d.text((q(bx) + 12 * S, q(by) + 6 * S), s["label"], font=f, fill=(246, 240, 230, 255))
 
-    d.rounded_rectangle([q(34), q(30), q(500), q(120)], radius=int(12 * S), fill=(16, 14, 22, 210))
-    d.text((q(52), q(42)), cfg["title"], font=_font(40 * S), fill=(246, 240, 230, 255))
-    d.text((q(54), q(92)), cfg["subtitle"], font=_font(18 * S, False), fill=(212, 206, 226, 255))
+    tx, ty = cfg.get("title_pos", (34, 30))
+    d.rounded_rectangle([q(tx), q(ty), q(tx + 466), q(ty + 90)], radius=int(12 * S), fill=(16, 14, 22, 210))
+    d.text((q(tx + 18), q(ty + 12)), cfg["title"], font=_font(40 * S), fill=(246, 240, 230, 255))
+    d.text((q(tx + 20), q(ty + 62)), cfg["subtitle"], font=_font(18 * S, False), fill=(212, 206, 226, 255))
     lx, ly = 1300, 44
     d.rounded_rectangle([q(lx - 16), q(ly - 14), q(W - 28), q(ly + 14 + 5 * 32)], radius=int(12 * S), fill=(16, 14, 22, 215))
     for i, (k, name) in enumerate([("trav", "Move"), ("enc", "Encounter"), ("boon", "Boon"), ("haz", "Hazard"), ("wild", "Wild !")]):
@@ -228,19 +231,19 @@ UNDA = {
     "subtitle": "Water Rift  .  Session 9  .  reach the Guardian",
     "scale": 3,
     "space_r": 31, "loc_r": 112, "boss_r": 126, "ribbon_w": 92, "step": 68, "dim": 0.56,
-    "wild_fracs": (0.30, 0.72),
+    "wild_fracs": (0.25, 0.65),
+    "title_pos": (34, 900),
     "waypoints": [
-        (636, 902), (540, 930), (448, 910), (360, 852), (316, 760),
-        (300, 600), (250, 470), (320, 342), (440, 292),
-        (560, 262), (700, 232), (842, 258), (980, 228), (1085, 286),
-        (1185, 352), (1252, 478), (1188, 584), (1268, 672), (1315, 780), (1402, 858),
+        (260, 214), (426, 154), (592, 160), (800, 168), (962, 205), (1124, 268),
+        (1230, 360), (1265, 500), (1200, 630), (1060, 715), (900, 745), (720, 705),
+        (640, 615), (668, 515), (800, 468), (940, 470),
     ],
     "slots": [
-        {"pos": (636, 902), "r": 64,  "ring": (70, 120, 170),  "label": "The Rift Gate",      "num": None, "src": (250, 600)},
-        {"pos": (300, 600), "r": 112, "ring": (214, 170, 72),  "label": "The Brightshoal",    "num": "1",  "src": (300, 560)},
-        {"pos": (560, 262), "r": 112, "ring": (214, 170, 72),  "label": "The Kelp Cathedral", "num": "2",  "src": (900, 300)},
-        {"pos": (1185, 352), "r": 112, "ring": (214, 170, 72), "label": "The Blackwater Seam", "num": "3", "src": (330, 880)},
-        {"pos": (1402, 858), "r": 126, "ring": (214, 66, 74),  "label": "The Guardian's Trench", "num": "4", "src": (1380, 900)},
+        {"pos": (260, 214), "r": 64,  "ring": (70, 120, 170),  "label": "The Rift Gate",       "num": None, "src": (150, 140)},
+        {"pos": (592, 160), "r": 112, "ring": (214, 170, 72),  "label": "The Brightshoal",     "num": "1",  "src": (420, 200)},
+        {"pos": (1265, 500), "r": 112, "ring": (214, 170, 72), "label": "The Kelp Cathedral",  "num": "2",  "src": (1180, 180)},
+        {"pos": (1060, 715), "r": 112, "ring": (214, 170, 72), "label": "The Blackwater Seam", "num": "3",  "src": (1040, 700)},
+        {"pos": (940, 470), "r": 126, "ring": (214, 66, 74),   "label": "The Guardian's Trench", "num": "4", "src": (870, 480)},
     ],
 }
 
