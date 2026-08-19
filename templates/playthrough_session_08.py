@@ -206,6 +206,7 @@ class State:
         self.l_ward = 2
         self.l_fog = 5            # Flash of Genius
         self.mm_charges = 7       # Puff's Wand of Magic Missiles
+        self.pipes = 3            # Pipes of Haunting, 3 charges
         # Stabby
         self.s_focus = 7
         self.s_metab = True
@@ -271,7 +272,8 @@ class State:
             log(f"      * Flash of Genius! Lilly adds +5, {hero.name}'s "
                 f"{stat.upper()} save {total}->{total + 5} vs DC {dc}: success. ({self.l_fog} left)")
             return True
-        if not ok and self.u_cosmic > 0 and not self.ursa.down and dc >= 15 \
+        if not ok and self.u_cosmic > 0 and not self.ursa.down \
+                and (dc >= 15 or tag == 'concentration') \
                 and total + 3 >= dc:
             bump = d(1, 6) + 2
             self.u_cosmic -= 1
@@ -427,7 +429,9 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
     if (attacker is not None and attacker.side == 'foe' and tgt.side == 'pc'
             and not crit and total >= tgt.ac and st.u_cosmic > 0
             and not st.ursa.down and st.ursa.dist_ft(tgt) <= 30
-            and (tgt.hp <= tgt.hp_max * 0.5 or tgt.hp_max >= 200)):
+            and (tgt.hp <= tgt.hp_max * 0.5 or tgt.hp_max >= 200
+                 or (tgt is st.ursa
+                     and ((st.fey is not None and st.fey.hp > 0) or st.conc)))):
         bump = d(1, 6) + 2
         st.u_cosmic -= 1
         st.cosmic_spent += 1
@@ -695,6 +699,30 @@ def stabby_defensive(st, pool):
             f"{old}->{tuple(s.pos)}.")
 
 
+def puff_pipes(st, foes):
+    """Pipes of Haunting (build_lilly.py:226): Magic action, 1 charge, each
+    creature she chooses within 30 ft, Wis save DC 15 or Frightened 1 minute.
+    A creature that SAVES is immune to the pipes for 24 hours."""
+    if st.puff.down or st.pipes <= 0:
+        return False
+    pool = [f for f in foes if f.hp > 0 and not getattr(f, 'pipes_immune', False)
+            and 'frightened' not in f.cond_imm and f.fright <= 0
+            and st.puff.dist_ft(f) <= 30]
+    if len(pool) < 3:
+        return False
+    st.pipes -= 1
+    log(f"    Puff: PIPES OF HAUNTING, a thin ugly tune over {len(pool)} of them. "
+        f"[{st.pipes} charges left]")
+    for f in pool:
+        if foe_save(f, f.saves.get('wis', 0), 15):
+            f.pipes_immune = True
+            log(f"      {f.name} shrugs the tune off for good.")
+        else:
+            f.fright = 4
+            log(f"      {f.name} is FRIGHTENED: disadvantage on everything it swings.")
+    return True
+
+
 def puff_turn(st, target, use_mm, overload=False):
     if st.puff.down:
         return
@@ -835,17 +863,15 @@ def ursa_conc_check(st, dmg):
     if not holding or dmg <= 0:
         return
     dc = max(10, dmg // 2)
-    roll = d20() + st.ursa.saves['con']
-    # Dragon constellation would floor this at 10; he is in Archer form, so no.
-    if roll >= dc:
+    # Flash of Genius and a dreamed omen or Weal can all rescue this: it is an
+    # ordinary Constitution saving throw. hero_save owns those hooks.
+    if st.hero_save(st.ursa, 'con', dc, tag='concentration'):
         return
     if st.conc:
-        log(f"      * Ursa loses concentration ({roll} vs DC {dc}): "
-            f"{st.conc} winks out!")
+        log(f"      * Ursa loses concentration (DC {dc}): {st.conc} winks out!")
         st.conc = None
     elif st.fey is not None:
-        log(f"      * Ursa loses concentration ({roll} vs DC {dc}): "
-            f"the fey spirit fades!")
+        log(f"      * Ursa loses concentration (DC {dc}): the fey spirit fades!")
         st.conc_lost += 1
         st.fey.hp = 0
         st.fey = None
@@ -1121,8 +1147,11 @@ def fight1(st):
                     else:
                         cannon_fire(st, 'ballista',
                                     sorted(tgt_pool, key=lambda f: st.cannon.dist_ft(f)))
-                puff_turn(st, next((m for m in mites if m.hp > 0 and not m.hidden
-                                    and st.puff.dist_ft(m) <= 30), None), use_mm=False)
+                if not puff_pipes(st, [f for f in foes
+                                       if not getattr(f, 'hidden', False)]):
+                    puff_turn(st, next((m for m in mites if m.hp > 0 and not m.hidden
+                                        and st.puff.dist_ft(m) <= 30), None),
+                              use_mm=False)
             elif name == 'Ursa' and st.ursa.alive:
                 bonus_used = ursa_triage(st)
                 live_r = sorted([r for r in rots if r.hp > 0],
@@ -1412,8 +1441,9 @@ def fight2(st):
                 elif pool:
                     cannon_fire(st, 'ballista', pool)
                 mm_t = next((f for f in foes if f.hp > 0 and f.stunned), None)
-                puff_turn(st, mm_t or next((f for f in foes if f.hp > 0), None),
-                          use_mm=(mm_t is not None))
+                if mm_t is not None or not puff_pipes(st, foes):
+                    puff_turn(st, mm_t or next((f for f in foes if f.hp > 0), None),
+                              use_mm=(mm_t is not None))
             elif name == 'Ursa' and st.ursa.alive:
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used and ursa_starry(st, again=True):
@@ -1714,7 +1744,8 @@ def fight3(st):
                             burst(c)
                 elif weeper.hp > 0:
                     cannon_fire(st, 'ballista', [weeper])
-                if weeper.hp > 0:
+                if weeper.hp > 0 and not puff_pipes(
+                        st, ([weeper] if weeper.hp > 0 else []) + arrived):
                     puff_turn(st, weeper, use_mm=True)
                 else:
                     puff_turn(st, next((c for c in arrived if c.hp > 0), None),
