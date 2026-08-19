@@ -74,3 +74,18 @@ commit-generated-artifacts rule (session scripts age out). No em dashes.
   but re-knits 20 at the start of Groudon's turn unless Cleansing Edge touched
   it since his last turn (raising spike HP just lets the ranged battery steal
   Stabby's finish).
+- **S8 sim retune adopted 2026-08-18 (60-day playthrough data, DM picks).** The
+  session's curve ran backwards: Gallery billed hardest measured second easiest
+  (2.8 rounds), boss 1.6 rounds, zero deaths in 60 days, spike broken 60/60.
+  Root cause: 52% of party damage is radiant or force, so every regeneration
+  clause was auto-satisfied (Weeper's Glassbound fired 0.00 times per day).
+  Adopted: **all three regeneration clauses tighten to Cleansing Edge ALONE**
+  (this reverses the same-day radiant-works-on-Re-Bloom ruling, deliberately,
+  on the sim evidence); **Weeper 170 to 340 plus a new trait, The Roots Erupt**
+  (start of its turn, one hero within 60 ft, DC 15 Dex or 3d8 piercing and
+  restrained, DC 14 Athletics to tear free; Tend the Roots now suppresses the
+  eruption as well as Glassbound); **spike 60 to 160 with four Glasslings
+  already loose** when the party comes down. Chime Reef left alone: its
+  billing and its numbers already agree. Watch at the table: raising spike HP
+  measured Stabby's share of the killing blow down from 37.5% to 30%, so the
+  pause-before-the-last-roll beat matters more, not less.

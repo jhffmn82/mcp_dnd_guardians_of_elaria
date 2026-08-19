@@ -715,13 +715,11 @@ BLOCKS = [
            "everybody gets three or four rounds of swinging."),
     ("dm", "**The lever.** Rotblooms re-bloom every round, and ordinary steel keeps "
            "handing back ground it already won: leave one standing and part of that "
-           "cap swells shut before its next turn. Only radiant damage or Cleansing "
-           "Edge makes a cut stay. **Ursa's starlight is one answer and he will find it "
-           "fast**: when his first bolt sticks, tell him why. **Cleansing Edge is the "
-           "other, and the only one that works up close.** "
-           "Let Lilly watch her cannon's work close up again, "
+           "cap swells shut before its next turn. **Cleansing Edge is the only thing "
+           "that makes a cut stay**, and Stabby is the only one who carries it. Let the "
+           "others flail for a round and watch their own damage close up again, "
            "then let Stabby ignite, cut one at the root, and have "
-           "it stay cut. Hand him the first melee kill, and say the reason out loud "
+           "it stay cut. Hand him the kill, and say the reason out loud "
            "when it lands: he spent a year on a mountain learning to burn "
            "corruption out of the ground, and this is the first time anyone else "
            "has seen it work. His player has carried that backstory alone since "
@@ -1003,15 +1001,20 @@ BLOCKS = [
            "fresh pair rolls in."),
     ("dm", "**The lever.** Two of them, and the table should find both. Steel: "
            "the Weeper regains **10 hit points at the start of its turn** "
-           "unless it took radiant or force damage, or was hit by **Cleansing "
-           "Edge**, since its last turn, so with ordinary weapons every wound "
+           "unless it was hit by **Cleansing "
+           "Edge** since its last turn, so with ordinary weapons every wound "
            "they open is part closed again before their next turn and the fight "
            "reads as if it is going backwards. **Stabby is the answer, and "
-           "everyone at the table should be able to see it.** Kindness: any "
+           "everyone at the table should be able to see it.** And the floor is "
+           "not safe: at the start of every one of its turns the glassed roots "
+           "**buckle under somebody** (DC 15 Dexterity, 3d8 piercing and "
+           "restrained on a failure, DC 14 Athletics to tear free), so nobody "
+           "gets to stand still and shoot it down. Kindness: any "
            "hero can spend an action tending the glassed roots the Weeper is "
            "bound to (**DC 14 Nature or Medicine**, or any healing spell cast "
            "on the roots instead of a creature). On a success the Weeper "
-           "**loses its regeneration until the end of its next turn** and every "
+           "**loses its regeneration, and its roots stay still, until the end of its "
+           "next turn** and every "
            "attack against it has **advantage** until the start of the helper's "
            "next turn. Two or three of those and the fight tips hard; it never "
            "ends the encounter, it makes the party feel brilliant while they "
@@ -1125,14 +1128,14 @@ BLOCKS = [
            "start of each of his turns he takes 10 damage himself, and everything within 20 ft "
            "makes a DC 16 Dexterity save or takes 10 bludgeoning from the shockwave. He is being "
            "hurt in front of them, every round, and they can see it."),
-    ("dm", "**The lever.** The win condition is the spike, never his hit points: **AC 17, 60 hit "
+    ("dm", "**The lever.** The win condition is the spike, never his hit points: **AC 17, 160 hit "
            "points, immune to everything except radiant, force, and Cleansing Edge**. At the "
            "start of each of Groudon's turns it **re-knits 20 hit points** unless Cleansing Edge "
            "has touched it since his last turn; range can wound the glass, but only Stabby makes "
            "the wound stick, on the same rule the Rotblooms taught at the landing. **When the "
            "spike breaks, the encounter ends instantly**, whatever Groudon's total is. Never run "
            "him to 0. He is not supposed to die, and nothing in this room is an execution."),
-    ("dm", "**Glasslings.** The spike drops one at the start of each of Groudon's turns: a "
+    ("dm", "**Four Glasslings are already loose when the party comes down**, picking over the hollow floor, and they look up all at once. After that the spike drops one at the start of each of Groudon's turns: a "
            "cat-sized scuttler of black glass that goes straight for the nearest warm body and "
            "bursts when killed (**DC 12 Dexterity, 5 slashing, 5 ft**). They answer the obvious "
            "question, why not whittle him down from range: the longer the spike lives, the more "
@@ -1171,7 +1174,7 @@ BLOCKS = [
            "pain, knows what is coming. Then let them swing. When it breaks, every Glassling on "
            "the board collapses into ordinary sand at once; clear them off the map in one sweep "
            "of your hand and say nothing while you do it."),
-    ("dm", "**Scaling dials.** Too easy: the spike drops two Glasslings a round instead of one. "
+    ("dm", "**Scaling dials.** Too easy: the spike drops two Glasslings a round instead of one, and Magma Vent recharges on 3-6. "
            "Too hard: Magma Vent stops recharging while anyone is on his back, and Thrash "
            "telegraphs (his plates bunch a beat before he shakes, advantage on the check)."),
     ("dm", "**If it all goes wrong.** Nobody dies in this room. If all three heroes drop, "
@@ -1468,11 +1471,10 @@ BLOCKS = [
              "5-6, a 10-ft cone, DC 12 Constitution or 2d6 poison and poisoned) + 8x Mossmite (AC "
              "13, HP 7, Speed 40 ft and climb 40 ft; Skitter, no opportunity attacks; Pack Nerve; "
              "Nip +5 for 1d4+3), boiling out of the moss the moment the first Rotbloom is struck. "
-             "**THE LEVER: Cleansing Edge.** A Rotbloom cannot re-bloom if it has taken radiant "
-             "damage (Ursa's starlight) or been hit by Cleansing Edge (Stabby, up close) "
-             "since its last turn. Let Lilly "
-             "watch her damage undo itself, let Ursa's first bolt stick, then hand Stabby "
-             "the melee kill and have it **stay** cut. "
+             "**THE LEVER: Cleansing Edge, and nothing else.** A Rotbloom cannot re-bloom if "
+             "it was hit by Cleansing Edge since its last turn; no other damage type "
+             "touches the clause. Let Lilly and Ursa watch their damage undo itself, then "
+             "hand Stabby the kill and have it **stay** cut. "
              "**The tell:** the Rotblooms do not attack the Sandshrew and it does not run from "
              "them. Corruption does not eat its own."),
     ("body", "**FIGHT 2: Chime Reef** (hard on paper, easy the moment somebody thinks of thunder). "
@@ -1488,9 +1490,11 @@ BLOCKS = [
              "for standing that close. Nobody minds. Lilly's **DC 13** Arcana read: the crystals are growing "
              "toward something deeper in. It is Groudon."),
     ("body", "**FIGHT 3: The Glassed Gallery** (the hardest thing before the boss, and Stabby's "
-             "proving ground). 1x Glass Weeper (AC 16, HP 170; **Glassbound**: regains 10 HP at the "
-             "start of its turn unless it took radiant or force damage, or was hit by Cleansing "
-             "Edge, since its last turn; Rooted, it never leaves its glassed roots by more than 15 "
+             "proving ground). 1x Glass Weeper (AC 16, HP 340; **Glassbound**: regains 10 HP at the "
+             "start of its turn unless it was hit by Cleansing "
+             "Edge since its last turn; **The Roots Erupt**, at the start of each of its "
+             "turns the floor buckles under one hero within 60 ft, DC 15 Dexterity for 3d8 "
+             "piercing and restrained, DC 14 Athletics to tear free; Rooted, it never leaves its glassed roots by more than 15 "
              "ft; Multiattack three Frond Lashes at +7 for 2d6+5 with 15 ft of reach; Keening, "
              "recharge 5-6, a 30-ft cone, DC 15 Constitution for 6d6 psychic and frightened) + 4x "
              "Cinderoll (AC 15, HP 18, Speed 40 ft rolling, **arriving two at a time**; Rolling "
@@ -1498,7 +1502,8 @@ BLOCKS = [
              "Dexterity within 10 ft or 2d6 fire; Slam +4 for 2d4+2 plus 1d6 fire). **THE LEVER: "
              "Tend the Roots.** An action clearing or healing the glassed roots (**DC 14 Nature or "
              "Medicine**, or any healing spell aimed at the roots rather than a creature) strips "
-             "Glassbound until the end of the Weeper's next turn and gives everyone **advantage** "
+             "Glassbound AND its root eruption until the end of the Weeper's next turn, and "
+             "gives everyone **advantage** "
              "on attacks against it until the start of the helper's next turn. Two or three of "
              "those and the fight tips hard. Let the kids chain a Cinderoll off its neighbours; "
              "that is what packs of them are for."),
@@ -1511,7 +1516,7 @@ BLOCKS = [
              "turns and everything within 20 ft makes a **DC 16 Dexterity save** or takes 3d6 from "
              "the shockwave) + Glasslings (AC 14, HP 10; Glass Bite +5 for 1d6+3; Shatterburst at 0 "
              "HP, DC 12 Dexterity within 5 ft for 2d4), **one spawned at the start of each of "
-             "Groudon's turns**. **THE LEVER IS THE ONLY WIN CONDITION: THE SPIKE.** AC 17, 60 hit "
+             "Groudon's turns**. **THE LEVER IS THE ONLY WIN CONDITION: THE SPIKE.** AC 17, 160 hit "
              "points, immune to everything except **radiant, force, and Cleansing Edge**, reached "
              "by climbing, by flight, or by a ranged attack at disadvantage, and it **re-knits "
              "20 HP at the start of each of Groudon's turns unless Cleansing Edge touched it "
@@ -1891,7 +1896,7 @@ BLOCKS = [
             "traits": [
                 ("Re-Bloom", "At the start of its turn, if it took damage since its last turn "
                  "and is not at 0 HP, it regains 5 hit points. It cannot re-bloom if it has "
-                 "taken radiant damage, or been hit by Cleansing Edge, since its last turn."),
+                 "been hit by **Cleansing Edge** since its last turn. Nothing else stops it."),
                 ("Still Smiling", "It cannot be frightened, and its face never changes, whatever "
                  "is happening to it."),
             ],
@@ -1926,7 +1931,7 @@ BLOCKS = [
     ]),
     ("tactics", "This fight exists to hand Stabby the session. The Rotblooms swell back up out "
                 "of their own caps every round, and ordinary steel keeps handing that ground "
-                "back: only radiant damage or Cleansing Edge shuts Re-Bloom off. Let the party "
+                "back: only Cleansing Edge shuts Re-Bloom off. Let the party "
                 "flail for a round and let Lilly and Ursa watch pieces of their damage close up "
                 "again, then let Stabby "
                 "ignite, cut one, and have it stay cut. The Mossmites boil out of the moss the "
@@ -2024,7 +2029,7 @@ BLOCKS = [
                    "trying to do its job",
             "img": "assets/session_08/weeper_card.png", "img_w": 2.6,
             "stats": [
-                "**AC** 16 (black glass)  **HP** 170 (20d10 + 60)  **Speed** 20 ft",
+                "**AC** 16 (black glass)  **HP** 340 (40d10 + 120)  **Speed** 20 ft",
                 "**STR** 18  **DEX** 8  **CON** 16  **INT** 4  **WIS** 12  **CHA** 5",
                 "**Resist** bludgeoning, piercing, slashing from nonmagical weapons",
                 "**Imm.** poison ✦ (cond) charmed, frightened, poisoned, prone",
@@ -2032,13 +2037,21 @@ BLOCKS = [
                 "**Challenge** 6 (2,300 XP)",
             ],
             "traits": [
-                ("Glassbound", "It regains 10 hit points at the start of its turn unless it took "
-                 "radiant or force damage, or was hit by Cleansing Edge, since its last turn."),
+                ("Glassbound", "It regains 10 hit points at the start of its turn unless it was hit "
+                 "by **Cleansing Edge** since its last turn."),
+                ("The Roots Erupt", "At the start of its turn, the glassed roots buckle "
+                 "under one creature it can see within 60 feet. That creature makes a **DC 15 "
+                 "Dexterity saving throw**, taking 13 (3d8) piercing damage and gaining the "
+                 "Restrained condition on a failure, or half damage and no Restrained on a "
+                 "success. A restrained creature can use an action to make a **DC 14 Strength "
+                 "(Athletics) check** to tear free. **This does not happen on a turn when the "
+                 "Weeper has lost Glassbound** (see Tend the Roots)."),
                 ("Rooted", "It cannot move more than 15 ft from the glassed roots it is tending, "
                  "and it never tries to."),
                 ("Tend the Roots", "A creature can use an action to clear or heal the roots near "
                  "it: DC 14 Nature or Medicine, or any healing spell cast on the roots rather "
-                 "than a creature. On a success the Weeper **loses Glassbound until the end of "
+                 "than a creature. On a success the Weeper **loses Glassbound and its root "
+                 "eruption until the end of "
                  "its next turn** and every attack against it has **advantage** until the start "
                  "of the helper's next turn."),
             ],
@@ -2082,14 +2095,14 @@ BLOCKS = [
                 "Nature or Medicine, or any healing aimed at the roots) strips its "
                 "regeneration for a round and hands everyone advantage; it never ends the "
                 "fight, it makes the party feel brilliant while they finish it. Stabby is "
-                "the proving ground: only radiant, force, or Cleansing Edge shuts Glassbound "
+                "the proving ground: only Cleansing Edge shuts Glassbound "
                 "off. Let the Cinderolls cluster; a chain reaction is theirs to discover. "
                 "When the Weeper falls it shatters, and curled where its heart would be is a "
                 "small ordinary creature, two years dead. Let the table sit with that."),
 
     ("fight_header", "ENEMIES, BOSS: Groudon's Hollow",
      "Groudon's Hollow ✦ Difficulty: Boss, but the spike is the whole fight ✦ 1x Groudon + one "
-     "Glassling every round", {"hardbreak": True}),
+     "Glassling every round, four already loose", {"hardbreak": True}),
     ("enemy_cards", [
         {
             "name": "Groudon, the Continent-Maker",
@@ -2106,7 +2119,7 @@ BLOCKS = [
             ],
             "traits": [
                 ("THE SPIKE (this is the encounter)", "Black glass driven into his back at the "
-                 "shoulder. **AC 17, 60 hit points**, immune to all but **radiant, force, and "
+                 "shoulder. **AC 17, 160 hit points**, immune to all but **radiant, force, and "
                  "Cleansing Edge**; it **re-knits 20** at the start of his turns unless Cleansing "
                  "Edge touched it since his last. Reach it by climbing (DC 14 Athletics or "
                  "Acrobatics), flying, or a ranged shot at disadvantage. **When it breaks the "
@@ -2160,7 +2173,7 @@ BLOCKS = [
     ]),
     ("tactics", "Do not let the party win by damage. Groudon has more hit points than they can "
                 "chew through and hits hard enough to drop a hero in two turns, so a straight "
-                "brawl is a loss. The win condition is the spike: AC 17, 60 hit points, immune "
+                "brawl is a loss. The win condition is the spike: AC 17, 160 hit points, immune "
                 "to everything except radiant, force, and Cleansing Edge, reached by climbing "
                 "him (DC 14 Athletics or Acrobatics), by flight (Stabby's Sash), or by a called shot at "
                 "range with disadvantage. Break it and the fight is over on the spot, not "
