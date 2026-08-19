@@ -94,7 +94,8 @@ Feat, no attunement (the feat awakens the Sphere she already carries; only the D
 
 - **Mote Channeling.** The Sphere's powers share **2 uses**, regained on a **Short Rest**. DC = spell save DC 16.
 - **Aether Ward (base power, the ONLY power online at L7).** **Magic action** (costs her Action), 1 use: she and each ally **within 30 ft** gain **2d8 + INT (5) temp HP**.
-- **Elemental Discharges are ALL LOCKED at level 7.** Cinderstorm (Fire), Drowning Lull (Water), Tailwind (Air), Tectonic Slam (Earth), Soul Siphon (Shadow) each unlock only when that rift's Mote is installed. At Session 8 the Sphere grants **Aether Ward alone** (twice per short rest). A sim must not use any discharge until its rift is cleared.
+- **THE POOL IS SHARED (2 uses, back on a SHORT rest).** Aether Ward and every Elemental Discharge spend from the same two uses. From the end of Session 8 she also has **Tectonic Slam** (Earth Mote installed): Magic action, 20-ft-radius Sphere within 120 ft, Dex save or **7d8 force + prone**, raised stone = difficult terrain, 5 piercing per 5 ft moved, half cover for her side until the start of her next turn. A sim must never let her spend more than 2 total per short rest.
+- **Elemental Discharges are ALL LOCKED at level 7.** Cinderstorm (Fire), Drowning Lull (Water), Tailwind (Air), Tectonic Slam (Earth), Soul Siphon (Shadow) each unlock only when that rift's Mote is installed. Through Session 8 the Sphere grants **Aether Ward alone**; Tectonic Slam unlocks at that session's homecoming and shares the same two uses. A sim must not use any discharge until its rift is cleared.
 - **Lingering Discharges** (future): only one sustained at a time, no Concentration.
 
 **Combat loop (Door C).**
@@ -132,5 +133,5 @@ Quoted from memory/house_rules.md:
 - **Door B Storm-Arc fires on every Boomstick hit**: +1d6 lightning to the target and a 2d6 DC 16 Dex arc to two more enemies within 15 ft. Free extra area damage, easily dropped.
 - **Door B Counter-Bolt triggers only when an ally is attacked**, never Lilly herself.
 - **Door A Sentinel acts on its own turn**, moves 30 ft, and its Guardian Protocol reaction only reaches 15 ft, so keep it walking with the melee.
-- **Door C has only Aether Ward online at level 7**; all five Elemental Discharges are locked until their rifts are cleared. Aether Ward costs her Action (Magic action), 2/short rest.
+- **Door C has only Aether Ward online at level 7**; all five Elemental Discharges are locked until their rifts are cleared. Aether Ward costs her Action (Magic action) and draws on the shared 2/short-rest pool (Tectonic Slam joins that pool from the S8 homecoming).
 - **Shield (reaction) puts her at AC 25.** Remember she competes for her reaction between Shield, Flash of Genius, and (Door B) Counter-Bolt.

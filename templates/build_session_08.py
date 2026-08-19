@@ -229,7 +229,8 @@ BLOCKS = [
              "So she stopped building at it, and started listening to it."),
     ("dm", "**What she brings back.** *Aether Channeler*: she can draw the **Aether Ward** out of "
            "the Sphere, **2d8 + 5 temporary hit points** to herself and every friend within 30 "
-           "feet, **twice per short rest**. The five great discharges sleep until each plane's "
+           "feet. **The Sphere has two uses, back on a short rest, and everything it can do "
+           "shares them.** The five great discharges sleep until each plane's "
            "Mote comes home; **her power now grows by going out**, which is the whole point. Also "
            "*Flash of Genius*: **+5 to a failed check or save** for her or any friend within 30 "
            "feet, five times a day."),
@@ -1306,8 +1307,9 @@ BLOCKS = [
            "feet, Dexterity save or **7d8 force damage and knocked prone**, and the raised "
            "stone stays: difficult terrain, 5 piercing for every 5 feet a creature moves "
            "through it, and half cover for her and her friends until the start of her next "
-           "turn. She has **one use**, and it comes back on a long rest. **Four sockets are "
-           "still dark**, and she will work out what that means before you say it: one per "
+           "turn. **It draws on the same pool as her Aether Ward**: two uses between them, "
+           "back on a short rest, so every rift makes that choice harder and better. **Four "
+           "sockets are still dark**, and she will work out what that means before you say it: one per "
            "plane, one per guardian freed. Say the quiet part only if the table does not: "
            "every world they help gives her something no artificer has ever carried."),
     ("gold", "Vane looks at the lit socket for a long moment.\n"
@@ -1533,8 +1535,9 @@ BLOCKS = [
              "**Stabby's "
              "Focus** (7, and Igniting the Breath costs 1 while Devour refunds its own on a kill), "
              "**one of Ursa's three Wild Shape uses** (Starry Form spends one and runs 10 minutes), "
-             "and **both of Lilly's Aether Wards** (2d8 + 5 temporary hit points to her and every "
-             "friend within 30 ft, twice per short rest). The Reef Answers dot hands out 2d8 "
+             "and **both of Lilly's Sphere uses** (Aether Ward is 2d8 + 5 temporary hit points to "
+             "her and every friend within 30 ft; the pool is two, back on a short rest, and "
+             "from tonight the discharges draw on it too). The Reef Answers dot hands out 2d8 "
              "temporary hit points and the Deepwater Spring gives back a Hit Die and a level of "
              "exhaustion, so the road can quietly pay for a rough fight. What to watch: **Stabby's "
              "Focus across four fights plus whatever the dots throw**, because he is the answer to "
