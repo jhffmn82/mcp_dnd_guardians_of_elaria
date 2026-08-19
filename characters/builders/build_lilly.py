@@ -424,7 +424,10 @@ story.append(Paragraph(
     "<b>Pocket Dynamo</b>), and helped free the clockwork city of <b>Gearhaven</b>, where she built "
     "<b>Puff</b> with her own hands. When Vane's great ring needed a year to finish, she went home first: "
     "she set the Sphere on her mother's kitchen table and said <i>tell me everything</i>. The answer was "
-    "not in the stories, so she earned it on the trade roads, one workshop at a time, until the "
+    "not in the stories, but the visit gave her something better: eleven evenings at the kitchen-table "
+    "forge with Poots teaching, arguing, and finally just watching, and at the end of them "
+    "<b>Boomstick</b>, which nobody gave her because the two of them built it. The answer she went "
+    "for she earned on the trade roads, one workshop at a time, until the "
     "forty-first time she opened the housing she found <b>older marks under her mother's sigils</b>: the "
     "Sphere is not a machine holding a spark, it is a <b>seed that grows</b>. She came back to Gearhaven "
     "with her craft gone from clever to formidable, and with proof.", body_st))
