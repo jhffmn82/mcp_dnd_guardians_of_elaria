@@ -15,7 +15,7 @@ A sim MUST walk this whole list each round or it will drop features. The most-dr
 
 ## Level-7 stat block (one line)
 
-HP **52** | AC **18** | Speed **30 ft.** | Init **+2** | Prof **+3** | Spell save **DC 16** | Spell attack **+8** | Shillelagh (weapon attack, +1 staff) **+9** | STR 8(-1) DEX 14(+2) CON 14(+2) INT 12(+1) **WIS 20 (+5)** CHA 8(-1)
+HP **52** | AC **18** | Speed **30 ft.** | Init **+2** | Prof **+3** | Spell save **DC 16** | Spell attack **+10** holding the Wand of the War Mage +2 (**+8** without) | Shillelagh (weapon attack, +1 staff) **+9** | STR 8(-1) DEX 14(+2) CON 14(+2) INT 12(+1) **WIS 20 (+5)** CHA 8(-1)
 
 > **[DM RULING 2026-07-25, confirmed] The +1 light bonus is ALLIES ONLY, not Ursa.** build_compendium.py line 122 grants Guiding Light to "allies," and Warden's Mantle (line 626) to "each ally within that light." By the printed text Ursa does NOT raise his own attacks or saves, so his spell attack is **+8**, not +9. Earlier sims used "+9 in his own light," which was wrong. Ursa's own attacks and saves get no bonus from his own light; his spell attack is +8.
 Resources: **Wild Shape 3/rest** (1 back on short rest, all on long) | **Spell slots 4/3/3/1** (1st/2nd/3rd/4th) | **Staff 5 charges** (6 on the Starlit road) | **Cosmic Omen = Wis mod = 5 uses/long rest** | **Star Map free Guiding Bolts = Wis mod = 5/long rest**.
@@ -38,10 +38,10 @@ Consult every entry below every round.
 ### Base class (Circle of the Stars, level 7)
 
 - **Starry Form** (Bonus Action, spend 1 Wild Shape use; lasts 10 min; ends on Incapacitated / dismissal / reuse). Sheds Bright Light 10 ft + Dim 10 ft. Keep his own stats. Choose ONE constellation on activation:
-  - **Archer.** On activation and **each later turn as a Bonus Action**: ranged spell attack **+8**, one creature within **60 ft**, **1d8 + 5 radiant**. (Still 1d8 + Wis at level 7; becomes 2d8 at level 10.) **House rule 1: Starseed does NOT apply to the arrow.**
+  - **Archer.** On activation and **each later turn as a Bonus Action**: ranged spell attack **+10** (wand; +8 without), one creature within **60 ft**, **1d8 + 5 radiant**. (Still 1d8 + Wis at level 7; becomes 2d8 at level 10.) **House rule 1: Starseed does NOT apply to the arrow.**
   - **Chalice.** When he casts a **slot** spell that restores HP, he or a creature within 30 ft also regains **1d8 + 5**.
   - **Dragon.** Treat a d20 of 9 or lower as a 10 on Int/Wis checks and **Con saves to keep Concentration**.
-- **Star Map** (druidic focus, always in hand as backup). Guidance + Guiding Bolt always prepared. **Free Guiding Bolt 5/long rest** (no slot). Guiding Bolt = Action, 120 ft, **+8** (spell attack): **4d6 radiant + 1d8 Starseed** (once/turn), and the next attack vs that target before Ursa's next turn has **Advantage**. (FORGOTTEN: spend these 5 free bolts before real slots.)
+- **Star Map** (druidic focus, always in hand as backup). Guidance + Guiding Bolt always prepared. **Free Guiding Bolt 5/long rest** (no slot). Guiding Bolt = Action, 120 ft, **+10** (spell attack with the wand; +8 without): **4d6 radiant + 1d8 Starseed** (once/turn), and the next attack vs that target before Ursa's next turn has **Advantage**. (FORGOTTEN: spend these 5 free bolts before real slots.)
 - **Cosmic Omen** (level 6). **Reaction**, when a creature he can see within 30 ft is about to make a D20 Test: Weal **+1d6+2** or Woe **-1d6-2** (the flat +2 comes from Reader of Omens; the base feature is a plain 1d6). **Uses = Wis mod = 5/long rest** (base form: even roll = Weal, odd = Woe for the day; Door B removes that limit). Declare **before** the die is rolled in the base version.
   - [DM CHECK self-target: 2024 wording is ambiguous whether Ursa may target his own D20 Test; safe reading is others-only. See druid-circle-of-stars.md.]
 - **Elemental Fury = Potent Spellcasting** (level 7). **+5 (Wis) to the damage of any Druid cantrip** (Starry Wisp, Shillelagh, Thorn Whip, etc.). House rule 2 also lets it ride the kindled staff once/turn; no double-dip with a cantrip the same turn.
@@ -120,12 +120,12 @@ Added kit if Ursa walked this road.
   - **Awakened Gifts.** The pilgrimage wakes what he already carried: the **Staff becomes a +2** quarterstaff, **Starseed rises from 1d4 to 1d8**, and the **Amulet's Guiding Light reaches every ally within 30 ft**.
   - **Shared Tides.** Cosmic Omen is a **single pool = Wis mod = 5 uses/long rest**, each spent on Weal or Woe; regain all on a Long Rest. [DM CHECK: printed text omits the SRD "(minimum of once)" floor; flagged, not fixed.]
 - **Keepsake: Ash's Sigil-Stone** (**no attunement**: DM ruling 2026-08-17, a keepsake rather than a bonded relic, which frees the third slot for Lilly's wand).
-  - **Aura of Vitality** cast from the stone **without a slot, 1/long rest** (3rd-level, Concentration 1 min, Bonus Action each turn heal 2d6 to a creature within **30 ft**; the sheet says 30 and is newer, so 30 wins).
+  - **Aura of Vitality** cast from the stone **without a slot, 1/long rest**. RAW (verified dnd2024.wikidot.com/spell:aura-of-vitality, 2026-08-19): 3rd-level, **Action** to cast, Self, **Concentration up to 1 minute**, a 30-ft Emanation. It heals **2d6 to one creature in it when he creates the aura AND at the start of each of his turns**, and those ticks cost him **no action at all** (an earlier note here said Bonus Action; that was wrong). Two consequences worth playing: it **competes with Summon Fey and Moonbeam for his concentration**, and out of combat he can simply run the whole minute for about **11 ticks, roughly 70 hit points** across the party, which is the party's only real between-fight healing.
   - **2 charges, regain all at dawn.** Magic action, spend 1 charge: **Ask the Day** (one truthful yes/no about the day), **Glimpse the Trail** (reveal one rift-board space within 1 mile), or **Read the Heart** (a visible creature's mood/attitude). Mostly exploration, but Aura of Vitality is the combat piece.
 
 **Combat loop (Door B):**
 - Pre-combat: note the **two Omen Dreams** (bank a high roll to force a hit, or a low roll to sink a boss save); track the **5-use** Weal/Woe pool.
-- Turn: Action Guiding Bolt / cantrip; Bonus Action Star-Arrow, Healing Word, or an Aura of Vitality tick if concentrating on it.
+- Turn: Action Guiding Bolt / cantrip; Bonus Action Star-Arrow or Healing Word. (An Aura of Vitality tick is NOT a Bonus Action: it fires automatically at the start of his turn while he concentrates, so he still gets his full turn.)
 - Reaction: Cosmic Omen with **Read the Moment** (apply +1d6+2 / -1d6-2 after seeing the die) is the signature play; still holds Amulet Starry Glow as an alternate.
 
 ---
