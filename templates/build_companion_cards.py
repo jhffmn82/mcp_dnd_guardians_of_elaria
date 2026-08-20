@@ -22,6 +22,8 @@ ROSTER = [
     ("Sandshrew", "sandshrew_statblock",
      "*The Earth rift's companion and the roster's tank. It holds ground, takes "
      "the hit meant for a friend, and makes the dirt around it hard to cross.*"),
+    ("Piplup", "piplup_statblock",
+     "*The Water rift's companion and the roster's field medic.*"),
 ]
 
 
