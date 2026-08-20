@@ -52,6 +52,10 @@ FEY_HOUR = os.environ.get('S8_FEY_HOUR', 'carry')
 #   still be up at the Chime Reef (generous about the travel between
 #   locations); 'onefight' expires it on the road, which is the honest
 #   reading of a dungeon crawl with dot events between the landings.
+COMPANION = os.environ.get('S8_COMPANION', 'ghostbloom')
+#   Only ONE companion is out at a time (roster rule). 'ghostbloom' is the
+#   generalist; 'sandshrew' the Earth-rift tank; 'piplup' the Water-rift
+#   healer. Stat blocks from templates/build_bestiary.py.
 POLYMORPH = os.environ.get('S8_POLYMORPH', '0') == '1'
 #   Cast EARLY (below 60%), not at the brink: it is an Action on his own turn,
 #   not a Reaction, and temp HP do not revive a hero already at 0 (SRD
@@ -200,11 +204,25 @@ class State:
                             saves=dict(str=2, dex=8, con=3, int=-1, wis=2, cha=-1))
         self.ursa = Actor('Ursa', 'U', 'pc', 18, 52, (0, 0), 30, init_mod=2,
                           saves=dict(str=-1, dex=2, con=2, int=4, wis=8, cha=-1))
-        self.ghost = Actor('Ghostbloom', 'G', 'pc', 16, 62, (0, 0), 30, init_mod=4,
-                           saves=dict(str=-1, dex=8, con=8, int=1, wis=6, cha=3),
-                           resist={'necrotic', 'nm-bludgeoning', 'nm-piercing', 'nm-slashing'},
-                           vuln={'fire', 'cold'},
-                           cond_imm={'charmed', 'frightened'}, reach=15, fly=True)
+        if COMPANION == 'sandshrew':
+            self.ghost = Actor('Sandshrew', 'G', 'pc', 17, 78, (0, 0), 30, init_mod=2,
+                               saves=dict(str=7, dex=2, con=5, int=-2, wis=1, cha=0),
+                               resist={'nm-bludgeoning', 'nm-piercing', 'nm-slashing'},
+                               vuln={'cold'}, reach=5)
+        elif COMPANION == 'piplup':
+            self.ghost = Actor('Piplup', 'G', 'pc', 13, 45, (0, 0), 25, init_mod=3,
+                               saves=dict(str=-2, dex=6, con=1, int=0, wis=6, cha=2),
+                               resist={'cold'}, reach=60)
+        else:
+            self.ghost = Actor('Ghostbloom', 'G', 'pc', 16, 62, (0, 0), 30, init_mod=4,
+                               saves=dict(str=-1, dex=8, con=8, int=1, wis=6, cha=3),
+                               resist={'necrotic', 'nm-bludgeoning', 'nm-piercing', 'nm-slashing'},
+                               vuln={'fire', 'cold'},
+                               cond_imm={'charmed', 'frightened'}, reach=15, fly=True)
+        self.ghost.kind = COMPANION
+        self.heal_bubble = 5      # Piplup, 5/short rest
+        self.sea_mist = True      # Piplup, 1/day
+        self.challenged = None    # Sandshrew's Challenge target
         self.puff = Actor('Puff', 'p', 'pc', 13, 15, (0, 0), 30, init_mod=4,
                           saves=dict(str=-1, dex=4, con=3, int=2, wis=2, cha=0),
                           immune={'poison'},
@@ -395,7 +413,9 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
         # foes handle death in caller
     # Guardian's Light: reaction heal when a hero is hurt
     if tgt.side == 'pc' and total > 0 and tgt is not st.ghost and st.g_light > 0 \
-            and st.ghost.alive and not st.ghost.ape and st.ghost.dist_ft(tgt) <= 30 \
+            and st.ghost.alive and not st.ghost.ape \
+            and st.ghost.kind == 'ghostbloom' \
+            and st.ghost.dist_ft(tgt) <= 30 \
             and (tgt.down or tgt.hp < tgt.hp_max * 0.4) and st.ghost.reaction:
         st.g_light -= 1
         st.ghost.reaction = False
@@ -422,6 +442,25 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         dis = True
     if getattr(tgt, 'entangled', 0) > 0 or getattr(tgt, 'restrained', False):
         adv = True
+    # Sand Veil: attacks on Sandshrew from beyond 15 ft are at Disadvantage.
+    if (tgt is st.ghost and tgt.kind == 'sandshrew' and attacker is not None
+            and attacker.dist_ft(tgt) > 15):
+        dis = True
+    # Sandshrew's Challenge: the dared enemy swings at anyone else at Disadvantage.
+    if (attacker is st.challenged and tgt is not st.ghost
+            and st.ghost.alive and st.ghost.kind == 'sandshrew'):
+        dis = True
+    # Piplup's Water Jet: a needle of water spoils an attack on a friend.
+    if (tgt.side == 'pc' and attacker is not None and attacker.side == 'foe'
+            and st.ghost.alive and st.ghost.kind == 'piplup' and tgt is not st.ghost
+            and st.ghost.reaction and st.ghost.dist_ft(attacker) <= 30):
+        st.ghost.reaction = False
+        dis = True
+        jet = d(2, 6)
+        attacker.hp -= jet
+        st.tally['dealt']['Piplup'] += jet
+        log(f"      * Water Jet: Piplup snaps a needle of water at {attacker.name} "
+            f"({jet} damage) and the swing goes wide.")
     if attacker is not None and (getattr(attacker, 'entangled', 0) > 0
                                  or getattr(attacker, 'restrained', False)):
         dis = True
@@ -866,6 +905,105 @@ def cannon_fire(st, mode, targets=None, center=None, dis=False):
                 h.temp = max(h.temp, t_hp)
                 n += 1
         log(f"    Cannon (Protector): {t_hp} shield-points to {n} friends.")
+
+
+def companion_turn(st, targets):
+    """One companion is out at a time. Branch on which."""
+    g = st.ghost
+    if not g.alive:
+        return
+    if g.kind == 'sandshrew':
+        return sandshrew_turn(st, targets)
+    if g.kind == 'piplup':
+        return piplup_turn(st, targets)
+    return ghost_lash(st, targets)
+
+
+def sandshrew_turn(st, targets):
+    """Challenge (bonus action) then two Claws, or Earthquake on a clump."""
+    g = st.ghost
+    live = [t for t in targets if t.hp > 0]
+    if not live:
+        return
+    # Challenge the biggest threat still standing.
+    mark = max(live, key=lambda t: t.hp)
+    st.challenged = mark
+    log(f"    Sandshrew: CHALLENGE, rears up and dares {mark.name} to try it.")
+    # Earthquake when three or more are bunched and no friend is in the cube.
+    cube = [t for t in live if g.dist_ft(t) <= 20]
+    friends_in = [h for h in st.pcs if h.alive and h is not g and g.dist_ft(h) <= 20]
+    if len(cube) >= 3 and not friends_in:
+        log("    Sandshrew: EARTHQUAKE, both forefeet down and the floor splits.")
+        for t in cube[:6]:
+            roll = d(3, 6)
+            if foe_save(t, t.saves.get('dex', 0), 15):
+                dmg = deal(st, t, [(roll // 2, 'bludgeoning')], credit='Sandshrew')
+                log(f"      {t.name} rides it out: {dmg}.")
+            else:
+                dmg = deal(st, t, [(roll, 'bludgeoning')], credit='Sandshrew')
+                log(f"      {t.name} is thrown down for {dmg}.")
+            if t.hp <= 0:
+                log(f"      {t.name} is destroyed.")
+        return
+    for _ in range(2):
+        live = [t for t in targets if t.hp > 0]
+        if not live:
+            return
+        t = live[0]
+        if g.dist_ft(t) > 5:
+            g.approach(t, 5, 30)
+        if g.dist_ft(t) > 5:
+            log(f"    Sandshrew: digs forward at {t.name}.")
+            return
+        hit, crit, _ = attack_roll(st, 8, t, attacker=g)
+        if hit:
+            dmg = deal(st, t, [(d(2 if crit else 1, 10) + 5, 'slashing')],
+                       magical=False, attacker=g, credit='Sandshrew')
+            log(f"    Sandshrew: claw rakes {t.name} for {dmg}.")
+            if t.hp <= 0:
+                log(f"      {t.name} is destroyed.")
+        else:
+            log(f"    Sandshrew: claw scrapes past {t.name}.")
+
+
+def piplup_turn(st, targets):
+    """Heal Bubble (bonus action) then two Ice Beams at range."""
+    g = st.ghost
+    hurt = [h for h in (st.lilly, st.stabby, st.ursa) if h.alive
+            and (h.down or h.hp < h.hp_max * 0.6) and g.dist_ft(h) <= 30]
+    if hurt and st.heal_bubble > 0:
+        st.heal_bubble -= 1
+        t = min(hurt, key=lambda h: h.hp / h.hp_max)
+        heal = d(2, 8) + 5
+        was = t.down
+        t.hp = min(t.hp_max, t.hp + heal)
+        if t.hp > 0:
+            t.down = False
+        t.poisoned = 0
+        st.tally['healed']['Piplup'] += heal
+        log(f"    Piplup: HEAL BUBBLE drifts to {t.name} and pops: {heal} back"
+            + (" and back on their feet" if was else "")
+            + f". [{st.heal_bubble} left]")
+    live = [t for t in targets if t.hp > 0]
+    for _ in range(2):
+        live = [t for t in targets if t.hp > 0]
+        if not live:
+            return
+        t = live[0]
+        if g.dist_ft(t) > 60:
+            g.approach(t, 60, 25)
+        if g.dist_ft(t) > 60:
+            log(f"    Piplup: waddles into range of {t.name}.")
+            return
+        hit, crit, _ = attack_roll(st, 6, t, attacker=g)
+        if hit:
+            dmg = deal(st, t, [(d(4 if crit else 2, 6) + 3, 'cold')],
+                       magical=False, attacker=g, credit='Piplup')
+            log(f"    Piplup: ICE BEAM hits {t.name} for {dmg} cold; it slows.")
+            if t.hp <= 0:
+                log(f"      {t.name} is destroyed.")
+        else:
+            log(f"    Piplup: ice beam splashes past {t.name}.")
 
 
 def ghost_lash(st, targets):
@@ -1324,14 +1462,14 @@ def fight1(st):
                                      key=lambda f: (0 if f.ch == 'R' else 1,
                                                     st.fey.dist_ft(f) if st.fey else 0))
                 fey_turn(st, fey_targets)
-            elif name == 'Ghostbloom' and st.ghost.alive:
+            elif name == st.ghost.name and st.ghost.alive:
                 if GHOST_SUPPORT:
-                    log("    Ghostbloom: hangs back on triage, petals ready.")
+                    log(f"    {st.ghost.name}: hangs back on triage.")
                 else:
                     gts = sorted([f for f in foes if f.hp > 0
                                   and not getattr(f, 'hidden', False)],
                                  key=lambda f: st.ghost.dist_ft(f))
-                    ghost_lash(st, gts)
+                    companion_turn(st, gts)
             elif name == 'Mossmites':
                 if not mites_out:
                     continue
@@ -1592,14 +1730,14 @@ def fight2(st):
                     star_arrow(st, t2)
                 fey_turn(st, sorted([f for f in foes if f.hp > 0],
                                     key=lambda f: (not f.stunned, f.aloft)))
-            elif name == 'Ghostbloom' and st.ghost.alive:
+            elif name == st.ghost.name and st.ghost.alive:
                 if GHOST_SUPPORT:
-                    log("    Ghostbloom: hangs back on triage, petals ready.")
+                    log(f"    {st.ghost.name}: hangs back on triage.")
                 else:
                     gts = sorted([f for f in foes if f.hp > 0],
                                  key=lambda f: (f.aloft, not f.stunned,
                                                 st.ghost.dist_ft(f)))
-                    ghost_lash(st, gts)
+                    companion_turn(st, gts)
             elif name == 'Shardwings':
                 for wi, w in enumerate(wings):
                     if w.hp <= 0:
@@ -1715,6 +1853,7 @@ def short_rest(st):
     st.l_ward = 2
     st.u_wild = min(3, st.u_wild + 1)
     st.g_light = 3
+    st.heal_bubble = 5
     st.g_feystep = True
     st.u_starry = False
     st.conc = None
@@ -1902,7 +2041,7 @@ def fight3(st):
                         star_arrow(st, t2)
                         if t2 is not weeper and t2.hp <= 0:
                             burst(t2)
-            elif name == 'Ghostbloom' and st.ghost.alive:
+            elif name == st.ghost.name and st.ghost.alive:
                 end_polymorph(st, st.ghost)
                 if st.ghost.ape:
                     ape_turn(st, st.ghost, ([weeper] if weeper.hp > 0 else [])
@@ -1911,8 +2050,8 @@ def fight3(st):
                 live_rolls = [c for c in arrived if c.hp > 0]
                 pack = [c for c in live_rolls if st.ghost.dist_ft(c) <= 15]
                 if GHOST_SUPPORT:
-                    log("    Ghostbloom: hangs back on triage, petals ready.")
-                elif st.g_wail and len(pack) >= 2:
+                    log(f"    {st.ghost.name}: hangs back on triage.")
+                elif st.ghost.kind == 'ghostbloom' and st.g_wail and len(pack) >= 2:
                     st.g_wail = False
                     log("    Ghostbloom: GHOSTLY WAIL, a cry that cracks the glass!")
                     for c in pack[:3]:
@@ -1928,13 +2067,13 @@ def fight3(st):
                             log(f"      {c.name} cracks apart.")
                             burst(c)
                 elif live_rolls:
-                    ghost_lash(st, sorted(live_rolls,
+                    companion_turn(st, sorted(live_rolls,
                                           key=lambda c: st.ghost.dist_ft(c)))
                     for c in live_rolls:
                         if c.hp <= 0:
                             burst(c)
                 elif weeper.hp > 0:
-                    ghost_lash(st, [weeper])
+                    companion_turn(st, [weeper])
             elif name == 'Cinderolls':
                 for c in arrived:
                     if c.hp <= 0:
@@ -2228,7 +2367,7 @@ def boss(st):
                     star_arrow(st, spike, dis=True)
                 if spike.hp <= 0:
                     break
-            elif name == 'Ghostbloom' and st.ghost.alive:
+            elif name == st.ghost.name and st.ghost.alive:
                 end_polymorph(st, st.ghost)
                 if st.ghost.ape:
                     ape_turn(st, st.ghost,
@@ -2238,9 +2377,9 @@ def boss(st):
                 lings = sorted([g for g in glasslings if g.hp > 0],
                                key=lambda g: st.ghost.dist_ft(g))
                 if GHOST_SUPPORT:
-                    log("    Ghostbloom: shields the casters, petals ready.")
+                    log(f"    {st.ghost.name}: shields the casters.")
                 elif lings:
-                    ghost_lash(st, lings)
+                    companion_turn(st, lings)
                     for g in lings:
                         if g.hp <= 0 and not getattr(g, 'burst', False):
                             g.burst = True
@@ -2251,7 +2390,7 @@ def boss(st):
                                     dmg = deal(st, h, [(d(2, 4), 'slashing')])
                                     log(f"      Shatterburst catches {h.name} for {dmg}.")
                 else:
-                    log("    Ghostbloom: hovers guard over Lilly and Ursa.")
+                    log(f"    {st.ghost.name}: holds position by Lilly and Ursa.")
             elif name == 'Groudon':
                 # Re-knit (knob): the corruption closes unless the Nichirin
                 # touched it since Groudon's last turn.
@@ -2481,11 +2620,11 @@ def thumpaw_fight(st):
                 poked = True
                 if not bonus_used and st.u_starry:
                     star_arrow(st, tp)
-            elif name == 'Ghostbloom' and st.ghost.alive:
+            elif name == st.ghost.name and st.ghost.alive:
                 if GHOST_SUPPORT:
-                    log("    Ghostbloom: hangs back on triage, petals ready.")
+                    log(f"    {st.ghost.name}: hangs back on triage.")
                 else:
-                    ghost_lash(st, [tp])
+                    companion_turn(st, [tp])
             elif name == 'Thumpaw':
                 if tp.hp <= 0:
                     continue
@@ -2598,11 +2737,11 @@ def gleamoth_fight(st):
                     starry_wisp(st, t)
                 if not bonus_used and st.u_starry:
                     star_arrow(st, next((sw for sw in swarms if sw.hp > 0), None))
-            elif name == 'Ghostbloom' and st.ghost.alive:
+            elif name == st.ghost.name and st.ghost.alive:
                 if GHOST_SUPPORT:
-                    log("    Ghostbloom: hangs back on triage, petals ready.")
+                    log(f"    {st.ghost.name}: hangs back on triage.")
                 else:
-                    ghost_lash(st, [s for s in swarms if s.hp > 0])
+                    companion_turn(st, [s for s in swarms if s.hp > 0])
             elif name == 'Gleamoths':
                 for s in swarms:
                     if s.hp <= 0:
