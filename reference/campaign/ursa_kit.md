@@ -75,7 +75,7 @@ Added kit if Ursa walked this road.
   - **Wild Speech.** Simple telepathy with any summoned beast.
 - **Signature Partner stat block at spell level 4** (derive from build_compendium.py lines 533-591; spell level = 4):
   - **AC = 11 + 4 = 15.** **HP = 30 + 10x(4-2) = 50** (Noctowl **40**). Speed per partner (Arcanine 40 + climb 40; Lapras 30 + swim 40; Noctowl 20 + fly 60).
-  - **Multiattack = half spell level round down = 2 Rends.** **Rend:** +8 (Ursa's spell attack), reach 5, **1d8 + 4 + 4 = 1d8 + 8 slashing**.
+  - **Multiattack = half spell level round down = 2 Rends.** **Rend:** +8 (Ursa's spell attack), reach 5, **1d8 + 4 + 4 = 1d8 + 8 PIERCING** (the stat block says Piercing, not slashing).
   - **Arcanine:** Intimidate on appearance (enemies within 15 ft, Wis save DC 16 or -2 to attacks until end of their next turn); **Extreme Speed** (move + 1 Rend, +8 fire on hit = twice spell level). Immune Fire, Vuln Cold.
   - **Lapras:** Shell Armor (can't be crit); **Ice Beam** (replace a Rend: ranged +8, 60 ft, 1d8 + 8 cold, target Speed -10). Immune Cold, Vuln Lightning.
   - **Noctowl:** Keen Eye + Flyby; **Hypnosis (Recharge 5-6)**, one creature within 30 ft, Wis save DC 16 or Incapacitated. Immune Necrotic, Vuln Lightning.

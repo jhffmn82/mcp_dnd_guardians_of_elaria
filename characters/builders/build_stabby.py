@@ -159,6 +159,7 @@ moves=[
     ('Step of the Wind','Bonus action to Dash for free. Spend 1 Focus to also Disengage and double his jump. Super zoomy.'),
     ('Deflect Attack','Reaction: when hit by a punch/arrow/blade, lower the damage by <b>1d10+12</b>. If it hits 0, '
         'spend 1 Focus to fling it back at another enemy within 5 ft (DC 13 Dex save, 2d8+5).'),
+    ('★ Empowered Strikes <i>(from level 6)</i>','Whenever he deals damage with an <b>Unarmed Strike</b>, he chooses: <b>Force</b> damage or the normal type. Force is resisted by almost nothing, so his fists get through things his katana cannot. <i>(This is his own, not the wraps.)</i>'),
     ('Evasion <i>(new at 7!)</i>','When something lets him make a Dex save for half damage, he takes '
         '<b>no damage</b> if he saves and only half if he fails.'),
     ('Slow Fall / Metabolism','Slow Fall: reaction to take <b>35</b> less falling damage. Uncanny Metabolism: '
@@ -199,7 +200,7 @@ GN='<b><font color="%s">%%s</font></b>' % RED_HEX   # gear names: accent bold
 gear=[
     ('Nichirin Katana <i>(new! the demon-slayer&rsquo;s blade)</i>','Sun-forged crimson steel, <b>+2</b> to hit and damage, and it counts as a Monk weapon. <b>Breath-Kindled Steel:</b> it glows blood-red when he ignites. <b>Cleansing Edge:</b> once a turn, when he hits a fiend, undead, shadow thing or anything twisted by planar corruption, that creature <b>cannot heal</b> and cannot hide from him in darkness until his next turn. <b>Attuned.</b>'),
     ('Candyfang Katana +1 <i>(kept, not carried)</i>','His old candy-striped blade, an heirloom on his belt now that the Nichirin has the job. Not attuned, so no cold rider and no Sugar Rush.'),
-    ('Wraps of Unarmed Power +2<br/><i>(new! Lilly made these for him)</i>','Cloth hand-wraps she spent the year building, stitched with her own sigils. His <b>fists and feet</b> now hit at <b>+2 to hit and +2 damage</b>, and he can make them deal <b>Force</b> instead of bludgeoning, which almost nothing resists. <b>No attunement.</b> <i>(They do nothing for the katana: this is a punching gift.)</i>'),
+    ('Wraps of Unarmed Power +2<br/><i>(new! Lilly made these for him)</i>','Cloth hand-wraps she spent the year building, stitched with her own sigils. His <b>fists and feet</b> now hit at <b>+2 to hit and +2 damage</b>. <b>No attunement.</b> <i>(The Force option on his punches is Empowered Strikes, a class feature he already has; the wraps are the +2.)</i> <i>(They do nothing for the katana: this is a punching gift.)</i>'),
     ('Repeating Longbow +1','A magic bow that makes its own arrows, never runs out. +1 to hit and damage. <i>Lilly built this one for him too, back at level 5.</i>'),
     ('Sash of the Swift Current (★ Elaria’s gift)','Scarlet stage-silk from the Wraithpine chest. +1 AC, +10 speed, plus Air Dance (fly for 1 minute, 1/day) and Feather Fall (1/day). Attuned.'),
     ('Explorer’s Pack','Backpack, bedroll, rope, torches, rations (the usual adventuring kit).'),
