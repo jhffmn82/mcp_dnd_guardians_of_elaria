@@ -160,3 +160,14 @@ Relevant 2024 RAW notes (recorded so the sim never regresses):
 - **Door C: Wildheart Token** (partner drops to 1 HP not 0, 1/dawn).
 - **Door A: Warden's Intercession** (Reaction, soak 1d8+5 for an ally in the light) and the +1d6 radiant staff rider.
 - **Door B: Omen Dreams** (two pre-rolled d20s banked from the morning) and Ash's Sigil-Stone Aura of Vitality (free 1/long rest).
+
+## Conjure Animals (DM 2026-08-21: his damage go-to)
+
+- **3rd level, Action, 60 ft, Concentration 10 min.** SRD 5.2 verified (`reference/srd/10_spells_intro_and_a-c.md:1117`).
+- A Large spectral pack appears in an unoccupied space. **When Ursa moves on his turn he may move the pack up to 30 ft**, and that costs no action or bonus action.
+- **Trigger, twice over:** whenever the pack moves within 10 ft of a creature he can see, AND whenever a creature he can see enters a space within 10 ft of it or ends its turn there, he may force a **Dex save vs DC 16**. Fail = **3d10 slashing**, no damage on a success. **Once per creature per turn.**
+- Upcast: +1d10 per slot level. His 4th-level slot makes it 4d10.
+- He also has **Advantage on Strength saves** while within 5 ft of the pack.
+- **Starseed does NOT ride it**: the staff's rider is radiant-only, and this is slashing.
+- **CONCENTRATION**: this competes directly with Summon Beast and Summon Fey. A sim must never run the pack and a summon at the same time. The expected play is pack + Starry Form (Archer), since Starry Form is not concentration.
+- Replaced **Thunderwave** on his prepared list; upcast Guiding Bolt covers that job at 120 ft.

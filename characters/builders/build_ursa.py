@@ -152,11 +152,11 @@ story.append(Paragraph('Purple = trained. Best: Animal Handling, Perception & Su
 story.append(Paragraph("What Ursa Does in a Fight", h2_st))
 atk = [
     ['Attack','To Hit','Damage'],
-    ['Staff of Waking Constellations (+2), unlit','+4','1d6+1 bludgeoning (1d8+1 two-handed). See Shillelagh!'],
     ['Staff + Shillelagh (ignited)','+10','1d10+7 (+5 Potent, once a turn); bonus action to light, 1 min'],
     ['Guiding Bolt (1st, from Staff or Star Map)','+10','4d6 radiant + 1d8 (Starseed); next hit on it has advantage'],
     ['Star-Arrow (Starry Form: Archer)','+10','1d8+5 radiant, one enemy within 60 ft (bonus action)'],
     ['Starry Wisp (cantrip)','+10','2d8 + 5 radiant + 1d8 (Starseed); lights up the target (60 ft)'],
+    ['<b>Conjure Animals</b> (the pack)','<i>DC 16 Dex</i>','<b>3d10</b> per enemy it reaches; moves 30 ft free when he moves'],
 ]
 atk_data = [[Paragraph(c, cellb_st if i==0 else cell_st) for c in row]
             for i,row in enumerate(atk)]
@@ -230,9 +230,9 @@ def _glance(lbl, boxes, names):
     return [Paragraph(f'<b>{lbl}</b>&nbsp; {box}', gl_st), Paragraph(names, gl_st)]
 glance = [
     _glance('Cantrips', 0, 'Shillelagh, Starry Wisp, Guidance, Druidcraft'),
-    _glance('1st', 4, 'Healing Word, Entangle, Thunderwave'),
+    _glance('1st', 4, 'Healing Word, Entangle'),
     _glance('2nd', 3, 'Summon Beast, Spike Growth, Lesser Restoration'),
-    _glance('3rd', 3, 'Summon Fey, Plant Growth, Revivify'),
+    _glance('3rd', 3, 'Conjure Animals, Summon Fey, Plant Growth, Revivify'),
     _glance('4th', 1, 'Polymorph, Ice Storm'),
     _glance('free', 0, 'Guiding Bolt &amp; Guidance (Star Map) &bull; Animal Friendship &amp; Speak with Animals (his Mark) &bull; Faerie Fire &amp; Moonbeam (Staff charges)'),
 ]
@@ -357,17 +357,16 @@ cards = [
         '1st • Action • 60 ft • Concentration, 1 min',
         'Foes in a 20-ft cube make a <b>Dex save DC 16</b>; on a fail they’re outlined in light. '
         'Attacks vs them have <b>advantage</b>, and they <b>can’t hide/be invisible</b>.'),
-    spell_card('Thunderwave',
-        '1st • Action • Self (15-ft cube) • Instant',
-        'Everything in a 15-ft cube makes a <b>Con save DC 16</b>: <b>2d8 thunder</b> and shoved 10 ft away on a fail, '
-        'half and no shove on a success. His get-off-me button.'),
+    spell_card('Conjure Animals &nbsp;<i>(his big damage spell)</i>',
+        '3rd • Action • 60 ft • Concentration, 10 min',
+        'A <b>ghost-pack</b> that <b>moves 30 ft free whenever he moves</b> (no action). Any enemy it sweeps within <b>10 ft</b> of, or that ends its turn there: <b>Dex save DC 16</b> or <b>3d10</b>, once each per turn. <b>4th slot: 4d10.</b> <i>The pack OR a summon.</i>'),
     spell_card('Healing Word',
         '1st • Bonus Action • 60 ft • Instant',
         'Heal one creature you can see <b>2d4+5</b> HP, as a <b>bonus action</b>, so he can still '
         'cast or attack the same turn. Best for popping a downed friend back up from range.'),
     spell_card('Entangle',
         '1st • Action • 90 ft • Concentration, 1 min',
-        'Grasping plants fill a <b>20-ft square</b>: <b>difficult terrain</b>, and everyone caught inside makes a <b>Str save DC 16</b> or is <b>restrained</b>. A restrained creature can spend its whole action on a <b>Str (Athletics) check DC 16</b> to tear free. Cheap, and it stops a charge cold.'),
+        'Grasping plants fill a <b>20-ft square</b>: <b>difficult terrain</b>, and everyone inside makes a <b>Str save DC 16</b> or is <b>restrained</b> (whole action + <b>DC 16 Athletics</b> to tear free). Cheap, and it stops a charge cold.'),
     spell_card('Speak with Animals &nbsp;<i>(free: his Mark)</i>',
         '1st • Ritual • Action • Self • 10 min',
         'Talk with beasts for 10 min: they can describe nearby places, monsters, and what they saw '
@@ -382,11 +381,11 @@ cards = [
         '<b>2d10 radiant + 1d8</b> (Starseed) on a fail, half on a success. <b>Move it 60 ft</b> each turn as part of the spell.'),
     spell_card('Plant Growth',
         '3rd • Action • 150 ft • Instant',
-        'Every plant in a <b>100-ft radius</b> erupts into thick overgrowth: any creature moving through it spends <b>4 ft of movement for every 1 ft</b> it travels. <b>No save, no concentration</b>, and he can <b>leave clear lanes</b> anywhere he likes, so his friends walk while everything else wades. Needs real plants to work on.'),
+        'Every plant in a <b>100-ft radius</b> erupts: anything moving through spends <b>4 ft of movement per 1 ft</b>. <b>No save, no concentration</b>, and he can <b>leave clear lanes</b>, so his friends walk while everything else wades. Needs real plants.'),
     spell_card('Spike Growth',
         '2nd • Action • 150 ft • Concentration, 10 min',
-        'A 20-ft circle of ground sprouts hidden thorns: <b>difficult terrain</b>, and <b>2d4 piercing for every 5 ft</b> '
-        'a creature moves through it. It looks like ordinary ground until someone is bleeding. Drop it between himself '
+        'A 20-ft circle sprouts hidden thorns: <b>difficult terrain</b>, and <b>2d4 piercing per 5 ft</b> '
+        'moved through it. It looks like ordinary ground until someone is bleeding. Drop it between himself '
         'and whatever is charging: they either wade through it or go the long way round.'),
     spell_card('Lesser Restoration',
         '2nd • Bonus Action • Touch • Instant',
@@ -397,19 +396,15 @@ cards = [
         'Calls the <b>Bestial Spirit</b> (full stats on page 1). It acts right after Ursa on his initiative and '
         'obeys his commands for free. His go-to summon, a sturdy front-line ally that lasts a whole hour.'),
     spell_card('Ice Storm',
-        '4th • Action • 300 ft • Instant &nbsp;<b>(no concentration!)</b>',
-        'Hail hammers a <b>20-ft-wide</b> patch of ground from far away. Everything caught in it makes a '
-        '<b>Dex save DC 16</b>: <b>2d10 bludgeoning + 4d6 cold</b> on a fail, half on a success. The ground stays '
-        '<b>difficult terrain</b> until the end of his next turn. <b>His big blast that does not touch his '
-        'concentration</b>, so he can throw it while a summon is still out.'),
+        '4th • Action • 300 ft • Instant <i>(no concentration!)</i>',
+        'A <b>20-ft-wide</b> hail patch from far away: <b>Dex save DC 16</b> for <b>2d10 bludgeoning + 4d6 cold</b>, half on a success, and the ground stays <b>difficult terrain</b>. <b>His big blast that leaves his concentration free.</b>'),
     spell_card('Revivify',
         '3rd • Action • Touch • Instant &nbsp;(300 gp diamond)',
         'Touch a friend who died <b>within the last minute</b> and bring them back with <b>1 HP</b>. '
         'The single most important spell he owns. Keep the diamond.'),
     spell_card('Polymorph',
         '4th • Action • 60 ft • Concentration, 1 hr',
-        'Turn a creature into a <b>beast</b>. <b>On a foe:</b> Wis save DC 16 or it becomes a harmless animal, unable to '
-        'speak or cast. <b>On a friend:</b> they turn huge and gain <b>temp HP equal to the beast’s whole HP</b>.'),
+        'Turn a creature into a <b>beast</b>. <b>Foe:</b> Wis save DC 16 or it becomes a harmless animal. <b>Friend:</b> huge, with <b>temp HP equal to the beast’s whole HP</b>.'),
     spell_card('Summon Fey',
         '3rd • Action • 90 ft • Concentration, 1 hr',
         'Calls the <b>Fey Spirit</b> (full stats on page 1). Faster and hits harder than the beast, with a mood power '
