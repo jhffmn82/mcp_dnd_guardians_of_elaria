@@ -169,5 +169,6 @@ Relevant 2024 RAW notes (recorded so the sim never regresses):
 - Upcast: +1d10 per slot level. His 4th-level slot makes it 4d10.
 - He also has **Advantage on Strength saves** while within 5 ft of the pack.
 - **Starseed does NOT ride it**: the staff's rider is radiant-only, and this is slashing.
+- **It is BLANK against the Session 8 boss objective.** The Spike is immune to slashing (it is immune to everything except radiant and force), so the pack does nothing to it. Groudon itself is a fair target; the Spike is not. On that fight his damage is Guiding Bolt and Starry Wisp, and his concentration is better spent on Polymorph.
 - **CONCENTRATION**: this competes directly with Summon Beast and Summon Fey. A sim must never run the pack and a summon at the same time. The expected play is pack + Starry Form (Archer), since Starry Form is not concentration.
 - Replaced **Thunderwave** on his prepared list; upcast Guiding Bolt covers that job at 120 ft.

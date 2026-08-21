@@ -156,7 +156,7 @@ atk = [
     ['Guiding Bolt (1st, from Staff or Star Map)','+10','4d6 radiant + 1d8 (Starseed); next hit on it has advantage'],
     ['Star-Arrow (Starry Form: Archer)','+10','1d8+5 radiant, one enemy within 60 ft (bonus action)'],
     ['Starry Wisp (cantrip)','+10','2d8 + 5 radiant + 1d8 (Starseed); lights up the target (60 ft)'],
-    ['<b>Conjure Animals</b> (the pack)','<i>DC 16 Dex</i>','<b>3d10</b> per enemy it reaches; moves 30 ft free when he moves'],
+    ['<b>Conjure Animals</b> (the pack)','<i>DC 16 Dex</i>','<b>3d10 slashing</b> per enemy it reaches; moves 30 ft free when he moves'],
 ]
 atk_data = [[Paragraph(c, cellb_st if i==0 else cell_st) for c in row]
             for i,row in enumerate(atk)]
@@ -359,7 +359,7 @@ cards = [
         'Attacks vs them have <b>advantage</b>, and they <b>can’t hide/be invisible</b>.'),
     spell_card('Conjure Animals &nbsp;<i>(his big damage spell)</i>',
         '3rd • Action • 60 ft • Concentration, 10 min',
-        'A <b>ghost-pack</b> that <b>moves 30 ft free whenever he moves</b> (no action). Any enemy it sweeps within <b>10 ft</b> of, or that ends its turn there: <b>Dex save DC 16</b> or <b>3d10</b>, once each per turn. <b>4th slot: 4d10.</b> <i>The pack OR a summon.</i>'),
+        'A <b>ghost-pack</b> that <b>moves 30 ft free whenever he moves</b> (no action). Any enemy it sweeps within <b>10 ft</b> of, or that <b>enters</b> or ends its turn there: <b>Dex save DC 16</b> or <b>3d10 slashing</b>, once each per turn. <b>4th slot: 4d10.</b> <i>The pack OR a summon.</i>'),
     spell_card('Healing Word',
         '1st • Bonus Action • 60 ft • Instant',
         'Heal one creature you can see <b>2d4+5</b> HP, as a <b>bonus action</b>, so he can still '
