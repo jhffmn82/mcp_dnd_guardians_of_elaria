@@ -286,7 +286,6 @@ class State:
         self.big_used = False     # each candidate's one showy 1/day
         self.blessing = None      # Togekiss
         self.rage = 0             # Chimchar's Blaze
-        self.wheel_ready = True   # Chimchar's Fire Wheel recharge
         self.burn_watch = []      # Growlithe's Burning targets
         self.puff = Actor('Puff', 'p', 'pc', 13, 15, (0, 0), 30, init_mod=4,
                           saves=dict(str=-1, dex=4, con=3, int=2, wis=2, cha=0),
@@ -470,14 +469,13 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
             attacker.hp -= burn
             st.tally['dealt']['Magmar'] += burn
             log(f"      * Flare: {attacker.name} takes {burn} fire for the trouble.")
-        elif k == 'togekiss':        # CHARM
+        elif k == 'togekiss':        # CHARM (bespoke: not the Charmed condition)
             tgt.reaction = False
-            if 'charmed' not in attacker.cond_imm and not foe_save(
-                    attacker, attacker.saves.get('wis', 0), 15):
-                attacker.fright = 2
+            if not foe_save(attacker, attacker.saves.get('wis', 0), 15):
+                attacker.fright = 2      # sim: pure Disadvantage on its attacks
                 st.tally['prevented']['Togekiss (charm)'] += 1
                 log(f"      * Charm: {attacker.name} cannot bring itself to "
-                    "look straight at it.")
+                    "swing properly at it.")
         elif k == 'pidgeot':         # SIDESTEP, it is never quite where you swung
             tgt.reaction = False
             cut = min(total, 6)
@@ -797,13 +795,14 @@ def end_polymorph(st, h):
 # Sandshrew's Challenge rate) and lose on damage. Every card carries the same
 # boilerplate as the built three: two traits, an Action, a Bonus Action, a
 # Reaction, and one showy 1/day.
-AIR_DIE = tuple(int(x) for x in os.environ.get('S8_AIR_DIE', '2,8,4').split(','))
+AIR_DIE = tuple(int(x) for x in os.environ.get('S8_AIR_DIE', '2,10,4').split(','))
 AIR_BLESS = os.environ.get('S8_AIR_BLESS', '1') == '1'
 AIR_MODE = os.environ.get('S8_AIR_MODE', 'carry')   # spread | carry
-FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '3,6').split(','))
-FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '2'))
+FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '2,6').split(','))
+FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '1'))
 FIRE_RADIUS = int(os.environ.get('S8_FIRE_RADIUS', '20'))
-AIR_RAD = tuple(int(x) for x in os.environ.get('S8_AIR_RAD', '1,6').split(','))
+FIRE_SHROUD = os.environ.get('S8_FIRE_SHROUD', 'dodge')  # temp | dodge | off
+FIRE_GATE = os.environ.get('S8_FIRE_GATE', '1') == '1'   # only while Blaze is lit
 
 CANDIDATES = {
     # ---- FIRE: three different ways to be the striker ----
@@ -1247,18 +1246,28 @@ def candidate_turn(st, targets):
         if _blast(st, g, live, 40, (5, 6), 15, 'dex', 'fire',
                   "FLARE BLITZ. It takes a run-up and becomes a comet."):
             return
-        # ACTION: two claws. It is not here to duel Stabby.
+        # ACTION (Multiattack): ONE claw and ONE Fire Wheel, two claws once
+        # Blaze is lit. The wheel is the routine now, not a cooldown: this is
+        # the lane, and it is not here to duel Stabby.
         _melee_routine(st, g, targets, FIRE_SWINGS + (1 if st.rage else 0), 8,
                        (1, 10), 5, 'fire', 'ember claw', adv=bool(st.rage))
-        # BONUS ACTION: FIRE WHEEL, a 15-ft emanation on ITSELF. This is the
-        # lane: it wants to be standing in the middle of the crowd, which is
-        # exactly where Stabby does not want to be.
-        if not st.wheel_ready:                 # true Recharge 5-6
-            st.wheel_ready = d(1, 6) >= 5
-            return
+        # BONUS ACTION: EMBER SHROUD. It has to stand in the middle of the
+        # crowd to use the wheel at all, so the bonus action pays for that.
+        if FIRE_GATE and not st.rage:
+            pass                                # Ember Shroud needs Blaze lit
+        elif FIRE_SHROUD == 'temp':
+            shroud = d(2, 6) + 3 + (d(1, 6) if st.rage else 0)
+            if shroud > g.temp:
+                g.temp = shroud
+                st.tally['prevented']['Chimchar (ember shroud)'] += shroud
+                log(f"    Chimchar: EMBER SHROUD, it pulls the fire in close "
+                    f"({shroud} temporary hit points).")
+        elif FIRE_SHROUD == 'dodge':
+            g.dodging = True
+            log("    Chimchar: EMBER SHROUD, the air around it boils and nothing "
+                "can quite see where it is.")
         near = [t for t in live if t.hp > 0 and g.dist_ft(t) <= FIRE_RADIUS]
         if near:
-            st.wheel_ready = False
             _n, _f = FIRE_WHEEL
             log(f"    Chimchar: FIRE WHEEL, it tucks and spins burning through "
                 f"{len(near)} of them.")
@@ -1381,7 +1390,7 @@ def candidate_turn(st, targets):
                 t_.entangled = 2      # drowsy: it loses the turn, not just the aim
                 t_.reaction = False
                 st_.tally['prevented']['Togekiss (flinch)'] += 1
-                return " It flinches, and the moment is gone."
+                return " It is DAZZLED, and the moment is gone."
             return ''
         _n, _f, _fl = AIR_DIE
         for _i, t in enumerate(live[:2]):
@@ -1390,13 +1399,12 @@ def candidate_turn(st, targets):
             if g.dist_ft(t) > 60:
                 continue
             if _i == 0 or AIR_MODE == 'spread':
-                _swing(st, g, t, 8, (_n, _f), _fl, 'force', 'air slash',
-                       rider=disable,
-                       extra=(AIR_RAD[0], AIR_RAD[1], 'radiant'))
+                _swing(st, g, t, 8, (_n, _f), _fl, 'radiant',
+                       'dazzling gleam', rider=disable)
             else:
                 # 'carry': the song reaches a second ear but does no damage.
                 msg = disable(st, g, t)
-                log(f"    Togekiss: the shockwave carries on to {t.name}.{msg}")
+                log(f"    Togekiss: the light washes on over {t.name}.{msg}")
         # BONUS ACTION: the buff half of the lane, ported off Togekiss.
         if AIR_BLESS:
             cands = [h for h in (st.stabby, st.lilly, st.ursa)
