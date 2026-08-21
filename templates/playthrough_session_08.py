@@ -104,6 +104,7 @@ POLYMORPH = os.environ.get('S8_POLYMORPH', '0') == '1'
 #   Fists at +9 for 3d10+6). The target gains Temporary Hit Points equal to
 #   the beast's hit points, its stat block REPLACES theirs, and it cannot
 #   speak or cast spells (SRD 12_spells_i-p.md:995-1020). Concentration.
+PACK_TRIG = os.environ.get('S8_PACK_TRIG', 'both')   # move | both
 URSA_LINE = os.environ.get('S8_URSA_LINE', 'control')
 #   'control' = the tuned line (Plant Growth, Entangle, Moonbeam, Ice Storm).
 #   'summon3' / 'summon4' = summon the Fey Spirit on turn 1 and then do
@@ -313,6 +314,8 @@ class State:
         self.s_airdance = True
         # Ursa
         self.u_slots = {1: 4, 2: 3, 3: 3, 4: 1}
+        self.pack = None          # Conjure Animals: position, or None
+        self.pack_lvl = 3
         self.u_wild = 3
         self.u_gbolt = 5          # Star Map free Guiding Bolts
         self.u_staff = 5          # staff charges (GB 1 each)
@@ -1690,6 +1693,8 @@ def ursa_conc_check(st, dmg):
         return
     if st.conc:
         log(f"      * Ursa loses concentration (DC {dc}): {st.conc} winks out!")
+        if st.conc == 'the Conjure Animals':
+            st.pack = None
         st.conc = None
     elif st.fey is not None:
         log(f"      * Ursa loses concentration (DC {dc}): the fey spirit fades!")
@@ -1698,10 +1703,95 @@ def ursa_conc_check(st, dmg):
         st.fey = None
 
 
+def conjure_animals(st, pos):
+    """SRD 5.2.1: Action, 3rd level, Concentration 10 min. A Large pack of
+    spectral animals. It is an EFFECT, not a creature: nothing can attack it,
+    and only a lost concentration check ends it."""
+    lvl = 4 if (URSA_LINE == 'pack4' and st.u_slots[4] > 0) else 3
+    if st.u_slots[lvl] <= 0:
+        lvl = 3
+        if st.u_slots[3] <= 0:
+            return False
+    st.u_slots[lvl] -= 1
+    st.pack = list(pos)
+    st.pack_lvl = lvl
+    st.conc = 'the Conjure Animals'
+    log(f"    Ursa: CONJURE ANIMALS at {lvl}th level, a Large pack of spectral "
+        f"wolves boils up out of nothing ({lvl + 0}d10 on a failed DC 16 Dex). "
+        f"[slots {st.u_slots[1]}/{st.u_slots[2]}/{st.u_slots[3]}/{st.u_slots[4]}]")
+    return True
+
+
+def pack_tick(st, targets):
+    """Free with Ursa's move: shove the pack up to 30 ft onto the biggest
+    cluster, then every creature within 10 ft saves. Once per turn each."""
+    if st.pack is None or st.conc != 'the Conjure Animals':
+        return
+    live = [t for t in targets if t.hp > 0]
+    if not live:
+        return
+
+    def bite(pool, why):
+        dice = 3 if st.pack_lvl == 3 else 4
+        pool = [t for t in pool if t.hp > 0]
+        if not pool:
+            return
+        log(f"    Ursa: the pack {why} {len(pool)} of them.")
+        for t in pool[:6]:
+            roll = d(dice, 10)
+            if foe_save(t, t.saves.get('dex', 0), 16):
+                log(f"      {t.name} throws itself clear.")
+                continue
+            dmg = deal(st, t, [(roll, 'slashing')], magical=True, credit='Ursa')
+            log(f"      {t.name} takes {dmg}.")
+            if t.hp <= 0:
+                log(f"      {t.name} is destroyed.")
+
+    # TRIGGER 1 (RAW): creatures that ENDED THEIR TURN within 10 ft of the pack.
+    # Resolved here for timing convenience; it is a different turn from Ursa's,
+    # so the once-per-turn cap does not merge it with the move trigger below.
+    if PACK_TRIG == 'both':
+        bite([t for t in live
+              if max(abs(t.pos[0] - st.pack[0]),
+                     abs(t.pos[1] - st.pack[1])) <= 2], 'closes over')
+        live = [t for t in live if t.hp > 0]
+        if not live:
+            return
+    # best space within 30 ft of the pack, scored by bodies caught within 10 ft
+    best, best_n = None, 0
+    for t in live:
+        cand = list(t.pos)
+        if max(abs(cand[0] - st.pack[0]), abs(cand[1] - st.pack[1])) > 6:
+            continue
+        n = sum(1 for x in live
+                if max(abs(x.pos[0] - cand[0]), abs(x.pos[1] - cand[1])) <= 2)
+        if n > best_n:
+            best, best_n = cand, n
+    if best is not None:
+        st.pack = best
+    caught = [t for t in live
+              if max(abs(t.pos[0] - st.pack[0]), abs(t.pos[1] - st.pack[1])) <= 2]
+    bite(caught, 'surges through')
+
+
 def ursa_damage_line(st, targets, bonus_used):
     """The simple line: keep the summon up, then Guiding Bolt while the free
     Star Map casts last, then Starry Wisp forever."""
     live = [t for t in targets if t.hp > 0]
+    if URSA_LINE in ('pack', 'pack4'):
+        if st.pack is None and st.u_slots[3] > 0:
+            conjure_animals(st, tuple(live[0].pos) if live else tuple(st.ursa.pos))
+        else:
+            pack_tick(st, targets)
+            if live:
+                if st.u_gbolt > 0 or st.u_staff > 0:
+                    guiding_bolt(st, live[0])
+                else:
+                    starry_wisp(st, live[0])
+        if not bonus_used and st.u_starry and live:
+            star_arrow(st, live[0])
+            bonus_used = True
+        return bonus_used
     if (st.fey is None or st.fey.hp <= 0) and st.u_slots[3] > 0:
         summon_fey(st, pos=tuple(st.ursa.pos))
     elif live:
@@ -3491,6 +3581,7 @@ def aura_of_vitality_walk(st, last_chance=False):
 def revive_between(st):
     """Post-fight triage on the road: nobody walks on at 0."""
     st.conc = None      # a 1-minute spell does not survive the walk
+    st.pack = None
     for _h in st.pcs:
         _h.restrained = False
     st.u_starry = False  # Starry Form runs 10 minutes, not all day
