@@ -806,7 +806,7 @@ AIR_DIE = tuple(int(x) for x in os.environ.get('S8_AIR_DIE', '2,6,2').split(',')
 AIR_BLESS = os.environ.get('S8_AIR_BLESS', '1') == '1'
 AIR_RIDER = os.environ.get('S8_AIR_RIDER', 'blind')   # stun | blind
 AIR_DC = int(os.environ.get('S8_AIR_DC', '15'))
-AIR_RIDER_N = int(os.environ.get('S8_AIR_RIDER_N', '1'))
+AIR_RIDER_N = int(os.environ.get('S8_AIR_RIDER_N', '2'))
 AIR_SING = int(os.environ.get('S8_AIR_SING', '3'))
 FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '2,6').split(','))
 FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '1'))
@@ -1426,7 +1426,7 @@ def candidate_turn(st, targets):
             t_.reaction = False
             return " It is STUNNED, and the moment is gone."
         _n, _f, _fl = AIR_DIE
-        # MULTIATTACK: two gleams. Only the FIRST carries the rider.
+        # MULTIATTACK: two gleams, and BOTH carry the rider (DM).
         for _i, t in enumerate(live[:2]):
             if g.dist_ft(t) > 60:
                 g.approach(t, 60, g.speed)
