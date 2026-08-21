@@ -196,6 +196,7 @@ class Actor:
         self.reaction = True
         self.dodging = False      # Patient Defense: attackers at disadvantage
         self.entangled = 0        # restrained (Entangle) for N of its turns
+        self.blinded = 0          # Blinded for N rounds
         self.slowed = 0           # Ice Beam -20 ft / Earthquake rubble
         self.cleanse_types = {'radiant', 'force'}   # per its own statblock
         self.restrained = False   # Roots Erupt / Entangle
@@ -284,7 +285,8 @@ class State:
         self.mist_rounds = 0      # Piplup's Sea Mist
         self.mist_centre = (0, 0)
         self.big_used = False     # each candidate's one showy 1/day
-        self.blessing = None      # Togekiss
+        self.blessing = None
+        self.blind_watch = []      # Togekiss
         self.rage = 0             # Chimchar's Blaze
         self.burn_watch = []      # Growlithe's Burning targets
         self.puff = Actor('Puff', 'p', 'pc', 13, 15, (0, 0), 30, init_mod=4,
@@ -596,6 +598,8 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         dis = True
     if getattr(tgt, 'entangled', 0) > 0 or getattr(tgt, 'restrained', False):
         adv = True
+    if getattr(tgt, 'blinded', 0) > 0:
+        adv = True
     if getattr(attacker, 'smoked', 0):
         attacker.smoked = 0
         dis = True
@@ -636,6 +640,8 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
                 f"{attacker.name} ({jet} damage) and the swing goes wide.")
     if attacker is not None and (getattr(attacker, 'entangled', 0) > 0
                                  or getattr(attacker, 'restrained', False)):
+        dis = True
+    if attacker is not None and getattr(attacker, 'blinded', 0) > 0:
         dis = True
     if tgt.prone and attacker is not None and attacker.dist_ft(tgt) <= 5:
         adv = True
@@ -795,9 +801,11 @@ def end_polymorph(st, h):
 # Sandshrew's Challenge rate) and lose on damage. Every card carries the same
 # boilerplate as the built three: two traits, an Action, a Bonus Action, a
 # Reaction, and one showy 1/day.
-AIR_DIE = tuple(int(x) for x in os.environ.get('S8_AIR_DIE', '2,10,4').split(','))
+AIR_DIE = tuple(int(x) for x in os.environ.get('S8_AIR_DIE', '2,6,2').split(','))
 AIR_BLESS = os.environ.get('S8_AIR_BLESS', '1') == '1'
-AIR_MODE = os.environ.get('S8_AIR_MODE', 'carry')   # spread | carry
+AIR_RIDER = os.environ.get('S8_AIR_RIDER', 'blind')   # stun | blind
+AIR_DC = int(os.environ.get('S8_AIR_DC', '15'))
+AIR_RIDER_N = int(os.environ.get('S8_AIR_RIDER_N', '2'))
 FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '2,6').split(','))
 FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '1'))
 FIRE_RADIUS = int(os.environ.get('S8_FIRE_RADIUS', '20'))
@@ -975,6 +983,9 @@ def start_round(st, rnd):
     for _h in st.pcs:
         _h.blessed_ac = 0
     st.blessing = None
+    for _f in getattr(st, 'blind_watch', []):
+        if getattr(_f, 'blinded', 0) > 0:
+            _f.blinded -= 1
     aura_tick(st)
 
 
@@ -1386,25 +1397,27 @@ def candidate_turn(st, targets):
             return
 
         def disable(st_, g_, t_):
-            if not foe_save(t_, t_.saves.get('wis', 0), 15):
-                t_.entangled = 2      # drowsy: it loses the turn, not just the aim
-                t_.reaction = False
-                st_.tally['prevented']['Togekiss (flinch)'] += 1
-                return " It is DAZZLED, and the moment is gone."
+            if foe_save(t_, t_.saves.get('wis', 0), AIR_DC):
+                return ''
+            st_.tally['prevented']['Togekiss (rider)'] += 1
+            if AIR_RIDER == 'blind':
+                t_.blinded = 2
+                if t_ not in st_.blind_watch:
+                    st_.blind_watch.append(t_)
+                return " Its eyes are FULL OF LIGHT and it cannot see."
+            t_.entangled = 2          # stun: it loses the turn outright
+            t_.reaction = False
+            return " It is STUNNED, and the moment is gone."
             return ''
         _n, _f, _fl = AIR_DIE
+        # MULTIATTACK: two gleams. Only the FIRST carries the rider.
         for _i, t in enumerate(live[:2]):
             if g.dist_ft(t) > 60:
                 g.approach(t, 60, g.speed)
             if g.dist_ft(t) > 60:
                 continue
-            if _i == 0 or AIR_MODE == 'spread':
-                _swing(st, g, t, 8, (_n, _f), _fl, 'radiant',
-                       'dazzling gleam', rider=disable)
-            else:
-                # 'carry': the song reaches a second ear but does no damage.
-                msg = disable(st, g, t)
-                log(f"    Togekiss: the light washes on over {t.name}.{msg}")
+            _swing(st, g, t, 8, (_n, _f), _fl, 'radiant', 'dazzling gleam',
+                   rider=(disable if _i < AIR_RIDER_N else None))
         # BONUS ACTION: the buff half of the lane, ported off Togekiss.
         if AIR_BLESS:
             cands = [h for h in (st.stabby, st.lilly, st.ursa)
