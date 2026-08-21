@@ -809,10 +809,11 @@ AIR_DC = int(os.environ.get('S8_AIR_DC', '15'))
 AIR_RIDER_N = int(os.environ.get('S8_AIR_RIDER_N', '2'))
 AIR_SING = int(os.environ.get('S8_AIR_SING', '3'))
 FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '2,6').split(','))
-FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '1'))
+FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '2'))
 FIRE_RADIUS = int(os.environ.get('S8_FIRE_RADIUS', '20'))
 FIRE_BLITZ = os.environ.get('S8_FIRE_BLITZ', '1') == '1'
 FIRE_BLAZE_AT = float(os.environ.get('S8_FIRE_BLAZE_AT', '0.5'))
+FIRE_BLITZ_DICE = int(os.environ.get('S8_FIRE_BLITZ_DICE', '5'))
 FIRE_SHROUD = os.environ.get('S8_FIRE_SHROUD', 'dodge')  # temp | dodge | off
 FIRE_GATE = os.environ.get('S8_FIRE_GATE', '1') == '1'   # only while Blaze is lit
 
@@ -1199,7 +1200,7 @@ def _swing(st, g, t, bonus, dice, flat, dtype, label, adv=False, rider=None,
         en, ef, et = extra
         parts.append((d(en * (2 if crit else 1), ef), et))
     if st.rage and g.kind == 'chimchar':
-        parts.append((d(1, 6), 'fire'))
+        parts.append((d(1, 6) + 3, 'fire'))
     dmg = deal(st, t, parts, magical=False, attacker=g, credit=g.name)
     extra = rider(st, g, t) if rider else ''
     log(f"    {g.name}: {label} hits {t.name} for {dmg}.{extra}")
@@ -1258,39 +1259,29 @@ def candidate_turn(st, targets):
         if st.rage:
             st.tally['prevented']['_blaze_turns'] += 1
         if st.rage and not was:
-            log("    Chimchar: BLAZE catches. Every swing carries +1d6 now, and "
-                "it swings with advantage.")
+            log("    Chimchar: BLAZE catches. Everything it does carries an "
+                "extra 1d6+3 now, it swings with advantage, and the boiling air "
+                "makes it hard to hit.")
         # 1/DAY, the showy one: it becomes a comet and runs the whole line.
-        if FIRE_BLITZ and _blast(st, g, live, 40, (5, 6), 15, 'dex', 'fire',
+        if FIRE_BLITZ and _blast(st, g, live, 40, (FIRE_BLITZ_DICE, 6), 15, 'dex', 'fire',
                   "FLARE BLITZ. It takes a run-up and becomes a comet."):
             return
         # ACTION (Multiattack): ONE claw and ONE Fire Wheel, two claws once
         # Blaze is lit. The wheel is the routine now, not a cooldown: this is
         # the lane, and it is not here to duel Stabby.
-        _melee_routine(st, g, targets, FIRE_SWINGS + (1 if st.rage else 0), 8,
-                       (1, 10), 5, 'fire', 'ember claw', adv=bool(st.rage))
-        # BONUS ACTION: EMBER SHROUD. It has to stand in the middle of the
-        # crowd to use the wheel at all, so the bonus action pays for that.
-        if FIRE_GATE and not st.rage:
-            pass                                # Ember Shroud needs Blaze lit
-        elif FIRE_SHROUD == 'temp':
-            shroud = d(2, 6) + 3 + (d(1, 6) if st.rage else 0)
-            if shroud > g.temp:
-                g.temp = shroud
-                st.tally['prevented']['Chimchar (ember shroud)'] += shroud
-                log(f"    Chimchar: EMBER SHROUD, it pulls the fire in close "
-                    f"({shroud} temporary hit points).")
-        elif FIRE_SHROUD == 'dodge':
+        _melee_routine(st, g, targets, FIRE_SWINGS, 8, (1, 10), 5, 'fire',
+                       'ember claw', adv=bool(st.rage))
+        # BLAZE also boils the air around it: no separate Bonus Action.
+        if st.rage:
             g.dodging = True
-            log("    Chimchar: EMBER SHROUD, the air around it boils and nothing "
-                "can quite see where it is.")
+            st.tally['prevented']['Chimchar (blaze haze)'] += 1
         near = [t for t in live if t.hp > 0 and g.dist_ft(t) <= FIRE_RADIUS]
         if near:
             _n, _f = FIRE_WHEEL
             log(f"    Chimchar: FIRE WHEEL, it tucks and spins burning through "
                 f"{len(near)} of them.")
             for t in near[:6]:
-                roll = d(_n, _f) + (d(1, 6) if st.rage else 0)
+                roll = d(_n, _f) + (d(1, 6) + 3 if st.rage else 0)
                 ok = foe_save(t, t.saves.get('dex', 0), 15)
                 dmg = deal(st, t, [(roll // 2 if ok else roll, 'fire')],
                            credit='Chimchar')
