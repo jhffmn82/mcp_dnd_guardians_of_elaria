@@ -173,6 +173,13 @@ Relevant 2024 RAW notes (recorded so the sim never regresses):
 - **CONCENTRATION**: this competes directly with Summon Beast and Summon Fey. A sim must never run the pack and a summon at the same time. The expected play is pack + Starry Form (Archer), since Starry Form is not concentration.
 - Replaced **Thunderwave** on his prepared list; upcast Guiding Bolt covers that job at 120 ft.
 
+**Combat doctrine (DM 2026-08-21). This is how he is played now.**
+- **Round 1:** Bonus Action **Starry Form (Archer)**, Action **Conjure Animals**. Both fit: the form is a Bonus Action and the pack is an Action.
+- **Every round after:** Bonus Action **Star-Arrow**, Action **Starry Wisp or Guiding Bolt**. His action is never spent on the pack again.
+- **Positioning is the whole spell.** Move the pack (free, 30 ft, rides his own movement) to sit within 10 ft of **as many enemies as possible AND interposed**, between them and the party. Anything closing on the group then has to enter the ring, so it saves on Ursa's turn when the pack sweeps it and again on its own turn when it moves or ends its turn inside. **Adjacency matters:** parked at 5 ft an enemy cannot leave without entering another square still inside 10 ft; parked at exactly 10 ft it steps out clean.
+- **Cast it at 3rd, not 4th.** Measured, the 4th-level upcast is worse for the party overall because it spends the slot Polymorph wants: hero knockdowns 0.26/day against 0.12, and party damage taken 169 against 157.
+- **Never Shillelagh.** Starry Wisp does 18.5 on a hit at 60 ft against the staff's 17.5 in melee. The staff is a strictly worse cantrip that makes him stand next to the monster.
+
 ## Thorn Whip replaces Shillelagh (DM 2026-08-21)
 
 - **Shillelagh is off his list.** It cost a Bonus Action to light and only paid off in melee, which is the last place a 52-HP druid wants to be. His Bonus Action belongs to the Starry Form arrow.

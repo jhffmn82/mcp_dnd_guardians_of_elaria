@@ -105,7 +105,7 @@ POLYMORPH = os.environ.get('S8_POLYMORPH', '0') == '1'
 #   the beast's hit points, its stat block REPLACES theirs, and it cannot
 #   speak or cast spells (SRD 12_spells_i-p.md:995-1020). Concentration.
 PACK_TRIG = os.environ.get('S8_PACK_TRIG', 'both')   # move | both
-URSA_LINE = os.environ.get('S8_URSA_LINE', 'control')
+URSA_LINE = os.environ.get('S8_URSA_LINE', 'pack')   # DM doctrine 2026-08-21
 #   'control' = the tuned line (Plant Growth, Entangle, Moonbeam, Ice Storm).
 #   'summon3' / 'summon4' = summon the Fey Spirit on turn 1 and then do
 #   nothing but damage: Guiding Bolts while the free ones last, then
@@ -1804,18 +1804,41 @@ def pack_tick(st, targets, phase='both'):
         live = [t for t in live if t.hp > 0]
         if not live:
             return
-    # best space within 30 ft of the pack, scored by bodies caught within 10 ft
-    best, best_n = None, 0
-    for t in live:
-        cand = list(t.pos)
-        if max(abs(cand[0] - st.pack[0]), abs(cand[1] - st.pack[1])) > 6:
-            continue
-        n = sum(1 for x in live
-                if max(abs(x.pos[0] - cand[0]), abs(x.pos[1] - cand[1])) <= 2)
-        if n > best_n:
-            best, best_n = cand, n
+    # DM doctrine (2026-08-21): park it on as many bodies as possible AND
+    # INTERPOSED, between them and the party, so anything walking at the group
+    # has to come through the 10-ft ring and eat the save on its own turn too.
+    friends = [h for h in (st.lilly, st.stabby, st.ursa) if h.alive]
+    if friends:
+        cx = sum(h.pos[0] for h in friends) / len(friends)
+        cy = sum(h.pos[1] for h in friends) / len(friends)
+    else:
+        cx, cy = st.ursa.pos
+
+    def cheb(a, b):
+        return max(abs(a[0] - b[0]), abs(a[1] - b[1]))
+
+    best, best_score = None, -1
+    for dx in range(-6, 7):                    # every square within its 30 ft
+        for dy in range(-6, 7):
+            cand = (st.pack[0] + dx, st.pack[1] + dy)
+            if not (0 <= cand[0] < 30 and 0 <= cand[1] < 30):
+                continue
+            if cheb(cand, st.pack) > 6:
+                continue
+            touched = [x for x in live if cheb(x.pos, cand) <= 2]
+            if not touched:
+                continue
+            # interposed = the pack sits on the party's side of that enemy, so
+            # closing on the group means entering the ring
+            d_pack = max(abs(cand[0] - cx), abs(cand[1] - cy))
+            blocking = sum(1 for x in touched
+                           if max(abs(x.pos[0] - cx),
+                                  abs(x.pos[1] - cy)) > d_pack)
+            score = len(touched) * 10 + blocking * 3
+            if score > best_score:
+                best, best_score = cand, score
     if best is not None:
-        st.pack = best
+        st.pack = list(best)
     caught = [t for t in live
               if max(abs(t.pos[0] - st.pack[0]), abs(t.pos[1] - st.pack[1])) <= 2]
     bite(caught, 'surges through')
@@ -1835,8 +1858,11 @@ def ursa_damage_line(st, targets, bonus_used):
                     guiding_bolt(st, live[0])
                 else:
                     starry_wisp(st, live[0])
-        if not bonus_used and st.u_starry and live:
-            star_arrow(st, live[0])
+        # re-target: his Action may have just killed live[0], and the arrow
+        # should not be loosed at a corpse
+        still = [t for t in targets if t.hp > 0]
+        if not bonus_used and st.u_starry and still:
+            star_arrow(st, still[0])
             bonus_used = True
         return bonus_used
     if (st.fey is None or st.fey.hp <= 0) and st.u_slots[3] > 0:
@@ -1863,8 +1889,10 @@ def ursa_close(st, target, want_ft=55):
 
 def star_arrow(st, target, dis=False):
     if target is None or target.hp <= 0:
+        st.tally['prevented']['_arrow_notarget'] += 1
         return
     if not ursa_close(st, target):
+        st.tally['prevented']['_arrow_outofrange'] += 1
         return
     hit, crit, _ = attack_roll(st, 10, target, dis=dis, attacker=st.ursa)
     if hit:
