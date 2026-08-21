@@ -811,6 +811,8 @@ AIR_SING = int(os.environ.get('S8_AIR_SING', '3'))
 FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '2,6').split(','))
 FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '1'))
 FIRE_RADIUS = int(os.environ.get('S8_FIRE_RADIUS', '20'))
+FIRE_BLITZ = os.environ.get('S8_FIRE_BLITZ', '1') == '1'
+FIRE_BLAZE_AT = float(os.environ.get('S8_FIRE_BLAZE_AT', '0.5'))
 FIRE_SHROUD = os.environ.get('S8_FIRE_SHROUD', 'dodge')  # temp | dodge | off
 FIRE_GATE = os.environ.get('S8_FIRE_GATE', '1') == '1'   # only while Blaze is lit
 
@@ -1251,12 +1253,15 @@ def candidate_turn(st, targets):
     # ============ FIRE: three ways to be the striker ============
     if k == 'chimchar':
         was = st.rage
-        st.rage = 1 if g.hp <= g.hp_max / 2 else 0
+        st.rage = 1 if g.hp <= g.hp_max * FIRE_BLAZE_AT else 0
+        st.tally['prevented']['_turns'] += 1
+        if st.rage:
+            st.tally['prevented']['_blaze_turns'] += 1
         if st.rage and not was:
             log("    Chimchar: BLAZE catches. Every swing carries +1d6 now, and "
                 "it swings with advantage.")
         # 1/DAY, the showy one: it becomes a comet and runs the whole line.
-        if _blast(st, g, live, 40, (5, 6), 15, 'dex', 'fire',
+        if FIRE_BLITZ and _blast(st, g, live, 40, (5, 6), 15, 'dex', 'fire',
                   "FLARE BLITZ. It takes a run-up and becomes a comet."):
             return
         # ACTION (Multiattack): ONE claw and ONE Fire Wheel, two claws once
