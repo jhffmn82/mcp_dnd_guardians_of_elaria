@@ -147,6 +147,7 @@ class Actor:
         self.reaction = True
         self.dodging = False      # Patient Defense: attackers at disadvantage
         self.entangled = 0        # restrained (Entangle) for N of its turns
+        self.slowed = 0           # Ice Beam -20 ft / Earthquake rubble
         self.cleanse_types = {'radiant', 'force'}   # per its own statblock
         self.restrained = False   # Roots Erupt / Entangle
         self.ape = False          # Polymorphed into a Giant Ape
@@ -178,6 +179,9 @@ class Actor:
 
     def approach(self, target, want_ft, max_ft):
         """Move toward target until within want_ft."""
+        if self.slowed:
+            max_ft = max(5, max_ft - 20)   # Ice Beam's slow / broken ground
+            self.slowed = 0
         steps = max_ft // 5
         x, y = self.pos
         while steps > 0 and max(abs(x - target.pos[0]), abs(y - target.pos[1])) * 5 > want_ft:
@@ -388,6 +392,15 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
     pre_kill = tgt.hp
     if tgt.side == 'foe' and credit:
         st.tally['dealt'][credit] += min(total, max(0, tgt.hp))
+    # CURL UP: Sandshrew tucks behind its plates, reducing the hit by 10.
+    if (tgt is st.ghost and getattr(tgt, 'kind', '') == 'sandshrew'
+            and tgt.reaction and total > 0 and attacker is not None):
+        tgt.reaction = False
+        cut = min(total, 10)
+        total -= cut
+        st.tally['prevented']['Sandshrew (Curl Up)'] += cut
+        log(f"      * Curl Up: Sandshrew tucks and {cut} skids off the plates"
+            + (" (to 0!)" if total == 0 else f" ({total} gets through)"))
     if tgt.temp and total > 0:
         ab = min(tgt.temp, total)
         tgt.temp -= ab
@@ -942,8 +955,10 @@ def sandshrew_turn(st, targets):
             else:
                 dmg = deal(st, t, [(roll, 'bludgeoning')], credit='Sandshrew')
                 log(f"      {t.name} is thrown down for {dmg}.")
+            t.slowed = 1
             if t.hp <= 0:
                 log(f"      {t.name} is destroyed.")
+        log("      The broken ground is difficult terrain until its next turn.")
         return
     for _ in range(2):
         live = [t for t in targets if t.hp > 0]
@@ -999,6 +1014,7 @@ def piplup_turn(st, targets):
         if hit:
             dmg = deal(st, t, [(d(4 if crit else 2, 6) + 3, 'cold')],
                        magical=False, attacker=g, credit='Piplup')
+            t.slowed = 1
             log(f"    Piplup: ICE BEAM hits {t.name} for {dmg} cold; it slows.")
             if t.hp <= 0:
                 log(f"      {t.name} is destroyed.")
@@ -1007,6 +1023,34 @@ def piplup_turn(st, targets):
 
 
 def ghost_lash(st, targets):
+    # GHOSTLY WAIL, 1/long rest: a 15-ft cone. Spend it on the biggest cluster
+    # of the day, wherever that happens, not only in the Gallery.
+    if st.g_wail:
+        pack = [t for t in targets if t.hp > 0 and st.ghost.dist_ft(t) <= 15
+                and 'frightened' not in t.cond_imm]
+        if len(pack) >= 3:
+            st.g_wail = False
+            log("    Ghostbloom: GHOSTLY WAIL, a cry that cracks the air!")
+            for t in pack[:4]:
+                roll = d(5, 6)
+                if foe_save(t, t.saves.get('wis', 0), 16):
+                    dmg = deal(st, t, [(roll // 2, 'necrotic')], credit='Ghostbloom')
+                    log(f"      {t.name} takes {dmg} necrotic.")
+                else:
+                    dmg = deal(st, t, [(roll, 'necrotic')], credit='Ghostbloom')
+                    t.fright = 2
+                    log(f"      {t.name} takes {dmg} necrotic and quails!")
+                if t.hp <= 0:
+                    log(f"      {t.name} is destroyed.")
+            return
+    # FEY STEP, 1/short rest: blink 20 ft, and her next attack has Advantage.
+    if st.g_feystep and any(t.hp > 0 and st.ghost.dist_ft(t) > 15 for t in targets):
+        st.g_feystep = False
+        st.ghost.fey_adv = True
+        t = next(t for t in targets if t.hp > 0)
+        st.ghost.approach(t, 15, 20)
+        log("    Ghostbloom: FEY STEP, she blinks across the gap and comes up "
+            "behind them.")
     g = st.ghost
     ts = [t for t in targets if t.hp > 0]
     if not ts:
@@ -1021,7 +1065,9 @@ def ghost_lash(st, targets):
         if g.dist_ft(t) > 15:
             log(f"    Ghostbloom: drifts toward {t.name}.")
             return
-        hit, crit, _ = attack_roll(st, 8, t, attacker=g)
+        adv = getattr(g, 'fey_adv', False)
+        g.fey_adv = False
+        hit, crit, _ = attack_roll(st, 8, t, adv=adv, attacker=g)
         if hit:
             parts = [(d(2 if crit else 1, 8) + 6, 'slashing'), (d(1, 6), 'necrotic')]
             dmg = deal(st, t, parts, magical=False, attacker=g, credit='Ghostbloom')
