@@ -152,17 +152,16 @@ story.append(Paragraph('Purple = trained. Best: Animal Handling, Perception & Su
 story.append(Paragraph("What Ursa Does in a Fight", h2_st))
 atk = [
     ['Attack','To Hit','Damage'],
-    ['Thorn Whip (cantrip)','+10','2d6+5 piercing, 30 ft, and <b>drag it 10 ft toward him</b>'],
-    ['Guiding Bolt (1st, from Staff or Star Map)','+10','4d6 radiant + 1d8 (Starseed); next hit on it has advantage'],
-    ['Star-Arrow (Starry Form: Archer)','+10','1d8+5 radiant, 60 ft. Free when he lights the form, then bonus action'],
-    ['Starry Wisp (cantrip)','+10','2d8 + 5 radiant + 1d8 (Starseed); lights up the target (60 ft)'],
-    ['<b>Conjure Animals</b> (the pack)','<i>DC 16 Dex</i>','<b>3d10 slashing</b> per enemy it reaches; moves 30 ft free when he moves'],
+    ['Thorn Whip <i>(cantrip,</i> <b>melee</b><i>)</i>','+10','2d6+5 piercing, 30 ft, and <b>drag it 10 ft toward him</b>'],
+    ['Guiding Bolt <i>(1st, ranged)</i>','+10','4d6 radiant + 1d8 (Starseed); next hit on it has advantage'],
+    ['Star-Arrow <i>(Archer, ranged)</i>','+10','1d8+5 radiant, 60 ft. Free when he lights the form, then bonus action'],
+    ['Starry Wisp <i>(cantrip, ranged)</i>','+10','2d8 + 5 radiant + 1d8 (Starseed); lights up the target (60 ft)'],
+    ['<b>Conjure Animals</b> <i>(pack, no roll)</i>','<i>DC 16 Dex</i>','<b>3d10 slashing</b> per enemy it reaches; moves 30 ft free when he moves'],
 ]
 atk_data = [[Paragraph(c, cellb_st if i==0 else cell_st) for c in row]
             for i,row in enumerate(atk)]
 story.append(section_table(atk_data, [3.0*inch, 0.9*inch, 3.4*inch]))
-story.append(Paragraph('While Starry Form glows, the Amulet gives every FRIEND within 30 ft '
-    '+1 to attacks and saves (not Ursa himself).', small_it))
+story.append(Paragraph('<b>Ranged</b> attacks take <b>disadvantage</b> with an enemy within 5 ft. <b>Thorn Whip is MELEE</b>, so it never does: that is his answer when something is in his face.', small_it))
 
 story.append(Spacer(1,4))
 story.append(callout(
