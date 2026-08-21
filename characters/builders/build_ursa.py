@@ -306,7 +306,7 @@ story.append(Paragraph('Ursa Catchum', S('p3t', fontName='Times-Bold',
 story.append(Paragraph('Page 3: Spellbook', sub_st))
 story.append(Spacer(1,7))
 story.append(Paragraph('Slots per day: 4 first-level, 3 second-level, 3 third-level, 1 fourth-level. '
-    'Cantrips (★) are free forever. He prepares <b>11</b> spells and can swap one on a long rest; the ones marked <i>free</i> come from his Star Map, his Mark or his Staff and do not use up a prepared slot. '
+    'Cantrips (★) are free forever. He prepares <b>11</b> spells and can rebuild that whole list from scratch on every long rest (2024 druids swap freely, not one at a time); the ones marked <i>free</i> come from his Star Map, his Mark or his Staff and do not use up a prepared slot. '
     'Spell save DC 16 (the wand does not change it), spell attack <b>+10</b> holding the wand, +8 without.', small_it))
 story.append(Spacer(1,4))
 
