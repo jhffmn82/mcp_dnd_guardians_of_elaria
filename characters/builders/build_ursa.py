@@ -161,16 +161,17 @@ atk = [
 atk_data = [[Paragraph(c, cellb_st if i==0 else cell_st) for c in row]
             for i,row in enumerate(atk)]
 story.append(section_table(atk_data, [3.0*inch, 0.9*inch, 3.4*inch]))
-story.append(Paragraph('While his Starry Form glows, the Amulet of Guiding Light gives '
-    '+1 to attacks and saves to every FRIEND within 30 ft (allies only, not Ursa himself): '
-    'a party buff on top of his own +10.', small_it))
+story.append(Paragraph('While Starry Form glows, the Amulet gives every FRIEND within 30 ft '
+    '+1 to attacks and saves (not Ursa himself).', small_it))
 
 story.append(Spacer(1,4))
 story.append(callout(
-    "<b>How Ursa's turn works:</b> pick <b>one bonus-action move</b> each turn: fire his "
-    "<b>Starry Form</b> star-arrow (Archer, 1d8+5) OR command a <b>summoned spirit</b>, not both. "
-    "<b>Free Guiding Bolts:</b> about <b>10 a day</b> for free (5 from the Star Map, up to 5 from "
-    "the Staff) before he spends a slot."))
+    "<b>Ursa's battle plan.</b> <b>Round 1:</b> bonus action lights <b>Starry Form "
+    "(Archer)</b>, action casts <b>Conjure Animals</b>. <b>After that, every round:</b> "
+    "<b>star-arrow</b> (bonus) + <b>Starry Wisp</b> or a free <b>Guiding Bolt</b>, and the "
+    "pack moves 30 ft free whenever he moves. Starry Form is <b>not</b> concentration, so "
+    "it runs beside the pack all fight. <b>Free Guiding Bolts:</b> about <b>10 a day</b> "
+    "(5 Star Map, up to 5 Staff) before he spends a slot."))
 
 # Two summon stat blocks side by side (built here, RENDERED ON PAGE 2 so page 1
 # has room for the Spells at a Glance tracker at its foot).
@@ -234,7 +235,7 @@ glance = [
     _glance('2nd', 3, 'Summon Beast, Spike Growth, Lesser Restoration'),
     _glance('3rd', 3, 'Conjure Animals, Summon Fey, Plant Growth, Revivify'),
     _glance('4th', 1, 'Polymorph, Ice Storm'),
-    _glance('free', 0, 'Guiding Bolt &amp; Guidance (Star Map) &bull; Animal Friendship &amp; Speak with Animals (his Mark) &bull; Faerie Fire &amp; Moonbeam (Staff charges)'),
+    _glance('free', 0, 'Guiding Bolt, Guidance, Animal Friendship, Speak with Animals, Faerie Fire, Moonbeam <i>(sources on page 3)</i>'),
 ]
 gt = Table(glance, colWidths=[2.3*inch, 5.0*inch])
 gt.setStyle(TableStyle([

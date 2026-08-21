@@ -181,3 +181,11 @@ Relevant 2024 RAW notes (recorded so the sim never regresses):
 - **Starseed does NOT ride it** (piercing, and the staff's rider is radiant only). Same as Conjure Animals.
 - **Damage ranking is unchanged: Starry Wisp is still his bigger cantrip** (2d8 + 5 radiant + 1d8 Starseed at 60 ft). Thorn Whip is the *positioning* cantrip.
 - **The combo, and the reason for the swap:** the 10-ft pull is forced movement, so it drags a target INTO the Conjure Animals pack's 10-ft aura (triggering its DC 16 Dex save for 3d10 as the creature enters), ACROSS Spike Growth (2d4 per 5 ft travelled), or out of the party's backline. A sim should treat Thorn Whip plus an active emanation as a single combined play.
+
+## Ursa's optimal combat loop (DM 2026-08-21, printed on the sheet)
+
+- **Round 1.** Bonus Action: **Starry Form (Archer)**, spending one of three Wild Shape uses. Action: **Conjure Animals**.
+- **Every round after.** Bonus Action: **star-arrow** (1d8 + 5 radiant, 60 ft). Action: **Starry Wisp** (2d8 + 5 + 1d8 Starseed) or a **free Guiding Bolt** (about 10 a day between the Star Map and the Staff). Movement: the pack rides along, **30 ft for free**, sweeping enemies for 3d10.
+- **Why it stacks:** Starry Form is NOT concentration (verified: `reference/expansions/druid-circle-of-stars.md:27`), so it runs beside the pack for the whole fight. That is his highest sustained output and it costs one spell slot for the day.
+- **Thorn Whip is the variation**, not the default: use it in place of the action-cantrip when dragging something into the pack or across Spike Growth is worth more than the damage difference.
+- **CORRECTION to the old sheet text (2026-08-21):** the sheet used to say his Bonus Action was "the star-arrow OR commanding a summoned spirit, not both." That is wrong. Summon Beast reads "It obeys your verbal commands (no action required by you)" (verified on dnd2024.wikidot.com). Commanding a summon is free, so the Bonus Action is always the arrow.
