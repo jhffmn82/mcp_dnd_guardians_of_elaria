@@ -837,7 +837,8 @@ FIRE_BLITZ = os.environ.get('S8_FIRE_BLITZ', '1') == '1'
 FIRE_BLAZE_AT = float(os.environ.get('S8_FIRE_BLAZE_AT', '0.5'))
 FIRE_BLITZ_DICE = int(os.environ.get('S8_FIRE_BLITZ_DICE', '5'))
 SHREW_MODE = os.environ.get('S8_SHREW', 'guard')   # guard | brawl
-QUAKE_DICE = int(os.environ.get('S8_QUAKE_DICE', '2'))
+QUAKE_DICE = int(os.environ.get('S8_QUAKE_DICE', '3'))
+QUAKE_NEED = int(os.environ.get('S8_QUAKE_NEED', '2'))
 FIRE_SHROUD = os.environ.get('S8_FIRE_SHROUD', 'dodge')  # temp | dodge | off
 FIRE_GATE = os.environ.get('S8_FIRE_GATE', '1') == '1'   # only while Blaze is lit
 
@@ -1515,7 +1516,7 @@ def sandshrew_turn(st, targets):
     # Earthquake: the card says "each creature of Sandshrew's CHOICE", so allies
     # are never caught and there is no reason to hold it because they are near.
     cube = [t for t in live if g.dist_ft(t) <= 20]
-    need = 2 if SHREW_MODE == 'guard' else 3
+    need = QUAKE_NEED if SHREW_MODE == 'guard' else 3
     friends_in = [] if SHREW_MODE == 'guard' else [
         h for h in st.pcs if h.alive and h is not g and g.dist_ft(h) <= 20]
     if len(cube) >= need and not friends_in:

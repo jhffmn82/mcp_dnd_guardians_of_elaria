@@ -181,7 +181,7 @@ B = [
              "target other than Sandshrew."),
             ("Earthquake", "Sandshrew slams both forefeet down and the ground bucks and splits in "
              "a 20-foot Cube centered on itself. Each creature of Sandshrew's choice in that area "
-             "makes a DC 15 Dexterity saving throw, taking 7 (2d6) Bludgeoning damage on a failed "
+             "makes a DC 15 Dexterity saving throw, taking 10 (3d6) Bludgeoning damage on a failed "
              "save, or half as much damage on a successful one. The broken ground is Difficult "
              "Terrain until the start of Sandshrew's next turn."),
         ],
