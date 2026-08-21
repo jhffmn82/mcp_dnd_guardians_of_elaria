@@ -52,6 +52,11 @@ FEY_HOUR = os.environ.get('S8_FEY_HOUR', 'carry')
 #   still be up at the Chime Reef (generous about the travel between
 #   locations); 'onefight' expires it on the road, which is the honest
 #   reading of a dungeon crawl with dot events between the landings.
+ENGAGE = os.environ.get('S8_ENGAGE', 'far')
+#   Where the enemies START. 'far' is the current staging (the doc supports it
+#   for Mosslight, 'the grey holding the far rim', and for a stationary
+#   Groudon); 'close' pulls every spawn 45% of the way toward the party, which
+#   is what a DM does when they want the fight joined on round one.
 COMPANION = os.environ.get('S8_COMPANION', 'ghostbloom')
 #   Only ONE companion is out at a time (roster rule). 'ghostbloom' is the
 #   generalist; 'sandshrew' the Earth-rift tank; 'piplup' the Water-rift
@@ -104,6 +109,17 @@ def d20(adv=False, dis=False):
         r2 = rng.randint(1, 20)
         return min(r, r2)
     return r
+
+
+def close_up(foes, party, frac=0.45):
+    """Pull enemy starting positions toward the party by frac of the gap."""
+    if ENGAGE != 'close' or not foes or not party:
+        return
+    cx = sum(h.pos[0] for h in party) / len(party)
+    cy = sum(h.pos[1] for h in party) / len(party)
+    for f in foes:
+        f.pos[0] = int(round(f.pos[0] + (cx - f.pos[0]) * frac))
+        f.pos[1] = int(round(f.pos[1] + (cy - f.pos[1]) * frac))
 
 
 def cheb(a, b):
@@ -1323,6 +1339,7 @@ def fight1(st):
         m.hidden = True
         mites.append(m)
     foes = rots + mites
+    close_up(foes, [st.lilly, st.stabby, st.ursa])
 
     plant_growth = [False]     # Ursa's 3rd-level slot, no concentration
 
@@ -1647,6 +1664,7 @@ def fight2(st):
         return w
     wings = [make_wing(i, p) for i, p in enumerate(wing_spots)]
     foes = chimes + wings
+    close_up(foes, [st.lilly, st.stabby, st.ursa])
     terrain = {(11, 18): '#', (16, 16): '#', (20, 19): '#', (13, 13): '#',
                (18, 12): '#', (8, 17): '#', (23, 16): '#'}
     log("Starting map (# = great crystal spires; C Chimestone, w Shardwing aloft;")
@@ -1936,6 +1954,7 @@ def fight3(st):
                    cond_imm={'blinded', 'charmed', 'deafened', 'poisoned'})
              for i, p in enumerate(roll_spots)]
     arrived = rolls[:2]
+    close_up([weeper] + rolls, [st.lilly, st.stabby, st.ursa])
     terrain = {}
     for x in range(12, 19):
         for y in range(8, 15):
@@ -2278,6 +2297,7 @@ def boss(st):
                     'thunder', 'lightning', 'poison', 'necrotic', 'psychic',
                     'acid'}
     spike.is_spike = True
+    close_up([groudon, spike], [st.lilly, st.stabby, st.ursa])
     spike.ce_touched = False
     glasslings = []
     terrain = {}
