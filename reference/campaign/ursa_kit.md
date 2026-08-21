@@ -172,3 +172,12 @@ Relevant 2024 RAW notes (recorded so the sim never regresses):
 - **It is BLANK against the Session 8 boss objective.** The Spike is immune to slashing (it is immune to everything except radiant and force), so the pack does nothing to it. Groudon itself is a fair target; the Spike is not. On that fight his damage is Guiding Bolt and Starry Wisp, and his concentration is better spent on Polymorph.
 - **CONCENTRATION**: this competes directly with Summon Beast and Summon Fey. A sim must never run the pack and a summon at the same time. The expected play is pack + Starry Form (Archer), since Starry Form is not concentration.
 - Replaced **Thunderwave** on his prepared list; upcast Guiding Bolt covers that job at 120 ft.
+
+## Thorn Whip replaces Shillelagh (DM 2026-08-21)
+
+- **Shillelagh is off his list.** It cost a Bonus Action to light and only paid off in melee, which is the last place a 52-HP druid wants to be. His Bonus Action belongs to the Starry Form arrow.
+- **Thorn Whip** (verified on dnd2024.wikidot.com 2026-08-21, not in the SRD subset): Transmutation cantrip, **Action**, **Range 30 ft**, melee spell attack, **1d6 piercing scaling to 2d6 at level 5**, and **if the target is Large or smaller, pull it up to 10 ft closer to you**.
+- At his level: **+10 to hit, 2d6 + 5 (Potent Spellcasting) piercing, 30 ft**. No Bonus Action, no duration to track.
+- **Starseed does NOT ride it** (piercing, and the staff's rider is radiant only). Same as Conjure Animals.
+- **Damage ranking is unchanged: Starry Wisp is still his bigger cantrip** (2d8 + 5 radiant + 1d8 Starseed at 60 ft). Thorn Whip is the *positioning* cantrip.
+- **The combo, and the reason for the swap:** the 10-ft pull is forced movement, so it drags a target INTO the Conjure Animals pack's 10-ft aura (triggering its DC 16 Dex save for 3d10 as the creature enters), ACROSS Spike Growth (2d4 per 5 ft travelled), or out of the party's backline. A sim should treat Thorn Whip plus an active emanation as a single combined play.

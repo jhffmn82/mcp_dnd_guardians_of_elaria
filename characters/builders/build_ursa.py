@@ -152,7 +152,7 @@ story.append(Paragraph('Purple = trained. Best: Animal Handling, Perception & Su
 story.append(Paragraph("What Ursa Does in a Fight", h2_st))
 atk = [
     ['Attack','To Hit','Damage'],
-    ['Staff + Shillelagh (ignited)','+10','1d10+7 (+5 Potent, once a turn); bonus action to light, 1 min'],
+    ['Thorn Whip (cantrip)','+10','2d6+5 piercing, 30 ft, and <b>drag it 10 ft toward him</b>'],
     ['Guiding Bolt (1st, from Staff or Star Map)','+10','4d6 radiant + 1d8 (Starseed); next hit on it has advantage'],
     ['Star-Arrow (Starry Form: Archer)','+10','1d8+5 radiant, one enemy within 60 ft (bonus action)'],
     ['Starry Wisp (cantrip)','+10','2d8 + 5 radiant + 1d8 (Starseed); lights up the target (60 ft)'],
@@ -229,7 +229,7 @@ def _glance(lbl, boxes, names):
     box = ('[ ]&nbsp;' * boxes) if boxes else '<i>at will</i>'
     return [Paragraph(f'<b>{lbl}</b>&nbsp; {box}', gl_st), Paragraph(names, gl_st)]
 glance = [
-    _glance('Cantrips', 0, 'Shillelagh, Starry Wisp, Guidance, Druidcraft'),
+    _glance('Cantrips', 0, 'Starry Wisp, Thorn Whip, Guidance, Druidcraft'),
     _glance('1st', 4, 'Healing Word, Entangle'),
     _glance('2nd', 3, 'Summon Beast, Spike Growth, Lesser Restoration'),
     _glance('3rd', 3, 'Conjure Animals, Summon Fey, Plant Growth, Revivify'),
@@ -332,11 +332,9 @@ def spell_card(name, meta, text):
     return t
 
 cards = [
-    spell_card('★ Shillelagh',
-        'Cantrip • Bonus Action • Self • 1 min',
-        'Starlight sheathes his staff: for 1 minute it swings with <b>WISDOM</b>, <b>+10 to hit</b>, '
-        '<b>1d10+7</b> force or bludgeoning (his choice). Recast any time. His answer when something '
-        'gets right in his face.'),
+    spell_card('★ Thorn Whip',
+        'Cantrip • Action • 30 ft • Instant',
+        'A thorned vine lashes out. <b>Melee spell attack +10</b> at up to <b>30 ft</b>: <b>2d6+5 piercing</b>, and if the target is Large or smaller he can <b>drag it 10 ft toward him</b>. <i>The drag is the point: haul something into his Conjure Animals pack, across Spike Growth, or off a friend. Starry Wisp hits harder; use this when he wants something MOVED.</i>'),
     spell_card('★ Starry Wisp',
         'Cantrip • Action • 60 ft • Instant',
         'Ranged spell attack <b>+10 to hit</b>: <b>2d8 radiant + 1d8</b> (Starseed). The target glows '
