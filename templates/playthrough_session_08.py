@@ -286,6 +286,7 @@ class State:
         self.big_used = False     # each candidate's one showy 1/day
         self.blessing = None      # Togekiss
         self.rage = 0             # Chimchar's Blaze
+        self.wheel_ready = True   # Chimchar's Fire Wheel recharge
         self.burn_watch = []      # Growlithe's Burning targets
         self.puff = Actor('Puff', 'p', 'pc', 13, 15, (0, 0), 30, init_mod=4,
                           saves=dict(str=-1, dex=4, con=3, int=2, wis=2, cha=0),
@@ -802,6 +803,13 @@ def end_polymorph(st, h):
 # Sandshrew's Challenge rate) and lose on damage. Every card carries the same
 # boilerplate as the built three: two traits, an Action, a Bonus Action, a
 # Reaction, and one showy 1/day.
+AIR_DIE = tuple(int(x) for x in os.environ.get('S8_AIR_DIE', '2,8,4').split(','))
+AIR_BLESS = os.environ.get('S8_AIR_BLESS', '1') == '1'
+AIR_MODE = os.environ.get('S8_AIR_MODE', 'carry')   # spread | carry
+FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '3,6').split(','))
+FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '2'))
+FIRE_RADIUS = int(os.environ.get('S8_FIRE_RADIUS', '20'))
+
 CANDIDATES = {
     # ---- FIRE: three different ways to be the striker ----
     'chimchar': dict(  # MELEE STRIKER: stands in it and burns it down
@@ -825,8 +833,8 @@ CANDIDATES = {
         ac=14, hp=48, speed=40, reach=60, fly=True, init=4,
         saves=dict(str=0, dex=4, con=4, int=2, wis=6, cha=6),
         immune=set(), vuln=set(), resist=set()),
-    'jigglypuff': dict(  # RANGED CONTROLLER alt: pure lockdown, no buffs
-        ac=14, hp=50, speed=25, reach=60, fly=False, init=2,
+    'jigglypuff': dict(  # AIR: ranged, fragile, debuffs AND buffs
+        ac=14, hp=50, speed=40, reach=60, fly=True, init=4,
         saves=dict(str=-1, dex=3, con=4, int=1, wis=4, cha=7),
         immune=set(), vuln=set(), resist=set()),
 }
@@ -1240,12 +1248,33 @@ def candidate_turn(st, targets):
         if st.rage and not was:
             log("    Chimchar: BLAZE catches. Every swing carries +1d6 now, and "
                 "it swings with advantage.")
-        if _blast(st, g, live, 40, (4, 6), 14, 'dex', 'fire',
-                  "FLAME WHEEL, it curls up and runs the line burning."):
+        # 1/DAY, the showy one: it becomes a comet and runs the whole line.
+        if _blast(st, g, live, 40, (5, 6), 15, 'dex', 'fire',
+                  "FLARE BLITZ. It takes a run-up and becomes a comet."):
             return
-        log("    Chimchar: STOKE, it blows on its own knuckles.")
-        _melee_routine(st, g, targets, 4 if st.rage else 3, 8, (1, 10), 5,
-                       'fire', 'ember claw', adv=bool(st.rage))
+        # ACTION: two claws. It is not here to duel Stabby.
+        _melee_routine(st, g, targets, FIRE_SWINGS + (1 if st.rage else 0), 8,
+                       (1, 10), 5, 'fire', 'ember claw', adv=bool(st.rage))
+        # BONUS ACTION: FIRE WHEEL, a 15-ft emanation on ITSELF. This is the
+        # lane: it wants to be standing in the middle of the crowd, which is
+        # exactly where Stabby does not want to be.
+        if not st.wheel_ready:                 # true Recharge 5-6
+            st.wheel_ready = d(1, 6) >= 5
+            return
+        near = [t for t in live if t.hp > 0 and g.dist_ft(t) <= FIRE_RADIUS]
+        if near:
+            st.wheel_ready = False
+            _n, _f = FIRE_WHEEL
+            log(f"    Chimchar: FIRE WHEEL, it tucks and spins burning through "
+                f"{len(near)} of them.")
+            for t in near[:6]:
+                roll = d(_n, _f) + (d(1, 6) if st.rage else 0)
+                ok = foe_save(t, t.saves.get('dex', 0), 15)
+                dmg = deal(st, t, [(roll // 2 if ok else roll, 'fire')],
+                           credit='Chimchar')
+                log(f"      {t.name} takes {dmg}.")
+                if t.hp <= 0:
+                    log(f"      {t.name} is destroyed.")
         return
 
     if k == 'growlithe':
@@ -1401,11 +1430,30 @@ def candidate_turn(st, targets):
                 st_.tally['prevented']['Jigglypuff (disable)'] += 1
                 return " It sways, and forgets what it was doing."
             return ''
-        for t in live[:2]:
+        _n, _f, _fl = AIR_DIE
+        for _i, t in enumerate(live[:2]):
             if g.dist_ft(t) > 60:
                 g.approach(t, 60, g.speed)
-            if g.dist_ft(t) <= 60:
-                _swing(st, g, t, 7, (1, 4), 2, 'psychic', 'lullaby', rider=disable)
+            if g.dist_ft(t) > 60:
+                continue
+            if _i == 0 or AIR_MODE == 'spread':
+                _swing(st, g, t, 8, (_n, _f), _fl, 'psychic', 'lullaby',
+                       rider=disable)
+            else:
+                # 'carry': the song reaches a second ear but does no damage.
+                msg = disable(st, g, t)
+                log(f"    Jigglypuff: the song carries to {t.name}.{msg}")
+        # BONUS ACTION: the buff half of the lane, ported off Togekiss.
+        if AIR_BLESS:
+            cands = [h for h in (st.stabby, st.lilly, st.ursa)
+                     if h.alive and g.dist_ft(h) <= 60]
+            if cands:
+                pick = cands[0]
+                st.blessing = pick
+                pick.blessed_ac = 1
+                st.tally['prevented']['Jigglypuff (blessing)'] += 1
+                log(f"    Jigglypuff: its humming settles over {pick.name}: their "
+                    "swing is guided, and blows slide off them.")
         return
 
 
