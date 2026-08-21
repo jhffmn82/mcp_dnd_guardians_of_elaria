@@ -269,6 +269,8 @@ class State:
             self.ghost = Actor('Piplup', 'G', 'pc', 13, 45, (0, 0), 25, init_mod=3,
                                saves=dict(str=-2, dex=6, con=1, int=0, wis=6, cha=2),
                                resist={'cold'}, reach=60)
+        elif COMPANION in CANDIDATES:
+            self.ghost = build_companion(COMPANION)
         else:
             self.ghost = Actor('Ghostbloom', 'G', 'pc', 16, 62, (0, 0), 30, init_mod=4,
                                saves=dict(str=-1, dex=8, con=8, int=1, wis=6, cha=3),
@@ -281,6 +283,10 @@ class State:
         self.challenged = None    # Sandshrew's Challenge target
         self.mist_rounds = 0      # Piplup's Sea Mist
         self.mist_centre = (0, 0)
+        self.big_used = False     # each candidate's one showy 1/day
+        self.blessing = None      # Togekiss
+        self.rage = 0             # Chimchar's Blaze
+        self.burn_watch = []      # Growlithe's Burning targets
         self.puff = Actor('Puff', 'p', 'pc', 13, 15, (0, 0), 30, init_mod=4,
                           saves=dict(str=-1, dex=4, con=3, int=2, wis=2, cha=0),
                           immune={'poison'},
@@ -446,6 +452,57 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
     pre_kill = tgt.hp
     if tgt.side == 'foe' and credit:
         st.tally['dealt'][credit] += min(total, max(0, tgt.hp))
+    # ---- candidate REACTIONS (boilerplate: each card has exactly one) ----
+    if (tgt is st.ghost and total > 0 and tgt.reaction and attacker is not None
+            and getattr(tgt, 'kind', '') in CANDIDATES):
+        k = tgt.kind
+        if k == 'chimchar':          # BACKDRAFT
+            tgt.reaction = False
+            burn = d(1, 6) + 3
+            attacker.hp -= burn
+            st.tally['dealt']['Chimchar'] += burn
+            log(f"      * Backdraft: {attacker.name} takes {burn} fire for "
+                "getting that close.")
+        elif k == 'magmar':          # FLARE: it answers, it does not defend
+            tgt.reaction = False
+            burn = d(2, 6)
+            attacker.hp -= burn
+            st.tally['dealt']['Magmar'] += burn
+            log(f"      * Flare: {attacker.name} takes {burn} fire for the trouble.")
+        elif k == 'jigglypuff':      # CUTE CHARM
+            tgt.reaction = False
+            if 'charmed' not in attacker.cond_imm and not foe_save(
+                    attacker, attacker.saves.get('wis', 0), 14):
+                attacker.fright = 2
+                st.tally['prevented']['Jigglypuff (cute charm)'] += 1
+                log(f"      * Cute Charm: {attacker.name} cannot bring itself to "
+                    "look straight at it.")
+        elif k == 'pidgeot':         # SIDESTEP, it is never quite where you swung
+            tgt.reaction = False
+            cut = min(total, 6)
+            total -= cut
+            st.tally['prevented']['Pidgeot (sidestep)'] += cut
+            log(f"      * Sidestep: Pidgeot rolls with it and {cut} never lands.")
+    # GUARD DOG / WISH: reactions that trigger on an ALLY being hit
+    if (tgt.side == 'pc' and tgt is not st.ghost and total > 0
+            and st.ghost.alive and st.ghost.reaction
+            and getattr(st.ghost, 'kind', '') in CANDIDATES):
+        k = st.ghost.kind
+        if k == 'growlithe' and st.ghost.dist_ft(tgt) <= 10 and attacker is not None:
+            st.ghost.reaction = False
+            hit2, crit2, _ = attack_roll(st, 8, attacker, attacker=st.ghost)
+            if hit2:
+                bite = d(2 if crit2 else 1, 8) + 4
+                attacker.hp -= bite
+                st.tally['dealt']['Growlithe'] += bite
+                log(f"      * Guard Dog: Growlithe puts {bite} into "
+                    f"{attacker.name} for touching one of hers.")
+        elif k == 'togekiss' and st.ghost.dist_ft(tgt) <= 30:
+            st.ghost.reaction = False
+            cut = min(total, d(1, 8) + 4)
+            total -= cut
+            st.tally['prevented']['Togekiss (wish)'] += cut
+            log(f"      * Wish: soft light closes the worst of it, {cut} undone.")
     # CURL UP: Sandshrew tucks behind its plates, reducing the hit by 10.
     if (tgt is st.ghost and getattr(tgt, 'kind', '') == 'sandshrew'
             and tgt.reaction and total > 0 and attacker is not None):
@@ -545,6 +602,12 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
     if tgt.dodging:
         dis = True
     if getattr(tgt, 'entangled', 0) > 0 or getattr(tgt, 'restrained', False):
+        adv = True
+    if getattr(attacker, 'smoked', 0):
+        attacker.smoked = 0
+        dis = True
+    if st.blessing is attacker:
+        st.blessing = None
         adv = True
     if getattr(st, 'mist_rounds', 0) > 0:
         mc = st.mist_centre
@@ -728,6 +791,51 @@ def end_polymorph(st, h):
         log(f"    The ape shape comes apart: {h.name} is themself again.")
 
 
+# =====================================================================
+# CANDIDATES for the two open lanes. FIRE must top damage (>14%, Ghostbloom's
+# share) and lose on its own survival; AIR must top control (>18/day,
+# Sandshrew's Challenge rate) and lose on damage. Every card carries the same
+# boilerplate as the built three: two traits, an Action, a Bonus Action, a
+# Reaction, and one showy 1/day.
+CANDIDATES = {
+    # ---- FIRE: three different ways to be the striker ----
+    'chimchar': dict(  # ramp brawler: gets angrier as it burns down
+        ac=15, hp=58, speed=40, reach=5, fly=False, init=3,
+        saves=dict(str=2, dex=6, con=4, int=-1, wis=1, cha=1),
+        immune={'fire'}, vuln={'cold'}, resist=set()),
+    'growlithe': dict(  # burst assassin: picks a throat and closes
+        ac=15, hp=55, speed=50, reach=5, fly=False, init=4,
+        saves=dict(str=4, dex=5, con=4, int=-2, wis=3, cha=2),
+        immune={'fire'}, vuln={'cold'}, resist=set()),
+    'magmar': dict(  # artillery: sets the room on fire from 60 ft
+        ac=13, hp=46, speed=30, reach=60, fly=False, init=2,
+        saves=dict(str=3, dex=3, con=5, int=0, wis=2, cha=1),
+        immune={'fire'}, vuln={'cold'}, resist=set()),
+    # ---- AIR: three different ways to be the denier ----
+    'pidgeot': dict(  # positional denial: nothing stands where it wants to
+        ac=16, hp=55, speed=60, reach=10, fly=True, init=5,
+        saves=dict(str=4, dex=7, con=3, int=-1, wis=3, cha=2),
+        immune=set(), vuln=set(), resist=set()),
+    'togekiss': dict(  # daze and blessing: takes the fight out of them
+        ac=16, hp=55, speed=40, reach=30, fly=True, init=4,
+        saves=dict(str=0, dex=4, con=4, int=2, wis=6, cha=6),
+        immune=set(), vuln=set(), resist=set()),
+    'jigglypuff': dict(  # hard lockdown: ends the argument
+        ac=14, hp=62, speed=25, reach=30, fly=False, init=2,
+        saves=dict(str=-1, dex=3, con=4, int=1, wis=4, cha=7),
+        immune=set(), vuln=set(), resist=set()),
+}
+
+
+def build_companion(kind):
+    c = CANDIDATES[kind]
+    a = Actor(kind.capitalize(), 'G', 'pc', c['ac'], c['hp'], (0, 0), c['speed'],
+              init_mod=c['init'], saves=c['saves'], resist=c['resist'],
+              vuln=c['vuln'], immune=c['immune'], reach=c['reach'], fly=c['fly'])
+    a.kind = kind
+    return a
+
+
 def break_free(st, h, athletics):
     """Restrained by the glassed roots: an ACTION for a DC 14 Str (Athletics)
     check, per The Roots Erupt in build_session_08.py."""
@@ -854,6 +962,13 @@ def start_round(st, rnd):
         a.fright = max(0, a.fright - 1)
     if getattr(st, 'mist_rounds', 0) > 0:
         st.mist_rounds -= 1
+    for _f in getattr(st, 'burn_watch', []):
+        if _f.hp > 0 and getattr(_f, 'burning', 0) > 0:
+            _f.burning -= 1
+            _b = d(1, 6)
+            _f.hp -= _b
+            st.tally['dealt']['Growlithe'] += _b
+            log(f"    {_f.name} is still burning: {_b}.")
     aura_tick(st)
 
 
@@ -1046,7 +1161,227 @@ def companion_turn(st, targets):
         return sandshrew_turn(st, targets)
     if g.kind == 'piplup':
         return piplup_turn(st, targets)
+    if g.kind in CANDIDATES:
+        return candidate_turn(st, targets)
     return ghost_lash(st, targets)
+
+
+def _swing(st, g, t, bonus, dice, flat, dtype, label, adv=False, rider=None):
+    hit, crit, _ = attack_roll(st, bonus, t, adv=adv, attacker=g)
+    if not hit:
+        log(f"    {g.name}: {label} misses {t.name}.")
+        return False
+    n, f = dice
+    parts = [(d(n * (2 if crit else 1), f) + flat, dtype)]
+    if st.rage and g.kind == 'chimchar':
+        parts.append((d(1, 6), 'fire'))
+    dmg = deal(st, t, parts, magical=False, attacker=g, credit=g.name)
+    extra = rider(st, g, t) if rider else ''
+    log(f"    {g.name}: {label} hits {t.name} for {dmg}.{extra}")
+    if t.hp <= 0:
+        log(f"      {t.name} is destroyed.")
+    return True
+
+
+def _blast(st, g, live, rng, dice, dc, stat, dtype, name, on_fail=None):
+    """One showy AoE. Returns True if it fired."""
+    pool = [t for t in live if g.dist_ft(t) <= rng]
+    if st.big_used or len(pool) < 3:
+        return False
+    st.big_used = True
+    log(f"    {g.name}: {name}")
+    for t in pool[:5]:
+        roll = d(*dice)
+        ok = foe_save(t, t.saves.get(stat, 0), dc)
+        dmg = deal(st, t, [(roll // 2 if ok else roll, dtype)], credit=g.name)
+        note = ''
+        if not ok and on_fail:
+            note = on_fail(st, t)
+        log(f"      {t.name} takes {dmg}.{note}")
+        if t.hp <= 0:
+            log(f"      {t.name} is destroyed.")
+    return True
+
+
+def _melee_routine(st, g, targets, swings, bonus, dice, flat, dtype, label,
+                   adv=False, rider=None, reach=5):
+    for _ in range(swings):
+        live = [x for x in targets if x.hp > 0]
+        if not live:
+            return
+        t = live[0]
+        if g.dist_ft(t) > reach:
+            g.approach(t, reach, g.speed)
+        if g.dist_ft(t) > reach:
+            log(f"    {g.name}: closes on {t.name}.")
+            return
+        _swing(st, g, t, bonus, dice, flat, dtype, label, adv=adv, rider=rider)
+
+
+def candidate_turn(st, targets):
+    g = st.ghost
+    live = [t for t in targets if t.hp > 0]
+    if not live:
+        return
+    k = g.kind
+
+    # ============ FIRE: three ways to be the striker ============
+    if k == 'chimchar':
+        was = st.rage
+        st.rage = 1 if g.hp <= g.hp_max / 2 else 0
+        if st.rage and not was:
+            log("    Chimchar: BLAZE catches. Every swing carries +1d6 now, and "
+                "it swings with advantage.")
+        if _blast(st, g, live, 40, (4, 6), 14, 'dex', 'fire',
+                  "FLAME WHEEL, it curls up and runs the line burning."):
+            return
+        log("    Chimchar: STOKE, it blows on its own knuckles.")
+        _melee_routine(st, g, targets, 3 if st.rage else 2, 8, (1, 10), 5,
+                       'fire', 'ember claw', adv=bool(st.rage))
+        return
+
+    if k == 'growlithe':
+        if _blast(st, g, live, 30, (6, 6), 15, 'dex', 'fire',
+                  "FLAMETHROWER, a thirty-foot cone of white fire."):
+            return
+        t = min(live, key=lambda x: x.hp)
+        pounced = False
+        if g.dist_ft(t) > 5:
+            g.approach(t, 5, g.speed)
+            pounced = True
+            log(f"    Growlithe: POUNCE, fifty feet of dog at {t.name}.")
+        if g.dist_ft(t) > 5:
+            return
+        pack = any(h.alive and h is not g and h.dist_ft(t) <= 5 for h in st.pcs)
+
+        def burn(st_, g_, t_):
+            if not foe_save(t_, t_.saves.get('con', 0), 14):
+                t_.burning = 2
+                if t_ not in st_.burn_watch:
+                    st_.burn_watch.append(t_)
+                return " It is set BURNING."
+            return ''
+        _melee_routine(st, g, targets, 2, 8, (1, 10), 4, 'fire', 'fire fang',
+                       adv=(pounced or pack), rider=burn)
+        return
+
+    if k == 'magmar':
+        if _blast(st, g, live, 60, (8, 6), 15, 'dex', 'fire',
+                  "FIRE BLAST, the air itself goes white."):
+            return
+        clump = [x for x in live if g.dist_ft(x) <= 60]
+        if len(clump) >= 3:
+            log("    Magmar: LAVA PLUME, it stamps and the floor spits.")
+            for x in clump[:4]:
+                roll = d(3, 6)
+                ok = foe_save(x, x.saves.get('dex', 0), 14)
+                dmg = deal(st, x, [(roll // 2 if ok else roll, 'fire')],
+                           credit=g.name)
+                log(f"      {x.name} takes {dmg} fire.")
+                if x.hp <= 0:
+                    log(f"      {x.name} is destroyed.")
+        else:
+            for _ in range(2):
+                live = [x for x in targets if x.hp > 0]
+                if not live:
+                    break
+                t = live[0]
+                if g.dist_ft(t) > 60:
+                    g.approach(t, 60, g.speed)
+                if g.dist_ft(t) <= 60:
+                    _swing(st, g, t, 7, (2, 6), 3, 'fire', 'ember volley')
+        live = [x for x in targets if x.hp > 0]
+        if live:
+            big = max(live, key=lambda x: x.hp)
+            big.smoked = 1
+            st.tally['prevented']['Magmar (smoke screen)'] += 1
+            log(f"    Magmar: SMOKE SCREEN over {big.name}; it swings blind.")
+        return
+
+    # ============ AIR: three ways to be the denier ============
+    if k == 'pidgeot':
+        def flung(st_, t_):
+            t_.prone = True
+            t_.slowed = 1
+            st_.tally['prevented']['Pidgeot (hurricane)'] += 1
+            return " It is flung down."
+        if _blast(st, g, live, 40, (3, 6), 15, 'str', 'bludgeoning',
+                  "HURRICANE, it climbs and drops a wall of wind.", on_fail=flung):
+            return
+
+        def push(st_, g_, t_):
+            if not foe_save(t_, t_.saves.get('str', 0), 14):
+                t_.slowed = 1
+                st_.tally['prevented']['Pidgeot (buffet)'] += 1
+                return " It is buffeted back."
+            return ''
+        _melee_routine(st, g, targets, 2, 7, (1, 8), 3, 'slashing',
+                       'wing strike', rider=push)
+        live = [x for x in targets if x.hp > 0]
+        if live:
+            far = max(live, key=lambda x: x.hp)
+            if not foe_save(far, far.saves.get('str', 0), 14):
+                far.prone = True
+                far.slowed = 1
+                st.tally['prevented']['Pidgeot (gust)'] += 1
+                log(f"    Pidgeot: GUST slams {far.name} flat.")
+            else:
+                log(f"    Pidgeot: GUST, and {far.name} leans into it.")
+        return
+
+    if k == 'togekiss':
+        def dazed(st_, t_):
+            if 'charmed' not in t_.cond_imm:
+                t_.entangled = 2
+                st_.tally['prevented']['Togekiss (gleam)'] += 1
+                return " It is dazed."
+            return ''
+        if _blast(st, g, live, 30, (3, 6), 15, 'wis', 'radiant',
+                  "DAZZLING GLEAM, the air fills with soft light.", on_fail=dazed):
+            return
+
+        def daze(st_, g_, t_):
+            if 'frightened' in t_.cond_imm:
+                return ''
+            if not foe_save(t_, t_.saves.get('wis', 0), 15):
+                t_.fright = 2
+                t_.slowed = 1
+                t_.reaction = False
+                st_.tally['prevented']['Togekiss (daze)'] += 1
+                return " It loses the thread."
+            return ''
+        _melee_routine(st, g, targets, 3, 7, (1, 6), 3, 'radiant', 'air slash',
+                       rider=daze, reach=30)
+        st.blessing = st.stabby if st.stabby.alive else st.lilly
+        log(f"    Togekiss: BLESSING settles on {st.blessing.name}.")
+        return
+
+    if k == 'jigglypuff':
+        if not st.big_used and len([x for x in live if g.dist_ft(x) <= 30]) >= 3:
+            st.big_used = True
+            log("    Jigglypuff: SING. It plants its feet and will not be hurried.")
+            for x in [x for x in live if g.dist_ft(x) <= 30][:6]:
+                if 'charmed' in x.cond_imm:
+                    log(f"      {x.name} cannot hear it.")
+                elif foe_save(x, x.saves.get('wis', 0), 15):
+                    log(f"      {x.name} shakes it off.")
+                else:
+                    x.entangled = 3
+                    st.tally['prevented']['Jigglypuff (sing)'] += 1
+                    log(f"      {x.name} FALLS ASLEEP where it stands.")
+            return
+
+        def disable(st_, g_, t_):
+            if not foe_save(t_, t_.saves.get('wis', 0), 15):
+                t_.slowed = 1
+                t_.fright = 2
+                st_.tally['prevented']['Jigglypuff (disable)'] += 1
+                return " It forgets what it was doing."
+            return ''
+        _melee_routine(st, g, targets, 2, 7, (1, 6), 3, 'psychic', 'lullaby',
+                       rider=disable, reach=30)
+        return
+
 
 
 def sandshrew_turn(st, targets):
