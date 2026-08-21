@@ -754,7 +754,7 @@ def cast_polymorph(st):
     if st.fey is not None:
         log("    (The fey spirit fades: he cannot hold both.)")
         st.fey = None
-    st.conc = 'the Polymorph'
+    ursa_take_conc(st, 'the Polymorph')
     t.ape = True
     t.temp = max(t.temp, 168)          # temp HP equal to the beast's hit points
     t.ape_ac, t.ac = t.ac, 12
@@ -1637,6 +1637,8 @@ def ghost_lash(st, targets):
 def summon_fey(st, pos=(9, 15)):
     """Summon Fey. 3rd: AC 15, HP 30, 2d6+6, one attack. Cast with a 4th-level
     slot (build_ursa.py:211-212): AC 16, HP 40, 2d6+7, and TWO attacks a turn."""
+    if ursa_holding(st):
+        return False
     lvl = 4 if (URSA_LINE == 'summon4' and st.u_slots[4] > 0) else 3
     if st.u_slots[lvl] <= 0:
         lvl = 3
@@ -1644,6 +1646,7 @@ def summon_fey(st, pos=(9, 15)):
             return False
     st.u_slots[lvl] -= 1
     ac, hp = (16, 40) if lvl == 4 else (15, 30)
+    ursa_take_conc(st, 'the fey spirit')
     st.fey = Actor('Fey spirit', 'f', 'pc', ac, hp, pos, 30,
                    saves=dict(dex=3, con=2, wis=2), fly=True)
     st.fey.lvl = lvl
@@ -1681,6 +1684,27 @@ def fey_turn(st, targets):
             log(f"    Fey spirit: fey blade misses {t.name}.")
 
 
+def ursa_holding(st):
+    """What Ursa is concentrating on right now, or None. Summon Fey is tracked
+    as a creature rather than in st.conc, so it has to be checked separately."""
+    if st.fey is not None and st.fey.hp > 0:
+        return 'the fey spirit'
+    return st.conc
+
+
+def ursa_take_conc(st, what):
+    """Take concentration on `what`, dropping whatever he was already holding.
+    A creature can concentrate on only one spell at a time."""
+    had = ursa_holding(st)
+    if had and had != what:
+        log(f"      (Ursa lets go of {had} to hold {what}.)")
+        if st.fey is not None:
+            st.fey.hp = 0
+            st.fey = None
+        st.pack = None
+    st.conc = what if what != 'the fey spirit' else None
+
+
 def ursa_conc_check(st, dmg):
     """One concentration slot, shared by the summon, Moonbeam and Entangle."""
     holding = (st.fey is not None and st.fey.hp > 0) or st.conc
@@ -1707,6 +1731,8 @@ def conjure_animals(st, pos):
     """SRD 5.2.1: Action, 3rd level, Concentration 10 min. A Large pack of
     spectral animals. It is an EFFECT, not a creature: nothing can attack it,
     and only a lost concentration check ends it."""
+    if ursa_holding(st):
+        return False
     lvl = 4 if (URSA_LINE == 'pack4' and st.u_slots[4] > 0) else 3
     if st.u_slots[lvl] <= 0:
         lvl = 3
@@ -1715,7 +1741,7 @@ def conjure_animals(st, pos):
     st.u_slots[lvl] -= 1
     st.pack = list(pos)
     st.pack_lvl = lvl
-    st.conc = 'the Conjure Animals'
+    ursa_take_conc(st, 'the Conjure Animals')
     log(f"    Ursa: CONJURE ANIMALS at {lvl}th level, a Large pack of spectral "
         f"wolves boils up out of nothing ({lvl + 0}d10 on a failed DC 16 Dex). "
         f"[slots {st.u_slots[1]}/{st.u_slots[2]}/{st.u_slots[3]}/{st.u_slots[4]}]")
@@ -2074,7 +2100,8 @@ def fight1(st):
                 live_m = [m for m in mites if m.hp > 0 and not m.hidden]
                 if rnd == 1 and URSA_LINE != 'control':
                     if st.fey is None or st.fey.hp <= 0:
-                        summon_fey(st)
+                        (conjure_animals(st, tuple(st.ursa.pos))
+                         if URSA_LINE in ('pack', 'pack4') else summon_fey(st))
                     if not bonus_used and ursa_starry(st):
                         bonus_used = True
                 elif URSA_LINE != 'control':
@@ -2132,7 +2159,8 @@ def fight1(st):
                         star_arrow(st, live_r[0] if live_r else
                                    (live_m[0] if live_m else None))
                 elif st.fey is None and st.u_slots[3] > 0 and rnd <= 3:
-                    summon_fey(st)
+                    (conjure_animals(st, tuple(st.ursa.pos))
+                     if URSA_LINE in ('pack', 'pack4') else summon_fey(st))
                     if not bonus_used and st.u_starry:
                         star_arrow(st, live_r[0] if live_r else
                                    (live_m[0] if live_m else None))
@@ -2385,7 +2413,7 @@ def fight2(st):
                 if (len(ent_pack) >= 3 and st.u_slots[1] > 0 and st.conc is None
                         and (st.fey is None or st.fey.hp <= 0) and not adj):
                     st.u_slots[1] -= 1
-                    st.conc = 'the Entangle'
+                    ursa_take_conc(st, 'the Entangle')
                     log(f"    Ursa: ENTANGLE, weed-ropes burst out of the shallows "
                         f"under the wall. [{st.u_slots[1]} 1st slots left]")
                     for c in ent_pack:
@@ -2700,7 +2728,7 @@ def fight3(st):
                     continue
                 if rnd == 1 and st.u_staff >= 2 and weeper.hp > 0:
                     st.u_staff -= 2
-                    st.conc = 'the Moonbeam'
+                    ursa_take_conc(st, 'the Moonbeam')
                     ursa_close(st, weeper, want_ft=115)
                     log("    Ursa: MOONBEAM from the staff (2 charges), a cold pillar "
                         "of light drops onto the Weeper. It is Rooted; it cannot "
@@ -3029,7 +3057,8 @@ def boss(st):
                     continue
                 if URSA_LINE != 'control':
                     if (st.fey is None or st.fey.hp <= 0) and st.u_slots[3] > 0:
-                        summon_fey(st, pos=tuple(st.ursa.pos))
+                        (conjure_animals(st, tuple(st.ursa.pos))
+                         if URSA_LINE in ('pack', 'pack4') else summon_fey(st, pos=tuple(st.ursa.pos)))
                     else:
                         guiding_bolt(st, spike, dis=True)
                     if not bonus_used and st.u_starry:
