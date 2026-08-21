@@ -537,6 +537,10 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
             log(f"      * {tgt.name}'s ward soaks {ab}.")
     pre = tgt.hp
     tgt.hp -= total
+    if tgt.side == 'foe' and tgt.hp < 0:
+        st.tally['prevented']['_overkill'] += min(-tgt.hp, total)
+    if tgt.side == 'foe':
+        st.tally['prevented']['_useful'] += min(pre, total)
     tgt.damaged_since = True
     if any(t in tgt.cleanse_types for _, t in parts) or is_ce:
         tgt.cleansed = True
@@ -600,6 +604,8 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         st.gb_adv_target = None
     if tgt.dodging:
         dis = True
+    if attacker is not None and attacker.side == 'foe' and tgt.side == 'pc':
+        st.tally['prevented']['_enemy_swings'] += 1
     if getattr(tgt, 'entangled', 0) > 0 or getattr(tgt, 'restrained', False):
         adv = True
     if getattr(tgt, 'blinded', 0) > 0:
@@ -1727,7 +1733,7 @@ def ursa_conc_check(st, dmg):
         st.fey = None
 
 
-def conjure_animals(st, pos):
+def conjure_animals(st, pos, targets=None):
     """SRD 5.2.1: Action, 3rd level, Concentration 10 min. A Large pack of
     spectral animals. It is an EFFECT, not a creature: nothing can attack it,
     and only a lost concentration check ends it."""
@@ -1745,10 +1751,14 @@ def conjure_animals(st, pos):
     log(f"    Ursa: CONJURE ANIMALS at {lvl}th level, a Large pack of spectral "
         f"wolves boils up out of nothing ({lvl + 0}d10 on a failed DC 16 Dex). "
         f"[slots {st.u_slots[1]}/{st.u_slots[2]}/{st.u_slots[3]}/{st.u_slots[4]}]")
+    # He casts it up to 60 ft away and then MOVES on the same turn, so the pack
+    # moves its 30 ft immediately and can bite on the turn it appears.
+    if targets:
+        pack_tick(st, targets, phase='move')
     return True
 
 
-def pack_tick(st, targets):
+def pack_tick(st, targets, phase='both'):
     """Free with Ursa's move: shove the pack up to 30 ft onto the biggest
     cluster, then every creature within 10 ft saves. Once per turn each."""
     if st.pack is None or st.conc != 'the Conjure Animals':
@@ -1776,7 +1786,7 @@ def pack_tick(st, targets):
     # TRIGGER 1 (RAW): creatures that ENDED THEIR TURN within 10 ft of the pack.
     # Resolved here for timing convenience; it is a different turn from Ursa's,
     # so the once-per-turn cap does not merge it with the move trigger below.
-    if PACK_TRIG == 'both':
+    if PACK_TRIG == 'both' and phase == 'both':
         bite([t for t in live
               if max(abs(t.pos[0] - st.pack[0]),
                      abs(t.pos[1] - st.pack[1])) <= 2], 'closes over')
@@ -1806,9 +1816,9 @@ def ursa_damage_line(st, targets, bonus_used):
     live = [t for t in targets if t.hp > 0]
     if URSA_LINE in ('pack', 'pack4'):
         if st.pack is None and st.u_slots[3] > 0:
-            conjure_animals(st, tuple(live[0].pos) if live else tuple(st.ursa.pos))
+            conjure_animals(st, tuple(live[0].pos) if live else tuple(st.ursa.pos),
+                            targets=live)
         else:
-            pack_tick(st, targets)
             if live:
                 if st.u_gbolt > 0 or st.u_staff > 0:
                     guiding_bolt(st, live[0])
@@ -2094,13 +2104,15 @@ def fight1(st):
                                         and st.puff.dist_ft(m) <= 30), None),
                               use_mm=False)
             elif name == 'Ursa' and st.ursa.alive:
+                _pk = [r for r in rots if r.hp > 0] + [x for x in mites if x.hp > 0 and not x.hidden]
+                pack_tick(st, _pk)
                 bonus_used = ursa_triage(st)
                 live_r = sorted([r for r in rots if r.hp > 0],
                                 key=lambda r: st.ursa.dist_ft(r))
                 live_m = [m for m in mites if m.hp > 0 and not m.hidden]
                 if rnd == 1 and URSA_LINE != 'control':
                     if st.fey is None or st.fey.hp <= 0:
-                        (conjure_animals(st, tuple(st.ursa.pos))
+                        (conjure_animals(st, tuple(st.ursa.pos), targets=_pk)
                          if URSA_LINE in ('pack', 'pack4') else summon_fey(st))
                     if not bonus_used and ursa_starry(st):
                         bonus_used = True
@@ -2159,7 +2171,7 @@ def fight1(st):
                         star_arrow(st, live_r[0] if live_r else
                                    (live_m[0] if live_m else None))
                 elif st.fey is None and st.u_slots[3] > 0 and rnd <= 3:
-                    (conjure_animals(st, tuple(st.ursa.pos))
+                    (conjure_animals(st, tuple(st.ursa.pos), targets=_pk)
                      if URSA_LINE in ('pack', 'pack4') else summon_fey(st))
                     if not bonus_used and st.u_starry:
                         star_arrow(st, live_r[0] if live_r else
@@ -2389,6 +2401,8 @@ def fight2(st):
                     puff_turn(st, mm_t or next((f for f in foes if f.hp > 0), None),
                               use_mm=(mm_t is not None))
             elif name == 'Ursa' and st.ursa.alive:
+                _pk = [f for f in foes if f.hp > 0]
+                pack_tick(st, _pk)
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used and ursa_starry(st, again=True):
                     bonus_used = True
@@ -2713,6 +2727,8 @@ def fight3(st):
                     puff_turn(st, next((c for c in arrived if c.hp > 0), None),
                               use_mm=False)
             elif name == 'Ursa' and st.ursa.alive:
+                _pk = [x for x in [weeper] + rolls if x.hp > 0]
+                pack_tick(st, _pk)
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used and ursa_starry(st):
                     bonus_used = True
@@ -3050,6 +3066,8 @@ def boss(st):
                 if spike.hp <= 0:
                     break
             elif name == 'Ursa' and st.ursa.alive:
+                _pk = [x for x in (groudon, spike) if x.hp > 0]
+                pack_tick(st, _pk)
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used and ursa_starry(st):
                     bonus_used = True
@@ -3057,7 +3075,7 @@ def boss(st):
                     continue
                 if URSA_LINE != 'control':
                     if (st.fey is None or st.fey.hp <= 0) and st.u_slots[3] > 0:
-                        (conjure_animals(st, tuple(st.ursa.pos))
+                        (conjure_animals(st, tuple(st.ursa.pos), targets=_pk)
                          if URSA_LINE in ('pack', 'pack4') else summon_fey(st, pos=tuple(st.ursa.pos)))
                     else:
                         guiding_bolt(st, spike, dis=True)
@@ -3336,6 +3354,8 @@ def thumpaw_fight(st):
                 cannon_fire(st, 'ballista', [tp])
                 puff_turn(st, tp, use_mm=False)
             elif name == 'Ursa' and st.ursa.alive:
+                _pk = [x for x in ([tp] if tp is not None else []) if x.hp > 0]
+                pack_tick(st, _pk)
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used:
                     bonus_used = ursa_starry(st)
@@ -3452,6 +3472,8 @@ def gleamoth_fight(st):
                 puff_turn(st, next((s for s in swarms if s.hp > 0), None),
                           use_mm=False)
             elif name == 'Ursa' and st.ursa.alive:
+                _pk = [sw for sw in swarms if sw.hp > 0]
+                pack_tick(st, _pk)
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used:
                     bonus_used = ursa_starry(st)
