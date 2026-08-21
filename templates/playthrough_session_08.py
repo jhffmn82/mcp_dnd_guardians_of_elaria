@@ -712,7 +712,7 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
     return (total >= tgt.ac or crit), crit, r
 
 
-def ursa_starry(st, again=False):
+def ursa_starry(st, again=False, targets=None):
     """Starry Form (Archer), a Bonus Action costing one Wild Shape use.
 
     WILD RESURGENCE (SRD 04_classes_druid_fighter_monk.md:148): once on each of
@@ -741,6 +741,13 @@ def ursa_starry(st, again=False):
     st.u_starry = True
     log(f"    Ursa: STARRY FORM (Archer){' again' if again else ''}; the Amulet "
         f"wakes, +1 to allies' attacks and saves. [Wild Shape {st.u_wild}]")
+    # Archer fires ON ACTIVATION as well as on later turns (verified
+    # dnd2024.wikidot.com/druid:circle-of-the-stars, 2026-08-21): "When you
+    # activate this form AND as a Bonus Action on your subsequent turns".
+    if targets:
+        alive = [t for t in targets if t.hp > 0]
+        if alive:
+            star_arrow(st, alive[0])
     return True
 
 
@@ -2153,7 +2160,7 @@ def fight1(st):
                     if st.fey is None or st.fey.hp <= 0:
                         (conjure_animals(st, tuple(st.ursa.pos), targets=_pk)
                          if URSA_LINE in ('pack', 'pack4') else summon_fey(st))
-                    if not bonus_used and ursa_starry(st):
+                    if not bonus_used and ursa_starry(st, targets=_pk):
                         bonus_used = True
                 elif URSA_LINE != 'control':
                     tgt = live_r[0] if live_r else (live_m[0] if live_m else None)
@@ -2178,7 +2185,7 @@ def fight1(st):
                         f"[3rd slots left {st.u_slots[3]}]")
                     log("      Everything that wants to reach them now wades at "
                         "a quarter speed. No save, no concentration.")
-                    if not bonus_used and ursa_starry(st):
+                    if not bonus_used and ursa_starry(st, targets=_pk):
                         bonus_used = True
                 elif rnd == 2 and st.u_slots[4] > 0 and len(
                         [r for r in live_r
@@ -2443,7 +2450,7 @@ def fight2(st):
                 _pk = [f for f in foes if f.hp > 0]
                 pack_tick(st, _pk)
                 bonus_used = ursa_triage(st)
-                if rnd == 1 and not bonus_used and ursa_starry(st, again=True):
+                if rnd == 1 and not bonus_used and ursa_starry(st, again=True, targets=_pk):
                     bonus_used = True
                 if URSA_LINE != 'control':
                     ursa_damage_line(st, sorted(
@@ -2769,7 +2776,7 @@ def fight3(st):
                 _pk = [x for x in [weeper] + rolls if x.hp > 0]
                 pack_tick(st, _pk)
                 bonus_used = ursa_triage(st)
-                if rnd == 1 and not bonus_used and ursa_starry(st):
+                if rnd == 1 and not bonus_used and ursa_starry(st, targets=_pk):
                     bonus_used = True
                 if break_free(st, st.ursa, -1):
                     continue
@@ -3108,7 +3115,7 @@ def boss(st):
                 _pk = [x for x in (groudon, spike) if x.hp > 0]
                 pack_tick(st, _pk)
                 bonus_used = ursa_triage(st)
-                if rnd == 1 and not bonus_used and ursa_starry(st):
+                if rnd == 1 and not bonus_used and ursa_starry(st, targets=_pk):
                     bonus_used = True
                 if cast_polymorph(st):
                     continue
@@ -3397,7 +3404,7 @@ def thumpaw_fight(st):
                 pack_tick(st, _pk)
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used:
-                    bonus_used = ursa_starry(st)
+                    bonus_used = ursa_starry(st, targets=_pk)
                 starry_wisp(st, tp)
                 poked = True
                 if not bonus_used and st.u_starry:
@@ -3515,7 +3522,7 @@ def gleamoth_fight(st):
                 pack_tick(st, _pk)
                 bonus_used = ursa_triage(st)
                 if rnd == 1 and not bonus_used:
-                    bonus_used = ursa_starry(st)
+                    bonus_used = ursa_starry(st, targets=_pk)
                 t = next((sw for sw in swarms if sw.hp > 0), None)
                 if t is not None:
                     starry_wisp(st, t)

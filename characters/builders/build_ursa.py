@@ -154,7 +154,7 @@ atk = [
     ['Attack','To Hit','Damage'],
     ['Thorn Whip (cantrip)','+10','2d6+5 piercing, 30 ft, and <b>drag it 10 ft toward him</b>'],
     ['Guiding Bolt (1st, from Staff or Star Map)','+10','4d6 radiant + 1d8 (Starseed); next hit on it has advantage'],
-    ['Star-Arrow (Starry Form: Archer)','+10','1d8+5 radiant, one enemy within 60 ft (bonus action)'],
+    ['Star-Arrow (Starry Form: Archer)','+10','1d8+5 radiant, 60 ft. Free when he lights the form, then bonus action'],
     ['Starry Wisp (cantrip)','+10','2d8 + 5 radiant + 1d8 (Starseed); lights up the target (60 ft)'],
     ['<b>Conjure Animals</b> (the pack)','<i>DC 16 Dex</i>','<b>3d10 slashing</b> per enemy it reaches; moves 30 ft free when he moves'],
 ]
@@ -167,7 +167,8 @@ story.append(Paragraph('While Starry Form glows, the Amulet gives every FRIEND w
 story.append(Spacer(1,4))
 story.append(callout(
     "<b>Ursa's battle plan.</b> <b>Round 1:</b> bonus action lights <b>Starry Form "
-    "(Archer)</b>, action casts <b>Conjure Animals</b>. <b>After that, every round:</b> "
+    "(Archer)</b> (<b>free arrow at once</b>), action casts <b>Conjure Animals</b>. "
+    "<b>After that, every round:</b> "
     "<b>star-arrow</b> (bonus) + <b>Starry Wisp</b> or a free <b>Guiding Bolt</b>, and the "
     "pack moves 30 ft free whenever he moves. Starry Form is <b>not</b> concentration, so "
     "it runs beside the pack all fight. <b>Free Guiding Bolts:</b> about <b>10 a day</b> "
@@ -261,7 +262,7 @@ powers = [
      '<b>Omen Dreams.</b> After a long rest, roll <b>two d20s</b> and write them down: those are the day&rsquo;s omens. When he or anyone he can see is about to roll a d20, he can <b>replace that roll</b> with one of his dreamed numbers (no action, before the roll). Each is used once. <br/><b>Both Omens.</b> He has <b>both Weal and Woe</b> every day now, not one or the other. <br/><b>Read the Moment.</b> He can use his Cosmic Omen reaction <b>after the die is rolled</b>, before anyone knows if it worked, then choose Weal or Woe. <br/><b>Shared Tides.</b> One pool of <b>5 uses</b> per long rest, spent on either. <br/><b>The Stronger Tide.</b> His omens hit harder than an ordinary star-druid&rsquo;s: Weal adds <b>1d6 + 2</b> and Woe subtracts <b>1d6 + 2</b>. '),
     ('Starry Form (Bonus Action)', 'Spend a Wild Shape use to glow with starlight (10-ft bright light, 10 min). '
         'Pick a constellation each time:'),
-    ('&nbsp;&nbsp;&bull; Archer', 'Bonus action: fire a star-arrow at one enemy within 60 ft for <b>1d8+5 radiant</b>.'),
+    ('&nbsp;&nbsp;&bull; Archer', '<b>Free arrow the turn he lights it</b>, then bonus action each later turn: one enemy within 60 ft, <b>1d8+5 radiant</b>.'),
     ('&nbsp;&nbsp;&bull; Chalice', 'When he heals someone with a spell slot, he or a nearby friend also heals <b>1d8+5</b>.'),
     ('&nbsp;&nbsp;&bull; Dragon', 'Treat a roll of 9 or lower as a 10 on Int/Wis checks and concentration saves, super steady.'),
     ('Wild Shape (3/long rest)', 'Three uses that fuel his Starry Forms (or turn into a beast he has seen). Regain 1 on a short rest, all on a long rest.'),
