@@ -1321,10 +1321,11 @@ def fight1(st):
     st.cannon.pos = [4, 15]
     rot_spots = [(23, 12), (24, 14), (25, 16), (23, 17), (24, 18), (25, 13),
                  (26, 15), (26, 12)]
-    mite_spots = [(15, 13), (16, 15), (15, 17), (17, 14), (16, 18), (17, 16),
-                  (16, 12), (16, 19)]
+    # They come out of the mounds the party is standing among: a ring at 5-15 ft.
+    mite_spots = [(3, 13), (8, 13), (3, 17), (8, 17), (2, 15), (9, 15),
+                  (5, 12), (6, 18)]
     if BODIES:
-        mite_spots += [(15, 14), (17, 18)]
+        mite_spots += [(4, 11), (7, 19)]
     rots = []
     for i, p in enumerate(rot_spots):
         r = Actor(f'Rotbloom-{i+1}', 'R', 'foe', 12, ehp(33), p, 25,
@@ -1355,8 +1356,8 @@ def fight1(st):
     log("Starting map (5 ft squares; , = grey corrupted moss; L Lilly, S Stabby,")
     log("U Ursa, G Ghostbloom, p Puff, c cannon, R Rotbloom, m Mossmite [hidden]):")
     log(render_map([a for a in st.pcs + [st.cannon] + rots], terrain))
-    log("(The eight Mossmites are burrowed in the mid-field moss around x15-17 and")
-    log(" boil out the moment the first Rotbloom is struck.)")
+    log("(The eight Mossmites are burrowed in the warm mounds the party is standing")
+    log(" among, and boil out AROUND them the moment the first Rotbloom is struck.)")
 
     # Stabby: Uncanny Metabolism + ignite at initiative
     heal = 7 + d(1, 8)
