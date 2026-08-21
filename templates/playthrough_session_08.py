@@ -283,12 +283,14 @@ class State:
         self.heal_bubble = 5      # Piplup, 5/short rest
         self.sea_mist = True      # Piplup, 1/day
         self.challenged = None    # Sandshrew's Challenge target
+        self.quake = None         # Sandshrew's broken ground: (x, y)
         self.mist_rounds = 0      # Piplup's Sea Mist
         self.mist_centre = (0, 0)
         # each candidate's showy ability. Togekiss's SING is 3/day (DM).
         self.big_left = AIR_SING if COMPANION == 'togekiss' else 1
         self.blessing = None
         self.blind_watch = []      # Togekiss
+        self.quake_watch = []      # foes standing in the broken ground
         self.rage = 0             # Chimchar's Blaze
         self.burn_watch = []      # Growlithe's Burning targets
         self.puff = Actor('Puff', 'p', 'pc', 13, 15, (0, 0), 30, init_mod=4,
@@ -834,6 +836,7 @@ FIRE_RADIUS = int(os.environ.get('S8_FIRE_RADIUS', '20'))
 FIRE_BLITZ = os.environ.get('S8_FIRE_BLITZ', '1') == '1'
 FIRE_BLAZE_AT = float(os.environ.get('S8_FIRE_BLAZE_AT', '0.5'))
 FIRE_BLITZ_DICE = int(os.environ.get('S8_FIRE_BLITZ_DICE', '5'))
+SHREW_MODE = os.environ.get('S8_SHREW', 'guard')   # guard | brawl
 FIRE_SHROUD = os.environ.get('S8_FIRE_SHROUD', 'dodge')  # temp | dodge | off
 FIRE_GATE = os.environ.get('S8_FIRE_GATE', '1') == '1'   # only while Blaze is lit
 
@@ -1005,6 +1008,13 @@ def start_round(st, rnd):
             _f.hp -= _b
             st.tally['dealt']['Growlithe'] += _b
             log(f"    {_f.name} is still burning: {_b}.")
+    # BROKEN GROUND: anything standing in Sandshrew's quake wades.
+    if getattr(st, 'quake', None) is not None:
+        for _f in getattr(st, 'quake_watch', []):
+            if _f.hp > 0 and max(abs(_f.pos[0] - st.quake[0]),
+                                 abs(_f.pos[1] - st.quake[1])) <= 2:
+                _f.slowed = 1
+                st.tally['prevented']['Sandshrew (broken ground)'] += 1
     for _f in getattr(st, 'blind_watch', []):
         if getattr(_f, 'blinded', 0) > 0:
             _f.blinded -= 1
@@ -1472,20 +1482,42 @@ def candidate_turn(st, targets):
 
 
 
+class _Spot:
+    """A bare coordinate that Actor.approach can walk toward."""
+    def __init__(self, xy):
+        self.pos = list(xy)
+
+
 def sandshrew_turn(st, targets):
-    """Challenge (bonus action) then two Claws, or Earthquake on a clump."""
+    """DM doctrine (2026-08-21): Sandshrew is not a brawler. Its job is to stand
+    BETWEEN the enemies and the squishies and break the ground they must cross."""
     g = st.ghost
     live = [t for t in targets if t.hp > 0]
     if not live:
         return
-    # Challenge the biggest threat still standing.
+    if SHREW_MODE == 'guard':
+        # the ward: whoever is least able to take a hit
+        ward = min([h for h in (st.lilly, st.ursa, st.stabby) if h.alive],
+                   key=lambda h: (h.hp / h.hp_max, h.ac), default=None)
+        if ward is not None:
+            ex = sum(t.pos[0] for t in live) / len(live)
+            ey = sum(t.pos[1] for t in live) / len(live)
+            # two thirds of the way from the ward toward the enemy mass: close
+            # enough to break their ground, in front of the one being guarded
+            spot = _Spot((round(ward.pos[0] + 0.66 * (ex - ward.pos[0])),
+                          round(ward.pos[1] + 0.66 * (ey - ward.pos[1]))))
+            g.approach(spot, 0, 30)
+    # Challenge whatever most endangers the ward, not simply the fattest thing.
     mark = max(live, key=lambda t: t.hp)
     st.challenged = mark
     log(f"    Sandshrew: CHALLENGE, rears up and dares {mark.name} to try it.")
-    # Earthquake when three or more are bunched and no friend is in the cube.
+    # Earthquake: the card says "each creature of Sandshrew's CHOICE", so allies
+    # are never caught and there is no reason to hold it because they are near.
     cube = [t for t in live if g.dist_ft(t) <= 20]
-    friends_in = [h for h in st.pcs if h.alive and h is not g and g.dist_ft(h) <= 20]
-    if len(cube) >= 3 and not friends_in:
+    need = 2 if SHREW_MODE == 'guard' else 3
+    friends_in = [] if SHREW_MODE == 'guard' else [
+        h for h in st.pcs if h.alive and h is not g and g.dist_ft(h) <= 20]
+    if len(cube) >= need and not friends_in:
         log("    Sandshrew: EARTHQUAKE, both forefeet down and the floor splits.")
         for t in cube[:6]:
             roll = d(3, 6)
@@ -1498,6 +1530,10 @@ def sandshrew_turn(st, targets):
             t.slowed = 1
             if t.hp <= 0:
                 log(f"      {t.name} is destroyed.")
+        st.quake = tuple(g.pos)
+        for t in live:
+            if t not in st.quake_watch:
+                st.quake_watch.append(t)
         log("      The broken ground is difficult terrain until its next turn.")
         return
     for _ in range(2):
