@@ -470,13 +470,13 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
             attacker.hp -= burn
             st.tally['dealt']['Magmar'] += burn
             log(f"      * Flare: {attacker.name} takes {burn} fire for the trouble.")
-        elif k == 'jigglypuff':      # CUTE CHARM
+        elif k == 'togekiss':        # CHARM
             tgt.reaction = False
             if 'charmed' not in attacker.cond_imm and not foe_save(
-                    attacker, attacker.saves.get('wis', 0), 14):
+                    attacker, attacker.saves.get('wis', 0), 15):
                 attacker.fright = 2
-                st.tally['prevented']['Jigglypuff (cute charm)'] += 1
-                log(f"      * Cute Charm: {attacker.name} cannot bring itself to "
+                st.tally['prevented']['Togekiss (charm)'] += 1
+                log(f"      * Charm: {attacker.name} cannot bring itself to "
                     "look straight at it.")
         elif k == 'pidgeot':         # SIDESTEP, it is never quite where you swung
             tgt.reaction = False
@@ -498,12 +498,6 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
                 st.tally['dealt']['Growlithe'] += bite
                 log(f"      * Guard Dog: Growlithe puts {bite} into "
                     f"{attacker.name} for touching one of hers.")
-        elif k == 'togekiss' and st.ghost.dist_ft(tgt) <= 30:
-            st.ghost.reaction = False
-            cut = min(total, d(1, 8) + 4)
-            total -= cut
-            st.tally['prevented']['Togekiss (wish)'] += cut
-            log(f"      * Wish: soft light closes the worst of it, {cut} undone.")
     # CURL UP: Sandshrew tucks behind its plates, reducing the hit by 10.
     if (tgt is st.ghost and getattr(tgt, 'kind', '') == 'sandshrew'
             and tgt.reaction and total > 0 and attacker is not None):
@@ -809,6 +803,7 @@ AIR_MODE = os.environ.get('S8_AIR_MODE', 'carry')   # spread | carry
 FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '3,6').split(','))
 FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '2'))
 FIRE_RADIUS = int(os.environ.get('S8_FIRE_RADIUS', '20'))
+AIR_RAD = tuple(int(x) for x in os.environ.get('S8_AIR_RAD', '1,6').split(','))
 
 CANDIDATES = {
     # ---- FIRE: three different ways to be the striker ----
@@ -829,14 +824,10 @@ CANDIDATES = {
         ac=16, hp=55, speed=60, reach=10, fly=True, init=5,
         saves=dict(str=4, dex=7, con=3, int=-1, wis=3, cha=2),
         immune=set(), vuln=set(), resist=set()),
-    'togekiss': dict(  # RANGED CONTROLLER: fragile, buffs allies, debuffs foes
-        ac=14, hp=48, speed=40, reach=60, fly=True, init=4,
-        saves=dict(str=0, dex=4, con=4, int=2, wis=6, cha=6),
-        immune=set(), vuln=set(), resist=set()),
-    'jigglypuff': dict(  # AIR: ranged, fragile, debuffs AND buffs
+    'togekiss': dict(  # AIR: ranged, fragile, buffs allies and debuffs foes
         ac=14, hp=50, speed=40, reach=60, fly=True, init=4,
         saves=dict(str=-1, dex=3, con=4, int=1, wis=4, cha=7),
-        immune=set(), vuln=set(), resist=set()),
+        immune={'radiant'}, vuln={'necrotic'}, resist=set()),
 }
 
 
@@ -1182,13 +1173,17 @@ def companion_turn(st, targets):
     return ghost_lash(st, targets)
 
 
-def _swing(st, g, t, bonus, dice, flat, dtype, label, adv=False, rider=None):
+def _swing(st, g, t, bonus, dice, flat, dtype, label, adv=False, rider=None,
+           extra=None):
     hit, crit, _ = attack_roll(st, bonus, t, adv=adv, attacker=g)
     if not hit:
         log(f"    {g.name}: {label} misses {t.name}.")
         return False
     n, f = dice
     parts = [(d(n * (2 if crit else 1), f) + flat, dtype)]
+    if extra and extra[0]:
+        en, ef, et = extra
+        parts.append((d(en * (2 if crit else 1), ef), et))
     if st.rage and g.kind == 'chimchar':
         parts.append((d(1, 6), 'fire'))
     dmg = deal(st, t, parts, magical=False, attacker=g, credit=g.name)
@@ -1367,51 +1362,9 @@ def candidate_turn(st, targets):
         return
 
     if k == 'togekiss':
-        def dazed(st_, t_):
-            if 'charmed' not in t_.cond_imm:
-                t_.entangled = 2
-                st_.tally['prevented']['Togekiss (gleam)'] += 1
-                return " It is dazed."
-            return ''
-        if _blast(st, g, live, 30, (3, 6), 15, 'wis', 'radiant',
-                  "DAZZLING GLEAM, the air fills with soft light.", on_fail=dazed):
-            return
-
-        def daze(st_, g_, t_):
-            if 'frightened' in t_.cond_imm:
-                return ''
-            if not foe_save(t_, t_.saves.get('wis', 0), 15):
-                t_.fright = 2
-                t_.slowed = 1
-                t_.reaction = False
-                st_.tally['prevented']['Togekiss (daze)'] += 1
-                return " It loses the thread."
-            return ''
-        # two light shots, spread across DIFFERENT targets: it is debuffing,
-        # not killing.
-        shot = 0
-        for t in live[:2]:
-            if g.dist_ft(t) > 60:
-                g.approach(t, 60, g.speed)
-            if g.dist_ft(t) <= 60:
-                _swing(st, g, t, 7, (1, 4), 2, 'radiant', 'air slash', rider=daze)
-                shot += 1
-        # BONUS: BLESSING, advantage AND +2 AC on whoever needs it most
-        cands = [h for h in (st.stabby, st.lilly, st.ursa)
-                 if h.alive and g.dist_ft(h) <= 60]
-        pick = cands[0] if cands else None
-        if pick is not None:
-            st.blessing = pick
-            pick.blessed_ac = 1
-            st.tally['prevented']['Togekiss (blessing)'] += 1
-            log(f"    Togekiss: BLESSING settles on {pick.name}: their next swing "
-                "is guided, and blows slide off them until it comes round again.")
-        return
-
-    if k == 'jigglypuff':
         if not st.big_used and len([x for x in live if g.dist_ft(x) <= 30]) >= 3:
             st.big_used = True
-            log("    Jigglypuff: SING. It plants its feet and will not be hurried.")
+            log("    Togekiss: SING. It settles on the air and begins to hum.")
             for x in [x for x in live if g.dist_ft(x) <= 30][:6]:
                 if 'charmed' in x.cond_imm:
                     log(f"      {x.name} cannot hear it.")
@@ -1419,7 +1372,7 @@ def candidate_turn(st, targets):
                     log(f"      {x.name} shakes it off.")
                 else:
                     x.entangled = 3
-                    st.tally['prevented']['Jigglypuff (sing)'] += 1
+                    st.tally['prevented']['Togekiss (sing)'] += 1
                     log(f"      {x.name} FALLS ASLEEP where it stands.")
             return
 
@@ -1427,8 +1380,8 @@ def candidate_turn(st, targets):
             if not foe_save(t_, t_.saves.get('wis', 0), 15):
                 t_.entangled = 2      # drowsy: it loses the turn, not just the aim
                 t_.reaction = False
-                st_.tally['prevented']['Jigglypuff (disable)'] += 1
-                return " It sways, and forgets what it was doing."
+                st_.tally['prevented']['Togekiss (flinch)'] += 1
+                return " It flinches, and the moment is gone."
             return ''
         _n, _f, _fl = AIR_DIE
         for _i, t in enumerate(live[:2]):
@@ -1437,12 +1390,13 @@ def candidate_turn(st, targets):
             if g.dist_ft(t) > 60:
                 continue
             if _i == 0 or AIR_MODE == 'spread':
-                _swing(st, g, t, 8, (_n, _f), _fl, 'psychic', 'lullaby',
-                       rider=disable)
+                _swing(st, g, t, 8, (_n, _f), _fl, 'force', 'air slash',
+                       rider=disable,
+                       extra=(AIR_RAD[0], AIR_RAD[1], 'radiant'))
             else:
                 # 'carry': the song reaches a second ear but does no damage.
                 msg = disable(st, g, t)
-                log(f"    Jigglypuff: the song carries to {t.name}.{msg}")
+                log(f"    Togekiss: the shockwave carries on to {t.name}.{msg}")
         # BONUS ACTION: the buff half of the lane, ported off Togekiss.
         if AIR_BLESS:
             cands = [h for h in (st.stabby, st.lilly, st.ursa)
@@ -1451,8 +1405,8 @@ def candidate_turn(st, targets):
                 pick = cands[0]
                 st.blessing = pick
                 pick.blessed_ac = 1
-                st.tally['prevented']['Jigglypuff (blessing)'] += 1
-                log(f"    Jigglypuff: its humming settles over {pick.name}: their "
+                st.tally['prevented']['Togekiss (serene grace)'] += 1
+                log(f"    Togekiss: SERENE GRACE settles over {pick.name}: their "
                     "swing is guided, and blows slide off them.")
         return
 
