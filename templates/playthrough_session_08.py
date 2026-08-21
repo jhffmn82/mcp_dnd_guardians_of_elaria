@@ -284,7 +284,8 @@ class State:
         self.challenged = None    # Sandshrew's Challenge target
         self.mist_rounds = 0      # Piplup's Sea Mist
         self.mist_centre = (0, 0)
-        self.big_used = False     # each candidate's one showy 1/day
+        # each candidate's showy ability. Togekiss's SING is 3/day (DM).
+        self.big_left = AIR_SING if COMPANION == 'togekiss' else 1
         self.blessing = None
         self.blind_watch = []      # Togekiss
         self.rage = 0             # Chimchar's Blaze
@@ -805,7 +806,8 @@ AIR_DIE = tuple(int(x) for x in os.environ.get('S8_AIR_DIE', '2,6,2').split(',')
 AIR_BLESS = os.environ.get('S8_AIR_BLESS', '1') == '1'
 AIR_RIDER = os.environ.get('S8_AIR_RIDER', 'blind')   # stun | blind
 AIR_DC = int(os.environ.get('S8_AIR_DC', '15'))
-AIR_RIDER_N = int(os.environ.get('S8_AIR_RIDER_N', '2'))
+AIR_RIDER_N = int(os.environ.get('S8_AIR_RIDER_N', '1'))
+AIR_SING = int(os.environ.get('S8_AIR_SING', '3'))
 FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '2,6').split(','))
 FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '1'))
 FIRE_RADIUS = int(os.environ.get('S8_FIRE_RADIUS', '20'))
@@ -1207,9 +1209,9 @@ def _swing(st, g, t, bonus, dice, flat, dtype, label, adv=False, rider=None,
 def _blast(st, g, live, rng, dice, dc, stat, dtype, name, on_fail=None):
     """One showy AoE. Returns True if it fired."""
     pool = [t for t in live if g.dist_ft(t) <= rng]
-    if st.big_used or len(pool) < 3:
+    if st.big_left <= 0 or len(pool) < 3:
         return False
-    st.big_used = True
+    st.big_left -= 1
     log(f"    {g.name}: {name}")
     for t in pool[:5]:
         roll = d(*dice)
@@ -1382,8 +1384,22 @@ def candidate_turn(st, targets):
         return
 
     if k == 'togekiss':
-        if not st.big_used and len([x for x in live if g.dist_ft(x) <= 30]) >= 3:
-            st.big_used = True
+        def serene_grace():
+            """BONUS ACTION. Fires on a Sing turn too: Sing is an Action."""
+            if not AIR_BLESS:
+                return
+            cands = [h for h in (st.stabby, st.lilly, st.ursa)
+                     if h.alive and g.dist_ft(h) <= 60]
+            if cands:
+                pick = cands[0]
+                st.blessing = pick
+                pick.blessed_ac = 1
+                st.tally['prevented']['Togekiss (serene grace)'] += 1
+                log(f"    Togekiss: SERENE GRACE settles over {pick.name}: their "
+                    "swing is guided, and blows slide off them.")
+
+        if st.big_left > 0 and len([x for x in live if g.dist_ft(x) <= 30]) >= 3:
+            st.big_left -= 1
             log("    Togekiss: SING. It settles on the air and begins to hum.")
             for x in [x for x in live if g.dist_ft(x) <= 30][:6]:
                 if 'charmed' in x.cond_imm:
@@ -1394,6 +1410,7 @@ def candidate_turn(st, targets):
                     x.entangled = 3
                     st.tally['prevented']['Togekiss (sing)'] += 1
                     log(f"      {x.name} FALLS ASLEEP where it stands.")
+            serene_grace()
             return
 
         def disable(st_, g_, t_):
@@ -1408,7 +1425,6 @@ def candidate_turn(st, targets):
             t_.entangled = 2          # stun: it loses the turn outright
             t_.reaction = False
             return " It is STUNNED, and the moment is gone."
-            return ''
         _n, _f, _fl = AIR_DIE
         # MULTIATTACK: two gleams. Only the FIRST carries the rider.
         for _i, t in enumerate(live[:2]):
@@ -1418,17 +1434,7 @@ def candidate_turn(st, targets):
                 continue
             _swing(st, g, t, 8, (_n, _f), _fl, 'radiant', 'dazzling gleam',
                    rider=(disable if _i < AIR_RIDER_N else None))
-        # BONUS ACTION: the buff half of the lane, ported off Togekiss.
-        if AIR_BLESS:
-            cands = [h for h in (st.stabby, st.lilly, st.ursa)
-                     if h.alive and g.dist_ft(h) <= 60]
-            if cands:
-                pick = cands[0]
-                st.blessing = pick
-                pick.blessed_ac = 1
-                st.tally['prevented']['Togekiss (serene grace)'] += 1
-                log(f"    Togekiss: SERENE GRACE settles over {pick.name}: their "
-                    "swing is guided, and blows slide off them.")
+        serene_grace()
         return
 
 
