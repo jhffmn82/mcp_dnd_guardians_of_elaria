@@ -52,6 +52,12 @@ FEY_HOUR = os.environ.get('S8_FEY_HOUR', 'carry')
 #   still be up at the Chime Reef (generous about the travel between
 #   locations); 'onefight' expires it on the road, which is the honest
 #   reading of a dungeon crawl with dot events between the landings.
+WING_TARGET = os.environ.get('S8_WING_TARGET', 'weakest')
+#   DM ruling 2026-08-20: the Shardwings hunt the WEAKEST party member, not
+#   the nearest. They are flying predators and the doc's whole note on them
+#   is 'nobody gets to stand still'. Everything else still targets nearest.
+WING_PICKS_PUFF = os.environ.get('S8_WING_PICKS_PUFF', '0') == '1'
+#   Open question for the DM: does a diving predator single out Puff (15 HP)?
 ENGAGE = os.environ.get('S8_ENGAGE', 'far')
 #   Where the enemies START. 'far' is the current staging (the doc supports it
 #   for Mosslight, 'the grey holding the far rim', and for a stationary
@@ -1809,10 +1815,13 @@ def fight2(st):
                         continue
                     if w.fright > 0:
                         w.fright -= 1
-                    # They punish everyone, not just the front line: each wing
-                    # picks its own hero and keeps the whole party moving.
-                    marks = [h for h in st.pcs if h.alive]
-                    tgt = marks[wi % len(marks)] if marks else None
+                    # DM ruling: they hunt the WEAKEST thing on the field.
+                    marks = [h for h in st.pcs if h.alive
+                             and (WING_PICKS_PUFF or h is not st.puff)]
+                    if WING_TARGET == 'weakest' and marks:
+                        tgt = min(marks, key=lambda h: (h.hp, h.ac))
+                    else:
+                        tgt = marks[wi % len(marks)] if marks else None
                     if tgt is None:
                         break
                     if rnd % 2 == 1 and w.dist_ft(tgt) >= 30:
