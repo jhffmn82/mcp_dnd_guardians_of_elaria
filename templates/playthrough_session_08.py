@@ -607,7 +607,6 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         attacker.smoked = 0
         dis = True
     if st.blessing is attacker:
-        st.blessing = None
         adv = True
     if getattr(st, 'mist_rounds', 0) > 0:
         mc = st.mist_centre
@@ -677,6 +676,12 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         log(f"      * Cosmic Omen (Woe -{bump}) is not enough: it lands anyway. "
             f"[{st.u_cosmic} left]")
         total -= bump
+    if (getattr(tgt, 'blessed_ac', 0) and attacker is not None
+            and attacker.side == 'foe' and not crit
+            and tgt.ac <= total < tgt.ac + 2):
+        st.tally['prevented']['Togekiss (blessing)'] += 1
+        log(f"      * Blessing: the blow slides off {tgt.name}.")
+        return False, False, r
     # MISTGUARD (ac mode): the fog thickens and the blow goes wide.
     if (MG_MODE == 'ac' and PIPLUP_VER == 'v4' and tgt.side == 'pc' and not crit
             and st.ghost.alive and st.ghost.kind == 'piplup' and st.ghost.reaction
@@ -799,12 +804,12 @@ def end_polymorph(st, h):
 # Reaction, and one showy 1/day.
 CANDIDATES = {
     # ---- FIRE: three different ways to be the striker ----
-    'chimchar': dict(  # ramp brawler: gets angrier as it burns down
-        ac=15, hp=58, speed=40, reach=5, fly=False, init=3,
+    'chimchar': dict(  # MELEE STRIKER: stands in it and burns it down
+        ac=16, hp=70, speed=40, reach=5, fly=False, init=3,
         saves=dict(str=2, dex=6, con=4, int=-1, wis=1, cha=1),
         immune={'fire'}, vuln={'cold'}, resist=set()),
-    'growlithe': dict(  # burst assassin: picks a throat and closes
-        ac=15, hp=55, speed=50, reach=5, fly=False, init=4,
+    'growlithe': dict(  # MELEE STRIKER alt: fewer, heavier bites + burn
+        ac=16, hp=66, speed=50, reach=5, fly=False, init=4,
         saves=dict(str=4, dex=5, con=4, int=-2, wis=3, cha=2),
         immune={'fire'}, vuln={'cold'}, resist=set()),
     'magmar': dict(  # artillery: sets the room on fire from 60 ft
@@ -816,12 +821,12 @@ CANDIDATES = {
         ac=16, hp=55, speed=60, reach=10, fly=True, init=5,
         saves=dict(str=4, dex=7, con=3, int=-1, wis=3, cha=2),
         immune=set(), vuln=set(), resist=set()),
-    'togekiss': dict(  # daze and blessing: takes the fight out of them
-        ac=16, hp=55, speed=40, reach=30, fly=True, init=4,
+    'togekiss': dict(  # RANGED CONTROLLER: fragile, buffs allies, debuffs foes
+        ac=14, hp=48, speed=40, reach=60, fly=True, init=4,
         saves=dict(str=0, dex=4, con=4, int=2, wis=6, cha=6),
         immune=set(), vuln=set(), resist=set()),
-    'jigglypuff': dict(  # hard lockdown: ends the argument
-        ac=14, hp=62, speed=25, reach=30, fly=False, init=2,
+    'jigglypuff': dict(  # RANGED CONTROLLER alt: pure lockdown, no buffs
+        ac=14, hp=50, speed=25, reach=60, fly=False, init=2,
         saves=dict(str=-1, dex=3, con=4, int=1, wis=4, cha=7),
         immune=set(), vuln=set(), resist=set()),
 }
@@ -969,6 +974,9 @@ def start_round(st, rnd):
             _f.hp -= _b
             st.tally['dealt']['Growlithe'] += _b
             log(f"    {_f.name} is still burning: {_b}.")
+    for _h in st.pcs:
+        _h.blessed_ac = 0
+    st.blessing = None
     aura_tick(st)
 
 
@@ -1236,7 +1244,7 @@ def candidate_turn(st, targets):
                   "FLAME WHEEL, it curls up and runs the line burning."):
             return
         log("    Chimchar: STOKE, it blows on its own knuckles.")
-        _melee_routine(st, g, targets, 3 if st.rage else 2, 8, (1, 10), 5,
+        _melee_routine(st, g, targets, 4 if st.rage else 3, 8, (1, 10), 5,
                        'fire', 'ember claw', adv=bool(st.rage))
         return
 
@@ -1261,7 +1269,7 @@ def candidate_turn(st, targets):
                     st_.burn_watch.append(t_)
                 return " It is set BURNING."
             return ''
-        _melee_routine(st, g, targets, 2, 8, (1, 10), 4, 'fire', 'fire fang',
+        _melee_routine(st, g, targets, 2, 8, (2, 10), 5, 'fire', 'fire fang',
                        adv=(pounced or pack), rider=burn)
         return
 
@@ -1350,10 +1358,25 @@ def candidate_turn(st, targets):
                 st_.tally['prevented']['Togekiss (daze)'] += 1
                 return " It loses the thread."
             return ''
-        _melee_routine(st, g, targets, 3, 7, (1, 6), 3, 'radiant', 'air slash',
-                       rider=daze, reach=30)
-        st.blessing = st.stabby if st.stabby.alive else st.lilly
-        log(f"    Togekiss: BLESSING settles on {st.blessing.name}.")
+        # two light shots, spread across DIFFERENT targets: it is debuffing,
+        # not killing.
+        shot = 0
+        for t in live[:2]:
+            if g.dist_ft(t) > 60:
+                g.approach(t, 60, g.speed)
+            if g.dist_ft(t) <= 60:
+                _swing(st, g, t, 7, (1, 4), 2, 'radiant', 'air slash', rider=daze)
+                shot += 1
+        # BONUS: BLESSING, advantage AND +2 AC on whoever needs it most
+        cands = [h for h in (st.stabby, st.lilly, st.ursa)
+                 if h.alive and g.dist_ft(h) <= 60]
+        pick = cands[0] if cands else None
+        if pick is not None:
+            st.blessing = pick
+            pick.blessed_ac = 1
+            st.tally['prevented']['Togekiss (blessing)'] += 1
+            log(f"    Togekiss: BLESSING settles on {pick.name}: their next swing "
+                "is guided, and blows slide off them until it comes round again.")
         return
 
     if k == 'jigglypuff':
@@ -1373,13 +1396,16 @@ def candidate_turn(st, targets):
 
         def disable(st_, g_, t_):
             if not foe_save(t_, t_.saves.get('wis', 0), 15):
-                t_.slowed = 1
-                t_.fright = 2
+                t_.entangled = 2      # drowsy: it loses the turn, not just the aim
+                t_.reaction = False
                 st_.tally['prevented']['Jigglypuff (disable)'] += 1
-                return " It forgets what it was doing."
+                return " It sways, and forgets what it was doing."
             return ''
-        _melee_routine(st, g, targets, 2, 7, (1, 6), 3, 'psychic', 'lullaby',
-                       rider=disable, reach=30)
+        for t in live[:2]:
+            if g.dist_ft(t) > 60:
+                g.approach(t, 60, g.speed)
+            if g.dist_ft(t) <= 60:
+                _swing(st, g, t, 7, (1, 4), 2, 'psychic', 'lullaby', rider=disable)
         return
 
 
