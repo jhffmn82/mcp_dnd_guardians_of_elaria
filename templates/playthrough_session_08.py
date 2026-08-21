@@ -610,6 +610,7 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         adv = True
     if getattr(tgt, 'blinded', 0) > 0:
         adv = True
+        st.tally['prevented']['_blind_adv_for_us'] += 1
     if getattr(attacker, 'smoked', 0):
         attacker.smoked = 0
         dis = True
@@ -632,6 +633,7 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
     if (attacker is st.challenged and tgt is not st.ghost
             and st.ghost.alive and st.ghost.kind == 'sandshrew'):
         dis = True
+        st.tally['prevented']['Sandshrew (Challenge bites)'] += 1
     # Piplup's Water Jet: a needle of water spoils an attack on a friend.
     if (PIPLUP_VER in ('v1', 'v2')
             and tgt.side == 'pc' and attacker is not None and attacker.side == 'foe'
@@ -653,6 +655,7 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         dis = True
     if attacker is not None and getattr(attacker, 'blinded', 0) > 0:
         dis = True
+        st.tally['prevented']['_blind_dis_on_them'] += 1
     if tgt.prone and attacker is not None and attacker.dist_ft(tgt) <= 5:
         adv = True
     if attacker is not None and attacker.fright > 0:
@@ -824,6 +827,7 @@ AIR_RIDER = os.environ.get('S8_AIR_RIDER', 'blind')   # stun | blind
 AIR_DC = int(os.environ.get('S8_AIR_DC', '15'))
 AIR_RIDER_N = int(os.environ.get('S8_AIR_RIDER_N', '2'))
 AIR_SING = int(os.environ.get('S8_AIR_SING', '3'))
+AIR_PICK = os.environ.get('S8_AIR_PICK', 'fresh')  # near|fresh|big|hitter
 FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '2,6').split(','))
 FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '2'))
 FIRE_RADIUS = int(os.environ.get('S8_FIRE_RADIUS', '20'))
@@ -1001,9 +1005,6 @@ def start_round(st, rnd):
             _f.hp -= _b
             st.tally['dealt']['Growlithe'] += _b
             log(f"    {_f.name} is still burning: {_b}.")
-    for _h in st.pcs:
-        _h.blessed_ac = 0
-    st.blessing = None
     for _f in getattr(st, 'blind_watch', []):
         if getattr(_f, 'blinded', 0) > 0:
             _f.blinded -= 1
@@ -1404,6 +1405,8 @@ def candidate_turn(st, targets):
                      if h.alive and g.dist_ft(h) <= 60]
             if cands:
                 pick = cands[0]
+                for _h in st.pcs:          # the old one ends as this one begins
+                    _h.blessed_ac = 0
                 st.blessing = pick
                 pick.blessed_ac = 1
                 st.tally['prevented']['Togekiss (serene grace)'] += 1
@@ -1438,8 +1441,24 @@ def candidate_turn(st, targets):
             t_.reaction = False
             return " It is STUNNED, and the moment is gone."
         _n, _f, _fl = AIR_DIE
-        # MULTIATTACK: two gleams, and BOTH carry the rider (DM).
-        for _i, t in enumerate(live[:2]):
+        # MULTIATTACK: two gleams, both carrying the rider. DM doctrine
+        # (2026-08-21): Togekiss plays DEFENSIVELY. It keeps the two BIGGEST
+        # THREATS blinded rather than shooting whatever is nearest, because a
+        # blinded enemy swings at Disadvantage and the WHOLE PARTY has
+        # Advantage against it. So: threat order, and never waste a gleam
+        # re-blinding something already blind while a live threat can see.
+        reach = [t for t in live if g.dist_ft(t) <= 60] or live
+        if AIR_PICK == 'big':            # biggest max HP
+            key = lambda t: (getattr(t, 'blinded', 0) > 0, -t.hp_max, -t.hp)
+        elif AIR_PICK == 'fresh':        # don't double-blind; else nearest
+            key = lambda t: (getattr(t, 'blinded', 0) > 0, g.dist_ft(t))
+        elif AIR_PICK == 'hitter':       # whoever swings hardest at us
+            key = lambda t: (getattr(t, 'blinded', 0) > 0,
+                             -getattr(t, 'threat', t.hp_max))
+        else:                            # 'near': plain nearest two
+            key = lambda t: g.dist_ft(t)
+        marks = sorted(reach, key=key)[:2]
+        for _i, t in enumerate(marks):
             if g.dist_ft(t) > 60:
                 g.approach(t, 60, g.speed)
             if g.dist_ft(t) > 60:
@@ -1639,6 +1658,7 @@ def ghost_lash(st, targets):
             note = ''
             if 'frightened' not in t.cond_imm and not foe_save(t, t.saves.get('wis', 0), 16):
                 t.fright = 2
+                st.tally['prevented']['Ghostbloom (fear)'] += 1
                 note = ' It recoils, frightened!'
             log(f"    Ghostbloom: spectral lash hits {t.name} for {dmg}.{note}")
             if t.hp <= 0:
