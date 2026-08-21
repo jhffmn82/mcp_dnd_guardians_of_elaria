@@ -78,3 +78,13 @@ Generate a clean portrait for these when convenient, then add to the table and `
 - **Canonical ref:** `assets/art_refs/REF_piplup.png` (official anime art, DM-supplied 2026-08-18; saved from clipboard).
 - **Card portrait:** `assets/companions/piplup.png` (realistic-fantasy reinterpretation, generated with the ref attached per the Pokemon-ref rule).
 - Design notes: two-lobed blue cap, white face, dark-blue eyes, short golden beak, deep-blue back and flippers, pale belly with two white spots, yellow feet. Fragile, proud, chin always up.
+
+## Chimchar (Fire-rift companion, joins Session 10)
+- **Canonical ref:** `assets/art_refs/REF_chimchar.png` (official art, DM-supplied 2026-08-21).
+- **Card portrait:** `assets/companions/chimchar.png` (realistic-fantasy reinterpretation, ref attached).
+- Design notes: orange-brown fur, large cream-yellow face, pink-rimmed ears, cream hands/feet/belly, chest swirl, upswept hair tuft, slim tail ending in a flame. Mischief in the face; the tail flame is the light source.
+
+## Togekiss (Air-rift companion, joins Session 11)
+- **Canonical refs (four, he is hard to draw):** `REF_togekiss.png` (sprite), `REF_togekiss_front.png`, `REF_togekiss_flying.png`, `REF_togekiss_side.png`, all DM-supplied 2026-08-21.
+- **Card portrait:** `assets/companions/togekiss.png` (generated with all four refs attached).
+- Design notes: plump white body, two very large rounded wings, THREE head spikes (tall red, tall white, blue), small dark eyes, cheerful open beak, red and blue triangles on the belly, short white tail fan. Serene, never lands.

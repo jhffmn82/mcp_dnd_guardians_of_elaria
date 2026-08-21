@@ -244,6 +244,100 @@ B = [
         ],
     }]),
 
+    ("body", "*The Ignis rift's gift and the roster's striker: it runs up walls, spins "
+             "through a crowd as a burning hoop, and hits hardest when it is closest to "
+             "going down.*"),
+    # Fire-rift companion, DM design 2026-08-21, sim field-tested for role fit.
+    # The STRIKER lane: highest single-target output in the roster, and the only
+    # companion whose numbers rise as its hit points fall (Blaze).
+    ("enemy_cards", [{
+        "name": "Chimchar",
+        "sub": "Medium beast (Fire), unaligned \u2726 Fire-rift companion (joins in Session 10)",
+        "img": "assets/companions/chimchar.png", "img_w": 2.25,
+        "banner": TEAL,
+        "stats": [
+            "**AC** 16 (singed hide)  **HP** 71 (13d8 + 13)  **Speed** 40 ft., climb 30 ft.",
+            "**STR** 14  **DEX** 16  **CON** 12  **INT** 8  **WIS** 12  **CHA** 12",
+            "**Saves** Dex +6, Con +4  **Skills** Acrobatics +6, Athletics +5, Perception +4",
+            "**Immune** fire  **Vulnerable** cold",
+            "**Senses** darkvision 60 ft., passive Perception 14",
+            "**Languages** understands its handler, speaks none",
+        ],
+        "traits": [
+            ("Blaze", "While Chimchar has half its hit points or fewer, the fire on its tail "
+             "roars up: it deals an extra 1d6 Fire damage with every attack and effect, it has "
+             "Advantage on its Ember Claw attacks, it makes two Ember Claws instead of one, and "
+             "it can use Ember Shroud."),
+            ("Sure-Footed", "Chimchar can move across vertical surfaces and along ceilings "
+             "without spending extra movement, and it doesn't lose its grip when it takes "
+             "damage."),
+        ],
+        "actions": [
+            ("Multiattack", "Chimchar makes one Ember Claw attack and uses Fire Wheel. While "
+             "Blaze is lit, it makes two Ember Claw attacks and uses Fire Wheel."),
+            ("Ember Claw", "*Melee Attack:* +8 to hit, reach 5 ft., one target. *Hit:* 10 "
+             "(1d10 + 5) Fire damage."),
+            ("Fire Wheel", "Chimchar tucks and spins, a burning hoop of itself. Each creature "
+             "in a 20-foot Emanation originating from Chimchar makes a DC 15 Dexterity saving "
+             "throw, taking 7 (2d6) Fire damage on a failure, or half as much on a success."),
+            ("Flare Blitz (1/Day)", "Chimchar takes a run-up and becomes a comet. Each creature "
+             "within 40 feet makes a DC 15 Dexterity saving throw, taking 17 (5d6) Fire damage "
+             "on a failure, or half as much on a success."),
+            ("Ember Shroud (Bonus Action, Blaze only)", "The air around Chimchar boils and "
+             "nothing can quite see where it is. Until the start of its next turn, attack rolls "
+             "against Chimchar have Disadvantage."),
+        ],
+        "reactions": [
+            ("Backdraft", "*Reaction.* When Chimchar is hit by a melee attack, the attacker "
+             "takes 6 (1d6 + 3) Fire damage for getting that close."),
+        ],
+    }]),
+
+    ("body", "*The Aer rift's gift, and the roster's controller. Togekiss never lands, never "
+             "hurries, and quietly decides who in the room is allowed to see straight and who "
+             "is allowed to act at all.*"),
+    # Air-rift companion, DM design 2026-08-21, sim field-tested for role fit.
+    # The CONTROL lane: blindness on every gleam, a 3-round area shutdown, and an
+    # ally buff on its Bonus Action. Damage is deliberately last in the roster.
+    ("enemy_cards", [{
+        "name": "Togekiss",
+        "sub": "Medium beast (Fairy), unaligned \u2726 Air-rift companion (joins in Session 11)",
+        "img": "assets/companions/togekiss.png", "img_w": 2.6,
+        "banner": TEAL,
+        "stats": [
+            "**AC** 14  **HP** 50 (9d8 + 10)  **Speed** 20 ft., fly 40 ft.",
+            "**STR** 8  **DEX** 16  **CON** 12  **INT** 12  **WIS** 12  **CHA** 18",
+            "**Saves** Con +4, Wis +4, Cha +7  **Skills** Perception +4, Performance +7",
+            "**Immune** radiant  **Vulnerable** necrotic",
+            "**Senses** darkvision 60 ft., passive Perception 14",
+            "**Languages** understands its handler, speaks none",
+        ],
+        "traits": [
+            ("Flyby", "Togekiss doesn't provoke Opportunity Attacks when it flies out of an "
+             "enemy's reach."),
+            ("Gentle Heart", "Togekiss has Advantage on saving throws against being Frightened, "
+             "and it will not leave an ally who is down."),
+        ],
+        "actions": [
+            ("Multiattack", "Togekiss makes two Dazzling Gleam attacks."),
+            ("Dazzling Gleam", "*Ranged Attack:* +8 to hit, range 60 ft., one target. *Hit:* 9 "
+             "(2d6 + 2) Radiant damage, and the target makes a DC 15 Wisdom saving throw. On a "
+             "failed save, it has the Blinded condition until the end of its next turn."),
+            ("Sing (3/Day)", "Togekiss settles on the air and begins to hum. Each enemy within "
+             "30 feet makes a DC 15 Wisdom saving throw or has the Incapacitated condition, "
+             "repeating the save at the end of each of its turns to end the effect, up to 3 "
+             "rounds. Creatures that don't sleep are unaffected."),
+            ("Serene Grace (Bonus Action)", "One ally Togekiss can see within 60 feet has "
+             "Advantage on attack rolls and a +2 bonus to AC until the start of Togekiss's next "
+             "turn."),
+        ],
+        "reactions": [
+            ("Charm", "*Reaction.* When a creature Togekiss can see hits it with an attack, that "
+             "creature makes a DC 15 Wisdom saving throw. On a failed save, it has Disadvantage "
+             "on attack rolls until the end of its next turn."),
+        ],
+    }]),
+
     ("lore", "The Kept Company",
      "The sky-readers keep a gentler list beside their catalogue of frights: the wonders "
      "that chose to stay. A creature woken by the Darkening can turn wild or turn kind, and "

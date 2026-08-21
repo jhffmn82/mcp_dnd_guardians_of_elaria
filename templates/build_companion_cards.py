@@ -24,6 +24,10 @@ ROSTER = [
      "the hit meant for a friend, and makes the dirt around it hard to cross.*"),
     ("Piplup", "piplup_statblock",
      "*The Water rift's companion: the one who stops it landing, then undoes what did.*"),
+    ("Chimchar", "chimchar_statblock",
+     "*The Fire rift's companion and the roster's striker.*"),
+    ("Togekiss", "togekiss_statblock",
+     "*The Air rift's companion and the roster's controller.*"),
 ]
 
 
@@ -47,5 +51,8 @@ if __name__ == "__main__":
     for prefix, stem, sub in ROSTER:
         found = cards_for(prefix)
         assert found, f"no bestiary card found for {prefix}"
+        # the bestiary's italic lead-in duplicates the roster subtitle on a
+        # standalone card and can push a tall card onto a second page
+        found = [b for b in found if b[0] != "body"]
         blocks = [("h1", prefix), ("gold", sub)] + found
         print("built", build_doc(blocks, f"characters/{stem}.docx"))
