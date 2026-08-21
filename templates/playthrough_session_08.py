@@ -1640,6 +1640,17 @@ def ghost_lash(st, targets):
             log(f"    Ghostbloom: lash misses {t.name}.")
 
 
+def fey_drop(st, target):
+    """Where to manifest the spirit: beside its target if that is inside the
+    spell's 90 ft, otherwise next to Ursa."""
+    if target is not None and st.ursa.dist_ft(target) <= 90:
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, -1)):
+            sp = (target.pos[0] + dx, target.pos[1] + dy)
+            if 0 <= sp[0] < 30 and 0 <= sp[1] < 30:
+                return sp
+    return tuple(st.ursa.pos)
+
+
 def summon_fey(st, pos=(9, 15)):
     """Summon Fey. 3rd: AC 15, HP 30, 2d6+6, one attack. Cast with a 4th-level
     slot (build_ursa.py:211-212): AC 16, HP 40, 2d6+7, and TWO attacks a turn."""
@@ -1829,7 +1840,7 @@ def ursa_damage_line(st, targets, bonus_used):
             bonus_used = True
         return bonus_used
     if (st.fey is None or st.fey.hp <= 0) and st.u_slots[3] > 0:
-        summon_fey(st, pos=tuple(st.ursa.pos))
+        summon_fey(st, pos=fey_drop(st, live[0] if live else None))
     elif live:
         if st.u_gbolt > 0 or st.u_staff > 0:
             guiding_bolt(st, live[0])
@@ -3076,7 +3087,7 @@ def boss(st):
                 if URSA_LINE != 'control':
                     if (st.fey is None or st.fey.hp <= 0) and st.u_slots[3] > 0:
                         (conjure_animals(st, tuple(st.ursa.pos), targets=_pk)
-                         if URSA_LINE in ('pack', 'pack4') else summon_fey(st, pos=tuple(st.ursa.pos)))
+                         if URSA_LINE in ('pack', 'pack4') else summon_fey(st, pos=fey_drop(st, spike)))
                     else:
                         guiding_bolt(st, spike, dis=True)
                     if not bonus_used and st.u_starry:
