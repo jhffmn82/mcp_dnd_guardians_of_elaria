@@ -193,7 +193,18 @@ B = [
     # Water-rift companion (DM 2026-08-18): the HEALER of the roster. Fragile on
     # purpose: AC 13 and 45 HP are the price of the kit. Healing lane outclasses
     # Ghostbloom by design (roster rule: each specialist beats her in one lane).
-    # Sim-validate against the S9 encounters when they exist.
+    # REBUILT 2026-08-20 from a 60-day sim bake-off against Ghostbloom and
+    # Sandshrew. v1 topped BOTH damage and control, squatting on the Fire and Air
+    # lanes; it also died constantly once Shardwings began hunting the weakest.
+    # v4 keeps him last in damage and control and first in healing and
+    # prevention: 7.5% of party damage, 48 healed and 48 prevented per day, and
+    # the LOWEST hero-knockdown rate in the roster (0.10/day vs Sandshrew 0.17,
+    # Ghostbloom 0.23). Ice Beam went to one attack at +8 (the roster standard;
+    # +6 was the outlier), the slow dropped to 10 ft so it stops crowding Air,
+    # Water Jet retired, and Mistguard replaced it as an after-the-roll +5 AC.
+    # NOTE for play: Piplup covers the BACKLINE. Only ~29% of the attacks Stabby
+    # takes land within Mistguard's 30 ft, because he fights at 60. That is the
+    # reason to field Sandshrew instead on a day the monk is the one bleeding.
     ("enemy_cards", [{
         "name": "Piplup",
         "sub": "Small beast (Water), unaligned \u2726 Water-rift companion (joins in Session 9)",
@@ -213,23 +224,23 @@ B = [
             ("Slipstream", "While swimming, Piplup doesn't provoke Opportunity Attacks."),
         ],
         "actions": [
-            ("Multiattack", "Piplup makes two Ice Beam attacks."),
-            ("Ice Beam", "*Ranged Attack:* +6 to hit, range 60/120 ft., one target. *Hit:* 10 "
-             "(2d6 + 3) Cold damage, and the target's Speed drops by 20 feet until the end "
+            ("Ice Beam", "*Ranged Attack:* +8 to hit, range 60/120 ft., one target. *Hit:* 10 "
+             "(2d6 + 3) Cold damage, and the target's Speed drops by 10 feet until the end "
              "of its next turn (the slow doesn't stack)."),
             ("Heal Bubble (Bonus Action, 5/Short Rest)", "A shimmering bubble drifts to one "
              "creature Piplup can see within 30 feet and pops into cool silver mist: it "
              "regains 14 (2d8 + 5) hit points and is cured of the Poisoned condition."),
             ("Sea Mist (1/Day)", "Piplup breathes out a rolling bank of cool silver fog: a "
-             "20-foot-radius Sphere centered on a point he can see within 60 feet, Heavily "
-             "Obscured for 1 minute or until a strong wind clears it. Piplup and his friends "
-             "always know where each other are inside it; enemies do not."),
+             "20-foot-radius Sphere centered on a point he can see within 60 feet, lasting "
+             "**3 rounds**. His friends always know where each other are inside it and nothing "
+             "else does, so while in the fog **allies have Advantage on attack rolls, attacks "
+             "against them have Disadvantage, and they can Disengage for free**."),
         ],
         "reactions": [
-            ("Water Jet", "*Reaction.* When a creature Piplup can see within 30 feet attacks "
-             "one of his allies, a needle of high-pressure water snaps out: the attacker "
-             "takes 7 (2d6) Bludgeoning damage and the triggering attack is made with "
-             "Disadvantage."),
+            ("Mistguard", "*Reaction.* When a creature Piplup can see within 30 feet is hit by "
+             "an attack, cold haze closes over it: that creature gains **+5 AC against that "
+             "attack**, which may turn the hit into a miss. Decide **after the roll**, the way "
+             "Lilly's Shield works."),
         ],
     }]),
 

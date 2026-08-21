@@ -63,6 +63,33 @@ ENGAGE = os.environ.get('S8_ENGAGE', 'far')
 #   for Mosslight, 'the grey holding the far rim', and for a stationary
 #   Groudon); 'close' pulls every spawn 45% of the way toward the party, which
 #   is what a DM does when they want the fight joined on round one.
+BUBBLE_UNCAPPED = os.environ.get('S8_BUBBLE', 'capped') == 'uncapped'
+#   Curl Up precedent: the Reaction itself is the limiter, no daily count.
+MISTGUARD = int(os.environ.get('S8_MISTGUARD', '5'))
+MG_MODE = os.environ.get('S8_MG_MODE', 'ac')   # damage | ac
+#   'ac' (Justin, 2026-08-20): Mistguard becomes a Shield-style reaction
+#   resolved AFTER the die, turning a hit into a miss rather than shaving it.
+BEAM_HIT = int(os.environ.get('S8_BEAM_HIT', '8'))
+MIST_ROUNDS = int(os.environ.get('S8_MIST_ROUNDS', '3'))
+#   SEA MIST reborn (Justin, 2026-08-20): 1/day, a 20-ft-radius bank of fog.
+#   Allies inside have ADVANTAGE on attacks; attacks against allies inside
+#   have DISADVANTAGE. Lasts 2 rounds. This is his one big button.
+BEAM_DIE = os.environ.get('S8_BEAM_DIE', '2d6')   # 2d6 | 1d8 | 1d10
+PIPLUP_VER = os.environ.get('S8_PIPLUP', 'v4')   # v1 | v2 | v3 | v4
+#   v4 (Justin, 2026-08-20): Action = Ice Beam with a 10-ft slow (a nudge,
+#   not Air's 20-ft lane); BONUS = Heal Bubble, the deliberate choice;
+#   REACTION = Mistguard, the reflex that shaves an incoming hit on an ally.
+#   v3 (Justin, 2026-08-20): Action = one Ice Beam; BONUS = Mistguard, a
+#   party-wide damage shave; REACTION = Heal Bubble, which always has a job
+#   because damage always happens, and which he can turn on himself. Sea
+#   Mist dropped: 1/day was doing nothing.
+PIPLUP_V2 = PIPLUP_VER in ('v2', 'v3', 'v4')
+#   Water re-scoped to PREVENT + RESTORE so it stops squatting on Fire's
+#   damage lane and Air's control lane:
+#     Ice Beam  -> ONE attack, no slow rider (the slow is Air's job)
+#     Water Jet -> Disadvantage only, no damage
+#     Bubble Shield (Action) -> 1d8+5 temp HP to one ally within 30 ft
+#     Sea Mist (1/day) -> now actually modelled, his panic button
 COMPANION = os.environ.get('S8_COMPANION', 'ghostbloom')
 #   Only ONE companion is out at a time (roster rule). 'ghostbloom' is the
 #   generalist; 'sandshrew' the Earth-rift tank; 'piplup' the Water-rift
@@ -204,6 +231,9 @@ class Actor:
         if self.slowed:
             max_ft = max(5, max_ft - 20)   # Ice Beam's slow / broken ground
             self.slowed = 0
+        elif getattr(self, 'slowed_10', 0):
+            max_ft = max(5, max_ft - 10)   # v4 Ice Beam's lighter chill
+            self.slowed_10 = 0
         steps = max_ft // 5
         x, y = self.pos
         while steps > 0 and max(abs(x - target.pos[0]), abs(y - target.pos[1])) * 5 > want_ft:
@@ -249,6 +279,8 @@ class State:
         self.heal_bubble = 5      # Piplup, 5/short rest
         self.sea_mist = True      # Piplup, 1/day
         self.challenged = None    # Sandshrew's Challenge target
+        self.mist_rounds = 0      # Piplup's Sea Mist
+        self.mist_centre = (0, 0)
         self.puff = Actor('Puff', 'p', 'pc', 13, 15, (0, 0), 30, init_mod=4,
                           saves=dict(str=-1, dex=4, con=3, int=2, wis=2, cha=0),
                           immune={'poison'},
@@ -423,6 +455,24 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
         st.tally['prevented']['Sandshrew (Curl Up)'] += cut
         log(f"      * Curl Up: Sandshrew tucks and {cut} skids off the plates"
             + (" (to 0!)" if total == 0 else f" ({total} gets through)"))
+    # MISTGUARD. v3: a bonus-action aura, first hit on each ally each round.
+    # v4: a REACTION, once per round, on whoever is being hit right now.
+    if (PIPLUP_VER == 'v3' and total > 0 and tgt.side == 'pc'
+            and getattr(tgt, 'mistguard', False)):
+        tgt.mistguard = False
+        cut = min(total, MISTGUARD)
+        total -= cut
+        st.tally['prevented']['Piplup (Mistguard)'] += cut
+    elif (MG_MODE == 'damage' and PIPLUP_VER == 'v4' and total > 0
+            and tgt.side == 'pc'
+            and st.ghost.alive and st.ghost.kind == 'piplup'
+            and st.ghost.reaction and st.ghost.dist_ft(tgt) <= 30):
+        st.ghost.reaction = False
+        cut = min(total, MISTGUARD)
+        total -= cut
+        st.tally['prevented']['Piplup (Mistguard)'] += cut
+        log(f"      * Mistguard: cold haze closes over {tgt.name} and {cut} of it "
+            "never lands.")
     if tgt.temp and total > 0:
         ab = min(tgt.temp, total)
         tgt.temp -= ab
@@ -446,6 +496,25 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
                 tgt.drops += 1
                 log(f"      *** {tgt.name} DROPS to 0 HP! ***")
         # foes handle death in caller
+    # HEAL BUBBLE as a REACTION (v3): damage always happens, so it always has
+    # a job, and he can turn it on himself, which is his whole survivability.
+    if (PIPLUP_VER == 'v3' and tgt.side == 'pc' and total > 0
+            and st.ghost.alive and st.ghost.kind == 'piplup'
+            and (BUBBLE_UNCAPPED or st.heal_bubble > 0) and st.ghost.reaction
+            and st.ghost.dist_ft(tgt) <= 30
+            and (tgt.down or tgt.hp < tgt.hp_max * 0.65)):
+        st.heal_bubble -= 1
+        st.ghost.reaction = False
+        h = d(2, 8) + 5
+        was = tgt.down
+        tgt.hp = min(tgt.hp_max, tgt.hp + h)
+        if tgt.hp > 0:
+            tgt.down = False
+        tgt.poisoned = 0
+        st.tally['healed']['Piplup'] += h
+        log(f"      * Heal Bubble: it pops over {tgt.name} for {h}"
+            + (" and they are back up" if was else "")
+            + f". [{st.heal_bubble} left]")
     # Guardian's Light: reaction heal when a hero is hurt
     if tgt.side == 'pc' and total > 0 and tgt is not st.ghost and st.g_light > 0 \
             and st.ghost.alive and not st.ghost.ape \
@@ -477,6 +546,15 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         dis = True
     if getattr(tgt, 'entangled', 0) > 0 or getattr(tgt, 'restrained', False):
         adv = True
+    if getattr(st, 'mist_rounds', 0) > 0:
+        mc = st.mist_centre
+        if (tgt.side == 'pc' and attacker is not None and attacker.side == 'foe'
+                and max(abs(tgt.pos[0] - mc[0]), abs(tgt.pos[1] - mc[1])) * 5 <= 20):
+            dis = True
+        if (attacker is not None and attacker.side == 'pc'
+                and max(abs(attacker.pos[0] - mc[0]),
+                        abs(attacker.pos[1] - mc[1])) * 5 <= 20):
+            adv = True
     # Sand Veil: attacks on Sandshrew from beyond 15 ft are at Disadvantage.
     if (tgt is st.ghost and tgt.kind == 'sandshrew' and attacker is not None
             and attacker.dist_ft(tgt) > 15):
@@ -486,16 +564,21 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
             and st.ghost.alive and st.ghost.kind == 'sandshrew'):
         dis = True
     # Piplup's Water Jet: a needle of water spoils an attack on a friend.
-    if (tgt.side == 'pc' and attacker is not None and attacker.side == 'foe'
+    if (PIPLUP_VER in ('v1', 'v2')
+            and tgt.side == 'pc' and attacker is not None and attacker.side == 'foe'
             and st.ghost.alive and st.ghost.kind == 'piplup' and tgt is not st.ghost
             and st.ghost.reaction and st.ghost.dist_ft(attacker) <= 30):
         st.ghost.reaction = False
         dis = True
-        jet = d(2, 6)
-        attacker.hp -= jet
-        st.tally['dealt']['Piplup'] += jet
-        log(f"      * Water Jet: Piplup snaps a needle of water at {attacker.name} "
-            f"({jet} damage) and the swing goes wide.")
+        if PIPLUP_V2:
+            log(f"      * Water Jet: a needle of water crosses {attacker.name}'s "
+                "eyeline and the swing goes wide.")
+        else:
+            jet = d(2, 6)
+            attacker.hp -= jet
+            st.tally['dealt']['Piplup'] += jet
+            log(f"      * Water Jet: Piplup snaps a needle of water at "
+                f"{attacker.name} ({jet} damage) and the swing goes wide.")
     if attacker is not None and (getattr(attacker, 'entangled', 0) > 0
                                  or getattr(attacker, 'restrained', False)):
         dis = True
@@ -531,6 +614,16 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         log(f"      * Cosmic Omen (Woe -{bump}) is not enough: it lands anyway. "
             f"[{st.u_cosmic} left]")
         total -= bump
+    # MISTGUARD (ac mode): the fog thickens and the blow goes wide.
+    if (MG_MODE == 'ac' and PIPLUP_VER == 'v4' and tgt.side == 'pc' and not crit
+            and st.ghost.alive and st.ghost.kind == 'piplup' and st.ghost.reaction
+            and st.ghost.dist_ft(tgt) <= 30
+            and tgt.ac <= total < tgt.ac + MISTGUARD):
+        st.ghost.reaction = False
+        st.tally['prevented']['Piplup (Mistguard)'] += 1
+        log(f"      * Mistguard: the fog thickens over {tgt.name} and the blow "
+            f"goes wide ({total} vs AC {tgt.ac + MISTGUARD}).")
+        return False, False, r
     # Lilly's Shield reaction
     if tgt is st.lilly and tgt.reaction and st.l_slot1 > 0 and not crit \
             and tgt.ac <= total < tgt.ac + 5:
@@ -759,6 +852,8 @@ def start_round(st, rnd):
     for a in st.pcs + [st.cannon]:
         a.reaction = True
         a.fright = max(0, a.fright - 1)
+    if getattr(st, 'mist_rounds', 0) > 0:
+        st.mist_rounds -= 1
     aura_tick(st)
 
 
@@ -1004,10 +1099,24 @@ def sandshrew_turn(st, targets):
 
 
 def piplup_turn(st, targets):
-    """Heal Bubble (bonus action) then two Ice Beams at range."""
+    """Heal Bubble (bonus action) then Ice Beams at range."""
     g = st.ghost
-    hurt = [h for h in (st.lilly, st.stabby, st.ursa) if h.alive
-            and (h.down or h.hp < h.hp_max * 0.6) and g.dist_ft(h) <= 30]
+    if PIPLUP_VER == 'v3':
+        n = 0
+        for h in st.pcs:
+            if h.alive and g.dist_ft(h) <= 30:
+                h.mistguard = True
+                n += 1
+        log(f"    Piplup: MISTGUARD, cold silver haze settles over {n} of them; "
+            "the next blow each takes lands lighter.")
+    elif PIPLUP_V2 and st.sea_mist and (g.hp < g.hp_max * 0.5 or any(
+            h.alive and h.hp < h.hp_max * 0.35 for h in (st.lilly, st.stabby, st.ursa))):
+        st.sea_mist = False
+        st.mist_rounds = 10
+        log("    Piplup: SEA MIST, a rolling bank of cool silver fog. His friends "
+            "know where each other are inside it; nothing else does.")
+    hurt = [h for h in st.pcs if h.alive and h is not st.cannon
+            and (h.down or h.hp < h.hp_max * 0.65) and g.dist_ft(h) <= 30]
     if hurt and st.heal_bubble > 0:
         st.heal_bubble -= 1
         t = min(hurt, key=lambda h: h.hp / h.hp_max)
@@ -1021,8 +1130,35 @@ def piplup_turn(st, targets):
         log(f"    Piplup: HEAL BUBBLE drifts to {t.name} and pops: {heal} back"
             + (" and back on their feet" if was else "")
             + f". [{st.heal_bubble} left]")
+    if PIPLUP_VER == 'v4' and st.sea_mist and st.mist_rounds <= 0:
+        near = [t for t in targets if t.hp > 0 and any(
+            h.alive and h.dist_ft(t) <= 30 for h in (st.lilly, st.stabby, st.ursa))]
+        allies = [h for h in st.pcs if h.alive]
+        if len(near) >= 2 and len(allies) >= 3:
+            xs = [h.pos[0] for h in allies]; ys = [h.pos[1] for h in allies]
+            st.mist_centre = (sum(xs) // len(xs), sum(ys) // len(ys))
+            st.mist_rounds = MIST_ROUNDS
+            st.sea_mist = False
+            log(f"    Piplup: SEA MIST, a rolling bank of cool silver fog "
+                f"{MIST_ROUNDS} rounds deep. His friends know where each other are "
+                "inside it. Nothing else does.")
+            log("      (Allies inside swing with ADVANTAGE; everything swinging at "
+                "them does so at DISADVANTAGE.)")
+            return
     live = [t for t in targets if t.hp > 0]
-    for _ in range(2):
+    if PIPLUP_VER == 'v2':
+        # BUBBLE SHIELD: prevention beats a heal when nobody is hurt yet.
+        naked = [h for h in st.pcs if h.alive and h.temp <= 0
+                 and g.dist_ft(h) <= 30 and h is not st.cannon]
+        if naked:
+            t = min(naked, key=lambda h: h.hp / h.hp_max)
+            shield = d(1, 8) + 5
+            t.temp = max(t.temp, shield)
+            st.tally['prevented']['Piplup (Bubble Shield)'] += shield
+            log(f"    Piplup: BUBBLE SHIELD closes around {t.name}: {shield} "
+                "temporary hit points.")
+            return
+    for _ in range(1 if PIPLUP_V2 else 2):
         live = [t for t in targets if t.hp > 0]
         if not live:
             return
@@ -1032,12 +1168,17 @@ def piplup_turn(st, targets):
         if g.dist_ft(t) > 60:
             log(f"    Piplup: waddles into range of {t.name}.")
             return
-        hit, crit, _ = attack_roll(st, 6, t, attacker=g)
+        hit, crit, _ = attack_roll(st, BEAM_HIT, t, attacker=g)
         if hit:
-            dmg = deal(st, t, [(d(4 if crit else 2, 6) + 3, 'cold')],
+            _n, _f = (2, 6) if BEAM_DIE == '2d6' else (1, int(BEAM_DIE[2:]))
+            dmg = deal(st, t, [(d(_n * (2 if crit else 1), _f) + 3, 'cold')],
                        magical=False, attacker=g, credit='Piplup')
-            t.slowed = 1
-            log(f"    Piplup: ICE BEAM hits {t.name} for {dmg} cold; it slows.")
+            if PIPLUP_VER == 'v1':
+                t.slowed = 1          # -20 ft
+            elif PIPLUP_VER == 'v4':
+                t.slowed_10 = 1       # -10 ft, a nudge
+            log(f"    Piplup: ICE BEAM hits {t.name} for {dmg} cold"
+                + ("." if PIPLUP_V2 else "; it slows."))
             if t.hp <= 0:
                 log(f"      {t.name} is destroyed.")
         else:
@@ -1928,6 +2069,7 @@ def short_rest(st):
     st.u_wild = min(3, st.u_wild + 1)
     st.g_light = 3
     st.heal_bubble = 5
+    st.mist_rounds = 0
     st.g_feystep = True
     st.u_starry = False
     st.conc = None
