@@ -827,7 +827,7 @@ AIR_RIDER = os.environ.get('S8_AIR_RIDER', 'blind')   # stun | blind
 AIR_DC = int(os.environ.get('S8_AIR_DC', '15'))
 AIR_RIDER_N = int(os.environ.get('S8_AIR_RIDER_N', '2'))
 AIR_SING = int(os.environ.get('S8_AIR_SING', '3'))
-AIR_PICK = os.environ.get('S8_AIR_PICK', 'fresh')  # near|fresh|big|hitter
+AIR_PICK = os.environ.get('S8_AIR_PICK', 'asis')  # near|fresh|big|hitter
 FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '2,6').split(','))
 FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '2'))
 FIRE_RADIUS = int(os.environ.get('S8_FIRE_RADIUS', '20'))
@@ -1455,9 +1455,11 @@ def candidate_turn(st, targets):
         elif AIR_PICK == 'hitter':       # whoever swings hardest at us
             key = lambda t: (getattr(t, 'blinded', 0) > 0,
                              -getattr(t, 'threat', t.hp_max))
-        else:                            # 'near': plain nearest two
+        elif AIR_PICK == 'near':         # plain nearest two
             key = lambda t: g.dist_ft(t)
-        marks = sorted(reach, key=key)[:2]
+        else:                            # 'asis': the caller's own priority
+            key = None
+        marks = live[:2] if key is None else sorted(reach, key=key)[:2]
         for _i, t in enumerate(marks):
             if g.dist_ft(t) > 60:
                 g.approach(t, 60, g.speed)
