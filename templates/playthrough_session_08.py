@@ -837,6 +837,7 @@ FIRE_BLITZ = os.environ.get('S8_FIRE_BLITZ', '1') == '1'
 FIRE_BLAZE_AT = float(os.environ.get('S8_FIRE_BLAZE_AT', '0.5'))
 FIRE_BLITZ_DICE = int(os.environ.get('S8_FIRE_BLITZ_DICE', '5'))
 SHREW_MODE = os.environ.get('S8_SHREW', 'guard')   # guard | brawl
+QUAKE_DICE = int(os.environ.get('S8_QUAKE_DICE', '2'))
 FIRE_SHROUD = os.environ.get('S8_FIRE_SHROUD', 'dodge')  # temp | dodge | off
 FIRE_GATE = os.environ.get('S8_FIRE_GATE', '1') == '1'   # only while Blaze is lit
 
@@ -1520,7 +1521,7 @@ def sandshrew_turn(st, targets):
     if len(cube) >= need and not friends_in:
         log("    Sandshrew: EARTHQUAKE, both forefeet down and the floor splits.")
         for t in cube[:6]:
-            roll = d(3, 6)
+            roll = d(QUAKE_DICE, 6)
             if foe_save(t, t.saves.get('dex', 0), 15):
                 dmg = deal(st, t, [(roll // 2, 'bludgeoning')], credit='Sandshrew')
                 log(f"      {t.name} rides it out: {dmg}.")
