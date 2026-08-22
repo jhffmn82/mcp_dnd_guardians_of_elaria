@@ -129,7 +129,7 @@ B = [
             ("Spectral Lash", "*Melee Weapon Attack:* +8 to hit, reach 15 ft., one target. *Hit:* 10 (1d8 + 6) "
              "slashing plus 3 (1d6) necrotic, and the target must succeed on a DC 16 Wisdom save or be "
              "frightened until the end of its next turn."),
-            ("Ghostly Wail (1/Long Rest)", "A haunting cry in a 15-ft. cone. Each creature there makes a DC 16 "
+            ("Ghostly Wail (2/Long Rest)", "A haunting cry in a 15-ft. cone. Each creature there makes a DC 16 "
              "Wisdom save, taking 17 (5d6) necrotic and frightened until the end of its next turn on a fail, "
              "or half damage and no fear on a success."),
         ],
@@ -231,7 +231,7 @@ B = [
             ("Heal Bubble (Bonus Action, 5/Short Rest)", "A shimmering bubble drifts to one "
              "creature Piplup can see within 30 feet and pops into cool silver mist: it "
              "regains 14 (2d8 + 5) hit points and is cured of the Poisoned condition."),
-            ("Sea Mist (1/Day)", "Piplup breathes out a rolling bank of cool silver fog: a "
+            ("Sea Mist (2/Day)", "Piplup breathes out a rolling bank of cool silver fog: a "
              "20-foot-radius Sphere centered on a point he can see within 60 feet, lasting "
              "**3 rounds**. His friends always know where each other are inside it and nothing "
              "else does, so while in the fog **allies have Advantage on attack rolls, attacks "
@@ -266,27 +266,24 @@ B = [
         ],
         "traits": [
             ("Blaze", "While Chimchar has half its hit points or fewer, the fire on its tail "
-             "roars up: it deals an extra 1d6 Fire damage with every attack and effect, it has "
-             "Advantage on its Ember Claw attacks, it makes two Ember Claws instead of one, and "
-             "it can use Ember Shroud."),
+             "roars up and the air around it boils: it deals an extra 1d6 + 3 Fire damage with "
+             "**every** source of damage it deals, it has Advantage on its Ember Claw attacks, "
+             "and attack rolls against it have Disadvantage."),
             ("Sure-Footed", "Chimchar can move across vertical surfaces and along ceilings "
              "without spending extra movement, and it doesn't lose its grip when it takes "
              "damage."),
         ],
         "actions": [
-            ("Multiattack", "Chimchar makes one Ember Claw attack and uses Fire Wheel. While "
-             "Blaze is lit, it makes two Ember Claw attacks and uses Fire Wheel."),
+            ("Multiattack", "Chimchar makes two Ember Claw attacks."),
             ("Ember Claw", "*Melee Attack:* +8 to hit, reach 5 ft., one target. *Hit:* 10 "
              "(1d10 + 5) Fire damage."),
-            ("Fire Wheel", "Chimchar tucks and spins, a burning hoop of itself. Each creature "
-             "in a 20-foot Emanation originating from Chimchar makes a DC 15 Dexterity saving "
-             "throw, taking 7 (2d6) Fire damage on a failure, or half as much on a success."),
-            ("Flare Blitz (1/Day)", "Chimchar takes a run-up and becomes a comet. Each creature "
+            ("Fire Wheel (Bonus Action)", "Chimchar tucks and spins, a burning hoop of "
+             "itself. Each creature in a 20-foot Emanation originating from Chimchar makes a "
+             "DC 15 Dexterity saving throw, taking 7 (2d6) Fire damage on a failure, or half as "
+             "much on a success."),
+            ("Flare Blitz (2/Day)", "Chimchar takes a run-up and becomes a comet. Each creature "
              "within 40 feet makes a DC 15 Dexterity saving throw, taking 17 (5d6) Fire damage "
              "on a failure, or half as much on a success."),
-            ("Ember Shroud (Bonus Action, Blaze only)", "The air around Chimchar boils and "
-             "nothing can quite see where it is. Until the start of its next turn, attack rolls "
-             "against Chimchar have Disadvantage."),
         ],
         "reactions": [
             ("Backdraft", "*Reaction.* When Chimchar is hit by a melee attack, the attacker "

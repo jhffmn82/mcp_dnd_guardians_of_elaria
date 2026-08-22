@@ -282,13 +282,13 @@ class State:
                                cond_imm={'charmed', 'frightened'}, reach=15, fly=True)
         self.ghost.kind = COMPANION
         self.heal_bubble = 5      # Piplup, 5/short rest
-        self.sea_mist = True      # Piplup, 1/day
+        self.sea_mist = DAILY_N   # Piplup, 2/day (DM 2026-08-22)
         self.challenged = None    # Sandshrew's Challenge target
         self.quake = None         # Sandshrew's broken ground: (x, y)
         self.mist_rounds = 0      # Piplup's Sea Mist
         self.mist_centre = (0, 0)
         # each candidate's showy ability. Togekiss's SING is 3/day (DM).
-        self.big_left = AIR_SING if COMPANION == 'togekiss' else 1
+        self.big_left = AIR_SING if COMPANION == 'togekiss' else DAILY_N
         self.blessing = None
         self.blind_watch = []      # Togekiss
         self.quake_watch = []      # foes standing in the broken ground
@@ -335,7 +335,7 @@ class State:
         # Ghostbloom
         self.g_light = 3
         self.g_feystep = True
-        self.g_wail = True
+        self.g_wail = DAILY_N
         # bookkeeping
         self.gb_adv_target = None
         self.ward_pending = False
@@ -838,6 +838,7 @@ FIRE_BLITZ = os.environ.get('S8_FIRE_BLITZ', '1') == '1'
 FIRE_BLAZE_AT = float(os.environ.get('S8_FIRE_BLAZE_AT', '0.5'))
 FIRE_BLITZ_DICE = int(os.environ.get('S8_FIRE_BLITZ_DICE', '5'))
 SHREW_MODE = os.environ.get('S8_SHREW', 'guard')   # guard | brawl
+DAILY_N = int(os.environ.get('S8_DAILY_N', '2'))   # showpiece uses per day
 QUAKE_DICE = int(os.environ.get('S8_QUAKE_DICE', '3'))
 QUAKE_NEED = int(os.environ.get('S8_QUAKE_NEED', '2'))
 FIRE_SHROUD = os.environ.get('S8_FIRE_SHROUD', 'dodge')  # temp | dodge | off
@@ -1573,7 +1574,7 @@ def piplup_turn(st, targets):
             "the next blow each takes lands lighter.")
     elif PIPLUP_V2 and st.sea_mist and (g.hp < g.hp_max * 0.5 or any(
             h.alive and h.hp < h.hp_max * 0.35 for h in (st.lilly, st.stabby, st.ursa))):
-        st.sea_mist = False
+        st.sea_mist -= 1
         st.mist_rounds = 10
         log("    Piplup: SEA MIST, a rolling bank of cool silver fog. His friends "
             "know where each other are inside it; nothing else does.")
@@ -1600,7 +1601,7 @@ def piplup_turn(st, targets):
             xs = [h.pos[0] for h in allies]; ys = [h.pos[1] for h in allies]
             st.mist_centre = (sum(xs) // len(xs), sum(ys) // len(ys))
             st.mist_rounds = MIST_ROUNDS
-            st.sea_mist = False
+            st.sea_mist -= 1
             log(f"    Piplup: SEA MIST, a rolling bank of cool silver fog "
                 f"{MIST_ROUNDS} rounds deep. His friends know where each other are "
                 "inside it. Nothing else does.")
@@ -1654,7 +1655,7 @@ def ghost_lash(st, targets):
         pack = [t for t in targets if t.hp > 0 and st.ghost.dist_ft(t) <= 15
                 and 'frightened' not in t.cond_imm]
         if len(pack) >= 3:
-            st.g_wail = False
+            st.g_wail -= 1
             log("    Ghostbloom: GHOSTLY WAIL, a cry that cracks the air!")
             for t in pack[:4]:
                 roll = d(5, 6)
