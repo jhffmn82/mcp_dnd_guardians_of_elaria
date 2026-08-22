@@ -700,10 +700,20 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         st.tally['prevented']['Togekiss (blessing)'] += 1
         log(f"      * Blessing: the blow slides off {tgt.name}.")
         return False, False, r
+    # --- Mistguard funnel instrumentation ---
+    if (PIPLUP_VER == 'v4' and tgt.side == 'pc' and st.ghost.alive
+            and st.ghost.kind == 'piplup' and not crit
+            and tgt.ac <= total < tgt.ac + MISTGUARD):
+        st.tally['prevented']['_mg_band'] += 1          # a hit in the +5 band
+        if st.ghost.dist_ft(tgt) <= MG_RANGE:
+            st.tally['prevented']['_mg_inrange'] += 1   # ...and he was close
+            if st.ghost.reaction:
+                st.tally['prevented']['_mg_ready'] += 1 # ...and had the reaction
     # MISTGUARD (ac mode): the fog thickens and the blow goes wide.
     if (MG_MODE == 'ac' and PIPLUP_VER == 'v4' and tgt.side == 'pc' and not crit
+            and (MG_SELF or tgt is not st.ghost)
             and st.ghost.alive and st.ghost.kind == 'piplup' and st.ghost.reaction
-            and st.ghost.dist_ft(tgt) <= 30
+            and st.ghost.dist_ft(tgt) <= MG_RANGE
             and tgt.ac <= total < tgt.ac + MISTGUARD):
         st.ghost.reaction = False
         st.tally['prevented']['Piplup (Mistguard)'] += 1
@@ -849,6 +859,9 @@ GLIGHT_AT = float(os.environ.get('S8_GLIGHT_AT', '1.01'))  # card: ANY damage
 # better than spamming at 0.99 (knockdowns 0.04 vs 0.05, floor 77% vs 73%),
 # because the charges are there when they matter.
 BUBBLE_AT = float(os.environ.get('S8_BUBBLE_AT', '0.85'))
+MG_SELF = os.environ.get('S8_MG_SELF', '1') == '1'   # may it guard ITSELF?
+MG_RANGE = int(os.environ.get('S8_MG_RANGE', '30'))       # Mistguard reach
+BEAM_STANDOFF = int(os.environ.get('S8_STANDOFF', '60'))  # how far back he stands
 QUAKE_DICE = int(os.environ.get('S8_QUAKE_DICE', '3'))
 QUAKE_NEED = int(os.environ.get('S8_QUAKE_NEED', '2'))
 FIRE_SHROUD = os.environ.get('S8_FIRE_SHROUD', 'dodge')  # temp | dodge | off
@@ -1637,8 +1650,8 @@ def piplup_turn(st, targets):
         if not live:
             return
         t = live[0]
-        if g.dist_ft(t) > 60:
-            g.approach(t, 60, 25)
+        if g.dist_ft(t) > BEAM_STANDOFF:
+            g.approach(t, BEAM_STANDOFF, 25)
         if g.dist_ft(t) > 60:
             log(f"    Piplup: waddles into range of {t.name}.")
             return
