@@ -353,8 +353,12 @@ class State:
 
     def hero_save(self, hero, stat, dc, adv=False, tag=''):
         mod = hero.saves.get(stat, 0)
-        if self.u_starry and hero is not self.ursa and not self.ursa.down:
-            mod += 1              # Amulet of Guiding Light
+        if (self.u_starry and hero is not self.ursa and not self.ursa.down
+                and hero.dist_ft(self.ursa) <= 30):
+            mod += 1              # Amulet of Guiding Light, 30 ft, allies only
+            self.tally['prevented']['_aura_save'] += 1
+        elif self.u_starry and hero is not self.ursa and not self.ursa.down:
+            self.tally['prevented']['_aura_save_MISSED'] += 1
         if stat == 'dex' and hero is self.stabby and self.s_ignited:
             adv = True
         roll = d20(adv=adv)
@@ -861,6 +865,7 @@ GLIGHT_AT = float(os.environ.get('S8_GLIGHT_AT', '1.01'))  # card: ANY damage
 BUBBLE_AT = float(os.environ.get('S8_BUBBLE_AT', '0.85'))
 MG_SELF = os.environ.get('S8_MG_SELF', '1') == '1'   # may it guard ITSELF?
 MG_RANGE = int(os.environ.get('S8_MG_RANGE', '30'))       # Mistguard reach
+COHESION = os.environ.get('S8_COHESION', '0') == '1'      # stay within 30 ft of Stabby
 BEAM_STANDOFF = int(os.environ.get('S8_STANDOFF', '60'))  # how far back he stands
 QUAKE_DICE = int(os.environ.get('S8_QUAKE_DICE', '3'))
 QUAKE_NEED = int(os.environ.get('S8_QUAKE_NEED', '2'))
@@ -1587,6 +1592,7 @@ def sandshrew_turn(st, targets):
 def piplup_turn(st, targets):
     """Heal Bubble (bonus action) then Ice Beams at range."""
     g = st.ghost
+    tether(st, g)
     if PIPLUP_VER == 'v3':
         n = 0
         for h in st.pcs:
@@ -1955,6 +1961,7 @@ def pack_tick(st, targets, phase='both'):
 
 
 def ursa_damage_line(st, targets, bonus_used):
+    tether(st, st.ursa)
     """The simple line: keep the summon up, then Guiding Bolt while the free
     Star Map casts last, then Starry Wisp forever."""
     live = [t for t in targets if t.hp > 0]
@@ -1986,6 +1993,17 @@ def ursa_damage_line(st, targets, bonus_used):
         star_arrow(st, live[0])
         bonus_used = True
     return bonus_used
+
+
+def tether(st, who, max_ft=30):
+    """COHESION doctrine (DM 2026-08-22): the casters stay within 30 ft of
+    Stabby, so Ursa's Amulet light covers the party's saves and Piplup's
+    Mistguard can reach the man actually being hit."""
+    if not COHESION or not st.stabby.alive or who.down:
+        return
+    if who.dist_ft(st.stabby) > max_ft:
+        who.approach(st.stabby, max_ft, who.speed)
+        st.tally['prevented']['_tether_pull'] += 1
 
 
 def ursa_close(st, target, want_ft=55):
