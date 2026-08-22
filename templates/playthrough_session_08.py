@@ -840,6 +840,7 @@ FIRE_BLAZE_AT = float(os.environ.get('S8_FIRE_BLAZE_AT', '0.5'))
 FIRE_BLITZ_DICE = int(os.environ.get('S8_FIRE_BLITZ_DICE', '5'))
 SHREW_MODE = os.environ.get('S8_SHREW', 'guard')   # guard | brawl
 DAILY_N = int(os.environ.get('S8_DAILY_N', '2'))   # showpiece uses per day
+GHOST_MODE = os.environ.get('S8_GHOST', 'guard')   # guard | chase
 QUAKE_DICE = int(os.environ.get('S8_QUAKE_DICE', '3'))
 QUAKE_NEED = int(os.environ.get('S8_QUAKE_NEED', '2'))
 FIRE_SHROUD = os.environ.get('S8_FIRE_SHROUD', 'dodge')  # temp | dodge | off
@@ -1688,7 +1689,22 @@ def ghost_lash(st, targets):
         ts = [t for t in targets if t.hp > 0]
         if not ts:
             return
-        t = ts[0]
+        # She has FIFTEEN feet of reach. Take whatever is already inside it, and
+        # only chase if nothing is: swinging at the list's first entry made her
+        # walk past adjacent enemies toward a distant one.
+        inreach = [x for x in ts if g.dist_ft(x) <= 15]
+        t = min(inreach, key=lambda x: g.dist_ft(x)) if inreach             else min(ts, key=lambda x: g.dist_ft(x))
+        if g.dist_ft(t) > 15 and GHOST_MODE == 'guard':
+            # GUARD DOCTRINE: she is the generalist who covers the party. Her
+            # reaction heal only reaches 30 ft, so she stays inside that of the
+            # ward and uses her FIFTEEN feet of reach from there, instead of
+            # chasing whatever is nearest across the board.
+            ward = min([h for h in (st.lilly, st.ursa, st.stabby) if h.alive],
+                       key=lambda h: (h.hp / h.hp_max, h.ac), default=None)
+            if ward is not None:
+                near_ward = [x for x in ts if ward.dist_ft(x) <= 40]
+                if near_ward:
+                    t = min(near_ward, key=lambda x: ward.dist_ft(x))
         if g.dist_ft(t) > 15:
             g.approach(t, 15, 30)
         if g.dist_ft(t) > 15:
