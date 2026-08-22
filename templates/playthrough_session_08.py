@@ -586,6 +586,7 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
             and (tgt.down or tgt.hp < tgt.hp_max * 0.4) and st.ghost.reaction:
         st.g_light -= 1
         st.ghost.reaction = False
+        st.tally['prevented']["Ghostbloom (guardian's light)"] += 1
         h = d(2, 8) + 3
         st.tally['healed']['Ghostbloom'] += h
         was_down = tgt.down
@@ -1656,6 +1657,7 @@ def ghost_lash(st, targets):
                 and 'frightened' not in t.cond_imm]
         if len(pack) >= 3:
             st.g_wail -= 1
+            st.tally['prevented']['Ghostbloom (wail)'] += 1
             log("    Ghostbloom: GHOSTLY WAIL, a cry that cracks the air!")
             for t in pack[:4]:
                 roll = d(5, 6)
@@ -1673,6 +1675,7 @@ def ghost_lash(st, targets):
     if st.g_feystep and any(t.hp > 0 and st.ghost.dist_ft(t) > 15 for t in targets):
         st.g_feystep = False
         st.ghost.fey_adv = True
+        st.tally['prevented']['Ghostbloom (fey step)'] += 1
         t = next(t for t in targets if t.hp > 0)
         st.ghost.approach(t, 15, 20)
         log("    Ghostbloom: FEY STEP, she blinks across the gap and comes up "
