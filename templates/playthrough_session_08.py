@@ -588,10 +588,11 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
         st.ghost.reaction = False
         st.tally['prevented']["Ghostbloom (guardian's light)"] += 1
         h = d(2, 8) + 3
-        st.tally['healed']['Ghostbloom'] += h
         tgt.fright = 0          # the card ends charmed or frightened too
         was_down = tgt.down
+        _before = tgt.hp
         tgt.hp = min(tgt.hp_max, tgt.hp + h)
+        st.tally['healed']['Ghostbloom'] += tgt.hp - _before
         if tgt.hp > 0:
             tgt.down = False
         log(f"      * Guardian's Light: Ghostbloom heals {tgt.name} {h}"
@@ -843,6 +844,11 @@ SHREW_MODE = os.environ.get('S8_SHREW', 'guard')   # guard | brawl
 DAILY_N = int(os.environ.get('S8_DAILY_N', '2'))   # showpiece uses per day
 GHOST_MODE = os.environ.get('S8_GHOST', 'guard')   # guard | chase
 GLIGHT_AT = float(os.environ.get('S8_GLIGHT_AT', '1.01'))  # card: ANY damage
+# The CARD has no hit-point threshold: Piplup may bubble anyone. 0.85 is a PLAY
+# heuristic, not a rule - do not spend a charge on a scratch. Measured slightly
+# better than spamming at 0.99 (knockdowns 0.04 vs 0.05, floor 77% vs 73%),
+# because the charges are there when they matter.
+BUBBLE_AT = float(os.environ.get('S8_BUBBLE_AT', '0.85'))
 QUAKE_DICE = int(os.environ.get('S8_QUAKE_DICE', '3'))
 QUAKE_NEED = int(os.environ.get('S8_QUAKE_NEED', '2'))
 FIRE_SHROUD = os.environ.get('S8_FIRE_SHROUD', 'dodge')  # temp | dodge | off
@@ -1583,17 +1589,18 @@ def piplup_turn(st, targets):
         log("    Piplup: SEA MIST, a rolling bank of cool silver fog. His friends "
             "know where each other are inside it; nothing else does.")
     hurt = [h for h in st.pcs if h.alive and h is not st.cannon
-            and (h.down or h.hp < h.hp_max * 0.65) and g.dist_ft(h) <= 30]
+            and (h.down or h.hp < h.hp_max * BUBBLE_AT) and g.dist_ft(h) <= 30]
     if hurt and st.heal_bubble > 0:
         st.heal_bubble -= 1
         t = min(hurt, key=lambda h: h.hp / h.hp_max)
         heal = d(2, 8) + 5
         was = t.down
+        _before = t.hp
         t.hp = min(t.hp_max, t.hp + heal)
         if t.hp > 0:
             t.down = False
         t.poisoned = 0
-        st.tally['healed']['Piplup'] += heal
+        st.tally['healed']['Piplup'] += t.hp - _before
         log(f"    Piplup: HEAL BUBBLE drifts to {t.name} and pops: {heal} back"
             + (" and back on their feet" if was else "")
             + f". [{st.heal_bubble} left]")
