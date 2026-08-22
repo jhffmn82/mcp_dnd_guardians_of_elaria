@@ -84,6 +84,7 @@ PIPLUP_VER = os.environ.get('S8_PIPLUP', 'v4')   # v1 | v2 | v3 | v4
 #   because damage always happens, and which he can turn on himself. Sea
 #   Mist dropped: 1/day was doing nothing.
 PIPLUP_V2 = PIPLUP_VER in ('v2', 'v3', 'v4')
+BEAM_N = int(os.environ.get('S8_BEAM_N', '2'))   # Ice Beams per turn
 #   Water re-scoped to PREVENT + RESTORE so it stops squatting on Fire's
 #   damage lane and Air's control lane:
 #     Ice Beam  -> ONE attack, no slow rider (the slow is Air's job)
@@ -1619,7 +1620,7 @@ def piplup_turn(st, targets):
             log(f"    Piplup: BUBBLE SHIELD closes around {t.name}: {shield} "
                 "temporary hit points.")
             return
-    for _ in range(1 if PIPLUP_V2 else 2):
+    for _ in range(BEAM_N):
         live = [t for t in targets if t.hp > 0]
         if not live:
             return

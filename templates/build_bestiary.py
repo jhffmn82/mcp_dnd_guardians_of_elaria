@@ -224,6 +224,7 @@ B = [
             ("Slipstream", "While swimming, Piplup doesn't provoke Opportunity Attacks."),
         ],
         "actions": [
+            ("Multiattack", "Piplup makes two Ice Beam attacks."),
             ("Ice Beam", "*Ranged Attack:* +8 to hit, range 60/120 ft., one target. *Hit:* 10 "
              "(2d6 + 3) Cold damage, and the target's Speed drops by 10 feet until the end "
              "of its next turn (the slow doesn't stack)."),
