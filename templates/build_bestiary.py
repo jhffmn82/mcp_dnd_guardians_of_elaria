@@ -249,6 +249,30 @@ B = [
              "through a crowd as a burning hoop, and hits hardest when it is closest to "
              "going down.*"),
     # Fire-rift companion, DM design 2026-08-21, sim field-tested for role fit.
+    #
+    # *** CHIMCHAR IS A DELIBERATE TRAP. DO NOT "FIX" HIM. (DM, 2026-08-22) ***
+    # He deals the most damage of any companion by a wide margin and is still the
+    # WORST of the five at the thing companions are for. Measured over 200-day
+    # sweeps: at the design point he is last in hero knockdowns (0.20 against
+    # Piplup's 0.06), and as encounters scale up he degrades faster than anything
+    # else on the board, roughly nine times faster than Piplup:
+    #     enemy HP     x1   x1.25   x1.5   x1.75    x2
+    #     Chimchar      0       6     15      41    64   party wipes / 200 days
+    #     Piplup        0       0      0       4     7
+    # The cause is structural and not a tuning error: party damage is capped by
+    # the enemies' hit points, so a damage companion DISPLACES hero damage rather
+    # than shortening the fight, while healing and mitigation scale with fight
+    # length. Tested a Fire Wheel buff to 12.5 average damage: it improved
+    # knockdowns at the design point (0.20 to 0.12) and moved wipes under pressure
+    # from 15 to 14. It cannot fix this, because more damage is not the missing
+    # thing.
+    # The DM's intent is that the party LEARN this: big numbers are the bait, and
+    # working out that a companion's job is support rather than damage is the
+    # lesson. The swap is Lilly's Action and a fainted companion is recalled
+    # unharmed, so discovering the trap costs them a turn, not a character.
+    # NOTE: the trap is nearly invisible at x1 (zero wipes, 77 percent floor). It
+    # only bites from about x1.25 upward, so it teaches nothing in an encounter
+    # that is not applying real pressure.
     # The STRIKER lane: highest single-target output in the roster, and the only
     # companion whose numbers rise as its hit points fall (Blaze).
     ("enemy_cards", [{
