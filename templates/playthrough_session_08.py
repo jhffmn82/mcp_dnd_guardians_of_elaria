@@ -35,6 +35,7 @@ SEED = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1] != '--sweep' else 2
 # Baseline now matches the 2026-08-18 retuned doc: 8x Rotbloom 33 / 8x Mossmite,
 # 4x Chimestone 78 / 4x Shardwing 33, Weeper 170, spike 60 WITH re-knit.
 HPX = float(os.environ.get('S8_HPX', '1'))              # enemy HP multiplier
+DMGX = float(os.environ.get('S8_DMGX', '1'))            # enemy DAMAGE multiplier
 SPIKE_HP = int(os.environ.get('S8_SPIKE_HP', '160'))  # 80e0efd: 60 -> 160
 SPIKE_REKNIT = os.environ.get('S8_SPIKE_REKNIT', '1') == '1'
 #   Doc rule (2026-08-18): the spike regains 20 at the start of Groudon's turn
@@ -431,6 +432,10 @@ def hero_check(st, hero, mod, dc, label):
 
 def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
     """parts: list of (amount, dtype). Returns damage actually dealt."""
+    # DMGX: enemies hit harder. Applied BEFORE resistances and mitigation, so it
+    # models scarier monsters rather than a post-mitigation fudge.
+    if DMGX != 1.0 and tgt.side == 'pc' and attacker is not None             and attacker.side == 'foe':
+        parts = [(max(1, int(round(amt * DMGX))), dt) for amt, dt in parts]
     if is_ce and getattr(tgt, 'is_spike', False):
         # Cleansing Edge is one of the three things that can touch the spike.
         parts = [(amt, 'force') for amt, _ in parts]
@@ -542,6 +547,8 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
         total -= ab
         if ab:
             log(f"      * {tgt.name}'s ward soaks {ab}.")
+    if tgt.side == 'pc' and attacker is not None and attacker.side == 'foe' and total > 0:
+        st.tally['prevented']['_hits_landed'] += 1
     pre = tgt.hp
     tgt.hp -= total
     if tgt.side == 'foe' and tgt.hp < 0:
@@ -616,16 +623,19 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         dis = True
     if attacker is not None and attacker.side == 'foe' and tgt.side == 'pc':
         st.tally['prevented']['_enemy_swings'] += 1
+        st.tally['prevented']['_swing_round'] += 0
     if getattr(tgt, 'entangled', 0) > 0 or getattr(tgt, 'restrained', False):
         adv = True
     if getattr(tgt, 'blinded', 0) > 0:
         adv = True
+        st.tally['prevented']['_adv_vs_blinded'] += 1
         st.tally['prevented']['_blind_adv_for_us'] += 1
     if getattr(attacker, 'smoked', 0):
         attacker.smoked = 0
         dis = True
     if st.blessing is attacker:
         adv = True
+        st.tally['prevented']['_adv_serene_grace'] += 1
     if getattr(st, 'mist_rounds', 0) > 0:
         mc = st.mist_centre
         if (tgt.side == 'pc' and attacker is not None and attacker.side == 'foe'
@@ -635,6 +645,7 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
                 and max(abs(attacker.pos[0] - mc[0]),
                         abs(attacker.pos[1] - mc[1])) * 5 <= 20):
             adv = True
+            st.tally['prevented']['_adv_sea_mist'] += 1
     # Sand Veil: attacks on Sandshrew from beyond 15 ft are at Disadvantage.
     if (tgt is st.ghost and tgt.kind == 'sandshrew' and attacker is not None
             and attacker.dist_ft(tgt) > 15):
@@ -674,6 +685,7 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
             and attacker is not st.ursa and not st.ursa.down
             and attacker.dist_ft(st.ursa) <= 30):
         bonus += 1              # Amulet of Guiding Light, allies only
+        st.tally['prevented']['_aura_attack'] += 1
     r = d20(adv=adv, dis=dis)
     crit = (r == 20)
     if r == 1:
@@ -848,7 +860,8 @@ AIR_DC = int(os.environ.get('S8_AIR_DC', '15'))
 AIR_RIDER_N = int(os.environ.get('S8_AIR_RIDER_N', '2'))
 AIR_SING = int(os.environ.get('S8_AIR_SING', '3'))
 AIR_PICK = os.environ.get('S8_AIR_PICK', 'asis')  # near|fresh|big|hitter
-FIRE_WHEEL = tuple(int(x) for x in os.environ.get('S8_FIRE_WHEEL', '2,6').split(','))
+_fwraw = os.environ.get('S8_FIRE_WHEEL', '2,6,0').split(',')
+FIRE_WHEEL = tuple(int(x) for x in (_fwraw + ['0'])[:3])
 FIRE_SWINGS = int(os.environ.get('S8_FIRE_SWINGS', '2'))
 FIRE_RADIUS = int(os.environ.get('S8_FIRE_RADIUS', '20'))
 FIRE_BLITZ = os.environ.get('S8_FIRE_BLITZ', '1') == '1'
@@ -1336,11 +1349,11 @@ def candidate_turn(st, targets):
             st.tally['prevented']['Chimchar (blaze haze)'] += 1
         near = [t for t in live if t.hp > 0 and g.dist_ft(t) <= FIRE_RADIUS]
         if near:
-            _n, _f = FIRE_WHEEL
+            _n, _f, _fw = FIRE_WHEEL
             log(f"    Chimchar: FIRE WHEEL, it tucks and spins burning through "
                 f"{len(near)} of them.")
             for t in near[:6]:
-                roll = d(_n, _f) + (d(1, 6) + 3 if st.rage else 0)
+                roll = d(_n, _f) + _fw + (d(1, 6) + 3 if st.rage else 0)
                 ok = foe_save(t, t.saves.get('dex', 0), 15)
                 dmg = deal(st, t, [(roll // 2 if ok else roll, 'fire')],
                            credit='Chimchar')
