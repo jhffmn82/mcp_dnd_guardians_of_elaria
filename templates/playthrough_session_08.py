@@ -356,8 +356,8 @@ class State:
 
     def hero_save(self, hero, stat, dc, adv=False, tag=''):
         mod = hero.saves.get(stat, 0)
-        if (self.u_starry and hero is not self.ursa and not self.ursa.down
-                and hero.dist_ft(self.ursa) <= 30):
+        if (URSA_AURA and self.u_starry and hero is not self.ursa
+                and not self.ursa.down and hero.dist_ft(self.ursa) <= 30):
             mod += 1              # Amulet of Guiding Light, 30 ft, allies only
             self.tally['prevented']['_aura_save'] += 1
         elif self.u_starry and hero is not self.ursa and not self.ursa.down:
@@ -366,7 +366,8 @@ class State:
             adv = True
         roll = d20(adv=adv)
         # Omen dream: replace a dangerous roll before it counts
-        if dc >= 16 and roll + mod < dc and self.u_omens and not self.ursa.down:
+        if (URSA_OMENS and dc >= 16 and roll + mod < dc and self.u_omens
+                and not self.ursa.down):
             best = self.u_omens[0]
             if best + mod >= dc:
                 self.u_omens.pop(0)
@@ -401,7 +402,8 @@ class State:
 
 def hero_check(st, hero, mod, dc, label):
     roll = d20()
-    if dc >= 15 and roll + mod < dc and st.u_omens and not st.ursa.down:
+    if (URSA_OMENS and dc >= 15 and roll + mod < dc and st.u_omens
+            and not st.ursa.down):
         best = st.u_omens[0]
         if best + mod >= dc:
             st.u_omens.pop(0)
@@ -683,7 +685,7 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         adv = True
     if attacker is not None and attacker.fright > 0:
         dis = True
-    if (st.u_starry and attacker is not None and attacker.side == 'pc'
+    if (URSA_AURA and st.u_starry and attacker is not None and attacker.side == 'pc'
             and attacker is not st.ursa and not st.ursa.down
             and attacker.dist_ft(st.ursa) <= 30):
         bonus += 1              # Amulet of Guiding Light, allies only
@@ -884,6 +886,8 @@ COHESION = os.environ.get('S8_COHESION', '0') == '1'      # stay within 30 ft of
 AID_LVL = int(os.environ.get('S8_AID', '0'))   # 0=off, else slot level
 BARKSKIN = os.environ.get('S8_BARKSKIN', '0') == '1'
 WITHER = os.environ.get('S8_WITHER', '0') == '1'
+URSA_AURA = os.environ.get('S8_URSA_AURA', '1') == '1'   # the Amulet +1
+URSA_OMENS = os.environ.get('S8_URSA_OMENS', '1') == '1' # omens + dreams
 WITHER_MIN = int(os.environ.get('S8_WITHER_MIN', '2'))
 # It is a DAMAGE spell with a heal rider, not a heal spell: requiring a hurt
 # ally in the blast throttled it to 0.1 casts a day behind a good medic.
