@@ -192,15 +192,14 @@ def summon_block(title, lines):
     ]))
     return t
 
-beast = summon_block("Bestial Spirit: Summon Beast (2nd)", [
-    "<b>AC</b> 13 &nbsp; <b>HP</b> 30 <i>(20 if Air)</i> &nbsp; <b>Speed</b> 30 ft",
-    "Pick Air, Land, or Water: Air flies 60, Land climbs 30, Water swims 30.",
-    "<b>Maul/Rend:</b> +8 to hit, <b>1d8+6</b> damage, <b>1 attack</b>.",
-    "Flyby (Air): no opportunity attacks. Great scout & striker.",
-    "Shares Ursa's turn; obeys his commands for free.",
-    "<b>Cast with a 3rd-level slot:</b> AC 14, HP 35 <i>(25 Air)</i>, 1d8+7, still 1 attack.",
-    "<b>Cast with a 4th-level slot:</b> AC 15, HP 40 <i>(30 Air)</i>, 1d8+8, "
-    "and <b>2 attacks a turn</b>.",
+beast = summon_block("Spectral Pack: Conjure Animals (3rd)", [
+    "<b>Nothing can attack it</b> — a spell effect, not a creature. No AC, no hit points.",
+    "<b>Moves 30 ft FREE whenever Ursa moves.</b> No action.",
+    "Anything it sweeps within <b>10 ft</b>, or that <b>enters or ends its turn</b> there: "
+    "<b>Dex save DC 16</b> or <b>3d10 slashing</b>, once each per turn.",
+    "<b>Park it ADJACENT and in their way.</b> Next to it they cannot step clear without "
+    "staying inside 10 ft, and standing still sets it off too. At 10 ft they walk out free.",
+    "<b>4th-level slot:</b> 4d10 — but that slot is Polymorph.",
 ])
 fey = summon_block("Fey Spirit: Summon Fey (3rd)", [
     "<b>AC</b> 15 &nbsp; <b>HP</b> 30 &nbsp; <b>Speed</b> 30 ft, fly 30 ft",
@@ -217,7 +216,9 @@ both.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),
                           ('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(0,0),10)]))
 story.append(Paragraph("Ursa's Summoned Spirits", h2_st))
 story.append(both)
-story.append(Paragraph('Both grow with the slot he spends, and <b>4th level</b> is the jump worth paying for: that is where either spirit starts making <b>two attacks a turn</b>.', small_it))
+story.append(Paragraph('<b>ONE at a time</b> — both need Concentration, and so do Moonbeam, '
+    'Entangle and Polymorph. The pack is his damage; the fey is a body that holds ground. The pack '
+    'deals <b>slashing</b>, so it does nothing to the Underroot Spike: bring the fey there.', small_it))
 
 # ---- Spells at a Glance (compact quick tracker, bottom of page 1) ----
 story.append(Spacer(1,1))
