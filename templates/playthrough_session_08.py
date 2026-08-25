@@ -319,6 +319,8 @@ class State:
         # Ursa
         self.u_slots = {1: 4, 2: 3, 3: 3, 4: 1}
         self.pack = None          # Conjure Animals: position, or None
+        for _h in (self.lilly, self.stabby, self.ursa):
+            _h.hd = 7             # level 7: seven Hit Dice, a real budget
         self.pack_lvl = 3
         self.u_wild = 3
         self.u_gbolt = 5          # Star Map free Guiding Bolts
@@ -881,6 +883,11 @@ MG_RANGE = int(os.environ.get('S8_MG_RANGE', '30'))       # Mistguard reach
 COHESION = os.environ.get('S8_COHESION', '0') == '1'      # stay within 30 ft of Stabby
 AID_LVL = int(os.environ.get('S8_AID', '0'))   # 0=off, else slot level
 BARKSKIN = os.environ.get('S8_BARKSKIN', '0') == '1'
+WITHER = os.environ.get('S8_WITHER', '0') == '1'
+WITHER_MIN = int(os.environ.get('S8_WITHER_MIN', '2'))
+# It is a DAMAGE spell with a heal rider, not a heal spell: requiring a hurt
+# ally in the blast throttled it to 0.1 casts a day behind a good medic.
+WITHER_NEEDS_HEAL = os.environ.get('S8_WITHER_HEAL', '0') == '1'
 BEAM_STANDOFF = int(os.environ.get('S8_STANDOFF', '60'))  # how far back he stands
 QUAKE_DICE = int(os.environ.get('S8_QUAKE_DICE', '3'))
 QUAKE_NEED = int(os.environ.get('S8_QUAKE_NEED', '2'))
@@ -1975,6 +1982,55 @@ def pack_tick(st, targets, phase='both'):
     bite(caught, 'surges through')
 
 
+def wither_and_bloom(st, targets):
+    """Arcana Unleashed (DM-supplied text, 2026-08-24). Level 2 Necromancy,
+    Action, 60 ft, INSTANTANEOUS (no concentration). 10-ft-radius Sphere; each
+    creature OF URSA'S CHOICE there makes a Con save, 3d6 Necrotic, half on a
+    success, so allies are never caught. In addition one creature of his choice
+    in the area spends one of ITS OWN unexpended Hit Dice and regains that roll
+    plus his spellcasting modifier (+5)."""
+    if not WITHER or st.u_slots[2] <= 0:
+        return False
+    live = [t for t in targets if t.hp > 0 and st.ursa.dist_ft(t) <= 60]
+    if not live:
+        return False
+
+    def cheb(a, b):
+        return max(abs(a[0] - b[0]), abs(a[1] - b[1]))
+    best, caught = None, []
+    for t in live:
+        pool = [x for x in live if cheb(x.pos, t.pos) <= 2]
+        if len(pool) > len(caught):
+            best, caught = t.pos, pool
+    if len(caught) < WITHER_MIN:
+        return False
+    # is anyone worth healing standing in it? (they take no damage)
+    hurt = [h for h in (st.stabby, st.lilly, st.ursa)
+            if h.alive and h.hd > 0 and h.hp < h.hp_max * 0.75
+            and cheb(h.pos, best) <= 2]
+    if WITHER_NEEDS_HEAL and not hurt:
+        return False
+    st.u_slots[2] -= 1
+    log(f"    Ursa: WITHER AND BLOOM, death and life at once over {len(caught)} of them.")
+    for t in caught[:6]:
+        roll = d(3, 6)
+        ok = foe_save(t, t.saves.get('con', 0), 16)
+        dmg = deal(st, t, [(roll // 2 if ok else roll, 'necrotic')], credit='Ursa')
+        log(f"      {t.name} takes {dmg} necrotic.")
+        if t.hp <= 0:
+            log(f"      {t.name} is destroyed.")
+    if hurt:
+        tgt = min(hurt, key=lambda h: h.hp / h.hp_max)
+        tgt.hd -= 1
+        heal = d(1, 8) + 5
+        before = tgt.hp
+        tgt.hp = min(tgt.hp_max, tgt.hp + heal)
+        st.tally['healed']['Ursa'] += tgt.hp - before
+        log(f"      ...and {tgt.name} blooms: spends a Hit Die for {heal} "
+            f"[{tgt.hd} dice left].")
+    return True
+
+
 def ursa_damage_line(st, targets, bonus_used):
     tether(st, st.ursa)
     """The simple line: keep the summon up, then Guiding Bolt while the free
@@ -1984,6 +2040,8 @@ def ursa_damage_line(st, targets, bonus_used):
         if st.pack is None and st.u_slots[3] > 0:
             conjure_animals(st, tuple(live[0].pos) if live else tuple(st.ursa.pos),
                             targets=live)
+        elif wither_and_bloom(st, targets):
+            pass
         else:
             if live:
                 if st.u_gbolt > 0 or st.u_staff > 0:
@@ -2756,8 +2814,9 @@ def short_rest(st):
     for h, die, cmod in ((st.lilly, 8, 2), (st.stabby, 8, 3), (st.ursa, 8, 2)):
         spent = 0
         healed = 0
-        while h.hp < h.hp_max * 0.85 and spent < 4:
+        while h.hp < h.hp_max * 0.85 and spent < 4 and h.hd > 0:
             spent += 1
+            h.hd -= 1
             healed += d(1, die) + cmod
         h.hp = min(h.hp_max, h.hp + healed)
         if spent:
