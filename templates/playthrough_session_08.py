@@ -879,6 +879,8 @@ BUBBLE_AT = float(os.environ.get('S8_BUBBLE_AT', '0.85'))
 MG_SELF = os.environ.get('S8_MG_SELF', '1') == '1'   # may it guard ITSELF?
 MG_RANGE = int(os.environ.get('S8_MG_RANGE', '30'))       # Mistguard reach
 COHESION = os.environ.get('S8_COHESION', '0') == '1'      # stay within 30 ft of Stabby
+AID_LVL = int(os.environ.get('S8_AID', '0'))   # 0=off, else slot level
+BARKSKIN = os.environ.get('S8_BARKSKIN', '0') == '1'
 BEAM_STANDOFF = int(os.environ.get('S8_STANDOFF', '60'))  # how far back he stands
 QUAKE_DICE = int(os.environ.get('S8_QUAKE_DICE', '3'))
 QUAKE_NEED = int(os.environ.get('S8_QUAKE_NEED', '2'))
@@ -3847,6 +3849,26 @@ def run_day(seed):
     rng = random.Random(seed)
     LOG.clear()
     st = State()
+    # AID (SRD 5.2.1: Level 2 Abjuration, Action, 30 ft, 8 HOURS, NO
+    # concentration). Three creatures each gain +5 to hit point maximum AND
+    # current hit points, +5 per slot level above 2. Eight hours covers the whole
+    # adventuring day, so it is cast before the first fight and never again.
+    if AID_LVL:
+        _bump = 5 * (AID_LVL - 1)
+        st.u_slots[AID_LVL] -= 1
+        for _h in (st.stabby, st.lilly, st.ursa):
+            _h.hp_max += _bump
+            _h.hp += _bump
+        log(f"Ursa casts AID at level {AID_LVL} before they set out: "
+            f"+{_bump} max and current HP to Stabby, Lilly and Ursa for the day.")
+    # BARKSKIN (SRD: Bonus Action, touch, 1 hour, NO concentration, AC becomes 17
+    # if lower). Useless on the heroes at AC 18-20; this models it on whoever it
+    # actually helps.
+    if BARKSKIN:
+        for _t in (st.ghost, st.puff):
+            if _t is not None and _t.ac < 17:
+                _t.ac = 17
+        log("Ursa casts BARKSKIN before they set out (AC 17 on anyone below it).")
     log(f"Ursa's Omen Dreams for the day: {st.u_omens}")
     stats = {}
 

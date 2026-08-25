@@ -232,7 +232,7 @@ def _glance(lbl, boxes, names):
 glance = [
     _glance('Cantrips', 0, 'Starry Wisp, Thorn Whip, Guidance, Druidcraft'),
     _glance('1st', 4, 'Healing Word, Entangle'),
-    _glance('2nd', 3, 'Summon Beast, Spike Growth, Lesser Restoration'),
+    _glance('2nd', 3, 'Barkskin, Spike Growth, Lesser Restoration'),
     _glance('3rd', 3, 'Conjure Animals, Summon Fey, Plant Growth, Revivify'),
     _glance('4th', 1, 'Polymorph, Ice Storm'),
     _glance('free', 0, 'Guiding Bolt, Guidance, Animal Friendship, Speak with Animals, Faerie Fire, Moonbeam <i>(sources on page 3)</i>'),
@@ -390,10 +390,12 @@ cards = [
         '2nd • Bonus Action • Touch • Instant',
         'Touch a friend and end <b>one</b> of these: <b>blinded, deafened, paralyzed, or poisoned</b>. '
         'The answer to the boss blinding someone or a spider’s venom locking a friend down.'),
-    spell_card('Summon Beast',
-        '2nd • Action • 90 ft • Concentration, 1 hr',
-        'Calls the <b>Bestial Spirit</b> (full stats on page 1). It acts right after Ursa on his initiative and '
-        'obeys his commands for free. His go-to summon, a sturdy front-line ally that lasts a whole hour.'),
+    spell_card('Barkskin &nbsp;<i>(for whoever is squishiest)</i>',
+        '2nd • <b>Bonus Action</b> • Touch • <b>1 hour, no concentration</b>',
+        'One willing creature’s skin turns to bark: its <b>AC becomes 17</b> if it was lower. '
+        'Useless on the heroes (Lilly 20, Stabby and Ursa 18), so it is for <b>Puff (13), Piplup '
+        '(13) or Togekiss (14)</b>. A bonus action, so it costs him nothing on the turn, and no '
+        'concentration, so it runs alongside Conjure Animals.'),
     spell_card('Ice Storm',
         '4th • Action • 300 ft • Instant <i>(no concentration!)</i>',
         'A <b>20-ft-wide</b> hail patch from far away: <b>Dex save DC 16</b> for <b>2d10 bludgeoning + 4d6 cold</b>, half on a success, and the ground stays <b>difficult terrain</b>. <b>His big blast that leaves his concentration free.</b>'),
