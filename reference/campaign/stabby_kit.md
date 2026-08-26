@@ -74,7 +74,7 @@ Level 6, First Form: Devour (Bonus Action, 1 Focus; replaces Flurry):
 - Move up to 15 ft without provoking Opportunity Attacks, make one Monk-weapon attack. On hit: **3d8 + DEX 5 + Nichirin 2 + ignited 2 = 3d8+9 Force** instead of normal weapon damage. If it drops the target to 0 HP, **regain the spent Focus.** (The compendium's "3d8 + 5" descriptive line counts only DEX; with the riders it is 3d8+9.)
 
 Beast combat loop:
-- Initiative: ignite the breath (1 Focus); Uncanny Metabolism refills Focus to 7 and heals 7+1d8. Speed is now 65.
+- Initiative: ignite the breath (1 Focus). Speed is now 65. (Uncanny Metabolism is a SEPARATE initiative choice and is held, not spent here: see the checklist.)
 - Action: Attack, 2 Nichirin swings at +10 for 1d10+7 +2 Force each; Stunning Strike (1 Focus, CON DC 13) on the first hit against a boss; Fury of the Small +3 once.
 - Bonus Action: First Form: Devour (1 Focus), a third strike for 3d8+9 Force with 15 ft of free repositioning; Focus refunds if it kills.
 - Reaction: Deflect Attacks (reduce 1d10+12; redirect 2d8+5 DEX DC 13 if reduced to 0).
@@ -95,7 +95,7 @@ Level 6, Healing Spring, First Water (Bonus Action, 1/short or long rest):
 - Touch self or a creature; it regains **2d8 + WIS 2**. A non-Focus support option that competes for his Bonus Action.
 
 Water combat loop:
-- Initiative: ignite (1 Focus); Uncanny Metabolism refills + heals; Flowing Guard is up.
+- Initiative: ignite (1 Focus); Flowing Guard is up. (Uncanny Metabolism is held, not spent here: see the checklist.)
 - Action: Attack, 2 Nichirin swings +10 for 1d10+7 +2 Cold each; Stunning Strike option; Fury of the Small +3 once.
 - Bonus Action: First Form: Flowing Strike (1 Focus) for 3d8+9 Cold + Prone (DEX DC 13); OR, if an ally is hurt, Healing Spring (1/rest) for 2d8+2.
 - Reaction: Deflect Attacks (1d10+12; redirect option).
@@ -115,7 +115,7 @@ Level 6, First Form: Umbral Slash (Bonus Action, 1 Focus; replaces Flurry):
 - Table caution (compendium DM note): the gloom is his alone. Allies have Disadvantage on ranged attacks against a creature in the gloom, and spells needing a visible target can't reach it; party should pick other targets while the shadow works.
 
 Shadow combat loop:
-- Initiative: ignite (1 Focus); Uncanny Metabolism refills + heals; +2 AC vs ranged and darkvision 120 online.
+- Initiative: ignite (1 Focus); +2 AC vs ranged and darkvision 120 online. (Uncanny Metabolism is held, not spent here: see the checklist.)
 - Action: Attack, 2 Nichirin swings +10 for 1d10+7 +2 Necrotic each; Stunning Strike option; Fury of the Small +3 once. (Cleansing Edge shines here versus shadow/undead: no HP regain, no darkness benefit against him.)
 - Bonus Action: First Form: Umbral Slash (1 Focus), teleport + Advantage strike for 3d8+9 Necrotic, dropping concealing Darkness the enemy can't see through but he can.
 - Reaction: Deflect Attacks (1d10+12; redirect option).
@@ -133,7 +133,7 @@ Quoted from `memory/house_rules.md`:
 
 - **Sash Air Dance:** 1/day Bonus Action, fly speed = walking speed for 1 minute. The single most-dropped item.
 - **Ignite the breath at initiative** (1 Focus): sets the +2 elemental rider on every weapon hit for the whole fight, plus the door's passive (Beast +10 speed and DEX-save Advantage / Water Flowing Guard +2 AC / Shadow darkvision 120 and +2 AC vs ranged). Do not forget the rider on each hit.
-- **Uncanny Metabolism** on initiative (1/long rest): full Focus refill + heal 7+1d8. Effectively ignite-for-free on turn one.
+- **Uncanny Metabolism** on initiative (1/long rest): regains ALL EXPENDED Focus and heals 7+1d8. **Do not spend it on the first fight of the day.** He wakes with 7 Focus and full HP, so there is nothing expended to regain and nothing missing to heal: taking it at fight one throws the entire feature away. Hold it past the short rest (the rest refills Focus by itself, so anything spent before the rest is wasted too), then take it at the initiative of a fight he starts hurt or low on Focus; if the day is nearly over and it is still unspent, take it at the last fight rather than lose it. Corrected 2026-08-25; the earlier "ignite-for-free on turn one" note here was wrong, because he begins the day at 7 Focus either way.
 - **Nichirin Cleansing Edge:** once per turn vs Fiend/Undead/shadow/planar-corrupted, target can't heal and can't hide in Darkness against him. Free, always available, big against rift enemies.
 - **Deflect Attacks:** the Reaction is 1d10+12 at level 7 (not the sheet's old 1d10+10); redirect for 2d8+5 DEX DC 13 on a full block.
 - **Patient Defense free Disengage:** 0 Focus (do not charge a Focus for plain Disengage). Nimble Escape also gives Bonus-Action Disengage/Hide.

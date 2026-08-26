@@ -163,8 +163,9 @@ moves=[
     ('Evasion <i>(new at 7!)</i>','When something lets him make a Dex save for half damage, he takes '
         '<b>no damage</b> if he saves and only half if he fails.'),
     ('Slow Fall / Metabolism','Slow Fall: reaction to take <b>35</b> less falling damage. Uncanny Metabolism: '
-        'once a day, when he rolls initiative, regain <b>all 7 Focus</b> + heal <b>7 + 1d8</b> HP. '
-        '<i>(So turn one he can ignite for free.)</i>'),
+        'once a day, when he rolls initiative, regain <b>every Focus he has spent</b> + heal '
+        '<b>7 + 1d8</b> HP. <i>(SAVE IT. In the first fight he is already full, so it does '
+        'nothing at all. Use it later, when he is hurt or out of Focus.)</i>'),
     ('Fury of the Small','When he hits a creature bigger than him (almost everyone!), deal +3 extra damage. '
         'He can do this 3 times per long rest, once per turn.'),
     ('Nimble Escape','He can Disengage or Hide as a bonus action every turn. Slippery little goblin.'),

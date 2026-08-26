@@ -313,6 +313,7 @@ class State:
         # Stabby
         self.s_focus = 7
         self.s_metab = True
+        self.s_rested = False
         self.s_fury = 3
         self.s_ignited = False
         self.s_airdance = True
@@ -902,6 +903,9 @@ PUFF_ON = os.environ.get('S8_PUFF', '1') == '1'   # Lilly's homunculus
 WARD_ON = os.environ.get('S8_WARD', '1') == '1'        # Lilly's Aether Ward
 FOG_ON = os.environ.get('S8_FOG', '1') == '1'          # Lilly's Flash of Genius
 DEFLECT_ON = os.environ.get('S8_DEFLECT', '1') == '1'  # Stabby's Deflect Attack
+METAB = os.environ.get('S8_METAB', 'late')  # late | hold | f1 (legacy: fight 1)
+METAB_F = int(os.environ.get('S8_METAB_F', '3'))    # fire if down this much Focus
+METAB_HP = int(os.environ.get('S8_METAB_HP', '20'))  # or missing this much HP
 URSA_OMENS = os.environ.get('S8_URSA_OMENS', '1') == '1' # omens + dreams
 WITHER_MIN = int(os.environ.get('S8_WITHER_MIN', '2'))
 # It is a DAMAGE spell with a heal rider, not a heal spell: requiring a hurt
@@ -2256,6 +2260,54 @@ def shatter(st, targets, label='Shatter'):
 # --------------------------------------------------------------------------
 # FIGHT 1: Mosslight Landing. 8 Rotblooms + 8 Mossmites.
 # --------------------------------------------------------------------------
+def stabby_initiative(st, last=False, first=False):
+    """Stabby's initiative routine: consider Uncanny Metabolism, then ignite.
+
+    SRD 5.2.1 (reference/srd/04_classes_druid_fighter_monk.md:699-703): Uncanny
+    Metabolism is a CHOICE he makes when he rolls Initiative, once per LONG
+    rest, regaining ALL EXPENDED Focus Points plus 7+1d8 HP.
+
+    DM 2026-08-25: firing it at the first fight of the day is strictly wasted.
+    He wakes with 7 Focus and full HP, so there is nothing expended to regain
+    and nothing missing to heal, and the once-per-day is then gone. He holds it
+    for an initiative roll where it actually pays, and spends it at the last
+    fight rather than losing it. stabby_kit.md carried the same error and has
+    been corrected. S8_METAB=f1 restores the old wasteful behaviour for A/B.
+    """
+    if st.s_metab:
+        gap_f = 7 - st.s_focus
+        gap_hp = st.stabby.hp_max - st.stabby.hp
+        worth = last or gap_f >= METAB_F or gap_hp >= METAB_HP
+        if METAB == 'f1':
+            fire = first
+        elif METAB == 'late':
+            # A short rest refills Focus anyway, so spending it before the rest
+            # throws away the Focus half. Hold it past the rest unless he is
+            # hurt badly enough that the heal alone justifies it now.
+            fire = (worth and st.s_rested) or gap_hp >= st.stabby.hp_max * 0.6
+        else:
+            fire = worth
+        if fire:
+            st.s_metab = False
+            got = min(7 + d(1, 8), gap_hp)
+            st.stabby.hp += got
+            st.s_focus = 7
+            if got:
+                st.tally['healed']['Stabby (Uncanny Metabolism)'] += got
+            log(f"  Stabby rolls initiative: UNCANNY METABOLISM. Focus "
+                f"{7 - gap_f}->7, heals {got}.")
+    # Ignition lasts the fight, so it drops here and is re-bought each time.
+    st.s_ignited = False
+    if st.spend_focus():
+        st.s_ignited = True
+        log("  Stabby IGNITES THE BREATH (1 Focus): katana +2 force, speed 65, "
+            f"advantage on DEX saves. [Focus {st.s_focus}]")
+    else:
+        log("  Stabby has NO FOCUS and cannot ignite: no +2 rider, speed 55, "
+            "no DEX-save advantage.")
+
+
+
 def fight1(st):
     log("=" * 72)
     log("FIGHT 1: MOSSLIGHT LANDING (8 Rotblooms, 8 Mossmites)")
@@ -2307,15 +2359,7 @@ def fight1(st):
     log("(The eight Mossmites are burrowed in the warm mounds the party is standing")
     log(" among, and boil out AROUND them the moment the first Rotbloom is struck.)")
 
-    # Stabby: Uncanny Metabolism + ignite at initiative
-    heal = 7 + d(1, 8)
-    st.stabby.hp = min(st.stabby.hp_max, st.stabby.hp + heal)
-    st.s_focus = 7
-    st.s_metab = False
-    st.spend_focus()
-    st.s_ignited = True
-    log("  Stabby rolls initiative: UNCANNY METABOLISM (Focus to 7, heals to full)")
-    log("  and IGNITES THE BREATH (1 Focus): katana +2 force, speed 65, adv on Dex saves. [Focus 6]")
+    stabby_initiative(st, first=True)
     cast_ward(st, 'while they are still counting the grey caps')
 
     order = initiative(st, [('Mossmites', mites, 3), ('Rotblooms', rots, 1)])
@@ -2625,10 +2669,7 @@ def fight2(st):
     log("black pool shallows through the middle):")
     log(render_map(st.pcs + [st.cannon] + foes + ([st.fey] if st.fey else []), terrain))
 
-    st.spend_focus()
-    st.s_ignited = True
-    log("  Stabby ignites again at initiative (1 Focus). [Focus "
-        f"{st.s_focus}]")
+    stabby_initiative(st)
     cast_ward(st, 'at the edge of the black water')
     order = initiative(st, [('Shardwings', wings, 4), ('Chimestones', chimes, -1)])
     rnd = 0
@@ -2878,6 +2919,7 @@ def short_rest(st):
         log('  Lilly rebuilds PUFF over the rest: the gem is not consumed and '
             'the ritual costs no slot, so it is free.')
     st.s_focus = 7
+    st.s_rested = True
     st.l_ward = 2
     st.u_wild = min(3, st.u_wild + 1)
     st.g_light = 3
@@ -2929,9 +2971,7 @@ def fight3(st):
     log("two more Cinderolls roll in from the east tunnel on round 3):")
     log(render_map(st.pcs + [st.cannon, weeper] + arrived, terrain))
 
-    st.spend_focus()
-    st.s_ignited = True
-    log(f"  Stabby ignites at initiative (1 Focus). [Focus {st.s_focus}]")
+    stabby_initiative(st)
     cast_ward(st, 'reading the gallery before they step into it')
     order = initiative(st, [('Cinderolls', rolls, 2), ('Glass Weeper', [weeper], -1)])
     burst_done = set()
@@ -3277,9 +3317,7 @@ def boss(st):
     log("x = the black glass SPIKE at his shoulder, 25 ft up):")
     log(render_map(st.pcs + [st.cannon], terrain))
 
-    st.spend_focus()
-    st.s_ignited = True
-    log(f"  Stabby ignites at initiative (1 Focus). [Focus {st.s_focus}]")
+    stabby_initiative(st, last=True)
     cast_ward(st, 'on the lip of the hollow')
     if SHINE:
         log("  THE DROP. The tunnel ends and there is no floor: forty feet of "
@@ -3624,9 +3662,7 @@ def thumpaw_fight(st):
                saves=dict(str=5, dex=-1, con=4, wis=1), reach=10)
     log("  (If Ursa thinks of his Mark, DC 15 Animal Handling at +8 with "
         "advantage moves it aside. This table came here to fight.)")
-    st.spend_focus()
-    st.s_ignited = True
-    log(f"  Stabby ignites (1 Focus). [Focus {st.s_focus}]")
+    stabby_initiative(st)
     order = initiative(st, [('Thumpaw', [tp], -1)])
     rnd = 0
     poked = False
