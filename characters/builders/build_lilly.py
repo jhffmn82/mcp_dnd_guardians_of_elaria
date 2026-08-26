@@ -137,7 +137,8 @@ story.append(section_table([atk[0]] + [[Paragraph(c,cell_st) for c in r] for r i
 story.append(Spacer(1,4))
 story.append(callout("<b>How Lilly's turn works:</b> She fires her cannon as a <b>BONUS action</b> AND does "
     "something else with her main action (cast a spell, fire Boomstick with True Strike, or Fire Bolt). She gets to do "
-    "<b>both every turn!</b>"))
+    "<b>both every turn!</b> &nbsp;<b>Before the first fight each day:</b> Aether Ward, then <b>Aid twice</b> — 3 creatures each, covering Stabby, Ursa, herself, Puff and the companion with <b>+5 max and current HP</b> for the day."))
+
 
 h2("Lilly's Eldritch Cannon")
 story.append(Paragraph('The Cannon can be attacked and broken. Mending repairs it 2d6.', small_it))

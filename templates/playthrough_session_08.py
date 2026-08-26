@@ -3929,9 +3929,13 @@ def run_day(seed):
     # adventuring day, so it is cast before the first fight and never again.
     # LILLY'S Aid (it is on her sheet and has never been simulated). Three
     # creatures, +5 max and current HP, 8 hours. Puff first: 15 HP base.
+    # DM 2026-08-24: Aid hits THREE creatures, so two castings at the start of the
+    # day cover the whole party. The Eldritch Cannon is an OBJECT (verified on the
+    # 2024 wiki) and cannot receive it, so the five valid targets are the three
+    # heroes, Puff and the companion. Two slots of her three.
     if LILLY_AID:
         _b = 5 * LILLY_AID
-        for _h in (st.puff, st.ursa, st.lilly):
+        for _h in (st.puff, st.ursa, st.lilly, st.stabby, st.ghost):
             _h.hp_max += _b
             _h.hp += _b
         log(f"Lilly casts AID at level {LILLY_AID + 1}: +{_b} max and current HP "
