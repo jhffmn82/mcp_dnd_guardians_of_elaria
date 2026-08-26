@@ -376,7 +376,7 @@ class State:
                 roll = best
         total = roll + mod
         ok = total >= dc
-        if not ok and self.l_fog > 0 and not self.lilly.down \
+        if not ok and FOG_ON and self.l_fog > 0 and not self.lilly.down \
                 and self.lilly.reaction and self.lilly.dist_ft(hero) <= 30 \
                 and total + 5 >= dc:
             self.l_fog -= 1
@@ -459,7 +459,7 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
         total += amt
     if tgt.stunned:
         total *= 2                # Resonant Body: double while stunned
-    if tgt.side == 'pc' and tgt is st.stabby and tgt.reaction and total > 0 \
+    if DEFLECT_ON and tgt.side == 'pc' and tgt is st.stabby and tgt.reaction and total > 0 \
             and attacker is not None and any(
                 t in ('bludgeoning', 'piercing', 'slashing') for _, t in parts):
         red = d(1, 10) + 12
@@ -553,6 +553,8 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
             log(f"      * {tgt.name}'s ward soaks {ab}.")
     if tgt.side == 'pc' and attacker is not None and attacker.side == 'foe' and total > 0:
         st.tally['prevented']['_hits_landed'] += 1
+    if tgt.side == 'pc':
+        st.tally['prevented']['_hp_lost'] += total
     pre = tgt.hp
     tgt.hp -= total
     if tgt.side == 'foe' and tgt.hp < 0:
@@ -884,9 +886,16 @@ MG_SELF = os.environ.get('S8_MG_SELF', '1') == '1'   # may it guard ITSELF?
 MG_RANGE = int(os.environ.get('S8_MG_RANGE', '30'))       # Mistguard reach
 COHESION = os.environ.get('S8_COHESION', '0') == '1'      # stay within 30 ft of Stabby
 AID_LVL = int(os.environ.get('S8_AID', '0'))   # 0=off, else slot level
+LILLY_AID = int(os.environ.get('S8_LILLY_AID', '0'))  # 0=off, else +5 per step
 BARKSKIN = os.environ.get('S8_BARKSKIN', '0') == '1'
 WITHER = os.environ.get('S8_WITHER', '0') == '1'
 URSA_AURA = os.environ.get('S8_URSA_AURA', '1') == '1'   # the Amulet +1
+# Wand of the War Mage +2: LILLY-CRAFTED. +8 is his bare spell attack.
+URSA_ATK = int(os.environ.get('S8_URSA_ATK', '10'))
+PUFF_ON = os.environ.get('S8_PUFF', '1') == '1'   # Lilly's homunculus
+WARD_ON = os.environ.get('S8_WARD', '1') == '1'        # Lilly's Aether Ward
+FOG_ON = os.environ.get('S8_FOG', '1') == '1'          # Lilly's Flash of Genius
+DEFLECT_ON = os.environ.get('S8_DEFLECT', '1') == '1'  # Stabby's Deflect Attack
 URSA_OMENS = os.environ.get('S8_URSA_OMENS', '1') == '1' # omens + dreams
 WITHER_MIN = int(os.environ.get('S8_WITHER_MIN', '2'))
 # It is a DAMAGE spell with a heal rider, not a heal spell: requiring a hurt
@@ -951,7 +960,7 @@ def cast_ward(st, where='before they close'):
     initiative and the action costs her nothing. One use of the Sphere's pool.
     Temp HP do not stack, so she holds the use if the shell is still good."""
     st.ward_pending = False
-    if st.l_ward <= 0 or st.lilly.down:
+    if not WARD_ON or st.l_ward <= 0 or st.lilly.down:
         return False
     live = [h for h in st.pcs if not h.down]
     if live and min(h.temp for h in live) >= 9:
@@ -1203,6 +1212,8 @@ def puff_pipes(st, foes):
 
 
 def puff_turn(st, target, use_mm, overload=False):
+    if not PUFF_ON:
+        return
     if st.puff.down:
         return
     if use_mm and st.mm_charges > 0 and target is not None and target.hp > 0:
@@ -2099,7 +2110,7 @@ def star_arrow(st, target, dis=False):
     if not ursa_close(st, target):
         st.tally['prevented']['_arrow_outofrange'] += 1
         return
-    hit, crit, _ = attack_roll(st, 10, target, dis=dis, attacker=st.ursa)
+    hit, crit, _ = attack_roll(st, URSA_ATK, target, dis=dis, attacker=st.ursa)
     if hit:
         dmg = deal(st, target, [(d(2 if crit else 1, 8) + 5, 'radiant')],
                    credit='Ursa')
@@ -2121,7 +2132,7 @@ def guiding_bolt(st, target, dis=False):
     else:
         return False
     adv = (st.gb_adv_target is target)
-    hit, crit, _ = attack_roll(st, 10, target, adv=adv, dis=dis, attacker=st.ursa)
+    hit, crit, _ = attack_roll(st, URSA_ATK, target, adv=adv, dis=dis, attacker=st.ursa)
     if hit:
         dmg = deal(st, target, [(d(8 if crit else 4, 6), 'radiant'),
                                 (d(2 if crit else 1, 8), 'radiant')],
@@ -2139,7 +2150,7 @@ def guiding_bolt(st, target, dis=False):
 def starry_wisp(st, target):
     if not ursa_close(st, target):
         return guiding_bolt(st, target)     # 120-ft fallback when out of range
-    hit, crit, _ = attack_roll(st, 10, target, attacker=st.ursa)
+    hit, crit, _ = attack_roll(st, URSA_ATK, target, attacker=st.ursa)
     if hit:
         dmg = deal(st, target, [(d(4 if crit else 2, 8) + 5, 'radiant'),
                                 (d(2 if crit else 1, 8), 'radiant')],
@@ -3916,6 +3927,15 @@ def run_day(seed):
     # concentration). Three creatures each gain +5 to hit point maximum AND
     # current hit points, +5 per slot level above 2. Eight hours covers the whole
     # adventuring day, so it is cast before the first fight and never again.
+    # LILLY'S Aid (it is on her sheet and has never been simulated). Three
+    # creatures, +5 max and current HP, 8 hours. Puff first: 15 HP base.
+    if LILLY_AID:
+        _b = 5 * LILLY_AID
+        for _h in (st.puff, st.ursa, st.lilly):
+            _h.hp_max += _b
+            _h.hp += _b
+        log(f"Lilly casts AID at level {LILLY_AID + 1}: +{_b} max and current HP "
+            "to Puff, Ursa and herself for the day.")
     if AID_LVL:
         _bump = 5 * (AID_LVL - 1)
         st.u_slots[AID_LVL] -= 1
