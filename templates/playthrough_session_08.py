@@ -889,6 +889,9 @@ AID_LVL = int(os.environ.get('S8_AID', '0'))   # 0=off, else slot level
 LILLY_AID = int(os.environ.get('S8_LILLY_AID', '0'))  # 0=off, else +5 per step
 # Does an hour pass between fights on the board? If so Puff is rebuilt there too.
 PUFF_REBUILD = os.environ.get('S8_PUFF_REBUILD', '1') == '1'
+PUFF_KITE = os.environ.get('S8_PUFF_KITE', '0') == '1'   # she flies; use it
+PUFF_STANDOFF = int(os.environ.get('S8_PUFF_STANDOFF', '40'))
+PUFF_STAY_WARDED = os.environ.get('S8_PUFF_WARDED', '1') == '1'
 BARKSKIN = os.environ.get('S8_BARKSKIN', '0') == '1'
 WITHER = os.environ.get('S8_WITHER', '0') == '1'
 URSA_AURA = os.environ.get('S8_URSA_AURA', '1') == '1'   # the Amulet +1
@@ -1218,6 +1221,28 @@ def puff_turn(st, target, use_mm, overload=False):
         return
     if st.puff.down:
         return
+    # Homunculus Servant has FLY 30 and the Wand of Magic Missiles reaches 120 ft,
+    # so she has no business standing anywhere reachable. If her target is close,
+    # she backs straight off before shooting. (DM, 2026-08-24.)
+    if PUFF_KITE and target is not None and getattr(target, 'hp', 0) > 0             and st.puff.dist_ft(target) <= PUFF_STANDOFF:
+        px, py = st.puff.pos
+        dx = 0 if target.pos[0] == px else (1 if px > target.pos[0] else -1)
+        dy = 0 if target.pos[1] == py else (1 if py > target.pos[1] else -1)
+        if dx == 0 and dy == 0:
+            dx = 1
+        for _ in range(6):                     # fly 30 ft
+            nx, ny = px + dx, py + dy
+            if not (0 <= nx < 30 and 0 <= ny < 30):
+                break
+            # ...but never out of the Aether Ward's 30-ft bubble: the shell is
+            # worth more than the distance (measured).
+            if PUFF_STAY_WARDED and max(abs(nx - st.lilly.pos[0]),
+                                        abs(ny - st.lilly.pos[1])) * 5 > 30:
+                break
+            px, py = nx, ny
+        if (px, py) != tuple(st.puff.pos):
+            st.puff.pos = [px, py]
+            st.tally['prevented']['_puff_kited'] += 1
     if use_mm and st.mm_charges > 0 and target is not None and target.hp > 0:
         # 1 charge = 3 darts; each extra charge adds one dart, up to 3/5 darts.
         n_ch = 3 if (overload and st.mm_charges >= 3) else 1
