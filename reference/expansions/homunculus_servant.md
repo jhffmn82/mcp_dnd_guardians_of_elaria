@@ -32,25 +32,37 @@ Immunities: Poison; Exhaustion, Poisoned. Darkvision 60 ft. Telepathy 1 mile
 
 ## What this settles for the campaign
 
-**Puff is recoverable.** Destroying her costs Lilly **one hour and a 100 GP gem**,
-and NO spell slot, because it is a ritual. This confirms the DM's earlier note
-that "Lilly can just ritual resummon Puff."
+**THE GEM IS NOT CONSUMED (DM, 2026-08-24).** The component line is "M (a gem
+worth 100+ GP)" with no "which the spell consumes" clause, and the word "consume"
+does not appear anywhere in the spell. It is reused every casting, like a focus.
+An earlier note here said rebuilding Puff cost a gem; that was wrong.
 
-**So there is no mechanical reason to shield her from being targeted.** The
-simulator carried `S8_WING_PICKS_PUFF`, defaulted OFF, with the comment "open
-question for the DM: does a diving predator single out Puff (15 HP)?" That was a
-placeholder, not a ruling. The Shardwings hunt the weakest thing on the field and
-Puff IS the weakest thing on the field.
+**So rebuilding Puff is FREE.** Casting Time is "1 hour or Ritual", and the SRD
+Ritual rule is "10 minutes longer to cast than normal. It also doesn't expend a
+spell slot." A Short Rest is an hour. So Lilly rebuilds her over a rest at a cost
+of ten extra minutes and nothing else, or in exactly an hour if she spends one of
+her spare 2nd-level slots.
 
-Measured cost of making her a valid target (250 days):
-                              PUFF dmg  taken  drops  party NET  knockdowns
-  not targetable (current)          69      9   0.01        111        0.22
-  targetable                        37     48   0.73        124        0.20
-  targetable + Lilly's Aid          51     53   0.51        121        0.14
-Her output nearly halves and she goes down most sessions, which is what makes
-Lilly's Aether Ward and her so-far-uncast Aid actually matter.
+**Which settles the open targeting question: Puff SHOULD be a valid target.**
+There was never a rules basis for shielding her; the simulator's
+`S8_WING_PICKS_PUFF` was a placeholder. Measured over 250 days, with the rebuild
+modelled correctly:
+                                rounds  NET  knockdowns  Puff drops  floor  Puff dmg
+  not targetable                  14.6  105        0.07        0.01    67%        69
+  targetable, rebuilt             14.7  112        0.05        0.50    70%        70
+She keeps her FULL output because she comes back, and the heroes get SAFER, not
+more exposed: she draws the Shardwings' dives onto a construct that cannot stay
+dead. Hero knockdowns fall and the floor rises.
 
-**Open for the DM:** whether her carried items (Ring of Spell Storing, Wand of
-Magic Missiles, Pipes of Haunting) drop where she falls and can be recovered, and
-whether a rebuilt Puff is narratively "the same Puff" given the heart Lilly chose
-from three offered cores in Session 7.
+**A SIMULATOR BUG this exposed:** `revive_between` revived only Lilly, Stabby,
+Ursa and the companion, and the short rest restored Puff's hit points without
+clearing her downed flag. So once Puff dropped she was out for the whole day, and
+the first measurement of "Puff targetable" understated her by nearly half (37
+damage instead of 70). Fixed; `S8_PUFF_REBUILD` also allows the rebuild to happen
+between fights if the DM rules an hour passes on the road.
+
+**Still open for the DM:** whether her carried items (Ring of Spell Storing, Wand
+of Magic Missiles, Pipes of Haunting) drop where she falls, and whether a rebuilt
+Puff is narratively "the same Puff" given the heart Lilly chose from three offered
+cores in Session 7. The spell says the old homunculus "is replaced by the new
+one", which is a mechanics sentence, not an answer about the character.

@@ -887,6 +887,8 @@ MG_RANGE = int(os.environ.get('S8_MG_RANGE', '30'))       # Mistguard reach
 COHESION = os.environ.get('S8_COHESION', '0') == '1'      # stay within 30 ft of Stabby
 AID_LVL = int(os.environ.get('S8_AID', '0'))   # 0=off, else slot level
 LILLY_AID = int(os.environ.get('S8_LILLY_AID', '0'))  # 0=off, else +5 per step
+# Does an hour pass between fights on the board? If so Puff is rebuilt there too.
+PUFF_REBUILD = os.environ.get('S8_PUFF_REBUILD', '1') == '1'
 BARKSKIN = os.environ.get('S8_BARKSKIN', '0') == '1'
 WITHER = os.environ.get('S8_WITHER', '0') == '1'
 URSA_AURA = os.environ.get('S8_URSA_AURA', '1') == '1'   # the Amulet +1
@@ -2838,6 +2840,10 @@ def short_rest(st):
             log(f"  {h.name} spends {spent} Hit Dice, heals {healed}, now {h.hp}/{h.hp_max}.")
     st.ghost.hp = st.ghost.hp_max
     st.puff.hp = st.puff.hp_max
+    if st.puff.down:
+        st.puff.down = False
+        log('  Lilly rebuilds PUFF over the rest: the gem is not consumed and '
+            'the ritual costs no slot, so it is free.')
     st.s_focus = 7
     st.l_ward = 2
     st.u_wild = min(3, st.u_wild + 1)
@@ -3895,6 +3901,10 @@ def revive_between(st):
     if FEY_HOUR == 'onefight' and st.fey is not None:
         log("  (The hour runs out on the road: the fey spirit bows and goes.)")
         st.fey = None
+    if PUFF_REBUILD and st.puff.down:
+        st.puff.down = False
+        st.puff.hp = st.puff.hp_max
+        log('  (An hour on the road: Lilly rebuilds Puff. No slot, no gem spent.)')
     for h in [st.lilly, st.stabby, st.ursa, st.ghost]:
         if h.down:
             amt = d(2, 4) + 5
