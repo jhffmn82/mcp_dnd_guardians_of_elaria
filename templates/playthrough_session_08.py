@@ -890,6 +890,7 @@ LILLY_AID = int(os.environ.get('S8_LILLY_AID', '0'))  # 0=off, else +5 per step
 # Does an hour pass between fights on the board? If so Puff is rebuilt there too.
 PUFF_REBUILD = os.environ.get('S8_PUFF_REBUILD', '1') == '1'
 PUFF_KITE = os.environ.get('S8_PUFF_KITE', '0') == '1'   # she flies; use it
+PUFF_ALOFT = os.environ.get('S8_PUFF_ALOFT', '0') == '1' # she flies UP
 PUFF_STANDOFF = int(os.environ.get('S8_PUFF_STANDOFF', '40'))
 PUFF_STAY_WARDED = os.environ.get('S8_PUFF_WARDED', '1') == '1'
 BARKSKIN = os.environ.get('S8_BARKSKIN', '0') == '1'
@@ -1221,6 +1222,11 @@ def puff_turn(st, target, use_mm, overload=False):
         return
     if st.puff.down:
         return
+    # She has FLY 30. Staying up means grounded melee cannot reach her at all;
+    # only ranged attackers and fliers can. Costs her nothing: the Wand reaches
+    # 120 ft and the Pipes 30 ft, both fine from above. (DM, 2026-08-24.)
+    if PUFF_ALOFT:
+        st.puff.aloft = True
     # Homunculus Servant has FLY 30 and the Wand of Magic Missiles reaches 120 ft,
     # so she has no business standing anywhere reachable. If her target is close,
     # she backs straight off before shooting. (DM, 2026-08-24.)
@@ -2259,6 +2265,7 @@ def fight1(st):
     st.ursa.pos = [5, 16]
     st.ghost.pos = [6, 16]
     st.puff.pos = [4, 14]
+    st.puff.aloft = PUFF_ALOFT
     st.cannon.pos = [4, 15]
     rot_spots = [(23, 12), (24, 14), (25, 16), (23, 17), (24, 18), (25, 13),
                  (26, 15), (26, 12)]
@@ -2491,7 +2498,7 @@ def fight1(st):
                     packs = [o for o in mites if o is not m and o.hp > 0
                              and cheb(o.pos, m.pos) <= 1]
                     tgt = min([h for h in st.pcs + ([st.fey] if st.fey else [])
-                               if h is not None and h.alive],
+                               if h is not None and h.alive and not h.aloft],
                               key=lambda h: m.dist_ft(h), default=None)
                     if tgt is None:
                         break
@@ -2521,7 +2528,7 @@ def fight1(st):
                     r.damaged_since = False
                     r.cleansed = False
                     tgt = min([h for h in st.pcs + ([st.fey] if st.fey else [])
-                               if h is not None and h.alive],
+                               if h is not None and h.alive and not h.aloft],
                               key=lambda h: r.dist_ft(h), default=None)
                     if tgt is None:
                         break
@@ -2588,6 +2595,7 @@ def fight2(st):
     st.ursa.pos = [16, 26]
     st.ghost.pos = [15, 27]
     st.puff.pos = [13, 26]
+    st.puff.aloft = PUFF_ALOFT
     st.cannon.pos = [13, 27]
     if st.fey:
         st.fey.pos = [16, 24]
@@ -2896,6 +2904,7 @@ def fight3(st):
     st.ursa.pos = [16, 24]
     st.ghost.pos = [15, 25]
     st.puff.pos = [13, 24]
+    st.puff.aloft = PUFF_ALOFT
     st.cannon.pos = [13, 25]
     weeper = Actor('Glass Weeper', 'W', 'foe', 16, ehp(340), (15, 11), 20,
                    saves=dict(str=4, dex=-1, con=5, wis=1),
@@ -3104,7 +3113,7 @@ def fight3(st):
                         continue
                     if c.fright > 0:
                         c.fright -= 1
-                    tgt = min([h for h in st.pcs if h.alive],
+                    tgt = min([h for h in st.pcs if h.alive and not h.aloft],
                               key=lambda h: c.dist_ft(h), default=None)
                     if tgt is None:
                         break
@@ -3197,7 +3206,7 @@ def fight3(st):
                                 ursa_conc_check(st, dmg)
                 else:
                     if not in_reach:
-                        tgt = min([h for h in st.pcs if h.alive],
+                        tgt = min([h for h in st.pcs if h.alive and not h.aloft],
                                   key=lambda h: weeper.dist_ft(h), default=None)
                         if tgt:
                             weeper.approach(tgt, 15, 15)  # rooted: 15 ft leash
