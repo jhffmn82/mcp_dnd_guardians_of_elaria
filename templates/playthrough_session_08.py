@@ -233,6 +233,20 @@ class Actor:
 
     def approach(self, target, want_ft, max_ft):
         """Move toward target until within want_ft."""
+        # Frightened, glossary:517 -- "You can't willingly move closer to the
+        # source of fear." The sim modelled only the Disadvantage half.
+        src = getattr(self, 'fear_src', None)
+        if getattr(self, 'fright', 0) > 0 and src is not None and src.alive:
+            before = max(abs(self.pos[0] - src.pos[0]), abs(self.pos[1] - src.pos[1]))
+            old, moved = self._approach(target, want_ft, max_ft)
+            after = max(abs(self.pos[0] - src.pos[0]), abs(self.pos[1] - src.pos[1]))
+            if after < before:
+                self.pos = list(old)
+                return old, False
+            return old, moved
+        return self._approach(target, want_ft, max_ft)
+
+    def _approach(self, target, want_ft, max_ft):
         if getattr(self, 'rooted', 0) > 0:
             return tuple(self.pos), False   # Restrained: Speed 0, and can't rise
         if self.slowed:
@@ -326,6 +340,7 @@ class State:
         self.ff_watch = []
         self.cur_foes = []
         self.entangle_zone = None
+        self.pipe_watch = []
         # Stabby
         self.s_focus = 7
         self.s_metab = True
@@ -941,6 +956,17 @@ PUFF_ON = os.environ.get('S8_PUFF', '1') == '1'   # Lilly's homunculus
 #   mix    = 3 x Faerie Fire + one 2nd-level Flaming Sphere.
 RING = os.environ.get('S8_RING', 'entff')  # entff | ent | ff | ffent | sphere | mix | off
 FF_NEED = int(os.environ.get('S8_FF_NEED', '2'))  # min foes in the cube to fire
+# PIPES OF HAUNTING (2024 DMG, read from dnd2024.wikidot.com/magic-item:pipes-of-
+# haunting on 2026-08-27): 3 charges, 1d3 back at dawn, Magic action, each
+# creature of your choice within 30 ft, WIS DC 15 or Frightened 1 minute; it
+# repeats the save at the END OF EACH OF ITS TURNS; anything that succeeds first
+# time is immune for 24 hours.
+#   cluster = the old gate, 3+ eligible targets or nothing (measured 1.11 uses a
+#             day and 1.9 of 3 charges left unspent).
+#   smart   = also worth a charge on ONE big thing, because Frightened is
+#             Disadvantage on every attack it makes for a minute.
+PIPES_MODE = os.environ.get('S8_PIPES', 'cluster')  # cluster | smart | big
+PIPES_BIG = int(os.environ.get('S8_PIPES_BIG', '55'))  # HP that counts as 'big'
 WARD_ON = os.environ.get('S8_WARD', '1') == '1'        # Lilly's Aether Ward
 FOG_ON = os.environ.get('S8_FOG', '1') == '1'          # Lilly's Flash of Genius
 DEFLECT_ON = os.environ.get('S8_DEFLECT', '1') == '1'  # Stabby's Deflect Attack
@@ -1061,6 +1087,7 @@ def initiative(st, groups):
     order.sort(key=lambda t: -t[0])
     st.cur_foes = [a for _, _, actors in order for a in actors
                    if getattr(a, 'side', '') == 'foe']
+    st.pipe_watch = []
     puff_drop_conc(st)          # a new fight starts with nothing held
     log('  Initiative: ' + ', '.join(f'{n} {r}' for r, n, _ in order))
     return order
@@ -1139,6 +1166,14 @@ def start_round(st, rnd):
     for _f in getattr(st, 'blind_watch', []):
         if getattr(_f, 'blinded', 0) > 0:
             _f.blinded -= 1
+    for _f in list(getattr(st, 'pipe_watch', [])):
+        if _f.hp > 0 and _f.fright > 0:
+            if d20() + _f.saves.get('wis', 0) >= 15:
+                _f.fright = 0
+                _f.fear_src = None
+                log(f"    {_f.name} steadies itself; the tune loses its grip.")
+            else:
+                st.tally['prevented']['Puff (pipes, still frightened)'] += 1
     if getattr(st, 'entangle_zone', None) is not None:
         _x0, _y0 = st.entangle_zone
         for _f in list(getattr(st, 'ff_watch', [])):
@@ -1374,6 +1409,9 @@ def cast_entangle(st, target=None):
     for f in foes:
         if x0 <= f.pos[0] <= x0 + 3 and y0 <= f.pos[1] <= y0 + 3:
             f.slowed = 1                      # Difficult Terrain, save or not
+            if 'restrained' in f.cond_imm:
+                slipped.append(f.name + ' (immune)')
+                continue
             if foe_save(f, f.saves.get('str', 0), 16):
                 slipped.append(f.name)
             else:
@@ -1443,10 +1481,27 @@ def puff_pipes(st, foes):
     A creature that SAVES is immune to the pipes for 24 hours."""
     if st.puff.down or st.pipes <= 0:
         return False
-    pool = [f for f in foes if f.hp > 0 and not getattr(f, 'pipes_immune', False)
-            and 'frightened' not in f.cond_imm and f.fright <= 0
-            and st.puff.dist_ft(f) <= 30]
-    if len(pool) < 3:
+    elig = [f for f in foes if f.hp > 0 and not getattr(f, 'pipes_immune', False)
+            and 'frightened' not in f.cond_imm and f.fright <= 0]
+    if not elig:
+        return False
+    if PIPES_MODE in ('smart', 'big'):
+        # Worth a charge on one big thing: Frightened is Disadvantage on every
+        # attack it makes for a minute, and it cannot close on her either.
+        want = [f for f in elig if f.hp >= PIPES_BIG]
+        if len(elig) >= 3 or want:
+            puff_close(st, min(elig, key=lambda f: st.puff.dist_ft(f)), 30)
+    pool = [f for f in elig if st.puff.dist_ft(f) <= 30]
+    if not pool:
+        return False
+    need = 3
+    if PIPES_MODE == 'smart':
+        need = 1 if any(f.hp >= PIPES_BIG for f in pool) else 2
+    elif PIPES_MODE == 'big':
+        # Never waste one on a small pair, but a lone heavy hitter is worth a
+        # charge on its own: Frightened is Disadvantage on every swing it makes.
+        need = 1 if any(f.hp >= PIPES_BIG for f in pool) else 3
+    if len(pool) < need:
         return False
     st.pipes -= 1
     log(f"    Puff: PIPES OF HAUNTING, a thin ugly tune over {len(pool)} of them. "
@@ -1456,8 +1511,11 @@ def puff_pipes(st, foes):
             f.pipes_immune = True
             log(f"      {f.name} shrugs the tune off for good.")
         else:
-            f.fright = 4
-            log(f"      {f.name} is FRIGHTENED: disadvantage on everything it swings.")
+            f.fright = 10          # 1 minute; the repeat save is what ends it
+            f.fear_src = st.puff
+            st.pipe_watch.append(f)
+            log(f"      {f.name} is FRIGHTENED of Puff: disadvantage on every "
+                "swing, and it cannot come closer to her.")
     return True
 
 
@@ -3650,7 +3708,8 @@ def boss(st):
                 if st.lilly.dist_ft(spike) <= 90:
                     true_strike(st, spike, dis=True, radiant=True)
                 cannon_fire(st, 'ballista', [spike], dis=True)  # called shot
-                puff_turn(st, spike, use_mm=True, overload=True)
+                if not puff_pipes(st, [groudon]):
+                    puff_turn(st, spike, use_mm=True, overload=True)
                 if spike.hp <= 0:
                     break
             elif name == 'Ursa' and st.ursa.alive:
@@ -3938,7 +3997,8 @@ def thumpaw_fight(st):
                 true_strike(st, tp)
                 poked = True
                 cannon_fire(st, 'ballista', [tp])
-                puff_turn(st, tp, use_mm=False)
+                if not puff_pipes(st, [tp]):
+                    puff_turn(st, tp, use_mm=False)
             elif name == 'Ursa' and st.ursa.alive:
                 _pk = [x for x in ([tp] if tp is not None else []) if x.hp > 0]
                 pack_tick(st, _pk)
@@ -4055,7 +4115,8 @@ def gleamoth_fight(st):
                 pool = [s for s in swarms if s.hp > 0]
                 if pool:
                     cannon_fire(st, 'ballista', pool)
-                puff_turn(st, next((s for s in swarms if s.hp > 0), None),
+                if not puff_pipes(st, [s for s in swarms if s.hp > 0]):
+                    puff_turn(st, next((s for s in swarms if s.hp > 0), None),
                           use_mm=False)
             elif name == 'Ursa' and st.ursa.alive:
                 _pk = [sw for sw in swarms if sw.hp > 0]
