@@ -199,6 +199,7 @@ class Actor:
         self.reaction = True
         self.dodging = False      # Patient Defense: attackers at disadvantage
         self.entangled = 0        # restrained (Entangle) for N of its turns
+        self.rooted = 0           # Restrained by Entangle: Speed 0
         self.blinded = 0          # Blinded for N rounds
         self.slowed = 0           # Ice Beam -20 ft / Earthquake rubble
         self.cleanse_types = {'radiant', 'force'}   # per its own statblock
@@ -232,6 +233,8 @@ class Actor:
 
     def approach(self, target, want_ft, max_ft):
         """Move toward target until within want_ft."""
+        if getattr(self, 'rooted', 0) > 0:
+            return tuple(self.pos), False   # Restrained: Speed 0, and can't rise
         if self.slowed:
             max_ft = max(5, max_ft - 20)   # Ice Beam's slow / broken ground
             self.slowed = 0
@@ -310,6 +313,19 @@ class State:
         self.l_fog = 5            # Flash of Genius
         self.mm_charges = 7       # Puff's Wand of Magic Missiles
         self.pipes = 3            # Pipes of Haunting, 3 charges
+        self.ring = {'ff': [('ff', 1)] * 5,
+                     'ent': [('ent', 1)] * 5,
+                     'entff': [('ent', 1)] * 3 + [('ff', 1)] * 2,
+                     'ffent': [('ff', 1)] * 3 + [('ent', 1)] * 2,
+                     'sphere': [('sphere', 3), ('sphere', 2)],
+                     'mix': [('ff', 1)] * 3 + [('sphere', 2)],
+                     }.get(RING, [])[:]
+        self.puff_conc = None     # she can hold only ONE, like anyone else
+        self.sphere = None
+        self.sphere_dice = 2
+        self.ff_watch = []
+        self.cur_foes = []
+        self.entangle_zone = None
         # Stabby
         self.s_focus = 7
         self.s_metab = True
@@ -556,6 +572,12 @@ def deal(st, tgt, parts, magical=True, attacker=None, is_ce=False, credit=None):
         st.tally['prevented']['_hits_landed'] += 1
     if tgt.side == 'pc':
         st.tally['prevented']['_hp_lost'] += total
+    if tgt is st.puff and total > 0 and getattr(st, 'puff_conc', None):
+        # CON save, DC 10 or half the damage, whichever is higher. Her save is
+        # +1 CON and +2 Magic Bond = +3.
+        if d20() + 3 < max(10, total // 2):
+            log(f"      Puff loses CONCENTRATION on {st.puff_conc}.")
+            puff_drop_conc(st)
     pre = tgt.hp
     tgt.hp -= total
     if tgt.side == 'foe' and tgt.hp < 0:
@@ -633,6 +655,10 @@ def attack_roll(st, bonus, tgt, adv=False, dis=False, attacker=None):
         st.tally['prevented']['_swing_round'] += 0
     if getattr(tgt, 'entangled', 0) > 0 or getattr(tgt, 'restrained', False):
         adv = True
+    if (getattr(tgt, 'faerie', 0) > 0 and attacker is not None
+            and attacker.side == 'pc'):
+        adv = True
+        st.tally['prevented']['_adv_faerie'] += 1
     if getattr(tgt, 'blinded', 0) > 0:
         adv = True
         st.tally['prevented']['_adv_vs_blinded'] += 1
@@ -900,6 +926,21 @@ URSA_AURA = os.environ.get('S8_URSA_AURA', '1') == '1'   # the Amulet +1
 # Wand of the War Mage +2: LILLY-CRAFTED. +8 is his bare spell attack.
 URSA_ATK = int(os.environ.get('S8_URSA_ATK', '10'))
 PUFF_ON = os.environ.get('S8_PUFF', '1') == '1'   # Lilly's homunculus
+# RING OF SPELL STORING (2024 DMG, read from dnd2024.wikidot.com/magic-item:
+# ring-of-spell-storing on 2026-08-27): 5 levels of capacity; any creature can
+# cast a level 1-5 spell into it by touching it as the spell is cast; the wearer
+# casts it using the ORIGINAL caster's slot level, save DC and attack bonus, but
+# it is "otherwise treated as if you cast the spell" -- so PUFF supplies the
+# components and PUFF holds any Concentration. That last clause is the whole
+# point: Ursa's concentration is owned by Conjure Animals every round of the
+# day, so every Concentration spell on his list is dead weight to him. Stored in
+# the ring, Puff holds it instead, and she has nothing else to concentrate on.
+#   ff     = 5 x Faerie Fire (1st).  Zero upkeep once up; a magazine of 5 fights.
+#   sphere = Flaming Sphere at 3rd + at 2nd (3+2 = 5 levels). Moves on a BONUS
+#            action, so her Action stays on the Wand of Magic Missiles.
+#   mix    = 3 x Faerie Fire + one 2nd-level Flaming Sphere.
+RING = os.environ.get('S8_RING', 'entff')  # entff | ent | ff | ffent | sphere | mix | off
+FF_NEED = int(os.environ.get('S8_FF_NEED', '2'))  # min foes in the cube to fire
 WARD_ON = os.environ.get('S8_WARD', '1') == '1'        # Lilly's Aether Ward
 FOG_ON = os.environ.get('S8_FOG', '1') == '1'          # Lilly's Flash of Genius
 DEFLECT_ON = os.environ.get('S8_DEFLECT', '1') == '1'  # Stabby's Deflect Attack
@@ -1018,6 +1059,9 @@ def initiative(st, groups):
     for label, actors, mod in groups:
         order.append((d20() + mod, label, actors))
     order.sort(key=lambda t: -t[0])
+    st.cur_foes = [a for _, _, actors in order for a in actors
+                   if getattr(a, 'side', '') == 'foe']
+    puff_drop_conc(st)          # a new fight starts with nothing held
     log('  Initiative: ' + ', '.join(f'{n} {r}' for r, n, _ in order))
     return order
 
@@ -1095,6 +1139,20 @@ def start_round(st, rnd):
     for _f in getattr(st, 'blind_watch', []):
         if getattr(_f, 'blinded', 0) > 0:
             _f.blinded -= 1
+    if getattr(st, 'entangle_zone', None) is not None:
+        _x0, _y0 = st.entangle_zone
+        for _f in list(getattr(st, 'ff_watch', [])):
+            if _f.hp <= 0 or not getattr(_f, 'rooted', 0):
+                continue
+            if d20() + _f.saves.get('str', 0) >= 16:
+                _f.rooted = 0
+                _f.entangled = 0
+                log(f"    {_f.name} tears free of the grasping plants.")
+            else:
+                st.tally['prevented']['Puff (Entangle, turn lost)'] += 1
+        for _f in getattr(st, 'cur_foes', []):
+            if _f.hp > 0 and _x0 <= _f.pos[0] <= _x0 + 3 and _y0 <= _f.pos[1] <= _y0 + 3:
+                _f.slowed = 1
     aura_tick(st)
 
 
@@ -1197,6 +1255,188 @@ def stabby_defensive(st, pool):
             f"{old}->{tuple(s.pos)}.")
 
 
+def puff_drop_conc(st):
+    """Puff stops concentrating: the outlines go out, the sphere gutters."""
+    for f in getattr(st, 'ff_watch', []):
+        f.faerie = 0
+        f.rooted = 0
+        f.entangled = 0
+    st.ff_watch = []
+    st.entangle_zone = None
+    st.sphere = None
+    st.puff_conc = None
+
+
+def _ff_cube(st, foes):
+    """Best 20-ft Cube (4x4 squares) by number of foes caught."""
+    best = (0, None, None)
+    for f in foes:
+        for ox in range(-3, 1):
+            for oy in range(-3, 1):
+                x0, y0 = f.pos[0] + ox, f.pos[1] + oy
+                n = sum(1 for g in foes
+                        if x0 <= g.pos[0] <= x0 + 3 and y0 <= g.pos[1] <= y0 + 3)
+                if n > best[0]:
+                    best = (n, x0, y0)
+    return best
+
+
+def _ring_pool(st, target=None):
+    """Everything Puff could sensibly aim at. The Spike is deliberately kept
+    out of the initiative order by boss(), so it never reaches st.cur_foes;
+    without this it would be the one target in the session she cannot light up,
+    which is exactly backwards for the fight the whole session builds to."""
+    pool = [f for f in st.cur_foes if f.hp > 0]
+    if (target is not None and getattr(target, 'side', '') == 'foe'
+            and target.hp > 0 and target not in pool):
+        pool.append(target)
+    return pool
+
+
+def puff_close(st, target, want=60):
+    """She has Fly 30 and, outside of kiting, never uses it. If the thing she
+    means to light up is out of range she flies at it. Movement is free; this
+    costs her nothing she was otherwise spending."""
+    if target is None or getattr(target, 'hp', 0) <= 0:
+        return
+    if st.puff.dist_ft(target) <= want:
+        return
+    px, py = st.puff.pos
+    for _ in range(6):                       # 30 ft
+        if max(abs(px - target.pos[0]), abs(py - target.pos[1])) * 5 <= want:
+            break
+        px += (target.pos[0] > px) - (target.pos[0] < px)
+        py += (target.pos[1] > py) - (target.pos[1] < py)
+    if (px, py) != tuple(st.puff.pos):
+        st.puff.pos = [px, py]
+        st.tally['prevented']['_puff_closed'] += 1
+
+
+def cast_faerie_fire(st, target=None):
+    """SRD 11_spells_d-h.md:474. Level 1 (Druid), Action, 60 ft, V only,
+    Concentration 1 min. 20-ft Cube; each creature in it makes a DEX save or is
+    outlined. Attack rolls against an outlined creature have Advantage.
+    Stored by URSA, so it comes out of the ring at his DC 16."""
+    live = _ring_pool(st, target)
+    foes = [f for f in live if st.puff.dist_ft(f) <= 60]
+    if not foes:
+        return False
+    n, x0, y0 = _ff_cube(st, foes)
+    # Don't burn one on a single straggler. But a cube covering the thing the
+    # party is already focusing is never wasted, and against a lone big thing
+    # one target IS the right target.
+    if n < 1:
+        return False
+    covers_focus = (target is not None and target.hp > 0
+                    and x0 <= target.pos[0] <= x0 + 3
+                    and y0 <= target.pos[1] <= y0 + 3)
+    if n < FF_NEED and len(live) > 2 and not covers_focus:
+        return False
+    lit = []
+    for f in foes:
+        if x0 <= f.pos[0] <= x0 + 3 and y0 <= f.pos[1] <= y0 + 3:
+            if not foe_save(f, f.saves.get('dex', 0), 16):
+                f.faerie = 1
+                st.ff_watch.append(f)
+                lit.append(f.name)
+    st.puff_conc = 'Faerie Fire'
+    st.tally['prevented']['Puff (Faerie Fire, outlined)'] += len(lit)
+    log("    Puff: FAERIE FIRE out of the ring (Ursa's, DC 16), a 20-ft cube of "
+        f"cold blue light over {n}. Outlined: {', '.join(lit) or 'nobody'}."
+        + (" The whole party has ADVANTAGE on them." if lit else ""))
+    return True
+
+
+def cast_entangle(st, target=None):
+    """SRD 11_spells_d-h.md:393. Level 1 Conjuration (Druid), Action, 90 ft,
+    V S, Concentration 1 min. A 20-ft square becomes Difficult Terrain for the
+    duration whatever anyone rolls, and each creature in it makes a STRENGTH
+    save or gains RESTRAINED (glossary:858 -- Speed 0, Advantage on attacks
+    against it, Disadvantage on its own attacks). Escaping costs the creature
+    an ACTION: Str (Athletics) vs DC 16.
+
+    Conservative: the escape check is taken free at the top of its turn here
+    rather than costing it its action, so this measures Entangle at LESS than
+    it is really worth. Stored by URSA, so it lands at his DC 16."""
+    live = _ring_pool(st, target)
+    foes = [f for f in live if st.puff.dist_ft(f) <= 90]
+    if not foes:
+        return False
+    n, x0, y0 = _ff_cube(st, foes)
+    if n < 1:
+        return False
+    covers_focus = (target is not None and target.hp > 0
+                    and x0 <= target.pos[0] <= x0 + 3
+                    and y0 <= target.pos[1] <= y0 + 3)
+    if n < FF_NEED and len(live) > 2 and not covers_focus:
+        return False
+    held, slipped = [], []
+    for f in foes:
+        if x0 <= f.pos[0] <= x0 + 3 and y0 <= f.pos[1] <= y0 + 3:
+            f.slowed = 1                      # Difficult Terrain, save or not
+            if foe_save(f, f.saves.get('str', 0), 16):
+                slipped.append(f.name)
+            else:
+                f.rooted = 1
+                f.entangled = 1
+                st.ff_watch.append(f)
+                held.append(f.name)
+    st.puff_conc = 'Entangle'
+    st.entangle_zone = (x0, y0)
+    st.tally['prevented']['Puff (Entangle, held)'] += len(held)
+    log("    Puff: ENTANGLE out of the ring (Ursa's, DC 16), grasping plants "
+        f"across a 20-ft square over {n}. RESTRAINED: {', '.join(held) or 'nobody'}."
+        + (f" ({', '.join(slipped)} tore loose.)" if slipped else "")
+        + (" Speed 0, the party swings at ADVANTAGE, and they swing back at "
+           "DISADVANTAGE." if held else ""))
+    return True
+
+
+def _sphere_bite(st, t):
+    dmg_raw = d(st.sphere_dice, 6)
+    if foe_save(t, t.saves.get('dex', 0), 16):
+        dmg_raw //= 2
+    dmg = deal(st, t, [(dmg_raw, 'fire')], credit='Puff')
+    log(f"      the sphere rolls through {t.name}: {dmg} fire.")
+
+
+def cast_flaming_sphere(st, lvl, target=None):
+    """SRD 11_spells_d-h.md:722. Level 2 (Druid), Action, 60 ft, Concentration
+    1 min, +1d6 per slot level above 2. Moving it is a BONUS action, so Puff
+    keeps her Action for the wand. Conservative here: only the Bonus-action ram
+    is modelled, NOT the passive 'ends its turn within 5 ft' save, so the sphere
+    is measured at less than it is really worth."""
+    foes = [f for f in _ring_pool(st, target) if st.puff.dist_ft(f) <= 60
+            and 'fire' not in getattr(f, 'immune', set())]
+    if not foes:
+        return False
+    t = min(foes, key=lambda f: st.puff.dist_ft(f))
+    st.sphere = [t.pos[0], t.pos[1]]
+    st.sphere_dice = lvl
+    st.puff_conc = 'the Flaming Sphere'
+    log(f"    Puff: FLAMING SPHERE out of the ring at level {lvl} ({lvl}d6 fire, "
+        f"DC 16), set rolling beside {t.name}.")
+    return True
+
+
+def sphere_ram(st, target=None):
+    """Bonus Action: roll it up to 30 ft into somebody. Costs her no Action."""
+    foes = [f for f in _ring_pool(st, target)
+            if 'fire' not in getattr(f, 'immune', set())]
+    if not foes or st.sphere is None:
+        return
+    t = min(foes, key=lambda f: max(abs(f.pos[0] - st.sphere[0]),
+                                    abs(f.pos[1] - st.sphere[1])))
+    gap = max(abs(t.pos[0] - st.sphere[0]), abs(t.pos[1] - st.sphere[1]))
+    if gap > 6:                       # 30 ft of rolling, no reach this turn
+        dx = (t.pos[0] > st.sphere[0]) - (t.pos[0] < st.sphere[0])
+        dy = (t.pos[1] > st.sphere[1]) - (t.pos[1] < st.sphere[1])
+        st.sphere = [st.sphere[0] + dx * 6, st.sphere[1] + dy * 6]
+        return
+    st.sphere = [t.pos[0], t.pos[1]]
+    _sphere_bite(st, t)
+
+
 def puff_pipes(st, foes):
     """Pipes of Haunting (build_lilly.py:226): Magic action, 1 charge, each
     creature she chooses within 30 ft, Wis save DC 15 or Frightened 1 minute.
@@ -1253,6 +1493,20 @@ def puff_turn(st, target, use_mm, overload=False):
         if (px, py) != tuple(st.puff.pos):
             st.puff.pos = [px, py]
             st.tally['prevented']['_puff_kited'] += 1
+    if st.puff.down and st.puff_conc:
+        puff_drop_conc(st)
+    if RING != 'off' and not st.puff.down:
+        if st.puff_conc == 'the Flaming Sphere' and st.sphere is not None:
+            sphere_ram(st, target)    # BONUS action; her Action is still free
+        elif st.puff_conc is None and st.ring:
+            what, lvl = st.ring[0]
+            puff_close(st, target, 90 if what == 'ent' else 60)
+            done = (cast_faerie_fire(st, target) if what == 'ff'
+                    else cast_entangle(st, target) if what == 'ent'
+                    else cast_flaming_sphere(st, lvl, target))
+            if done:
+                st.ring.pop(0)
+                return                # casting it WAS her Action this turn
     if use_mm and st.mm_charges > 0 and target is not None and target.hp > 0:
         # 1 charge = 3 darts; each extra charge adds one dart, up to 3/5 darts.
         n_ch = 3 if (overload and st.mm_charges >= 3) else 1
