@@ -233,7 +233,7 @@ B = [
              "regains 14 (2d8 + 5) hit points and is cured of the Poisoned condition."),
             ("Sea Mist (2/Day)", "Piplup breathes out a rolling bank of cool silver fog: a "
              "20-foot-radius Sphere centered on a point he can see within 60 feet, lasting "
-             "**3 rounds**. His friends always know where each other are inside it and nothing "
+             "**1 round**. His friends always know where each other are inside it and nothing "
              "else does, so while in the fog **allies have Advantage on attack rolls, attacks "
              "against them have Disadvantage, and they can Disengage for free**."),
         ],

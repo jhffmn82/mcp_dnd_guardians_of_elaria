@@ -71,7 +71,7 @@ MG_MODE = os.environ.get('S8_MG_MODE', 'ac')   # damage | ac
 #   'ac' (Justin, 2026-08-20): Mistguard becomes a Shield-style reaction
 #   resolved AFTER the die, turning a hit into a miss rather than shaving it.
 BEAM_HIT = int(os.environ.get('S8_BEAM_HIT', '8'))
-MIST_ROUNDS = int(os.environ.get('S8_MIST_ROUNDS', '3'))
+MIST_ROUNDS = int(os.environ.get('S8_MIST_ROUNDS', '1'))
 #   SEA MIST reborn (Justin, 2026-08-20): 1/day, a 20-ft-radius bank of fog.
 #   Allies inside have ADVANTAGE on attacks; attacks against allies inside
 #   have DISADVANTAGE. Lasts 2 rounds. This is his one big button.
@@ -2056,7 +2056,7 @@ def piplup_turn(st, targets):
                 n += 1
         log(f"    Piplup: MISTGUARD, cold silver haze settles over {n} of them; "
             "the next blow each takes lands lighter.")
-    elif PIPLUP_V2 and st.sea_mist and (g.hp < g.hp_max * 0.5 or any(
+    elif PIPLUP_VER in ('v2', 'v3') and st.sea_mist and (g.hp < g.hp_max * 0.5 or any(
             h.alive and h.hp < h.hp_max * 0.35 for h in (st.lilly, st.stabby, st.ursa))):
         st.sea_mist -= 1
         st.mist_rounds = 10
