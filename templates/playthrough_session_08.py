@@ -330,6 +330,9 @@ class State:
         self.ring = {'ff': [('ff', 1)] * 5,
                      'ent': [('ent', 1)] * 5,
                      'entff': [('ent', 1)] * 3 + [('ff', 1)] * 2,
+                     'web2ent': [('web', 2)] * 2 + [('ent', 1)],
+                     'webent3': [('web', 2)] + [('ent', 1)] * 3,
+                     'web2ff': [('web', 2)] * 2 + [('ff', 1)],
                      'ffent': [('ff', 1)] * 3 + [('ent', 1)] * 2,
                      'sphere': [('sphere', 3), ('sphere', 2)],
                      'mix': [('ff', 1)] * 3 + [('sphere', 2)],
@@ -341,6 +344,7 @@ class State:
         self.cur_foes = []
         self.entangle_zone = None
         self.pipe_watch = []
+        self.zone_kind = 'ent'
         # Stabby
         self.s_focus = 7
         self.s_metab = True
@@ -1174,6 +1178,7 @@ def start_round(st, rnd):
                 log(f"    {_f.name} steadies itself; the tune loses its grip.")
             else:
                 st.tally['prevented']['Puff (pipes, still frightened)'] += 1
+    _zone_catch(st)
     if getattr(st, 'entangle_zone', None) is not None:
         _x0, _y0 = st.entangle_zone
         for _f in list(getattr(st, 'ff_watch', [])):
@@ -1421,6 +1426,7 @@ def cast_entangle(st, target=None):
                 held.append(f.name)
     st.puff_conc = 'Entangle'
     st.entangle_zone = (x0, y0)
+    st.zone_kind = 'ent'
     st.tally['prevented']['Puff (Entangle, held)'] += len(held)
     log("    Puff: ENTANGLE out of the ring (Ursa's, DC 16), grasping plants "
         f"across a 20-ft square over {n}. RESTRAINED: {', '.join(held) or 'nobody'}."
@@ -1428,6 +1434,63 @@ def cast_entangle(st, target=None):
         + (" Speed 0, the party swings at ADVANTAGE, and they swing back at "
            "DISADVANTAGE." if held else ""))
     return True
+
+
+def cast_web(st, target=None):
+    """SRD 13_spells_q-z.md:1004. Level 2 Conjuration, Action, 60 ft, V S M,
+    Concentration up to 1 HOUR. A 20-ft Cube of Difficult Terrain that is also
+    Lightly Obscured. The catch clause is the good one: "The first time a
+    creature enters the webs on a turn OR STARTS ITS TURN THERE" it makes a DEX
+    save or is Restrained, so unlike Entangle it keeps catching things that walk
+    into it later. Escaping is an action, Str (Athletics) vs the DC.
+
+    Stored by LILLY, so it lands at her DC 16 rather than the Wand of Web's own
+    DC 13. Note the anchoring caveat in the printed text: the webs need
+    something to span or a surface to lie across, which the Underroot tunnels
+    give for free but an open field would not."""
+    live = _ring_pool(st, target)
+    foes = [f for f in live if st.puff.dist_ft(f) <= 60]
+    if not foes:
+        return False
+    n, x0, y0 = _ff_cube(st, foes)
+    if n < 1:
+        return False
+    covers_focus = (target is not None and target.hp > 0
+                    and x0 <= target.pos[0] <= x0 + 3
+                    and y0 <= target.pos[1] <= y0 + 3)
+    if n < FF_NEED and len(live) > 2 and not covers_focus:
+        return False
+    st.puff_conc = 'the Web'
+    st.entangle_zone = (x0, y0)
+    st.zone_kind = 'web'
+    log("    Puff: WEB out of the ring (Lilly's, DC 16), a 20-ft cube of sticky "
+        f"strands over {n}. Anything that starts a turn in it is caught again.")
+    _zone_catch(st)
+    return True
+
+
+def _zone_catch(st):
+    """Web only: everything standing in the cube makes its DEX save. Run on the
+    cast and again at the top of every round, which is the 'starts its turn
+    there' clause. Entangle does NOT do this: it catches once and that is all."""
+    if getattr(st, 'entangle_zone', None) is None or getattr(st, 'zone_kind', '') != 'web':
+        return
+    x0, y0 = st.entangle_zone
+    for f in st.cur_foes:
+        if f.hp <= 0 or getattr(f, 'rooted', 0):
+            continue
+        if not (x0 <= f.pos[0] <= x0 + 3 and y0 <= f.pos[1] <= y0 + 3):
+            continue
+        f.slowed = 1
+        if 'restrained' in f.cond_imm:
+            continue
+        if not foe_save(f, f.saves.get('dex', 0), 16):
+            f.rooted = 1
+            f.entangled = 1
+            if f not in st.ff_watch:
+                st.ff_watch.append(f)
+            st.tally['prevented']['Puff (Web, held)'] += 1
+            log(f"      {f.name} is stuck fast in the webs.")
 
 
 def _sphere_bite(st, t):
@@ -1561,6 +1624,7 @@ def puff_turn(st, target, use_mm, overload=False):
             puff_close(st, target, 90 if what == 'ent' else 60)
             done = (cast_faerie_fire(st, target) if what == 'ff'
                     else cast_entangle(st, target) if what == 'ent'
+                    else cast_web(st, target) if what == 'web'
                     else cast_flaming_sphere(st, lvl, target))
             if done:
                 st.ring.pop(0)

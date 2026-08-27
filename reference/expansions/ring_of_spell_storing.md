@@ -57,15 +57,37 @@ nothing he was going to spend. Both cast at **DC 16**, so nothing is lost.
 The ring was not modelled at all before this pass; Puff was carrying an empty
 ring all session.
 
+Re-measured 2026-08-27 after the Frightened corrections (the repeat save and
+"can't approach" were both missing), 400 days each:
+
 ```
-                                    rounds  knock  taken-heal
-  off  (empty ring, the old model)   14.51  0.140     225.5
-  sphere  Flaming Sphere 3rd + 2nd   14.49  0.095     229.3
-  ffent   3 Faerie Fire then 2 Ent   14.15  0.058     217.4
-  ff      5 x Faerie Fire            14.27  0.055     209.4
-  ent     5 x Entangle               14.37  0.040     205.6
-  entff   3 ENTANGLE then 2 FAERIE FIRE  14.50  0.033  196.2   <-- best
+                                        casts  saves      taken-heal
+  entff   3 ENTANGLE then 2 FAERIE FIRE    5    Str+Dex      200.3  <-- best
+  ff      5 x Faerie Fire                  5    Dex          206.9
+  webent3 1 Web + 3 Entangle               4    Dex+Str      209.6
+  web2ff  2 Web + 1 Faerie Fire            3    Dex          211.3
+  ent     5 x Entangle                     5    Str          213.8
+  web2ent 2 Web + 1 Entangle               3    Dex+Str      214.1
+  sphere  Flaming Sphere 3rd + 2nd         2    Dex          232.1
+  off     empty ring (the old model)       0    -            229.4
 ```
+
+**Web loses even though it is the strongest single spell here.** Its catch
+clause re-triggers ("or starts its turn there") where Entangle catches once, and
+it holds more per cast. It costs 2 levels, and the ring only has 5. Puff can
+hold ONE concentration at a time, so a stronger spell buys nothing she can use,
+while the extra level cost drops her from five casts to three across a five-fight
+day. Two fights get nothing at all.
+
+**Save diversity is the bigger lever.** All-Strength (Entangle only) is the
+worst mix at 213.8; all-Dexterity (Faerie Fire only) is 206.9; the Str+Dex split
+is 200.3. Entangle shreds the early crowds and slides off Groudon and Thumpaw,
+who make Strength saves in their sleep. Faerie Fire covers exactly those.
+
+**The rule for loading this ring: buy CASTS, and buy BOTH saves.** The cheapest
+concentration spell that does the job beats the best one. Anything at level 3
+(Conjure Animals, for instance) is worse on both axes at once, since it costs
+three of the five levels for a single cast.
 
 **Flaming Sphere is a trap.** It is the one spell that fits the "moves on a
 Bonus Action" brief, it raises Puff's own damage (71.5 vs 68.9), and it makes
