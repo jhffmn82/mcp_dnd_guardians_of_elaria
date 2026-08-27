@@ -79,8 +79,22 @@ companion. Hold her position constant and Faerie Fire's edge disappears.
 `ent` and `entff` are inside each other's error bars at 400 days (195.4 +/-5.2
 against 199.5 +/-5.0), so this is not a large win. Five Entangles is the pick on
 simplicity: one spell for the table to remember, same slot cost, and numerically
-ahead. Both cost Ursa five 1st-level slots, which is four plus one bought with
-Wild Resurgence.
+ahead.
+
+**LOADED THE DAY BEFORE, so it costs nothing on the adventuring day (DM,
+2026-08-27).** The ring "stores spells cast into it, holding them until the
+attuned wearer uses them" with no expiry, so Ursa fills it on a rest day out of
+slots that would otherwise go unused. Measured: he ends a fighting day with
+**3.73 of his 4 first-level slots unspent**, so those five Entangles are drawn
+from genuine slack, not taken from anything he wanted. On the day of the
+encounter the ring is simply full and his slots are untouched. The simulator has
+always modelled it this way (st.ring is populated at State init with no
+deduction); the earlier note here claiming it cost him five slots plus a Wild
+Resurgence was wrong.
+
+What Ursa still supplies is the **spell and the DC**: they come out of the ring
+as Entangle at DC 16 because he cast them in. What he does not supply is any
+in-session resource.
 
 **PUFF'S POSITION IS WORTH MORE THAN THE LOADOUT.** 18 points, against roughly 4
 for the best spell choice:
