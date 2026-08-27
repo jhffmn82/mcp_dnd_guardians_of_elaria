@@ -958,7 +958,7 @@ PUFF_ON = os.environ.get('S8_PUFF', '1') == '1'   # Lilly's homunculus
 #   sphere = Flaming Sphere at 3rd + at 2nd (3+2 = 5 levels). Moves on a BONUS
 #            action, so her Action stays on the Wand of Magic Missiles.
 #   mix    = 3 x Faerie Fire + one 2nd-level Flaming Sphere.
-RING = os.environ.get('S8_RING', 'entff')  # entff | ent | ff | ffent | sphere | mix | off
+RING = os.environ.get('S8_RING', 'ent')    # ent | entff | ff | web2ent | sphere | off
 FF_NEED = int(os.environ.get('S8_FF_NEED', '2'))  # min foes in the cube to fire
 # PIPES OF HAUNTING (2024 DMG, read from dnd2024.wikidot.com/magic-item:pipes-of-
 # haunting on 2026-08-27): 3 charges, 1d3 back at dawn, Magic action, each
@@ -971,6 +971,11 @@ FF_NEED = int(os.environ.get('S8_FF_NEED', '2'))  # min foes in the cube to fire
 #             Disadvantage on every attack it makes for a minute.
 PIPES_MODE = os.environ.get('S8_PIPES', 'cluster')  # cluster | smart | big
 PIPES_BIG = int(os.environ.get('S8_PIPES_BIG', '55'))  # HP that counts as 'big'
+# How far forward Puff flies to cast out of the ring. 0 = use the spell's own
+# range (Faerie Fire 60 ft, Entangle 90 ft), which quietly means Faerie Fire
+# drags her 30 ft further into the fight than Entangle does. Set a number to
+# hold her position constant and compare the SPELLS instead of the positioning.
+PUFF_LEAN = int(os.environ.get('S8_PUFF_LEAN', '50'))
 WARD_ON = os.environ.get('S8_WARD', '1') == '1'        # Lilly's Aether Ward
 FOG_ON = os.environ.get('S8_FOG', '1') == '1'          # Lilly's Flash of Genius
 DEFLECT_ON = os.environ.get('S8_DEFLECT', '1') == '1'  # Stabby's Deflect Attack
@@ -1621,7 +1626,7 @@ def puff_turn(st, target, use_mm, overload=False):
             sphere_ram(st, target)    # BONUS action; her Action is still free
         elif st.puff_conc is None and st.ring:
             what, lvl = st.ring[0]
-            puff_close(st, target, 90 if what == 'ent' else 60)
+            puff_close(st, target, PUFF_LEAN or (90 if what == 'ent' else 60))
             done = (cast_faerie_fire(st, target) if what == 'ff'
                     else cast_entangle(st, target) if what == 'ent'
                     else cast_web(st, target) if what == 'web'

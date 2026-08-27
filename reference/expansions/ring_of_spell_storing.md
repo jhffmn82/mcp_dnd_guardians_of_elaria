@@ -57,6 +57,50 @@ nothing he was going to spend. Both cast at **DC 16**, so nothing is lost.
 The ring was not modelled at all before this pass; Puff was carrying an empty
 ring all session.
 
+CORRECTED 2026-08-27 (DM: "faerie fire doesn't prevent any damage though"). He
+was right, and the earlier table in this file was measuring the wrong thing.
+
+Faerie Fire's range is 60 ft and Entangle's is 90 ft, so a Puff who flies only
+as far as each spell requires ends up **30 ft further forward when she casts
+Faerie Fire**. Every point of Faerie Fire's apparent advantage was that
+positioning, not the spell. Decomposed at the boss, the whole 16-point gap was
+one line: Ghostbloom took 28.6 with Entangle and 5.6 with Faerie Fire, because
+a Puff standing further forward soaks the hits that otherwise land on the
+companion. Hold her position constant and Faerie Fire's edge disappears.
+
+```
+                              she flies only as far     she holds station
+                              as the spell needs        at 50 ft
+  ent    5 x Entangle               213.8                   195.4  <-- best
+  entff  3 Entangle + 2 Faerie      200.3                   199.5
+  ff     5 x Faerie Fire            206.9                   206.9
+```
+
+`ent` and `entff` are inside each other's error bars at 400 days (195.4 +/-5.2
+against 199.5 +/-5.0), so this is not a large win. Five Entangles is the pick on
+simplicity: one spell for the table to remember, same slot cost, and numerically
+ahead. Both cost Ursa five 1st-level slots, which is four plus one bought with
+Wild Resurgence.
+
+**PUFF'S POSITION IS WORTH MORE THAN THE LOADOUT.** 18 points, against roughly 4
+for the best spell choice:
+
+```
+  she holds at   taken-heal  hero knock  Puff drops  Ghostbloom took  Puff took
+     90 ft (back)   213.8      0.065       0.01          68.9            7.6
+     60 ft          195.4      0.033       0.09          44.6           15.3
+     40 ft          195.4      0.030       0.07          44.7           15.2
+     25 ft          212.7      0.045       0.22          45.8           29.3
+```
+
+She is a **free-to-rebuild decoy**: the gem is not consumed and the ritual costs
+no slot (see homunculus_servant.md), so trading 8 damage onto Puff to take 24
+off Ghostbloom is simply a good trade, and hero knockdowns halve with it. Inside
+25 ft it reverses: she stops absorbing more than she was and starts dying, 0.22
+drops a day. **The flat optimum is 40 to 60 ft.** Knob `S8_PUFF_LEAN`, default 50.
+
+For the record, the earlier (confounded) table, kept so the correction is legible:
+
 Re-measured 2026-08-27 after the Frightened corrections (the repeat save and
 "can't approach" were both missing), 400 days each:
 
