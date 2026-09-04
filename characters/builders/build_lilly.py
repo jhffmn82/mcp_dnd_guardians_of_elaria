@@ -137,7 +137,7 @@ story.append(section_table([atk[0]] + [[Paragraph(c,cell_st) for c in r] for r i
 story.append(Spacer(1,4))
 story.append(callout("<b>How Lilly's turn works:</b> She fires her cannon as a <b>BONUS action</b> AND does "
     "something else with her main action (cast a spell, fire Boomstick with True Strike, or Fire Bolt). She gets to do "
-    "<b>both every turn!</b> &nbsp;<b>Before the first fight each day:</b> Aether Ward, then <b>Aid twice</b> — 3 creatures each, covering Stabby, Ursa, herself, Puff and the companion with <b>+5 max and current HP</b> for the day."))
+    "<b>both every turn!</b> &nbsp;<b>Her best opening:</b> cast <b>Web</b> from the <b>Wand of Web</b> (costs a charge, not a spell slot), then set the cannon to <b>Flamethrower</b> and light the webs: they burn away and deal <b>2d4 fire</b> to anything that starts its turn in the flames. Keep her three 2nd-level slots for Scorching Ray."))
 
 
 h2("Lilly's Eldritch Cannon")
@@ -240,8 +240,7 @@ story.append(Spacer(1,7))
 story.append(Paragraph('Slots per day: 4 first-level, 3 second-level. Cantrips (★) are free forever. '
     'She prepares 7 spells; the four marked Always Prepared are free from her Artillerist subclass and '
     'don’t count toward that. The <b>+1d8 thunder</b> is <b>Boomstick</b>, her arcane firearm: it adds to one '
-    'damage roll of one artificer spell she casts each turn (she only casts one anyway). Her old frost '
-    'dagger is retired, so its cold riders no longer apply.', small_it))
+    'damage roll of one artificer spell she casts each turn (she only casts one anyway).', small_it))
 story.append(Spacer(1,6))
 
 # Open two-column spell list (name / meta / text), per the living sheet
@@ -254,17 +253,16 @@ spells=[
         'Cantrip • Action • fires Boomstick, 30/90 ft • Instant',
         'Fire Boomstick using <b>INT for both the attack and the damage</b>. Ranged attack <b>+10</b> to hit. '
         'On a hit: <b>1d10 + 2 + 5</b> thunder, <b>+1d6 radiant</b> (the cantrip grows with her level), and '
-        '<b>+1d8 thunder</b> from Boomstick as her arcane firearm. She can make the whole hit radiant instead '
-        'when that hurts the target more. Her hardest single shot.'),
+        '<b>+1d8 thunder</b> from Boomstick as her arcane firearm. Radiant instead of thunder when that hurts more. '
+        'Her hardest single shot.'),
     ('★ Fire Bolt',
         'Cantrip • Action • 120 ft • Instant',
         'Hurl fire at one target. Ranged spell attack +8 to hit: <b>2d10 fire + 1d8 thunder</b> '
-        '(Boomstick). Her reliable ranged poke, never runs out, and at 120 ft it outreaches Boomstick.'),
+        '(Boomstick). Never runs out, and at 120 ft it outreaches Boomstick.'),
     ('★ Mending',
         'Cantrip • 1 minute • Touch • Instant',
-        'Repair a single break or tear in an object: a snapped chain, a torn cloak, a '
-        'cracked gear. No bigger than 1 ft. Free from Tinker’s Magic. Also heals her '
-        'cannon 2d6!'),
+        'Repair one break or tear in an object up to 1 ft: a snapped chain, a cracked '
+        'gear. Free from Tinker’s Magic. Heals her cannon 2d6!'),
     ('Shield: Always Prepared',
         '1st • Reaction (when hit / by Magic Missile) • Self • 1 round',
         'Snap up a force wall: +5 AC until the start of her next turn (can turn a hit into a '
@@ -276,7 +274,7 @@ spells=[
     ('Faerie Fire',
         '1st • Action • 60 ft • Concentration, 1 min',
         'Foes in a 20-ft cube make a Dex save DC 16; on a fail they’re outlined in light. '
-        'Attacks vs them have advantage and they can’t be invisible. Strong team setup.'),
+        'Attacks against them have advantage, and they cannot hide. Strong setup.'),
     ('Scorching Ray: Always Prepared',
         '2nd • Action • 120 ft • Instant',
         'Fire three rays. Each is a separate ranged spell attack +8 to hit: 2d6 fire each, plus '
@@ -287,33 +285,32 @@ spells=[
         '(Boomstick) on a fail, half on success. Extra effective against metal and stone foes.'),
     ('Grease',
         '1st • Action • 60 ft (10-ft square) • 1 min',
-        'Slick the floor in a 10-ft square: it becomes difficult terrain, and anyone '
-        'standing there (or entering, or ending a turn there) makes a Dex save DC 16 or '
-        'falls prone. No concentration, so she can keep something else running.'),
+        'Slick the floor in a 10-ft square: it becomes difficult terrain, and anyone standing, '
+        'entering, or ending a turn there makes a Dex save DC 16 or falls prone. '
+        'No concentration needed.'),
     ('Cure Wounds',
         '1st • Action • Touch • Instant',
-        'Touch a friend and heal them 2d8 + 5. Her emergency button when someone drops '
-        'and Ursa or Ghostbloom cannot reach them in time.'),
+        'Touch a friend and heal them 2d8 + 5. Her emergency button when nobody '
+        'else can reach them in time.'),
     ('Homunculus Servant',
         '2nd • 1 hr 10 min as a RITUAL (no spell slot!) • 10 ft • Permanent',
-        'She builds her little brass companion. Ritual casting costs her NO spell slot and '
-        'it never expires. It flies, obeys her without costing her anything, and acts right '
-        'after her every round. Full stat block below.'),
+        'She builds her little brass companion. The ritual costs NO spell slot and never '
+        'expires. Puff flies, acts right after her, and costs her nothing. Stat block below.'),
     ("Dragon's Breath",
         '2nd • Bonus Action • Touch • Concentration, 1 min',
-        'Touch a willing friend (her homunculus!) and pick acid, cold, fire, lightning or '
-        'poison. For 1 minute that creature can use its action to breathe a 15-ft cone: '
-        'Dex save DC 16, 3d6 damage, half on a success. Pick the type the enemy is weak to!'),
+        'Touch a willing friend (Puff!) and pick acid, cold, fire, lightning or poison. '
+        'For 1 minute it can use its action to breathe a 15-ft cone: Dex save DC 16, '
+        '3d6, half on a success. Pick what the enemy is weak to!'),
     ('Web',
         '2nd • Action • 60 ft • Concentration, 1 hr',
-        'Fill a 20-ft cube with thick sticky webs: <b>difficult terrain</b>, and anything caught in it makes a '
-        '<b>Dex save DC 16</b> or is <b>Restrained</b>, breaking out later with a Str check against the same DC. '
-        'The webs burn easily. <i>(From her own slot it is DC 16; from the Wand of Web it is DC 13.)</i>'),
+        'Fill a 20-ft cube with sticky webs: <b>difficult terrain</b>, and anything caught makes a '
+        '<b>Dex save DC 16</b> or is <b>Restrained</b> (Str check, same DC, to tear free). '
+        '<b>The webs burn:</b> her Flamethrower cone lights them, and each burning 5-ft cube deals '
+        '<b>2d4 fire</b> to anything starting its turn in it. <i>(Her slot: DC 16. The wand: DC 13, no slot.)</i>'),
     ('Aid',
         '2nd • Action • 30 ft • 8 hours',
-        'Choose three friends: each one’s hit point maximum AND current hit points go up '
-        'by 5 for eight hours. Cast it at breakfast, not in a fight. Free extra health for '
-        'the whole day.'),
+        'Choose three friends: each gains <b>+5 hit point maximum and +5 current HP</b> for eight hours. '
+        '<i>Worth a slot on a quiet morning, not on a run like tonight.</i>'),
 ]
 # Boxed spell cards in Lilly's blue, matching Ursa's page-3 format.
 def spell_card(name, meta, text):

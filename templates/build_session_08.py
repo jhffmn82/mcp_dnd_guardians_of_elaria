@@ -145,10 +145,21 @@ BLOCKS = [
            "tonight, and do not promise anything; just let it sit."),
     ("gold", "And then, for the first time in a year, all of you are standing in the same room.\n"
              "Nobody makes a speech. Stabby hugs Lilly hard enough to lift her off the floor, and "
-             "Ursa puts a hand on each of their shoulders, and Lickgloom licks everyone whether "
-             "they consent or not. Vane watches from the gallery rail and pretends he is checking "
-             "a gauge.\n"
+             "Lickgloom licks everyone whether they consent or not, and Vane watches from the "
+             "gallery rail and pretends he is checking a gauge.\n"
+             "Ursa is the one who stops, because something is coming across the hall very fast "
+             "and about a foot off the floor. Ghostbloom has been at the Guild the whole year, "
+             "and she has been waiting at that door since the gate guards sent word an hour "
+             "ago. She hits him at chest height, chiming so hard the sound comes apart, and "
+             "then she will not let go of his collar, and for a while nobody says anything at "
+             "all, because there is nothing to add to it.\n"
              "Tomorrow the ring opens. Tonight there is a year to account for."),
+
+    ("dm", "**Give Ghostbloom her second.** She waited a year in a workshop for a boy who "
+           "walked east, and she is the only one at this table who cannot say so out loud. "
+           "Let the hug run a beat past comfortable before you move on. It is worth "
+           "remembering at the end of the night, when she is the one who steps into the "
+           "Sphere so somebody else can come out."),
 
     ("h1", "One Long Dinner at the Gilded Gear"),
     ("bridge", "Three heroes, three stories, and a kitchen that has been told to keep the fire lit."),
@@ -299,7 +310,7 @@ BLOCKS = [
              "Stabby's ribs, pushing back against every form they poured into him. **He was "
              "never unteachable. He was occupied.**"),
 
-    ("h2", "The Vigil on Kettlecrown"),
+    ("h2", "The Sunward Vigil on Kettlecrown"),
     ("railrow", f"{S8}/stillness_rail.png", 2.5, [
 
         ("gold", "Nokk knew one more thing: where the Fourth had learned to seal what cannot be "
@@ -463,10 +474,6 @@ BLOCKS = [
              "It is Lickgloom who ends it, by falling asleep face-first in the butter."),
 
     ("h1", "The Handover"),
-    ("dm", "**One line to read off Stabby's sheet while it is in his hands**, because three "
-           "fights tonight hang on it. **Cleansing Edge:** once per turn, when Stabby hits "
-           "something corrupted with the Nichirin, the cut burns clean, and that target "
-           "**cannot regain hit points until the start of his next turn.**"),
     ("bridge", "Three stories told, and one day left before the door opens."),
     ("img", f"{S8}/lilly_gifts_laid_out.png",
      "Puff supervised the polishing, and she will tell you so.",
@@ -483,6 +490,10 @@ BLOCKS = [
            "the same beat. Six magic items arrive on three players at once and none of them "
            "works like a sword, so teach the traps now, in a quiet room, rather than on the far "
            "side of the ring."),
+    ("dm", "**One line to read off Stabby's sheet while it is in his hands**, because three "
+           "fights tonight hang on it. **Cleansing Edge:** once per turn, when Stabby hits "
+           "something corrupted with the Nichirin, the cut burns clean, and that target "
+           "**cannot regain hit points until the start of his next turn.**"),
     ("reward_card", "What Lilly Built During the Year", "Sorted by whose cloth it is sitting on", [
         ("Wraps of Unarmed Power +2 (Stabby)",
          "No attunement, nothing to activate. +2 to hit and damage on every punch and kick, and "
@@ -590,6 +601,112 @@ BLOCKS = [
              "feel it in your teeth instead of hearing it.\n"
              "Somewhere out in that dark, something the size of a hill breathes in.\n"
              "Ghostbloom goes first, because of course she does."),
+    ("h1", "What the Year Gave Them", {"hardbreak": True}),
+    ("bridge", "One page per hero: every new thing, with the picture of it, for the night the "
+               "sheets go out."),
+    ("dm", "**Read this with the sheets in their hands**, one page per player, so the questions "
+           "happen here instead of on the far side of the ring. If you have time for one line "
+           "each: **Lilly's Ward costs her Action**, **Stabby lights his breath before anything "
+           "else**, and **Ursa may now wait until after the die has landed.**"),
+
+    ("h2", "Lilly Glimmergear"),
+    ("imgrow", [(f"{A}/items/awakened_essence_sphere.png",
+                 "The Sphere she has carried for two years, awake at last."),
+                (f"{A}/items/boomstick.png",
+                 "Boomstick. She built it, she named it, and she will not be talked out of the name.")], 3.0),
+    ("reward_card", "New for Lilly", "The talent, the gun, and a reaction that saves somebody else's roll", [
+        ("Aether Channeler (talent, no attunement)",
+         "She cannot command the Sphere. She can **draw on it**, the way you draw water from a well "
+         "you did not dig. **Aether Ward** is a **Magic action**: she and every ally **within 30 ft** "
+         "gain **2d8 + 5 temporary hit points**. The Sphere's powers share **2 uses, back on a short "
+         "rest**, and tonight the Ward is the only one awake."),
+        ("Boomstick (Very Rare, +2)",
+         "Weapon, spell focus and **Arcane Firearm** in one brass package, 30/90 ft, adding **1d8 "
+         "thunder** to one artificer spell each turn. Her hardest shot is True Strike fired through "
+         "it: **+10** to hit, **1d10 + 2 + 5 thunder + 1d6 radiant + 1d8**."),
+        ("Flash of Genius (new at 7) and Magic Item Tinker (6)",
+         "**Flash of Genius: Reaction, 5 per long rest.** When she **or anyone within 30 ft** fails an "
+         "ability check or a saving throw, add **+5**. It is a party feature living on her sheet, and "
+         "the most-forgotten thing she owns. **Tinker** lets her spend a slot to recharge something "
+         "she built."),
+        ("Wand of Web (hers, attuned)",
+         "7 charges, 1 charge to cast **Web** at the wand's own **DC 13**, spending no spell slot at "
+         "all. Then set the cannon to **Flamethrower** and light it: each burning 5-ft cube deals "
+         "**2d4 fire** to anything that starts its turn in it."),
+    ]),
+
+    ("h2", "Stabby Sharpblade", {"hardbreak": True}),
+    ("imgrow", [(f"{A}/characters/stabby_breathing_style_red.png",
+                 "Beast Breathing. Grandmother Ottick made him sit still for a year to earn it."),
+                (f"{A}/items/nichirin_katana.png",
+                 "The Nichirin, forged the day his breath finally caught.")], 3.0),
+    ("reward_card", "New for Stabby", "A new way of fighting, and the blade that came with it", [
+        ("Warrior of Beast Breathing (the door he walked)",
+         "The Kensei's way is set down tonight. No more Agile Parry, no more Kensei's Shot, and "
+         "**Candyfang becomes an heirloom he carries rather than a sword he fights with.** He is not "
+         "losing anything: the new road is better, and it is his."),
+        ("Igniting the Breath (free on initiative, 1 Focus)",
+         "The blade glows blood-red and stays lit for the whole fight. Every hit with it deals **+2 "
+         "Force**, his speed climbs to **65 ft**, and he has **advantage on Dexterity saving throws**. "
+         "**This is the first thing he does in every fight tonight.**"),
+        ("First Form: Devour (Bonus Action, 1 Focus)",
+         "Replaces Flurry of Blows. He moves **15 ft without provoking Opportunity Attacks** and makes "
+         "one katana strike for **3d8 + 9 Force**. If it drops the target to 0, **he gets the Focus "
+         "back**, which means a good turn pays for itself."),
+        ("Nichirin Katana (+2, a Monk weapon)",
+         "**+10** to hit, **1d10 + 7** a swing, twice on the Attack action. **Cleansing Edge:** once "
+         "per turn, when he hits something corrupted, the cut burns clean and that target **cannot "
+         "regain hit points until the start of his next turn.** Three fights tonight hang on that line."),
+        ("Beast Sense, Evasion (new at 7), and the Wraps",
+         "**Beast Sense:** advantage to track, to notice by smell or hearing, and to intimidate. "
+         "**Evasion:** on a Dexterity save for half damage he takes **none** on a success and half on a "
+         "failure. **Wraps of Unarmed Power +2** (Lilly's gift): +2 to hit and damage on every punch."),
+    ]),
+    ("dm", "**His turn, in order.** On initiative, **ignite the breath** (1 Focus), and his speed "
+           "is 65 for the rest of the fight. Action: **two Nichirin swings at +10** for 1d10 + 7 "
+           "plus 2 Force each, with **Stunning Strike** (1 Focus, Con DC 13) on the first hit "
+           "against something big. Bonus Action: **First Form: Devour**. Reaction: **Deflect "
+           "Attacks**, cutting the damage by **1d10 + 12**."),
+
+    ("h2", "Ursa Catchum", {"hardbreak": True}),
+    ("imgrow", [(f"{A}/characters/reader_omen_dreams.png",
+                 "Reader of Omens: he wakes with two numbers already in his hand."),
+                (f"{A}/items/staff_of_waking_constellations.png",
+                 "The staff went east a +1 and came home a +2.")], 3.0),
+    ("reward_card", "New for Ursa", "His father's trail, and everything the pilgrimage woke", [
+        ("Reader of Omens (talent)",
+         "**Read the Moment:** when he takes the Cosmic Omen Reaction he may wait until **after the "
+         "d20 has landed**, then choose. **The Stronger Tide:** Weal adds **1d6 + 2** and Woe "
+         "subtracts **1d6 + 2**. **Shared Tides:** one pool of **5 uses per long rest**, spent on "
+         "either, and he has both available every day."),
+        ("Omen Dreams",
+         "After every long rest he rolls **two d20s and writes them down**. When he or anyone he can "
+         "see is about to make a d20 test, he can **replace the roll with a dreamed number**, no "
+         "action, before the die. Each is used once, and unused omens are lost at the next long rest."),
+        ("The Staff of Waking Constellations, awakened",
+         "A **+2** quarterstaff now, and **Starseed has risen from 1d4 to 1d8**: once per turn, extra "
+         "radiant whenever a druid spell of his deals radiant damage. It still holds **5 charges** "
+         "(1d4 + 1 back at dawn) for Guiding Bolt, Faerie Fire, or Moonbeam."),
+        ("The Amulet of Guiding Light, widened",
+         "It used to reach only the allies standing inside his starlight. It now reaches **every ally "
+         "within 30 ft** while he is in Starry Form: **+1 to their attack rolls and saving throws**. "
+         "Starry Glow is still there too, once per long rest, on a reaction."),
+        ("Ash's Sigil-Stone (no attunement)",
+         "His father's, carried out of the shrine. **Aura of Vitality once per long rest with no spell "
+         "slot:** 2d6 healing to one creature in a 30-ft emanation when he casts it and again at the "
+         "start of each of his turns, for a minute. Plus **2 charges, back at dawn**: Ask the Day, "
+         "Glimpse the Trail, or Read the Heart."),
+        ("Elemental Fury (new at level 7)",
+         "**+5 to the damage of any druid cantrip.** It is why Thorn Whip lands for 2d6 + 5 and why "
+         "Starry Wisp is worth casting at all."),
+    ]),
+    ("dm", "**His turn, in order.** Round one, Bonus Action: **Starry Form (Archer)**, which is "
+           "not Concentration and so runs all fight, and the first star-arrow is free. Action: "
+           "**Conjure Animals** with a 3rd-level slot. Every round after: Bonus Action, "
+           "**star-arrow**; Action, **Starry Wisp** or a free **Guiding Bolt** off the staff; and "
+           "the pack rides along **30 ft for free** whenever he moves, sweeping everything it "
+           "reaches for **3d10**. Commanding it costs him nothing."),
+
 ("h1", "Part Two: Underroot", {"hardbreak": True}),
 ("bridge", "One brass ring, four stops on a living road, and a country that has been "
            "waiting two years for help."),
