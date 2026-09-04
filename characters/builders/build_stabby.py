@@ -151,25 +151,17 @@ moves=[
     ('★ Igniting the Breath','<b>When he rolls initiative</b>, spend 1 Focus to light his breath. It burns until the fight ends. Every hit with the katana deals <b>+2 Force</b>, his Speed goes up <b>10 ft</b>, and he gets <b>advantage on Dexterity saves</b>.'),
     ('★ First Form: Devour','<b>Bonus action, 1 Focus.</b> Move up to 15 ft without provoking, then one katana strike for <b>3d8+9 Force</b> instead of normal damage. <b>If it drops the target, he gets the Focus back.</b> <i>(This replaces Flurry of Blows.)</i>'),
     ('★ Beast Sense','Advantage on Survival to track, on Perception using smell or hearing, and on <b>Intimidation</b>.'),
-    ('Stunning Strike','When he hits, spend 1 Focus to try to stun the enemy (Con save vs DC 13). '
-        '<b>Fail:</b> stunned until his next turn, huge in a boss fight! <b>Success:</b> the enemy is '
-        'still slowed (speed halved) and the next attack against it has advantage.'),
-    ('Patient Defense','Bonus action to <b>Disengage for free.</b> Spend 1 Focus to also <b>Dodge</b> '
-        '(enemies hit him with disadvantage).'),
-    ('Step of the Wind','Bonus action to Dash for free. Spend 1 Focus to also Disengage and double his jump. Super zoomy.'),
+    ('Stunning Strike','When he hits, spend 1 Focus: Con save DC 13. <b>Fail:</b> stunned until his '
+        'next turn (huge in a boss fight). <b>Success:</b> still slowed, and the next attack on it '
+        'has advantage.'),
+    ('Patient Defense / Step of the Wind','Bonus action, free: <b>Disengage</b> (Patient Defense) or <b>Dash</b> (Step of the Wind). Spend <b>1 Focus</b> to upgrade either: Dodge as well (enemies hit him with disadvantage), or Disengage plus a doubled jump.'),
     ('Deflect Attack','Reaction: when hit by a punch/arrow/blade, lower the damage by <b>1d10+12</b>. If it hits 0, '
         'spend 1 Focus to fling it back at another enemy within 5 ft (DC 13 Dex save, 2d8+5).'),
-    ('★ Empowered Strikes <i>(from level 6)</i>','Whenever he deals damage with an <b>Unarmed Strike</b>, he chooses: <b>Force</b> damage or the normal type. Force is resisted by almost nothing, so his fists get through things his katana cannot. <i>(This is his own, not the wraps.)</i>'),
-    ('Evasion <i>(new at 7!)</i>','When something lets him make a Dex save for half damage, he takes '
-        '<b>no damage</b> if he saves and only half if he fails.'),
-    ('Slow Fall / Metabolism','Slow Fall: reaction to take <b>35</b> less falling damage. Uncanny Metabolism: '
-        'once a day, when he rolls initiative, regain <b>every Focus he has spent</b> + heal '
-        '<b>7 + 1d8</b> HP. <i>(SAVE IT. In the first fight he is already full, so it does '
-        'nothing at all. Use it later, when he is hurt or out of Focus.)</i>'),
+    ('★ Empowered Strikes <i>(from level 6)</i>','On any <b>Unarmed Strike</b> he chooses <b>Force</b> damage or the normal type. Almost nothing resists Force, so his fists get through what his katana cannot. <i>(His own, not the wraps.)</i>'),
+    ('Evasion <i>(new at 7!)</i> / Slow Fall / Metabolism','<b>Evasion:</b> on a Dex save for half damage, he takes <b>none</b> if he saves, half if he fails. <b>Slow Fall:</b> reaction, <b>35</b> less falling damage. <b>Uncanny Metabolism:</b> 1/day on initiative, regain <b>every spent Focus</b> + heal <b>7 + 1d8</b>. <i>(Save it for when he is hurt.)</i>'),
     ('Fury of the Small','When he hits a creature bigger than him (almost everyone!), deal +3 extra damage. '
         'He can do this 3 times per long rest, once per turn.'),
-    ('Nimble Escape','He can Disengage or Hide as a bonus action every turn. Slippery little goblin.'),
-    ('Goblin Gifts','Sees in the dark 60 ft; fey blood gives advantage on saves against being charmed. Speaks Common, Goblin &amp; Orc.'),
+    ('Goblin Tricks','<b>Nimble Escape:</b> Disengage or Hide as a bonus action, every turn. <b>Goblin Gifts:</b> darkvision 60 ft; advantage on saves vs being charmed. Speaks Common, Goblin &amp; Orc.'),
 ]
 def move_cell(n,d):
     return Paragraph(f'<b><font color="{RED_HEX}">{n}.</font></b> {d}', move_st)
