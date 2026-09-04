@@ -137,7 +137,7 @@ story.append(section_table([atk[0]] + [[Paragraph(c,cell_st) for c in r] for r i
 story.append(Spacer(1,4))
 story.append(callout("<b>How Lilly's turn works:</b> She fires her cannon as a <b>BONUS action</b> AND does "
     "something else with her main action (cast a spell, fire Boomstick with True Strike, or Fire Bolt). She gets to do "
-    "<b>both every turn!</b> &nbsp;<b>Her best opening:</b> cast <b>Web</b> from the <b>Wand of Web</b> (costs a charge, not a spell slot), then set the cannon to <b>Flamethrower</b> and light the webs: they burn away and deal <b>2d4 fire</b> to anything that starts its turn in the flames. Keep her three 2nd-level slots for Scorching Ray."))
+    "<b>both every turn!</b> &nbsp;<b>Her best opening:</b> cast <b>Web</b> from a <b>2nd-level slot</b> through Boomstick, because that is <b>DC 16</b> and the wand is only DC 13. Save the wand for when the slots run out. <b>Do not set the web on fire</b> unless she wants them loose: burnt webbing stops holding."))
 
 
 h2("Lilly's Eldritch Cannon")
@@ -221,7 +221,7 @@ gear=[
     ('Pocket Dynamo (★ Elaria’s gift)','From the Wraithpine chest. Summon/recall her cannon for free, lasts 24 hours, +2 damage. Reformat (1/long rest, action), now mostly spare, since every cannon picks its blast when it fires. Needs attunement.'),
     ('+1 Half Plate <i>(Replicate creation 1 of 3)</i>','Her armour, the base of her <b>AC 20</b>. She keeps it going with Replicate Magic Item, so it uses one of her three creation slots.'),
     ('Shield','A sturdy steel shield. Adds +2 to her armor.'),
-    ('Wand of Web <i>(new! she made it during the year)</i>','<b>Hers, attuned.</b> 7 charges; spend <b>1 charge</b> to cast <b>Web</b>: a 20-ft cube of sticky webbing, difficult terrain, and anything caught makes a <b>Dex save DC 13</b> or is <b>Restrained</b> (it can break out with a Str check against the same DC). <i>The wand casts at its own DC 13, not her DC 16.</i> Regains 1d6+1 charges at dawn.'),
+    ('Wand of Web <i>(new! she made it during the year)</i>','<b>Hers, attuned.</b> 7 charges; spend <b>1 charge</b> to cast <b>Web</b>: a 20-ft cube of sticky webbing, difficult terrain, and anything caught makes a <b>Dex save DC 13</b> or is <b>Restrained</b> (it can break out with a Str check against the same DC). <i>The wand casts at its own DC 13, not her DC 16, and gets no Boomstick 1d8.</i> Regains 1d6+1 at dawn; spend the <b>last</b> charge and roll 1d20: on a <b>1</b> the wand crumbles to ash.'),
     ('Wand of Magic Missiles <i>(new! Puff carries it)</i>','<b>No attunement, so Puff can use it.</b> 7 charges. Spend <b>1 charge</b> for <b>three darts</b> that <b>never miss</b>, <b>1d4+1 force</b> each, range <b>120 ft</b>, split among any targets she can see. She may spend up to <b>3 charges at once</b>: each extra charge adds <b>one more dart</b>, so 3 charges means <b>five darts</b>. Regains 1d6+1 at dawn. <i>(Replicate creation 3 of 3.)</i>'),
     ('Ring of Spell Storing <i>(new! attuned to Puff)</i>','Holds up to <b>5 levels of spells</b>. Any caster can put a spell of level 1 to 5 into it by touching it while casting, and the slot level used is how much room it takes. Puff can then cast anything stored in it, using <b>the original caster&rsquo;s</b> slot level, save DC and attack bonus, so a spell Lilly stores comes back out at <b>DC 16 and +8</b>. Casting it frees that space again.'),
     ('Pipes of Haunting <i>(new! Puff carries them)</i>','<b>No attunement.</b> 3 charges, regains 1d3 at dawn. <b>Magic action</b>, spend 1 charge to play an eerie tune: each creature she chooses within <b>30 ft</b> makes a <b>Wis save DC 15</b> or is <b>Frightened for 1 minute</b>, re-saving at the end of each of its turns. Anything that saves is immune to the pipes for 24 hours.'),
@@ -240,7 +240,7 @@ story.append(Spacer(1,7))
 story.append(Paragraph('Slots per day: 4 first-level, 3 second-level. Cantrips (★) are free forever. '
     'She prepares 7 spells; the four marked Always Prepared are free from her Artillerist subclass and '
     'don’t count toward that. The <b>+1d8 thunder</b> is <b>Boomstick</b>, her arcane firearm: it adds to one '
-    'damage roll of one artificer spell she casts each turn (she only casts one anyway).', small_it))
+    'damage roll of <b>every</b> artificer spell she casts through it.', small_it))
 story.append(Spacer(1,6))
 
 # Open two-column spell list (name / meta / text), per the living sheet
@@ -300,13 +300,14 @@ spells=[
         '2nd • Bonus Action • Touch • Concentration, 1 min',
         'Touch a willing friend (Puff!) and pick acid, cold, fire, lightning or poison. '
         'For 1 minute it can use its action to breathe a 15-ft cone: Dex save DC 16, '
-        '3d6, half on a success. Pick what the enemy is weak to!'),
+        '3d6 (<b>+1d8</b> on the first breath, Boomstick), half on a success. Pick what it is weak to!'),
     ('Web',
         '2nd • Action • 60 ft • Concentration, 1 hr',
         'Fill a 20-ft cube with sticky webs: <b>difficult terrain</b>, and anything caught makes a '
-        '<b>Dex save DC 16</b> or is <b>Restrained</b> (Str check, same DC, to tear free). '
-        '<b>The webs burn:</b> her Flamethrower cone lights them, and each burning 5-ft cube deals '
-        '<b>2d4 fire</b> to anything starting its turn in it. <i>(Her slot: DC 16. The wand: DC 13, no slot.)</i>'),
+        '<b>Dex save</b> or is <b>Restrained</b> (Str check, same DC, to tear free). Cast it <b>from a slot '
+        'through Boomstick for DC 16</b>, plus <b>1d8</b>; the wand is only DC 13. Anything Restrained is '
+        '<b>attacked with advantage</b> and makes <b>Dex saves with disadvantage</b>. <b>Careful:</b> fire '
+        'burns webs away (2d4) and frees what they held.'),
     ('Aid',
         '2nd • Action • 30 ft • 8 hours',
         'Choose three friends: each gains <b>+5 hit point maximum and +5 current HP</b> for eight hours. '

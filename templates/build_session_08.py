@@ -622,17 +622,18 @@ BLOCKS = [
          "rest**, and tonight the Ward is the only one awake."),
         ("Boomstick (Very Rare, +2)",
          "Weapon, spell focus and **Arcane Firearm** in one brass package, 30/90 ft, adding **1d8 "
-         "thunder** to one artificer spell each turn. Her hardest shot is True Strike fired through "
-         "it: **+10** to hit, **1d10 + 2 + 5 thunder + 1d6 radiant + 1d8**."),
+         "thunder** to one damage roll of every artificer spell she casts through it. Her hardest shot "
+         "is True Strike: **+10** to hit, **1d10 + 2 + 5 thunder + 1d6 radiant + 1d8**."),
         ("Flash of Genius (new at 7) and Magic Item Tinker (6)",
          "**Flash of Genius: Reaction, 5 per long rest.** When she **or anyone within 30 ft** fails an "
          "ability check or a saving throw, add **+5**. It is a party feature living on her sheet, and "
-         "the most-forgotten thing she owns. **Tinker** lets her spend a slot to recharge something "
-         "she built."),
+         "the most-forgotten thing she owns. **Tinker** can recharge a creation, destroy one for a "
+         "spell slot, or **reshape one into another plan she knows**."),
         ("Wand of Web (hers, attuned)",
-         "7 charges, 1 charge to cast **Web** at the wand's own **DC 13**, spending no spell slot at "
-         "all. Then set the cannon to **Flamethrower** and light it: each burning 5-ft cube deals "
-         "**2d4 fire** to anything that starts its turn in it."),
+         "7 charges, 1 charge to cast **Web** at the wand's **DC 13**. Casting it from her own "
+         "**2nd-level slot through Boomstick** is stronger: **DC 16** both to catch them and to break "
+         "free. Keep the wand for when the slots are gone, and **do not burn the webs**: fire frees "
+         "whatever they held."),
     ]),
 
     ("h2", "Stabby Sharpblade", {"hardbreak": True}),

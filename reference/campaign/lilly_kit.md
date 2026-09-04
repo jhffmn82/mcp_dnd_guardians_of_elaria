@@ -122,7 +122,7 @@ Quoted from memory/house_rules.md:
 
 - **INT (+5) drives True Strike on BOTH the attack roll and the damage.** True Strike substitutes her spellcasting ability for Dex; the +5 to damage is the single most-dropped number.
 - **True Strike to-hit is +10 on every road** (PB 3 + INT 5 + Boomstick +2). Nothing raises it further (the old Storm Cell +2 is gone with the feat conversion).
-- **Arcane Firearm adds 1d8 thunder to one spell's damage each turn** (via Boomstick). Add it to True Strike, Fire Bolt, a Scorching Ray, Shatter, or Thunderwave, once per turn.
+- **Arcane Firearm adds 1d8 thunder to one damage roll of EVERY artificer spell she casts through Boomstick.** There is no per-turn cap in the printed feature (line 41 is right, this line used to say "once per turn" and was wrong); in practice she casts one spell a turn, so it reads the same at the table. Add it to True Strike, Fire Bolt, a Scorching Ray, Shatter, Thunderwave, or Web's burn. The thunder TYPE is a campaign variant from Boomstick's own card (build_compendium.py); the printed feature grants an untyped bonus.
 - **The Pocket Dynamo gives the cannon +2 damage** on Flamethrower and Force Ballista (not on Protector temp HP).
 - **The cannon fires on a BONUS action**; she still gets her full Action the same turn. Never charge her Action for it.
 - **The cannon picks its mode fresh every activation** (house rule); it is never locked in.
