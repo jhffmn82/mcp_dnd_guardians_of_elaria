@@ -518,8 +518,8 @@ BLOCKS = [
            "Nichirin now and has not drawn a bow in a year. Lilly turns it over twice, then uses "
            "**Transmute** on it at the workbench, and what is sitting on the cloth when she opens "
            "her hands is a **Spell-Refueling Ring**: once a day, a bonus action, one spent spell "
-           "slot back. **Play the consequence honestly: Stabby now has no ranged attack at all.** "
-           "The Shardwings fly, and Groudon's spike is high up. Let him feel that."),
+           "slot back. **Play the consequence honestly: Stabby has no ranged attack now.** Do not "
+           "warn him, and do not hand him something to throw."),
 
     ("dm", "**Puff has one action**, so she uses only one of her three items per turn. And "
            "**wands recharge at dawn, not on a rest**, which matters on the far side of a portal "
