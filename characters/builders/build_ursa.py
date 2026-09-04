@@ -270,10 +270,9 @@ powers = [
     ('Star Map', 'His star chart is a magic focus. Free <b>Guiding Bolt</b> 5×/day even without the Staff. Backup focus he still carries.'),
     ('Cosmic Omen (new at 6!)', '<b>Reaction.</b> When someone he can see within 30 ft rolls a d20, he can <b>wait until the die lands</b> and bend it then, before anyone knows if it worked: <b>Weal +1d6+2</b> or <b>Woe &minus;1d6&minus;2</b> (the waiting and the bigger numbers are both Reader of Omens). <b>5 uses per long rest</b>.'),
     ('Elemental Fury (new at 7!)', '<b>Potent Spellcasting:</b> add <b>+5 (Wis)</b> to the damage of any druid <b>cantrip</b>. <i>(House rule: it can ride the kindled staff once a turn instead, never both in the same turn.)</i>'),
-    ('Wild Intuition', 'Add 1d4 to any Animal Handling or Nature check.'),
+    ('Mark of Handling', 'His dragonmark. <b>Wild Intuition:</b> add 1d4 to any Animal Handling or Nature check.'),
     ('Primal Connection (1/short rest)', 'Cast Animal Friendship or Speak with Animals for free, no materials.'),
     ('The Bigger They Are', 'Can charm or talk to beasts AND monstrosities (if their Intelligence is 3 or lower).'),
-    ('Mark of Handling', 'His dragonmark lets him read animals’ feelings and calm wild or magical creatures with ease.'),
 ]
 pw_data = [[Paragraph(f'<b>{n}</b>', cell_st), Paragraph(d, cell_st)] for n,d in powers]
 story.append(section_table(pw_data, [2.15*inch, 5.15*inch], header=False))
@@ -289,13 +288,13 @@ gear = [
      'A river-smooth stone etched with a half-finished sign of Elaria, <b>in his father&rsquo;s own hand</b>. '
      '<b>Aura of Vitality free once a day</b> (no slot): an <b>action</b> to light a 30-ft aura, then <b>2d6</b> healing to one creature in it right away and again at the start of each of his turns, costing him no action to keep going. <b>Concentration</b>, up to 1 minute, so no summon at the same time; out of a fight, just run the whole minute. <br/><b>2 charges for the visions</b> (back at dawn), a magic action each: <b>Ask the Day</b> (one truthful yes or no, or silence), <b>Glimpse the Trail</b>, or <b>Read the Heart</b>. <i>(No attunement.)</i>'),
     ('Wand of the War Mage +2<br/><i>(new! Lilly made this for him)</i>','A slim rune-cut wand she spent the year building. <b>While he is holding it</b>, every <b>spell attack</b> he makes gets <b>+2 to hit</b> (his Starry Wisp, his Guiding Bolts, and his star-arrow all go to <b>+10</b>), and he <b>ignores Half Cover</b>. <b>Attuned.</b> <i>(He holds the staff in one hand and the wand in the other.)</i>'),
-    ('Star Map', 'A Tiny star chart that doubles as a spellcasting focus. Free Guiding Bolt 5×/day. (Backup focus.)'),
     ('Amulet of Guiding Light', '<b>Guiding Light:</b> during Starry Form, his <b>allies within 30 ft</b> get +1 to attacks and saves (allies only, not Ursa). '
         '<b>Starry Glow (1/day, reaction):</b> when he or a nearby ally is hit, the attacker takes 2d8 radiant and may be blinded (Con save DC 15). '
         '<b>Celestial Resilience (2/day):</b> reroll a natural 1.'),
     ('Spiked Armor &amp; Shield', 'Dwarf-made spiked armor plus a shield, together they make his <b>AC 18</b>.'),
-    ('Explorer’s Pack', 'Backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 ft of rope.'),
+    ('Explorer’s Pack', 'Bedroll, mess kit, tinderbox, <b>10 torches</b> (he has no darkvision), 10 days of rations, waterskin, 50 ft of rope.'),
     ('Three Enchanted Potatoes', 'His mysterious quest trinket, the strange spuds tied to his father’s disappearance.'),
+    ('Attunement: 3 of 3','The <b>Staff</b>, the <b>Amulet</b> and the <b>Wand of the War Mage +2</b>: <b>no slot free.</b> Ash&rsquo;s Sigil-Stone needs none, which is how he carries all four.'),
 ]
 g_data = [[Paragraph(n, cell_st), Paragraph(d, cell_st)] for n,d in gear]
 story.append(section_table(g_data, [1.9*inch, 5.4*inch], header=False))
