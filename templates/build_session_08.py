@@ -513,6 +513,14 @@ BLOCKS = [
          "3 charges. Magic action: every creature she chooses within 30 ft. makes a DC 15 Wisdom "
          "save or is Frightened for a minute."),
     ]),
+    ("dm", "**One thing goes the other way across the bench.** Stabby unslings the **+1 Repeating "
+           "Longbow** Lilly made him at level 5 and hands it back, because he fights with the "
+           "Nichirin now and has not drawn a bow in a year. Lilly turns it over twice, then uses "
+           "**Transmute** on it at the workbench, and what is sitting on the cloth when she opens "
+           "her hands is a **Spell-Refueling Ring**: once a day, a bonus action, one spent spell "
+           "slot back. **Play the consequence honestly: Stabby now has no ranged attack at all.** "
+           "The Shardwings fly, and Groudon's spike is high up. Let him feel that."),
+
     ("dm", "**Puff has one action**, so she uses only one of her three items per turn. And "
            "**wands recharge at dawn, not on a rest**, which matters on the far side of a portal "
            "where nobody knows how time runs."),
@@ -557,6 +565,16 @@ BLOCKS = [
            "there is a shrug. There is **no sky, so Ursa cannot navigate**, and his year of "
            "star-reading buys him nothing; what works down there is reading the ground, exactly "
            "as Selarin told him. And it is **indifferent, not hostile**."),
+    ("dm", "**And it is dark, which is Ursa's problem alone.** Lilly sees 120 ft in the dark and "
+           "Stabby 60; **Ursa sees none**, and there is no sun down there to help him. Unlit ground "
+           "is Heavily Obscured, which means he is effectively **Blinded** looking into it: "
+           "attacks at disadvantage, sight-based checks failed outright. He has prepared "
+           "**Daylight** for exactly this (3rd level, one hour, **no concentration**, a 60-ft "
+           "sphere of real sunlight). Let him work out that he can cast it **on a stone he "
+           "carries** and cover the stone when the party wants to be dark again. It costs him one "
+           "of only three 3rd-level slots, and Conjure Animals wants all of them, so the choice "
+           "should cost him something."),
+
     ("gold", "\"Every world keeps something. Not a king, and not a god. A *guardian*: one "
              "creature, very old, that is somehow the shape of that world's health. When "
              "Gearhaven was sick you found the Grand Custodian at the heart of it, twisted almost "
@@ -602,12 +620,11 @@ BLOCKS = [
              "Somewhere out in that dark, something the size of a hill breathes in.\n"
              "Ghostbloom goes first, because of course she does."),
     ("h1", "What the Year Gave Them", {"hardbreak": True}),
-    ("bridge", "One page per hero: every new thing, with the picture of it, for the night the "
-               "sheets go out."),
+    ("bridge", "One page per hero, every new thing on it, for the night the sheets go out."),
     ("dm", "**Read this with the sheets in their hands**, one page per player, so the questions "
-           "happen here instead of on the far side of the ring. If you have time for one line "
-           "each: **Lilly's Ward costs her Action**, **Stabby lights his breath before anything "
-           "else**, and **Ursa may now wait until after the die has landed.**"),
+           "happen here instead of on the far side of the ring. One line each if that is all you "
+           "have: **Lilly's Ward costs her Action**, **Stabby lights his breath first**, **Ursa may "
+           "wait until after the die lands.**"),
 
     ("h2", "Lilly Glimmergear"),
     ("imgrow", [(f"{A}/items/awakened_essence_sphere.png",
@@ -616,24 +633,22 @@ BLOCKS = [
                  "Boomstick. She built it, she named it, and she will not be talked out of the name.")], 3.0),
     ("reward_card", "New for Lilly", "The talent, the gun, and a reaction that saves somebody else's roll", [
         ("Aether Channeler (talent, no attunement)",
-         "She cannot command the Sphere. She can **draw on it**, the way you draw water from a well "
-         "you did not dig. **Aether Ward** is a **Magic action**: she and every ally **within 30 ft** "
-         "gain **2d8 + 5 temporary hit points**. The Sphere's powers share **2 uses, back on a short "
-         "rest**, and tonight the Ward is the only one awake."),
+         "She cannot command the Sphere, only **draw on it**. **Aether Ward** is a **Magic action**: "
+         "she and every ally **within 30 ft** gain **2d8 + 5 temporary hit points**. The Sphere's "
+         "powers share **2 uses, back on a short rest**, and tonight the Ward is the only one awake."),
         ("Boomstick (Very Rare, +2)",
-         "Weapon, spell focus and **Arcane Firearm** in one brass package, 30/90 ft, adding **1d8 "
-         "thunder** to one damage roll of every artificer spell she casts through it. Her hardest shot "
-         "is True Strike: **+10** to hit, **1d10 + 2 + 5 thunder + 1d6 radiant + 1d8**."),
-        ("Flash of Genius (new at 7) and Magic Item Tinker (6)",
-         "**Flash of Genius: Reaction, 5 per long rest.** When she **or anyone within 30 ft** fails an "
-         "ability check or a saving throw, add **+5**. It is a party feature living on her sheet, and "
-         "the most-forgotten thing she owns. **Tinker** can recharge a creation, destroy one for a "
-         "spell slot, or **reshape one into another plan she knows**."),
+         "Weapon, spell focus and **Arcane Firearm** in one, 30/90 ft, adding **1d8 thunder** to one "
+         "damage roll of every artificer spell cast through it. Her hardest shot is True Strike: "
+         "**+10**, **1d10 + 2 + 5 thunder + 1d6 radiant + 1d8**."),
+        ("Flash of Genius (7), Tinker (6), and the new ring",
+         "**Flash of Genius: reaction, 5 per long rest**, adding **+5** to a failed check or save by her "
+         "**or anyone within 30 ft**. **Magic Item Tinker** reshapes one of her creations into another "
+         "plan, which is how Stabby's returned bow became her **Spell-Refueling Ring**: bonus action, "
+         "**once per dawn, one spent spell slot back** (a 2nd for her)."),
         ("Wand of Web (hers, attuned)",
-         "7 charges, 1 charge to cast **Web** at the wand's **DC 13**. Casting it from her own "
-         "**2nd-level slot through Boomstick** is stronger: **DC 16** both to catch them and to break "
-         "free. Keep the wand for when the slots are gone, and **do not burn the webs**: fire frees "
-         "whatever they held."),
+         "7 charges, 1 to cast **Web** at **DC 13**. From her own **2nd-level slot through Boomstick** "
+         "it is **DC 16**, to catch them and to break free. **Do not burn the webs**: fire frees "
+         "what they held."),
     ]),
 
     ("h2", "Stabby Sharpblade", {"hardbreak": True}),

@@ -234,7 +234,7 @@ glance = [
     _glance('Cantrips', 0, 'Starry Wisp, Thorn Whip, Guidance, Druidcraft'),
     _glance('1st', 4, 'Healing Word, Entangle'),
     _glance('2nd', 3, 'Wither and Bloom, Spike Growth, Lesser Restoration'),
-    _glance('3rd', 3, 'Conjure Animals, Summon Fey, Plant Growth, Revivify'),
+    _glance('3rd', 3, 'Conjure Animals, Summon Fey, Daylight, Revivify'),
     _glance('4th', 1, 'Polymorph, Ice Storm'),
     _glance('free', 0, 'Guiding Bolt, Guidance, Animal Friendship, Speak with Animals, Faerie Fire, Moonbeam <i>(sources on page 3)</i>'),
 ]
@@ -379,9 +379,9 @@ cards = [
         '2nd • Action • 120 ft • Concentration, 1 min',
         'A 5-ft pillar of light. A creature that enters it or starts its turn there makes a <b>Con save DC 16</b>: '
         '<b>2d10 radiant + 1d8</b> (Starseed) on a fail, half on a success. <b>Move it 60 ft</b> each turn as part of the spell.'),
-    spell_card('Plant Growth',
-        '3rd • Action • 150 ft • Instant',
-        'Every plant in a <b>100-ft radius</b> erupts: anything moving through spends <b>4 ft of movement per 1 ft</b>. <b>No save, no concentration</b>, and he can <b>leave clear lanes</b>, so his friends walk while everything else wades. Needs real plants.'),
+    spell_card('Daylight <i>(new!)</i>',
+        '3rd • Action • 60 ft • 1 hour, NO concentration',
+        'Real sunlight fills a <b>60-ft radius</b>, with dim light for 60 ft more, and it lasts an <b>hour with no concentration</b>. <b>Ursa cannot see in the dark and Underroot has no sun</b>, so without this he attacks at disadvantage. Cast it <b>on a stone he carries</b>, then cover the stone to go dark again.'),
     spell_card('Spike Growth',
         '2nd • Action • 150 ft • Concentration, 10 min',
         'A 20-ft circle sprouts hidden thorns: <b>difficult terrain</b>, and <b>2d4 piercing per 5 ft</b> '

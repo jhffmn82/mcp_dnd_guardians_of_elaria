@@ -58,7 +58,7 @@ Gift from Lilly, the Wraps of Unarmed Power +2 (Rare, **NO attunement**, so they
 - They do **nothing** for the katana or the bow: this only touches fists and feet, which matters because his bonus-action Martial Arts punch happens nearly every turn.
 - Attunement after the gift: still **2 of 3** (Nichirin, Sash). One slot free.
 
-Retired at level 7 (do NOT use): Agile Parry (no more +2 AC after punch-and-swing), Kensei's Shot (+1d4 on longbow), Kensei weapon tricks. The Repeating Longbow +1 is now just a good +1 bow: +9 to hit, 1d8+6, no Kensei rider.
+Retired at level 7 (do NOT use): Agile Parry (no more +2 AC after punch-and-swing), Kensei's Shot (+1d4 on longbow), Kensei weapon tricks. **The Repeating Longbow +1 is GONE (DM ruling 2026-09-04):** Stabby no longer needs a bow, so Lilly reclaimed the Replicate creation and reshaped it into a Spell-Refueling Ring. He has NO ranged attack at level 7; that is deliberate.
 
 ## Door B: Beast Breathing (the Bloodfang Form)
 

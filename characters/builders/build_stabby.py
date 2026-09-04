@@ -135,7 +135,6 @@ h2("What Stabby Does in a Fight")
 atk=[['Attack','To Hit','Damage'],
     ['Nichirin Katana +2 <i>(new!)</i>','+10','1d10+7 slashing, +2 Force while ignited'],
     ['Unarmed Strike (fist/foot) <i>(wraps!)</i>','+10','1d8+7 bludgeoning <i>or Force</i>'],
-    ['Repeating Longbow +1','+9','1d8+6 piercing (just a very good bow now)'],
     ['First Form: Devour <i>(bonus action, 1 Focus)</i>','+10','3d8+9 <b>Force</b>, move 15 ft free first']]
 story.append(section_table([atk[0]] + [[Paragraph(c,cell_st) for c in r] for r in atk[1:]],
     [3.0*inch,0.9*inch,3.4*inch]))
@@ -194,7 +193,6 @@ gear=[
     ('Nichirin Katana <i>(new! the demon-slayer&rsquo;s blade)</i>','Sun-forged crimson steel, <b>+2</b> to hit and damage, and it counts as a Monk weapon. <b>Breath-Kindled Steel:</b> it glows blood-red when he ignites. <b>Cleansing Edge:</b> once a turn, when he hits a fiend, undead, shadow thing or anything twisted by planar corruption, that creature <b>cannot heal</b> and cannot hide from him in darkness until his next turn. <b>Attuned.</b>'),
     ('Candyfang Katana +1 <i>(kept, not carried)</i>','His old candy-striped blade, an heirloom on his belt now that the Nichirin has the job. Not attuned, so no cold rider and no Sugar Rush.'),
     ('Wraps of Unarmed Power +2<br/><i>(new! Lilly made these for him)</i>','Cloth hand-wraps she spent the year building, stitched with her own sigils. His <b>fists and feet</b> now hit at <b>+2 to hit and +2 damage</b>. <b>No attunement.</b> <i>(The Force option on his punches is Empowered Strikes, a class feature he already has; the wraps are the +2.)</i> <i>(They do nothing for the katana: this is a punching gift.)</i>'),
-    ('Repeating Longbow +1','A magic bow that makes its own arrows, never runs out. +1 to hit and damage. <i>Lilly built this one for him too, back at level 5.</i>'),
     ('Sash of the Swift Current (★ Elaria’s gift)','Scarlet stage-silk from the Wraithpine chest. +1 AC, +10 speed, plus Air Dance (fly for 1 minute, 1/day) and Feather Fall (1/day). Attuned.'),
     ('Explorer’s Pack','Backpack, bedroll, rope, torches, rations (the usual adventuring kit).'),
 ]
