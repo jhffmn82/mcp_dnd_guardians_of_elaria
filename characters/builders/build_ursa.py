@@ -380,7 +380,7 @@ cards = [
         '<b>2d10 radiant + 1d8</b> (Starseed) on a fail, half on a success. <b>Move it 60 ft</b> each turn as part of the spell.'),
     spell_card('Daylight <i>(new!)</i>',
         '3rd • Action • 60 ft • 1 hour, NO concentration',
-        'Real sunlight fills a <b>60-ft radius</b>, with dim light for 60 ft more, and it lasts an <b>hour with no concentration</b>. <b>Ursa cannot see in the dark and Underroot has no sun</b>, so without this he attacks at disadvantage. Cast it <b>on a stone he carries</b>, then cover the stone to go dark again.'),
+        'Real sunlight fills a <b>60-ft radius</b>, with dim light for 60 ft more, and it lasts an <b>hour with no concentration</b>. <b>Ursa cannot see in the dark and Underroot has no sun</b>, so without this he attacks at disadvantage. It lights a <b>place, not him</b>: the sphere stays where he casts it, so pick the room that matters.'),
     spell_card('Spike Growth',
         '2nd • Action • 150 ft • Concentration, 10 min',
         'A 20-ft circle sprouts hidden thorns: <b>difficult terrain</b>, and <b>2d4 piercing per 5 ft</b> '

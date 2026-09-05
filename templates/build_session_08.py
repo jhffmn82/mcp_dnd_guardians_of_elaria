@@ -570,9 +570,9 @@ BLOCKS = [
            "is Heavily Obscured, which means he is effectively **Blinded** looking into it: "
            "attacks at disadvantage, sight-based checks failed outright. He has prepared "
            "**Daylight** for exactly this (3rd level, one hour, **no concentration**, a 60-ft "
-           "sphere of real sunlight). Let him work out that he can cast it **on a stone he "
-           "carries** and cover the stone when the party wants to be dark again. It costs him one "
-           "of only three 3rd-level slots, and Conjure Animals wants all of them, so the choice "
+           "sphere of real sunlight). One thing to be straight about: it lights a **place, not a "
+           "person.** The sphere stays where he casts it and does not travel with him, so the "
+           "choice is which room is worth an hour of sun. It costs him one "           "of only three 3rd-level slots, and Conjure Animals wants all of them, so the choice "
            "should cost him something."),
 
     ("gold", "\"Every world keeps something. Not a king, and not a god. A *guardian*: one "
