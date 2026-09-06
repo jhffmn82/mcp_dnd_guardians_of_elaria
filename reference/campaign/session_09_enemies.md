@@ -14,6 +14,14 @@ Generated from the reconciled combat-first + difficulty design pass (2026-09-05)
 **Correction, 2026-09-05:** canon briefly recorded 308 / 444 / 412 / 458. Those were the pre-difficulty-bump numbers from the combat-first pass and are SUPERSEDED. The 458 in particular never added up (Kyogre 250 + the Quiet Hand 120 = 370), which is what the simulator caught. The trench is 558 because it fields five types, not two.
 
 
+
+> **RECONCILER ADJUSTMENTS (2026-09-05), which override the counts and timings in the stat blocks above.** The blocks were written by five designers working in parallel; the reconciliation pass that followed cut and re-timed several of them to hold the difficulty band and to keep the peak from becoming a wipe. Those cuts were recorded in the totals table but not carried back into the blocks, which is the drift `simulation/ENCOUNTER_VALIDATION.md` section 5 flagged. They are authoritative:
+>
+> - **Fight 2, Needlemaw: 4, not 5.** Five put the fight at 580 hit points (+30.6% over the anchor, outside the band) and twelve enemy bodies into the longest fight of the night in front of an eight-year-old. Four holds the printed total of **552**.
+> - **The Kept collapse at the end of the SECOND round after they rise, not the third.** Removes three enemy turns and one Glassfall from the peak window.
+> - **The second Drownbell arrives at the start of round FOUR, not round three**, so Hush and the Kept never stack.
+> - **Kyogre's Legendary Action uses run 1 / 2 / 2 by phase, not 1 / 2 / 3**, and The Undertow Turns costs 2 of them, so phase one cannot buy one at all.
+
 ---
 
 ## Session 9, Fights 1 and 2 rebuilt harder and more varied: 1 The Brightshoal, 2 The Kelp Cathedral (with the short rest confirmed after Fight 2)
@@ -159,9 +167,9 @@ Generated from the reconciled combat-first + difficulty design pass (2026-09-05)
 *Art brief:* A crab the size of a house wearing a thirty-foot column of living kelp rooted into its slate-grey shell, so that it has been standing in the cathedral's row long enough for the row to grow around it. Show it in the moment of turning: the socket in the sand coming away as a crater, the kelp column swaying like a ship's mast, two claws the width of a doorway unfolding out of the front. Green shafts of underwater light coming down between real columns on either side. Ancient, patient, defensive, not evil.
 
 ### Needlemaw  
-*Medium beast, unaligned ✦ CR 2 (450 XP) ✦ 5 out of the column shadows*  
-**Count:** 5  
-**Role:** The fast flankers, and the fight's fear rather than its danger. Their whole job is to grab one hero and drag them twenty feet a turn toward a water wall, which separates the party, breaks Ursa's positioning, and is completely non-lethal because Unda does not let its guests drown. Pack Frenzy makes a grappled or prone hero into a target the whole school piles onto, which is what makes the Pillarbacks' grapple and the Gullet Bells' Drop matter. Kept from the DM's roster at AC 14; count 6 to 5 and hit points 32 to 28 to make room for two new roles.
+*Medium beast, unaligned ✦ CR 2 (450 XP) ✦ 4 out of the column shadows*  
+**Count:** 4 (the designer wrote 5; the reconciler cut one to hold the 552 total, see the header)  
+**Role:** The fast flankers, and the fight's fear rather than its danger. Their whole job is to grab one hero and drag them twenty feet a turn toward a water wall, which separates the party, breaks Ursa's positioning, and is completely non-lethal because Unda does not let its guests drown. Pack Frenzy makes a grappled or prone hero into a target the whole school piles onto, which is what makes the Pillarbacks' grapple and the Gullet Bells' Drop matter. Kept from the DM's roster at AC 14; count 6 to 5 to 4 and hit points 32 to 28 to make room for two new roles.
 
 - **AC** 14  **HP** 28 (5d8 + 5)  **Speed** 40 ft, swim 50 ft
 - **STR** 14  **DEX** 16  **CON** 13  **INT** 3  **WIS** 12  **CHA** 5
@@ -500,8 +508,8 @@ Generated from the reconciled combat-first + difficulty design pass (2026-09-05)
 *Art brief:* A knee-high shape of dark seawater standing upright on dry pale sand, holding its own form the way a wave should not, with two long arms of water reaching forward and hands that are just hands enough to close. Where it stands the sand goes dark and frosts. No face, only a suggestion of one.
 
 ### Drownbell  
-*Small aberration (corrupted), unaligned ✦ CR 2 (450 XP) ✦ one in the ceiling at initiative, a second descends at the start of round three*  
-**Count:** 1 at start, 2 by round three  
+*Small aberration (corrupted), unaligned ✦ CR 2 (450 XP) ✦ one in the ceiling at initiative, a second descends at the start of round FOUR*  
+**Count:** 1 at start, 2 from round four  
 **Role:** The ranged controller, and the only thing in the room Stabby cannot reach without spending his Sash. It forces Lilly and Ursa into a genuine target-priority argument every round, and its Hush is the single hardest thing in the fight because it switches off Deflect Attacks, Shield, Flash of Genius and Cosmic Omen. It has three separate answers (radiant, a Thorn Whip pull, and Air Dance), one per hero.
 
 - **AC** 15  **HP** 40 (9d6 + 9)  **Speed** 0 ft, fly (hover) 20 ft
@@ -542,7 +550,7 @@ Generated from the reconciled combat-first + difficulty design pass (2026-09-05)
 **Traits**
 
 - **A Print, Not a Person.** There is nothing alive in it. If Ursa reaches out with the Mark of Handling he finds nothing at all, which is worse than finding something, and that line is his to deliver to the table.
-- **Three Rounds.** Each Kept collapses into ordinary sand at the end of the third round after it rises, whatever its hit points are. This cap is what keeps the peak from becoming a wipe, and it is what makes ignoring them a real and defensible choice.
+- **Three Rounds.** Each Kept collapses into ordinary sand at the end of the SECOND round after it rises, whatever its hit points are. This cap is what keeps the peak from becoming a wipe, and it is what makes ignoring them a real and defensible choice.
 - **Anchored.** Each Kept is bound to the spent spike standing upright in the sand behind it. Those spikes are **ordinary objects** (AC 12, 10 hit points) and are fair targets, unlike Kyogre's. Knock one over, with any forced-movement effect aimed at it or with an Action and a DC 12 Strength (Athletics) check, and its Kept immediately has the **Prone** condition and can take no action on its next turn.
 - **Cleansing Edge Frees It.** A **Bloodied** Kept that Stabby hits with Cleansing Edge lets go at once and collapses into sand, whatever its remaining hit points. This is the Hollowsong rule from Fight 3 coming back on a bigger creature, and it is the third thing competing for his one Cleansing Edge each turn.
 - **The Star at Its Chest.** Each Kept carries a small dead star. Two of them burn black. The third burns red, and it is not dead at all. When that one collapses, the red star does not go out: it comes loose and drifts up through the water ceiling and away. Nobody says a word about any of this, ever.
@@ -555,7 +563,7 @@ Generated from the reconciled combat-first + difficulty design pass (2026-09-05)
 
 **Reactions**
 
-- **Glassfall.** When it drops to 0 hit points or collapses at the end of its three rounds, each creature within 5 ft makes a DC 13 Dexterity saving throw or takes 5 (2d4) slashing damage from the shards.
+- **Glassfall.** When it drops to 0 hit points or collapses at the end of its two rounds, each creature within 5 ft makes a DC 13 Dexterity saving throw or takes 5 (2d4) slashing damage from the shards.
 
 *Art brief:* Three figures of black volcanic glass standing up out of pale sand in a row, each an unfinished silhouette of a different enormous creature: one horned and long-legged, one broad-winged, one low and heavy and plated. Each has a single small star burning in the centre of its chest. Two of those stars are black voids; the third is a live ember red. Behind them, three scarred black spikes stand upright in the sand like fence posts.
 

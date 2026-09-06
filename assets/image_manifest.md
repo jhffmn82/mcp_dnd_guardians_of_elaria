@@ -275,3 +275,14 @@ Embedded images recovered from the original raw session documents (word/media). 
 | `assets/session_08/lilly_gifts_laid_out.png` (generated 2026-08-17; Session 8 reintroduction plate: Lilly presenting everything she built during the year apart, sorted by who receives it) | `assets/gen_prompts/lilly_gifts_laid_out.txt` | REF_lilly_6_level7.png + items/boomstick.png + REF_homunculus.png. House style forbids lettering in art, so who-gets-what is carried by the heroes' accent colours: frost-blue cloth = Lilly's own, crimson = Stabby, starlight-purple = Ursa, plain leather = Puff's set. |
 | `assets/session_08/lilly_gifts_laid_out.png` re-edited 2026-08-17: Puff was drawn nearly the size of Lilly's head, breaking the canon scale rule (no bigger than a small apple, fits in cupped hands). Shrunk in place rather than re-rolled so the approved bench layout survived. | `assets/gen_prompts/_puff_scale_edit.txt` | the previous version of the plate |
 | `assets/session_08/stabby_the_stillness_test.png` (generated 2026-08-17; Session 8 reintroduction plate for Stabby's year: the stillness test on the spires of Kettlecrown, with Grandmother Ottick teaching by example) | `assets/gen_prompts/stabby_stillness_test.txt` | REF_stabby_4d_level7_model.png (his flat model sheet, the cleanest source for the outfit). Candyfang is beside him and the Nichirin is absent on purpose: the blade is not forged until after he lights his breath. |
+| `assets/monsters/mon_chime_warden.png` (DM-approved as **A**) | `(prompt not recorded)` |
+| `assets/monsters/mon_rootrot_crawler.png` (DM-approved as **B**) | `(prompt not recorded)` |
+| `assets/monsters/mon_shardling.png` (DM-approved as **C**) | `(prompt not recorded)` |
+| `assets/monsters/mon_glimmerfin.png` (DM-approved as **E**) | `assets/gen_prompts/mon_glimmerfin.txt` |
+| `assets/monsters/mon_quillfrond.png` (DM-approved as **I**) | `assets/gen_prompts/mon_quillfrond.txt` |
+| `assets/session_09/s9_loc_blackwater_seam.png` (DM-approved as **A**) | `assets/gen_prompts/s9_loc_blackwater_seam.txt` |
+| `assets/session_09/s9_loc_brightshoal.png` (DM-approved as **B**) | `assets/gen_prompts/s9_loc_brightshoal.txt` |
+| `assets/session_09/s9_loc_guardians_trench.png` (DM-approved as **C**) | `assets/gen_prompts/s9_loc_guardians_trench.txt` |
+| `assets/session_09/s9_loc_kelp_cathedral.png` (DM-approved as **D**) | `assets/gen_prompts/s9_loc_kelp_cathedral.txt` |
+| `assets/session_09/s9_loc_open_water.png` (DM-approved as **E**) | `assets/gen_prompts/s9_loc_open_water.txt` |
+| `assets/session_09/s9_loc_rift_gate.png` (DM-approved as **A**) | `assets/gen_prompts/s9_loc_rift_gate.txt` |

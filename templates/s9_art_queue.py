@@ -4,7 +4,7 @@
 # nothing moves into assets/ until he approves it.
 #   (name, [reference tokens], scene line)
 QUEUE = [
-    ('s9_the_bells', [],
+    ('s9_the_bells', ['stabby'],
      "Scene: a goblin's bare hand pushed flat into a vertical wall of ocean water, the water parting cleanly around his wrist and closing again, sleeve dry, with the wall's crust of thumb-sized pale ringed polyps exhaling threads of silver air."),
     ('s9_the_wrong_colour_at_the_far_end', [],
      "Scene: looking down the spiral road from a bright gallery, gallery after gallery curving away and downward, and at the vanishing point one stretch of sea gone the dull colour of a four-day bruise with the wall polyps shut."),
@@ -16,7 +16,7 @@ QUEUE = [
      "Scene: a hole of absolute black drifting out of clear sunlit water onto bright sand, the coral behind it going the colour of an old coin, one small silver fish emerging from its shadow a shade duller than it went in."),
     ('s9_the_notched_fin_chorister_comes_down', ['ursa'],
      "Scene: twenty feet of pale singer hanging fifteen feet over Ursa's head in a shaft of green light, one enormous mild eye on him, the old clean notch visible in the trailing edge of its left fin."),
-    ('s9_the_columns_turn_around', [],
+    ('s9_the_columns_turn_around', ['lilly', 'stabby', 'ursa'],
      "Scene: two of the cathedral's pillars lifting out of their sockets as the shell beneath the kelp comes clear, craters in the sand, claws the width of a doorway unfolding, the party turning to look up."),
     ('s9_the_bells_open', [],
      "Scene: two silver air-bells descending slowly out of a canopy where forty more still hang peacefully, the underside of the nearest opening into a smooth rimmed mouth above a small figure looking up. Beautiful and wrong in the same frame."),
@@ -46,7 +46,7 @@ QUEUE = [
      "Scene: Kyogre rising back into the trench light out of a bottomless dark carrying a smooth blue-green drop of light the size of two fists, setting it down on the sand in front of a very small gnome with the very edge of one fluke."),
     ('s9_the_road_up', ['lilly', 'stabby', 'ursa'],
      "Scene: the party riding the current in the lee of the guardian's back, the plane repairing itself around them as they rise, air-bells lighting one after another below, the Kelp Cathedral's canopy full of Choristers again."),
-    ('s9_fomalhaut_and_who_is_looking', [],
+    ('s9_fomalhaut_and_who_is_looking', ['lilly', 'stabby', 'ursa'],
      "Scene: through the Rift Hall's clerestory windows a hard white star burning steady over wet Gearhaven slate, and in the foreground from behind a gnome and a goblin on a handrail already looking up while a taller figure arrives through the ring."),
     ('s9_piplup_steps_out_already_walking', [],
      "Scene: the small blue creature emerging from the Sphere's light mid-stride in a bright noisy workshop, ignoring every face in the room, both flippers closing on a cut forearm, a bubble of cold silver light gathering under his hands."),
@@ -64,7 +64,7 @@ QUEUE = [
      "Scene: a whale-shaped creature the size of a barge, head down and shoulder against the outside of an air-bell, driving the entire dry gallery across the ocean floor like a sled, sand streaming behind it and three tiny figures inside the bubble, one of them laughing."),
     ('s9_the_smoker', [],
      "Scene: a black knuckled stone chimney venting water so hot it looks like smoke straight up through the bell's ceiling, rings of small living white shells arranged at the exact radius where warmth becomes too much."),
-    ('s9_the_bell_buckles', [],
+    ('s9_the_bell_buckles', ['lilly', 'stabby'],
      "Scene: the silver ceiling of an air-bell sagging inward like a snow-laden tent, low enough to touch, one small figure with her hands up against the sag and another already half through the wall, being carried out rather than dragged under."),
     ('s9_the_black_thread', [],
      "Scene: a dry gold sand floor meeting a curved wall of lit ocean, and along that seam one bootlace-thin line of moving black water, grey sand behind it and glowing sand ahead."),

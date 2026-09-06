@@ -10,6 +10,16 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RD = os.path.join(ROOT, "art_review")
 
+def code_for(i):
+    """A, B, ... Z, AA, AB, ... so the DM can approve by letter."""
+    s = ""
+    i += 1
+    while i:
+        i, r = divmod(i - 1, 26)
+        s = chr(65 + r) + s
+    return s
+
+
 def data_uri(path, maxpx=1300, q=85):
     # Page-weight guard: multi-image boards at 2000px/90 exceed ~8 MB and can
     # fail to load in the artifact viewer; 1300px/85 keeps a 3-image board
@@ -19,7 +29,7 @@ def data_uri(path, maxpx=1300, q=85):
     buf = io.BytesIO(); im.save(buf, format="JPEG", quality=q)
     return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
 
-def card(path):
+def card(path, i, maxpx, q):
     name = os.path.basename(path)
     pending = name.startswith("PENDING_")
     label = name[len("PENDING_"):] if pending else name
@@ -27,10 +37,13 @@ def card(path):
     status = "Awaiting approval" if pending else "Approved"
     cls = "pending" if pending else "approved"
     return f'''<figure class="card {cls}">
-      <img src="{data_uri(path)}" alt="{html.escape(label)}" loading="lazy"/>
+      <img src="{data_uri(path, maxpx, q)}" alt="{html.escape(label)}" loading="lazy"/>
       <figcaption>
-        <span class="status {cls}">{status}</span>
-        <span class="name">{html.escape(label)}</span>
+        <span class="code">{code_for(i)}</span>
+        <span class="meta">
+          <span class="status {cls}">{status}</span>
+          <span class="name">{html.escape(label)}</span>
+        </span>
       </figcaption>
     </figure>'''
 
@@ -38,7 +51,12 @@ def build():
     imgs = sorted(glob.glob(os.path.join(RD, "*.png")) + glob.glob(os.path.join(RD, "*.jpg")))
     pend = [p for p in imgs if os.path.basename(p).startswith("PENDING_")]
     done = []  # approved images are banked to assets/; the board shows only what still needs a decision
-    cards = "\n".join(card(p) for p in pend + done)
+    shown = pend + done
+    # Keep the whole board inside the artifact viewer's budget: the more
+    # plates there are, the smaller each one can afford to be.
+    n = len(shown)
+    maxpx, q = (1300, 85) if n <= 8 else (900, 78) if n <= 20 else (620, 72)
+    cards = "\n".join(card(p, i, maxpx, q) for i, p in enumerate(shown))
     n_pend = len(pend)
     head = f'''{n_pend} image{'s' if n_pend != 1 else ''} awaiting your approval''' if n_pend else "All caught up. Nothing pending."
     doc = f'''<style>
@@ -48,11 +66,16 @@ def build():
   .kicker {{ font-size: .72rem; letter-spacing: .28em; text-transform: uppercase; color: #8a6d1f; margin: 0; }}
   .masthead h1 {{ font-size: 1.9rem; font-weight: 600; color: #7a4a12; margin: .25rem 0 .35rem; }}
   .tally {{ font-size: .95rem; color: #6b5d45; font-style: italic; margin: 0; }}
-  .grid {{ display: grid; grid-template-columns: 1fr; gap: 2rem; }}
+  .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 1.6rem; }}
   .card {{ margin: 0; background: #fbf6ea; border: 1px solid #e6dcc4; border-radius: 12px; overflow: hidden; }}
   .card.pending {{ border-color: #b8860b; box-shadow: 0 0 0 2px rgba(184,134,11,.18); }}
   .card img {{ display: block; width: 100%; height: auto; }}
-  figcaption {{ display: flex; align-items: center; gap: .6rem; padding: .7rem .85rem; }}
+  figcaption {{ display: flex; align-items: center; gap: .7rem; padding: .7rem .85rem; }}
+  .code {{ flex: none; width: 2.1rem; height: 2.1rem; display: grid; place-items: center;
+           font-size: 1rem; font-weight: 700; color: #7a4a12; background: #f3e2b8;
+           border: 1px solid #d9bd72; border-radius: 6px; font-variant-numeric: tabular-nums; }}
+  .meta {{ display: flex; flex-direction: column; gap: .2rem; min-width: 0; }}
+  .name {{ overflow-wrap: anywhere; }}
   .status {{ font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; padding: .2rem .5rem; border-radius: 999px; white-space: nowrap; }}
   .status.pending {{ background: #f3e2b8; color: #7a4a12; }}
   .status.approved {{ background: #e3ecdf; color: #3f5a37; }}
@@ -62,6 +85,7 @@ def build():
     .masthead h1 {{ color: #e0b658; }} .kicker {{ color: #c99f4a; }} .tally {{ color: #b3a179; }}
     .card {{ background: #221c12; border-color: #4a3d22; }}
     .name {{ color: #d8ccb0; }}
+    .code {{ color: #f0d191; background: #4a3a16; border-color: #6d551f; }}
   }}
 </style>
 <div class="wrap">
@@ -69,6 +93,7 @@ def build():
     <p class="kicker">The Guardians of Elaria</p>
     <h1>Art Review Board</h1>
     <p class="tally">{head}</p>
+    <p class="tally">Approve or reject by letter.</p>
   </header>
   <div class="grid">
     {cards if cards else '<p>No images in art_review/ yet.</p>'}

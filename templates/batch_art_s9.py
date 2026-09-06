@@ -23,9 +23,17 @@ GEN = os.path.join(ROOT, "art_review")
 os.makedirs(GEN, exist_ok=True)
 os.makedirs("assets/gen_prompts", exist_ok=True)
 
-STYLE = ("painterly storybook fantasy illustration, lush warm golden palette with teal and brass "
-         "accents, soft volumetric light, detailed fantasy-anime glow, digital painting, no text "
-         "or lettering anywhere in the image.")
+# The campaign's house style is a warm golden palette (see batch_art.py, which
+# still uses it for Sessions 1 to 7). Session 9 is a WATER plane and its board
+# map is cool throughout: turquoise, jade, petrol blue, bone-grey sand, olive
+# and rust coral. The warm string fought the map and won, which is why the first
+# location passes came back as honey-gold tropical postcards. Session 9 gets its
+# own palette so the whole volume agrees with its own board.
+STYLE = ("painterly storybook fantasy illustration, soft-edged painterly oils with depth haze, "
+         "a COOL sea palette of turquoise, jade and petrol blue over pale bone-grey sand, with "
+         "coral in olive, moss, ochre and rust; light arrives cool and already spent by the water "
+         "it came through; no honey-gold sand, no amber sunbeams, no tropical-postcard warmth; "
+         "no text or lettering anywhere in the image.")
 
 # Level-7 blocks. The heroes are two years older than the Session 1 art and carry
 # the post-timeskip kit. The earring rule holds: Lilly wears exactly one, the
@@ -36,7 +44,7 @@ BLK = {
  "ursa": "URSA is a human boy druid with short red hair, pale freckled skin, bright purple eyes, delicate purple leaf-tattoos, no earrings, rustic green-and-brown druid clothes, carrying a tall gnarled staff crowned with a pale star; match his reference exactly.",
  "sandshrew": "SANDSHREW is a small sturdy pale-yellow pangolin-like creature with a segmented armoured back, big digging claws and a cheerful blunt face; match his reference exactly.",
  "piplup": "PIPLUP is a small round penguin-like creature, deep blue above and white below, with a short pointed beak, a stubby crest of three blue spikes and two flipper-arms; proud and serious; match his reference exactly.",
- "aelwyn": "AELWYN is an elderly human scholar with a neat white beard, wire spectacles, ink-stained fingers and a worn academic coat over a waistcoat, kind and precise; he is a teacher, not a wizard.",
+ "aelwyn": "PROFESSOR AELWYN RAVENSTONE is a tall silver-haired HIGH ELF with emerald green eyes, ink-stained fingers and a worn scholar's coat; kind, precise, a teacher rather than a wizard; match his reference exactly.",
 }
 REF = {
  "lilly": ["assets/art_refs/REF_lilly_6_level7.png"],
@@ -44,6 +52,9 @@ REF = {
  "ursa": ["assets/art_refs/REF_ursa_4_level7.png"],
  "sandshrew": ["assets/characters/sandshrew.png"],
  "piplup": ["assets/companions/piplup.png"],
+ # Canonical, per assets/character_refs.md. He is an ELF, not the human I
+ # briefly invented for him.
+ "aelwyn": ["assets/art_refs/REF_aelwyn.webp"],
 }
 
 # name, [character/ref tokens], scene line
@@ -98,14 +109,29 @@ QUEUE = [
 # The remaining 54 plates (locations, plot beats, and every monster card) are
 # generated into s9_art_queue.py from the reconciled art list, so the queue and
 # the design cannot drift. Everything lands in art_review/ for DM approval.
-try:
-    from s9_art_queue import QUEUE as GENERATED
-    QUEUE = QUEUE + GENERATED
-except ImportError:
-    print("note: s9_art_queue.py missing; run templates/s9_build_queue.py first")
+if "--locations" in sys.argv:
+    # Stage 1. Six rooms, no cast, nothing else.
+    from s9_locations import (LOCATIONS as _L, EMPTY, EMPTY_EXCEPT_THE_GATE,
+                              BELL, SUBMERGED, SUBMERGED_PLATES)
+    QUEUE = [("s9_" + n, [],
+              (SUBMERGED if n in SUBMERGED_PLATES else BELL) + " " + s +
+              (EMPTY_EXCEPT_THE_GATE if n == "loc_rift_gate" else EMPTY))
+             for n, s in _L]
+else:
+    from s9_art_queue import QUEUE as _SCENES
+    from s9_monster_queue import QUEUE as _MONSTERS
+    QUEUE = [q for q in _SCENES if not q[0].startswith("mon_")] + _MONSTERS
 
 
-def refs_for(tokens):
+import s9_art_plan
+
+
+def refs_for(tokens, name=None):
+    """Location reference first, then everyone in frame. See s9_art_plan."""
+    if name:
+        planned = s9_art_plan.refs_for_plate(name)
+        if planned:
+            return [p for p in planned if os.path.exists(p)]
     files = []
     for t in tokens:
         files += REF.get(t, [])
@@ -120,11 +146,12 @@ def gen_one(item):
     name, tokens, scene = item
     prompt = STYLE + " " + blocks_for(tokens) + " " + scene
     open(f"assets/gen_prompts/{name}.txt", "w", encoding="utf-8").write(prompt)
-    files = refs_for(tokens)
+    files = refs_for(tokens, name)
     headers = {"Authorization": f"Bearer {KEY}"}
     try:
         if files:
-            fh = [("image[]", (os.path.basename(f), open(f, "rb"), "image/png")) for f in files]
+            fh = [("image[]", (os.path.basename(f), open(f, "rb"),
+                   "image/webp" if f.endswith(".webp") else "image/png")) for f in files]
             r = requests.post("https://api.openai.com/v1/images/edits", headers=headers,
                               data={"model": MODEL, "prompt": prompt, "size": SIZE, "quality": "high"},
                               files=fh, timeout=900)
@@ -147,6 +174,19 @@ def gen_one(item):
 
 
 if __name__ == "__main__":
+    # Stage 2 cannot run until the locations are approved into assets/, because
+    # every plate uses its location as a setting reference.
+    if "--locations" not in sys.argv:
+        gaps = s9_art_plan.missing_locations()
+        if gaps:
+            print("STOP. These locations are not approved into assets/ yet, and every")
+            print("other plate needs one of them as its setting reference:")
+            for g in gaps:
+                print("   ", g)
+            print()
+            print("Run:  python templates/batch_art_s9.py --locations")
+            sys.exit(1)
+
     todo = QUEUE
     if len(sys.argv) > 1 and not sys.argv[1].startswith("--"):
         todo = [q for q in QUEUE if sys.argv[1] in q[0]]
@@ -155,7 +195,16 @@ if __name__ == "__main__":
     # --force to regenerate everything.
     if "--force" not in sys.argv:
         before = len(todo)
-        todo = [q for q in todo if not os.path.exists(os.path.join(GEN, f"PENDING_{q[0]}.png"))]
+
+        def already_done(name):
+            # Pending review, or already approved and banked. Without the second
+            # check, approving a plate moves it out of art_review and the next
+            # run helpfully regenerates the thing the DM just signed off on.
+            if os.path.exists(os.path.join(GEN, f"PENDING_{name}.png")):
+                return True
+            return bool(s9_art_plan.banked_path(name))
+
+        todo = [q for q in todo if not already_done(q[0])]
         if before != len(todo):
             print(f"resuming: {before - len(todo)} already generated, {len(todo)} to go")
 
@@ -163,8 +212,8 @@ if __name__ == "__main__":
     # minute cap, and roughly two thirds of this queue carries none. Splitting
     # the pools lets the ref-free plates run wide instead of queueing behind
     # rate-limited ones.
-    plain = [q for q in todo if not refs_for(q[1])]
-    withref = [q for q in todo if refs_for(q[1])]
+    plain = [q for q in todo if not refs_for(q[1], q[0])]
+    withref = [q for q in todo if refs_for(q[1], q[0])]
     print(f"generating {len(todo)} images at {SIZE}: "
           f"{len(plain)} ref-free at 10 concurrent, {len(withref)} with refs at 3", flush=True)
 
