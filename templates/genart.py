@@ -15,6 +15,8 @@ KEY = open(os.path.expanduser("~/.openai_key")).read().strip()
 MODEL = os.environ.get("GENART_MODEL", "gpt-image-2")
 SIZE = os.environ.get("GENART_SIZE", "1024x1024")
 QUALITY = os.environ.get("GENART_QUALITY", "high")
+# set GENART_BACKGROUND=transparent for alpha-channel output (e.g. shirt art)
+BACKGROUND = os.environ.get("GENART_BACKGROUND", "")
 
 
 class RateLimited(Exception):
@@ -63,16 +65,19 @@ def _generate_once(out_path, prompt, refs):
             mime = "image/webp" if r.lower().endswith(".webp") else "image/png"
             files.append(("image[]", (os.path.basename(r), open(r, "rb"), mime)))
         data = {"model": MODEL, "prompt": prompt, "size": SIZE, "quality": QUALITY}
+        if BACKGROUND:
+            data["background"] = BACKGROUND
         if MODEL.startswith("gpt-image-1"):
             data["input_fidelity"] = "high"
         resp = requests.post("https://api.openai.com/v1/images/edits",
                              headers=headers, data=data, files=files, timeout=600)
     else:
+        payload = {"model": MODEL, "prompt": prompt,
+                   "size": SIZE, "quality": QUALITY}
+        if BACKGROUND:
+            payload["background"] = BACKGROUND
         resp = requests.post("https://api.openai.com/v1/images/generations",
-                             headers=headers,
-                             json={"model": MODEL, "prompt": prompt,
-                                   "size": SIZE, "quality": QUALITY},
-                             timeout=600)
+                             headers=headers, json=payload, timeout=600)
     j = resp.json()
     if "data" not in j:
         err = j.get("error") or {}
