@@ -45,6 +45,19 @@ True house rules (adjudications beyond the printed rules):
 - Destructive operations: never delete files. Move unclear or superseded files to `_triage/`. Use `git mv` for renames so history is preserved.
 - Commit at the end of every work phase with a descriptive message, and push.
 
+## Designing a session (start here for session work)
+
+**If you are designing or producing a session document, read `handoffs/SESSION_DESIGN_HANDOFF.md` FIRST, before anything else in this file's Phase workflow.** It is the operator's manual for the whole job: the read-first list, the six stages and their gates, the encounter difficulty method, the simulator, the block-list document format, the art pipeline, publishing, and a TRAPS section listing every expensive mistake this repo has already paid for. Session design runs in its own chat, so a fresh agent has no context; that manual is the context.
+
+The four things it exists to prevent, stated here so they are unmissable:
+
+- **Attach a reference image for EVERY hero, companion and named NPC in an art frame.** `assets/character_refs.md` line 12: describing them in the prompt is not a substitute. 41 of 54 Session 9 plates were generated ref-free and every person came back a stranger.
+- **Open the board map image before writing any location prose or location art prompt.** Session 9's location plates were written twice from imagination and rejected both times.
+- **Never state a fact about a recurring NPC from memory.** Look them up in `assets/character_refs.md`. Aelwyn Ravenstone is a tall silver-haired high elf with emerald eyes, not an elderly human, and he has had a reference file on disk since Session 2.
+- **Never write or patch Python through a bash heredoc, `python -c "open(...).write(...)"`, or `echo`.** Use the Write and Edit tools. Literal backslash-n in a heredoc has corrupted builders here repeatedly, and once let a stale script run and burn a whole batch of paid image generations.
+
+And the rule that ties the layers together: `reference/campaign/session_NN_enemies.md` is the source of truth for a session's enemy numbers and attack routines, which `memory/campaign_canon.md` deliberately does not carry. When a design number changes, change it in the builder, the simulator and canon in the SAME work session. A stale total sat in canon for a day and a separate simulator session faithfully simulated it.
+
 ## Phase workflow
 
 Work proceeds in phases, ideally one phase per session. Check git log / INVENTORY.md to see where things stand.
