@@ -28,27 +28,42 @@ WHAT IS DIFFERENT ABOUT THE PARTY (DM, 2026-09-05)
    (about 58% of the time) and then only by the excess. It was always nearly
    redundant, and both pool uses are better spent on the earthquake.
 
-ENEMIES: every AC and hit point total below is verbatim from the locked Session 9
-encounter design in memory/campaign_canon.md, and the per-fight totals reproduce
-its 308 / 444 / 412 figures exactly.
+ENEMIES: every stat block is read from `reference/campaign/session_09_enemies.md`,
+which the 2026-09-05 difficulty pass made the source of truth. That file
+SUPERSEDED the earlier 308 / 444 / 412 / 458 totals this simulator was first
+built against: the real figures are **404 / 552 / 530 / 558**, +26% to +30% over
+Session 8 slot for slot, with every fight fielding four or five enemy types
+instead of two. The 458 never added up, which this simulator is what caught.
 
-[DM CHECK 1] Canon states the four fights total **308 / 444 / 412 / 458**. The
-first three are exact. Fight 4 as written is Kyogre at 250 Black Water plus the
-Quiet Hand at 120 = **370**, which is 88 short of 458. Nothing has been invented
-to close the gap; the simulator runs the printed stat blocks and the trench is
-therefore ~19% softer than the canon total implies.
+[DM CHECK] Fight 2 reconciles to **580**, not the 552 in the canon table. 552 is
+the arithmetic for FOUR Needlemaws; the Needlemaw card's own Count line says
+five, and five is what runs here. One Needlemaw is 28 points.
 
-[DM CHECK 2] Canon fixes AC, hit points, and each enemy's ONE clever line, but
-not their attack routines. Every to-hit and damage expression marked PLACEHOLDER
-below was calibrated against the Session 8 enemy occupying the same slot, so the
-difficulty comparison between sessions is meaningful. They are guesses and should
-be replaced with the real numbers before this drives any balance decision.
+Implemented from the cards, not invented: Schooling, Wall-Slip, Blind Panic and
+It Breaks Past, the Inkmantle pair never both stinging in a round, the
+Blackfroth arriving at the top of round three, Kelp Mantle and Column Fall,
+Quillfrond's Range Finder (it shoots the FARTHEST thing and rakes anything
+inside 10 ft), the two false air-bells dropping on round three with Toll capped
+at twice a fight, Still Pouring answered only by radiant or Cleansing Edge,
+Sheathed in Black, the Blackcask silent on round one, IT WAS SINGING YESTERDAY
+(a Bloodied Chorister cut with Cleansing Edge is FREED alive, and freeing the
+Notched Fin frees the whole remaining choir and ends the fight), Kyogre's three
+phases with legendary actions scaling 1/2/3, The Water Closes, Undertow
+uncharged at initiative, The Deep Voice from phase two, the Quiet Hand At Work
+for two rounds (no actions, Advantage against it) then Near the Work healing,
+the Kept rising on round three and collapsing after three rounds each, the
+Brine-Thing respawn capped at four, and the Drownbell lamping whoever is
+farthest from Kyogre.
+
+EVERY enemy in this session has some form of "It Does Not Finish": none of them
+attack or target a creature at 0 hit points. That is handled once, in _marks().
 
 Knobs: S8_* knobs from the Session 8 engine all apply. S9-specific:
   S9_TEMP=13        temp HP everyone starts each fight with (0 disables)
   S9_SLAM=1         Lilly spends the shared pool on Tectonic Slam
   S9_WARD=0         ...or set 1 to put her back on Aether Ward for the A/B
 """
+import math
 import os
 
 # Sandshrew is the Session 9 companion. Set before importing the engine, which
@@ -145,14 +160,23 @@ def tectonic_slam(st, targets):
 
 # ---------------------------------------------------------------- hero turns
 
-def hero_round(st, name, live, rnd, melee_only=False):
-    """One hero's (or the companion's) whole turn. Shared by all four fights."""
+def hero_round(st, name, live, rnd, priority=None):
+    """One hero's (or the companion's) whole turn. Shared by all four fights.
+
+    `priority` orders the kill list. The default, weakest-and-nearest first, is
+    right when every enemy is finite: clear the chaff, then break the anchor. It
+    is exactly WRONG in the trench, where the Brine-Things respawn one per
+    Kyogre turn forever, so a party chasing the weakest target farms chaff all
+    night and never touches the objective."""
     if not live:
         return
+    if priority is not None:
+        live = priority(live)
     if name == 'Stabby' and st.stabby.alive:
         st.s_speed_left = 65 if st.s_ignited else 55
         st.stabby.dodging = False
-        order = sorted(live, key=lambda t: (t.hp, st.stabby.dist_ft(t)))
+        order = (live if priority is not None
+                 else sorted(live, key=lambda t: (t.hp, st.stabby.dist_ft(t))))
         if st.stabby.hp < 25:
             stabby_defensive(st, order)
             return
@@ -161,7 +185,8 @@ def hero_round(st, name, live, rnd, melee_only=False):
         if WARD_ON and not SLAM_ON and st.l_ward > 0 and rnd == 1:
             cast_ward(st, 'as the water wall bulges')
         elif not tectonic_slam(st, live):
-            t = min(live, key=lambda g: (g.hp, st.lilly.dist_ft(g)))
+            t = (live[0] if priority is not None
+                 else min(live, key=lambda g: (g.hp, st.lilly.dist_ft(g))))
             true_strike(st, t)
         pool = [g for g in live if g.hp > 0]
         if pool:
@@ -188,7 +213,8 @@ def hero_round(st, name, live, rnd, melee_only=False):
         companion_turn(st, live)
 
 
-def run_fight(st, label, blurb, groups, enemy_turn, cap=12):
+def run_fight(st, label, blurb, groups, enemy_turn, cap=12, wave=None,
+              priority=None, win=None):
     """Generic driver: initiative, then rounds until one side is done."""
     log("  " + "=" * 62)
     log(f"  {label}")
@@ -198,16 +224,24 @@ def run_fight(st, label, blurb, groups, enemy_turn, cap=12):
     stabby_initiative(st, last=(label.startswith('FIGHT 4')))
     order = initiative(st, groups)
     rnd = 0
-    while any(f.hp > 0 for f in foes) and any(h.alive for h in st.heroes) and rnd < cap:
+    while rnd < cap and any(h.alive for h in st.heroes):
         rnd += 1
+        if wave is not None:
+            wave(st, rnd)
+        if win is not None and win():
+            break
+        if not any(f.hp > 0 for f in foes):
+            break
         start_round(st, rnd)
         for _, name, actors in order:
             live = [f for f in foes if f.hp > 0]
             if not live or not any(h.alive for h in st.heroes):
                 break
+            if win is not None and win():
+                break
             if name in ('Stabby', 'Lilly', 'Ursa', 'Ghostbloom', 'Sandshrew',
                         'Piplup'):
-                hero_round(st, name, live, rnd)
+                hero_round(st, name, live, rnd, priority=priority)
             else:
                 enemy_turn(st, [a for a in actors if a.hp > 0], rnd)
     log(f"  {label} ENDS after round {rnd}.")
@@ -233,207 +267,727 @@ def _bite(st, foe, bonus, dice, die, flat, dtype, verb, reach=5):
         log(f"    {foe.name}: {verb} at {tgt.name} and misses.")
 
 
+# ---------------------------------------------------------------- enemy helpers
+
+def _marks(st):
+    """Everything an enemy is willing to hit. EVERY Session 9 enemy has some
+    form of "It Does Not Finish": none of them attack or target a creature at
+    0 hit points. That is a rule of the whole session, not a per-card quirk,
+    so it lives here once."""
+    return [h for h in st.pcs if h.alive and not h.down
+            and not getattr(h, 'aloft', False)]
+
+
+def _atk(st, foe, bonus, dice, die, flat, dtype, verb, reach=5,
+         adv=False, tgt=None, extra=None, exclude=(), move=True):
+    """One enemy attack. `extra` is (n, die, type) added on a hit.
+    `exclude` holds creatures this attacker has already struck this round, for
+    the cards that say "never the same creature twice in a round"."""
+    pool = [h for h in _marks(st) if h not in exclude]
+    if not pool:
+        return None
+    if tgt is None or tgt.down or not tgt.alive or tgt in exclude:
+        tgt = min(pool, key=lambda h: foe.dist_ft(h))
+    if foe.dist_ft(tgt) > reach and foe.speed and move:
+        foe.approach(tgt, reach, foe.speed)
+    if foe.dist_ft(tgt) > reach:
+        return None
+    hit, crit, _ = attack_roll(st, bonus, tgt, adv=adv, attacker=foe)
+    if not hit:
+        log(f"    {foe.name}: {verb} at {tgt.name} and misses.")
+        return None
+    parts = [(d(dice * (2 if crit else 1), die) + flat, dtype)]
+    if extra:
+        parts.append((d(extra[0] * (2 if crit else 1), extra[1]), extra[2]))
+    dmg = deal(st, tgt, parts, attacker=foe)
+    log(f"    {foe.name}: {verb} {tgt.name} for {dmg}.")
+    return tgt
+
+
+def _cone(foe, pool, length):
+    """A cone is as wide as it is long, its point at the caster. Aimed down the
+    axis toward the centre of mass of everyone in range, and anything within 45
+    degrees of that axis is in it."""
+    near = [h for h in pool if foe.dist_ft(h) <= length]
+    if not near:
+        return []
+    ax = sum(h.pos[0] for h in near) / len(near) - foe.pos[0]
+    ay = sum(h.pos[1] for h in near) / len(near) - foe.pos[1]
+    n = math.hypot(ax, ay) or 1.0
+    ax, ay = ax / n, ay / n
+    out = []
+    for h in near:
+        dx, dy = h.pos[0] - foe.pos[0], h.pos[1] - foe.pos[1]
+        dn = math.hypot(dx, dy)
+        if dn == 0 or (dx * ax + dy * ay) / dn >= 0.707:
+            out.append(h)
+    return out
+
+
+def _line(foe, pool, length, width=5):
+    """A line `width` feet wide, aimed at the nearest target in range."""
+    near = [h for h in pool if foe.dist_ft(h) <= length]
+    if not near:
+        return []
+    lead = min(near, key=lambda h: foe.dist_ft(h))
+    ax, ay = lead.pos[0] - foe.pos[0], lead.pos[1] - foe.pos[1]
+    n = math.hypot(ax, ay) or 1.0
+    ax, ay = ax / n, ay / n
+    out = []
+    for h in near:
+        dx, dy = h.pos[0] - foe.pos[0], h.pos[1] - foe.pos[1]
+        along = dx * ax + dy * ay
+        if along < 0:
+            continue
+        perp = abs(dx * -ay + dy * ax) * 5.0
+        if perp <= width / 2.0 + 2.5:
+            out.append(h)
+    return out or [lead]
+
+
+def _sphere(foe, pool, radius, cast_rng):
+    """A sphere dropped on whichever point catches the most of them."""
+    cands = [h for h in pool if foe.dist_ft(h) <= cast_rng]
+    if not cands:
+        return []
+    best = []
+    for c in cands:
+        grp = [h for h in cands if c.dist_ft(h) <= radius]
+        if len(grp) > len(best):
+            best = grp
+    return best
+
+
+def _aoe(st, foe, dc, stat, dice, die, dtype, name, rng=30, on_fail=None,
+         shape='emanation', radius=10, width=5):
+    """A save-for-half area effect, resolved in its REAL shape. Evasion is
+    handled inside deal/hero_save."""
+    marks = _marks(st)
+    if shape == 'cone':
+        pool = _cone(foe, marks, rng)
+    elif shape == 'line':
+        pool = _line(foe, marks, rng, width)
+    elif shape == 'sphere':
+        pool = _sphere(foe, marks, radius, rng)
+    else:
+        pool = [h for h in marks if foe.dist_ft(h) <= rng]
+    if not pool:
+        return False
+    log(f"    {foe.name}: {name}")
+    for h in pool:
+        raw = d(dice, die)
+        if st.hero_save(h, stat, dc):
+            got = deal(st, h, [(raw // 2, dtype)], attacker=foe)
+            log(f"      {h.name} rides it out: {got}.")
+        else:
+            got = deal(st, h, [(raw, dtype)], attacker=foe)
+            log(f"      {h.name} is caught for {got}.")
+            if on_fail:
+                on_fail(h)
+    return True
+
+
+def _recharge(foe, attr, lo=5):
+    """Recharge N-6 at the top of its turn."""
+    if getattr(foe, attr, 0) <= 0 and d20() >= lo:
+        setattr(foe, attr, 1)
+
+
 # ---------------------------------------------------------------- the four fights
 
 def fight1(st):
-    """THE BRIGHTSHOAL. Glimmerfin x8 (AC 14, 13 HP) + Surgehorn x3 (AC 15, 68).
-    308 hit points, matching canon. A stampede of refugees fleeing the far end,
-    so nothing here is hunting the party: it is running through them."""
+    """1 THE BRIGHTSHOAL, 404 hit points. Glimmerfin x8, Surgehorn x3,
+    Inkmantle x2, and the Blackfroth arriving at the top of round three.
+    Nothing here is hunting the party: it is a stampede going through them."""
     st.lilly.pos = [15, 20]; st.stabby.pos = [14, 19]; st.ursa.pos = [16, 20]
     st.ghost.pos = [15, 21]; st.puff.pos = [14, 21]; st.cannon.pos = [16, 21]
-    fins = [Actor(f'Glimmerfin-{i+1}', 'f', 'foe', 14, ehp(13), p, 45,
-                  saves=dict(str=-1, dex=4, con=1, wis=0))
+    fins = [Actor(f'Glimmerfin-{i+1}', 'f', 'foe', 14, ehp(13), p, 40,
+                  saves=dict(str=-1, dex=4, con=1, wis=1))
             for i, p in enumerate([(11, 11), (13, 10), (15, 9), (17, 10),
                                    (19, 11), (12, 13), (18, 13), (15, 12)])]
-    for f in fins:
-        f.wall_slip = True          # canon: it can vanish into the water wall
-    horns = [Actor(f'Surgehorn-{i+1}', 'H', 'foe', 15, ehp(68), p, 50,
-                   saves=dict(str=5, dex=1, con=4, wis=-1),
-                   # canon: blind panic, it cannot be calmed
-                   cond_imm={'charmed', 'frightened'})
-             for i, p in enumerate([(13, 7), (16, 6), (19, 8)])]
+    horns = [Actor(f'Surgehorn-{i+1}', 'H', 'foe', 16, ehp(68), p, 50,
+                   saves=dict(str=4, dex=1, con=3, wis=0),
+                   cond_imm={'charmed', 'frightened'}, reach=10)
+             for i, p in enumerate([(13, 6), (16, 5), (19, 7)])]
+    for h in horns:
+        h.charge = 0
+    inks = [Actor(f'Inkmantle-{i+1}', 'I', 'foe', 14, ehp(28), p, 30,
+                  saves=dict(str=1, dex=3, con=3, wis=2), reach=15)
+            for i, p in enumerate([(10, 8), (20, 8)])]
+    for k in inks:
+        k.sting = 0
+        k.stung = False
+    froth = Actor('Blackfroth', 'B', 'foe', 15, ehp(40), (15, 3), 30,
+                  saves=dict(str=2, dex=2, con=1, wis=0),
+                  resist={'necrotic', 'poison'}, vuln={'radiant'},
+                  cond_imm={'blinded', 'charmed', 'deafened', 'frightened',
+                            'prone'})
+    froth.hp = 0                 # off the board until round three
+    froth.sour = 0
+    froth.arrived = False
 
     def enemies(st_, actors, rnd):
+        for k in inks:
+            k.stung = False
         for f in actors:
             if f.hp <= 0:
                 continue
-            if f.name.startswith('Glimmerfin'):
-                # PLACEHOLDER routine, calibrated to the S8 Mossmite slot.
-                _bite(st_, f, 5, 1, 6, 3, 'slashing', 'slips past and rakes')
-                if getattr(f, 'wall_slip', False) and f.hp < 7:
-                    f.hidden = True
-                    log(f"    {f.name} WALL-SLIPS into the water and is gone.")
-                    f.hp = 0
-            else:
-                # PLACEHOLDER, calibrated to the S8 Rotbloom slot (a panicked
-                # trample, not a predator).
-                _bite(st_, f, 6, 2, 6, 4, 'bludgeoning', 'stampedes over')
+            n = f.name
+            if n.startswith('Glimmerfin'):
+                pool = _marks(st_)
+                if not pool:
+                    continue
+                t = min(pool, key=lambda h: f.dist_ft(h))
+                # Schooling: Advantage when another Glimmerfin is on the target.
+                adv = any(g is not f and g.hp > 0 and g.dist_ft(t) <= 5
+                          for g in fins)
+                _atk(st_, f, 6, 1, 6, 2, 'piercing', 'nips at', 5, adv=adv, tgt=t)
+            elif n.startswith('Surgehorn'):
+                _recharge(f, 'charge')
+                if f.charge and rnd > 1:
+                    f.charge = 0
+                    _aoe(st_, f, 15, 'dex', 4, 8, 'bludgeoning',
+                         'BLIND CHARGE, fifty feet in a straight line, and it '
+                         'cannot see anyone.', rng=50, shape='line', width=10)
+                else:
+                    _atk(st_, f, 8, 2, 8, 4, 'bludgeoning', 'gores', 10)
+            elif n.startswith('Inkmantle'):
+                _recharge(f, 'sting')
+                # The pair never both sting in the same round.
+                if f.sting and rnd > 1 and not any(k.stung for k in inks):
+                    f.sting = 0
+                    f.stung = True
+                    _aoe(st_, f, 14, 'con', 2, 6, 'poison',
+                         'INK STING, a bloom of stinging dark twenty feet across.',
+                         rng=60, shape='sphere', radius=20,
+                         on_fail=lambda h: setattr(h, 'blinded', 1))
+                else:
+                    _atk(st_, f, 7, 2, 6, 4, 'slashing', 'lashes a tendril at', 15)
+            elif n == 'Blackfroth':
+                _recharge(f, 'sour')
+                if f.sour and any(f.dist_ft(h) <= 10 for h in _marks(st_)):
+                    f.sour = 0
+                    _aoe(st_, f, 15, 'con', 3, 6, 'necrotic',
+                         'SOUR CURRENT, the black going out of it in a ring.',
+                         rng=10)
+                else:
+                    _atk(st_, f, 7, 2, 8, 3, 'necrotic', 'spits froth at', 60)
+
+    def wave(st_, rnd):
+        if rnd == 3 and not froth.arrived:
+            froth.arrived = True
+            froth.hp = froth.hp_max
+            log("  THE BLACKFROTH ARRIVES, sixty feet out, from the direction "
+                "the herd came. It is a hole cut in a beautiful picture, and it "
+                "is what they were all running from.")
 
     return run_fight(
         st, 'FIGHT 1: THE BRIGHTSHOAL',
-        '(Eight Glimmerfin and three Surgehorn come through the gallery the '
-        'wrong way, running from something behind them.)',
-        [('Glimmerfins', fins, 4), ('Surgehorns', horns, 1)], enemies)
+        '(A stampede coming through the gallery the wrong way. Nothing here is '
+        'hunting anyone: it is running, and the party is standing in the road.)',
+        [('Glimmerfins', fins, 4), ('Surgehorns', horns, 1),
+         ('Inkmantles', inks, 3), ('Blackfroth', [froth], 2)],
+        enemies, wave=wave)
 
 
 def fight2(st):
-    """THE KELP CATHEDRAL. Pillarback x2 (AC 17, 126) + Needlemaw x6 (AC 14, 32).
-    444 hit points, matching canon. Nothing shoots and nothing flies: the room is
-    built so that Stabby, who owns no ranged attack, never has a dead turn."""
-    st.lilly.pos = [15, 20]; st.stabby.pos = [15, 18]; st.ursa.pos = [17, 20]
-    st.ghost.pos = [14, 19]; st.puff.pos = [16, 21]; st.cannon.pos = [17, 21]
-    backs = [Actor(f'Pillarback-{i+1}', 'P', 'foe', 17, ehp(126), p, 25,
-                   saves=dict(str=6, dex=-1, con=5, wis=1),
-                   resist={'nm-bludgeoning', 'nm-piercing', 'nm-slashing'})
-             for i, p in enumerate([(13, 11), (18, 11)])]
-    maws = [Actor(f'Needlemaw-{i+1}', 'n', 'foe', 14, ehp(32), p, 40,
-                  saves=dict(str=1, dex=3, con=2, wis=0))
-            for i, p in enumerate([(12, 14), (14, 13), (16, 13), (18, 14),
-                                   (13, 15), (17, 15)])]
+    """2 THE KELP CATHEDRAL, 580 hit points on the printed counts. Pillarback x2,
+    Needlemaw x5, Quillfrond x3, and two Gullet Bells dropping at the top of
+    round three. Nothing shoots but the rooted Quillfronds, and nothing flies.
+
+    [DM CHECK] the canon table says 552, which is the arithmetic for FOUR
+    Needlemaws; the card's own Count line says five. Five is used here."""
+    st.lilly.pos = [15, 21]; st.stabby.pos = [15, 19]; st.ursa.pos = [17, 21]
+    st.ghost.pos = [14, 20]; st.puff.pos = [16, 22]; st.cannon.pos = [17, 22]
+    backs = [Actor(f'Pillarback-{i+1}', 'P', 'foe', 17, ehp(126), p, 20,
+                   saves=dict(str=5, dex=-1, con=4, wis=1),
+                   resist={'bludgeoning', 'piercing'},
+                   cond_imm={'prone'}, reach=10)
+             for i, p in enumerate([(13, 12), (18, 12)])]
+    for b in backs:
+        b.column = 0
+    maws = [Actor(f'Needlemaw-{i+1}', 'n', 'foe', 14, ehp(28), p, 40,
+                  saves=dict(str=2, dex=3, con=1, wis=1))
+            for i, p in enumerate([(12, 15), (14, 14), (16, 14), (18, 15),
+                                   (13, 16)])]
+    fronds = [Actor(f'Quillfrond-{i+1}', 'q', 'foe', 15, ehp(32), p, 0,
+                    saves=dict(str=1, dex=-2, con=1, wis=0),
+                    cond_imm={'charmed', 'frightened', 'grappled', 'prone'},
+                    reach=10)
+              for i, p in enumerate([(12, 11), (19, 11), (15, 10)])]
+    bells = [Actor(f'Gullet Bell-{i+1}', 'U', 'foe', 15, ehp(46), p, 25,
+                   saves=dict(str=3, dex=0, con=1, wis=1),
+                   resist={'thunder'}, cond_imm={'deafened', 'prone'}, reach=10)
+             for i, p in enumerate([(14, 18), (17, 18)])]
+    for b in bells:
+        b.hp = 0
+        b.toll = 0
+        b.arrived = False
+    st.bell_tolls = 0            # the card: at most twice in the whole fight
 
     def enemies(st_, actors, rnd):
         for f in actors:
             if f.hp <= 0:
                 continue
-            if f.name.startswith('Pillarback'):
-                # PLACEHOLDER, calibrated to the S8 Chimestone slot.
-                _bite(st_, f, 7, 2, 10, 5, 'bludgeoning', 'brings a column down on', 10)
-            else:
-                # PLACEHOLDER, calibrated to the S8 Shardwing slot, grounded.
-                _bite(st_, f, 5, 2, 6, 3, 'piercing', 'darts in and bites')
+            n = f.name
+            if n.startswith('Pillarback'):
+                _recharge(f, 'column', 6)
+                if f.column:
+                    f.column = 0
+                    _aoe(st_, f, 16, 'dex', 5, 10, 'bludgeoning',
+                         'COLUMN FALL, thirty feet of living kelp coming over.',
+                         rng=30, shape='line', width=10)
+                else:
+                    for _ in range(2):
+                        _atk(st_, f, 9, 2, 8, 5, 'bludgeoning',
+                             'closes a pincer on', 10)
+            elif n.startswith('Needlemaw'):
+                _atk(st_, f, 7, 2, 4, 4, 'piercing', 'bites', 5)
+            elif n.startswith('Quillfrond'):
+                pool = _marks(st_)
+                if not pool:
+                    continue
+                # Range Finder: it shoots the FARTHEST thing it can see, and
+                # rakes instead of shooting anything already inside 10 ft.
+                far = [h for h in pool if 10 < f.dist_ft(h) <= 80]
+                if far:
+                    t = max(far, key=lambda h: f.dist_ft(h))
+                    for _ in range(1 if rnd == 1 else 2):
+                        _atk(st_, f, 7, 1, 8, 3, 'piercing',
+                             'fires a quill into', 80, tgt=t)
+                else:
+                    _atk(st_, f, 6, 2, 6, 2, 'slashing',
+                         'rakes a frond across', 10)
+            elif n.startswith('Gullet Bell'):
+                _recharge(f, 'toll')
+                if f.toll and st_.bell_tolls < 2:
+                    f.toll = 0
+                    st_.bell_tolls += 1
+                    _aoe(st_, f, 15, 'con', 3, 6, 'thunder',
+                         'TOLL. One enormous flat brass note out of a thing '
+                         'with no bell inside it.', rng=20,
+                         on_fail=lambda h: setattr(h, 'reaction', False))
+                else:
+                    _atk(st_, f, 7, 2, 8, 4, 'bludgeoning', 'slams', 10)
+
+    def wave(st_, rnd):
+        if rnd == 3 and not bells[0].arrived:
+            log("  TWO OF THE AIR-BELLS ARE NOT BELLS. They come down onto the "
+                "sand, and the one piece of terrain this session told the party "
+                "to trust opens underneath them.")
+            pool = _marks(st_)
+            for i, b in enumerate(bells):
+                b.arrived = True
+                b.hp = b.hp_max
+                if i < len(pool):
+                    t = pool[i]
+                    raw = d(3, 8)
+                    if st_.hero_save(t, 'dex', 15):
+                        got = deal(st_, t, [(raw // 2, 'bludgeoning')], attacker=b)
+                        log(f"      {t.name} steps clear: {got}.")
+                    else:
+                        got = deal(st_, t, [(raw, 'bludgeoning')], attacker=b)
+                        log(f"      {t.name} is under it for {got}, and the "
+                            "bell closes over them.")
 
     return run_fight(
         st, 'FIGHT 2: THE KELP CATHEDRAL',
-        '(The prettiest room in the campaign, and a straight brawl in it. The '
-        'Choristers sing in the canopy overhead and take no part; one has a '
-        'notched fin.)',
-        [('Pillarbacks', backs, 0), ('Needlemaws', maws, 3)], enemies)
+        '(The prettiest room in the campaign and a straight brawl in it. The '
+        'Choristers sing in the canopy and take no part; one has a notched fin.)',
+        [('Pillarbacks', backs, -1), ('Needlemaws', maws, 3),
+         ('Quillfronds', fronds, -2), ('Gullet Bells', bells, 0)],
+        enemies, wave=wave)
 
 
 def fight3(st):
-    """THE BLACKWATER SEAM. Blackcask (AC 17, 152) + Hollowsong x5 (AC 15, 52).
-    412 hit points, matching canon. The Choristers from the Cathedral come back
-    wrong. DIM light, not Darkness, so the one hero without darkvision keeps his
-    whole kit. The Blackcask's regeneration is keyed to RADIANT damage."""
-    st.lilly.pos = [15, 21]; st.stabby.pos = [15, 19]; st.ursa.pos = [17, 21]
-    st.ghost.pos = [14, 20]; st.puff.pos = [16, 22]; st.cannon.pos = [17, 22]
-    cask = Actor('Blackcask', 'B', 'foe', 17, ehp(152), (15, 10), 30,
-                 saves=dict(str=5, dex=1, con=6, wis=2),
-                 resist={'nm-bludgeoning', 'nm-piercing', 'nm-slashing'},
-                 immune={'poison'})
-    cask.took_radiant = False
-    songs = [Actor(f'Hollowsong-{i+1}', 'h', 'foe', 15, ehp(52), p, 35,
-                   saves=dict(str=2, dex=3, con=3, wis=1),
-                   immune={'poison'})
-             for i, p in enumerate([(12, 12), (14, 11), (16, 11), (18, 12),
-                                    (15, 13)])]
+    """3 THE BLACKWATER SEAM, 530 hit points. The Blackcask on its tripod,
+    Hollowsong x4, Lancefin x3, Tanglehand x2, and the Notched Fin.
+
+    CLEANSING EDGE CURES here: a Bloodied Hollowsong or the Notched Fin that
+    Stabby cuts is FREED and leaves alive, and freeing HER frees the whole
+    remaining choir and ends the fight."""
+    st.lilly.pos = [15, 22]; st.stabby.pos = [15, 20]; st.ursa.pos = [17, 22]
+    st.ghost.pos = [14, 21]; st.puff.pos = [16, 23]; st.cannon.pos = [17, 23]
+    cask = Actor('The Blackcask', 'B', 'foe', 17, ehp(152), (15, 11), 0,
+                 saves=dict(str=4, dex=-2, con=4, wis=-1),
+                 resist={'cold', 'necrotic', 'nm-bludgeoning', 'nm-piercing',
+                         'nm-slashing'}, immune={'poison'},
+                 cond_imm={'charmed', 'exhaustion', 'frightened', 'paralyzed',
+                           'poisoned', 'prone'}, reach=15)
+    cask.surge = 0
+    cask.cleanse_types = {'radiant'}      # radiant OR Cleansing Edge stops it
+    songs = [Actor(f'Hollowsong-{i+1}', 'h', 'foe', 15, ehp(38), p, 30,
+                   saves=dict(str=2, dex=3, con=1, wis=1),
+                   resist={'cold', 'necrotic'}, immune={'poison'},
+                   cond_imm={'charmed', 'frightened', 'poisoned'})
+             for i, p in enumerate([(13, 13), (17, 13), (12, 15), (18, 15)])]
+    for sg in songs[2:]:
+        sg.hp = 0                         # the second pair arrives end of round 1
+    lances = [Actor(f'Lancefin-{i+1}', 'l', 'foe', 16, ehp(22), p, 10,
+                    saves=dict(str=-1, dex=4, con=2, wis=1),
+                    resist={'cold'}, immune={'poison'},
+                    cond_imm={'poisoned', 'prone'})
+              for i, p in enumerate([(11, 14), (19, 14), (15, 9)])]
+    hands = [Actor(f'Tanglehand-{i+1}', 'T', 'foe', 16, ehp(40), p, 0,
+                   saves=dict(str=3, dex=2, con=2, wis=0),
+                   resist={'cold', 'necrotic', 'nm-bludgeoning', 'nm-piercing',
+                           'nm-slashing'}, immune={'poison'},
+                   cond_imm={'blinded', 'charmed', 'deafened', 'exhaustion',
+                             'frightened', 'poisoned', 'prone'}, reach=20)
+             for i, p in enumerate([(14, 12), (16, 12)])]
+    for t in hands:
+        t.hp = 0
+    fin = Actor('The Notched Fin', 'N', 'foe', 16, ehp(80), (15, 12), 40,
+                saves=dict(str=3, dex=4, con=3, wis=1),
+                resist={'cold', 'necrotic'}, immune={'poison'},
+                cond_imm={'charmed', 'poisoned'}, reach=10)
+    fin.hp = 0
+    fin.song = 0
+    fin.arrived = False
+    st.freed = 0
+
+    def cure_check(st_):
+        """Cleansing Edge on a Bloodied Chorister frees it, alive. Freeing the
+        Notched Fin frees every Hollowsong still standing and ends the fight."""
+        for f in songs + [fin]:
+            if f.hp <= 0 or not getattr(f, 'cleansed', False):
+                continue
+            if f.hp <= f.hp_max // 2:
+                f.hp = 0
+                st_.freed += 1
+                st_.tally['prevented']['Cleansing Edge (freed alive)'] += 1
+                if f is fin:
+                    log("    THE NOTCHED FIN IS FREED. The black water lets go "
+                        "of her and the song comes back right. Every Hollowsong "
+                        "still standing is freed in the same breath.")
+                    for sg in songs:
+                        if sg.hp > 0:
+                            sg.hp = 0
+                            st_.freed += 1
+                            st_.tally['prevented']['Cleansing Edge (freed alive)'] += 1
+                else:
+                    log(f"    {f.name}: the Nichirin's burn finishes its work. "
+                        "The black water lets go and it swims for the canopy, "
+                        "ALIVE.")
 
     def enemies(st_, actors, rnd):
+        cure_check(st_)
         for f in actors:
             if f.hp <= 0:
                 continue
-            if f.name == 'Blackcask':
-                # Canon: regeneration answered by RADIANT damage, not by light.
-                if not f.took_radiant and f.hp < f.hp_max:
-                    f.hp = min(f.hp_max, f.hp + 10)
-                    log(f"    {f.name} knits shut again (+10). Only radiance stops it.")
-                f.took_radiant = False
-                # PLACEHOLDER, calibrated to the S8 Glass Weeper slot.
-                _bite(st_, f, 8, 2, 8, 5, 'necrotic', 'pours black water over', 10)
-            else:
-                # CANON: Cleansing Edge CURES here. A Hollowsong the Nichirin has
-                # cut, once Bloodied, is freed and leaves the fight ALIVE. It is
-                # a second way to clear a body and it is still an attack roll in
-                # initiative, so it costs Stabby nothing but his usual swing.
-                if getattr(f, 'cleansed', False) and f.hp <= f.hp_max // 2:
-                    log(f"    {f.name}: the Nichirin's burn finishes its work. The "
-                        "black water lets go and it swims for the canopy, ALIVE.")
-                    f.hp = 0
-                    st_.tally['prevented']['Cleansing Edge (freed alive)'] += 1
+            n = f.name
+            if n == 'The Blackcask':
+                if rnd == 1:
+                    log("    The Blackcask is still pouring. It has not noticed "
+                        "that anybody is here.")
                     continue
-                # PLACEHOLDER, calibrated to the S8 Cinderoll slot.
-                _bite(st_, f, 6, 2, 6, 4, 'psychic', 'sings something wrong at')
+                # Still Pouring: 15 back unless radiant or Cleansing Edge landed.
+                if not getattr(f, 'cleansed', False) and f.hp < f.hp_max:
+                    f.hp = min(f.hp_max, f.hp + 15)
+                    log("    The Blackcask pours itself full again (+15). Only "
+                        "radiance or the Nichirin stops it.")
+                f.cleansed = False
+                _recharge(f, 'surge')
+                if f.surge and rnd >= 3:
+                    f.surge = 0
+                    _aoe(st_, f, 16, 'con', 5, 6, 'cold',
+                         'BLACKWATER SURGE. The seam exhales in a thirty-foot '
+                         'cone.', rng=30, shape='cone')
+                else:
+                    for _ in range(2):
+                        _atk(st_, f, 8, 2, 6, 4, 'bludgeoning',
+                             'lashes an iron band at', 15, extra=(1, 6, 'cold'))
+            elif n == 'The Notched Fin':
+                _recharge(f, 'song')
+                if f.song:
+                    f.song = 0
+                    _aoe(st_, f, 15, 'wis', 3, 8, 'psychic',
+                         'THE WRONG SONG. Every note in it is off, and it is '
+                         'inside your chest.', rng=30)
+                else:
+                    for _ in range(2):
+                        _atk(st_, f, 8, 2, 6, 4, 'slashing', 'rakes', 10)
+            elif n.startswith('Hollowsong'):
+                for _ in range(2):
+                    _atk(st_, f, 7, 1, 6, 3, 'slashing', 'rakes a fin across', 5,
+                         extra=(1, 4, 'cold'))
+            elif n.startswith('Lancefin'):
+                _atk(st_, f, 7, 1, 8, 4, 'piercing',
+                     'puts a bone lance through', 60)
+            elif n.startswith('Tanglehand'):
+                _atk(st_, f, 7, 2, 6, 3, 'bludgeoning',
+                     'closes a hand of black water around', 20)
+
+    def wave(st_, rnd):
+        if rnd == 2:
+            fresh = False
+            for sg in songs[2:]:
+                if sg.hp <= 0 and not getattr(sg, 'came', False):
+                    sg.came = True
+                    sg.hp = sg.hp_max
+                    fresh = True
+            for t in hands:
+                if t.hp <= 0 and not getattr(t, 'came', False):
+                    t.came = True
+                    t.hp = t.hp_max
+                    fresh = True
+            if fresh:
+                log("  Two more Choristers come up out of the crack, and the "
+                    "black water itself puts out a pair of hands.")
+        if rnd == 3 and not fin.arrived:
+            fin.arrived = True
+            fin.hp = fin.hp_max
+            log("  SOMETHING BIGGER COMES UP OUT OF THE SEAM. Her dorsal fin "
+                "has an old white notch torn clean through it.")
 
     return run_fight(
         st, 'FIGHT 3: THE BLACKWATER SEAM',
-        '(Dim light, and the singing is coming from the wrong direction. One of '
-        'them has a notched fin. Stabby\'s Nichirin does not kill these: '
-        'CLEANSING EDGE on a bloodied Hollowsong frees it, and it leaves alive.)',
-        [('Blackcask', [cask], 0), ('Hollowsongs', songs, 2)], enemies)
+        '(Dim light, and the singing is coming from the wrong direction.)',
+        [('The Blackcask', [cask], -2), ('Hollowsongs', songs, 3),
+         ('Lancefins', lances, 4), ('Tanglehands', hands, 2),
+         ('The Notched Fin', [fin], 4)],
+        enemies, wave=wave, cap=14)
+
+
+def _guardian_free(st, ky, brines):
+    """Kyogre's total is the corruption riding it, and the card is explicit:
+    it is "the only thing on the board whose total ending at 0 wins the fight".
+    When it goes, "They Go With It" turns every Brine-Thing back into ordinary
+    seawater in the same instant, mid-lunge, wherever it is."""
+    if ky.hp > 0:
+        return False
+    if not getattr(st, '_freed_said', False):
+        st._freed_said = True
+        log("  THE BLACK WATER LETS GO. Kyogre is FREE, and every Brine-Thing "
+            "on the board is ordinary seawater in the same instant, mid-lunge, "
+            "wherever it is.")
+        for b in brines:
+            b.hp = 0
+    return True
+
+
+def _trench_priority(live):
+    """Kyogre first: it is the objective, its total reaching 0 ENDS the fight,
+    and Stabby's Cleansing Edge on it is the only thing that stops The Water
+    Closes healing it 15 a turn. The Brine-Things respawn forever and are never
+    worth a turn that could have gone into the whale."""
+    def rank(t):
+        n = t.name
+        if n == 'Kyogre':
+            return 0
+        if n == 'The Quiet Hand':
+            return 1
+        if n.startswith('The Kept'):
+            return 2
+        if n.startswith('Drownbell'):
+            return 3
+        return 4                      # Brine-Things last, always
+    return sorted(live, key=lambda t: (rank(t), t.hp))
 
 
 def fight4(st):
-    """THE GUARDIAN'S TRENCH. Kyogre (AC 18, 250 Black Water) + The Quiet Hand
-    (AC 17, 120). Kyogre's hit points are the corruption riding it, not its life:
-    at 0 the guardian is FREE. The spike is NOT a target; that was last session.
+    """4 THE GUARDIAN'S TRENCH, 558 on the board at initiative and 708 once the
+    Kept stand up. Kyogre (280 Black Water, three phases), the Quiet Hand (150,
+    defenceless for two rounds), Brine-Thing x4 respawning, a Drownbell in the
+    ceiling, and three Kept rising at the top of round three.
 
-    [DM CHECK] 250 + 120 = 370, against the 458 the canon total implies."""
-    st.lilly.pos = [15, 23]; st.stabby.pos = [15, 21]; st.ursa.pos = [17, 23]
-    st.ghost.pos = [14, 22]; st.puff.pos = [16, 24]; st.cannon.pos = [17, 24]
-    kyogre = Actor('Kyogre', 'K', 'foe', 18, ehp(250), (15, 10), 60,
-                   saves=dict(str=8, dex=3, con=7, wis=4),
-                   resist={'nm-bludgeoning', 'nm-piercing', 'nm-slashing'},
-                   immune={'cold', 'poison'},
-                   cond_imm={'charmed', 'frightened', 'prone', 'restrained'},
-                   reach=20)
-    kyogre.undertow = 0
-    hand = Actor('The Quiet Hand', 'Q', 'foe', 17, ehp(120), (14, 8), 30,
-                 saves=dict(str=4, dex=4, con=4, wis=5))
-    hand.looked_up = False
+    THE SPIKE IS NOT A TARGET. That was last session."""
+    st.lilly.pos = [15, 24]; st.stabby.pos = [15, 22]; st.ursa.pos = [17, 24]
+    st.ghost.pos = [14, 23]; st.puff.pos = [16, 25]; st.cannon.pos = [17, 25]
+    ky = Actor('Kyogre', 'K', 'foe', 18, ehp(280), (15, 11), 20,
+               saves=dict(str=8, dex=0, con=7, wis=4),
+               resist={'nm-bludgeoning', 'nm-piercing', 'nm-slashing'},
+               immune={'cold', 'poison'},
+               cond_imm={'charmed', 'frightened', 'grappled', 'paralyzed',
+                         'petrified', 'prone', 'restrained', 'stunned'},
+               reach=20)
+    ky.undertow = 0
+    ky.voice = 0
+    ky.phase = 1
+    hand = Actor('The Quiet Hand', 'Q', 'foe', 17, ehp(150), (14, 9), 30,
+                 saves=dict(str=3, dex=2, con=3, wis=2),
+                 resist={'cold'}, cond_imm={'frightened'})
+    hand.at_work = True
+    hand.nail = 0
+    brines = [Actor(f'Brine-Thing-{i+1}', 'b', 'foe', 15, ehp(22), p, 40,
+                    saves=dict(str=1, dex=3, con=2, wis=-1),
+                    immune={'cold', 'poison'},
+                    cond_imm={'blinded', 'charmed', 'deafened', 'exhaustion',
+                              'frightened', 'prone'})
+              for i, p in enumerate([(12, 14), (18, 14), (13, 17), (17, 17),
+                                     (15, 15), (15, 18), (11, 16), (19, 16)])]
+    for b in brines[4:]:
+        b.hp = 0                          # the respawn pool, four out at a time
+    dbells = [Actor(f'Drownbell-{i+1}', 'D', 'foe', 15, ehp(40), p, 20,
+                    saves=dict(str=-2, dex=3, con=1, wis=2),
+                    immune={'cold'}, cond_imm={'grappled', 'restrained'},
+                    fly=True)
+              for i, p in enumerate([(15, 13), (16, 20)])]
+    dbells[1].hp = 0
+    for b in dbells:
+        b.hush = 0
+    kept = []
+    for i, (nm, hp, spd) in enumerate((('the Horned One', 45, 60),
+                                       ('the Winged One', 45, 40),
+                                       ('the Heavy One', 60, 20))):
+        k = Actor(f'The Kept ({nm})', 'X', 'foe', 16, ehp(hp),
+                  (13 + i * 2, 10), spd,
+                  saves=dict(str=3, dex=2, con=3, wis=-2),
+                  immune={'poison', 'psychic'},
+                  cond_imm={'charmed', 'deafened', 'exhaustion', 'frightened',
+                            'poisoned'},
+                  reach=10 if 'Winged' in nm else 5)
+        if 'Heavy' in nm:
+            k.resist = {'bludgeoning', 'piercing', 'slashing'}
+        k.hp = 0
+        k.rose = None
+        kept.append(k)
 
     def enemies(st_, actors, rnd):
         for f in actors:
             if f.hp <= 0:
                 continue
-            if f.name == 'The Quiet Hand':
-                if not f.looked_up:
-                    # Canon: until it looks up it takes no action but driving the
-                    # spike, does not defend itself, and every attack against it
-                    # has Advantage. [DM CHECK] it looks up when Bloodied here.
-                    f.exposed = True
-                    if f.hp <= f.hp_max // 2:
-                        f.looked_up = True
+            n = f.name
+            if n == 'Kyogre':
+                # Three phases. No numbers are ever read aloud at the table.
+                ph = 1 if f.hp > 180 else (2 if f.hp > 100 else 3)
+                if ph != f.phase:
+                    f.phase = ph
+                    log("    " + ("IT NOTICES. The black comes off in ribbons "
+                                  "and there is blue underneath."
+                                  if ph == 2 else
+                                  "THE UNDERTOW TURNS. It stops trying to leave, "
+                                  "and everything it has left it spends here."))
+                # The Water Closes: 15 back unless Cleansing Edge touched it.
+                if not getattr(f, 'cleansed', False) and f.hp < f.hp_max:
+                    f.hp = min(f.hp_max, f.hp + 15)
+                    log("    The water closes over Kyogre again (+15 Black Water).")
+                f.cleansed = False
+                # One new Brine-Thing per Kyogre turn, four out at most.
+                if sum(1 for b in brines if b.hp > 0) < 4:
+                    nxt = next((b for b in brines if b.hp <= 0), None)
+                    if nxt is not None:
+                        nxt.hp = nxt.hp_max
+                if rnd >= 2:
+                    _recharge(f, 'undertow')
+                if f.undertow:
+                    f.undertow = 0
+                    _aoe(st_, f, 17, 'dex', 4, 10, 'cold',
+                         'UNDERTOW. Sixty feet of sea pulling back toward the '
+                         'trench.', rng=60, shape='cone')
+                    continue
+                if ph >= 2:
+                    _recharge(f, 'voice', 6)
+                    if f.voice:
+                        f.voice = 0
+                        _aoe(st_, f, 17, 'wis', 4, 8, 'psychic',
+                             'THE DEEP VOICE. A word in a language nobody here '
+                             'speaks, and far too loud.', rng=30)
+                        continue
+                # It Is Not Aiming (phase one): the Flukes strike the nearest
+                # creatures it can reach and NEVER the same one twice in a
+                # round, and it does not move at all in phase one.
+                struck = []
+                for _ in range(3 if ph == 3 else 2):
+                    t = _atk(st_, f, 13, 3, 8, 5, 'bludgeoning',
+                             'lands the FLUKE on', 20,
+                             exclude=struck, move=(ph > 1))
+                    if t is not None:
+                        struck.append(t)
+                # Legendary actions: 1 use in phase one, 2 in phase two, 3 in
+                # phase three. Take the Deep COSTS 2, so phase one cannot buy a
+                # fluke at all and spends its single use on Cold Squall.
+                if ph == 1:
+                    _aoe(st_, f, 16, 'con', 2, 8, 'cold',
+                         'COLD SQUALL, a bloom of freezing water.', rng=60,
+                         shape='sphere', radius=10)
+                else:
+                    t = _atk(st_, f, 13, 3, 8, 5, 'bludgeoning',
+                             'TAKE THE DEEP, a legendary fluke into', 20,
+                             exclude=struck, move=(ph > 1))
+                    if ph == 3:
+                        _aoe(st_, f, 16, 'con', 2, 8, 'cold',
+                             'COLD SQUALL on top of it.', rng=60,
+                         shape='sphere', radius=10)
+            elif n == 'The Quiet Hand':
+                if f.at_work:
+                    if rnd >= 3:
+                        f.at_work = False
                         f.exposed = False
-                        log("    THE QUIET HAND stops. It sets the hammer down, "
-                            "and for the first time it looks up.")
+                        log("    THE QUIET HAND STOPS. It sets the hammer down, "
+                            "opens the case, and plants three spent spikes in "
+                            "the sand. THE KEPT RISE.")
+                        for k in kept:
+                            k.hp = k.hp_max
+                            k.rose = rnd
                     else:
+                        # At Work: no actions, no reactions, every attack against
+                        # it has Advantage and it auto-fails every save.
+                        f.exposed = True
                         log("    The Quiet Hand drives the spike another inch. "
                             "It has not looked up.")
+                        continue
+                # Near the Work: 10 back within 30 ft of Kyogre unless cleansed.
+                if (not getattr(f, 'cleansed', False) and f.hp < f.hp_max
+                        and f.dist_ft(ky) <= 30):
+                    f.hp = min(f.hp_max, f.hp + 10)
+                f.cleansed = False
+                _recharge(f, 'nail')
+                if f.nail:
+                    f.nail = 0
+                    _aoe(st_, f, 16, 'dex', 4, 10, 'force',
+                         'NAIL. The hammer goes into the sand, and something '
+                         'under the sand answers.', rng=30, shape='line')
+                else:
+                    for _ in range(2):
+                        _atk(st_, f, 8, 3, 6, 4, 'bludgeoning',
+                             'swings the hammer at', 5, extra=(1, 10, 'cold'))
+            elif n.startswith('Brine-Thing'):
+                _atk(st_, f, 7, 1, 8, 3, 'cold', 'closes a cold grip on', 5)
+            elif n.startswith('Drownbell'):
+                if rnd >= 2:
+                    _recharge(f, 'hush')
+                pool = _marks(st_)
+                if not pool:
                     continue
-                # PLACEHOLDER hammer.
-                _bite(st_, f, 9, 2, 10, 5, 'force', 'swings the hammer at')
-                continue
-            # ---- Kyogre
-            phase = 1 if f.hp > 175 else (2 if f.hp > 100 else 3)
-            if phase == 3 and not getattr(f, 'announced', False):
-                f.announced = True
-                log("    THE UNDERTOW TURNS. It stops trying to leave. "
-                    "Everything it has left, it spends here.")
-            if f.undertow <= 0 or phase == 3:
-                f.undertow = 3 if phase < 3 else 1
-                pool = [h for h in st_.pcs if h.alive and f.dist_ft(h) <= 60]
-                if pool:
-                    log("    Kyogre: UNDERTOW, the whole gallery pulls toward the "
-                        "trench (DEX DC 17).")
-                    for h in pool:
-                        raw = d(4, 10)
-                        if st_.hero_save(h, 'dex', 17):
-                            got = deal(st_, h, [(raw // 2, 'bludgeoning')], attacker=f)
-                            log(f"      {h.name} sets their feet: {got}.")
-                        else:
-                            got = deal(st_, h, [(raw, 'bludgeoning')], attacker=f)
-                            log(f"      {h.name} is dragged under for {got}.")
+                # It Lamps the Far Ones: it takes the hero farthest from Kyogre
+                # and never piles onto whoever is already in melee.
+                t = max(pool, key=lambda h: h.dist_ft(ky))
+                if f.hush:
+                    f.hush = 0
+                    log("    Drownbell: HUSH. It does not make a sound. It "
+                        "stops the sound of everything else.")
+                    if not st_.hero_save(t, 'con', 16):
+                        t.reaction = False
+                        log(f"      {t.name} cannot take Reactions.")
+                else:
+                    _atk(st_, f, 7, 2, 8, 4, 'cold', 'puts the cold lamp on',
+                         60, tgt=t)
+            elif n.startswith('The Kept'):
+                # Three Rounds: it collapses into sand whatever its hit points.
+                if f.rose is not None and rnd - f.rose >= 3:
+                    log(f"    {f.name} comes apart into ordinary sand.")
+                    f.hp = 0
                     continue
-            f.undertow -= 1
-            # Fluke, +13 for 3d8+5 at reach 20 (canon).
-            _bite(st_, f, 13, 3, 8, 5, 'bludgeoning', 'lands the FLUKE on', 20)
+                _atk(st_, f, 8, 2, 8, 4, 'force',
+                     'brings a remembered blow down on', f.reach)
+
+    def wave(st_, rnd):
+        if rnd == 3 and dbells[1].hp <= 0 and not getattr(dbells[1], 'came', False):
+            dbells[1].came = True
+            dbells[1].hp = dbells[1].hp_max
+            log("  A second Drownbell comes down out of the ceiling.")
 
     return run_fight(
-        st, 'FIGHT 4: THE GUARDIAN\'S TRENCH',
+        st, "FIGHT 4: THE GUARDIAN'S TRENCH",
         '(Kyogre is mid-corruption and the spike is still being driven. The '
-        'hit points are the black water riding it, not its life: at zero the '
-        'guardian is free.)',
-        [('Kyogre', [kyogre], 2), ('The Quiet Hand', [hand], -3)], enemies, cap=14)
+        'total is the black water riding it, not its life: at zero the guardian '
+        'is free. It was never a monster.)',
+        [('Kyogre', [ky], 0), ('The Quiet Hand', [hand], 2),
+         ('Brine-Things', brines, 3), ('Drownbells', dbells, 3),
+         ('The Kept', kept, 2)],
+        enemies, wave=wave, cap=16, priority=_trench_priority,
+        win=lambda: _guardian_free(st, ky, brines))
 
 
 # ---------------------------------------------------------------- the day
