@@ -148,11 +148,37 @@ def gen_one(item):
 
 if __name__ == "__main__":
     todo = QUEUE
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 1 and not sys.argv[1].startswith("--"):
         todo = [q for q in QUEUE if sys.argv[1] in q[0]]
-    print(f"generating {len(todo)} images at {SIZE}, 3 concurrent")
-    with cf.ThreadPoolExecutor(max_workers=3) as ex:
-        for name, status in ex.map(gen_one, todo):
-            print(f"  {status:>6}  {name}", flush=True)
+
+    # Resume by default: a plate already sitting in art_review is done. Pass
+    # --force to regenerate everything.
+    if "--force" not in sys.argv:
+        before = len(todo)
+        todo = [q for q in todo if not os.path.exists(os.path.join(GEN, f"PENDING_{q[0]}.png"))]
+        if before != len(todo):
+            print(f"resuming: {before - len(todo)} already generated, {len(todo)} to go")
+
+    # Only requests carrying reference images hit the org's input-images-per-
+    # minute cap, and roughly two thirds of this queue carries none. Splitting
+    # the pools lets the ref-free plates run wide instead of queueing behind
+    # rate-limited ones.
+    plain = [q for q in todo if not refs_for(q[1])]
+    withref = [q for q in todo if refs_for(q[1])]
+    print(f"generating {len(todo)} images at {SIZE}: "
+          f"{len(plain)} ref-free at 10 concurrent, {len(withref)} with refs at 3", flush=True)
+
+    def run(items, workers):
+        if not items:
+            return
+        with cf.ThreadPoolExecutor(max_workers=workers) as ex:
+            for fut in cf.as_completed([ex.submit(gen_one, it) for it in items]):
+                name, status = fut.result()
+                print(f"  {status:>6}  {name}", flush=True)
+
+    with cf.ThreadPoolExecutor(max_workers=2) as outer:
+        a = outer.submit(run, plain, 10)
+        b = outer.submit(run, withref, 3)
+        a.result(); b.result()
     review_gallery.build()
     print("batch done")
