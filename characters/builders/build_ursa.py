@@ -268,7 +268,7 @@ powers = [
     ('Wild Shape (3/long rest)', 'Three uses that fuel his Starry Forms (or turn into a beast he has seen). Regain 1 on a short rest, all on a long rest.'),
     ('Wild Resurgence', 'Once per turn (no action), spend a spell slot to get back one Wild Shape use. Once per long rest, the reverse: spend a Wild Shape use to regain a 1st-level spell slot.'),
     ('Star Map', 'His star chart is a magic focus. Free <b>Guiding Bolt</b> 5×/day even without the Staff. Backup focus he still carries.'),
-    ('Cosmic Omen (new at 6!)', '<b>Reaction.</b> When someone he can see within 30 ft rolls a d20, he can <b>wait until the die lands</b> and bend it then, before anyone knows if it worked: <b>Weal +1d6+2</b> or <b>Woe &minus;1d6&minus;2</b> (the waiting and the bigger numbers are both Reader of Omens). <b>5 uses per long rest</b>.'),
+    ('Cosmic Omen (new at 6!)', '<b>Reaction.</b> When he <b>or</b> anyone he can see within 30 ft rolls a d20, he can <b>wait until the die lands</b> and bend it then, before anyone knows if it worked: <b>Weal +1d6+2</b> or <b>Woe &minus;1d6&minus;2</b> (the waiting and the bigger numbers are both Reader of Omens). <b>5 uses per long rest</b>.'),
     ('Elemental Fury (new at 7!)', '<b>Potent Spellcasting:</b> add <b>+5 (Wis)</b> to the damage of any druid <b>cantrip</b>. <i>(House rule: it can ride the kindled staff once a turn instead, never both in the same turn.)</i>'),
     ('Mark of Handling', 'His dragonmark. <b>Wild Intuition:</b> add 1d4 to any Animal Handling or Nature check.'),
     ('Primal Connection (1/short rest)', 'Cast Animal Friendship or Speak with Animals for free, no materials.'),
